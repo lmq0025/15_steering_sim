@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+build/
+dist/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Third-party audit checkouts (never vendor reference repositories)
+reference/
+
+# Confidential / customer-owned engineering material
+confidential/
+customer_data/
+data/raw/
+data/customer/
+**/*.ame
+**/*.amec
+**/*.amex
+**/*.amesim
+
+# Generated simulation output
+results/
+outputs/
+tmp/
+temp/
+*.log
+

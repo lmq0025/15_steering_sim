@@ -1,0 +1,13 @@
+[simulation]
+solver = "RK45"
+controller_sample_time = 0.001
+
+# Demonstration only; not an approved engineering parameter.
+[[parameters]]
+name = "example_gain"
+value = 1.0
+unit = "-"
+source = "ASSUMED"
+confidence = 0.1
+notes = "R01 interface example; replace before physical validation"
+
