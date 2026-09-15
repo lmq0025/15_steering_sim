@@ -37,3 +37,51 @@ flowchart LR
 Normal position-to-angle use does not pass through R02-C1. CUSTOMER hardpoints
 remain frozen; calibration is limited to explicit sensor/mapping/zero-offset
 parameters unless a future bounded level-2 hardpoint-correction decision is approved.
+
+## R02-E vehicle coordination route
+
+    target Axle1 mean angle + steering mode
+                    |
+                    v
+    generalized-Ackermann / ICR coordinator
+                    |
+        ideal 12-wheel targets
+                    |
+                    v
+    bounded fit of q_front, q3, q4, q5, q6
+                    |
+                    v
+    required actuator positions (R02-D conversion)
+                    |
+                    v
+    MechanicalSteeringIOModel -> frozen R02-B -> actual 12 wheel angles
+
+R02-E is a low-speed geometric coordination baseline, not a PID controller,
+hydraulic transient model, steering-wheel mapping, or vehicle-dynamics model.
+Preset ICR location and coordination gains are centralized and calibratable;
+CUSTOMER hardpoints remain frozen. R02-C1 remains an optional parallel route
+for future force-driven transient mechanics.
+
+## R02-E vehicle coordination route
+
+    target Axle1 mean angle + steering mode
+                    |
+                    v
+    generalized-Ackermann / ICR coordinator
+                    |
+        ideal 12-wheel targets
+                    |
+                    v
+    bounded fit of q_front, q3, q4, q5, q6
+                    |
+                    v
+    required actuator positions (R02-D conversion)
+                    |
+                    v
+    MechanicalSteeringIOModel -> frozen R02-B -> actual 12 wheel angles
+
+R02-E is a low-speed geometric coordination baseline, not a PID controller,
+hydraulic transient model, steering-wheel mapping, or vehicle-dynamics model.
+Preset ICR location and coordination gains are centralized and calibratable;
+CUSTOMER hardpoints remain frozen. R02-C1 remains an optional parallel route
+for future force-driven transient mechanics.

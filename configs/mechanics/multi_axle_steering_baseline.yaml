@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0",
+  "purpose": "R02E_MULTI_AXLE_COORDINATION_BASELINE_ONLY",
+  "presets": {
+    "PUBLIC_6AXLE_BASELINE": {
+      "aliases": ["public"],
+      "source": "LITERATURE_BASELINE",
+      "confidence": "low_to_medium",
+      "notes": "NOT CUSTOMER CALIBRATED; public six-axle steering-mode architecture only",
+      "icr_between_axles": {
+        "axle_before": 3,
+        "axle_after": 4,
+        "fraction": {
+          "value": 0.5,
+          "unit": "1",
+          "source": "LITERATURE_BASELINE",
+          "confidence": "low_to_medium",
+          "reference": "XCMG XCA500L8 public operation manual mode architecture",
+          "notes": "ICR midpoint baseline gives Axle1/2/3 same phase and Axle4/5/6 counter phase; NOT CUSTOMER CALIBRATED",
+          "calibratable": true,
+          "lower_bound": 0.0,
+          "upper_bound": 1.0
+        }
+      },
+      "x_icr_m": null,
+      "coordination_gains": {
+        "axle1": {"value": 1.0, "unit": "1", "source": "LITERATURE_BASELINE", "confidence": "low_to_medium", "reference": "generalized Ackermann baseline", "notes": "NOT CUSTOMER CALIBRATED", "calibratable": false, "lower_bound": 1.0, "upper_bound": 1.0},
+        "axle2": {"value": 1.0, "unit": "1", "source": "LITERATURE_BASELINE", "confidence": "low_to_medium", "reference": "generalized Ackermann baseline", "notes": "future coordination calibration field", "calibratable": true, "lower_bound": 0.5, "upper_bound": 1.5},
+        "axle3": {"value": 1.0, "unit": "1", "source": "LITERATURE_BASELINE", "confidence": "low_to_medium", "reference": "generalized Ackermann baseline", "notes": "future coordination calibration field", "calibratable": true, "lower_bound": 0.5, "upper_bound": 1.5},
+        "axle4": {"value": 1.0, "unit": "1", "source": "LITERATURE_BASELINE", "confidence": "low_to_medium", "reference": "generalized Ackermann baseline", "notes": "future coordination calibration field", "calibratable": true, "lower_bound": 0.5, "upper_bound": 1.5},
+        "axle5": {"value": 1.0, "unit": "1", "source": "LITERATURE_BASELINE", "confidence": "low_to_medium", "reference": "generalized Ackermann baseline", "notes": "future coordination calibration field", "calibratable": true, "lower_bound": 0.5, "upper_bound": 1.5},
+        "axle6": {"value": 1.0, "unit": "1", "source": "LITERATURE_BASELINE", "confidence": "low_to_medium", "reference": "generalized Ackermann baseline", "notes": "future coordination calibration field", "calibratable": true, "lower_bound": 0.5, "upper_bound": 1.5}
+      }
+    },
+    "CUSTOMER_HINT_BASELINE": {
+      "aliases": ["customer-hint"],
+      "source": "CUSTOMER_HINT_UNCONFIRMED",
+      "confidence": "low",
+      "notes": "requires customer confirmation / calibration; based only on user recollection",
+      "icr_between_axles": {
+        "axle_before": 2,
+        "axle_after": 3,
+        "fraction": {
+          "value": 0.5,
+          "unit": "1",
+          "source": "CUSTOMER_HINT_UNCONFIRMED",
+          "confidence": "low",
+          "reference": "user recollection, not a formal CUSTOMER document",
+          "notes": "ICR midpoint baseline gives Axle1/2 same phase and Axle3/4/5/6 counter phase",
+          "calibratable": true,
+          "lower_bound": 0.0,
+          "upper_bound": 1.0
+        }
+      },
+      "x_icr_m": null,
+      "coordination_gains": {
+        "axle1": {"value": 1.0, "unit": "1", "source": "CUSTOMER_HINT_UNCONFIRMED", "confidence": "low", "reference": "generalized Ackermann baseline", "notes": "unconfirmed CUSTOMER hint", "calibratable": false, "lower_bound": 1.0, "upper_bound": 1.0},
+        "axle2": {"value": 1.0, "unit": "1", "source": "CUSTOMER_HINT_UNCONFIRMED", "confidence": "low", "reference": "generalized Ackermann baseline", "notes": "future coordination calibration field", "calibratable": true, "lower_bound": 0.5, "upper_bound": 1.5},
+        "axle3": {"value": 1.0, "unit": "1", "source": "CUSTOMER_HINT_UNCONFIRMED", "confidence": "low", "reference": "generalized Ackermann baseline", "notes": "future coordination calibration field", "calibratable": true, "lower_bound": 0.5, "upper_bound": 1.5},
+        "axle4": {"value": 1.0, "unit": "1", "source": "CUSTOMER_HINT_UNCONFIRMED", "confidence": "low", "reference": "generalized Ackermann baseline", "notes": "future coordination calibration field", "calibratable": true, "lower_bound": 0.5, "upper_bound": 1.5},
+        "axle5": {"value": 1.0, "unit": "1", "source": "CUSTOMER_HINT_UNCONFIRMED", "confidence": "low", "reference": "generalized Ackermann baseline", "notes": "future coordination calibration field", "calibratable": true, "lower_bound": 0.5, "upper_bound": 1.5},
+        "axle6": {"value": 1.0, "unit": "1", "source": "CUSTOMER_HINT_UNCONFIRMED", "confidence": "low", "reference": "generalized Ackermann baseline", "notes": "future coordination calibration field", "calibratable": true, "lower_bound": 0.5, "upper_bound": 1.5}
+      }
+    }
+  },
+  "numerical_fit": {
+    "sample_count": {"value": 65, "unit": "count", "source": "ASSUMED_BASELINE", "confidence": "medium", "reference": "R02-E bounded one-dimensional search", "notes": "numerical resolution only", "calibratable": false, "lower_bound": 65, "upper_bound": 65},
+    "boundary_tolerance_rad": {"value": 0.0001, "unit": "rad", "source": "ASSUMED_BASELINE", "confidence": "medium", "reference": "R02-E feasibility diagnostic", "notes": "numerical boundary proximity; not a mechanical limit", "calibratable": false, "lower_bound": 0.0001, "upper_bound": 0.0001},
+    "material_residual_deg": {"value": 0.25, "unit": "deg_rms", "source": "ASSUMED_BASELINE", "confidence": "low", "reference": "R02-E display diagnostic", "notes": "flags baseline mismatch; not an engineering accuracy acceptance threshold", "calibratable": true, "lower_bound": 0.05, "upper_bound": 2.0}
+  },
+  "hardpoints": {
+    "frozen": true,
+    "source": "CUSTOMER",
+    "notes": "R02-B ReferenceGeometry remains unchanged and is not calibratable in R02-E"
+  }
+}
