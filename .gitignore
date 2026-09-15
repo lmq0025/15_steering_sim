@@ -24,6 +24,9 @@ confidential/
 customer_data/
 data/raw/
 data/customer/
+mechanical_model_input_spec_v*.yaml
+mechanical_model_input_spec_v*.json
+R02A_mechanical_model_input_spec_FROZEN_v*.md
 **/*.ame
 **/*.amec
 **/*.amex
@@ -35,4 +38,4 @@ outputs/
 tmp/
 temp/
 *.log
-
+*.png
