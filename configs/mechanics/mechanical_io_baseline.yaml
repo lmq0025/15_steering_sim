@@ -1,0 +1,81 @@
+{
+  "schema_version": "1.0",
+  "purpose": "R02D_BASELINE_ONLY",
+  "front_mapping": {
+    "k_front": {"value": 1.0, "unit": "rad/m", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "replaceable linear software baseline", "notes": "NOT CUSTOMER CALIBRATED; no front actuator geometry is available", "calibratable": true, "lower_bound": 0.1, "upper_bound": 100.0},
+    "position_zero": {"value": 0.0, "unit": "m", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "replaceable linear software baseline", "notes": "NOT CUSTOMER CALIBRATED; datum must be identified from customer data", "calibratable": true, "lower_bound": -0.1, "upper_bound": 0.1}
+  },
+  "actuators": {
+    "ACTUATOR_3_A": {
+      "reference_length": {"value": "FROM_REFERENCE_GEOMETRY", "unit": "m", "source": "CUSTOMER", "confidence": 1.0, "reference": "frozen q=0 ReferenceGeometry", "notes": "derived at runtime from frozen CUSTOMER hardpoints", "calibratable": false, "lower_bound": null, "upper_bound": null},
+      "stroke_sign": {"value": 1.0, "unit": "1", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "R02-D sensor convention", "notes": "NOT CUSTOMER CALIBRATED; discrete sign candidate", "calibratable": true, "lower_bound": -1.0, "upper_bound": 1.0},
+      "zero_offset": {"value": 0.0, "unit": "m", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "identity sensor conversion baseline", "notes": "NOT CUSTOMER CALIBRATED", "calibratable": true, "lower_bound": -0.02, "upper_bound": 0.02},
+      "scale": {"value": 1.0, "unit": "1", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "identity sensor conversion baseline", "notes": "NOT CUSTOMER CALIBRATED", "calibratable": true, "lower_bound": 0.8, "upper_bound": 1.2}
+    },
+    "ACTUATOR_3_B": {
+      "reference_length": {"value": "FROM_REFERENCE_GEOMETRY", "unit": "m", "source": "CUSTOMER", "confidence": 1.0, "reference": "frozen q=0 ReferenceGeometry", "notes": "derived at runtime from frozen CUSTOMER hardpoints", "calibratable": false, "lower_bound": null, "upper_bound": null},
+      "stroke_sign": {"value": -1.0, "unit": "1", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "R02-D sensor convention", "notes": "NOT CUSTOMER CALIBRATED; discrete sign candidate", "calibratable": true, "lower_bound": -1.0, "upper_bound": 1.0},
+      "zero_offset": {"value": 0.0, "unit": "m", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "identity sensor conversion baseline", "notes": "NOT CUSTOMER CALIBRATED", "calibratable": true, "lower_bound": -0.02, "upper_bound": 0.02},
+      "scale": {"value": 1.0, "unit": "1", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "identity sensor conversion baseline", "notes": "NOT CUSTOMER CALIBRATED", "calibratable": true, "lower_bound": 0.8, "upper_bound": 1.2}
+    },
+    "ACTUATOR_4_A": {
+      "reference_length": {"value": "FROM_REFERENCE_GEOMETRY", "unit": "m", "source": "CUSTOMER", "confidence": 1.0, "reference": "frozen q=0 ReferenceGeometry", "notes": "derived at runtime from frozen CUSTOMER hardpoints", "calibratable": false, "lower_bound": null, "upper_bound": null},
+      "stroke_sign": {"value": 1.0, "unit": "1", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "R02-D sensor convention", "notes": "NOT CUSTOMER CALIBRATED; discrete sign candidate", "calibratable": true, "lower_bound": -1.0, "upper_bound": 1.0},
+      "zero_offset": {"value": 0.0, "unit": "m", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "identity sensor conversion baseline", "notes": "NOT CUSTOMER CALIBRATED", "calibratable": true, "lower_bound": -0.02, "upper_bound": 0.02},
+      "scale": {"value": 1.0, "unit": "1", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "identity sensor conversion baseline", "notes": "NOT CUSTOMER CALIBRATED", "calibratable": true, "lower_bound": 0.8, "upper_bound": 1.2}
+    },
+    "ACTUATOR_4_B": {
+      "reference_length": {"value": "FROM_REFERENCE_GEOMETRY", "unit": "m", "source": "CUSTOMER", "confidence": 1.0, "reference": "frozen q=0 ReferenceGeometry", "notes": "derived at runtime from frozen CUSTOMER hardpoints", "calibratable": false, "lower_bound": null, "upper_bound": null},
+      "stroke_sign": {"value": -1.0, "unit": "1", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "R02-D sensor convention", "notes": "NOT CUSTOMER CALIBRATED; discrete sign candidate", "calibratable": true, "lower_bound": -1.0, "upper_bound": 1.0},
+      "zero_offset": {"value": 0.0, "unit": "m", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "identity sensor conversion baseline", "notes": "NOT CUSTOMER CALIBRATED", "calibratable": true, "lower_bound": -0.02, "upper_bound": 0.02},
+      "scale": {"value": 1.0, "unit": "1", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "identity sensor conversion baseline", "notes": "NOT CUSTOMER CALIBRATED", "calibratable": true, "lower_bound": 0.8, "upper_bound": 1.2}
+    },
+    "ACTUATOR_5_A": {
+      "reference_length": {"value": "FROM_REFERENCE_GEOMETRY", "unit": "m", "source": "CUSTOMER", "confidence": 1.0, "reference": "frozen q=0 ReferenceGeometry", "notes": "derived at runtime from frozen CUSTOMER hardpoints", "calibratable": false, "lower_bound": null, "upper_bound": null},
+      "stroke_sign": {"value": 1.0, "unit": "1", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "R02-D sensor convention", "notes": "NOT CUSTOMER CALIBRATED; discrete sign candidate", "calibratable": true, "lower_bound": -1.0, "upper_bound": 1.0},
+      "zero_offset": {"value": 0.0, "unit": "m", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "identity sensor conversion baseline", "notes": "NOT CUSTOMER CALIBRATED", "calibratable": true, "lower_bound": -0.02, "upper_bound": 0.02},
+      "scale": {"value": 1.0, "unit": "1", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "identity sensor conversion baseline", "notes": "NOT CUSTOMER CALIBRATED", "calibratable": true, "lower_bound": 0.8, "upper_bound": 1.2}
+    },
+    "ACTUATOR_5_B": {
+      "reference_length": {"value": "FROM_REFERENCE_GEOMETRY", "unit": "m", "source": "CUSTOMER", "confidence": 1.0, "reference": "frozen q=0 ReferenceGeometry", "notes": "derived at runtime from frozen CUSTOMER hardpoints", "calibratable": false, "lower_bound": null, "upper_bound": null},
+      "stroke_sign": {"value": -1.0, "unit": "1", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "R02-D sensor convention", "notes": "NOT CUSTOMER CALIBRATED; discrete sign candidate", "calibratable": true, "lower_bound": -1.0, "upper_bound": 1.0},
+      "zero_offset": {"value": 0.0, "unit": "m", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "identity sensor conversion baseline", "notes": "NOT CUSTOMER CALIBRATED", "calibratable": true, "lower_bound": -0.02, "upper_bound": 0.02},
+      "scale": {"value": 1.0, "unit": "1", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "identity sensor conversion baseline", "notes": "NOT CUSTOMER CALIBRATED", "calibratable": true, "lower_bound": 0.8, "upper_bound": 1.2}
+    },
+    "ACTUATOR_6_A": {
+      "reference_length": {"value": "FROM_REFERENCE_GEOMETRY", "unit": "m", "source": "CUSTOMER", "confidence": 1.0, "reference": "frozen q=0 ReferenceGeometry", "notes": "derived at runtime from frozen CUSTOMER hardpoints", "calibratable": false, "lower_bound": null, "upper_bound": null},
+      "stroke_sign": {"value": 1.0, "unit": "1", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "R02-D sensor convention", "notes": "NOT CUSTOMER CALIBRATED; discrete sign candidate", "calibratable": true, "lower_bound": -1.0, "upper_bound": 1.0},
+      "zero_offset": {"value": 0.0, "unit": "m", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "identity sensor conversion baseline", "notes": "NOT CUSTOMER CALIBRATED", "calibratable": true, "lower_bound": -0.02, "upper_bound": 0.02},
+      "scale": {"value": 1.0, "unit": "1", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "identity sensor conversion baseline", "notes": "NOT CUSTOMER CALIBRATED", "calibratable": true, "lower_bound": 0.8, "upper_bound": 1.2}
+    },
+    "ACTUATOR_6_B": {
+      "reference_length": {"value": "FROM_REFERENCE_GEOMETRY", "unit": "m", "source": "CUSTOMER", "confidence": 1.0, "reference": "frozen q=0 ReferenceGeometry", "notes": "derived at runtime from frozen CUSTOMER hardpoints", "calibratable": false, "lower_bound": null, "upper_bound": null},
+      "stroke_sign": {"value": -1.0, "unit": "1", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "R02-D sensor convention", "notes": "NOT CUSTOMER CALIBRATED; discrete sign candidate", "calibratable": true, "lower_bound": -1.0, "upper_bound": 1.0},
+      "zero_offset": {"value": 0.0, "unit": "m", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "identity sensor conversion baseline", "notes": "NOT CUSTOMER CALIBRATED", "calibratable": true, "lower_bound": -0.02, "upper_bound": 0.02},
+      "scale": {"value": 1.0, "unit": "1", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "identity sensor conversion baseline", "notes": "NOT CUSTOMER CALIBRATED", "calibratable": true, "lower_bound": 0.8, "upper_bound": 1.2}
+    }
+  },
+  "wheel_zero_offsets": {
+    "WHEEL_1_POS_Y": {"value": 0.0, "unit": "rad", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "R02-D zero-offset baseline", "notes": "NOT CUSTOMER CALIBRATED; toe offset unknown", "calibratable": true, "lower_bound": -0.05, "upper_bound": 0.05},
+    "WHEEL_1_NEG_Y": {"value": 0.0, "unit": "rad", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "R02-D zero-offset baseline", "notes": "NOT CUSTOMER CALIBRATED; toe offset unknown", "calibratable": true, "lower_bound": -0.05, "upper_bound": 0.05},
+    "WHEEL_2_POS_Y": {"value": 0.0, "unit": "rad", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "R02-D zero-offset baseline", "notes": "NOT CUSTOMER CALIBRATED; toe offset unknown", "calibratable": true, "lower_bound": -0.05, "upper_bound": 0.05},
+    "WHEEL_2_NEG_Y": {"value": 0.0, "unit": "rad", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "R02-D zero-offset baseline", "notes": "NOT CUSTOMER CALIBRATED; toe offset unknown", "calibratable": true, "lower_bound": -0.05, "upper_bound": 0.05},
+    "WHEEL_3_POS_Y": {"value": 0.0, "unit": "rad", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "R02-D zero-offset baseline", "notes": "NOT CUSTOMER CALIBRATED; toe offset unknown", "calibratable": true, "lower_bound": -0.05, "upper_bound": 0.05},
+    "WHEEL_3_NEG_Y": {"value": 0.0, "unit": "rad", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "R02-D zero-offset baseline", "notes": "NOT CUSTOMER CALIBRATED; toe offset unknown", "calibratable": true, "lower_bound": -0.05, "upper_bound": 0.05},
+    "WHEEL_4_POS_Y": {"value": 0.0, "unit": "rad", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "R02-D zero-offset baseline", "notes": "NOT CUSTOMER CALIBRATED; toe offset unknown", "calibratable": true, "lower_bound": -0.05, "upper_bound": 0.05},
+    "WHEEL_4_NEG_Y": {"value": 0.0, "unit": "rad", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "R02-D zero-offset baseline", "notes": "NOT CUSTOMER CALIBRATED; toe offset unknown", "calibratable": true, "lower_bound": -0.05, "upper_bound": 0.05},
+    "WHEEL_5_POS_Y": {"value": 0.0, "unit": "rad", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "R02-D zero-offset baseline", "notes": "NOT CUSTOMER CALIBRATED; toe offset unknown", "calibratable": true, "lower_bound": -0.05, "upper_bound": 0.05},
+    "WHEEL_5_NEG_Y": {"value": 0.0, "unit": "rad", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "R02-D zero-offset baseline", "notes": "NOT CUSTOMER CALIBRATED; toe offset unknown", "calibratable": true, "lower_bound": -0.05, "upper_bound": 0.05},
+    "WHEEL_6_POS_Y": {"value": 0.0, "unit": "rad", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "R02-D zero-offset baseline", "notes": "NOT CUSTOMER CALIBRATED; toe offset unknown", "calibratable": true, "lower_bound": -0.05, "upper_bound": 0.05},
+    "WHEEL_6_NEG_Y": {"value": 0.0, "unit": "rad", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "R02-D zero-offset baseline", "notes": "NOT CUSTOMER CALIBRATED; toe offset unknown", "calibratable": true, "lower_bound": -0.05, "upper_bound": 0.05}
+  },
+  "numerical_inverse_search": {
+    "lower_q_rad": {"value": -0.08, "unit": "rad", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "R02-B numerical verification interval", "notes": "numerical search bound only; NOT a mechanical or operating limit", "calibratable": false, "lower_bound": -0.08, "upper_bound": -0.08},
+    "upper_q_rad": {"value": 0.08, "unit": "rad", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "R02-B numerical verification interval", "notes": "numerical search bound only; NOT a mechanical or operating limit", "calibratable": false, "lower_bound": 0.08, "upper_bound": 0.08}
+  },
+  "paired_cylinder_weights": {
+    "weight_a": {"value": 1.0, "unit": "1/m^2", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "equal-weight inverse residual baseline", "notes": "NOT CUSTOMER CALIBRATED; replace with sensor uncertainty weighting", "calibratable": false, "lower_bound": 0.01, "upper_bound": 100.0},
+    "weight_b": {"value": 1.0, "unit": "1/m^2", "source": "ASSUMED_BASELINE", "confidence": 0.0, "reference": "equal-weight inverse residual baseline", "notes": "NOT CUSTOMER CALIBRATED; replace with sensor uncertainty weighting", "calibratable": false, "lower_bound": 0.01, "upper_bound": 100.0}
+  },
+  "hardpoint_correction": {"enabled": false, "notes": "CUSTOMER hardpoints remain frozen; future level-2 calibration requires tolerance bounds"}
+}
