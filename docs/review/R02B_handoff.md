@@ -80,12 +80,12 @@ Jacobian 差分步长为 `1e-6 rad`，检查点为 `[0.01,-0.02,0.015,-0.01,0.02
 ## pytest 完整结果
 
 ```text
-python -m pytest -q
+& "$env:CONDA_PREFIX\python.exe" -m pytest -q
 ........................                                                 [100%]
 24 passed in 3.24s
 ```
 
-本机裸 `python` 仍指向 AMESim Python 3.6；测试会话将 `E:\ProgramData\anaconda3` 放到 PATH 首位后执行上述原命令。
+该历史测试结果现统一按 `docs/ENVIRONMENT.md` 执行：先验证 `steering_sim` 环境，再显式调用 `& "$env:CONDA_PREFIX\python.exe" -m pytest -q`；不修改系统 PATH。
 
 新增测试覆盖：YAML/JSON 一致性、零位重构、刚性杆不变、镜像等变、一二桥自由度、各后桥自由度、执行器长度连续性、速度/Jacobian 差分、闭链残差、小步分支连续、不可达异常及双缸 Jacobian 稀疏结构。R01 的 12 项测试同时回归通过。
 

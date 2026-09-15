@@ -138,15 +138,15 @@ CUSTOMER, AMESIM, DATASHEET, LITERATURE, CALIBRATED, ASSUMED
 安装验证：
 
 ```text
-E:\ProgramData\anaconda3\python.exe -m pip install -e . --no-deps --no-build-isolation
+& "$env:CONDA_PREFIX\python.exe" -m pip install -e . --no-deps --no-build-isolation
 Successfully built steering-sim
 Successfully installed steering-sim-0.1.0
 ```
 
-由于机器裸 `python` 指向 AMESim 自带 Python 3.6.8/pip 18.1，不支持本项目 `requires-python >=3.10` 和现代 PEP 517 editable 安装，测试会话先把 `E:\ProgramData\anaconda3` 放到 PATH 首位，再执行要求的原命令：
+当前正式运行方式以 `docs/ENVIRONMENT.md` 为准：只使用已验证的 `steering_sim` 环境，并显式调用其 executable，不修改系统 PATH：
 
 ```text
-python -m pytest -q
+& "$env:CONDA_PREFIX\python.exe" -m pytest -q
 ............                                                             [100%]
 12 passed in 10.24s
 ```
@@ -192,4 +192,3 @@ python -m pytest -q
 ## 13. commit hash
 
 R01 交付提交即本文件所在提交。Git 提交哈希由包含本文件在内的完整提交内容计算，无法在同一个提交中自嵌其最终哈希；精确不可变 hash 在提交完成后由 `git rev-parse HEAD` 获取，并在本轮最终聊天交付中报告。
-
