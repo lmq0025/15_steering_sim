@@ -25,6 +25,7 @@ All project commands use the verified executable explicitly:
 & "$env:CONDA_PREFIX\python.exe" -m pip install -e . --no-deps --no-build-isolation
 & "$env:CONDA_PREFIX\python.exe" -m pytest -q
 & "$env:CONDA_PREFIX\python.exe" examples/run_mechanical_dynamics_demo.py
+& "$env:CONDA_PREFIX\python.exe" examples/run_mechanical_io_demo.py
 ```
 
 Bare `python`, `pip`, and `pytest` commands are not supported project commands.
