@@ -2,12 +2,14 @@ from pathlib import Path
 import numpy as np
 import pytest
 from steering_sim.mechanics import (
-    ACTUATOR_ORDER, GENERALIZED_COORDINATES, SixAxleSteeringKinematics,
+    ACTUATOR_ORDER, GENERALIZED_COORDINATES, GENERALIZED_COORDINATE_CONVENTION,
+    SixAxleSteeringKinematics,
     UnreachableGeometryError, reference_geometry_from_file, verify_json_crosscheck,
 )
 
 SPEC = Path(__file__).parents[2] / "mechanical_model_input_spec_v1.0.yaml"
 JSON_SPEC = SPEC.with_suffix(".json")
+NUMERICAL_VERIFICATION_INTERVAL_RAD = 0.08
 
 @pytest.fixture
 def reference():
@@ -31,11 +33,11 @@ def test_json_crosscheck_matches_primary_yaml():
     primary_hash, json_hash = verify_json_crosscheck(SPEC, JSON_SPEC)
     assert primary_hash == json_hash
 
-def test_rigid_link_invariance_during_allowed_scan(model, reference):
+def test_rigid_link_invariance_during_numerical_verification_scan(model, reference):
     maximum = 0.0
     for direction in (-1.0, 1.0):
         model.reset()
-        for magnitude in np.linspace(0.0, 0.08, 17):
+        for magnitude in np.linspace(0.0, NUMERICAL_VERIFICATION_INTERVAL_RAD, 17):
             solution = model.solve(np.full(5, direction * magnitude))
             for name, length in solution.rigid_link_lengths.items():
                 maximum = max(maximum, abs(length - reference.links[name].reference_length))
@@ -54,6 +56,7 @@ def test_mirror_symmetry_is_equivariant(reference):
 def test_front_group_has_one_independent_dof(model):
     assert model.group_dofs["AXLE_1_2"] == 1
     assert GENERALIZED_COORDINATES[0] == "q_front"
+    assert "Internal kinematic generalized coordinates" in GENERALIZED_COORDINATE_CONVENTION
     baseline = model.solve(np.zeros(5))
     moved = model.solve(np.array([0.02, 0, 0, 0, 0]))
     changed = [name for name in moved.body_angles
@@ -72,7 +75,8 @@ def test_each_rear_axle_has_one_independent_dof(model):
 
 def test_actuator_lengths_vary_continuously(model):
     previous = None
-    for value in np.linspace(-0.08, 0.08, 65):
+    for value in np.linspace(-NUMERICAL_VERIFICATION_INTERVAL_RAD,
+                             NUMERICAL_VERIFICATION_INTERVAL_RAD, 65):
         lengths = np.array(list(model.actuator_length(np.array([0, value, value, value, value])).values()))
         assert np.all(np.isfinite(lengths)) and np.all(lengths > 0)
         if previous is not None:
@@ -93,7 +97,7 @@ def test_all_constraint_residuals_below_declared_tolerance(model):
     maximum = 0.0
     for direction in (-1.0, 1.0):
         model.reset()
-        for magnitude in np.linspace(0.0, 0.08, 17):
+        for magnitude in np.linspace(0.0, NUMERICAL_VERIFICATION_INTERVAL_RAD, 17):
             residuals = model.solve(np.full(5, direction * magnitude)).constraint_residuals.values()
             maximum = max(maximum, max(map(abs, residuals)))
     assert maximum < 1e-10
@@ -101,7 +105,7 @@ def test_all_constraint_residuals_below_declared_tolerance(model):
 def test_small_step_scan_stays_on_continuous_branch(model):
     for direction in (-1.0, 1.0):
         model.reset(); previous = None
-        for magnitude in np.linspace(0.0, 0.08, 65):
+        for magnitude in np.linspace(0.0, NUMERICAL_VERIFICATION_INTERVAL_RAD, 65):
             angles = np.array(list(model.solve(np.full(5, direction * magnitude)).body_angles.values()))
             if previous is not None:
                 assert np.max(np.abs(angles - previous)) < 0.02

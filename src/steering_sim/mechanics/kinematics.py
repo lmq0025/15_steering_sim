@@ -7,6 +7,12 @@ from scipy.optimize import least_squares
 from .geometry2d import ClosedChainConstraint, ReferenceGeometry, RigidLink2D, vector
 
 GENERALIZED_COORDINATES = ("q_front", "q3", "q4", "q5", "q6")
+GENERALIZED_COORDINATE_CONVENTION = (
+    "Internal kinematic generalized coordinates: each q is the mean angular "
+    "increment of the corresponding POS_Y and NEG_Y main swing arms from the "
+    "CUSTOMER q=0 reference configuration. It is not a sensor, actuator, "
+    "steering-wheel, controller-command, or steering-gear-output coordinate."
+)
 ACTUATOR_ORDER = tuple(f"ACTUATOR_{axle}_{side}" for axle in range(3, 7) for side in ("A", "B"))
 RESIDUAL_TOLERANCE_M = 1.0e-10
 SINGULAR_CONDITION_LIMIT = 1.0e10
@@ -141,7 +147,13 @@ class _ClosedChainGroup:
         )
 
 class SixAxleSteeringKinematics:
-    """Project-specific five-coordinate model; actuator lengths are outputs."""
+    """Project-specific five-coordinate kinematic model.
+
+    ``q_front`` is the mean q=0-relative angle increment of the axle-1 POS_Y
+    and NEG_Y main swing arms. ``q3`` through ``q6`` use the corresponding
+    axle's two main swing arms. These are internal kinematic generalized
+    coordinates only; real actuators and sensors require explicit mappings.
+    """
     generalized_coordinates = GENERALIZED_COORDINATES
     actuator_order = ACTUATOR_ORDER
     dof = 5

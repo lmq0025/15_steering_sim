@@ -1,4 +1,4 @@
-# R02-B 六轴转向机械运动学交接
+# R02-B / R02-B.1 六轴转向机械运动学交接
 
 - 日期：2026-09-15
 - 分支：`r02-mechanical-kinematics`
@@ -15,23 +15,23 @@
 
 闭链采用 `scipy.optimize.least_squares` 求解，并保存每组上一解作为下一次初值。杆长残差超过 `1e-10 m` 抛出 `UnreachableGeometryError`；小步条件下从属角突跳超过 0.5 rad 抛出 `BranchDiscontinuityError`；约束 Jacobian 条件数超过 `1e10` 返回 singular 状态。
 
-## 5 个广义自由度
+## Generalized-coordinate convention
 
 ```text
 q = [q_front, q3, q4, q5, q6]
 ```
 
-- `q_front`：AXLE_1_2 联动组唯一自由度。
-- `q3`～`q6`：AXLE_3～AXLE_6 各自唯一自由度，桥间机械独立。
+- `q_front`：一桥 POS_Y/NEG_Y 两侧主摆臂相对于 CUSTOMER q=0 参考构型的转角增量平均值，也是 AXLE_1_2 联动组唯一自由度。
+- `q3`～`q6`：对应车桥 POS_Y/NEG_Y 两侧主摆臂相对于 CUSTOMER q=0 参考构型的转角增量平均值；AXLE_3～AXLE_6 各自唯一自由度，桥间机械独立。
 - 两只液压缸不是自由度，缸长均为相应 q 的输出函数。
 
-冻结文件没有定义 q 对应哪一个实际测量角。为保持 NEG_Y/POS_Y 无偏置及镜像等变性，本轮冻结软件接口为：
+R02-B.1 正式冻结软件接口为：
 
 ```text
 q_i = (theta_SWING_i_NEG_Y + theta_SWING_i_POS_Y) / 2
 ```
 
-`q_front` 使用一桥两主摆臂平均角。此约定需甲方在下一接口评审中确认；若甲方指定转向器输入角/位移，需增加显式输入映射，但闭链拓扑不变。
+上述 q 仅为 **INTERNAL KINEMATIC GENERALIZED COORDINATES**。它们不是实际传感器角、液压缸位移、方向盘角、控制器命令或转向器输出角，也不应直接解释为上述任一物理输入。后续真实执行器/传感器坐标必须通过显式映射连接到 q；增加映射不改变当前闭链拓扑。
 
 ## 一二桥约束方程
 
@@ -66,7 +66,7 @@ Q_hyd_i = F_iA J_iA + F_iB J_iB
 
 ## 数值验收结果
 
-扫描定义：从 q=0 分别沿正、负装配分支推进，各坐标同步扫描至 ±0.08 rad；每个方向 33 点。所有值为 SI 单位。
+扫描定义：从 q=0 分别沿正、负装配分支推进，各坐标同步扫描至 ±0.08 rad；每个方向 33 点。该区间仅是 **numerical verification interval**，不是 mechanical limit、allowable steering range 或 engineering operating range。所有值为 SI 单位。
 
 | 指标 | 结果 |
 |---|---:|
@@ -82,7 +82,7 @@ Jacobian 差分步长为 `1e-6 rad`，检查点为 `[0.01,-0.02,0.015,-0.01,0.02
 ```text
 python -m pytest -q
 ........................                                                 [100%]
-24 passed in 3.21s
+24 passed in 3.24s
 ```
 
 本机裸 `python` 仍指向 AMESim Python 3.6；测试会话将 `E:\ProgramData\anaconda3` 放到 PATH 首位后执行上述原命令。
@@ -93,14 +93,18 @@ python -m pytest -q
 
 独立调试脚本：`examples/plot_mechanical_kinematics.py`。
 
-生成图片：`outputs/R02B_kinematics_check.png`，含 q=0 和五坐标均为 0.05 rad 两个构型，标出 Axle 1～6、NEG_Y/POS_Y、摆臂、横/纵/边拉杆、12 个车轮及三至六桥 8 只缸。图片为 2880×1260 RGBA PNG，不进入核心模型或 Git 提交。
+生成三张图片（均为 examples/debug 工具，不进入核心模型或 Git 提交）：
+
+- `outputs/R02B_vehicle_overview.png`：q=0 整车机构拓扑，标出 Axle 1～6、NEG_Y/POS_Y 和车辆 +X 前进方向。
+- `outputs/R02B_local_kinematics.png`：2×3 局部桥视图，以灰色虚线显示 q=0，以实线显示该桥对应内部坐标的 +0.05 rad 调试扰动；逐桥打印车轮角变化、摆臂角及三至六桥双缸长度。该扰动不是物理车辆转向命令。
+- `outputs/R02B_single_dof_sweep.png`：五个隔离案例，每次只有 `q_front`、`q3`、`q4`、`q5` 或 `q6` 中一个为 +0.05 rad，其余严格为零，直观显示各坐标控制的机构组。
 
 ## 已知问题
 
-1. 甲方尚未定义 `q_front/q3...q6` 的实际传感器或执行器坐标；当前采用两侧主摆臂平均角，需确认。
-2. 冻结输入没有给出允许运动范围；±0.08 rad 只是本轮连续数值扫描域，不是工程限位。0.20 rad 同步输入至少使 AXLE_5 不可达，程序会明确报错，但不能据此认定真实机械限位。
+1. 内部广义坐标定义已冻结，但甲方尚未提供它们与实际传感器、转向器和执行器坐标之间的显式映射。
+2. 冻结输入没有给出真实机械限位或工程工作范围；±0.08 rad 仅是 numerical verification interval。0.20 rad 同步输入至少使 AXLE_5 不可达，程序会明确报错，但不能据此认定真实机械限位。
 3. 车轮角输出是相对 CUSTOMER q=0 刚体姿态增量；尚无轮胎零位前束/绝对轮平面方向定义。
-4. 前桥转向器或液压执行器几何被输入规范明确延后，本轮只把 `q_front` 当外部给定机械坐标。
+4. 前桥转向器或液压执行器几何被输入规范明确延后，本轮求解器接收内部运动学坐标 `q_front`；实际输入必须在后续通过显式映射转换。
 5. 奇异判据为数值条件数阈值，后续应结合实际行程和机构传动比设定工程警戒阈值。
 6. CUSTOMER 坐标、冻结说明和派生图片均被 `.gitignore` 排除；依赖真实输入的测试在无本地冻结文件的环境会 skip。
 7. 本轮无质量、惯量、动力学、摩擦、柔度、轮胎载荷、液压或控制模型。
