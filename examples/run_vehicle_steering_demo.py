@@ -94,7 +94,7 @@ def _wheel_segment(x, y, angle, length=0.9):
     return np.vstack((center - 0.5 * length * direction, center + 0.5 * length * direction))
 
 
-def plot_vehicle_demo(result, coordinator, path: Path) -> None:
+def plot_vehicle_demo(result, coordinator, path: Path, *, title: str | None = None) -> None:
     fig = plt.figure(figsize=(14, 12), constrained_layout=True)
     grid = fig.add_gridspec(3, 1, height_ratios=(2.2, 1.25, 1.0))
     ax_vehicle = fig.add_subplot(grid[0])
@@ -181,7 +181,7 @@ def plot_vehicle_demo(result, coordinator, path: Path) -> None:
     ax_stroke.set_title("Required R02-D inputs (Front is baseline mapped position; Axle3–6 are strokes)")
     ax_stroke.grid(axis="y", alpha=0.2)
     fig.suptitle(
-        "R02-E coordination demonstration — BASELINE ONLY, NOT customer vehicle validation",
+        title or "R02-E coordination demonstration — BASELINE ONLY, NOT customer vehicle validation",
         fontsize=15, fontweight="bold"
     )
     fig.savefig(path, dpi=180)
