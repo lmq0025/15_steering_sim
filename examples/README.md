@@ -7,3 +7,8 @@ prediction. Use the verified environment command in `docs/ENVIRONMENT.md`.
 `run_mechanical_io_demo.py` demonstrates the current formal position-to-angle
 route with BASELINE/SYNTHETIC inputs only and produces a PNG plus CSV. It is not
 a calibrated customer-vehicle result.
+
+run_vehicle_steering_demo.py is the R02-E generalized-Ackermann coordination
+baseline. It accepts an Axle1 mean-angle target (not a steering-wheel angle),
+drives the frozen R02-B geometry through the formal R02-D actuator-position
+interface, and reports ideal versus achieved wheel angles.

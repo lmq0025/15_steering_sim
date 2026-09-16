@@ -38,6 +38,12 @@ from .mass_properties import (
     load_mass_properties_csv, uniform_slender_rod_estimate,
 )
 from .plausibility import SteeringPlausibilityEvaluator, SteeringPlausibilityReport
+from .steering_coordinator import (
+    AxleSteeringDiagnostic, CoordinatorValue, MultiAxleSteeringCoordinator,
+    SteeringCoordinatorConfig, SteeringMode, SteeringPreset, VehicleSteeringResult,
+    axle_mean_angles, ideal_wheel_angles_from_icr, load_steering_coordinator_config,
+    wheel_axis_centers,
+)
 
 __all__ = [
     "ACTUATOR_DATA_COLUMNS", "ACTUATOR_ORDER", "GENERALIZED_COORDINATES",
@@ -65,4 +71,8 @@ __all__ = [
     "load_calibration_parameter_set", "mechanical_rhs", "reference_geometry_from_file",
     "uniform_slender_rod_estimate",
     "verify_json_crosscheck",
+    "AxleSteeringDiagnostic", "CoordinatorValue", "MultiAxleSteeringCoordinator",
+    "SteeringCoordinatorConfig", "SteeringMode", "SteeringPreset",
+    "VehicleSteeringResult", "axle_mean_angles", "ideal_wheel_angles_from_icr",
+    "load_steering_coordinator_config", "wheel_axis_centers",
 ]
