@@ -1,0 +1,18 @@
+{
+  "schema_version": "R03-B1-v1",
+  "provenance": {
+    "audit_file": "configs/hydraulics/amesim_audit/r03a25_resolved_key_parameters.csv",
+    "source_component": "actuator001",
+    "source_submodel": "HJ020"
+  },
+  "piston_diameter_mm": 79.7884560802865,
+  "rod_diameter_mm": 40.6842894512822,
+  "stroke_m": 0.13,
+  "dead_volume_1_cm3": 50.0,
+  "dead_volume_2_cm3": 50.0,
+  "leakage_lpm_per_bar": 0.0,
+  "viscous_friction_n_per_mps": 0.0,
+  "initial_pressure_1_bar": 0.0,
+  "initial_pressure_2_bar": 0.0,
+  "displacement_definition": "xact reported by HJ020; prescribed velocity is dxact/dt=-v_port"
+}

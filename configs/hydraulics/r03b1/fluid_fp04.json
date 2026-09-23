@@ -1,0 +1,15 @@
+{
+  "schema_version": "R03-B1-v1",
+  "provenance": {
+    "audit_file": "configs/hydraulics/amesim_audit/r03a25_resolved_key_parameters.csv",
+    "source_component": "elementaryhydraulicprops_1",
+    "source_submodel": "FP04"
+  },
+  "fluid_index": 0,
+  "density_kg_m3": 850.0,
+  "bulk_modulus_bar": 17000.0,
+  "dynamic_viscosity_cp": 51.0,
+  "air_content_percent": 0.1,
+  "saturation_pressure_bar": 1000.0,
+  "notes": "FP04 type=2; pressure-property utilities remain an explicit R03-B1 blocker."
+}

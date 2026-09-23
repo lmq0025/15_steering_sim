@@ -1,0 +1,76 @@
+{
+  "schema_version": "R03-B1-v1",
+  "provenance": {
+    "audit_file": "configs/hydraulics/amesim_audit/r03a25_resolved_key_parameters.csv",
+    "source_component": "dirvalve_6",
+    "source_submodel": "SC_1"
+  },
+  "external_ports": {
+    "ext0": "P",
+    "ext1": "T",
+    "ext2": "B",
+    "ext3": "A",
+    "ext4": "signal"
+  },
+  "spool_mapping_expression": "+(x<=0)*(-1+1*(x+1))+(0<x)*(0+1*(x-0))",
+  "dynamics": {
+    "mode": 1,
+    "minimum": -1.0,
+    "maximum": 1.0,
+    "inactive_saved_parameters": {
+      "time_constant_s": 0.05,
+      "natural_frequency_hz": 20.0,
+      "damping_ratio": 1.8
+    }
+  },
+  "paths": {
+    "P-B": {
+      "internal_component": "dirvalve_6/orifice_13",
+      "opening_expression": "+(x<=0)*(0+100*(x+1))+(0<x)*(100+0*(x-0))",
+      "characteristic_flow_lpm": 1.0,
+      "characteristic_pressure_drop_bar": 1.0,
+      "critical_flow_number": 1000.0,
+      "measurement_density_kg_m3": 850.0,
+      "measurement_kinematic_viscosity_cst": 60.0,
+      "method": 1,
+      "minimum_signal": 0.0,
+      "maximum_signal": 100.0
+    },
+    "P-A": {
+      "internal_component": "dirvalve_6/orifice_14",
+      "opening_expression": "+(x<=0)*(100+0*(x+1))+(0<x)*(100-100*(x-0))",
+      "characteristic_flow_lpm": 1.0,
+      "characteristic_pressure_drop_bar": 1.0,
+      "critical_flow_number": 1000.0,
+      "measurement_density_kg_m3": 850.0,
+      "measurement_kinematic_viscosity_cst": 60.0,
+      "method": 1,
+      "minimum_signal": 0.0,
+      "maximum_signal": 100.0
+    },
+    "T-B": {
+      "internal_component": "dirvalve_6/orifice_23",
+      "opening_expression": "+(x<=0)*(100+0*(x+1))+(0<x)*(100-100*(x-0))",
+      "characteristic_flow_lpm": 1.0,
+      "characteristic_pressure_drop_bar": 1.0,
+      "critical_flow_number": 1000.0,
+      "measurement_density_kg_m3": 850.0,
+      "measurement_kinematic_viscosity_cst": 60.0,
+      "method": 1,
+      "minimum_signal": 0.0,
+      "maximum_signal": 100.0
+    },
+    "T-A": {
+      "internal_component": "dirvalve_6/orifice_24",
+      "opening_expression": "+(x<=0)*(0+100*(x+1))+(0<x)*(100+0*(x-0))",
+      "characteristic_flow_lpm": 1.0,
+      "characteristic_pressure_drop_bar": 1.0,
+      "critical_flow_number": 1000.0,
+      "measurement_density_kg_m3": 850.0,
+      "measurement_kinematic_viscosity_cst": 60.0,
+      "method": 1,
+      "minimum_signal": 0.0,
+      "maximum_signal": 100.0
+    }
+  }
+}

@@ -1,0 +1,15 @@
+﻿experiment,variable,unit,required,purpose
+HYDVORF0,upstream pressure,bar,YES,p1 and dp
+HYDVORF0,downstream pressure,bar,YES,p2 and dp
+HYDVORF0,volumetric flow rate,L/min,YES,constitutive response
+HYDVORF0,opening input,0..100,YES,control variable
+HYDVORF0,actual area,mm^2,IF_AVAILABLE,diagnostic
+HYDVORF0,hydraulic diameter,mm,IF_AVAILABLE,diagnostic
+HJ020,time,s,YES,derivative regression
+HJ020,xact,m,YES,chamber volume
+HJ020,velocity at mechanical port,m/s,YES,prescribed motion
+HJ020,flow at port 1,L/min,YES,B1/B3 input confirmation
+HJ020,flow at port 2,L/min,YES,B1/B3 input confirmation
+HJ020,pressure at port 1,bar,YES,state response
+HJ020,pressure at port 2,bar,YES,state response
+HJ020,jack force,N,IF_AVAILABLE,sign diagnostic
