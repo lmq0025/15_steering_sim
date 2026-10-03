@@ -1,0 +1,378 @@
+﻿full_alias,parent_alias,leaf_alias,connected_port_count,domain_count,domain_combo,domains
+actuator001,,actuator001,3,2,hflow+lshaft,hflow; lshaft
+actuator001_1,,actuator001_1,3,2,hflow+lshaft,hflow; lshaft
+actuator001_2,,actuator001_2,3,2,hflow+lshaft,hflow; lshaft
+actuator002,,actuator002,3,2,hflow+lshaft,hflow; lshaft
+constant,,constant,1,1,signal,signal
+constant_1,,constant_1,1,1,signal,signal
+constant_10,,constant_10,1,1,signal,signal
+constant_11,,constant_11,1,1,signal,signal
+constant_12,,constant_12,1,1,signal,signal
+constant_13,,constant_13,1,1,signal,signal
+constant_14,,constant_14,1,1,signal,signal
+constant_2,,constant_2,1,1,signal,signal
+constant_3,,constant_3,1,1,signal,signal
+constant_4,,constant_4,1,1,signal,signal
+constant_5,,constant_5,1,1,signal,signal
+constant_6,,constant_6,1,1,signal,signal
+constant_7,,constant_7,1,1,signal,signal
+constant_8,,constant_8,1,1,signal,signal
+constant_9,,constant_9,1,1,signal,signal
+control02,,control02,3,1,signal,signal
+control02_1,,control02_1,3,1,signal,signal
+control02_2,,control02_2,3,1,signal,signal
+control04,,control04,3,1,signal,signal
+control04_1,,control04_1,3,1,signal,signal
+cooler,,cooler,2,1,hflow,hflow
+cooler_1,,cooler_1,2,1,hflow,hflow
+dirvalve_1,,dirvalve_1,5,2,hflow+signal,hflow; signal
+dirvalve_1.frac_spool_pos_node,dirvalve_1,frac_spool_pos_node,1,1,signal,signal
+dirvalve_1.orifice_13,dirvalve_1,orifice_13,2,1,hflow,hflow
+dirvalve_1.orifice_14,dirvalve_1,orifice_14,2,1,hflow,hflow
+dirvalve_1.orifice_23,dirvalve_1,orifice_23,2,1,hflow,hflow
+dirvalve_1.orifice_24,dirvalve_1,orifice_24,2,1,hflow,hflow
+dirvalve_1.table_13,dirvalve_1,table_13,1,1,signal,signal
+dirvalve_1.table_14,dirvalve_1,table_14,1,1,signal,signal
+dirvalve_1.table_23,dirvalve_1,table_23,1,1,signal,signal
+dirvalve_1.table_24,dirvalve_1,table_24,1,1,signal,signal
+dirvalve_1.table_fractional_spool_position,dirvalve_1,table_fractional_spool_position,1,1,signal,signal
+dirvalve_1.three_way_hyd_endnode_32,dirvalve_1,three_way_hyd_endnode_32,3,1,hflow,hflow
+dirvalve_1.three_way_hyd_endnode_42,dirvalve_1,three_way_hyd_endnode_42,3,1,hflow,hflow
+dirvalve_1.three_way_hyd_startnode_14,dirvalve_1,three_way_hyd_startnode_14,3,1,hflow,hflow
+dirvalve_1.three_way_hyd_startnode_23,dirvalve_1,three_way_hyd_startnode_23,3,1,hflow,hflow
+dirvalve_1.three_way_signal_node_13,dirvalve_1,three_way_signal_node_13,3,1,signal,signal
+dirvalve_1.three_way_signal_node_23,dirvalve_1,three_way_signal_node_23,3,1,signal,signal
+dirvalve_1.three_way_signal_node_24,dirvalve_1,three_way_signal_node_24,3,1,signal,signal
+dirvalve_1.two_port_node_bottom_1,dirvalve_1,two_port_node_bottom_1,2,1,hflow,hflow
+dirvalve_1.two_port_node_bottom_2,dirvalve_1,two_port_node_bottom_2,2,1,hflow,hflow
+dirvalve_1.two_port_node_top_3,dirvalve_1,two_port_node_top_3,2,1,hflow,hflow
+dirvalve_1.two_port_node_top_4,dirvalve_1,two_port_node_top_4,2,1,hflow,hflow
+dirvalve_10,,dirvalve_10,4,2,hflow+signal,hflow; signal
+dirvalve_10.frac_spool_pos_node,dirvalve_10,frac_spool_pos_node,1,1,signal,signal
+dirvalve_10.orifice_13,dirvalve_10,orifice_13,2,1,hflow,hflow
+dirvalve_10.orifice_23,dirvalve_10,orifice_23,2,1,hflow,hflow
+dirvalve_10.table_13,dirvalve_10,table_13,1,1,signal,signal
+dirvalve_10.table_23,dirvalve_10,table_23,1,1,signal,signal
+dirvalve_10.table_fractional_spool_position,dirvalve_10,table_fractional_spool_position,1,1,signal,signal
+dirvalve_10.three_way_hyd_endnode_32,dirvalve_10,three_way_hyd_endnode_32,3,1,hflow,hflow
+dirvalve_10.three_way_signal_node_23,dirvalve_10,three_way_signal_node_23,3,1,signal,signal
+dirvalve_10.two_port_node_bottom_1,dirvalve_10,two_port_node_bottom_1,2,1,hflow,hflow
+dirvalve_10.two_port_node_bottom_2,dirvalve_10,two_port_node_bottom_2,2,1,hflow,hflow
+dirvalve_10.two_port_node_top_3,dirvalve_10,two_port_node_top_3,2,1,hflow,hflow
+dirvalve_11,,dirvalve_11,5,2,hflow+signal,hflow; signal
+dirvalve_11.frac_spool_pos_node,dirvalve_11,frac_spool_pos_node,1,1,signal,signal
+dirvalve_11.orifice_13,dirvalve_11,orifice_13,2,1,hflow,hflow
+dirvalve_11.orifice_14,dirvalve_11,orifice_14,2,1,hflow,hflow
+dirvalve_11.orifice_23,dirvalve_11,orifice_23,2,1,hflow,hflow
+dirvalve_11.orifice_24,dirvalve_11,orifice_24,2,1,hflow,hflow
+dirvalve_11.table_13,dirvalve_11,table_13,1,1,signal,signal
+dirvalve_11.table_14,dirvalve_11,table_14,1,1,signal,signal
+dirvalve_11.table_23,dirvalve_11,table_23,1,1,signal,signal
+dirvalve_11.table_24,dirvalve_11,table_24,1,1,signal,signal
+dirvalve_11.table_fractional_spool_position,dirvalve_11,table_fractional_spool_position,1,1,signal,signal
+dirvalve_11.three_way_hyd_endnode_32,dirvalve_11,three_way_hyd_endnode_32,3,1,hflow,hflow
+dirvalve_11.three_way_hyd_endnode_42,dirvalve_11,three_way_hyd_endnode_42,3,1,hflow,hflow
+dirvalve_11.three_way_hyd_startnode_14,dirvalve_11,three_way_hyd_startnode_14,3,1,hflow,hflow
+dirvalve_11.three_way_hyd_startnode_23,dirvalve_11,three_way_hyd_startnode_23,3,1,hflow,hflow
+dirvalve_11.three_way_signal_node_13,dirvalve_11,three_way_signal_node_13,3,1,signal,signal
+dirvalve_11.three_way_signal_node_23,dirvalve_11,three_way_signal_node_23,3,1,signal,signal
+dirvalve_11.three_way_signal_node_24,dirvalve_11,three_way_signal_node_24,3,1,signal,signal
+dirvalve_11.two_port_node_bottom_1,dirvalve_11,two_port_node_bottom_1,2,1,hflow,hflow
+dirvalve_11.two_port_node_bottom_2,dirvalve_11,two_port_node_bottom_2,2,1,hflow,hflow
+dirvalve_11.two_port_node_top_3,dirvalve_11,two_port_node_top_3,2,1,hflow,hflow
+dirvalve_11.two_port_node_top_4,dirvalve_11,two_port_node_top_4,2,1,hflow,hflow
+dirvalve_12,,dirvalve_12,5,2,hflow+signal,hflow; signal
+dirvalve_12.frac_spool_pos_node,dirvalve_12,frac_spool_pos_node,1,1,signal,signal
+dirvalve_12.orifice_14,dirvalve_12,orifice_14,2,1,hflow,hflow
+dirvalve_12.orifice_23,dirvalve_12,orifice_23,2,1,hflow,hflow
+dirvalve_12.table_14,dirvalve_12,table_14,1,1,signal,signal
+dirvalve_12.table_23,dirvalve_12,table_23,1,1,signal,signal
+dirvalve_12.table_fractional_spool_position,dirvalve_12,table_fractional_spool_position,1,1,signal,signal
+dirvalve_12.three_way_signal_node_23,dirvalve_12,three_way_signal_node_23,3,1,signal,signal
+dirvalve_12.two_port_node_bottom_1,dirvalve_12,two_port_node_bottom_1,2,1,hflow,hflow
+dirvalve_12.two_port_node_bottom_2,dirvalve_12,two_port_node_bottom_2,2,1,hflow,hflow
+dirvalve_12.two_port_node_top_3,dirvalve_12,two_port_node_top_3,2,1,hflow,hflow
+dirvalve_12.two_port_node_top_4,dirvalve_12,two_port_node_top_4,2,1,hflow,hflow
+dirvalve_13,,dirvalve_13,4,2,hflow+signal,hflow; signal
+dirvalve_13.frac_spool_pos_node,dirvalve_13,frac_spool_pos_node,1,1,signal,signal
+dirvalve_13.orifice_13,dirvalve_13,orifice_13,2,1,hflow,hflow
+dirvalve_13.orifice_23,dirvalve_13,orifice_23,2,1,hflow,hflow
+dirvalve_13.table_13,dirvalve_13,table_13,1,1,signal,signal
+dirvalve_13.table_23,dirvalve_13,table_23,1,1,signal,signal
+dirvalve_13.table_fractional_spool_position,dirvalve_13,table_fractional_spool_position,1,1,signal,signal
+dirvalve_13.three_way_hyd_endnode_32,dirvalve_13,three_way_hyd_endnode_32,3,1,hflow,hflow
+dirvalve_13.three_way_signal_node_23,dirvalve_13,three_way_signal_node_23,3,1,signal,signal
+dirvalve_13.two_port_node_bottom_1,dirvalve_13,two_port_node_bottom_1,2,1,hflow,hflow
+dirvalve_13.two_port_node_bottom_2,dirvalve_13,two_port_node_bottom_2,2,1,hflow,hflow
+dirvalve_13.two_port_node_top_3,dirvalve_13,two_port_node_top_3,2,1,hflow,hflow
+dirvalve_1_piecewiselinear,,dirvalve_1_piecewiselinear,1,1,signal,signal
+dirvalve_1_piecewiselinear_1,,dirvalve_1_piecewiselinear_1,1,1,signal,signal
+dirvalve_1_piecewiselinear_2,,dirvalve_1_piecewiselinear_2,1,1,signal,signal
+dirvalve_1_piecewiselinear_5,,dirvalve_1_piecewiselinear_5,1,1,signal,signal
+dirvalve_1_piecewiselinear_6,,dirvalve_1_piecewiselinear_6,1,1,signal,signal
+dirvalve_2,,dirvalve_2,5,2,hflow+signal,hflow; signal
+dirvalve_2.frac_spool_pos_node,dirvalve_2,frac_spool_pos_node,1,1,signal,signal
+dirvalve_2.orifice_14,dirvalve_2,orifice_14,2,1,hflow,hflow
+dirvalve_2.orifice_23,dirvalve_2,orifice_23,2,1,hflow,hflow
+dirvalve_2.table_14,dirvalve_2,table_14,1,1,signal,signal
+dirvalve_2.table_23,dirvalve_2,table_23,1,1,signal,signal
+dirvalve_2.table_fractional_spool_position,dirvalve_2,table_fractional_spool_position,1,1,signal,signal
+dirvalve_2.three_way_signal_node_23,dirvalve_2,three_way_signal_node_23,3,1,signal,signal
+dirvalve_2.two_port_node_bottom_1,dirvalve_2,two_port_node_bottom_1,2,1,hflow,hflow
+dirvalve_2.two_port_node_bottom_2,dirvalve_2,two_port_node_bottom_2,2,1,hflow,hflow
+dirvalve_2.two_port_node_top_3,dirvalve_2,two_port_node_top_3,2,1,hflow,hflow
+dirvalve_2.two_port_node_top_4,dirvalve_2,two_port_node_top_4,2,1,hflow,hflow
+dirvalve_3,,dirvalve_3,4,2,hflow+signal,hflow; signal
+dirvalve_3.frac_spool_pos_node,dirvalve_3,frac_spool_pos_node,1,1,signal,signal
+dirvalve_3.orifice_13,dirvalve_3,orifice_13,2,1,hflow,hflow
+dirvalve_3.orifice_23,dirvalve_3,orifice_23,2,1,hflow,hflow
+dirvalve_3.table_13,dirvalve_3,table_13,1,1,signal,signal
+dirvalve_3.table_23,dirvalve_3,table_23,1,1,signal,signal
+dirvalve_3.table_fractional_spool_position,dirvalve_3,table_fractional_spool_position,1,1,signal,signal
+dirvalve_3.three_way_hyd_endnode_32,dirvalve_3,three_way_hyd_endnode_32,3,1,hflow,hflow
+dirvalve_3.three_way_signal_node_23,dirvalve_3,three_way_signal_node_23,3,1,signal,signal
+dirvalve_3.two_port_node_bottom_1,dirvalve_3,two_port_node_bottom_1,2,1,hflow,hflow
+dirvalve_3.two_port_node_bottom_2,dirvalve_3,two_port_node_bottom_2,2,1,hflow,hflow
+dirvalve_3.two_port_node_top_3,dirvalve_3,two_port_node_top_3,2,1,hflow,hflow
+dirvalve_6,,dirvalve_6,5,2,hflow+signal,hflow; signal
+dirvalve_6.frac_spool_pos_node,dirvalve_6,frac_spool_pos_node,1,1,signal,signal
+dirvalve_6.orifice_13,dirvalve_6,orifice_13,2,1,hflow,hflow
+dirvalve_6.orifice_14,dirvalve_6,orifice_14,2,1,hflow,hflow
+dirvalve_6.orifice_23,dirvalve_6,orifice_23,2,1,hflow,hflow
+dirvalve_6.orifice_24,dirvalve_6,orifice_24,2,1,hflow,hflow
+dirvalve_6.table_13,dirvalve_6,table_13,1,1,signal,signal
+dirvalve_6.table_14,dirvalve_6,table_14,1,1,signal,signal
+dirvalve_6.table_23,dirvalve_6,table_23,1,1,signal,signal
+dirvalve_6.table_24,dirvalve_6,table_24,1,1,signal,signal
+dirvalve_6.table_fractional_spool_position,dirvalve_6,table_fractional_spool_position,1,1,signal,signal
+dirvalve_6.three_way_hyd_endnode_32,dirvalve_6,three_way_hyd_endnode_32,3,1,hflow,hflow
+dirvalve_6.three_way_hyd_endnode_42,dirvalve_6,three_way_hyd_endnode_42,3,1,hflow,hflow
+dirvalve_6.three_way_hyd_startnode_13,dirvalve_6,three_way_hyd_startnode_13,3,1,hflow,hflow
+dirvalve_6.three_way_hyd_startnode_24,dirvalve_6,three_way_hyd_startnode_24,3,1,hflow,hflow
+dirvalve_6.three_way_signal_node_14,dirvalve_6,three_way_signal_node_14,3,1,signal,signal
+dirvalve_6.three_way_signal_node_23,dirvalve_6,three_way_signal_node_23,3,1,signal,signal
+dirvalve_6.three_way_signal_node_24,dirvalve_6,three_way_signal_node_24,3,1,signal,signal
+dirvalve_6.two_port_node_bottom_1,dirvalve_6,two_port_node_bottom_1,2,1,hflow,hflow
+dirvalve_6.two_port_node_bottom_2,dirvalve_6,two_port_node_bottom_2,2,1,hflow,hflow
+dirvalve_6.two_port_node_top_3,dirvalve_6,two_port_node_top_3,2,1,hflow,hflow
+dirvalve_6.two_port_node_top_4,dirvalve_6,two_port_node_top_4,2,1,hflow,hflow
+dirvalve_8,,dirvalve_8,5,2,hflow+signal,hflow; signal
+dirvalve_8.frac_spool_pos_node,dirvalve_8,frac_spool_pos_node,1,1,signal,signal
+dirvalve_8.orifice_13,dirvalve_8,orifice_13,2,1,hflow,hflow
+dirvalve_8.orifice_14,dirvalve_8,orifice_14,2,1,hflow,hflow
+dirvalve_8.orifice_23,dirvalve_8,orifice_23,2,1,hflow,hflow
+dirvalve_8.orifice_24,dirvalve_8,orifice_24,2,1,hflow,hflow
+dirvalve_8.table_13,dirvalve_8,table_13,1,1,signal,signal
+dirvalve_8.table_14,dirvalve_8,table_14,1,1,signal,signal
+dirvalve_8.table_23,dirvalve_8,table_23,1,1,signal,signal
+dirvalve_8.table_24,dirvalve_8,table_24,1,1,signal,signal
+dirvalve_8.table_fractional_spool_position,dirvalve_8,table_fractional_spool_position,1,1,signal,signal
+dirvalve_8.three_way_hyd_endnode_32,dirvalve_8,three_way_hyd_endnode_32,3,1,hflow,hflow
+dirvalve_8.three_way_hyd_endnode_42,dirvalve_8,three_way_hyd_endnode_42,3,1,hflow,hflow
+dirvalve_8.three_way_hyd_startnode_14,dirvalve_8,three_way_hyd_startnode_14,3,1,hflow,hflow
+dirvalve_8.three_way_hyd_startnode_23,dirvalve_8,three_way_hyd_startnode_23,3,1,hflow,hflow
+dirvalve_8.three_way_signal_node_13,dirvalve_8,three_way_signal_node_13,3,1,signal,signal
+dirvalve_8.three_way_signal_node_23,dirvalve_8,three_way_signal_node_23,3,1,signal,signal
+dirvalve_8.three_way_signal_node_24,dirvalve_8,three_way_signal_node_24,3,1,signal,signal
+dirvalve_8.two_port_node_bottom_1,dirvalve_8,two_port_node_bottom_1,2,1,hflow,hflow
+dirvalve_8.two_port_node_bottom_2,dirvalve_8,two_port_node_bottom_2,2,1,hflow,hflow
+dirvalve_8.two_port_node_top_3,dirvalve_8,two_port_node_top_3,2,1,hflow,hflow
+dirvalve_8.two_port_node_top_4,dirvalve_8,two_port_node_top_4,2,1,hflow,hflow
+dirvalve_9,,dirvalve_9,5,2,hflow+signal,hflow; signal
+dirvalve_9.frac_spool_pos_node,dirvalve_9,frac_spool_pos_node,1,1,signal,signal
+dirvalve_9.orifice_14,dirvalve_9,orifice_14,2,1,hflow,hflow
+dirvalve_9.orifice_23,dirvalve_9,orifice_23,2,1,hflow,hflow
+dirvalve_9.table_14,dirvalve_9,table_14,1,1,signal,signal
+dirvalve_9.table_23,dirvalve_9,table_23,1,1,signal,signal
+dirvalve_9.table_fractional_spool_position,dirvalve_9,table_fractional_spool_position,1,1,signal,signal
+dirvalve_9.three_way_signal_node_23,dirvalve_9,three_way_signal_node_23,3,1,signal,signal
+dirvalve_9.two_port_node_bottom_1,dirvalve_9,two_port_node_bottom_1,2,1,hflow,hflow
+dirvalve_9.two_port_node_bottom_2,dirvalve_9,two_port_node_bottom_2,2,1,hflow,hflow
+dirvalve_9.two_port_node_top_3,dirvalve_9,two_port_node_top_3,2,1,hflow,hflow
+dirvalve_9.two_port_node_top_4,dirvalve_9,two_port_node_top_4,2,1,hflow,hflow
+filter,,filter,2,1,hflow,hflow
+filter_1,,filter_1,2,1,hflow,hflow
+filter_2,,filter_2,2,1,hflow,hflow
+filter_3,,filter_3,2,1,hflow,hflow
+filter_4,,filter_4,2,1,hflow,hflow
+filter_5,,filter_5,2,1,hflow,hflow
+flowcontrol01,,flowcontrol01,2,1,hflow,hflow
+flowcontrol01_1,,flowcontrol01_1,2,1,hflow,hflow
+flowcontrol01_2,,flowcontrol01_2,2,1,hflow,hflow
+flowcontrol01_3,,flowcontrol01_3,2,1,hflow,hflow
+flowcontrol01_5,,flowcontrol01_5,2,1,hflow,hflow
+flowcontrol01_6,,flowcontrol01_6,2,1,hflow,hflow
+flowcontrol01_7,,flowcontrol01_7,2,1,hflow,hflow
+forcecon,,forcecon,2,2,lshaft+signal,lshaft; signal
+forcecon_1,,forcecon_1,2,2,lshaft+signal,lshaft; signal
+forcecon_2,,forcecon_2,2,2,lshaft+signal,lshaft; signal
+forcecon_3,,forcecon_3,2,2,lshaft+signal,lshaft; signal
+forcecon_4,,forcecon_4,2,2,lshaft+signal,lshaft; signal
+forcecon_5,,forcecon_5,2,2,lshaft+signal,lshaft; signal
+frac_spool_pos_node,,frac_spool_pos_node,10,0,,
+hydrnode3,,hydrnode3,3,1,hflow,hflow
+hydrnode3_1,,hydrnode3_1,3,1,hflow,hflow
+hydrnode3_10,,hydrnode3_10,3,1,hflow,hflow
+hydrnode3_11,,hydrnode3_11,3,1,hflow,hflow
+hydrnode3_12,,hydrnode3_12,3,1,hflow,hflow
+hydrnode3_13,,hydrnode3_13,3,1,hflow,hflow
+hydrnode3_14,,hydrnode3_14,2,1,hflow,hflow
+hydrnode3_15,,hydrnode3_15,3,1,hflow,hflow
+hydrnode3_16,,hydrnode3_16,2,1,hflow,hflow
+hydrnode3_17,,hydrnode3_17,3,1,hflow,hflow
+hydrnode3_18,,hydrnode3_18,3,1,hflow,hflow
+hydrnode3_19,,hydrnode3_19,3,1,hflow,hflow
+hydrnode3_2,,hydrnode3_2,2,1,hflow,hflow
+hydrnode3_20,,hydrnode3_20,3,1,hflow,hflow
+hydrnode3_21,,hydrnode3_21,3,1,hflow,hflow
+hydrnode3_22,,hydrnode3_22,3,1,hflow,hflow
+hydrnode3_23,,hydrnode3_23,3,1,hflow,hflow
+hydrnode3_24,,hydrnode3_24,3,1,hflow,hflow
+hydrnode3_25,,hydrnode3_25,3,1,hflow,hflow
+hydrnode3_26,,hydrnode3_26,3,1,hflow,hflow
+hydrnode3_27,,hydrnode3_27,3,1,hflow,hflow
+hydrnode3_28,,hydrnode3_28,3,1,hflow,hflow
+hydrnode3_29,,hydrnode3_29,3,1,hflow,hflow
+hydrnode3_3,,hydrnode3_3,2,1,hflow,hflow
+hydrnode3_30,,hydrnode3_30,3,1,hflow,hflow
+hydrnode3_31,,hydrnode3_31,3,1,hflow,hflow
+hydrnode3_32,,hydrnode3_32,3,1,hflow,hflow
+hydrnode3_33,,hydrnode3_33,3,1,hflow,hflow
+hydrnode3_34,,hydrnode3_34,3,1,hflow,hflow
+hydrnode3_35,,hydrnode3_35,3,1,hflow,hflow
+hydrnode3_36,,hydrnode3_36,3,1,hflow,hflow
+hydrnode3_37,,hydrnode3_37,3,1,hflow,hflow
+hydrnode3_38,,hydrnode3_38,3,1,hflow,hflow
+hydrnode3_39,,hydrnode3_39,3,1,hflow,hflow
+hydrnode3_4,,hydrnode3_4,2,1,hflow,hflow
+hydrnode3_40,,hydrnode3_40,3,1,hflow,hflow
+hydrnode3_41,,hydrnode3_41,3,1,hflow,hflow
+hydrnode3_42,,hydrnode3_42,3,1,hflow,hflow
+hydrnode3_43,,hydrnode3_43,3,1,hflow,hflow
+hydrnode3_44,,hydrnode3_44,3,1,hflow,hflow
+hydrnode3_45,,hydrnode3_45,3,1,hflow,hflow
+hydrnode3_46,,hydrnode3_46,3,1,hflow,hflow
+hydrnode3_47,,hydrnode3_47,3,1,hflow,hflow
+hydrnode3_48,,hydrnode3_48,3,1,hflow,hflow
+hydrnode3_49,,hydrnode3_49,3,1,hflow,hflow
+hydrnode3_5,,hydrnode3_5,2,1,hflow,hflow
+hydrnode3_50,,hydrnode3_50,2,1,hflow,hflow
+hydrnode3_51,,hydrnode3_51,2,1,hflow,hflow
+hydrnode3_52,,hydrnode3_52,3,1,hflow,hflow
+hydrnode3_53,,hydrnode3_53,3,1,hflow,hflow
+hydrnode3_54,,hydrnode3_54,2,1,hflow,hflow
+hydrnode3_55,,hydrnode3_55,2,1,hflow,hflow
+hydrnode3_6,,hydrnode3_6,3,1,hflow,hflow
+hydrnode3_7,,hydrnode3_7,3,1,hflow,hflow
+hydrnode3_8,,hydrnode3_8,3,1,hflow,hflow
+hydrnode3_9,,hydrnode3_9,3,1,hflow,hflow
+hydrnode4,,hydrnode4,4,1,hflow,hflow
+hydrnode4_1,,hydrnode4_1,4,1,hflow,hflow
+hydrnode4_10,,hydrnode4_10,4,1,hflow,hflow
+hydrnode4_11,,hydrnode4_11,4,1,hflow,hflow
+hydrnode4_4,,hydrnode4_4,3,1,hflow,hflow
+hydrnode4_9,,hydrnode4_9,3,1,hflow,hflow
+mass1port,,mass1port,1,1,lshaft,lshaft
+mass_friction2port,,mass_friction2port,2,1,lshaft,lshaft
+mass_friction2port_1,,mass_friction2port_1,2,1,lshaft,lshaft
+mass_friction2port_2,,mass_friction2port_2,2,1,lshaft,lshaft
+mass_friction2port_3,,mass_friction2port_3,2,1,lshaft,lshaft
+mass_friction2port_4,,mass_friction2port_4,2,1,lshaft,lshaft
+mass_friction2port_5,,mass_friction2port_5,2,1,lshaft,lshaft
+orifice_13,,orifice_13,14,0,,
+orifice_14,,orifice_14,14,0,,
+orifice_23,,orifice_23,20,0,,
+orifice_24,,orifice_24,8,0,,
+piecewiselinear_4,,piecewiselinear_4,1,1,signal,signal
+piecewiselinear_5,,piecewiselinear_5,1,1,signal,signal
+pmover01,,pmover01,1,1,rshaft,rshaft
+pmover01_1,,pmover01_1,1,1,rshaft,rshaft
+pmover01_2,,pmover01_2,1,1,rshaft,rshaft
+pmover01_3,,pmover01_3,1,1,rshaft,rshaft
+pprv_1,,pprv_1,3,1,hflow,hflow
+pprv_2,,pprv_2,3,1,hflow,hflow
+pprv_3,,pprv_3,3,1,hflow,hflow
+presscontrol01,,presscontrol01,2,1,hflow,hflow
+presscontrol01_3,,presscontrol01_3,2,1,hflow,hflow
+presscontrol02,,presscontrol02,2,1,hflow,hflow
+presscontrol02_1,,presscontrol02_1,2,1,hflow,hflow
+presscontrol02_4,,presscontrol02_4,2,1,hflow,hflow
+presscontrol02_5,,presscontrol02_5,2,1,hflow,hflow
+presscontrol02_8,,presscontrol02_8,2,1,hflow,hflow
+presscontrol02_9,,presscontrol02_9,2,1,hflow,hflow
+pressuregauge,,pressuregauge,1,1,hflow,hflow
+pump01,,pump01,3,2,hflow+rshaft,hflow; rshaft
+pump01_1,,pump01_1,3,2,hflow+rshaft,hflow; rshaft
+pump01_2,,pump01_2,3,2,hflow+rshaft,hflow; rshaft
+pump01_3,,pump01_3,3,2,hflow+rshaft,hflow; rshaft
+shuttle_control,,shuttle_control,3,1,hflow,hflow
+shuttle_control_1,,shuttle_control_1,3,1,hflow,hflow
+shuttle_control_2,,shuttle_control_2,3,1,hflow,hflow
+shuttle_control_3,,shuttle_control_3,3,1,hflow,hflow
+shuttle_control_4,,shuttle_control_4,3,1,hflow,hflow
+shuttle_control_5,,shuttle_control_5,3,1,hflow,hflow
+signaloperatedrvalve,,signaloperatedrvalve,2,2,hflow+signal,hflow; signal
+sinewave,,sinewave,1,1,signal,signal
+sinewave_1,,sinewave_1,1,1,signal,signal
+sinewave_2,,sinewave_2,1,1,signal,signal
+sinewave_3,,sinewave_3,1,1,signal,signal
+sinewave_4,,sinewave_4,1,1,signal,signal
+sinewave_5,,sinewave_5,1,1,signal,signal
+sinewave_6,,sinewave_6,1,1,signal,signal
+sinewave_7,,sinewave_7,1,1,signal,signal
+sinewave_8,,sinewave_8,1,1,signal,signal
+splitter2p,,splitter2p,3,1,signal,signal
+splitter2p2,,splitter2p2,3,1,signal,signal
+splitter2p2_1,,splitter2p2_1,3,1,signal,signal
+splitter2p2_2,,splitter2p2_2,3,1,signal,signal
+splitter2p2_3,,splitter2p2_3,3,1,signal,signal
+splitter2p2_4,,splitter2p2_4,3,1,signal,signal
+splitter2p2_5,,splitter2p2_5,3,1,signal,signal
+springreturnactuator,,springreturnactuator,3,2,hflow+lshaft,hflow; lshaft
+springreturnactuator_1,,springreturnactuator_1,2,2,hflow+lshaft,hflow; lshaft
+springreturnactuator_2,,springreturnactuator_2,3,2,hflow+lshaft,hflow; lshaft
+step,,step,1,1,signal,signal
+step_1,,step_1,1,1,signal,signal
+sum,,sum,3,1,signal,signal
+table_13,,table_13,7,0,,
+table_14,,table_14,7,0,,
+table_23,,table_23,10,0,,
+table_24,,table_24,4,0,,
+tank01_5,,tank01_5,1,1,hflow,hflow
+tank01_6,,tank01_6,1,1,hflow,hflow
+tank01_7,,tank01_7,1,1,hflow,hflow
+three_way_hyd_endnode_32,,three_way_hyd_endnode_32,21,0,,
+three_way_hyd_endnode_42,,three_way_hyd_endnode_42,12,0,,
+three_way_hyd_startnode_13,,three_way_hyd_startnode_13,3,0,,
+three_way_hyd_startnode_14,,three_way_hyd_startnode_14,9,0,,
+three_way_hyd_startnode_23,,three_way_hyd_startnode_23,9,0,,
+three_way_hyd_startnode_24,,three_way_hyd_startnode_24,3,0,,
+three_way_signal_node_13,,three_way_signal_node_13,9,0,,
+three_way_signal_node_14,,three_way_signal_node_14,3,0,,
+three_way_signal_node_23,,three_way_signal_node_23,30,0,,
+three_way_signal_node_24,,three_way_signal_node_24,12,0,,
+two_port_node_bottom_1,,two_port_node_bottom_1,10,0,,
+two_port_node_bottom_2,,two_port_node_bottom_2,10,0,,
+two_port_node_top_3,,two_port_node_top_3,10,0,,
+two_port_node_top_4,,two_port_node_top_4,7,0,,
+valve02,,valve02,2,2,hflow+signal,hflow; signal
+valve02_1,,valve02_1,2,2,hflow+signal,hflow; signal
+valve02_2,,valve02_2,2,2,hflow+signal,hflow; signal
+valve02_3,,valve02_3,3,2,hflow+signal,hflow; signal
+valve02_4,,valve02_4,3,2,hflow+signal,hflow; signal
+valve02_5,,valve02_5,3,2,hflow+signal,hflow; signal
+variableorifice,,variableorifice,3,2,hflow+signal,hflow; signal
+variableorifice_1,,variableorifice_1,3,2,hflow+signal,hflow; signal
+variableorifice_10,,variableorifice_10,3,2,hflow+signal,hflow; signal
+variableorifice_11,,variableorifice_11,3,2,hflow+signal,hflow; signal
+variableorifice_12,,variableorifice_12,3,2,hflow+signal,hflow; signal
+variableorifice_13,,variableorifice_13,3,2,hflow+signal,hflow; signal
+variableorifice_14,,variableorifice_14,3,2,hflow+signal,hflow; signal
+variableorifice_2,,variableorifice_2,3,2,hflow+signal,hflow; signal
+variableorifice_3,,variableorifice_3,3,2,hflow+signal,hflow; signal
+variableorifice_4,,variableorifice_4,3,2,hflow+signal,hflow; signal
+variableorifice_5,,variableorifice_5,3,2,hflow+signal,hflow; signal
+variableorifice_6,,variableorifice_6,2,2,hflow+signal,hflow; signal
+variableorifice_7,,variableorifice_7,3,2,hflow+signal,hflow; signal
+variableorifice_8,,variableorifice_8,3,2,hflow+signal,hflow; signal
+variableorifice_9,,variableorifice_9,3,2,hflow+signal,hflow; signal

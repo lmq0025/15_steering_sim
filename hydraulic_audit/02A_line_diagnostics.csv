@@ -1,0 +1,371 @@
+﻿line_alias,degree,connected_aliases,port_types
+control,23,dirvalve_1; dirvalve_1.table_fractional_spool_position; dirvalve_1.table_13; dirvalve_1.three_way_signal_node_13; dirvalve_2.table_23; dirvalve_2.three_way_signal_node_23; dirvalve_6.table_14; dirvalve_6.three_way_signal_node_14; dirvalve_3.table_23; dirvalve_3.three_way_signal_node_23; dirvalve_8.table_13; dirvalve_8.three_way_signal_node_13; dirvalve_9.table_23; dirvalve_9.three_way_signal_node_23; dirvalve_10.table_23; dirvalve_10.three_way_signal_node_23; dirvalve_11.table_13; dirvalve_11.three_way_signal_node_13; dirvalve_12.table_23; dirvalve_12.three_way_signal_node_23; dirvalve_13.table_23; dirvalve_13.three_way_signal_node_23; control04,signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal
+control_1,22,dirvalve_1.table_14; dirvalve_1.three_way_signal_node_13; dirvalve_2.table_14; dirvalve_2.three_way_signal_node_23; dirvalve_6.table_13; dirvalve_6.three_way_signal_node_14; dirvalve_3.table_13; dirvalve_3.three_way_signal_node_23; dirvalve_8.table_14; dirvalve_8.three_way_signal_node_13; dirvalve_9.table_14; dirvalve_9.three_way_signal_node_23; dirvalve_10.table_13; dirvalve_10.three_way_signal_node_23; dirvalve_11.table_14; dirvalve_11.three_way_signal_node_13; dirvalve_12.table_14; dirvalve_12.three_way_signal_node_23; dirvalve_13.table_13; dirvalve_13.three_way_signal_node_23; sinewave; control02,signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal
+control_10,2,piecewiselinear_5; splitter2p2_4,signal; signal
+control_11,2,splitter2p2_2; splitter2p2_3,signal; signal
+control_12,2,control04; control04_1,signal; signal
+control_13,2,splitter2p2; splitter2p2_1,signal; signal
+control_14,2,splitter2p2_4; splitter2p2_5,signal; signal
+control_15,2,valve02_5; splitter2p2_3,signal; signal
+control_16,3,dirvalve_2; dirvalve_2.table_fractional_spool_position; splitter2p2,signal; signal; signal
+control_17,3,dirvalve_12; dirvalve_12.table_fractional_spool_position; splitter2p2_1,signal; signal; signal
+control_18,3,dirvalve_13; dirvalve_13.table_fractional_spool_position; splitter2p2_5,signal; signal; signal
+control_19,3,dirvalve_9; dirvalve_9.table_fractional_spool_position; splitter2p2_1,signal; signal; signal
+control_2,22,dirvalve_1.table_23; dirvalve_1.three_way_signal_node_23; dirvalve_2.frac_spool_pos_node; dirvalve_2.three_way_signal_node_23; dirvalve_6.table_24; dirvalve_6.three_way_signal_node_24; dirvalve_3.frac_spool_pos_node; dirvalve_3.three_way_signal_node_23; dirvalve_1_piecewiselinear_2; dirvalve_8.table_23; dirvalve_8.three_way_signal_node_23; dirvalve_9.frac_spool_pos_node; dirvalve_9.three_way_signal_node_23; dirvalve_10.frac_spool_pos_node; dirvalve_10.three_way_signal_node_23; dirvalve_11.table_23; dirvalve_11.three_way_signal_node_23; dirvalve_12.frac_spool_pos_node; dirvalve_12.three_way_signal_node_23; dirvalve_13.frac_spool_pos_node; dirvalve_13.three_way_signal_node_23; splitter2p2_2,signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal
+control_20,2,valve02_3; splitter2p2_2,signal; signal
+control_21,2,valve02_4; splitter2p2_3,signal; signal
+control_22,3,dirvalve_3; dirvalve_3.table_fractional_spool_position; splitter2p2_4,signal; signal; signal
+control_23,3,dirvalve_10; dirvalve_10.table_fractional_spool_position; splitter2p2_5,signal; signal; signal
+control_24,2,valve02_2; splitter2p,signal; signal
+control_25,2,dirvalve_1_piecewiselinear; control02,signal; signal
+control_26,2,valve02; control02,signal; signal
+control_27,2,dirvalve_1_piecewiselinear_6; control02_1,signal; signal
+control_28,2,control04; control02_1,signal; signal
+control_29,2,variableorifice; constant,signal; signal
+control_3,11,dirvalve_1.three_way_signal_node_13; dirvalve_1.three_way_signal_node_23; dirvalve_6; dirvalve_6.table_fractional_spool_position; dirvalve_6.three_way_signal_node_14; dirvalve_6.three_way_signal_node_24; dirvalve_1_piecewiselinear_5; dirvalve_8.three_way_signal_node_13; dirvalve_8.three_way_signal_node_23; dirvalve_11.three_way_signal_node_13; dirvalve_11.three_way_signal_node_23,signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal
+control_30,2,sinewave_1; control02_2,signal; signal
+control_31,2,constant_1; sum,signal; signal
+control_32,2,sinewave_2; sum,signal; signal
+control_33,2,sinewave_3; forcecon,signal; signal
+control_34,2,variableorifice_1; constant_2,signal; signal
+control_35,2,constant_3; variableorifice_2,signal; signal
+control_36,2,sinewave_4; forcecon_1,signal; signal
+control_37,2,variableorifice_3; constant_4,signal; signal
+control_38,2,variableorifice_4; constant_5,signal; signal
+control_39,2,variableorifice_5; constant_6,signal; signal
+control_4,10,dirvalve_1.table_24; dirvalve_1.three_way_signal_node_24; dirvalve_6.table_23; dirvalve_6.three_way_signal_node_23; dirvalve_1_piecewiselinear_1; dirvalve_8.table_24; dirvalve_8.three_way_signal_node_24; dirvalve_11.table_24; dirvalve_11.three_way_signal_node_24; splitter2p,signal; signal; signal; signal; signal; signal; signal; signal; signal; signal
+control_40,2,variableorifice_6; constant_7,signal; signal
+control_41,2,sinewave_5; forcecon_2,signal; signal
+control_42,2,sinewave_6; forcecon_3,signal; signal
+control_43,2,sinewave_7; forcecon_4,signal; signal
+control_44,2,sinewave_8; forcecon_5,signal; signal
+control_45,2,variableorifice_8; constant_8,signal; signal
+control_46,2,variableorifice_7; constant_9,signal; signal
+control_47,2,variableorifice_9; constant_10,signal; signal
+control_48,2,constant_11; variableorifice_10,signal; signal
+control_49,2,variableorifice_11; constant_12,signal; signal
+control_5,10,dirvalve_1.three_way_signal_node_23; dirvalve_1.three_way_signal_node_24; dirvalve_6.three_way_signal_node_24; dirvalve_6.three_way_signal_node_23; dirvalve_8.three_way_signal_node_23; dirvalve_8.three_way_signal_node_24; dirvalve_11.three_way_signal_node_23; dirvalve_11.three_way_signal_node_24; control02_1; control02_2,signal; signal; signal; signal; signal; signal; signal; signal; signal; signal
+control_50,2,constant_13; variableorifice_12,signal; signal
+control_51,2,variableorifice_13; step_1,signal; signal
+control_52,2,variableorifice_14; constant_14,signal; signal
+control_53,2,signaloperatedrvalve; sum,signal; signal
+control_54,2,step; control02_2,signal; signal
+control_6,11,dirvalve_1.frac_spool_pos_node; dirvalve_1.three_way_signal_node_24; dirvalve_6.frac_spool_pos_node; dirvalve_6.three_way_signal_node_23; dirvalve_8; dirvalve_8.table_fractional_spool_position; dirvalve_8.frac_spool_pos_node; dirvalve_8.three_way_signal_node_24; dirvalve_11.frac_spool_pos_node; dirvalve_11.three_way_signal_node_24; control04_1,signal; signal; signal; signal; signal; signal; signal; signal; signal; signal; signal
+control_7,2,valve02_1; splitter2p,signal; signal
+control_8,3,dirvalve_11; dirvalve_11.table_fractional_spool_position; control04_1,signal; signal; signal
+control_9,2,piecewiselinear_4; splitter2p2,signal; signal
+dirvalve_1.control,2,table_13; three_way_signal_node_13,signal; signal
+dirvalve_1.control_1,2,table_14; three_way_signal_node_13,signal; signal
+dirvalve_1.control_2,2,table_23; three_way_signal_node_23,signal; signal
+dirvalve_1.control_3,2,three_way_signal_node_13; three_way_signal_node_23,signal; signal
+dirvalve_1.control_4,2,table_24; three_way_signal_node_24,signal; signal
+dirvalve_1.control_5,2,three_way_signal_node_23; three_way_signal_node_24,signal; signal
+dirvalve_1.control_6,2,three_way_signal_node_24; frac_spool_pos_node,signal; signal
+dirvalve_1.hydraulic,2,three_way_hyd_startnode_14; orifice_14,hflow; hflow
+dirvalve_1.hydraulic_1,2,three_way_hyd_startnode_14; two_port_node_bottom_1,hflow; hflow
+dirvalve_1.hydraulic_10,2,three_way_hyd_endnode_42; orifice_14,hflow; hflow
+dirvalve_1.hydraulic_11,2,three_way_hyd_endnode_42; two_port_node_top_4,hflow; hflow
+dirvalve_1.hydraulic_2,2,orifice_13; three_way_hyd_startnode_14,hflow; hflow
+dirvalve_1.hydraulic_3,2,three_way_hyd_startnode_23; orifice_23,hflow; hflow
+dirvalve_1.hydraulic_4,2,three_way_hyd_startnode_23; two_port_node_bottom_2,hflow; hflow
+dirvalve_1.hydraulic_5,2,three_way_hyd_endnode_32; orifice_23,hflow; hflow
+dirvalve_1.hydraulic_6,2,three_way_hyd_endnode_32; orifice_13,hflow; hflow
+dirvalve_1.hydraulic_7,2,three_way_hyd_endnode_32; two_port_node_top_3,hflow; hflow
+dirvalve_1.hydraulic_8,2,orifice_24; three_way_hyd_startnode_23,hflow; hflow
+dirvalve_1.hydraulic_9,2,three_way_hyd_endnode_42; orifice_24,hflow; hflow
+dirvalve_10.control,2,table_23; three_way_signal_node_23,signal; signal
+dirvalve_10.control_1,2,table_13; three_way_signal_node_23,signal; signal
+dirvalve_10.control_2,2,three_way_signal_node_23; frac_spool_pos_node,signal; signal
+dirvalve_10.hydraulic,2,orifice_13; two_port_node_bottom_1,hflow; hflow
+dirvalve_10.hydraulic_1,2,orifice_23; two_port_node_bottom_2,hflow; hflow
+dirvalve_10.hydraulic_2,2,three_way_hyd_endnode_32; orifice_23,hflow; hflow
+dirvalve_10.hydraulic_3,2,three_way_hyd_endnode_32; orifice_13,hflow; hflow
+dirvalve_10.hydraulic_4,2,three_way_hyd_endnode_32; two_port_node_top_3,hflow; hflow
+dirvalve_11.control,2,table_13; three_way_signal_node_13,signal; signal
+dirvalve_11.control_1,2,table_14; three_way_signal_node_13,signal; signal
+dirvalve_11.control_2,2,table_23; three_way_signal_node_23,signal; signal
+dirvalve_11.control_3,2,three_way_signal_node_13; three_way_signal_node_23,signal; signal
+dirvalve_11.control_4,2,table_24; three_way_signal_node_24,signal; signal
+dirvalve_11.control_5,2,three_way_signal_node_23; three_way_signal_node_24,signal; signal
+dirvalve_11.control_6,2,three_way_signal_node_24; frac_spool_pos_node,signal; signal
+dirvalve_11.hydraulic,2,three_way_hyd_startnode_14; orifice_14,hflow; hflow
+dirvalve_11.hydraulic_1,2,three_way_hyd_startnode_14; two_port_node_bottom_1,hflow; hflow
+dirvalve_11.hydraulic_10,2,three_way_hyd_endnode_42; orifice_14,hflow; hflow
+dirvalve_11.hydraulic_11,2,three_way_hyd_endnode_42; two_port_node_top_4,hflow; hflow
+dirvalve_11.hydraulic_2,2,orifice_13; three_way_hyd_startnode_14,hflow; hflow
+dirvalve_11.hydraulic_3,2,three_way_hyd_startnode_23; orifice_23,hflow; hflow
+dirvalve_11.hydraulic_4,2,three_way_hyd_startnode_23; two_port_node_bottom_2,hflow; hflow
+dirvalve_11.hydraulic_5,2,three_way_hyd_endnode_32; orifice_23,hflow; hflow
+dirvalve_11.hydraulic_6,2,three_way_hyd_endnode_32; orifice_13,hflow; hflow
+dirvalve_11.hydraulic_7,2,three_way_hyd_endnode_32; two_port_node_top_3,hflow; hflow
+dirvalve_11.hydraulic_8,2,orifice_24; three_way_hyd_startnode_23,hflow; hflow
+dirvalve_11.hydraulic_9,2,three_way_hyd_endnode_42; orifice_24,hflow; hflow
+dirvalve_12.control,2,table_23; three_way_signal_node_23,signal; signal
+dirvalve_12.control_1,2,table_14; three_way_signal_node_23,signal; signal
+dirvalve_12.control_2,2,three_way_signal_node_23; frac_spool_pos_node,signal; signal
+dirvalve_12.hydraulic,2,orifice_14; two_port_node_bottom_1,hflow; hflow
+dirvalve_12.hydraulic_1,2,orifice_14; two_port_node_top_4,hflow; hflow
+dirvalve_12.hydraulic_2,2,orifice_23; two_port_node_bottom_2,hflow; hflow
+dirvalve_12.hydraulic_3,2,orifice_23; two_port_node_top_3,hflow; hflow
+dirvalve_13.control,2,table_23; three_way_signal_node_23,signal; signal
+dirvalve_13.control_1,2,table_13; three_way_signal_node_23,signal; signal
+dirvalve_13.control_2,2,three_way_signal_node_23; frac_spool_pos_node,signal; signal
+dirvalve_13.hydraulic,2,orifice_13; two_port_node_bottom_1,hflow; hflow
+dirvalve_13.hydraulic_1,2,orifice_23; two_port_node_bottom_2,hflow; hflow
+dirvalve_13.hydraulic_2,2,three_way_hyd_endnode_32; orifice_23,hflow; hflow
+dirvalve_13.hydraulic_3,2,three_way_hyd_endnode_32; orifice_13,hflow; hflow
+dirvalve_13.hydraulic_4,2,three_way_hyd_endnode_32; two_port_node_top_3,hflow; hflow
+dirvalve_2.control,2,table_23; three_way_signal_node_23,signal; signal
+dirvalve_2.control_1,2,table_14; three_way_signal_node_23,signal; signal
+dirvalve_2.control_2,2,three_way_signal_node_23; frac_spool_pos_node,signal; signal
+dirvalve_2.hydraulic,2,orifice_14; two_port_node_bottom_1,hflow; hflow
+dirvalve_2.hydraulic_1,2,orifice_14; two_port_node_top_4,hflow; hflow
+dirvalve_2.hydraulic_2,2,orifice_23; two_port_node_bottom_2,hflow; hflow
+dirvalve_2.hydraulic_3,2,orifice_23; two_port_node_top_3,hflow; hflow
+dirvalve_3.control,2,table_23; three_way_signal_node_23,signal; signal
+dirvalve_3.control_1,2,table_13; three_way_signal_node_23,signal; signal
+dirvalve_3.control_2,2,three_way_signal_node_23; frac_spool_pos_node,signal; signal
+dirvalve_3.hydraulic,2,orifice_13; two_port_node_bottom_1,hflow; hflow
+dirvalve_3.hydraulic_1,2,orifice_23; two_port_node_bottom_2,hflow; hflow
+dirvalve_3.hydraulic_2,2,three_way_hyd_endnode_32; orifice_23,hflow; hflow
+dirvalve_3.hydraulic_3,2,three_way_hyd_endnode_32; orifice_13,hflow; hflow
+dirvalve_3.hydraulic_4,2,three_way_hyd_endnode_32; two_port_node_top_3,hflow; hflow
+dirvalve_6.control,2,table_14; three_way_signal_node_14,signal; signal
+dirvalve_6.control_1,2,table_13; three_way_signal_node_14,signal; signal
+dirvalve_6.control_2,2,table_24; three_way_signal_node_24,signal; signal
+dirvalve_6.control_3,2,three_way_signal_node_14; three_way_signal_node_24,signal; signal
+dirvalve_6.control_4,2,table_23; three_way_signal_node_23,signal; signal
+dirvalve_6.control_5,2,three_way_signal_node_24; three_way_signal_node_23,signal; signal
+dirvalve_6.control_6,2,three_way_signal_node_23; frac_spool_pos_node,signal; signal
+dirvalve_6.hydraulic,2,three_way_hyd_startnode_13; orifice_13,hflow; hflow
+dirvalve_6.hydraulic_1,2,three_way_hyd_startnode_13; two_port_node_bottom_1,hflow; hflow
+dirvalve_6.hydraulic_10,2,three_way_hyd_endnode_32; orifice_13,hflow; hflow
+dirvalve_6.hydraulic_11,2,three_way_hyd_endnode_32; two_port_node_top_3,hflow; hflow
+dirvalve_6.hydraulic_2,2,orifice_14; three_way_hyd_startnode_13,hflow; hflow
+dirvalve_6.hydraulic_3,2,three_way_hyd_startnode_24; orifice_24,hflow; hflow
+dirvalve_6.hydraulic_4,2,three_way_hyd_startnode_24; two_port_node_bottom_2,hflow; hflow
+dirvalve_6.hydraulic_5,2,three_way_hyd_endnode_42; orifice_24,hflow; hflow
+dirvalve_6.hydraulic_6,2,three_way_hyd_endnode_42; orifice_14,hflow; hflow
+dirvalve_6.hydraulic_7,2,three_way_hyd_endnode_42; two_port_node_top_4,hflow; hflow
+dirvalve_6.hydraulic_8,2,orifice_23; three_way_hyd_startnode_24,hflow; hflow
+dirvalve_6.hydraulic_9,2,three_way_hyd_endnode_32; orifice_23,hflow; hflow
+dirvalve_8.control,2,table_13; three_way_signal_node_13,signal; signal
+dirvalve_8.control_1,2,table_14; three_way_signal_node_13,signal; signal
+dirvalve_8.control_2,2,table_23; three_way_signal_node_23,signal; signal
+dirvalve_8.control_3,2,three_way_signal_node_13; three_way_signal_node_23,signal; signal
+dirvalve_8.control_4,2,table_24; three_way_signal_node_24,signal; signal
+dirvalve_8.control_5,2,three_way_signal_node_23; three_way_signal_node_24,signal; signal
+dirvalve_8.control_6,2,three_way_signal_node_24; frac_spool_pos_node,signal; signal
+dirvalve_8.hydraulic,2,three_way_hyd_startnode_14; orifice_14,hflow; hflow
+dirvalve_8.hydraulic_1,2,three_way_hyd_startnode_14; two_port_node_bottom_1,hflow; hflow
+dirvalve_8.hydraulic_10,2,three_way_hyd_endnode_42; orifice_14,hflow; hflow
+dirvalve_8.hydraulic_11,2,three_way_hyd_endnode_42; two_port_node_top_4,hflow; hflow
+dirvalve_8.hydraulic_2,2,orifice_13; three_way_hyd_startnode_14,hflow; hflow
+dirvalve_8.hydraulic_3,2,three_way_hyd_startnode_23; orifice_23,hflow; hflow
+dirvalve_8.hydraulic_4,2,three_way_hyd_startnode_23; two_port_node_bottom_2,hflow; hflow
+dirvalve_8.hydraulic_5,2,three_way_hyd_endnode_32; orifice_23,hflow; hflow
+dirvalve_8.hydraulic_6,2,three_way_hyd_endnode_32; orifice_13,hflow; hflow
+dirvalve_8.hydraulic_7,2,three_way_hyd_endnode_32; two_port_node_top_3,hflow; hflow
+dirvalve_8.hydraulic_8,2,orifice_24; three_way_hyd_startnode_23,hflow; hflow
+dirvalve_8.hydraulic_9,2,three_way_hyd_endnode_42; orifice_24,hflow; hflow
+dirvalve_9.control,2,table_23; three_way_signal_node_23,signal; signal
+dirvalve_9.control_1,2,table_14; three_way_signal_node_23,signal; signal
+dirvalve_9.control_2,2,three_way_signal_node_23; frac_spool_pos_node,signal; signal
+dirvalve_9.hydraulic,2,orifice_14; two_port_node_bottom_1,hflow; hflow
+dirvalve_9.hydraulic_1,2,orifice_14; two_port_node_top_4,hflow; hflow
+dirvalve_9.hydraulic_2,2,orifice_23; two_port_node_bottom_2,hflow; hflow
+dirvalve_9.hydraulic_3,2,orifice_23; two_port_node_top_3,hflow; hflow
+hydraulic,22,pump01; presscontrol02; dirvalve_1.orifice_14; dirvalve_1.three_way_hyd_startnode_14; dirvalve_2.two_port_node_bottom_1; dirvalve_2.orifice_14; dirvalve_6.orifice_13; dirvalve_6.three_way_hyd_startnode_13; dirvalve_3.two_port_node_bottom_1; dirvalve_3.orifice_13; dirvalve_8.orifice_14; dirvalve_8.three_way_hyd_startnode_14; dirvalve_9.two_port_node_bottom_1; dirvalve_9.orifice_14; dirvalve_10.two_port_node_bottom_1; dirvalve_10.orifice_13; dirvalve_11.orifice_14; dirvalve_11.three_way_hyd_startnode_14; dirvalve_12.two_port_node_bottom_1; dirvalve_12.orifice_14; dirvalve_13.two_port_node_bottom_1; dirvalve_13.orifice_13,hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow
+hydraulic_1,22,pump01_1; presscontrol02_1; dirvalve_1.two_port_node_bottom_1; dirvalve_1.three_way_hyd_startnode_14; dirvalve_2.two_port_node_top_4; dirvalve_2.orifice_14; dirvalve_6.two_port_node_bottom_1; dirvalve_6.three_way_hyd_startnode_13; dirvalve_3.two_port_node_bottom_2; dirvalve_3.orifice_23; dirvalve_8.two_port_node_bottom_1; dirvalve_8.three_way_hyd_startnode_14; dirvalve_9.two_port_node_top_4; dirvalve_9.orifice_14; dirvalve_10.two_port_node_bottom_2; dirvalve_10.orifice_23; dirvalve_11.two_port_node_bottom_1; dirvalve_11.three_way_hyd_startnode_14; dirvalve_12.two_port_node_top_4; dirvalve_12.orifice_14; dirvalve_13.two_port_node_bottom_2; dirvalve_13.orifice_23,hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow
+hydraulic_10,10,presscontrol02_9; dirvalve_1.orifice_14; dirvalve_1.three_way_hyd_endnode_42; dirvalve_6.orifice_13; dirvalve_6.three_way_hyd_endnode_32; dirvalve_8.orifice_14; dirvalve_8.three_way_hyd_endnode_42; dirvalve_11.orifice_14; dirvalve_11.three_way_hyd_endnode_42; hydrnode4_1,hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow
+hydraulic_100,2,springreturnactuator; hydrnode3_28,hflow; hflow
+hydraulic_101,2,tank01_5; hydrnode3_28,hflow; hflow
+hydraulic_102,2,hydrnode3_27; variableorifice_4,hflow; hflow
+hydraulic_103,2,valve02_3; hydrnode3_27,hflow; hflow
+hydraulic_104,2,variableorifice_3; hydrnode3_28,hflow; hflow
+hydraulic_105,2,hydrnode3_27; variableorifice_3,hflow; hflow
+hydraulic_106,2,springreturnactuator; variableorifice_4,hflow; hflow
+hydraulic_107,2,variableorifice_5; hydrnode3_30,hflow; hflow
+hydraulic_108,3,dirvalve_2; dirvalve_2.two_port_node_bottom_1; hydrnode3_23,hflow; hflow; hflow
+hydraulic_109,3,dirvalve_2; dirvalve_2.two_port_node_top_3; hydrnode3_32,hflow; hflow; hflow
+hydraulic_11,10,presscontrol02_8; hydrnode4_10; dirvalve_1.two_port_node_top_4; dirvalve_1.three_way_hyd_endnode_42; dirvalve_6.two_port_node_top_3; dirvalve_6.three_way_hyd_endnode_32; dirvalve_8.two_port_node_top_4; dirvalve_8.three_way_hyd_endnode_42; dirvalve_11.two_port_node_top_4; dirvalve_11.three_way_hyd_endnode_42,hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow
+hydraulic_110,3,dirvalve_2; dirvalve_2.two_port_node_top_4; hydrnode3_33,hflow; hflow; hflow
+hydraulic_111,2,hydrnode3_29; variableorifice_5,hflow; hflow
+hydraulic_112,2,hydrnode3_29; variableorifice_6,hflow; hflow
+hydraulic_113,2,valve02_4; hydrnode3_29,hflow; hflow
+hydraulic_114,2,springreturnactuator_1; hydrnode3_30,hflow; hflow
+hydraulic_115,2,tank01_6; hydrnode3_30,hflow; hflow
+hydraulic_116,2,variableorifice_7; hydrnode3_39,hflow; hflow
+hydraulic_117,2,hydrnode3_34; variableorifice_7,hflow; hflow
+hydraulic_118,3,dirvalve_9; dirvalve_9.two_port_node_bottom_2; hydrnode3_35,hflow; hflow; hflow
+hydraulic_119,3,flowcontrol01_6; dirvalve_10; dirvalve_10.two_port_node_bottom_2,hflow; hflow; hflow
+hydraulic_12,2,pump01; hydrnode4_4,hflow; hflow
+hydraulic_120,2,pprv_2; hydrnode3_24,hflow; hflow
+hydraulic_121,2,hydrnode3_24; shuttle_control_2,hflow; hflow
+hydraulic_122,2,hydrnode3_36; shuttle_control_2,hflow; hflow
+hydraulic_123,2,hydrnode3_37; shuttle_control_2,hflow; hflow
+hydraulic_124,2,hydrnode3_34; variableorifice_8,hflow; hflow
+hydraulic_125,3,dirvalve_8; dirvalve_8.two_port_node_top_4; hydrnode3_36,hflow; hflow; hflow
+hydraulic_126,3,dirvalve_8; dirvalve_8.two_port_node_top_3; hydrnode3_37,hflow; hflow; hflow
+hydraulic_127,3,pprv_2; dirvalve_8; dirvalve_8.two_port_node_bottom_2,hflow; hflow; hflow
+hydraulic_128,2,springreturnactuator_2; variableorifice_8,hflow; hflow
+hydraulic_129,2,valve02_5; hydrnode3_34,hflow; hflow
+hydraulic_13,2,pump01_1; hydrnode4_4,hflow; hflow
+hydraulic_130,2,springreturnactuator_2; hydrnode3_39,hflow; hflow
+hydraulic_131,2,tank01_7; hydrnode3_39,hflow; hflow
+hydraulic_132,2,hydrnode3_49; variableorifice_9,hflow; hflow
+hydraulic_133,2,hydrnode3_40; variableorifice_9,hflow; hflow
+hydraulic_134,2,hydrnode3_38; filter_5,hflow; hflow
+hydraulic_135,2,hydrnode3_31; hydrnode3_41,hflow; hflow
+hydraulic_136,2,hydrnode3_40; variableorifice_10,hflow; hflow
+hydraulic_137,2,hydrnode3_43; hydrnode3_40,hflow; hflow
+hydraulic_138,2,actuator001_1; variableorifice_10,hflow; hflow
+hydraulic_139,3,dirvalve_9; dirvalve_9.two_port_node_bottom_1; hydrnode3_35,hflow; hflow; hflow
+hydraulic_14,2,hydrnode3_31; hydrnode3_8,hflow; hflow
+hydraulic_140,3,dirvalve_9; dirvalve_9.two_port_node_top_3; hydrnode3_43,hflow; hflow; hflow
+hydraulic_141,3,dirvalve_9; dirvalve_9.two_port_node_top_4; hydrnode3_44,hflow; hflow; hflow
+hydraulic_142,2,actuator001_1; hydrnode3_49,hflow; hflow
+hydraulic_143,2,hydrnode3_44; hydrnode3_49,hflow; hflow
+hydraulic_144,2,pprv_2; hydrnode3_38,hflow; hflow
+hydraulic_145,2,hydrnode3_51; variableorifice_11,hflow; hflow
+hydraulic_146,2,hydrnode3_50; variableorifice_11,hflow; hflow
+hydraulic_147,3,dirvalve_10; dirvalve_10.two_port_node_top_3; valve02_4,hflow; hflow; hflow
+hydraulic_148,2,hydrnode3_50; variableorifice_12,hflow; hflow
+hydraulic_149,3,dirvalve_12; dirvalve_12.two_port_node_bottom_2; hydrnode3_46,hflow; hflow; hflow
+hydraulic_15,2,pprv_1; filter_4,hflow; hflow
+hydraulic_150,3,flowcontrol01_7; dirvalve_13; dirvalve_13.two_port_node_bottom_2,hflow; hflow; hflow
+hydraulic_151,2,pprv_3; hydrnode3_45,hflow; hflow
+hydraulic_152,2,shuttle_control_3; hydrnode3_45,hflow; hflow
+hydraulic_153,2,shuttle_control_3; hydrnode3_47,hflow; hflow
+hydraulic_154,2,shuttle_control_3; hydrnode3_48,hflow; hflow
+hydraulic_155,2,actuator001_2; variableorifice_12,hflow; hflow
+hydraulic_156,3,dirvalve_11; dirvalve_11.two_port_node_top_4; hydrnode3_47,hflow; hflow; hflow
+hydraulic_157,3,dirvalve_11; dirvalve_11.two_port_node_top_3; hydrnode3_48,hflow; hflow; hflow
+hydraulic_158,3,pprv_3; dirvalve_11; dirvalve_11.two_port_node_bottom_2,hflow; hflow; hflow
+hydraulic_159,2,actuator001_2; hydrnode3_51,hflow; hflow
+hydraulic_16,2,flowcontrol01_1; hydrnode3_1,hflow; hflow
+hydraulic_160,2,presscontrol01; hydrnode3_53,hflow; hflow
+hydraulic_161,2,hydrnode3_53; variableorifice_13,hflow; hflow
+hydraulic_162,2,hydrnode3_52; variableorifice_13,hflow; hflow
+hydraulic_163,2,cooler; hydrnode3_52,hflow; hflow
+hydraulic_164,2,variableorifice_14; hydrnode3_21,hflow; hflow
+hydraulic_165,2,variableorifice_14; hydrnode4_1,hflow; hflow
+hydraulic_166,2,hydrnode4_1; hydrnode3_21,hflow; hflow
+hydraulic_17,2,flowcontrol01; hydrnode3_1,hflow; hflow
+hydraulic_170,3,dirvalve_12; dirvalve_12.two_port_node_bottom_1; hydrnode3_46,hflow; hflow; hflow
+hydraulic_171,3,dirvalve_12; dirvalve_12.two_port_node_top_3; hydrnode3_54,hflow; hflow; hflow
+hydraulic_172,3,dirvalve_12; dirvalve_12.two_port_node_top_4; hydrnode3_55,hflow; hflow; hflow
+hydraulic_18,2,hydrnode3_3; hydrnode3_5,hflow; hflow
+hydraulic_180,3,dirvalve_13; dirvalve_13.two_port_node_top_3; valve02_5,hflow; hflow; hflow
+hydraulic_181,2,filter_4; hydrnode3_42,hflow; hflow
+hydraulic_182,2,filter_5; hydrnode3_42,hflow; hflow
+hydraulic_185,2,flowcontrol01_6; hydrnode4,hflow; hflow
+hydraulic_186,2,hydrnode3_22; shuttle_control_4,hflow; hflow
+hydraulic_187,2,shuttle_control; shuttle_control_4,hflow; hflow
+hydraulic_19,2,hydrnode3_2; hydrnode3_4,hflow; hflow
+hydraulic_190,2,shuttle_control_4; shuttle_control_5,hflow; hflow
+hydraulic_2,22,presscontrol02; hydrnode3; dirvalve_1.three_way_hyd_startnode_14; dirvalve_1.orifice_13; dirvalve_2.two_port_node_bottom_2; dirvalve_2.orifice_23; dirvalve_6.three_way_hyd_startnode_13; dirvalve_6.orifice_14; dirvalve_3.orifice_23; dirvalve_3.three_way_hyd_endnode_32; dirvalve_8.three_way_hyd_startnode_14; dirvalve_8.orifice_13; dirvalve_9.two_port_node_bottom_2; dirvalve_9.orifice_23; dirvalve_10.orifice_23; dirvalve_10.three_way_hyd_endnode_32; dirvalve_11.three_way_hyd_startnode_14; dirvalve_11.orifice_13; dirvalve_12.two_port_node_bottom_2; dirvalve_12.orifice_23; dirvalve_13.orifice_23; dirvalve_13.three_way_hyd_endnode_32,hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow
+hydraulic_20,2,presscontrol01; hydrnode3_6,hflow; hflow
+hydraulic_21,2,hydrnode3_1; hydrnode3_2,hflow; hflow
+hydraulic_22,2,hydrnode3_3; hydrnode3_6,hflow; hflow
+hydraulic_23,3,hydrnode3_4; dirvalve_6; dirvalve_6.two_port_node_bottom_2,hflow; hflow; hflow
+hydraulic_24,3,hydrnode3_5; dirvalve_6; dirvalve_6.two_port_node_bottom_1,hflow; hflow; hflow
+hydraulic_25,2,actuator002; variableorifice,hflow; hflow
+hydraulic_26,3,actuator002; dirvalve_6; dirvalve_6.two_port_node_top_3,hflow; hflow; hflow
+hydraulic_27,2,flowcontrol01_5; hydrnode4,hflow; hflow
+hydraulic_28,3,dirvalve_10; dirvalve_10.two_port_node_bottom_1; hydrnode3_41,hflow; hflow; hflow
+hydraulic_29,2,hydrnode3_35; hydrnode3_9,hflow; hflow
+hydraulic_3,22,hydrnode3_6; dirvalve_1.orifice_23; dirvalve_1.three_way_hyd_startnode_23; dirvalve_2.two_port_node_top_3; dirvalve_2.orifice_23; dirvalve_6.orifice_24; dirvalve_6.three_way_hyd_startnode_24; dirvalve_3.orifice_13; dirvalve_3.three_way_hyd_endnode_32; dirvalve_8.orifice_23; dirvalve_8.three_way_hyd_startnode_23; dirvalve_9.two_port_node_top_3; dirvalve_9.orifice_23; dirvalve_10.orifice_13; dirvalve_10.three_way_hyd_endnode_32; dirvalve_11.orifice_23; dirvalve_11.three_way_hyd_startnode_23; dirvalve_12.two_port_node_top_3; dirvalve_12.orifice_23; dirvalve_13.orifice_13; dirvalve_13.three_way_hyd_endnode_32; hydrnode3_52,hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow
+hydraulic_30,2,hydrnode3_24; shuttle_control_5,hflow; hflow
+hydraulic_31,2,filter_2; hydrnode3_10,hflow; hflow
+hydraulic_32,2,filter_2; flowcontrol01_3,hflow; hflow
+hydraulic_33,2,filter_3; hydrnode4_9,hflow; hflow
+hydraulic_34,2,pump01_2; presscontrol02_4,hflow; hflow
+hydraulic_35,2,pump01_3; presscontrol02_5,hflow; hflow
+hydraulic_36,2,presscontrol02_4; hydrnode3_10,hflow; hflow
+hydraulic_37,2,presscontrol02_5; hydrnode3_10,hflow; hflow
+hydraulic_38,2,cooler_1; filter_3,hflow; hflow
+hydraulic_39,2,hydrnode4_10; hydrnode4_11,hflow; hflow
+hydraulic_4,16,flowcontrol01; dirvalve_1.two_port_node_bottom_2; dirvalve_1.three_way_hyd_startnode_23; dirvalve_6.two_port_node_bottom_2; dirvalve_6.three_way_hyd_startnode_24; dirvalve_3.two_port_node_top_3; dirvalve_3.three_way_hyd_endnode_32; dirvalve_8.two_port_node_bottom_2; dirvalve_8.three_way_hyd_startnode_23; dirvalve_10.two_port_node_top_3; dirvalve_10.three_way_hyd_endnode_32; dirvalve_11.two_port_node_bottom_2; dirvalve_11.three_way_hyd_startnode_23; dirvalve_13.two_port_node_top_3; dirvalve_13.three_way_hyd_endnode_32; hydrnode3_53,hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow
+hydraulic_40,2,valve02_2; hydrnode3_20,hflow; hflow
+hydraulic_41,2,valve02_1; hydrnode3_21,hflow; hflow
+hydraulic_42,2,hydrnode3_20; hydrnode4,hflow; hflow
+hydraulic_43,2,flowcontrol01_7; hydrnode4,hflow; hflow
+hydraulic_44,2,pump01_2; hydrnode4_9,hflow; hflow
+hydraulic_45,2,pump01_3; hydrnode4_9,hflow; hflow
+hydraulic_46,2,hydrnode3_45; shuttle_control_5,hflow; hflow
+hydraulic_47,2,hydrnode3_38; pprv_3,hflow; hflow
+hydraulic_48,2,flowcontrol01_3; hydrnode4_10,hflow; hflow
+hydraulic_49,2,hydrnode4_10; signaloperatedrvalve,hflow; hflow
+hydraulic_5,10,presscontrol02_1; hydrnode3; dirvalve_1.orifice_23; dirvalve_1.three_way_hyd_endnode_32; dirvalve_6.orifice_24; dirvalve_6.three_way_hyd_endnode_42; dirvalve_8.orifice_23; dirvalve_8.three_way_hyd_endnode_32; dirvalve_11.orifice_23; dirvalve_11.three_way_hyd_endnode_32,hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow
+hydraulic_50,2,cooler_1; hydrnode3_12,hflow; hflow
+hydraulic_51,2,hydrnode4_11; hydrnode3_42,hflow; hflow
+hydraulic_52,2,hydrnode4_11; presscontrol01_3,hflow; hflow
+hydraulic_53,2,shuttle_control; pressuregauge,hflow; hflow
+hydraulic_54,2,hydrnode3_15; presscontrol01_3,hflow; hflow
+hydraulic_55,2,hydrnode3_12; hydrnode3_14,hflow; hflow
+hydraulic_56,2,hydrnode3_14; hydrnode3_15,hflow; hflow
+hydraulic_57,2,hydrnode3_23; hydrnode3_7,hflow; hflow
+hydraulic_58,3,dirvalve_1; dirvalve_1.two_port_node_bottom_1; hydrnode3_7,hflow; hflow; hflow
+hydraulic_59,2,presscontrol02_8; presscontrol02_9,hflow; hflow
+hydraulic_6,10,filter; flowcontrol01_1; dirvalve_1.orifice_13; dirvalve_1.three_way_hyd_endnode_32; dirvalve_6.orifice_14; dirvalve_6.three_way_hyd_endnode_42; dirvalve_8.orifice_13; dirvalve_8.three_way_hyd_endnode_32; dirvalve_11.orifice_13; dirvalve_11.three_way_hyd_endnode_32,hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow
+hydraulic_60,3,dirvalve_3; dirvalve_3.two_port_node_bottom_1; hydrnode3_8,hflow; hflow; hflow
+hydraulic_61,2,hydrnode3_7; hydrnode3_8,hflow; hflow
+hydraulic_62,2,hydrnode3_9; hydrnode3_11,hflow; hflow
+hydraulic_63,2,hydrnode3_41; hydrnode3_11,hflow; hflow
+hydraulic_64,3,dirvalve_8; dirvalve_8.two_port_node_bottom_1; hydrnode3_9,hflow; hflow; hflow
+hydraulic_65,2,hydrnode3_46; hydrnode3_13,hflow; hflow
+hydraulic_66,2,hydrnode4_11; valve02,hflow; hflow
+hydraulic_67,3,dirvalve_11; dirvalve_11.two_port_node_bottom_1; hydrnode3_13,hflow; hflow; hflow
+hydraulic_68,2,hydrnode3_15; flowcontrol01_2,hflow; hflow
+hydraulic_69,2,shuttle_control; hydrnode3_16,hflow; hflow
+hydraulic_7,10,filter; hydrnode3; dirvalve_1.two_port_node_top_3; dirvalve_1.three_way_hyd_endnode_32; dirvalve_6.two_port_node_top_4; dirvalve_6.three_way_hyd_endnode_42; dirvalve_8.two_port_node_top_3; dirvalve_8.three_way_hyd_endnode_32; dirvalve_11.two_port_node_top_3; dirvalve_11.three_way_hyd_endnode_32,hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow
+hydraulic_70,2,hydrnode3_13; hydrnode3_17,hflow; hflow
+hydraulic_71,3,dirvalve_13; dirvalve_13.two_port_node_bottom_1; hydrnode3_17,hflow; hflow; hflow
+hydraulic_72,2,hydrnode3_11; hydrnode3_17,hflow; hflow
+hydraulic_73,2,hydrnode3_26; hydrnode3_33,hflow; hflow
+hydraulic_74,2,hydrnode3_25; hydrnode3_32,hflow; hflow
+hydraulic_75,2,hydrnode3_37; hydrnode3_44,hflow; hflow
+hydraulic_76,2,hydrnode3_36; hydrnode3_43,hflow; hflow
+hydraulic_77,2,hydrnode3_20; hydrnode4_1,hflow; hflow
+hydraulic_78,2,hydrnode3_48; hydrnode3_55,hflow; hflow
+hydraulic_79,3,dirvalve_2; dirvalve_2.two_port_node_bottom_2; hydrnode3_23,hflow; hflow; hflow
+hydraulic_8,10,filter_1; hydrnode4_4; dirvalve_1.three_way_hyd_startnode_23; dirvalve_1.orifice_24; dirvalve_6.three_way_hyd_startnode_24; dirvalve_6.orifice_23; dirvalve_8.three_way_hyd_startnode_23; dirvalve_8.orifice_24; dirvalve_11.three_way_hyd_startnode_23; dirvalve_11.orifice_24,hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow
+hydraulic_80,3,dirvalve_3; dirvalve_3.two_port_node_top_3; valve02_3,hflow; hflow; hflow
+hydraulic_81,3,flowcontrol01_5; dirvalve_3; dirvalve_3.two_port_node_bottom_2,hflow; hflow; hflow
+hydraulic_82,2,pprv_1; hydrnode3_22,hflow; hflow
+hydraulic_83,2,shuttle_control_1; hydrnode3_22,hflow; hflow
+hydraulic_84,2,shuttle_control_1; hydrnode3_25,hflow; hflow
+hydraulic_85,2,shuttle_control_1; hydrnode3_26,hflow; hflow
+hydraulic_86,2,hydrnode3_47; hydrnode3_54,hflow; hflow
+hydraulic_87,3,dirvalve_1; dirvalve_1.two_port_node_top_4; hydrnode3_25,hflow; hflow; hflow
+hydraulic_88,3,dirvalve_1; dirvalve_1.two_port_node_top_3; hydrnode3_26,hflow; hflow; hflow
+hydraulic_89,3,pprv_1; dirvalve_1; dirvalve_1.two_port_node_bottom_2,hflow; hflow; hflow
+hydraulic_9,10,cooler; filter_1; dirvalve_1.orifice_24; dirvalve_1.three_way_hyd_endnode_42; dirvalve_6.orifice_23; dirvalve_6.three_way_hyd_endnode_32; dirvalve_8.orifice_24; dirvalve_8.three_way_hyd_endnode_42; dirvalve_11.orifice_24; dirvalve_11.three_way_hyd_endnode_42,hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow; hflow
+hydraulic_90,2,hydrnode3_16; flowcontrol01_2,hflow; hflow
+hydraulic_91,3,dirvalve_6; dirvalve_6.two_port_node_top_4; variableorifice,hflow; hflow; hflow
+hydraulic_92,2,hydrnode3_33; hydrnode3_18,hflow; hflow
+hydraulic_93,2,hydrnode3_32; hydrnode3_19,hflow; hflow
+hydraulic_94,2,hydrnode3_18; variableorifice_2,hflow; hflow
+hydraulic_95,2,actuator001; hydrnode3_19,hflow; hflow
+hydraulic_96,2,hydrnode3_19; variableorifice_1,hflow; hflow
+hydraulic_97,2,hydrnode3_18; variableorifice_1,hflow; hflow
+hydraulic_98,2,actuator001; variableorifice_2,hflow; hflow
+hydraulic_99,2,hydrnode3_12; hydrnode3_31,hflow; hflow
+linear,2,forcecon; mass_friction2port,lshaft; lshaft
+linear_1,2,actuator002; mass1port,lshaft; lshaft
+linear_10,2,forcecon_3; mass_friction2port_3,lshaft; lshaft
+linear_11,2,forcecon_4; mass_friction2port_4,lshaft; lshaft
+linear_12,2,forcecon_5; mass_friction2port_5,lshaft; lshaft
+linear_2,2,springreturnactuator; mass_friction2port_1,lshaft; lshaft
+linear_3,2,springreturnactuator_1; mass_friction2port_2,lshaft; lshaft
+linear_4,2,springreturnactuator_2; mass_friction2port_5,lshaft; lshaft
+linear_5,2,actuator001_1; mass_friction2port_3,lshaft; lshaft
+linear_6,2,actuator001_2; mass_friction2port_4,lshaft; lshaft
+linear_7,2,actuator001; mass_friction2port,lshaft; lshaft
+linear_8,2,forcecon_1; mass_friction2port_1,lshaft; lshaft
+linear_9,2,forcecon_2; mass_friction2port_2,lshaft; lshaft
+rotary,2,pump01; pmover01,rshaft; rshaft
+rotary_1,2,pump01_1; pmover01_1,rshaft; rshaft
+rotary_2,2,pump01_2; pmover01_2,rshaft; rshaft
+rotary_3,2,pump01_3; pmover01_3,rshaft; rshaft

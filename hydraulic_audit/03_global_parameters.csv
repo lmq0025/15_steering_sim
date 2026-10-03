@@ -1,0 +1,12 @@
+﻿name,raw_value,unit
+ss,1350,
+pd,10,
+tps,1350,
+sl4,0.13,null
+sl5,0.195,null
+sl6,0.265,null
+pid,sqrt(5000*4/PI),null
+rd,sqrt((5000-3700)*4/PI),null
+ft,5,
+a,40,
+b,-1,

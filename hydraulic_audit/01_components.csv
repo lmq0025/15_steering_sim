@@ -1,0 +1,774 @@
+﻿alias,object_type,base_alias,submodel,instance,submodel_path,library
+elementaryhydraulicprops,ame_component,elementaryhydraulicprops,TFFD04,1,$AME/libthh/submodels,tf
+tank01,ame_component,tank01,TK000,1,$AME/libhydr/submodels,hydr
+pump01,ame_component,pump01,PU001,1,$AME/libhydr/submodels,hydr
+pump01_1,ame_component,pump01,PU001,2,$AME/libhydr/submodels,hydr
+pmover01,ame_component,pmover01,PM000,1,$AME/libmec/submodels,meca
+pmover01_1,ame_component,pmover01,PM000,2,$AME/libmec/submodels,meca
+presscontrol02,ame_component,presscontrol02,CV010,1,$AME/libhydr/submodels,hydr
+presscontrol02_1,ame_component,presscontrol02,CV010,2,$AME/libhydr/submodels,hydr
+filter,ame_component,filter,HYDORT0,1,$AME/libhydr/submodels,hydr
+cooler,ame_component,cooler,HYDORT0,2,$AME/libhydr/submodels,hydr
+flowcontrol01,ame_component,flowcontrol01,HYDORF0,1,$AME/libhydr/submodels,hydr
+presscontrol01,ame_component,presscontrol01,RV010,1,$AME/libhydr/submodels,hydr
+filter_1,ame_component,filter,HYDORT0,3,$AME/libhydr/submodels,hydr
+hydrnode3,ame_component,hydrnode3,H3NODE2,1,$AME/libhydr/submodels,hydr
+hydrnode4_4,ame_component,hydrnode4,H4NODE1,1,$AME/libhydr/submodels,hydr
+flowcontrol01_1,ame_component,flowcontrol01,HYDORF0,2,$AME/libhydr/submodels,hydr
+hydrnode3_1,ame_component,hydrnode3,H3NODE3,1,$AME/libhydr/submodels,hydr
+presscontrol01_1,ame_component,presscontrol01,RV010,2,$AME/libhydr/submodels,hydr
+springcheckvalve,ame_component,springcheckvalve,CV012,1,$AME/libhydr/submodels,hydr
+hydrnode3_2,ame_component,hydrnode3,H3NODE1,1,$AME/libhydr/submodels,hydr
+hydrnode3_3,ame_component,hydrnode3,H3NODE1,2,$AME/libhydr/submodels,hydr
+hydrnode3_4,ame_component,hydrnode3,H3NODE1,3,$AME/libhydr/submodels,hydr
+hydrnode3_5,ame_component,hydrnode3,H3NODE1,4,$AME/libhydr/submodels,hydr
+hydrnode3_6,ame_component,hydrnode3,H3NODE3,2,$AME/libhydr/submodels,hydr
+actuator002,ame_component,actuator002,HJ021,1,$AME/libhydr/submodels,hydr
+tank01_1,ame_component,tank01,TK000,2,$AME/libhydr/submodels,hydr
+pump01_2,ame_component,pump01,PU001,3,$AME/libhydr/submodels,hydr
+pump01_3,ame_component,pump01,PU001,4,$AME/libhydr/submodels,hydr
+pmover01_2,ame_component,pmover01,PM000,3,$AME/libmec/submodels,meca
+pmover01_3,ame_component,pmover01,PM000,4,$AME/libmec/submodels,meca
+presscontrol02_4,ame_component,presscontrol02,CV010,3,$AME/libhydr/submodels,hydr
+presscontrol02_5,ame_component,presscontrol02,CV010,4,$AME/libhydr/submodels,hydr
+filter_2,ame_component,filter,HYDORT0,4,$AME/libhydr/submodels,hydr
+cooler_1,ame_component,cooler,HYDORT0,5,$AME/libhydr/submodels,hydr
+filter_3,ame_component,filter,HYDORT0,6,$AME/libhydr/submodels,hydr
+hydrnode3_10,ame_component,hydrnode3,H3NODE2,2,$AME/libhydr/submodels,hydr
+hydrnode4_9,ame_component,hydrnode4,H4NODE1,2,$AME/libhydr/submodels,hydr
+flowcontrol01_3,ame_component,flowcontrol01,HYDORF0,3,$AME/libhydr/submodels,hydr
+hydrnode3_12,ame_component,hydrnode3,H3NODE1,5,$AME/libhydr/submodels,hydr
+presscontrol02_8,ame_component,presscontrol02,CV010,5,$AME/libhydr/submodels,hydr
+presscontrol02_9,ame_component,presscontrol02,CV010,6,$AME/libhydr/submodels,hydr
+hydrnode4_10,ame_component,hydrnode4,H4NODE4,1,$AME/libhydr/submodels,hydr
+shuttle_control,ame_component,shuttle_control,HYDCONSHTL0,1,$AME/libhydr/submodels,hydr
+hydrnode4_11,ame_component,hydrnode4,H4NODE4,2,$AME/libhydr/submodels,hydr
+hydrnode3_14,ame_component,hydrnode3,H3NODE1,6,$AME/libhydr/submodels,hydr
+hydrnode3_15,ame_component,hydrnode3,H3NODE1,7,$AME/libhydr/submodels,hydr
+hydrnode3_16,ame_component,hydrnode3,H3NODE3,3,$AME/libhydr/submodels,hydr
+flowcontrol01_2,ame_component,flowcontrol01,HYDORF0,4,$AME/libhydr/submodels,hydr
+accumulator,ame_component,accumulator,HA001,1,$AME/libhydr/submodels,hydr
+valve02_1,ame_component,valve02,PV00022,1,$AME/libhydr/submodels,hydr
+shuttle_control_1,ame_component,shuttle_control,HYDCONSHTL0,2,$AME/libhydr/submodels,hydr
+pprv_1,ame_component,pprv,HYDPRV0,1,$AME/libhydr/submodels,hydr
+dirvalve_1,ame_component,dirvalve_1,SC_1,1,,
+dirvalve_1.two_port_node_bottom_1,ame_component,hydrnode2,HN222A,1,$AME/libhydr/submodels,hydr
+dirvalve_1.two_port_node_bottom_2,ame_component,hydrnode2,HN222A,2,$AME/libhydr/submodels,hydr
+dirvalve_1.two_port_node_top_3,ame_component,hydrnode2,HN222A,3,$AME/libhydr/submodels,hydr
+dirvalve_1.two_port_node_top_4,ame_component,hydrnode2,HN222A,4,$AME/libhydr/submodels,hydr
+dirvalve_1.table_fractional_spool_position,ame_component,fofx,FX00,1,$AME/libsig/submodels,sig
+dirvalve_1.fractional_spool_position_dynamics,ame_component,valvedynamics,VALVEDYNAMICS0,1,$AME/submodels,sig
+dirvalve_1.frac_spool_pos_node,ame_component,splitter2p2,SPLT0,1,$AME/libsig/submodels,sig
+dirvalve_1.trans_frac_spool_pos,ame_component,dynamic_transmitter,SIGTRANS0,1,$AME/libsig/submodels,sig
+dirvalve_1.orifice_14,ame_component,variableorifice,HYDVORF0,1,$AME/libhydr/submodels,hydr
+dirvalve_1.table_14,ame_component,fofx,FX00,2,$AME/libsig/submodels,sig
+dirvalve_1.three_way_hyd_startnode_14,ame_component,hydrnode3,H3NODE1,8,$AME/libhydr/submodels,hydr
+dirvalve_1.orifice_13,ame_component,variableorifice,HYDVORF0,2,$AME/libhydr/submodels,hydr
+dirvalve_1.table_13,ame_component,fofx,FX00,3,$AME/libsig/submodels,sig
+dirvalve_1.three_way_signal_node_13,ame_component,splitter2p2,SPLT0,2,$AME/libsig/submodels,sig
+dirvalve_1.orifice_23,ame_component,variableorifice,HYDVORF0,3,$AME/libhydr/submodels,hydr
+dirvalve_1.table_23,ame_component,fofx,FX00,4,$AME/libsig/submodels,sig
+dirvalve_1.three_way_signal_node_23,ame_component,splitter2p2,SPLT0,3,$AME/libsig/submodels,sig
+dirvalve_1.three_way_hyd_startnode_23,ame_component,hydrnode3,H3NODE1,9,$AME/libhydr/submodels,hydr
+dirvalve_1.three_way_hyd_endnode_32,ame_component,hydrnode3,H3NODE3,4,$AME/libhydr/submodels,hydr
+dirvalve_1.orifice_24,ame_component,variableorifice,HYDVORF0,4,$AME/libhydr/submodels,hydr
+dirvalve_1.table_24,ame_component,fofx,FX00,5,$AME/libsig/submodels,sig
+dirvalve_1.three_way_signal_node_24,ame_component,splitter2p2,SPLT0,4,$AME/libsig/submodels,sig
+dirvalve_1.three_way_hyd_endnode_42,ame_component,hydrnode3,H3NODE3,5,$AME/libhydr/submodels,hydr
+dirvalve_1.signal_sink,ame_component,signalsink,SSINK,1,$AME/libsig/submodels,sig
+dirvalve_1.dyn_receiv_frac_spool_pos,ame_component,dynamic_receiver,SIGRECEI0,1,$AME/libsig/submodels,sig
+dirvalve_1.hydraulic,ame_line,h2port,DIRECT,1, ,
+dirvalve_1.hydraulic_1,ame_line,h2port,DIRECT,2, ,
+dirvalve_1.control,ame_line,s2port,DIRECT,3, ,
+dirvalve_1.control_1,ame_line,s2port,DIRECT,4, ,
+dirvalve_1.hydraulic_2,ame_line,h2port,DIRECT,5, ,
+dirvalve_1.control_2,ame_line,s2port,DIRECT,6, ,
+dirvalve_1.control_3,ame_line,s2port,DIRECT,7, ,
+dirvalve_1.hydraulic_3,ame_line,h2port,DIRECT,8, ,
+dirvalve_1.hydraulic_4,ame_line,h2port,DIRECT,9, ,
+dirvalve_1.hydraulic_5,ame_line,h2port,DIRECT,10, ,
+dirvalve_1.hydraulic_6,ame_line,h2port,DIRECT,11, ,
+dirvalve_1.hydraulic_7,ame_line,h2port,DIRECT,12, ,
+dirvalve_1.control_4,ame_line,s2port,DIRECT,13, ,
+dirvalve_1.control_5,ame_line,s2port,DIRECT,14, ,
+dirvalve_1.hydraulic_8,ame_line,h2port,DIRECT,15, ,
+dirvalve_1.hydraulic_9,ame_line,h2port,DIRECT,16, ,
+dirvalve_1.hydraulic_10,ame_line,h2port,DIRECT,17, ,
+dirvalve_1.hydraulic_11,ame_line,h2port,DIRECT,18, ,
+dirvalve_1.control_6,ame_line,s2port,DIRECT,19, ,
+valve02,ame_component,valve02,PV00022,2,$AME/libhydr/submodels,hydr
+dirvalve_2,ame_component,dirvalve_1,SC_1,2,,
+dirvalve_2.two_port_node_bottom_1,ame_component,hydrnode2,HN222A,5,$AME/libhydr/submodels,hydr
+dirvalve_2.two_port_node_bottom_2,ame_component,hydrnode2,HN222A,6,$AME/libhydr/submodels,hydr
+dirvalve_2.two_port_node_top_3,ame_component,hydrnode2,HN222A,7,$AME/libhydr/submodels,hydr
+dirvalve_2.two_port_node_top_4,ame_component,hydrnode2,HN222A,8,$AME/libhydr/submodels,hydr
+dirvalve_2.table_fractional_spool_position,ame_component,fofx,FX00,6,$AME/libsig/submodels,sig
+dirvalve_2.fractional_spool_position_dynamics,ame_component,valvedynamics,VALVEDYNAMICS0,2,$AME/submodels,sig
+dirvalve_2.frac_spool_pos_node,ame_component,splitter2p2,SPLT0,5,$AME/libsig/submodels,sig
+dirvalve_2.trans_frac_spool_pos,ame_component,dynamic_transmitter,SIGTRANS0,2,$AME/libsig/submodels,sig
+dirvalve_2.orifice_14,ame_component,variableorifice,HYDVORF0,5,$AME/libhydr/submodels,hydr
+dirvalve_2.table_14,ame_component,fofx,FX00,7,$AME/libsig/submodels,sig
+dirvalve_2.orifice_23,ame_component,variableorifice,HYDVORF0,6,$AME/libhydr/submodels,hydr
+dirvalve_2.table_23,ame_component,fofx,FX00,8,$AME/libsig/submodels,sig
+dirvalve_2.three_way_signal_node_23,ame_component,splitter2p2,SPLT0,6,$AME/libsig/submodels,sig
+dirvalve_2.signal_sink,ame_component,signalsink,SSINK,2,$AME/libsig/submodels,sig
+dirvalve_2.dyn_receiv_frac_spool_pos,ame_component,dynamic_receiver,SIGRECEI0,2,$AME/libsig/submodels,sig
+dirvalve_2.hydraulic,ame_line,h2port,DIRECT,20, ,
+dirvalve_2.hydraulic_1,ame_line,h2port,DIRECT,21, ,
+dirvalve_2.control,ame_line,s2port,DIRECT,22, ,
+dirvalve_2.control_1,ame_line,s2port,DIRECT,23, ,
+dirvalve_2.hydraulic_2,ame_line,h2port,DIRECT,24, ,
+dirvalve_2.hydraulic_3,ame_line,h2port,DIRECT,25, ,
+dirvalve_2.control_2,ame_line,s2port,DIRECT,26, ,
+flowcontrol01_5,ame_component,flowcontrol01,HYDORF0,5,$AME/libhydr/submodels,hydr
+accumulator_1,ame_component,accumulator,HA001,2,$AME/libhydr/submodels,hydr
+valve02_2,ame_component,valve02,PV00022,3,$AME/libhydr/submodels,hydr
+hydrnode3_20,ame_component,hydrnode3,H3NODE1,10,$AME/libhydr/submodels,hydr
+hydrnode3_22,ame_component,hydrnode3,H3NODE1,11,$AME/libhydr/submodels,hydr
+hydrnode3_23,ame_component,hydrnode3,H3NODE1,12,$AME/libhydr/submodels,hydr
+mass1port,ame_component,mass1port,MAS001,1,$AME/libmec/submodels,meca
+dirvalve_6,ame_component,dirvalve_1,SC_1,3,,
+dirvalve_6.two_port_node_bottom_1,ame_component,hydrnode2,HN222A,9,$AME/libhydr/submodels,hydr
+dirvalve_6.two_port_node_bottom_2,ame_component,hydrnode2,HN222A,10,$AME/libhydr/submodels,hydr
+dirvalve_6.two_port_node_top_3,ame_component,hydrnode2,HN222A,11,$AME/libhydr/submodels,hydr
+dirvalve_6.two_port_node_top_4,ame_component,hydrnode2,HN222A,12,$AME/libhydr/submodels,hydr
+dirvalve_6.table_fractional_spool_position,ame_component,fofx,FX00,9,$AME/libsig/submodels,sig
+dirvalve_6.fractional_spool_position_dynamics,ame_component,valvedynamics,VALVEDYNAMICS0,3,$AME/submodels,sig
+dirvalve_6.frac_spool_pos_node,ame_component,splitter2p2,SPLT0,7,$AME/libsig/submodels,sig
+dirvalve_6.trans_frac_spool_pos,ame_component,dynamic_transmitter,SIGTRANS0,3,$AME/libsig/submodels,sig
+dirvalve_6.orifice_13,ame_component,variableorifice,HYDVORF0,7,$AME/libhydr/submodels,hydr
+dirvalve_6.table_13,ame_component,fofx,FX00,10,$AME/libsig/submodels,sig
+dirvalve_6.three_way_hyd_startnode_13,ame_component,hydrnode3,H3NODE1,13,$AME/libhydr/submodels,hydr
+dirvalve_6.orifice_14,ame_component,variableorifice,HYDVORF0,8,$AME/libhydr/submodels,hydr
+dirvalve_6.table_14,ame_component,fofx,FX00,11,$AME/libsig/submodels,sig
+dirvalve_6.three_way_signal_node_14,ame_component,splitter2p2,SPLT0,8,$AME/libsig/submodels,sig
+dirvalve_6.orifice_24,ame_component,variableorifice,HYDVORF0,9,$AME/libhydr/submodels,hydr
+dirvalve_6.table_24,ame_component,fofx,FX00,12,$AME/libsig/submodels,sig
+dirvalve_6.three_way_signal_node_24,ame_component,splitter2p2,SPLT0,9,$AME/libsig/submodels,sig
+dirvalve_6.three_way_hyd_startnode_24,ame_component,hydrnode3,H3NODE1,14,$AME/libhydr/submodels,hydr
+dirvalve_6.three_way_hyd_endnode_42,ame_component,hydrnode3,H3NODE3,6,$AME/libhydr/submodels,hydr
+dirvalve_6.orifice_23,ame_component,variableorifice,HYDVORF0,10,$AME/libhydr/submodels,hydr
+dirvalve_6.table_23,ame_component,fofx,FX00,13,$AME/libsig/submodels,sig
+dirvalve_6.three_way_signal_node_23,ame_component,splitter2p2,SPLT0,10,$AME/libsig/submodels,sig
+dirvalve_6.three_way_hyd_endnode_32,ame_component,hydrnode3,H3NODE3,7,$AME/libhydr/submodels,hydr
+dirvalve_6.signal_sink,ame_component,signalsink,SSINK,3,$AME/libsig/submodels,sig
+dirvalve_6.dyn_receiv_frac_spool_pos,ame_component,dynamic_receiver,SIGRECEI0,3,$AME/libsig/submodels,sig
+dirvalve_6.hydraulic,ame_line,h2port,DIRECT,27, ,
+dirvalve_6.hydraulic_1,ame_line,h2port,DIRECT,28, ,
+dirvalve_6.control,ame_line,s2port,DIRECT,29, ,
+dirvalve_6.control_1,ame_line,s2port,DIRECT,30, ,
+dirvalve_6.hydraulic_2,ame_line,h2port,DIRECT,31, ,
+dirvalve_6.control_2,ame_line,s2port,DIRECT,32, ,
+dirvalve_6.control_3,ame_line,s2port,DIRECT,33, ,
+dirvalve_6.hydraulic_3,ame_line,h2port,DIRECT,34, ,
+dirvalve_6.hydraulic_4,ame_line,h2port,DIRECT,35, ,
+dirvalve_6.hydraulic_5,ame_line,h2port,DIRECT,36, ,
+dirvalve_6.hydraulic_6,ame_line,h2port,DIRECT,37, ,
+dirvalve_6.hydraulic_7,ame_line,h2port,DIRECT,38, ,
+dirvalve_6.control_4,ame_line,s2port,DIRECT,39, ,
+dirvalve_6.control_5,ame_line,s2port,DIRECT,40, ,
+dirvalve_6.hydraulic_8,ame_line,h2port,DIRECT,41, ,
+dirvalve_6.hydraulic_9,ame_line,h2port,DIRECT,42, ,
+dirvalve_6.hydraulic_10,ame_line,h2port,DIRECT,43, ,
+dirvalve_6.hydraulic_11,ame_line,h2port,DIRECT,44, ,
+dirvalve_6.control_6,ame_line,s2port,DIRECT,45, ,
+dirvalve_1_piecewiselinear_5,ame_component,piecewiselinear,UD00,1,$AME/libsig/submodels,sig
+dirvalve_3,ame_component,dirvalve_1,SC_1,4,,
+dirvalve_3.two_port_node_bottom_1,ame_component,hydrnode2,HN222A,13,$AME/libhydr/submodels,hydr
+dirvalve_3.two_port_node_bottom_2,ame_component,hydrnode2,HN222A,14,$AME/libhydr/submodels,hydr
+dirvalve_3.two_port_node_top_3,ame_component,hydrnode2,HN222A,15,$AME/libhydr/submodels,hydr
+dirvalve_3.table_fractional_spool_position,ame_component,fofx,FX00,14,$AME/libsig/submodels,sig
+dirvalve_3.fractional_spool_position_dynamics,ame_component,valvedynamics,VALVEDYNAMICS0,4,$AME/submodels,sig
+dirvalve_3.frac_spool_pos_node,ame_component,splitter2p2,SPLT0,11,$AME/libsig/submodels,sig
+dirvalve_3.trans_frac_spool_pos,ame_component,dynamic_transmitter,SIGTRANS0,4,$AME/libsig/submodels,sig
+dirvalve_3.orifice_13,ame_component,variableorifice,HYDVORF0,11,$AME/libhydr/submodels,hydr
+dirvalve_3.table_13,ame_component,fofx,FX00,15,$AME/libsig/submodels,sig
+dirvalve_3.orifice_23,ame_component,variableorifice,HYDVORF0,12,$AME/libhydr/submodels,hydr
+dirvalve_3.table_23,ame_component,fofx,FX00,16,$AME/libsig/submodels,sig
+dirvalve_3.three_way_signal_node_23,ame_component,splitter2p2,SPLT0,12,$AME/libsig/submodels,sig
+dirvalve_3.three_way_hyd_endnode_32,ame_component,hydrnode3,H3NODE3,8,$AME/libhydr/submodels,hydr
+dirvalve_3.signal_sink,ame_component,signalsink,SSINK,4,$AME/libsig/submodels,sig
+dirvalve_3.dyn_receiv_frac_spool_pos,ame_component,dynamic_receiver,SIGRECEI0,4,$AME/libsig/submodels,sig
+dirvalve_3.hydraulic,ame_line,h2port,DIRECT,46, ,
+dirvalve_3.control,ame_line,s2port,DIRECT,47, ,
+dirvalve_3.control_1,ame_line,s2port,DIRECT,48, ,
+dirvalve_3.hydraulic_1,ame_line,h2port,DIRECT,49, ,
+dirvalve_3.hydraulic_2,ame_line,h2port,DIRECT,50, ,
+dirvalve_3.hydraulic_3,ame_line,h2port,DIRECT,51, ,
+dirvalve_3.hydraulic_4,ame_line,h2port,DIRECT,52, ,
+dirvalve_3.control_2,ame_line,s2port,DIRECT,53, ,
+dirvalve_1_piecewiselinear,ame_component,piecewiselinear,UD00,2,$AME/libsig/submodels,sig
+dirvalve_1_piecewiselinear_1,ame_component,piecewiselinear,UD00,3,$AME/libsig/submodels,sig
+dirvalve_1_piecewiselinear_2,ame_component,piecewiselinear,UD00,4,$AME/libsig/submodels,sig
+valve02_3,ame_component,valve02,PV00022,4,$AME/libhydr/submodels,hydr
+hydrnode3_25,ame_component,hydrnode3,H3NODE1,15,$AME/libhydr/submodels,hydr
+hydrnode3_26,ame_component,hydrnode3,H3NODE1,16,$AME/libhydr/submodels,hydr
+filter_4,ame_component,filter,HYDORT0,7,$AME/libhydr/submodels,hydr
+hydrnode3_31,ame_component,hydrnode3,H3NODE1,17,$AME/libhydr/submodels,hydr
+dirvalve_1_piecewiselinear_6,ame_component,piecewiselinear,UD00,5,$AME/libsig/submodels,sig
+hydrnode3_32,ame_component,hydrnode3,H3NODE1,18,$AME/libhydr/submodels,hydr
+hydrnode3_33,ame_component,hydrnode3,H3NODE1,19,$AME/libhydr/submodels,hydr
+piecewiselinear_4,ame_component,piecewiselinear,UD00,6,$AME/libsig/submodels,sig
+piecewiselinear_5,ame_component,piecewiselinear,UD00,7,$AME/libsig/submodels,sig
+tank01_5,ame_component,tank01,TK000,3,$AME/libhydr/submodels,hydr
+pprv_2,ame_component,pprv,HYDPRV0,2,$AME/libhydr/submodels,hydr
+dirvalve_8,ame_component,dirvalve_1,SC_1,5,,
+dirvalve_8.two_port_node_bottom_1,ame_component,hydrnode2,HN222A,16,$AME/libhydr/submodels,hydr
+dirvalve_8.two_port_node_bottom_2,ame_component,hydrnode2,HN222A,17,$AME/libhydr/submodels,hydr
+dirvalve_8.two_port_node_top_3,ame_component,hydrnode2,HN222A,18,$AME/libhydr/submodels,hydr
+dirvalve_8.two_port_node_top_4,ame_component,hydrnode2,HN222A,19,$AME/libhydr/submodels,hydr
+dirvalve_8.table_fractional_spool_position,ame_component,fofx,FX00,17,$AME/libsig/submodels,sig
+dirvalve_8.fractional_spool_position_dynamics,ame_component,valvedynamics,VALVEDYNAMICS0,5,$AME/submodels,sig
+dirvalve_8.frac_spool_pos_node,ame_component,splitter2p2,SPLT0,13,$AME/libsig/submodels,sig
+dirvalve_8.trans_frac_spool_pos,ame_component,dynamic_transmitter,SIGTRANS0,5,$AME/libsig/submodels,sig
+dirvalve_8.orifice_14,ame_component,variableorifice,HYDVORF0,13,$AME/libhydr/submodels,hydr
+dirvalve_8.table_14,ame_component,fofx,FX00,18,$AME/libsig/submodels,sig
+dirvalve_8.three_way_hyd_startnode_14,ame_component,hydrnode3,H3NODE1,20,$AME/libhydr/submodels,hydr
+dirvalve_8.orifice_13,ame_component,variableorifice,HYDVORF0,14,$AME/libhydr/submodels,hydr
+dirvalve_8.table_13,ame_component,fofx,FX00,19,$AME/libsig/submodels,sig
+dirvalve_8.three_way_signal_node_13,ame_component,splitter2p2,SPLT0,14,$AME/libsig/submodels,sig
+dirvalve_8.orifice_23,ame_component,variableorifice,HYDVORF0,15,$AME/libhydr/submodels,hydr
+dirvalve_8.table_23,ame_component,fofx,FX00,20,$AME/libsig/submodels,sig
+dirvalve_8.three_way_signal_node_23,ame_component,splitter2p2,SPLT0,15,$AME/libsig/submodels,sig
+dirvalve_8.three_way_hyd_startnode_23,ame_component,hydrnode3,H3NODE1,21,$AME/libhydr/submodels,hydr
+dirvalve_8.three_way_hyd_endnode_32,ame_component,hydrnode3,H3NODE3,9,$AME/libhydr/submodels,hydr
+dirvalve_8.orifice_24,ame_component,variableorifice,HYDVORF0,16,$AME/libhydr/submodels,hydr
+dirvalve_8.table_24,ame_component,fofx,FX00,21,$AME/libsig/submodels,sig
+dirvalve_8.three_way_signal_node_24,ame_component,splitter2p2,SPLT0,16,$AME/libsig/submodels,sig
+dirvalve_8.three_way_hyd_endnode_42,ame_component,hydrnode3,H3NODE3,10,$AME/libhydr/submodels,hydr
+dirvalve_8.signal_sink,ame_component,signalsink,SSINK,5,$AME/libsig/submodels,sig
+dirvalve_8.dyn_receiv_frac_spool_pos,ame_component,dynamic_receiver,SIGRECEI0,5,$AME/libsig/submodels,sig
+dirvalve_8.hydraulic,ame_line,h2port,DIRECT,54, ,
+dirvalve_8.hydraulic_1,ame_line,h2port,DIRECT,55, ,
+dirvalve_8.control,ame_line,s2port,DIRECT,56, ,
+dirvalve_8.control_1,ame_line,s2port,DIRECT,57, ,
+dirvalve_8.hydraulic_2,ame_line,h2port,DIRECT,58, ,
+dirvalve_8.control_2,ame_line,s2port,DIRECT,59, ,
+dirvalve_8.control_3,ame_line,s2port,DIRECT,60, ,
+dirvalve_8.hydraulic_3,ame_line,h2port,DIRECT,61, ,
+dirvalve_8.hydraulic_4,ame_line,h2port,DIRECT,62, ,
+dirvalve_8.hydraulic_5,ame_line,h2port,DIRECT,63, ,
+dirvalve_8.hydraulic_6,ame_line,h2port,DIRECT,64, ,
+dirvalve_8.hydraulic_7,ame_line,h2port,DIRECT,65, ,
+dirvalve_8.control_4,ame_line,s2port,DIRECT,66, ,
+dirvalve_8.control_5,ame_line,s2port,DIRECT,67, ,
+dirvalve_8.hydraulic_8,ame_line,h2port,DIRECT,68, ,
+dirvalve_8.hydraulic_9,ame_line,h2port,DIRECT,69, ,
+dirvalve_8.hydraulic_10,ame_line,h2port,DIRECT,70, ,
+dirvalve_8.hydraulic_11,ame_line,h2port,DIRECT,71, ,
+dirvalve_8.control_6,ame_line,s2port,DIRECT,72, ,
+dirvalve_9,ame_component,dirvalve_1,SC_1,6,,
+dirvalve_9.two_port_node_bottom_1,ame_component,hydrnode2,HN222A,20,$AME/libhydr/submodels,hydr
+dirvalve_9.two_port_node_bottom_2,ame_component,hydrnode2,HN222A,21,$AME/libhydr/submodels,hydr
+dirvalve_9.two_port_node_top_3,ame_component,hydrnode2,HN222A,22,$AME/libhydr/submodels,hydr
+dirvalve_9.two_port_node_top_4,ame_component,hydrnode2,HN222A,23,$AME/libhydr/submodels,hydr
+dirvalve_9.table_fractional_spool_position,ame_component,fofx,FX00,22,$AME/libsig/submodels,sig
+dirvalve_9.fractional_spool_position_dynamics,ame_component,valvedynamics,VALVEDYNAMICS0,6,$AME/submodels,sig
+dirvalve_9.frac_spool_pos_node,ame_component,splitter2p2,SPLT0,17,$AME/libsig/submodels,sig
+dirvalve_9.trans_frac_spool_pos,ame_component,dynamic_transmitter,SIGTRANS0,6,$AME/libsig/submodels,sig
+dirvalve_9.orifice_14,ame_component,variableorifice,HYDVORF0,17,$AME/libhydr/submodels,hydr
+dirvalve_9.table_14,ame_component,fofx,FX00,23,$AME/libsig/submodels,sig
+dirvalve_9.orifice_23,ame_component,variableorifice,HYDVORF0,18,$AME/libhydr/submodels,hydr
+dirvalve_9.table_23,ame_component,fofx,FX00,24,$AME/libsig/submodels,sig
+dirvalve_9.three_way_signal_node_23,ame_component,splitter2p2,SPLT0,18,$AME/libsig/submodels,sig
+dirvalve_9.signal_sink,ame_component,signalsink,SSINK,6,$AME/libsig/submodels,sig
+dirvalve_9.dyn_receiv_frac_spool_pos,ame_component,dynamic_receiver,SIGRECEI0,6,$AME/libsig/submodels,sig
+dirvalve_9.hydraulic,ame_line,h2port,DIRECT,73, ,
+dirvalve_9.hydraulic_1,ame_line,h2port,DIRECT,74, ,
+dirvalve_9.control,ame_line,s2port,DIRECT,75, ,
+dirvalve_9.control_1,ame_line,s2port,DIRECT,76, ,
+dirvalve_9.hydraulic_2,ame_line,h2port,DIRECT,77, ,
+dirvalve_9.hydraulic_3,ame_line,h2port,DIRECT,78, ,
+dirvalve_9.control_2,ame_line,s2port,DIRECT,79, ,
+flowcontrol01_6,ame_component,flowcontrol01,HYDORF0,6,$AME/libhydr/submodels,hydr
+hydrnode3_24,ame_component,hydrnode3,H3NODE1,22,$AME/libhydr/submodels,hydr
+hydrnode3_35,ame_component,hydrnode3,H3NODE1,23,$AME/libhydr/submodels,hydr
+dirvalve_10,ame_component,dirvalve_1,SC_1,7,,
+dirvalve_10.two_port_node_bottom_1,ame_component,hydrnode2,HN222A,24,$AME/libhydr/submodels,hydr
+dirvalve_10.two_port_node_bottom_2,ame_component,hydrnode2,HN222A,25,$AME/libhydr/submodels,hydr
+dirvalve_10.two_port_node_top_3,ame_component,hydrnode2,HN222A,26,$AME/libhydr/submodels,hydr
+dirvalve_10.table_fractional_spool_position,ame_component,fofx,FX00,25,$AME/libsig/submodels,sig
+dirvalve_10.fractional_spool_position_dynamics,ame_component,valvedynamics,VALVEDYNAMICS0,7,$AME/submodels,sig
+dirvalve_10.frac_spool_pos_node,ame_component,splitter2p2,SPLT0,19,$AME/libsig/submodels,sig
+dirvalve_10.trans_frac_spool_pos,ame_component,dynamic_transmitter,SIGTRANS0,7,$AME/libsig/submodels,sig
+dirvalve_10.orifice_13,ame_component,variableorifice,HYDVORF0,19,$AME/libhydr/submodels,hydr
+dirvalve_10.table_13,ame_component,fofx,FX00,26,$AME/libsig/submodels,sig
+dirvalve_10.orifice_23,ame_component,variableorifice,HYDVORF0,20,$AME/libhydr/submodels,hydr
+dirvalve_10.table_23,ame_component,fofx,FX00,27,$AME/libsig/submodels,sig
+dirvalve_10.three_way_signal_node_23,ame_component,splitter2p2,SPLT0,20,$AME/libsig/submodels,sig
+dirvalve_10.three_way_hyd_endnode_32,ame_component,hydrnode3,H3NODE3,11,$AME/libhydr/submodels,hydr
+dirvalve_10.signal_sink,ame_component,signalsink,SSINK,7,$AME/libsig/submodels,sig
+dirvalve_10.dyn_receiv_frac_spool_pos,ame_component,dynamic_receiver,SIGRECEI0,7,$AME/libsig/submodels,sig
+dirvalve_10.hydraulic,ame_line,h2port,DIRECT,80, ,
+dirvalve_10.control,ame_line,s2port,DIRECT,81, ,
+dirvalve_10.control_1,ame_line,s2port,DIRECT,82, ,
+dirvalve_10.hydraulic_1,ame_line,h2port,DIRECT,83, ,
+dirvalve_10.hydraulic_2,ame_line,h2port,DIRECT,84, ,
+dirvalve_10.hydraulic_3,ame_line,h2port,DIRECT,85, ,
+dirvalve_10.hydraulic_4,ame_line,h2port,DIRECT,86, ,
+dirvalve_10.control_2,ame_line,s2port,DIRECT,87, ,
+valve02_4,ame_component,valve02,PV00022,5,$AME/libhydr/submodels,hydr
+hydrnode3_36,ame_component,hydrnode3,H3NODE1,24,$AME/libhydr/submodels,hydr
+hydrnode3_37,ame_component,hydrnode3,H3NODE1,25,$AME/libhydr/submodels,hydr
+hydrnode3_38,ame_component,hydrnode3,H3NODE1,26,$AME/libhydr/submodels,hydr
+filter_5,ame_component,filter,HYDORT0,8,$AME/libhydr/submodels,hydr
+hydrnode3_41,ame_component,hydrnode3,H3NODE1,27,$AME/libhydr/submodels,hydr
+hydrnode3_43,ame_component,hydrnode3,H3NODE1,28,$AME/libhydr/submodels,hydr
+hydrnode3_44,ame_component,hydrnode3,H3NODE1,29,$AME/libhydr/submodels,hydr
+tank01_6,ame_component,tank01,TK000,4,$AME/libhydr/submodels,hydr
+shuttle_control_3,ame_component,shuttle_control,HYDCONSHTL0,3,$AME/libhydr/submodels,hydr
+pprv_3,ame_component,pprv,HYDPRV0,3,$AME/libhydr/submodels,hydr
+dirvalve_11,ame_component,dirvalve_1,SC_1,8,,
+dirvalve_11.two_port_node_bottom_1,ame_component,hydrnode2,HN222A,27,$AME/libhydr/submodels,hydr
+dirvalve_11.two_port_node_bottom_2,ame_component,hydrnode2,HN222A,28,$AME/libhydr/submodels,hydr
+dirvalve_11.two_port_node_top_3,ame_component,hydrnode2,HN222A,29,$AME/libhydr/submodels,hydr
+dirvalve_11.two_port_node_top_4,ame_component,hydrnode2,HN222A,30,$AME/libhydr/submodels,hydr
+dirvalve_11.table_fractional_spool_position,ame_component,fofx,FX00,28,$AME/libsig/submodels,sig
+dirvalve_11.fractional_spool_position_dynamics,ame_component,valvedynamics,VALVEDYNAMICS0,8,$AME/submodels,sig
+dirvalve_11.frac_spool_pos_node,ame_component,splitter2p2,SPLT0,21,$AME/libsig/submodels,sig
+dirvalve_11.trans_frac_spool_pos,ame_component,dynamic_transmitter,SIGTRANS0,8,$AME/libsig/submodels,sig
+dirvalve_11.orifice_14,ame_component,variableorifice,HYDVORF0,21,$AME/libhydr/submodels,hydr
+dirvalve_11.table_14,ame_component,fofx,FX00,29,$AME/libsig/submodels,sig
+dirvalve_11.three_way_hyd_startnode_14,ame_component,hydrnode3,H3NODE1,30,$AME/libhydr/submodels,hydr
+dirvalve_11.orifice_13,ame_component,variableorifice,HYDVORF0,22,$AME/libhydr/submodels,hydr
+dirvalve_11.table_13,ame_component,fofx,FX00,30,$AME/libsig/submodels,sig
+dirvalve_11.three_way_signal_node_13,ame_component,splitter2p2,SPLT0,22,$AME/libsig/submodels,sig
+dirvalve_11.orifice_23,ame_component,variableorifice,HYDVORF0,23,$AME/libhydr/submodels,hydr
+dirvalve_11.table_23,ame_component,fofx,FX00,31,$AME/libsig/submodels,sig
+dirvalve_11.three_way_signal_node_23,ame_component,splitter2p2,SPLT0,23,$AME/libsig/submodels,sig
+dirvalve_11.three_way_hyd_startnode_23,ame_component,hydrnode3,H3NODE1,31,$AME/libhydr/submodels,hydr
+dirvalve_11.three_way_hyd_endnode_32,ame_component,hydrnode3,H3NODE3,12,$AME/libhydr/submodels,hydr
+dirvalve_11.orifice_24,ame_component,variableorifice,HYDVORF0,24,$AME/libhydr/submodels,hydr
+dirvalve_11.table_24,ame_component,fofx,FX00,32,$AME/libsig/submodels,sig
+dirvalve_11.three_way_signal_node_24,ame_component,splitter2p2,SPLT0,24,$AME/libsig/submodels,sig
+dirvalve_11.three_way_hyd_endnode_42,ame_component,hydrnode3,H3NODE3,13,$AME/libhydr/submodels,hydr
+dirvalve_11.signal_sink,ame_component,signalsink,SSINK,8,$AME/libsig/submodels,sig
+dirvalve_11.dyn_receiv_frac_spool_pos,ame_component,dynamic_receiver,SIGRECEI0,8,$AME/libsig/submodels,sig
+dirvalve_11.hydraulic,ame_line,h2port,DIRECT,88, ,
+dirvalve_11.hydraulic_1,ame_line,h2port,DIRECT,89, ,
+dirvalve_11.control,ame_line,s2port,DIRECT,90, ,
+dirvalve_11.control_1,ame_line,s2port,DIRECT,91, ,
+dirvalve_11.hydraulic_2,ame_line,h2port,DIRECT,92, ,
+dirvalve_11.control_2,ame_line,s2port,DIRECT,93, ,
+dirvalve_11.control_3,ame_line,s2port,DIRECT,94, ,
+dirvalve_11.hydraulic_3,ame_line,h2port,DIRECT,95, ,
+dirvalve_11.hydraulic_4,ame_line,h2port,DIRECT,96, ,
+dirvalve_11.hydraulic_5,ame_line,h2port,DIRECT,97, ,
+dirvalve_11.hydraulic_6,ame_line,h2port,DIRECT,98, ,
+dirvalve_11.hydraulic_7,ame_line,h2port,DIRECT,99, ,
+dirvalve_11.control_4,ame_line,s2port,DIRECT,100, ,
+dirvalve_11.control_5,ame_line,s2port,DIRECT,101, ,
+dirvalve_11.hydraulic_8,ame_line,h2port,DIRECT,102, ,
+dirvalve_11.hydraulic_9,ame_line,h2port,DIRECT,103, ,
+dirvalve_11.hydraulic_10,ame_line,h2port,DIRECT,104, ,
+dirvalve_11.hydraulic_11,ame_line,h2port,DIRECT,105, ,
+dirvalve_11.control_6,ame_line,s2port,DIRECT,106, ,
+dirvalve_12,ame_component,dirvalve_1,SC_1,9,,
+dirvalve_12.two_port_node_bottom_1,ame_component,hydrnode2,HN222A,31,$AME/libhydr/submodels,hydr
+dirvalve_12.two_port_node_bottom_2,ame_component,hydrnode2,HN222A,32,$AME/libhydr/submodels,hydr
+dirvalve_12.two_port_node_top_3,ame_component,hydrnode2,HN222A,33,$AME/libhydr/submodels,hydr
+dirvalve_12.two_port_node_top_4,ame_component,hydrnode2,HN222A,34,$AME/libhydr/submodels,hydr
+dirvalve_12.table_fractional_spool_position,ame_component,fofx,FX00,33,$AME/libsig/submodels,sig
+dirvalve_12.fractional_spool_position_dynamics,ame_component,valvedynamics,VALVEDYNAMICS0,9,$AME/submodels,sig
+dirvalve_12.frac_spool_pos_node,ame_component,splitter2p2,SPLT0,25,$AME/libsig/submodels,sig
+dirvalve_12.trans_frac_spool_pos,ame_component,dynamic_transmitter,SIGTRANS0,9,$AME/libsig/submodels,sig
+dirvalve_12.orifice_14,ame_component,variableorifice,HYDVORF0,25,$AME/libhydr/submodels,hydr
+dirvalve_12.table_14,ame_component,fofx,FX00,34,$AME/libsig/submodels,sig
+dirvalve_12.orifice_23,ame_component,variableorifice,HYDVORF0,26,$AME/libhydr/submodels,hydr
+dirvalve_12.table_23,ame_component,fofx,FX00,35,$AME/libsig/submodels,sig
+dirvalve_12.three_way_signal_node_23,ame_component,splitter2p2,SPLT0,26,$AME/libsig/submodels,sig
+dirvalve_12.signal_sink,ame_component,signalsink,SSINK,9,$AME/libsig/submodels,sig
+dirvalve_12.dyn_receiv_frac_spool_pos,ame_component,dynamic_receiver,SIGRECEI0,9,$AME/libsig/submodels,sig
+dirvalve_12.hydraulic,ame_line,h2port,DIRECT,107, ,
+dirvalve_12.hydraulic_1,ame_line,h2port,DIRECT,108, ,
+dirvalve_12.control,ame_line,s2port,DIRECT,109, ,
+dirvalve_12.control_1,ame_line,s2port,DIRECT,110, ,
+dirvalve_12.hydraulic_2,ame_line,h2port,DIRECT,111, ,
+dirvalve_12.hydraulic_3,ame_line,h2port,DIRECT,112, ,
+dirvalve_12.control_2,ame_line,s2port,DIRECT,113, ,
+flowcontrol01_7,ame_component,flowcontrol01,HYDORF0,7,$AME/libhydr/submodels,hydr
+hydrnode3_45,ame_component,hydrnode3,H3NODE1,32,$AME/libhydr/submodels,hydr
+hydrnode3_46,ame_component,hydrnode3,H3NODE1,33,$AME/libhydr/submodels,hydr
+dirvalve_13,ame_component,dirvalve_1,SC_1,10,,
+dirvalve_13.two_port_node_bottom_1,ame_component,hydrnode2,HN222A,35,$AME/libhydr/submodels,hydr
+dirvalve_13.two_port_node_bottom_2,ame_component,hydrnode2,HN222A,36,$AME/libhydr/submodels,hydr
+dirvalve_13.two_port_node_top_3,ame_component,hydrnode2,HN222A,37,$AME/libhydr/submodels,hydr
+dirvalve_13.table_fractional_spool_position,ame_component,fofx,FX00,36,$AME/libsig/submodels,sig
+dirvalve_13.fractional_spool_position_dynamics,ame_component,valvedynamics,VALVEDYNAMICS0,10,$AME/submodels,sig
+dirvalve_13.frac_spool_pos_node,ame_component,splitter2p2,SPLT0,27,$AME/libsig/submodels,sig
+dirvalve_13.trans_frac_spool_pos,ame_component,dynamic_transmitter,SIGTRANS0,10,$AME/libsig/submodels,sig
+dirvalve_13.orifice_13,ame_component,variableorifice,HYDVORF0,27,$AME/libhydr/submodels,hydr
+dirvalve_13.table_13,ame_component,fofx,FX00,37,$AME/libsig/submodels,sig
+dirvalve_13.orifice_23,ame_component,variableorifice,HYDVORF0,28,$AME/libhydr/submodels,hydr
+dirvalve_13.table_23,ame_component,fofx,FX00,38,$AME/libsig/submodels,sig
+dirvalve_13.three_way_signal_node_23,ame_component,splitter2p2,SPLT0,28,$AME/libsig/submodels,sig
+dirvalve_13.three_way_hyd_endnode_32,ame_component,hydrnode3,H3NODE3,14,$AME/libhydr/submodels,hydr
+dirvalve_13.signal_sink,ame_component,signalsink,SSINK,10,$AME/libsig/submodels,sig
+dirvalve_13.dyn_receiv_frac_spool_pos,ame_component,dynamic_receiver,SIGRECEI0,10,$AME/libsig/submodels,sig
+dirvalve_13.hydraulic,ame_line,h2port,DIRECT,114, ,
+dirvalve_13.control,ame_line,s2port,DIRECT,115, ,
+dirvalve_13.control_1,ame_line,s2port,DIRECT,116, ,
+dirvalve_13.hydraulic_1,ame_line,h2port,DIRECT,117, ,
+dirvalve_13.hydraulic_2,ame_line,h2port,DIRECT,118, ,
+dirvalve_13.hydraulic_3,ame_line,h2port,DIRECT,119, ,
+dirvalve_13.hydraulic_4,ame_line,h2port,DIRECT,120, ,
+dirvalve_13.control_2,ame_line,s2port,DIRECT,121, ,
+valve02_5,ame_component,valve02,PV00022,6,$AME/libhydr/submodels,hydr
+hydrnode3_47,ame_component,hydrnode3,H3NODE1,34,$AME/libhydr/submodels,hydr
+hydrnode3_48,ame_component,hydrnode3,H3NODE1,35,$AME/libhydr/submodels,hydr
+hydrnode3_54,ame_component,hydrnode3,H3NODE1,36,$AME/libhydr/submodels,hydr
+hydrnode3_55,ame_component,hydrnode3,H3NODE1,37,$AME/libhydr/submodels,hydr
+tank01_7,ame_component,tank01,TK000,5,$AME/libhydr/submodels,hydr
+hydrnode3_42,ame_component,hydrnode3,H3NODE1,38,$AME/libhydr/submodels,hydr
+shuttle_control_4,ame_component,shuttle_control,HYDCONSHTL0,4,$AME/libhydr/submodels,hydr
+shuttle_control_5,ame_component,shuttle_control,HYDCONSHTL0,5,$AME/libhydr/submodels,hydr
+shuttle_control_2,ame_component,shuttle_control,HYDCONSHTL0,6,$AME/libhydr/submodels,hydr
+elementaryhydraulicprops_1,ame_component,elementaryhydraulicprops,FP04,1,$AME/libhydr/submodels,hydr
+hydrnode4,ame_component,hydrnode4,H4NODE4,3,$AME/libhydr/submodels,hydr
+pressuregauge,ame_component,pressuregauge,HYDPG0,1,$AME/libhydr/submodels,hydr
+presscontrol01_3,ame_component,presscontrol01,RV010,3,$AME/libhydr/submodels,hydr
+hydrnode3_7,ame_component,hydrnode3,H3NODE1,39,$AME/libhydr/submodels,hydr
+hydrnode3_8,ame_component,hydrnode3,H3NODE1,40,$AME/libhydr/submodels,hydr
+hydrnode3_9,ame_component,hydrnode3,H3NODE1,41,$AME/libhydr/submodels,hydr
+hydrnode3_11,ame_component,hydrnode3,H3NODE1,42,$AME/libhydr/submodels,hydr
+hydrnode3_13,ame_component,hydrnode3,H3NODE1,43,$AME/libhydr/submodels,hydr
+hydrnode3_17,ame_component,hydrnode3,H3NODE1,44,$AME/libhydr/submodels,hydr
+control04,ame_component,control04,SPLT0,29,$AME/libsig/submodels,sig
+control04_1,ame_component,control04,SPLT0,30,$AME/libsig/submodels,sig
+springreturnactuator,ame_component,springreturnactuator,HJ0022,1,$AME/libhydr/submodels,hydr
+springreturnactuator_1,ame_component,springreturnactuator,HJ0022,2,$AME/libhydr/submodels,hydr
+springreturnactuator_2,ame_component,springreturnactuator,HJ0022,3,$AME/libhydr/submodels,hydr
+actuator001_1,ame_component,actuator001,HJ020,1,$AME/libhydr/submodels,hydr
+actuator001,ame_component,actuator001,HJ020,2,$AME/libhydr/submodels,hydr
+actuator001_2,ame_component,actuator001,HJ020,3,$AME/libhydr/submodels,hydr
+splitter2p2,ame_component,splitter2p2,SPLT0,31,$AME/libsig/submodels,sig
+splitter2p2_1,ame_component,splitter2p2,SPLT0,32,$AME/libsig/submodels,sig
+splitter2p2_2,ame_component,splitter2p2,SPLT0,33,$AME/libsig/submodels,sig
+splitter2p2_3,ame_component,splitter2p2,SPLT0,34,$AME/libsig/submodels,sig
+splitter2p2_4,ame_component,splitter2p2,SPLT0,35,$AME/libsig/submodels,sig
+splitter2p2_5,ame_component,splitter2p2,SPLT0,36,$AME/libsig/submodels,sig
+splitter2p,ame_component,splitter2p,SPLT0,37,$AME/libsig/submodels,sig
+gravityicon,ame_component,gravityicon,GRAV0,1,$AME/libmec/submodels,meca
+sinewave,ame_component,sinewave,SIN0,1,$AME/libsig/submodels,sig
+control02,ame_component,control02,JUN3P,1,$AME/libsig/submodels,sig
+sinewave_1,ame_component,sinewave,SIN0,2,$AME/libsig/submodels,sig
+control02_1,ame_component,control02,JUN3P,2,$AME/libsig/submodels,sig
+variableorifice,ame_component,variableorifice,HYDVORF0,29,$AME/libhydr/submodels,hydr
+constant,ame_component,constant,CONS00,1,$AME/libsig/submodels,sig
+step,ame_component,step,STEP0,1,$AME/libsig/submodels,sig
+signaloperatedrvalve,ame_component,signaloperatedrvalve,RV011,1,$AME/libhydr/submodels,hydr
+sinewave_2,ame_component,sinewave,SIN0,3,$AME/libsig/submodels,sig
+constant_1,ame_component,constant,CONS00,2,$AME/libsig/submodels,sig
+sinewave_3,ame_component,sinewave,SIN0,4,$AME/libsig/submodels,sig
+forcecon,ame_component,forcecon,FORC,1,$AME/libmec/submodels,meca
+mass_friction2port,ame_component,mass_friction2port,MAS004,1,$AME/libmec/submodels,meca
+hydrnode3_18,ame_component,hydrnode3,H3NODE1,45,$AME/libhydr/submodels,hydr
+hydrnode3_19,ame_component,hydrnode3,H3NODE1,46,$AME/libhydr/submodels,hydr
+variableorifice_1,ame_component,variableorifice,HYDVORF0,30,$AME/libhydr/submodels,hydr
+constant_2,ame_component,constant,CONS00,3,$AME/libsig/submodels,sig
+constant_3,ame_component,constant,CONS00,4,$AME/libsig/submodels,sig
+variableorifice_2,ame_component,variableorifice,HYDVORF0,31,$AME/libhydr/submodels,hydr
+sinewave_4,ame_component,sinewave,SIN0,5,$AME/libsig/submodels,sig
+forcecon_1,ame_component,forcecon,FORC,2,$AME/libmec/submodels,meca
+mass_friction2port_1,ame_component,mass_friction2port,MAS004,2,$AME/libmec/submodels,meca
+hydrnode3_27,ame_component,hydrnode3,H3NODE1,47,$AME/libhydr/submodels,hydr
+variableorifice_3,ame_component,variableorifice,HYDVORF0,32,$AME/libhydr/submodels,hydr
+hydrnode3_28,ame_component,hydrnode3,H3NODE1,48,$AME/libhydr/submodels,hydr
+constant_4,ame_component,constant,CONS00,5,$AME/libsig/submodels,sig
+variableorifice_4,ame_component,variableorifice,HYDVORF0,33,$AME/libhydr/submodels,hydr
+constant_5,ame_component,constant,CONS00,6,$AME/libsig/submodels,sig
+hydrnode3_29,ame_component,hydrnode3,H3NODE1,49,$AME/libhydr/submodels,hydr
+variableorifice_5,ame_component,variableorifice,HYDVORF0,34,$AME/libhydr/submodels,hydr
+hydrnode3_30,ame_component,hydrnode3,H3NODE1,50,$AME/libhydr/submodels,hydr
+constant_6,ame_component,constant,CONS00,7,$AME/libsig/submodels,sig
+variableorifice_6,ame_component,variableorifice,HYDVORF0,35,$AME/libhydr/submodels,hydr
+constant_7,ame_component,constant,CONS00,8,$AME/libsig/submodels,sig
+sinewave_5,ame_component,sinewave,SIN0,6,$AME/libsig/submodels,sig
+forcecon_2,ame_component,forcecon,FORC,3,$AME/libmec/submodels,meca
+mass_friction2port_2,ame_component,mass_friction2port,MAS004,3,$AME/libmec/submodels,meca
+sinewave_6,ame_component,sinewave,SIN0,7,$AME/libsig/submodels,sig
+forcecon_3,ame_component,forcecon,FORC,4,$AME/libmec/submodels,meca
+mass_friction2port_3,ame_component,mass_friction2port,MAS004,4,$AME/libmec/submodels,meca
+sinewave_7,ame_component,sinewave,SIN0,8,$AME/libsig/submodels,sig
+forcecon_4,ame_component,forcecon,FORC,5,$AME/libmec/submodels,meca
+mass_friction2port_4,ame_component,mass_friction2port,MAS004,5,$AME/libmec/submodels,meca
+sinewave_8,ame_component,sinewave,SIN0,9,$AME/libsig/submodels,sig
+forcecon_5,ame_component,forcecon,FORC,6,$AME/libmec/submodels,meca
+mass_friction2port_5,ame_component,mass_friction2port,MAS004,6,$AME/libmec/submodels,meca
+hydrnode3_34,ame_component,hydrnode3,H3NODE1,51,$AME/libhydr/submodels,hydr
+variableorifice_7,ame_component,variableorifice,HYDVORF0,36,$AME/libhydr/submodels,hydr
+hydrnode3_39,ame_component,hydrnode3,H3NODE1,52,$AME/libhydr/submodels,hydr
+variableorifice_8,ame_component,variableorifice,HYDVORF0,37,$AME/libhydr/submodels,hydr
+constant_8,ame_component,constant,CONS00,9,$AME/libsig/submodels,sig
+constant_9,ame_component,constant,CONS00,10,$AME/libsig/submodels,sig
+hydrnode3_40,ame_component,hydrnode3,H3NODE1,53,$AME/libhydr/submodels,hydr
+hydrnode3_49,ame_component,hydrnode3,H3NODE1,54,$AME/libhydr/submodels,hydr
+variableorifice_9,ame_component,variableorifice,HYDVORF0,38,$AME/libhydr/submodels,hydr
+constant_10,ame_component,constant,CONS00,11,$AME/libsig/submodels,sig
+constant_11,ame_component,constant,CONS00,12,$AME/libsig/submodels,sig
+variableorifice_10,ame_component,variableorifice,HYDVORF0,39,$AME/libhydr/submodels,hydr
+hydrnode3_50,ame_component,hydrnode3,H3NODE1,55,$AME/libhydr/submodels,hydr
+hydrnode3_51,ame_component,hydrnode3,H3NODE1,56,$AME/libhydr/submodels,hydr
+variableorifice_11,ame_component,variableorifice,HYDVORF0,40,$AME/libhydr/submodels,hydr
+constant_12,ame_component,constant,CONS00,13,$AME/libsig/submodels,sig
+constant_13,ame_component,constant,CONS00,14,$AME/libsig/submodels,sig
+variableorifice_12,ame_component,variableorifice,HYDVORF0,41,$AME/libhydr/submodels,hydr
+hydrnode3_52,ame_component,hydrnode3,H3NODE1,57,$AME/libhydr/submodels,hydr
+hydrnode3_53,ame_component,hydrnode3,H3NODE1,58,$AME/libhydr/submodels,hydr
+variableorifice_13,ame_component,variableorifice,HYDVORF0,42,$AME/libhydr/submodels,hydr
+step_1,ame_component,step,STEP0,2,$AME/libsig/submodels,sig
+variableorifice_14,ame_component,variableorifice,HYDVORF0,43,$AME/libhydr/submodels,hydr
+constant_14,ame_component,constant,CONS00,15,$AME/libsig/submodels,sig
+hydrnode4_1,ame_component,hydrnode4,H4NODE4,4,$AME/libhydr/submodels,hydr
+hydrnode3_21,ame_component,hydrnode3,H3NODE1,59,$AME/libhydr/submodels,hydr
+sum,ame_component,sum,JUN3P,3,$AME/libsig/submodels,sig
+control02_2,ame_component,control02,JUN3P,4,$AME/libsig/submodels,sig
+hydraulic,ame_line,h2port,HL012,1,$AME/libhydr/submodels,hydr
+hydraulic_1,ame_line,h2port,HL012,2,$AME/libhydr/submodels,hydr
+hydraulic_2,ame_line,h2port,DIRECT,122, ,
+hydraulic_5,ame_line,h2port,DIRECT,123, ,
+hydraulic_12,ame_line,h2port,DIRECT,124, ,
+hydraulic_13,ame_line,h2port,DIRECT,125, ,
+hydraulic_17,ame_line,h2port,DIRECT,126, ,
+hydraulic_18,ame_line,h2port,DIRECT,127, ,
+hydraulic_19,ame_line,h2port,DIRECT,128, ,
+hydraulic_20,ame_line,h2port,DIRECT,129, ,
+hydraulic_23,ame_line,h2port,HL012,3,$AME/libhydr/submodels,hydr
+hydraulic_24,ame_line,h2port,DIRECT,130, ,
+hydraulic_34,ame_line,h2port,HL012,4,$AME/libhydr/submodels,hydr
+hydraulic_35,ame_line,h2port,HL012,5,$AME/libhydr/submodels,hydr
+hydraulic_36,ame_line,h2port,DIRECT,131, ,
+hydraulic_37,ame_line,h2port,DIRECT,132, ,
+hydraulic_44,ame_line,h2port,DIRECT,133, ,
+hydraulic_45,ame_line,h2port,DIRECT,134, ,
+hydraulic_48,ame_line,h2port,DIRECT,135, ,
+hydraulic_49,ame_line,h2port,DIRECT,136, ,
+hydraulic_50,ame_line,h2port,DIRECT,137, ,
+hydraulic_59,ame_line,h2port,HL012,6,$AME/libhydr/submodels,hydr
+hydraulic_66,ame_line,h2port,DIRECT,138, ,
+hydraulic_55,ame_line,h2port,DIRECT,139, ,
+hydraulic_56,ame_line,h2port,HL011,1,$AME/libhydr/submodels,hydr
+hydraulic_69,ame_line,h2port,HL012,7,$AME/libhydr/submodels,hydr
+hydraulic_68,ame_line,h2port,HL012,8,$AME/libhydr/submodels,hydr
+hydraulic_77,ame_line,h2port,HL0002,1,$AME/libhydr/submodels,hydr
+hydraulic_79,ame_line,h2port,HL012,9,$AME/libhydr/submodels,hydr
+hydraulic_81,ame_line,h2port,HL012,10,$AME/libhydr/submodels,hydr
+hydraulic_82,ame_line,h2port,DIRECT,140, ,
+hydraulic_83,ame_line,h2port,DIRECT,141, ,
+hydraulic_84,ame_line,h2port,HL012,11,$AME/libhydr/submodels,hydr
+hydraulic_85,ame_line,h2port,DIRECT,142, ,
+hydraulic_87,ame_line,h2port,DIRECT,143, ,
+hydraulic_88,ame_line,h2port,DIRECT,144, ,
+hydraulic_89,ame_line,h2port,HL012,12,$AME/libhydr/submodels,hydr
+hydraulic_99,ame_line,h2port,DIRECT,145, ,
+linear_1,ame_line,s2port,DIRECT,146, ,
+control_3,ame_line,s2port,DIRECT,147, ,
+hydraulic_108,ame_line,h2port,DIRECT,148, ,
+hydraulic_109,ame_line,h2port,DIRECT,149, ,
+hydraulic_110,ame_line,h2port,DIRECT,150, ,
+hydraulic_80,ame_line,h2port,HL012,13,$AME/libhydr/submodels,hydr
+rotary,ame_line,s2port,DIRECT,151, ,
+rotary_1,ame_line,s2port,DIRECT,152, ,
+rotary_2,ame_line,s2port,DIRECT,153, ,
+rotary_3,ame_line,s2port,DIRECT,154, ,
+hydraulic_118,ame_line,h2port,HL012,14,$AME/libhydr/submodels,hydr
+hydraulic_119,ame_line,h2port,HL012,15,$AME/libhydr/submodels,hydr
+hydraulic_120,ame_line,h2port,DIRECT,155, ,
+hydraulic_122,ame_line,h2port,HL012,16,$AME/libhydr/submodels,hydr
+hydraulic_123,ame_line,h2port,DIRECT,156, ,
+hydraulic_125,ame_line,h2port,DIRECT,157, ,
+hydraulic_126,ame_line,h2port,DIRECT,158, ,
+hydraulic_127,ame_line,h2port,HL012,17,$AME/libhydr/submodels,hydr
+hydraulic_134,ame_line,h2port,HL012,18,$AME/libhydr/submodels,hydr
+hydraulic_139,ame_line,h2port,DIRECT,159, ,
+hydraulic_140,ame_line,h2port,DIRECT,160, ,
+hydraulic_141,ame_line,h2port,DIRECT,161, ,
+hydraulic_144,ame_line,h2port,DIRECT,162, ,
+hydraulic_147,ame_line,h2port,HL012,19,$AME/libhydr/submodels,hydr
+hydraulic_149,ame_line,h2port,HL012,20,$AME/libhydr/submodels,hydr
+hydraulic_150,ame_line,h2port,HL012,21,$AME/libhydr/submodels,hydr
+hydraulic_151,ame_line,h2port,DIRECT,163, ,
+hydraulic_152,ame_line,h2port,DIRECT,164, ,
+hydraulic_153,ame_line,h2port,HL012,22,$AME/libhydr/submodels,hydr
+hydraulic_154,ame_line,h2port,DIRECT,165, ,
+hydraulic_156,ame_line,h2port,DIRECT,166, ,
+hydraulic_157,ame_line,h2port,DIRECT,167, ,
+hydraulic_158,ame_line,h2port,HL012,23,$AME/libhydr/submodels,hydr
+hydraulic_170,ame_line,h2port,DIRECT,168, ,
+hydraulic_171,ame_line,h2port,DIRECT,169, ,
+hydraulic_172,ame_line,h2port,DIRECT,170, ,
+hydraulic_180,ame_line,h2port,HL012,24,$AME/libhydr/submodels,hydr
+hydraulic_135,ame_line,h2port,DIRECT,171, ,
+hydraulic_181,ame_line,h2port,HL012,25,$AME/libhydr/submodels,hydr
+hydraulic_182,ame_line,h2port,DIRECT,172, ,
+hydraulic_185,ame_line,h2port,DIRECT,173, ,
+hydraulic_186,ame_line,h2port,DIRECT,174, ,
+hydraulic_187,ame_line,h2port,DIRECT,175, ,
+hydraulic_190,ame_line,h2port,DIRECT,176, ,
+hydraulic_121,ame_line,h2port,DIRECT,177, ,
+hydraulic_21,ame_line,h2port,DIRECT,178, ,
+hydraulic_22,ame_line,h2port,DIRECT,179, ,
+hydraulic_16,ame_line,h2port,DIRECT,180, ,
+hydraulic_26,ame_line,h2port,DIRECT,181, ,
+hydraulic_6,ame_line,h2port,HL012,26,$AME/libhydr/submodels,hydr
+hydraulic_7,ame_line,h2port,HL012,27,$AME/libhydr/submodels,hydr
+hydraulic_8,ame_line,h2port,DIRECT,182, ,
+hydraulic_9,ame_line,h2port,HL012,28,$AME/libhydr/submodels,hydr
+hydraulic_10,ame_line,h2port,DIRECT,183, ,
+hydraulic_11,ame_line,h2port,HL012,29,$AME/libhydr/submodels,hydr
+hydraulic_15,ame_line,h2port,HL012,30,$AME/libhydr/submodels,hydr
+hydraulic_27,ame_line,h2port,HL012,31,$AME/libhydr/submodels,hydr
+hydraulic_28,ame_line,h2port,DIRECT,184, ,
+hydraulic_30,ame_line,h2port,DIRECT,185, ,
+hydraulic_31,ame_line,h2port,HL012,32,$AME/libhydr/submodels,hydr
+hydraulic_32,ame_line,h2port,HL012,33,$AME/libhydr/submodels,hydr
+hydraulic_33,ame_line,h2port,DIRECT,186, ,
+hydraulic_38,ame_line,h2port,HL012,34,$AME/libhydr/submodels,hydr
+hydraulic_40,ame_line,h2port,DIRECT,187, ,
+hydraulic_42,ame_line,h2port,DIRECT,188, ,
+hydraulic_43,ame_line,h2port,DIRECT,189, ,
+hydraulic_46,ame_line,h2port,DIRECT,190, ,
+hydraulic_47,ame_line,h2port,DIRECT,191, ,
+hydraulic_51,ame_line,h2port,DIRECT,192, ,
+hydraulic_53,ame_line,h2port,DIRECT,193, ,
+hydraulic_52,ame_line,h2port,DIRECT,194, ,
+hydraulic_54,ame_line,h2port,DIRECT,195, ,
+hydraulic_57,ame_line,h2port,HL011,2,$AME/libhydr/submodels,hydr
+hydraulic_58,ame_line,h2port,HL012,35,$AME/libhydr/submodels,hydr
+hydraulic_14,ame_line,h2port,HL012,36,$AME/libhydr/submodels,hydr
+hydraulic_60,ame_line,h2port,DIRECT,196, ,
+hydraulic_61,ame_line,h2port,HL011,3,$AME/libhydr/submodels,hydr
+hydraulic_29,ame_line,h2port,DIRECT,197, ,
+hydraulic_62,ame_line,h2port,HL011,4,$AME/libhydr/submodels,hydr
+hydraulic_63,ame_line,h2port,HL011,5,$AME/libhydr/submodels,hydr
+hydraulic_64,ame_line,h2port,DIRECT,198, ,
+hydraulic_65,ame_line,h2port,DIRECT,199, ,
+hydraulic_67,ame_line,h2port,DIRECT,200, ,
+hydraulic_70,ame_line,h2port,HL011,6,$AME/libhydr/submodels,hydr
+hydraulic_71,ame_line,h2port,HL012,37,$AME/libhydr/submodels,hydr
+hydraulic_72,ame_line,h2port,DIRECT,201, ,
+control,ame_line,s2port,DIRECT,202, ,
+control_6,ame_line,s2port,DIRECT,203, ,
+control_8,ame_line,s2port,DIRECT,204, ,
+control_12,ame_line,s2port,DIRECT,205, ,
+linear_3,ame_line,s2port,DIRECT,206, ,
+linear_4,ame_line,s2port,DIRECT,207, ,
+linear_5,ame_line,s2port,DIRECT,208, ,
+linear_6,ame_line,s2port,DIRECT,209, ,
+control_9,ame_line,s2port,DIRECT,210, ,
+control_16,ame_line,s2port,DIRECT,211, ,
+control_13,ame_line,s2port,DIRECT,212, ,
+control_19,ame_line,s2port,DIRECT,213, ,
+control_17,ame_line,s2port,DIRECT,214, ,
+control_2,ame_line,s2port,DIRECT,215, ,
+control_20,ame_line,s2port,DIRECT,216, ,
+control_11,ame_line,s2port,DIRECT,217, ,
+control_21,ame_line,s2port,DIRECT,218, ,
+control_15,ame_line,s2port,DIRECT,219, ,
+control_10,ame_line,s2port,DIRECT,220, ,
+control_22,ame_line,s2port,DIRECT,221, ,
+control_14,ame_line,s2port,DIRECT,222, ,
+control_23,ame_line,s2port,DIRECT,223, ,
+control_18,ame_line,s2port,DIRECT,224, ,
+control_4,ame_line,s2port,DIRECT,225, ,
+control_7,ame_line,s2port,DIRECT,226, ,
+control_24,ame_line,s2port,DIRECT,227, ,
+hydraulic_73,ame_line,h2port,DIRECT,228, ,
+hydraulic_74,ame_line,h2port,DIRECT,229, ,
+hydraulic_75,ame_line,h2port,DIRECT,230, ,
+hydraulic_76,ame_line,h2port,DIRECT,231, ,
+hydraulic_78,ame_line,h2port,DIRECT,232, ,
+hydraulic_86,ame_line,h2port,DIRECT,233, ,
+hydraulic_39,ame_line,h2port,HL0002,2,$AME/libhydr/submodels,hydr
+hydraulic_90,ame_line,h2port,DIRECT,234, ,
+control_1,ame_line,s2port,DIRECT,235, ,
+control_25,ame_line,s2port,DIRECT,236, ,
+control_26,ame_line,s2port,DIRECT,237, ,
+control_27,ame_line,s2port,DIRECT,238, ,
+control_28,ame_line,s2port,DIRECT,239, ,
+hydraulic_25,ame_line,h2port,DIRECT,240, ,
+hydraulic_91,ame_line,h2port,HL0000,1,$AME/libhydr/submodels,hydr
+control_29,ame_line,s2port,DIRECT,241, ,
+control_33,ame_line,s2port,DIRECT,242, ,
+linear_7,ame_line,s2port,DIRECT,243, ,
+hydraulic_92,ame_line,h2port,DIRECT,244, ,
+hydraulic_93,ame_line,h2port,DIRECT,245, ,
+hydraulic_95,ame_line,h2port,HL0002,3,$AME/libhydr/submodels,hydr
+hydraulic_96,ame_line,h2port,DIRECT,246, ,
+hydraulic_97,ame_line,h2port,DIRECT,247, ,
+control_34,ame_line,s2port,DIRECT,248, ,
+hydraulic_94,ame_line,h2port,HL0000,2,$AME/libhydr/submodels,hydr
+hydraulic_98,ame_line,h2port,DIRECT,249, ,
+control_35,ame_line,s2port,DIRECT,250, ,
+linear,ame_line,s2port,DIRECT,251, ,
+linear_2,ame_line,s2port,DIRECT,252, ,
+linear_8,ame_line,s2port,DIRECT,253, ,
+control_36,ame_line,s2port,DIRECT,254, ,
+hydraulic_100,ame_line,h2port,DIRECT,255, ,
+hydraulic_101,ame_line,h2port,HL0002,4,$AME/libhydr/submodels,hydr
+hydraulic_103,ame_line,h2port,HL0000,3,$AME/libhydr/submodels,hydr
+hydraulic_104,ame_line,h2port,DIRECT,256, ,
+hydraulic_105,ame_line,h2port,DIRECT,257, ,
+control_37,ame_line,s2port,DIRECT,258, ,
+hydraulic_102,ame_line,h2port,DIRECT,259, ,
+hydraulic_106,ame_line,h2port,DIRECT,260, ,
+control_38,ame_line,s2port,DIRECT,261, ,
+hydraulic_107,ame_line,h2port,DIRECT,262, ,
+hydraulic_111,ame_line,h2port,DIRECT,263, ,
+control_39,ame_line,s2port,DIRECT,264, ,
+hydraulic_112,ame_line,h2port,DIRECT,265, ,
+control_40,ame_line,s2port,DIRECT,266, ,
+hydraulic_113,ame_line,h2port,HL0000,4,$AME/libhydr/submodels,hydr
+hydraulic_114,ame_line,h2port,DIRECT,267, ,
+hydraulic_115,ame_line,h2port,HL0002,5,$AME/libhydr/submodels,hydr
+linear_9,ame_line,s2port,DIRECT,268, ,
+control_41,ame_line,s2port,DIRECT,269, ,
+control_42,ame_line,s2port,DIRECT,270, ,
+linear_10,ame_line,s2port,DIRECT,271, ,
+control_43,ame_line,s2port,DIRECT,272, ,
+linear_11,ame_line,s2port,DIRECT,273, ,
+linear_12,ame_line,s2port,DIRECT,274, ,
+control_44,ame_line,s2port,DIRECT,275, ,
+hydraulic_116,ame_line,h2port,DIRECT,276, ,
+hydraulic_117,ame_line,h2port,DIRECT,277, ,
+hydraulic_124,ame_line,h2port,DIRECT,278, ,
+control_45,ame_line,s2port,DIRECT,279, ,
+hydraulic_128,ame_line,h2port,DIRECT,280, ,
+hydraulic_129,ame_line,h2port,HL0000,5,$AME/libhydr/submodels,hydr
+hydraulic_130,ame_line,h2port,DIRECT,281, ,
+hydraulic_131,ame_line,h2port,HL0002,6,$AME/libhydr/submodels,hydr
+control_46,ame_line,s2port,DIRECT,282, ,
+hydraulic_132,ame_line,h2port,DIRECT,283, ,
+hydraulic_133,ame_line,h2port,DIRECT,284, ,
+control_47,ame_line,s2port,DIRECT,285, ,
+hydraulic_136,ame_line,h2port,HL0000,6,$AME/libhydr/submodels,hydr
+control_48,ame_line,s2port,DIRECT,286, ,
+hydraulic_137,ame_line,h2port,HL0002,7,$AME/libhydr/submodels,hydr
+hydraulic_138,ame_line,h2port,DIRECT,287, ,
+hydraulic_142,ame_line,h2port,HL0002,8,$AME/libhydr/submodels,hydr
+hydraulic_143,ame_line,h2port,HL0000,7,$AME/libhydr/submodels,hydr
+hydraulic_145,ame_line,h2port,DIRECT,288, ,
+hydraulic_146,ame_line,h2port,DIRECT,289, ,
+control_49,ame_line,s2port,DIRECT,290, ,
+hydraulic_148,ame_line,h2port,HL0000,8,$AME/libhydr/submodels,hydr
+control_50,ame_line,s2port,DIRECT,291, ,
+hydraulic_155,ame_line,h2port,DIRECT,292, ,
+hydraulic_159,ame_line,h2port,HL0002,9,$AME/libhydr/submodels,hydr
+hydraulic_3,ame_line,h2port,HL0000,9,$AME/libhydr/submodels,hydr
+hydraulic_4,ame_line,h2port,HL0000,10,$AME/libhydr/submodels,hydr
+hydraulic_160,ame_line,h2port,DIRECT,293, ,
+hydraulic_161,ame_line,h2port,DIRECT,294, ,
+hydraulic_162,ame_line,h2port,DIRECT,295, ,
+hydraulic_163,ame_line,h2port,DIRECT,296, ,
+control_51,ame_line,s2port,DIRECT,297, ,
+control_52,ame_line,s2port,DIRECT,298, ,
+hydraulic_41,ame_line,h2port,HL0000,11,$AME/libhydr/submodels,hydr
+hydraulic_164,ame_line,h2port,DIRECT,299, ,
+hydraulic_165,ame_line,h2port,HL0000,12,$AME/libhydr/submodels,hydr
+hydraulic_166,ame_line,h2port,HL0002,10,$AME/libhydr/submodels,hydr
+control_31,ame_line,s2port,DIRECT,300, ,
+control_32,ame_line,s2port,DIRECT,301, ,
+control_53,ame_line,s2port,DIRECT,302, ,
+control_5,ame_line,s2port,DIRECT,303, ,
+control_30,ame_line,s2port,DIRECT,304, ,
+control_54,ame_line,s2port,DIRECT,305, ,
