@@ -1,0 +1,91 @@
+﻿alias,data_path,parameter_type,title,unit,raw_value,resolved_value,value_unit
+valve02_1,maxin@valve02_1,ame_real_parameter,valve rated current,mA,40,40,mA
+valve02_1,tau@valve02_1,ame_real_parameter,valve time constant,s,0.05,0.05,s
+valve02_1,wn@valve02_1,ame_real_parameter,valve natural frequency,Hz,20,20,Hz
+valve02_1,zeta@valve02_1,ame_real_parameter,valve damping ratio,null,1.8,1.8,null
+valve02_1,qchar@valve02_1,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+valve02_1,dpchar@valve02_1,ame_real_parameter,corresponding pressure drop ,bar,10,10,bar
+valve02_1,cqmax@valve02_1,ame_real_parameter,maximum flow coefficient,null,0.7,0.7,null
+valve02_1,orarea@valve02_1,ame_real_parameter,cross sectional area at maximum opening,mm**2,10,10,mm**2
+valve02_1,lcrit@valve02_1,ame_real_parameter,critical flow number,null,1000,1000,null
+valve02_1,rhochar@valve02_1,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+valve02_1,nuchar@valve02_1,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+valve02_1,indexf@valve02_1,ame_integer_parameter,index of hydraulic fluid,,0,0,
+valve02_1,method@valve02_1,ame_integer_parameter,pressure drop definition method,,1,1,
+valve02_1,userfp@valve02_1,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+valve02_1,spooldyn@valve02_1,ame_integer_parameter,spool dynamics,,3,3,
+valve02,maxin@valve02,ame_real_parameter,valve rated current,mA,40,40,mA
+valve02,tau@valve02,ame_real_parameter,valve time constant,s,0.05,0.05,s
+valve02,wn@valve02,ame_real_parameter,valve natural frequency,Hz,20,20,Hz
+valve02,zeta@valve02,ame_real_parameter,valve damping ratio,null,1.8,1.8,null
+valve02,qchar@valve02,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+valve02,dpchar@valve02,ame_real_parameter,corresponding pressure drop ,bar,10,10,bar
+valve02,cqmax@valve02,ame_real_parameter,maximum flow coefficient,null,0.7,0.7,null
+valve02,orarea@valve02,ame_real_parameter,cross sectional area at maximum opening,mm**2,10,10,mm**2
+valve02,lcrit@valve02,ame_real_parameter,critical flow number,null,1000,1000,null
+valve02,rhochar@valve02,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+valve02,nuchar@valve02,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+valve02,indexf@valve02,ame_integer_parameter,index of hydraulic fluid,,0,0,
+valve02,method@valve02,ame_integer_parameter,pressure drop definition method,,1,1,
+valve02,userfp@valve02,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+valve02,spooldyn@valve02,ame_integer_parameter,spool dynamics,,3,3,
+valve02_2,maxin@valve02_2,ame_real_parameter,valve rated current,mA,40,40,mA
+valve02_2,tau@valve02_2,ame_real_parameter,valve time constant,s,0.05,0.05,s
+valve02_2,wn@valve02_2,ame_real_parameter,valve natural frequency,Hz,20,20,Hz
+valve02_2,zeta@valve02_2,ame_real_parameter,valve damping ratio,null,1.8,1.8,null
+valve02_2,qchar@valve02_2,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+valve02_2,dpchar@valve02_2,ame_real_parameter,corresponding pressure drop ,bar,10,10,bar
+valve02_2,cqmax@valve02_2,ame_real_parameter,maximum flow coefficient,null,0.7,0.7,null
+valve02_2,orarea@valve02_2,ame_real_parameter,cross sectional area at maximum opening,mm**2,10,10,mm**2
+valve02_2,lcrit@valve02_2,ame_real_parameter,critical flow number,null,1000,1000,null
+valve02_2,rhochar@valve02_2,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+valve02_2,nuchar@valve02_2,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+valve02_2,indexf@valve02_2,ame_integer_parameter,index of hydraulic fluid,,0,0,
+valve02_2,method@valve02_2,ame_integer_parameter,pressure drop definition method,,1,1,
+valve02_2,userfp@valve02_2,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+valve02_2,spooldyn@valve02_2,ame_integer_parameter,spool dynamics,,3,3,
+valve02_3,maxin@valve02_3,ame_real_parameter,valve rated current,mA,40,40,mA
+valve02_3,tau@valve02_3,ame_real_parameter,valve time constant,s,0.05,0.05,s
+valve02_3,wn@valve02_3,ame_real_parameter,valve natural frequency,Hz,20,20,Hz
+valve02_3,zeta@valve02_3,ame_real_parameter,valve damping ratio,null,1.8,1.8,null
+valve02_3,qchar@valve02_3,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+valve02_3,dpchar@valve02_3,ame_real_parameter,corresponding pressure drop ,bar,10,10,bar
+valve02_3,cqmax@valve02_3,ame_real_parameter,maximum flow coefficient,null,0.7,0.7,null
+valve02_3,orarea@valve02_3,ame_real_parameter,cross sectional area at maximum opening,mm**2,10,10,mm**2
+valve02_3,lcrit@valve02_3,ame_real_parameter,critical flow number,null,1000,1000,null
+valve02_3,rhochar@valve02_3,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+valve02_3,nuchar@valve02_3,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+valve02_3,indexf@valve02_3,ame_integer_parameter,index of hydraulic fluid,,0,0,
+valve02_3,method@valve02_3,ame_integer_parameter,pressure drop definition method,,1,1,
+valve02_3,userfp@valve02_3,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+valve02_3,spooldyn@valve02_3,ame_integer_parameter,spool dynamics,,3,3,
+valve02_4,maxin@valve02_4,ame_real_parameter,valve rated current,mA,40,40,mA
+valve02_4,tau@valve02_4,ame_real_parameter,valve time constant,s,0.05,0.05,s
+valve02_4,wn@valve02_4,ame_real_parameter,valve natural frequency,Hz,20,20,Hz
+valve02_4,zeta@valve02_4,ame_real_parameter,valve damping ratio,null,1.8,1.8,null
+valve02_4,qchar@valve02_4,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+valve02_4,dpchar@valve02_4,ame_real_parameter,corresponding pressure drop ,bar,10,10,bar
+valve02_4,cqmax@valve02_4,ame_real_parameter,maximum flow coefficient,null,0.7,0.7,null
+valve02_4,orarea@valve02_4,ame_real_parameter,cross sectional area at maximum opening,mm**2,10,10,mm**2
+valve02_4,lcrit@valve02_4,ame_real_parameter,critical flow number,null,1000,1000,null
+valve02_4,rhochar@valve02_4,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+valve02_4,nuchar@valve02_4,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+valve02_4,indexf@valve02_4,ame_integer_parameter,index of hydraulic fluid,,0,0,
+valve02_4,method@valve02_4,ame_integer_parameter,pressure drop definition method,,1,1,
+valve02_4,userfp@valve02_4,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+valve02_4,spooldyn@valve02_4,ame_integer_parameter,spool dynamics,,3,3,
+valve02_5,maxin@valve02_5,ame_real_parameter,valve rated current,mA,40,40,mA
+valve02_5,tau@valve02_5,ame_real_parameter,valve time constant,s,0.05,0.05,s
+valve02_5,wn@valve02_5,ame_real_parameter,valve natural frequency,Hz,20,20,Hz
+valve02_5,zeta@valve02_5,ame_real_parameter,valve damping ratio,null,1.8,1.8,null
+valve02_5,qchar@valve02_5,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+valve02_5,dpchar@valve02_5,ame_real_parameter,corresponding pressure drop ,bar,10,10,bar
+valve02_5,cqmax@valve02_5,ame_real_parameter,maximum flow coefficient,null,0.7,0.7,null
+valve02_5,orarea@valve02_5,ame_real_parameter,cross sectional area at maximum opening,mm**2,10,10,mm**2
+valve02_5,lcrit@valve02_5,ame_real_parameter,critical flow number,null,1000,1000,null
+valve02_5,rhochar@valve02_5,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+valve02_5,nuchar@valve02_5,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+valve02_5,indexf@valve02_5,ame_integer_parameter,index of hydraulic fluid,,0,0,
+valve02_5,method@valve02_5,ame_integer_parameter,pressure drop definition method,,1,1,
+valve02_5,userfp@valve02_5,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+valve02_5,spooldyn@valve02_5,ame_integer_parameter,spool dynamics,,3,3,

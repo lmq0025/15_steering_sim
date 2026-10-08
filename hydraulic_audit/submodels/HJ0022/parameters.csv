@@ -1,0 +1,46 @@
+﻿alias,data_path,parameter_type,title,unit,raw_value,resolved_value,value_unit
+springreturnactuator,xact0@springreturnactuator,ame_real_parameter,#displacement of piston,m,0,0,m
+springreturnactuator,diamp@springreturnactuator,ame_real_parameter,piston diameter,mm,pid,sqrt(5000*4/PI),mm
+springreturnactuator,diamr@springreturnactuator,ame_real_parameter,rod diameter,mm,rd,sqrt((5000-3700)*4/PI),mm
+springreturnactuator,stroke@springreturnactuator,ame_real_parameter,length of stroke,m,sl4,0.13,m
+springreturnactuator,dead1@springreturnactuator,ame_real_parameter,dead volume at port 1 end,cm**3,50,50,cm**3
+springreturnactuator,dead2@springreturnactuator,ame_real_parameter,dead volume at port 2 end,cm**3,50,50,cm**3
+springreturnactuator,cvisc@springreturnactuator,ame_real_parameter,viscous friction coefficient,N/(m/s),0,0,N/(m/s)
+springreturnactuator,cleak@springreturnactuator,ame_real_parameter,leakage coefficient,L/min/bar,0,0,L/min/bar
+springreturnactuator,preld@springreturnactuator,ame_real_parameter,spring preload,N,0,0,N
+springreturnactuator,ksprng@springreturnactuator,ame_real_parameter,spring rate,N/m,10000,10000,N/m
+springreturnactuator,k@springreturnactuator,ame_real_parameter,spring rate at endstops,N/mm,100000,100000,N/mm
+springreturnactuator,cdamp@springreturnactuator,ame_real_parameter,damping coefficient on endstops,N/(m/s),100000,100000,N/(m/s)
+springreturnactuator,distdef@springreturnactuator,ame_real_parameter,deformation on endstops at which damping rate is fully effective,mm,0.001,0.001,mm
+springreturnactuator,indexf@springreturnactuator,ame_integer_parameter,index of hydraulic fluid,,0,0,
+springreturnactuator,usedispl@springreturnactuator,ame_integer_parameter,use initial displacement,,1,1,
+springreturnactuator_1,xact0@springreturnactuator_1,ame_real_parameter,#displacement of piston,m,0,0,m
+springreturnactuator_1,diamp@springreturnactuator_1,ame_real_parameter,piston diameter,mm,pid,sqrt(5000*4/PI),mm
+springreturnactuator_1,diamr@springreturnactuator_1,ame_real_parameter,rod diameter,mm,rd,sqrt((5000-3700)*4/PI),mm
+springreturnactuator_1,stroke@springreturnactuator_1,ame_real_parameter,length of stroke,m,sl5,0.195,m
+springreturnactuator_1,dead1@springreturnactuator_1,ame_real_parameter,dead volume at port 1 end,cm**3,50,50,cm**3
+springreturnactuator_1,dead2@springreturnactuator_1,ame_real_parameter,dead volume at port 2 end,cm**3,50,50,cm**3
+springreturnactuator_1,cvisc@springreturnactuator_1,ame_real_parameter,viscous friction coefficient,N/(m/s),0,0,N/(m/s)
+springreturnactuator_1,cleak@springreturnactuator_1,ame_real_parameter,leakage coefficient,L/min/bar,0,0,L/min/bar
+springreturnactuator_1,preld@springreturnactuator_1,ame_real_parameter,spring preload,N,0,0,N
+springreturnactuator_1,ksprng@springreturnactuator_1,ame_real_parameter,spring rate,N/m,10000,10000,N/m
+springreturnactuator_1,k@springreturnactuator_1,ame_real_parameter,spring rate at endstops,N/mm,100000,100000,N/mm
+springreturnactuator_1,cdamp@springreturnactuator_1,ame_real_parameter,damping coefficient on endstops,N/(m/s),100000,100000,N/(m/s)
+springreturnactuator_1,distdef@springreturnactuator_1,ame_real_parameter,deformation on endstops at which damping rate is fully effective,mm,0.001,0.001,mm
+springreturnactuator_1,indexf@springreturnactuator_1,ame_integer_parameter,index of hydraulic fluid,,0,0,
+springreturnactuator_1,usedispl@springreturnactuator_1,ame_integer_parameter,use initial displacement,,1,1,
+springreturnactuator_2,xact0@springreturnactuator_2,ame_real_parameter,#displacement of piston,m,0,0,m
+springreturnactuator_2,diamp@springreturnactuator_2,ame_real_parameter,piston diameter,mm,pid,sqrt(5000*4/PI),mm
+springreturnactuator_2,diamr@springreturnactuator_2,ame_real_parameter,rod diameter,mm,rd,sqrt((5000-3700)*4/PI),mm
+springreturnactuator_2,stroke@springreturnactuator_2,ame_real_parameter,length of stroke,m,sl6,0.265,m
+springreturnactuator_2,dead1@springreturnactuator_2,ame_real_parameter,dead volume at port 1 end,cm**3,50,50,cm**3
+springreturnactuator_2,dead2@springreturnactuator_2,ame_real_parameter,dead volume at port 2 end,cm**3,50,50,cm**3
+springreturnactuator_2,cvisc@springreturnactuator_2,ame_real_parameter,viscous friction coefficient,N/(m/s),0,0,N/(m/s)
+springreturnactuator_2,cleak@springreturnactuator_2,ame_real_parameter,leakage coefficient,L/min/bar,0,0,L/min/bar
+springreturnactuator_2,preld@springreturnactuator_2,ame_real_parameter,spring preload,N,0,0,N
+springreturnactuator_2,ksprng@springreturnactuator_2,ame_real_parameter,spring rate,N/m,10000,10000,N/m
+springreturnactuator_2,k@springreturnactuator_2,ame_real_parameter,spring rate at endstops,N/mm,100000,100000,N/mm
+springreturnactuator_2,cdamp@springreturnactuator_2,ame_real_parameter,damping coefficient on endstops,N/(m/s),100000,100000,N/(m/s)
+springreturnactuator_2,distdef@springreturnactuator_2,ame_real_parameter,deformation on endstops at which damping rate is fully effective,mm,0.001,0.001,mm
+springreturnactuator_2,indexf@springreturnactuator_2,ame_integer_parameter,index of hydraulic fluid,,0,0,
+springreturnactuator_2,usedispl@springreturnactuator_2,ame_integer_parameter,use initial displacement,,1,1,

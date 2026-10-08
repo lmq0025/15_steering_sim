@@ -1,0 +1,13 @@
+﻿alias,data_path,variable_type,basic_type,title,unit,io_type,input_type,usage
+control02,input1@control02,1,ame_basic_variable,input at port 1,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control02,output@control02,1,ame_basic_variable,output from summing junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control02,input3@control02,1,ame_basic_variable,input at port 3,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control02_1,input1@control02_1,1,ame_basic_variable,input at port 1,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control02_1,output@control02_1,1,ame_basic_variable,output from summing junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control02_1,input3@control02_1,1,ame_basic_variable,input at port 3,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+sum,input1@sum,1,ame_basic_variable,input at port 1,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+sum,output@sum,1,ame_basic_variable,output from summing junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+sum,input3@sum,1,ame_basic_variable,input at port 3,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control02_2,input1@control02_2,1,ame_basic_variable,input at port 1,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control02_2,output@control02_2,1,ame_basic_variable,output from summing junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control02_2,input3@control02_2,1,ame_basic_variable,input at port 3,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used

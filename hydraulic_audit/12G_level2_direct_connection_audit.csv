@@ -1,0 +1,11 @@
+﻿parent_alias,connection,source_kind,target_kind,action,result_junction,accounted_for,status
+dirvalve_1,,,,NO_DIRECT_HFLOW_CONNECTIONS,,yes,PASS
+dirvalve_10,,,,NO_DIRECT_HFLOW_CONNECTIONS,,yes,PASS
+dirvalve_11,,,,NO_DIRECT_HFLOW_CONNECTIONS,,yes,PASS
+dirvalve_12,,,,NO_DIRECT_HFLOW_CONNECTIONS,,yes,PASS
+dirvalve_13,,,,NO_DIRECT_HFLOW_CONNECTIONS,,yes,PASS
+dirvalve_2,,,,NO_DIRECT_HFLOW_CONNECTIONS,,yes,PASS
+dirvalve_3,,,,NO_DIRECT_HFLOW_CONNECTIONS,,yes,PASS
+dirvalve_6,,,,NO_DIRECT_HFLOW_CONNECTIONS,,yes,PASS
+dirvalve_8,,,,NO_DIRECT_HFLOW_CONNECTIONS,,yes,PASS
+dirvalve_9,,,,NO_DIRECT_HFLOW_CONNECTIONS,,yes,PASS

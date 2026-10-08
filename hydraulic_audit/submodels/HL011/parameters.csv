@@ -1,0 +1,145 @@
+﻿alias,data_path,parameter_type,title,unit,raw_value,resolved_value,value_unit
+hydraulic_56,diam@hydraulic_56,ame_real_parameter,diameter,mm,25,25,mm
+hydraulic_56,a@hydraulic_56,ame_real_parameter,width,mm,25,25,mm
+hydraulic_56,b@hydraulic_56,ame_real_parameter,height,mm,25,25,mm
+hydraulic_56,dinn@hydraulic_56,ame_real_parameter,inner diameter,mm,20,20,mm
+hydraulic_56,dout@hydraulic_56,ame_real_parameter,outer diameter,mm,25,25,mm
+hydraulic_56,ecc@hydraulic_56,ame_real_parameter,eccentricity ratio,null,0,0,null
+hydraulic_56,area@hydraulic_56,ame_real_parameter,cross-sectional area,mm**2,500,500,mm**2
+hydraulic_56,dh@hydraulic_56,ame_real_parameter,hydraulic diameter,mm,25,25,mm
+hydraulic_56,gain@hydraulic_56,ame_real_parameter,friction factor gain,null,1,1,null
+hydraulic_56,le@hydraulic_56,ame_real_parameter,length,m,1,1,m
+hydraulic_56,rr@hydraulic_56,ame_real_parameter,relative roughness,null,1e-05,1e-05,null
+hydraulic_56,ang@hydraulic_56,ame_real_parameter,angle line makes with horizontal (+ve if port 2 above port 1),degree,0,0,degree
+hydraulic_56,thick@hydraulic_56,ame_real_parameter,wall thickness,mm,10,10,mm
+hydraulic_56,emod@hydraulic_56,ame_real_parameter,Young's modulus for material,bar,2.06e+06,2.06e+06,bar
+hydraulic_56,beff@hydraulic_56,ame_real_parameter,user specified effective bulk modulus,bar,8000,8000,bar
+hydraulic_56,bulkfluid@hydraulic_56,ame_real_parameter,bulk modulus of the fluid used for pipe expansion measurements,bar,17000,17000,bar
+hydraulic_56,indexf@hydraulic_56,ame_integer_parameter,index of hydraulic fluid,,0,0,
+hydraulic_56,nodes@hydraulic_56,ame_integer_parameter,number of internal nodes (0...100),,5,5,
+hydraulic_56,method@hydraulic_56,ame_integer_parameter,evaluation of bulk modulus,,2,2,
+hydraulic_56,postproc@hydraulic_56,ame_integer_parameter,compute post-processing variables,,1,1,
+hydraulic_56,volexptype@hydraulic_56,ame_integer_parameter,volumetric expansion,,1,1,
+hydraulic_56,geom@hydraulic_56,ame_integer_parameter,section type,,1,1,
+hydraulic_56,dvfile@hydraulic_56,ame_text_parameter,filename for volumetric expansion[cm**3/m] = f(p[bar]),,$AME/libhydr/data/dV_P.data,$AME/libhydr/data/dV_P.data,
+hydraulic_56,bmwallfile@hydraulic_56,ame_text_parameter,filename for wall bulk modulus[bar] = f(p[bar]),,$AME/libhydr/data/bmwall_P.data,$AME/libhydr/data/bmwall_P.data,
+hydraulic_57,diam@hydraulic_57,ame_real_parameter,diameter,mm,25,25,mm
+hydraulic_57,a@hydraulic_57,ame_real_parameter,width,mm,25,25,mm
+hydraulic_57,b@hydraulic_57,ame_real_parameter,height,mm,25,25,mm
+hydraulic_57,dinn@hydraulic_57,ame_real_parameter,inner diameter,mm,20,20,mm
+hydraulic_57,dout@hydraulic_57,ame_real_parameter,outer diameter,mm,25,25,mm
+hydraulic_57,ecc@hydraulic_57,ame_real_parameter,eccentricity ratio,null,0,0,null
+hydraulic_57,area@hydraulic_57,ame_real_parameter,cross-sectional area,mm**2,500,500,mm**2
+hydraulic_57,dh@hydraulic_57,ame_real_parameter,hydraulic diameter,mm,25,25,mm
+hydraulic_57,gain@hydraulic_57,ame_real_parameter,friction factor gain,null,1,1,null
+hydraulic_57,le@hydraulic_57,ame_real_parameter,length,m,1,1,m
+hydraulic_57,rr@hydraulic_57,ame_real_parameter,relative roughness,null,1e-05,1e-05,null
+hydraulic_57,ang@hydraulic_57,ame_real_parameter,angle line makes with horizontal (+ve if port 2 above port 1),degree,0,0,degree
+hydraulic_57,thick@hydraulic_57,ame_real_parameter,wall thickness,mm,10,10,mm
+hydraulic_57,emod@hydraulic_57,ame_real_parameter,Young's modulus for material,bar,2.06e+06,2.06e+06,bar
+hydraulic_57,beff@hydraulic_57,ame_real_parameter,user specified effective bulk modulus,bar,8000,8000,bar
+hydraulic_57,bulkfluid@hydraulic_57,ame_real_parameter,bulk modulus of the fluid used for pipe expansion measurements,bar,17000,17000,bar
+hydraulic_57,indexf@hydraulic_57,ame_integer_parameter,index of hydraulic fluid,,0,0,
+hydraulic_57,nodes@hydraulic_57,ame_integer_parameter,number of internal nodes (0...100),,5,5,
+hydraulic_57,method@hydraulic_57,ame_integer_parameter,evaluation of bulk modulus,,2,2,
+hydraulic_57,postproc@hydraulic_57,ame_integer_parameter,compute post-processing variables,,1,1,
+hydraulic_57,volexptype@hydraulic_57,ame_integer_parameter,volumetric expansion,,1,1,
+hydraulic_57,geom@hydraulic_57,ame_integer_parameter,section type,,1,1,
+hydraulic_57,dvfile@hydraulic_57,ame_text_parameter,filename for volumetric expansion[cm**3/m] = f(p[bar]),,$AME/libhydr/data/dV_P.data,$AME/libhydr/data/dV_P.data,
+hydraulic_57,bmwallfile@hydraulic_57,ame_text_parameter,filename for wall bulk modulus[bar] = f(p[bar]),,$AME/libhydr/data/bmwall_P.data,$AME/libhydr/data/bmwall_P.data,
+hydraulic_61,diam@hydraulic_61,ame_real_parameter,diameter,mm,25,25,mm
+hydraulic_61,a@hydraulic_61,ame_real_parameter,width,mm,25,25,mm
+hydraulic_61,b@hydraulic_61,ame_real_parameter,height,mm,25,25,mm
+hydraulic_61,dinn@hydraulic_61,ame_real_parameter,inner diameter,mm,20,20,mm
+hydraulic_61,dout@hydraulic_61,ame_real_parameter,outer diameter,mm,25,25,mm
+hydraulic_61,ecc@hydraulic_61,ame_real_parameter,eccentricity ratio,null,0,0,null
+hydraulic_61,area@hydraulic_61,ame_real_parameter,cross-sectional area,mm**2,500,500,mm**2
+hydraulic_61,dh@hydraulic_61,ame_real_parameter,hydraulic diameter,mm,25,25,mm
+hydraulic_61,gain@hydraulic_61,ame_real_parameter,friction factor gain,null,1,1,null
+hydraulic_61,le@hydraulic_61,ame_real_parameter,length,m,1,1,m
+hydraulic_61,rr@hydraulic_61,ame_real_parameter,relative roughness,null,1e-05,1e-05,null
+hydraulic_61,ang@hydraulic_61,ame_real_parameter,angle line makes with horizontal (+ve if port 2 above port 1),degree,0,0,degree
+hydraulic_61,thick@hydraulic_61,ame_real_parameter,wall thickness,mm,10,10,mm
+hydraulic_61,emod@hydraulic_61,ame_real_parameter,Young's modulus for material,bar,2.06e+06,2.06e+06,bar
+hydraulic_61,beff@hydraulic_61,ame_real_parameter,user specified effective bulk modulus,bar,8000,8000,bar
+hydraulic_61,bulkfluid@hydraulic_61,ame_real_parameter,bulk modulus of the fluid used for pipe expansion measurements,bar,17000,17000,bar
+hydraulic_61,indexf@hydraulic_61,ame_integer_parameter,index of hydraulic fluid,,0,0,
+hydraulic_61,nodes@hydraulic_61,ame_integer_parameter,number of internal nodes (0...100),,5,5,
+hydraulic_61,method@hydraulic_61,ame_integer_parameter,evaluation of bulk modulus,,2,2,
+hydraulic_61,postproc@hydraulic_61,ame_integer_parameter,compute post-processing variables,,1,1,
+hydraulic_61,volexptype@hydraulic_61,ame_integer_parameter,volumetric expansion,,1,1,
+hydraulic_61,geom@hydraulic_61,ame_integer_parameter,section type,,1,1,
+hydraulic_61,dvfile@hydraulic_61,ame_text_parameter,filename for volumetric expansion[cm**3/m] = f(p[bar]),,$AME/libhydr/data/dV_P.data,$AME/libhydr/data/dV_P.data,
+hydraulic_61,bmwallfile@hydraulic_61,ame_text_parameter,filename for wall bulk modulus[bar] = f(p[bar]),,$AME/libhydr/data/bmwall_P.data,$AME/libhydr/data/bmwall_P.data,
+hydraulic_62,diam@hydraulic_62,ame_real_parameter,diameter,mm,25,25,mm
+hydraulic_62,a@hydraulic_62,ame_real_parameter,width,mm,25,25,mm
+hydraulic_62,b@hydraulic_62,ame_real_parameter,height,mm,25,25,mm
+hydraulic_62,dinn@hydraulic_62,ame_real_parameter,inner diameter,mm,20,20,mm
+hydraulic_62,dout@hydraulic_62,ame_real_parameter,outer diameter,mm,25,25,mm
+hydraulic_62,ecc@hydraulic_62,ame_real_parameter,eccentricity ratio,null,0,0,null
+hydraulic_62,area@hydraulic_62,ame_real_parameter,cross-sectional area,mm**2,500,500,mm**2
+hydraulic_62,dh@hydraulic_62,ame_real_parameter,hydraulic diameter,mm,25,25,mm
+hydraulic_62,gain@hydraulic_62,ame_real_parameter,friction factor gain,null,1,1,null
+hydraulic_62,le@hydraulic_62,ame_real_parameter,length,m,1,1,m
+hydraulic_62,rr@hydraulic_62,ame_real_parameter,relative roughness,null,1e-05,1e-05,null
+hydraulic_62,ang@hydraulic_62,ame_real_parameter,angle line makes with horizontal (+ve if port 2 above port 1),degree,0,0,degree
+hydraulic_62,thick@hydraulic_62,ame_real_parameter,wall thickness,mm,10,10,mm
+hydraulic_62,emod@hydraulic_62,ame_real_parameter,Young's modulus for material,bar,2.06e+06,2.06e+06,bar
+hydraulic_62,beff@hydraulic_62,ame_real_parameter,user specified effective bulk modulus,bar,8000,8000,bar
+hydraulic_62,bulkfluid@hydraulic_62,ame_real_parameter,bulk modulus of the fluid used for pipe expansion measurements,bar,17000,17000,bar
+hydraulic_62,indexf@hydraulic_62,ame_integer_parameter,index of hydraulic fluid,,0,0,
+hydraulic_62,nodes@hydraulic_62,ame_integer_parameter,number of internal nodes (0...100),,5,5,
+hydraulic_62,method@hydraulic_62,ame_integer_parameter,evaluation of bulk modulus,,2,2,
+hydraulic_62,postproc@hydraulic_62,ame_integer_parameter,compute post-processing variables,,1,1,
+hydraulic_62,volexptype@hydraulic_62,ame_integer_parameter,volumetric expansion,,1,1,
+hydraulic_62,geom@hydraulic_62,ame_integer_parameter,section type,,1,1,
+hydraulic_62,dvfile@hydraulic_62,ame_text_parameter,filename for volumetric expansion[cm**3/m] = f(p[bar]),,$AME/libhydr/data/dV_P.data,$AME/libhydr/data/dV_P.data,
+hydraulic_62,bmwallfile@hydraulic_62,ame_text_parameter,filename for wall bulk modulus[bar] = f(p[bar]),,$AME/libhydr/data/bmwall_P.data,$AME/libhydr/data/bmwall_P.data,
+hydraulic_63,diam@hydraulic_63,ame_real_parameter,diameter,mm,25,25,mm
+hydraulic_63,a@hydraulic_63,ame_real_parameter,width,mm,25,25,mm
+hydraulic_63,b@hydraulic_63,ame_real_parameter,height,mm,25,25,mm
+hydraulic_63,dinn@hydraulic_63,ame_real_parameter,inner diameter,mm,20,20,mm
+hydraulic_63,dout@hydraulic_63,ame_real_parameter,outer diameter,mm,25,25,mm
+hydraulic_63,ecc@hydraulic_63,ame_real_parameter,eccentricity ratio,null,0,0,null
+hydraulic_63,area@hydraulic_63,ame_real_parameter,cross-sectional area,mm**2,500,500,mm**2
+hydraulic_63,dh@hydraulic_63,ame_real_parameter,hydraulic diameter,mm,25,25,mm
+hydraulic_63,gain@hydraulic_63,ame_real_parameter,friction factor gain,null,1,1,null
+hydraulic_63,le@hydraulic_63,ame_real_parameter,length,m,1,1,m
+hydraulic_63,rr@hydraulic_63,ame_real_parameter,relative roughness,null,1e-05,1e-05,null
+hydraulic_63,ang@hydraulic_63,ame_real_parameter,angle line makes with horizontal (+ve if port 2 above port 1),degree,0,0,degree
+hydraulic_63,thick@hydraulic_63,ame_real_parameter,wall thickness,mm,10,10,mm
+hydraulic_63,emod@hydraulic_63,ame_real_parameter,Young's modulus for material,bar,2.06e+06,2.06e+06,bar
+hydraulic_63,beff@hydraulic_63,ame_real_parameter,user specified effective bulk modulus,bar,8000,8000,bar
+hydraulic_63,bulkfluid@hydraulic_63,ame_real_parameter,bulk modulus of the fluid used for pipe expansion measurements,bar,17000,17000,bar
+hydraulic_63,indexf@hydraulic_63,ame_integer_parameter,index of hydraulic fluid,,0,0,
+hydraulic_63,nodes@hydraulic_63,ame_integer_parameter,number of internal nodes (0...100),,5,5,
+hydraulic_63,method@hydraulic_63,ame_integer_parameter,evaluation of bulk modulus,,2,2,
+hydraulic_63,postproc@hydraulic_63,ame_integer_parameter,compute post-processing variables,,1,1,
+hydraulic_63,volexptype@hydraulic_63,ame_integer_parameter,volumetric expansion,,1,1,
+hydraulic_63,geom@hydraulic_63,ame_integer_parameter,section type,,1,1,
+hydraulic_63,dvfile@hydraulic_63,ame_text_parameter,filename for volumetric expansion[cm**3/m] = f(p[bar]),,$AME/libhydr/data/dV_P.data,$AME/libhydr/data/dV_P.data,
+hydraulic_63,bmwallfile@hydraulic_63,ame_text_parameter,filename for wall bulk modulus[bar] = f(p[bar]),,$AME/libhydr/data/bmwall_P.data,$AME/libhydr/data/bmwall_P.data,
+hydraulic_70,diam@hydraulic_70,ame_real_parameter,diameter,mm,25,25,mm
+hydraulic_70,a@hydraulic_70,ame_real_parameter,width,mm,25,25,mm
+hydraulic_70,b@hydraulic_70,ame_real_parameter,height,mm,25,25,mm
+hydraulic_70,dinn@hydraulic_70,ame_real_parameter,inner diameter,mm,20,20,mm
+hydraulic_70,dout@hydraulic_70,ame_real_parameter,outer diameter,mm,25,25,mm
+hydraulic_70,ecc@hydraulic_70,ame_real_parameter,eccentricity ratio,null,0,0,null
+hydraulic_70,area@hydraulic_70,ame_real_parameter,cross-sectional area,mm**2,500,500,mm**2
+hydraulic_70,dh@hydraulic_70,ame_real_parameter,hydraulic diameter,mm,25,25,mm
+hydraulic_70,gain@hydraulic_70,ame_real_parameter,friction factor gain,null,1,1,null
+hydraulic_70,le@hydraulic_70,ame_real_parameter,length,m,1,1,m
+hydraulic_70,rr@hydraulic_70,ame_real_parameter,relative roughness,null,1e-05,1e-05,null
+hydraulic_70,ang@hydraulic_70,ame_real_parameter,angle line makes with horizontal (+ve if port 2 above port 1),degree,0,0,degree
+hydraulic_70,thick@hydraulic_70,ame_real_parameter,wall thickness,mm,10,10,mm
+hydraulic_70,emod@hydraulic_70,ame_real_parameter,Young's modulus for material,bar,2.06e+06,2.06e+06,bar
+hydraulic_70,beff@hydraulic_70,ame_real_parameter,user specified effective bulk modulus,bar,8000,8000,bar
+hydraulic_70,bulkfluid@hydraulic_70,ame_real_parameter,bulk modulus of the fluid used for pipe expansion measurements,bar,17000,17000,bar
+hydraulic_70,indexf@hydraulic_70,ame_integer_parameter,index of hydraulic fluid,,0,0,
+hydraulic_70,nodes@hydraulic_70,ame_integer_parameter,number of internal nodes (0...100),,5,5,
+hydraulic_70,method@hydraulic_70,ame_integer_parameter,evaluation of bulk modulus,,2,2,
+hydraulic_70,postproc@hydraulic_70,ame_integer_parameter,compute post-processing variables,,1,1,
+hydraulic_70,volexptype@hydraulic_70,ame_integer_parameter,volumetric expansion,,1,1,
+hydraulic_70,geom@hydraulic_70,ame_integer_parameter,section type,,1,1,
+hydraulic_70,dvfile@hydraulic_70,ame_text_parameter,filename for volumetric expansion[cm**3/m] = f(p[bar]),,$AME/libhydr/data/dV_P.data,$AME/libhydr/data/dV_P.data,
+hydraulic_70,bmwallfile@hydraulic_70,ame_text_parameter,filename for wall bulk modulus[bar] = f(p[bar]),,$AME/libhydr/data/bmwall_P.data,$AME/libhydr/data/bmwall_P.data,

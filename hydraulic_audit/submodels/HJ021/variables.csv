@@ -1,0 +1,28 @@
+﻿alias,data_path,variable_type,basic_type,title,unit,io_type,input_type,usage
+actuator002,p1@actuator002,1,ame_state_variable,pressure at port 1,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+actuator002,q1@actuator002,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+actuator002,p2@actuator002,1,ame_state_variable,pressure at port 2,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+actuator002,q2@actuator002,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+actuator002,frod@actuator002,1,ame_basic_variable,force exerted by actuator rod,N,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+actuator002,v@actuator002,1,ame_basic_variable,input velocity,m/s,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+actuator002,x@actuator002,1,ame_basic_variable,input displacement,m,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+actuator002,xact@actuator002,1,ame_basic_variable,displacement of piston new,m,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+actuator002,qleak@actuator002,1,ame_basic_variable,leakage flow rate,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+actuator002,actRleak@actuator002,1,ame_state_variable,activity of hydraulic dissipation (leak),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+actuator002,powerRleak@actuator002,1,ame_basic_variable,power of hydraulic dissipation (leak),W,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+actuator002,energyRleak@actuator002,1,ame_state_variable,energy of hydraulic dissipation (leak),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+actuator002,actCchamber1@actuator002,1,ame_state_variable,activity of hydraulic capacitance (chamber1),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+actuator002,powerCchamber1@actuator002,1,ame_basic_variable,power of hydraulic capacitance (chamber1),W,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+actuator002,energyCchamber1@actuator002,1,ame_state_variable,energy of hydraulic capacitance (chamber1),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+actuator002,actCchamber2@actuator002,1,ame_state_variable,activity of hydraulic capacitance (chamber2),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+actuator002,powerCchamber2@actuator002,1,ame_basic_variable,power of hydraulic capacitance (chamber2),W,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+actuator002,energyCchamber2@actuator002,1,ame_state_variable,energy of hydraulic capacitance (chamber2),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+actuator002,actRfrict@actuator002,1,ame_state_variable,activity of mechanical dissipation (frict),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+actuator002,powerRfrict@actuator002,1,ame_basic_variable,power of mechanical dissipation (frict),W,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+actuator002,energyRfrict@actuator002,1,ame_state_variable,energy of mechanical dissipation (frict),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+actuator002,actCendstop@actuator002,1,ame_state_variable,activity of mechanical capacitance (endstop),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+actuator002,powerCendstop@actuator002,1,ame_basic_variable,power of mechanical capacitance (endstop),W,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+actuator002,energyCendstop@actuator002,1,ame_state_variable,energy of mechanical capacitance (endstop),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+actuator002,actSpatm@actuator002,1,ame_state_variable,activity of hydraulic source (patm),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+actuator002,powerSpatm@actuator002,1,ame_basic_variable,power of hydraulic source (patm),W,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+actuator002,energySpatm@actuator002,1,ame_state_variable,energy of hydraulic source (patm),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown

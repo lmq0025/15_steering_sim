@@ -1,0 +1,6 @@
+﻿stage,changes,python_max_pump_pressure_pa,amesim_max_pump_pressure_pa,pump_pressure_error,presscontrol01_open_s,presscontrol01_3_open_s,good_count,acceptable_count,poor_count,pump_flow_error,actuator_pressure_error_summary
+C2A-0_BASELINE,none; frozen C1 oracle,241603581.09234568,18662269.95419734,222941311.13814834,NEVER,NEVER,48,8,98,0.0,C1 frozen baseline
+C2A-1_PRESSURE_REFERENCE_TANK,gauge reference/tank 1e5 -> 0 Pa,241617608.16680548,18662269.95419734,222955338.21260813,NEVER,NEVER,62,5,87,0.0,mean NRMSE=0.424587
+C2A-2_CV010,CV010 source gradient and zero-hysteresis llimit,241182347.12150627,18662269.95419734,222520077.16730893,NEVER,NEVER,62,5,87,0.0,mean NRMSE=0.424283
+C2A-3_RV010,RV010 source gradient and zero-hysteresis llimit,241180804.41620567,18662269.95419734,222518534.46200833,NEVER,NEVER,63,5,86,0.0,mean NRMSE=0.42576
+C2A-4_PRESSURE_PATH_R_REJECTED,trial only: HYDORF0 area/Cd and HYDORT0 data curve; not accepted,,18662269.95419734,,,,,,,,"0.1 s passed but 1 s produced NaN/Inf; combined change rejected, no production activation"

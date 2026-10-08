@@ -1,0 +1,48 @@
+{
+  "fast_states": 109,
+  "fast_line_states": 67,
+  "algebraic_groups": 49,
+  "initialization": {
+    "success": true,
+    "max_hydraulic_residual": 5.7461035173996736e-08,
+    "max_mechanical_residual": 0.0
+  },
+  "runs": {
+    "0.01s": {
+      "success": true,
+      "wall_time_s": 1.2823003999656066,
+      "real_time_factor": 128.23003999656066,
+      "nfev": 62,
+      "njev": 1,
+      "nlu": 8,
+      "repetitions": 3
+    },
+    "0.1s": {
+      "success": true,
+      "wall_time_s": 42.99253589997534,
+      "real_time_factor": 429.92535899975337,
+      "nfev": 624,
+      "njev": 49,
+      "nlu": 157,
+      "repetitions": 3
+    },
+    "1s": {
+      "success": true,
+      "wall_time_s": 150.88667049992364,
+      "real_time_factor": 150.88667049992364,
+      "nfev": 2371,
+      "njev": 169,
+      "nlu": 656,
+      "repetitions": 3
+    }
+  },
+  "algebraic_solver": {
+    "total_calls": 972359,
+    "total_failures": 0,
+    "max_iterations": 4,
+    "mean_iterations": 1.0109342331381723,
+    "warm_start_hit_rate": 0.9998488212686878
+  },
+  "pytest": "176 passed in 283.95s (0:04:43)",
+  "ready_for_amesim_comparison": true
+}

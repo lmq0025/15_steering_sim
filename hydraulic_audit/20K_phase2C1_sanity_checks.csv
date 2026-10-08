@@ -1,0 +1,16 @@
+﻿check,status,evidence
+Amesim simulation success,PASS,True
+Python 0.1 s simulation success,PASS,True
+Python 1.0 s simulation success,PASS,True
+duration equal,PASS,True
+time grid aligned,PASS,True
+all requested Amesim variables extracted,PASS,True
+units verified through variable map,PASS,True
+no accidental Amesim save,PASS,True
+Python 109 states unchanged,PASS,True
+IR V3 recorded immutable,PASS,True
+Python physics parameters unchanged,PASS,True
+sparse Jacobian disabled,PASS,True
+comparison init documented,PASS,True
+pump high-pressure trace complete,PASS,True
+algebraic failures zero,PASS,True

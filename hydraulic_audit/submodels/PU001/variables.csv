@@ -1,0 +1,25 @@
+﻿alias,data_path,variable_type,basic_type,title,unit,io_type,input_type,usage
+pump01,qin@pump01,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+pump01,pin@pump01,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+pump01,qout@pump01,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+pump01,pout@pump01,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+pump01,torque@pump01,1,ame_basic_variable,shaft torque at port 3,Nm,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+pump01,speed@pump01,1,ame_basic_variable,shaft speed at port 3,rev/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+pump01_1,qin@pump01_1,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+pump01_1,pin@pump01_1,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+pump01_1,qout@pump01_1,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+pump01_1,pout@pump01_1,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+pump01_1,torque@pump01_1,1,ame_basic_variable,shaft torque at port 3,Nm,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+pump01_1,speed@pump01_1,1,ame_basic_variable,shaft speed at port 3,rev/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+pump01_2,qin@pump01_2,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+pump01_2,pin@pump01_2,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+pump01_2,qout@pump01_2,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+pump01_2,pout@pump01_2,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+pump01_2,torque@pump01_2,1,ame_basic_variable,shaft torque at port 3,Nm,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+pump01_2,speed@pump01_2,1,ame_basic_variable,shaft speed at port 3,rev/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+pump01_3,qin@pump01_3,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+pump01_3,pin@pump01_3,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+pump01_3,qout@pump01_3,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+pump01_3,pout@pump01_3,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+pump01_3,torque@pump01_3,1,ame_basic_variable,shaft torque at port 3,Nm,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+pump01_3,speed@pump01_3,1,ame_basic_variable,shaft speed at port 3,rev/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used

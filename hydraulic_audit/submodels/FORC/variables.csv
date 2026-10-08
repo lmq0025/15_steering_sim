@@ -1,0 +1,13 @@
+﻿alias,data_path,variable_type,basic_type,title,unit,io_type,input_type,usage
+forcecon,input@forcecon,1,ame_basic_variable,signal input,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+forcecon,force@forcecon,1,ame_basic_variable,force output,N,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+forcecon_1,input@forcecon_1,1,ame_basic_variable,signal input,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+forcecon_1,force@forcecon_1,1,ame_basic_variable,force output,N,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+forcecon_2,input@forcecon_2,1,ame_basic_variable,signal input,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+forcecon_2,force@forcecon_2,1,ame_basic_variable,force output,N,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+forcecon_3,input@forcecon_3,1,ame_basic_variable,signal input,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+forcecon_3,force@forcecon_3,1,ame_basic_variable,force output,N,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+forcecon_4,input@forcecon_4,1,ame_basic_variable,signal input,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+forcecon_4,force@forcecon_4,1,ame_basic_variable,force output,N,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+forcecon_5,input@forcecon_5,1,ame_basic_variable,signal input,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+forcecon_5,force@forcecon_5,1,ame_basic_variable,force output,N,ame_variable_io_output,ame_variable_input_none,ame_variable_used

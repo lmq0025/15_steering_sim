@@ -1,0 +1,11 @@
+﻿alias,data_path,variable_type,basic_type,title,unit,io_type,input_type,usage
+mass1port,v@mass1port,1,ame_state_variable,velocity at port 1,m/s,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+mass1port,x@mass1port,1,ame_state_variable,displacement port 1,m,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+mass1port,accel@mass1port,1,ame_basic_variable,acceleration at port 1,m/s/s,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+mass1port,force@mass1port,1,ame_basic_variable,force at port 1,N,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+mass1port,actImass@mass1port,1,ame_state_variable,activity of mechanical inertia (mass),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+mass1port,powerImass@mass1port,1,ame_basic_variable,power of mechanical inertia (mass),W,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+mass1port,energyImass@mass1port,1,ame_state_variable,energy of mechanical inertia (mass),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+mass1port,powerSgrav@mass1port,1,ame_basic_variable,power of mechanical source (grav),W,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+mass1port,energySgrav@mass1port,1,ame_state_variable,energy of mechanical source (grav),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+mass1port,actSgrav@mass1port,1,ame_state_variable,activity of mechanical source (grav),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown

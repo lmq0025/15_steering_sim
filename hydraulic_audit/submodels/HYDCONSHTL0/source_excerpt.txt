@@ -1,0 +1,434 @@
+SUBMODEL: HYDCONSHTL0
+SOURCE FILES: 2
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\HYDCONSHTL0.c
+==============================================================================
+...
+     1: /* Submodel HYDCONSHTL0 skeleton created by AME Submodel editing utility
+     2:    Wed Mar 9 15:07:27 2016 */
+     3: 
+     4: 
+     5: 
+     6: #include <math.h>
+     7: #include <stdio.h>
+     8: #include <stdlib.h>
+     9: #include "ameutils.h"
+    10: /* *******************************************************************************
+    11: SOURCE :
+    12:    Siemens Industry Software SAS
+    13:    7 place des Minimes
+    14:    42300 Roanne - France
+    15:    tel: (33).04.77.23.60.30
+    16:    fax: (33).04.77.23.60.31
+    17:    www.siemens.com/plm
+    18: 
+    19:    Copyright 2015 Siemens Industry Software NV
+    20: ******************************************************************************* */
+    21: 
+    22: #define _SUBMODELNAME_ "HYDCONSHTL0"
+    23: 
+    24: /* >>>>>>>>>>>>Insert Private Code Here. */
+    25: #define DISC_ENDSTOP    0
+    26: /* <<<<<<<<<<<<End of Private Code. */
+    27: 
+    28: /* There is 1 integer parameter:
+    29: 
+    30:    indexf index of hydraulic fluid
+    31: */
+    32: 
+    33: void hydconshtl0in_(int *n, int ip[1], int ic[1])
+    34: 
+    35: {
+    36:    int loop, error;
+    37: /* >>>>>>>>>>>>Extra Initialization Function Declarations Here. */
+    38: /* <<<<<<<<<<<<End of Extra Initialization declarations. */
+    39:    int indexf;
+    40: 
+    41:    indexf     = ip[0];
+    42:    loop = 0;
+    43:    error = 0;
+    44: 
+    45: 
+    46: /* >>>>>>>>>>>>Initialization Function Check Statements. */
+    47:    hyd_valid_liquid_(&indexf, &error);
+    48: /* <<<<<<<<<<<<End of Initialization Check Statements. */
+    49: 
+    50: /*   Integer parameter checking:   */
+    51: 
+    52:    if (indexf < 0 || indexf > 100)
+    53:    {
+    54:       amefprintf(stderr, "\nindex of hydraulic fluid must be in range [0..100].\n");
+    55:       error = 2;
+    56:    }
+    57: 
+    58:    if(error == 1)
+    59:    {
+    60:       amefprintf(stderr, "\nWarning in %s instance %d.\n", _SUBMODELNAME_, *n);
+    61:    }
+    62:    else if(error == 2)
+    63:    {
+    64:       amefprintf(stderr, "\nFatal error in %s instance %d.\n", _SUBMODELNAME_, *n);
+    65:       amefprintf(stderr, "Terminating the program.\n");
+    66:       AmeExit(1);
+    67:    }
+    68: 
+    69: 
+    70: /* >>>>>>>>>>>>Initialization Function Executable Statements. */
+    71: /* <<<<<<<<<<<<End of Initialization Executable Statements. */
+    72: }
+    73: 
+    74: /*  There are 3 ports.
+    75: 
+    76:    Port 1 has 2 variables:
+    77: 
+    78:       1 q1     flow rate at port 1 [L/min -> m**3/s] multi line macro 'hydconshtl0_macro0_'  UNPLOTTABLE
+    79:       2 p1     pressure at port 1  [bar -> Pa]       basic variable input
+    80: 
+    81:    Port 2 has 2 variables:
+    82: 
+    83:       1 p2     pressure at port 2  [bar -> Pa]       multi line macro 'hydconshtl0_macro1_'
+    84:       2 q2     flow rate at port 2 [L/min -> m**3/s] basic variable input  UNPLOTTABLE
+    85: 
+    86:    Port 3 has 2 variables:
+    87: 
+    88:       1 q3     flow rate at port 3 [L/min -> m**3/s] multi line macro 'hydconshtl0_macro2_'  UNPLOTTABLE
+    89:       2 p3     pressure at port 3  [bar -> Pa]       basic variable input
+    90: */
+    91: 
+    92: /*  There is 1 internal variable.
+    93: 
+    94:       1 x     position [null] multi line macro 'hydconshtl0_macro3_'  UNPLOTTABLE
+    95: */
+    96: 
+    97: #if 0
+    98: 
+    99: /* THE CALCULATION FUNCTION WILL NOT BE CALLED. */
+   100: 
+   101: void hydconshtl0_(int *n, double *q1, double *p1, double *p2
+   102:       , double *q2, double *q3, double *p3, double *x, int ip[1]
+   103:       , int ic[1], int *flag)
+   104: 
+   105: {
+   106:    int loop, logi;
+   107: /* >>>>>>>>>>>>Extra Calculation Function Declarations Here. */
+   108: /* <<<<<<<<<<<<End of Extra Calculation declarations. */
+   109:    int indexf;
+   110: 
+   111:    indexf     = ip[0];
+   112:    logi = 0;
+   113:    loop = 0;
+   114: 
+   115: /* Common -> SI units conversions. */
+   116: 
+   117:    *q1       *= 1.66666666666667e-005;
+   118:    *p1       *= 1.00000000000000e+005;
+   119:    *p2       *= 1.00000000000000e+005;
+   120:    *q2       *= 1.66666666666667e-005;
+   121:    *q3       *= 1.66666666666667e-005;
+   122:    *p3       *= 1.00000000000000e+005;
+   123: 
+   124: /*
+   125:    Set all submodel outputs below:
+   126: 
+   127: */
+   128: 
+   129: 
+   130: 
+   131: /* >>>>>>>>>>>>Calculation Function Executable Statements. */
+   132: /* <<<<<<<<<<<<End of Calculation Executable Statements. */
+   133: 
+   134: /* SI -> Common units conversions. */
+   135: 
+   136:    *q1       /= 1.66666666666667e-005;
+   137:    *p1       /= 1.00000000000000e+005;
+   138:    *p2       /= 1.00000000000000e+005;
+   139:    *q2       /= 1.66666666666667e-005;
+   140:    *q3       /= 1.66666666666667e-005;
+   141:    *p3       /= 1.00000000000000e+005;
+   142: }
+   143: 
+   144: #endif
+   145: extern double hydconshtl0_macro0_(int *n, double *q2, double *x
+   146:       , int ip[1], int ic[1], int *flag)
+   147: 
+   148: {
+   149:    double q1;
+   150:    int loop, logi;
+   151: /* >>>>>>>>>>>>Extra Macro Function macro0 Declarations Here. */
+   152: /* <<<<<<<<<<<<End of Extra Macro macro0 declarations. */
+   153:    int indexf;
+   154: 
+   155:    indexf     = ip[0];
+   156:    logi = 0;
+   157:    loop = 0;
+   158: 
+   159: /* Common -> SI units conversions. */
+   160: 
+   161:    *q2       *= 1.66666666666667e-005;
+   162: 
+   163: /*
+   164:    Define and return the following macro variable:
+   165: 
+   166:    q1         = ??;
+   167: */
+   168: 
+   169: 
+   170: /* >>>>>>>>>>>>Macro Function macro0 Executable Statements. */
+   171:    q1 = (*x)*(*q2);
+   172: /* <<<<<<<<<<<<End of Macro macro0 Executable Statements. */
+   173: 
+   174: /* SI -> Common units conversions. */
+   175: 
+   176:    *q2       /= 1.66666666666667e-005;
+   177: 
+   178:    q1       /= 1.66666666666667e-005;
+   179: 
+   180:    return q1;
+   181: }
+   182: 
+   183: extern double hydconshtl0_macro1_(int *n, double *p1, double *p3
+   184:       , double *x, int ip[1], int ic[1], int *flag)
+   185: 
+   186: {
+   187:    double p2;
+   188:    int loop, logi;
+   189: /* >>>>>>>>>>>>Extra Macro Function macro1 Declarations Here. */
+   190: /* <<<<<<<<<<<<End of Extra Macro macro1 declarations. */
+   191:    int indexf;
+   192: 
+   193:    indexf     = ip[0];
+   194:    logi = 0;
+   195:    loop = 0;
+   196: 
+   197: /* Common -> SI units conversions. */
+   198: 
+   199:    *p1       *= 1.00000000000000e+005;
+   200:    *p3       *= 1.00000000000000e+005;
+   201: 
+   202: /*
+   203:    Define and return the following macro variable:
+   204: 
+   205:    p2         = ??;
+   206: */
+   207: 
+   208: 
+   209: /* >>>>>>>>>>>>Macro Function macro1 Executable Statements. */
+   210:    p2 = (*x)*(*p1) + (1.0-(*x))*(*p3);
+   211: /* <<<<<<<<<<<<End of Macro macro1 Executable Statements. */
+   212: 
+   213: /* SI -> Common units conversions. */
+   214: 
+   215:    *p1       /= 1.00000000000000e+005;
+   216:    *p3       /= 1.00000000000000e+005;
+   217: 
+   218:    p2       /= 1.00000000000000e+005;
+   219: 
+   220:    return p2;
+   221: }
+   222: 
+   223: extern double hydconshtl0_macro2_(int *n, double *q2, double *x
+   224:       , int ip[1], int ic[1], int *flag)
+   225: 
+   226: {
+   227:    double q3;
+   228:    int loop, logi;
+   229: /* >>>>>>>>>>>>Extra Macro Function macro2 Declarations Here. */
+   230: /* <<<<<<<<<<<<End of Extra Macro macro2 declarations. */
+   231:    int indexf;
+   232: 
+   233:    indexf     = ip[0];
+   234:    logi = 0;
+   235:    loop = 0;
+   236: 
+   237: /* Common -> SI units conversions. */
+   238: 
+   239:    *q2       *= 1.66666666666667e-005;
+   240: 
+   241: /*
+   242:    Define and return the following macro variable:
+   243: 
+   244:    q3         = ??;
+   245: */
+   246: 
+   247: 
+   248: /* >>>>>>>>>>>>Macro Function macro2 Executable Statements. */
+   249:    q3 = (1.0-(*x))*(*q2);
+   250: /* <<<<<<<<<<<<End of Macro macro2 Executable Statements. */
+   251: 
+   252: /* SI -> Common units conversions. */
+   253: 
+   254:    *q2       /= 1.66666666666667e-005;
+   255: 
+   256:    q3       /= 1.66666666666667e-005;
+   257: 
+   258:    return q3;
+   259: }
+   260: 
+   261: extern double hydconshtl0_macro3_(int *n, double *p1, double *p3
+   262:       , int ip[1], int ic[1], int *flag)
+   263: 
+   264: {
+   265:    double x;
+   266:    int loop, logi;
+   267: /* >>>>>>>>>>>>Extra Macro Function macro3 Declarations Here. */
+   268:    double xloc;
+   269:    static double lowerdisp  = 0.0;
+   270:    static double higherdisp = 1.0;
+   271:    double pmax = 0.001; /* Pa */
+   272: /* <<<<<<<<<<<<End of Extra Macro macro3 declarations. */
+   273:    int indexf;
+   274: 
+   275:    indexf     = ip[0];
+   276:    logi = 0;
+   277:    loop = 0;
+   278: 
+   279: /* Common -> SI units conversions. */
+   280: 
+   281:    *p1       *= 1.00000000000000e+005;
+   282:    *p3       *= 1.00000000000000e+005;
+   283: 
+   284: /*
+   285:    Define and return the following macro variable:
+   286: 
+   287:    x          = ??;
+   288: */
+   289: 
+   290: 
+   291: /* >>>>>>>>>>>>Macro Function macro3 Executable Statements. */
+   292: 
+   293:    xloc = (*p1 - *p3) / pmax;
+   294:    x = dlimit_(&xloc, &lowerdisp, &higherdisp, &ic[DISC_ENDSTOP]);
+   295: 
+   296: /* <<<<<<<<<<<<End of Macro macro3 Executable Statements. */
+   297: 
+   298: /* SI -> Common units conversions. */
+   299: 
+   300:    *p1       /= 1.00000000000000e+005;
+   301:    *p3       /= 1.00000000000000e+005;
+   302: 
+   303: 
+   304:    return x;
+   305: }
+   306: 
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\HYDCONSHTL0.spe
+==============================================================================
+...
+     1: <?xml version="1.0" encoding="ISO-8859-1"?>
+     2: <!DOCTYPE SPE>
+     3: <SPE DOC_VERSION="2" AME_VERSION="14.0.0 -  42489-40390 2015">
+     4: 
+     5:  <SUBMODEL>
+     6:   <SUB_TYPE>0</SUB_TYPE>
+     7:   <SUB_ID_MAX>47</SUB_ID_MAX>
+     8:   <DEFAULT_ICON>shuttle_control</DEFAULT_ICON>
+     9:   <SUB_LABEL>ideal shuttle valve</SUB_LABEL>
+    10:   <SUB_UNIT>0</SUB_UNIT>
+    11:   <I_STORES_NUMBER>1</I_STORES_NUMBER>
+    12:   <DISCONTINUITY>1</DISCONTINUITY>
+    13:   <HAS_NO_CALC>1</HAS_NO_CALC>
+    14:   <OUTPUT_TYPE>1</OUTPUT_TYPE>
+    15:   <IPARAMS_LIST>
+    16:    <IPARAM>
+    17:     <SUB_ID>10</SUB_ID>
+    18:     <TITLE>index of hydraulic fluid</TITLE>
+    19:     <VARNAME>indexf</VARNAME>
+    20:     <VISIBILITY>True</VISIBILITY>
+    21:     <DEF_VALUE>0</DEF_VALUE>
+    22:     <VALUE>0</VALUE>
+    23:     <MIN_VALUE>0</MIN_VALUE>
+    24:     <MAX_VALUE>100</MAX_VALUE>
+    25:    </IPARAM>
+    26:   </IPARAMS_LIST>
+    27:   <IVARS_LIST>
+    28:    <IVAR>
+    29:     <SUB_ID>23</SUB_ID>
+    30:     <TITLE>position</TITLE>
+    31:     <VARNAME>x</VARNAME>
+    32:     <VISIBILITY>False</VISIBILITY>
+    33:     <TYPE>8</TYPE>
+    34:     <DIMENSION>1</DIMENSION>
+    35:     <UNPLOTTABLE>1</UNPLOTTABLE>
+    36:     <UNITS>null</UNITS>
+    37:     <EXPRESS2>@_1_2, @_3_2</EXPRESS2>
+    38:    </IVAR>
+    39:   </IVARS_LIST>
+    40:   <EVARS_LIST>
+    41:    <PORT>
+    42:     <EVAR>
+    43:      <SUB_ID>19</SUB_ID>
+    44:      <TITLE>flow rate at port 1</TITLE>
+    45:      <VARNAME>q1</VARNAME>
+    46:      <VISIBILITY>True</VISIBILITY>
+    47:      <TYPE>8</TYPE>
+    48:      <DIMENSION>1</DIMENSION>
+    49:      <IO>2</IO>
+    50:      <UNPLOTTABLE>1</UNPLOTTABLE>
+    51:      <UNITS>L/min</UNITS>
+    52:      <EXPRESS2>@_0_1,@_2_2</EXPRESS2>
+    53:     </EVAR>
+    54:     <EVAR>
+    55:      <SUB_ID>4</SUB_ID>
+    56:      <TITLE>pressure at port 1</TITLE>
+    57:      <VARNAME>p1</VARNAME>
+    58:      <VISIBILITY>True</VISIBILITY>
+    59:      <TYPE>0</TYPE>
+    60:      <DIMENSION>1</DIMENSION>
+    61:      <IO>1</IO>
+    62:      <UNITS>bar</UNITS>
+    63:     </EVAR>
+    64:    </PORT>
+    65:    <PORT>
+    66:     <EVAR>
+    67:      <SUB_ID>21</SUB_ID>
+    68:      <TITLE>pressure at port 2</TITLE>
+    69:      <VARNAME>p2</VARNAME>
+    70:      <VISIBILITY>True</VISIBILITY>
+    71:      <TYPE>8</TYPE>
+    72:      <DIMENSION>1</DIMENSION>
+    73:      <IO>2</IO>
+    74:      <UNITS>bar</UNITS>
+    75:      <EXPRESS2>@_0_1, @_1_2, @_3_2</EXPRESS2>
+    76:     </EVAR>
+    77:     <EVAR>
+    78:      <SUB_ID>16</SUB_ID>
+    79:      <TITLE>flow rate at port 2</TITLE>
+    80:      <VARNAME>q2</VARNAME>
+    81:      <VISIBILITY>True</VISIBILITY>
+    82:      <TYPE>0</TYPE>
+    83:      <DIMENSION>1</DIMENSION>
+    84:      <IO>1</IO>
+    85:      <UNPLOTTABLE>1</UNPLOTTABLE>
+    86:      <UNITS>L/min</UNITS>
+    87:     </EVAR>
+    88:    </PORT>
+    89:    <PORT>
+    90:     <EVAR>
+    91:      <SUB_ID>20</SUB_ID>
+    92:      <TITLE>flow rate at port 3</TITLE>
+    93:      <VARNAME>q3</VARNAME>
+    94:      <VISIBILITY>True</VISIBILITY>
+    95:      <TYPE>8</TYPE>
+    96:      <DIMENSION>1</DIMENSION>
+    97:      <IO>2</IO>
+    98:      <UNPLOTTABLE>1</UNPLOTTABLE>
+    99:      <UNITS>L/min</UNITS>
+   100:      <EXPRESS2>@_0_1,@_2_2</EXPRESS2>
+   101:     </EVAR>
+   102:     <EVAR>
+   103:      <SUB_ID>5</SUB_ID>
+   104:      <TITLE>pressure at port 3</TITLE>
+   105:      <VARNAME>p3</VARNAME>
+   106:      <VISIBILITY>True</VISIBILITY>
+   107:      <TYPE>0</TYPE>
+   108:      <DIMENSION>1</DIMENSION>
+   109:      <IO>1</IO>
+   110:      <UNITS>bar</UNITS>
+   111:     </EVAR>
+   112:    </PORT>
+   113:   </EVARS_LIST>
+   114:   <SUBIDS_RESET>1</SUBIDS_RESET>
+   115:  </SUBMODEL>
+   116: </SPE>

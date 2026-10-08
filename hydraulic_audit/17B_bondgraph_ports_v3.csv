@@ -1,0 +1,409 @@
+﻿element_id,port_id,domain,effort_variable,flow_variable,sign_convention,connected_junction
+L1_pump01,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_044
+L1_pump01,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_066
+L1_pump01_1,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_044
+L1_pump01_1,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_068
+L1_presscontrol02,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_106
+L1_presscontrol02,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_067
+L1_presscontrol02_1,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_106
+L1_presscontrol02_1,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_069
+L1_filter,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_042
+L1_filter,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_043
+L1_cooler,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_011
+L1_cooler,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_012
+L1_flowcontrol01,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_054
+L1_flowcontrol01,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_055
+L1_presscontrol01,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_034
+L1_presscontrol01,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_099
+L1_filter_1,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_044
+L1_filter_1,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_045
+L1_flowcontrol01_1,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_056
+L1_flowcontrol01_1,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_055
+L1_actuator002,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_009
+L1_actuator002,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_010
+L1_pump01_2,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_048
+L1_pump01_2,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_108
+L1_pump01_3,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_048
+L1_pump01_3,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_110
+L1_presscontrol02_4,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_107
+L1_presscontrol02_4,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_109
+L1_presscontrol02_5,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_107
+L1_presscontrol02_5,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_111
+L1_filter_2,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_046
+L1_filter_2,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_047
+L1_cooler_1,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_013
+L1_cooler_1,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_014
+L1_filter_3,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_048
+L1_filter_3,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_049
+L1_flowcontrol01_3,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_059
+L1_flowcontrol01_3,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_060
+L1_presscontrol02_8,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_116
+L1_presscontrol02_8,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_077
+L1_presscontrol02_9,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_070
+L1_presscontrol02_9,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_117
+L1_shuttle_control,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_104
+L1_shuttle_control,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_113
+L1_shuttle_control,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_119
+L1_flowcontrol01_2,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_057
+L1_flowcontrol01_2,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_058
+L1_valve02_1,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_112
+L1_shuttle_control_1,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_017
+L1_shuttle_control_1,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_103
+L1_shuttle_control_1,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_121
+L1_pprv_1,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_095
+L1_pprv_1,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_103
+L1_pprv_1,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_122
+L1_dirvalve_1,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_015
+L1_dirvalve_1,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_016
+L1_dirvalve_1,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_017
+L1_dirvalve_1,3,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_018
+L1_valve02,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_053
+L1_dirvalve_2,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_029
+L1_dirvalve_2,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_030
+L1_dirvalve_2,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_018
+L1_dirvalve_2,3,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_017
+L1_flowcontrol01_5,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_061
+L1_flowcontrol01_5,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_062
+L1_valve02_2,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_063
+L1_dirvalve_6,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_034
+L1_dirvalve_6,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_035
+L1_dirvalve_6,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_010
+L1_dirvalve_6,3,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_036
+L1_dirvalve_3,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_031
+L1_dirvalve_3,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_032
+L1_dirvalve_3,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_033
+L1_valve02_3,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_120
+L1_valve02_3,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_074
+L1_filter_4,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_050
+L1_filter_4,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_051
+L1_tank01_5,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_072
+L1_pprv_2,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_091
+L1_pprv_2,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_083
+L1_pprv_2,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_085
+L1_dirvalve_8,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_037
+L1_dirvalve_8,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_038
+L1_dirvalve_8,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_039
+L1_dirvalve_8,3,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_040
+L1_dirvalve_9,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_037
+L1_dirvalve_9,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_041
+L1_dirvalve_9,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_040
+L1_dirvalve_9,3,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_039
+L1_flowcontrol01_6,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_063
+L1_flowcontrol01_6,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_064
+L1_dirvalve_10,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_014
+L1_dirvalve_10,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_019
+L1_dirvalve_10,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_020
+L1_valve02_4,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_093
+L1_valve02_4,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_079
+L1_filter_5,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_052
+L1_filter_5,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_053
+L1_tank01_6,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_080
+L1_shuttle_control_3,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_023
+L1_shuttle_control_3,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_096
+L1_shuttle_control_3,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_097
+L1_pprv_3,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_091
+L1_pprv_3,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_096
+L1_pprv_3,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_098
+L1_dirvalve_11,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_021
+L1_dirvalve_11,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_022
+L1_dirvalve_11,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_023
+L1_dirvalve_11,3,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_024
+L1_dirvalve_12,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_021
+L1_dirvalve_12,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_025
+L1_dirvalve_12,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_024
+L1_dirvalve_12,3,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_023
+L1_flowcontrol01_7,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_063
+L1_flowcontrol01_7,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_065
+L1_dirvalve_13,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_026
+L1_dirvalve_13,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_027
+L1_dirvalve_13,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_028
+L1_valve02_5,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_102
+L1_valve02_5,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_087
+L1_tank01_7,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_088
+L1_shuttle_control_4,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_105
+L1_shuttle_control_4,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_104
+L1_shuttle_control_4,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_103
+L1_shuttle_control_5,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_096
+L1_shuttle_control_5,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_105
+L1_shuttle_control_5,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_083
+L1_shuttle_control_2,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_084
+L1_shuttle_control_2,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_083
+L1_shuttle_control_2,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_039
+L1_pressuregauge,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_113
+L1_presscontrol01_3,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_114
+L1_presscontrol01_3,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_053
+L1_springreturnactuator,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_075
+L1_springreturnactuator,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_071
+L1_springreturnactuator_1,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_076
+L1_springreturnactuator_2,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_086
+L1_springreturnactuator_2,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_081
+L1_actuator001_1,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_005
+L1_actuator001_1,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_006
+L1_actuator001,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_003
+L1_actuator001,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_004
+L1_actuator001_2,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_007
+L1_actuator001_2,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_008
+L1_variableorifice,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_123
+L1_variableorifice,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_009
+L1_signaloperatedrvalve,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_060
+L1_variableorifice_1,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_017
+L1_variableorifice_1,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_018
+L1_variableorifice_2,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_124
+L1_variableorifice_2,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_003
+L1_variableorifice_3,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_071
+L1_variableorifice_3,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_073
+L1_variableorifice_4,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_073
+L1_variableorifice_4,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_075
+L1_variableorifice_5,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_076
+L1_variableorifice_5,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_078
+L1_variableorifice_6,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_078
+L1_variableorifice_7,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_081
+L1_variableorifice_7,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_082
+L1_variableorifice_8,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_082
+L1_variableorifice_8,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_086
+L1_variableorifice_9,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_090
+L1_variableorifice_9,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_089
+L1_variableorifice_10,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_092
+L1_variableorifice_10,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_006
+L1_variableorifice_11,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_023
+L1_variableorifice_11,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_024
+L1_variableorifice_12,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_094
+L1_variableorifice_12,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_007
+L1_variableorifice_13,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_012
+L1_variableorifice_13,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_099
+L1_variableorifice_14,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_101
+L1_variableorifice_14,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_100
+L1_tank01,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_044
+L1_presscontrol01_1,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_055
+L1_presscontrol01_1,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_034
+L1_springcheckvalve,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_055
+L1_springcheckvalve,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_034
+L1_tank01_1,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_048
+L1_signaloperatedrvalve,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_014
+L1_valve02,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_058
+L1_accumulator,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_001
+L1_valve02_1,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_001
+L1_accumulator_1,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_002
+L1_valve02_2,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_002
+L1_springreturnactuator_1,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_125
+L1_variableorifice_6,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,V3_HJ_125
+L2_dirvalve_1_orifice_14,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_1_HJ_02
+L2_dirvalve_1_orifice_14,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_1_HJ_03
+L2_dirvalve_1_orifice_13,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_1_HJ_01
+L2_dirvalve_1_orifice_13,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_1_HJ_03
+L2_dirvalve_1_orifice_23,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_1_HJ_01
+L2_dirvalve_1_orifice_23,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_1_HJ_04
+L2_dirvalve_1_orifice_24,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_1_HJ_02
+L2_dirvalve_1_orifice_24,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_1_HJ_04
+L2_dirvalve_2_orifice_14,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_2_HJ_04
+L2_dirvalve_2_orifice_14,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_2_HJ_01
+L2_dirvalve_2_orifice_23,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_2_HJ_03
+L2_dirvalve_2_orifice_23,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_2_HJ_02
+L2_dirvalve_6_orifice_13,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_6_HJ_01
+L2_dirvalve_6_orifice_13,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_6_HJ_03
+L2_dirvalve_6_orifice_14,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_6_HJ_02
+L2_dirvalve_6_orifice_14,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_6_HJ_03
+L2_dirvalve_6_orifice_24,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_6_HJ_02
+L2_dirvalve_6_orifice_24,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_6_HJ_04
+L2_dirvalve_6_orifice_23,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_6_HJ_01
+L2_dirvalve_6_orifice_23,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_6_HJ_04
+L2_dirvalve_3_orifice_13,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_3_HJ_01
+L2_dirvalve_3_orifice_13,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_3_HJ_02
+L2_dirvalve_3_orifice_23,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_3_HJ_01
+L2_dirvalve_3_orifice_23,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_3_HJ_03
+L2_dirvalve_8_orifice_14,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_8_HJ_02
+L2_dirvalve_8_orifice_14,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_8_HJ_03
+L2_dirvalve_8_orifice_13,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_8_HJ_01
+L2_dirvalve_8_orifice_13,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_8_HJ_03
+L2_dirvalve_8_orifice_23,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_8_HJ_01
+L2_dirvalve_8_orifice_23,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_8_HJ_04
+L2_dirvalve_8_orifice_24,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_8_HJ_02
+L2_dirvalve_8_orifice_24,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_8_HJ_04
+L2_dirvalve_9_orifice_14,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_9_HJ_04
+L2_dirvalve_9_orifice_14,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_9_HJ_01
+L2_dirvalve_9_orifice_23,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_9_HJ_03
+L2_dirvalve_9_orifice_23,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_9_HJ_02
+L2_dirvalve_10_orifice_13,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_10_HJ_01
+L2_dirvalve_10_orifice_13,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_10_HJ_02
+L2_dirvalve_10_orifice_23,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_10_HJ_01
+L2_dirvalve_10_orifice_23,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_10_HJ_03
+L2_dirvalve_11_orifice_14,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_11_HJ_02
+L2_dirvalve_11_orifice_14,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_11_HJ_03
+L2_dirvalve_11_orifice_13,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_11_HJ_01
+L2_dirvalve_11_orifice_13,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_11_HJ_03
+L2_dirvalve_11_orifice_23,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_11_HJ_01
+L2_dirvalve_11_orifice_23,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_11_HJ_04
+L2_dirvalve_11_orifice_24,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_11_HJ_02
+L2_dirvalve_11_orifice_24,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_11_HJ_04
+L2_dirvalve_12_orifice_14,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_12_HJ_04
+L2_dirvalve_12_orifice_14,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_12_HJ_01
+L2_dirvalve_12_orifice_23,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_12_HJ_03
+L2_dirvalve_12_orifice_23,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_12_HJ_02
+L2_dirvalve_13_orifice_13,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_13_HJ_01
+L2_dirvalve_13_orifice_13,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_13_HJ_02
+L2_dirvalve_13_orifice_23,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_13_HJ_01
+L2_dirvalve_13_orifice_23,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_13_HJ_03
+L1_pump01,2,rotation,torque,angular speed,positive into Amesim component port,RMJ_001
+L1_pump01_1,2,rotation,torque,angular speed,positive into Amesim component port,RMJ_002
+L1_pmover01,0,rotation,torque,angular speed,positive into Amesim component port,RMJ_001
+L1_pmover01_1,0,rotation,torque,angular speed,positive into Amesim component port,RMJ_002
+L1_actuator002,2,translation,force,velocity,positive into Amesim component port,TMJ_002
+L1_pump01_2,2,rotation,torque,angular speed,positive into Amesim component port,RMJ_003
+L1_pump01_3,2,rotation,torque,angular speed,positive into Amesim component port,RMJ_004
+L1_pmover01_2,0,rotation,torque,angular speed,positive into Amesim component port,RMJ_003
+L1_pmover01_3,0,rotation,torque,angular speed,positive into Amesim component port,RMJ_004
+L1_mass1port,0,translation,force,velocity,positive into Amesim component port,TMJ_002
+L1_springreturnactuator,2,translation,force,velocity,positive into Amesim component port,TMJ_006
+L1_springreturnactuator_1,2,translation,force,velocity,positive into Amesim component port,TMJ_007
+L1_springreturnactuator_2,2,translation,force,velocity,positive into Amesim component port,TMJ_008
+L1_actuator001_1,2,translation,force,velocity,positive into Amesim component port,TMJ_009
+L1_actuator001,2,translation,force,velocity,positive into Amesim component port,TMJ_011
+L1_actuator001_2,2,translation,force,velocity,positive into Amesim component port,TMJ_010
+L1_forcecon,1,translation,force,velocity,positive into Amesim component port,TMJ_001
+L1_mass_friction2port,0,translation,force,velocity,positive into Amesim component port,TMJ_011
+L1_mass_friction2port,1,translation,force,velocity,positive into Amesim component port,TMJ_001
+L1_forcecon_1,1,translation,force,velocity,positive into Amesim component port,TMJ_012
+L1_mass_friction2port_1,0,translation,force,velocity,positive into Amesim component port,TMJ_006
+L1_mass_friction2port_1,1,translation,force,velocity,positive into Amesim component port,TMJ_012
+L1_forcecon_2,1,translation,force,velocity,positive into Amesim component port,TMJ_013
+L1_mass_friction2port_2,0,translation,force,velocity,positive into Amesim component port,TMJ_007
+L1_mass_friction2port_2,1,translation,force,velocity,positive into Amesim component port,TMJ_013
+L1_forcecon_3,1,translation,force,velocity,positive into Amesim component port,TMJ_003
+L1_mass_friction2port_3,0,translation,force,velocity,positive into Amesim component port,TMJ_009
+L1_mass_friction2port_3,1,translation,force,velocity,positive into Amesim component port,TMJ_003
+L1_forcecon_4,1,translation,force,velocity,positive into Amesim component port,TMJ_004
+L1_mass_friction2port_4,0,translation,force,velocity,positive into Amesim component port,TMJ_010
+L1_mass_friction2port_4,1,translation,force,velocity,positive into Amesim component port,TMJ_004
+L1_forcecon_5,1,translation,force,velocity,positive into Amesim component port,TMJ_005
+L1_mass_friction2port_5,0,translation,force,velocity,positive into Amesim component port,TMJ_008
+L1_mass_friction2port_5,1,translation,force,velocity,positive into Amesim component port,TMJ_005
+L1_LINE_hydraulic,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_066
+L1_LINE_hydraulic,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_067
+L1_LINE_hydraulic_1,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_068
+L1_LINE_hydraulic_1,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_069
+L1_LINE_hydraulic_101,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_071
+L1_LINE_hydraulic_101,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_072
+L1_LINE_hydraulic_103,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_073
+L1_LINE_hydraulic_103,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_074
+L1_LINE_hydraulic_11,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_060
+L1_LINE_hydraulic_11,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_077
+L1_LINE_hydraulic_113,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_078
+L1_LINE_hydraulic_113,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_079
+L1_LINE_hydraulic_115,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_076
+L1_LINE_hydraulic_115,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_080
+L1_LINE_hydraulic_118,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_041
+L1_LINE_hydraulic_118,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_037
+L1_LINE_hydraulic_119,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_019
+L1_LINE_hydraulic_119,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_064
+L1_LINE_hydraulic_122,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_084
+L1_LINE_hydraulic_122,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_040
+L1_LINE_hydraulic_127,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_038
+L1_LINE_hydraulic_127,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_085
+L1_LINE_hydraulic_129,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_082
+L1_LINE_hydraulic_129,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_087
+L1_LINE_hydraulic_131,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_081
+L1_LINE_hydraulic_131,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_088
+L1_LINE_hydraulic_134,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_091
+L1_LINE_hydraulic_134,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_052
+L1_LINE_hydraulic_136,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_090
+L1_LINE_hydraulic_136,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_092
+L1_LINE_hydraulic_137,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_090
+L1_LINE_hydraulic_137,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_040
+L1_LINE_hydraulic_14,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_031
+L1_LINE_hydraulic_14,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_014
+L1_LINE_hydraulic_142,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_005
+L1_LINE_hydraulic_142,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_089
+L1_LINE_hydraulic_143,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_089
+L1_LINE_hydraulic_143,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_039
+L1_LINE_hydraulic_147,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_020
+L1_LINE_hydraulic_147,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_093
+L1_LINE_hydraulic_148,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_023
+L1_LINE_hydraulic_148,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_094
+L1_LINE_hydraulic_149,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_025
+L1_LINE_hydraulic_149,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_021
+L1_LINE_hydraulic_15,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_050
+L1_LINE_hydraulic_15,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_095
+L1_LINE_hydraulic_150,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_027
+L1_LINE_hydraulic_150,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_065
+L1_LINE_hydraulic_153,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_097
+L1_LINE_hydraulic_153,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_024
+L1_LINE_hydraulic_158,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_022
+L1_LINE_hydraulic_158,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_098
+L1_LINE_hydraulic_159,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_008
+L1_LINE_hydraulic_159,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_024
+L1_LINE_hydraulic_165,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_101
+L1_LINE_hydraulic_165,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_070
+L1_LINE_hydraulic_166,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_100
+L1_LINE_hydraulic_166,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_070
+L1_LINE_hydraulic_180,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_028
+L1_LINE_hydraulic_180,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_102
+L1_LINE_hydraulic_181,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_051
+L1_LINE_hydraulic_181,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_053
+L1_LINE_hydraulic_23,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_055
+L1_LINE_hydraulic_23,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_035
+L1_LINE_hydraulic_27,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_063
+L1_LINE_hydraulic_27,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_061
+L1_LINE_hydraulic_3,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_034
+L1_LINE_hydraulic_3,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_012
+L1_LINE_hydraulic_31,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_107
+L1_LINE_hydraulic_31,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_046
+L1_LINE_hydraulic_32,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_047
+L1_LINE_hydraulic_32,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_059
+L1_LINE_hydraulic_34,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_108
+L1_LINE_hydraulic_34,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_109
+L1_LINE_hydraulic_35,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_110
+L1_LINE_hydraulic_35,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_111
+L1_LINE_hydraulic_38,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_013
+L1_LINE_hydraulic_38,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_049
+L1_LINE_hydraulic_39,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_053
+L1_LINE_hydraulic_39,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_060
+L1_LINE_hydraulic_4,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_054
+L1_LINE_hydraulic_4,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_099
+L1_LINE_hydraulic_41,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_112
+L1_LINE_hydraulic_41,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_100
+L1_LINE_hydraulic_56,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_014
+L1_LINE_hydraulic_56,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_114
+L1_LINE_hydraulic_57,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_029
+L1_LINE_hydraulic_57,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_115
+L1_LINE_hydraulic_58,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_115
+L1_LINE_hydraulic_58,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_015
+L1_LINE_hydraulic_59,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_116
+L1_LINE_hydraulic_59,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_117
+L1_LINE_hydraulic_6,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_056
+L1_LINE_hydraulic_6,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_043
+L1_LINE_hydraulic_61,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_115
+L1_LINE_hydraulic_61,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_031
+L1_LINE_hydraulic_62,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_037
+L1_LINE_hydraulic_62,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_118
+L1_LINE_hydraulic_63,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_118
+L1_LINE_hydraulic_63,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_014
+L1_LINE_hydraulic_68,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_057
+L1_LINE_hydraulic_68,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_114
+L1_LINE_hydraulic_69,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_058
+L1_LINE_hydraulic_69,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_119
+L1_LINE_hydraulic_7,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_042
+L1_LINE_hydraulic_7,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_106
+L1_LINE_hydraulic_70,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_021
+L1_LINE_hydraulic_70,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_118
+L1_LINE_hydraulic_71,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_026
+L1_LINE_hydraulic_71,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_118
+L1_LINE_hydraulic_77,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_070
+L1_LINE_hydraulic_77,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_063
+L1_LINE_hydraulic_79,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_030
+L1_LINE_hydraulic_79,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_029
+L1_LINE_hydraulic_80,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_033
+L1_LINE_hydraulic_80,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_120
+L1_LINE_hydraulic_81,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_032
+L1_LINE_hydraulic_81,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_062
+L1_LINE_hydraulic_84,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_121
+L1_LINE_hydraulic_84,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_018
+L1_LINE_hydraulic_89,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_016
+L1_LINE_hydraulic_89,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_122
+L1_LINE_hydraulic_9,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_011
+L1_LINE_hydraulic_9,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_045
+L1_LINE_hydraulic_91,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_123
+L1_LINE_hydraulic_91,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_036
+L1_LINE_hydraulic_94,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_017
+L1_LINE_hydraulic_94,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_124
+L1_LINE_hydraulic_95,0,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_018
+L1_LINE_hydraulic_95,1,hydraulic,pressure,volumetric flow,positive into physical line at this external port,V3_HJ_004

@@ -1,0 +1,190 @@
+﻿alias,data_path,parameter_type,title,unit,raw_value,resolved_value,value_unit
+dirvalve_1_piecewiselinear_5,tstart@dirvalve_1_piecewiselinear_5,ame_real_parameter,time at which duty cycle starts,s,0,0,s
+dirvalve_1_piecewiselinear_5,start1@dirvalve_1_piecewiselinear_5,ame_real_parameter,output at start of stage 1,null,1,1,null
+dirvalve_1_piecewiselinear_5,end1@dirvalve_1_piecewiselinear_5,ame_real_parameter,output at end of stage 1,null,1,1,null
+dirvalve_1_piecewiselinear_5,t1@dirvalve_1_piecewiselinear_5,ame_real_parameter,duration of stage 1,s,ft,5,s
+dirvalve_1_piecewiselinear_5,start2@dirvalve_1_piecewiselinear_5,ame_real_parameter,output at start of stage 2,null,-1,-1,null
+dirvalve_1_piecewiselinear_5,end2@dirvalve_1_piecewiselinear_5,ame_real_parameter,output at end of stage 2,null,-1,-1,null
+dirvalve_1_piecewiselinear_5,t2@dirvalve_1_piecewiselinear_5,ame_real_parameter,duration of stage 2,s,ft,5,s
+dirvalve_1_piecewiselinear_5,start3@dirvalve_1_piecewiselinear_5,ame_real_parameter,output at start of stage 3,null,0,0,null
+dirvalve_1_piecewiselinear_5,end3@dirvalve_1_piecewiselinear_5,ame_real_parameter,output at end of stage 3,null,0,0,null
+dirvalve_1_piecewiselinear_5,t3@dirvalve_1_piecewiselinear_5,ame_real_parameter,duration of stage 3,s,3,3,s
+dirvalve_1_piecewiselinear_5,start4@dirvalve_1_piecewiselinear_5,ame_real_parameter,output at start of stage 4,null,0,0,null
+dirvalve_1_piecewiselinear_5,end4@dirvalve_1_piecewiselinear_5,ame_real_parameter,output at end of stage 4,null,0,0,null
+dirvalve_1_piecewiselinear_5,t4@dirvalve_1_piecewiselinear_5,ame_real_parameter,duration of stage 4,s,3,3,s
+dirvalve_1_piecewiselinear_5,start5@dirvalve_1_piecewiselinear_5,ame_real_parameter,output at start of stage 5,null,0,0,null
+dirvalve_1_piecewiselinear_5,end5@dirvalve_1_piecewiselinear_5,ame_real_parameter,output at end of stage 5,null,0,0,null
+dirvalve_1_piecewiselinear_5,t5@dirvalve_1_piecewiselinear_5,ame_real_parameter,duration of stage 5,s,3,3,s
+dirvalve_1_piecewiselinear_5,start6@dirvalve_1_piecewiselinear_5,ame_real_parameter,output at start of stage 6,null,0,0,null
+dirvalve_1_piecewiselinear_5,end6@dirvalve_1_piecewiselinear_5,ame_real_parameter,output at end of stage 6,null,0,0,null
+dirvalve_1_piecewiselinear_5,t6@dirvalve_1_piecewiselinear_5,ame_real_parameter,duration of stage 6,s,3,3,s
+dirvalve_1_piecewiselinear_5,start7@dirvalve_1_piecewiselinear_5,ame_real_parameter,output at start of stage 7,null,0,0,null
+dirvalve_1_piecewiselinear_5,end7@dirvalve_1_piecewiselinear_5,ame_real_parameter,output at end of stage 7,null,0,0,null
+dirvalve_1_piecewiselinear_5,t7@dirvalve_1_piecewiselinear_5,ame_real_parameter,duration of stage 7,s,3,3,s
+dirvalve_1_piecewiselinear_5,start8@dirvalve_1_piecewiselinear_5,ame_real_parameter,output at start of stage 8,null,0,0,null
+dirvalve_1_piecewiselinear_5,end8@dirvalve_1_piecewiselinear_5,ame_real_parameter,output at end of stage 8,null,0,0,null
+dirvalve_1_piecewiselinear_5,t8@dirvalve_1_piecewiselinear_5,ame_real_parameter,duration of stage 8,s,3,3,s
+dirvalve_1_piecewiselinear_5,nstages@dirvalve_1_piecewiselinear_5,ame_integer_parameter,number of stages,,1,1,
+dirvalve_1_piecewiselinear_5,iscyclic@dirvalve_1_piecewiselinear_5,ame_integer_parameter,cyclic,,1,1,
+dirvalve_1_piecewiselinear,tstart@dirvalve_1_piecewiselinear,ame_real_parameter,time at which duty cycle starts,s,0,0,s
+dirvalve_1_piecewiselinear,start1@dirvalve_1_piecewiselinear,ame_real_parameter,output at start of stage 1,null,a,40,null
+dirvalve_1_piecewiselinear,end1@dirvalve_1_piecewiselinear,ame_real_parameter,output at end of stage 1,null,a,40,null
+dirvalve_1_piecewiselinear,t1@dirvalve_1_piecewiselinear,ame_real_parameter,duration of stage 1,s,ft,5,s
+dirvalve_1_piecewiselinear,start2@dirvalve_1_piecewiselinear,ame_real_parameter,output at start of stage 2,null,0,0,null
+dirvalve_1_piecewiselinear,end2@dirvalve_1_piecewiselinear,ame_real_parameter,output at end of stage 2,null,0,0,null
+dirvalve_1_piecewiselinear,t2@dirvalve_1_piecewiselinear,ame_real_parameter,duration of stage 2,s,ft,5,s
+dirvalve_1_piecewiselinear,start3@dirvalve_1_piecewiselinear,ame_real_parameter,output at start of stage 3,null,0,0,null
+dirvalve_1_piecewiselinear,end3@dirvalve_1_piecewiselinear,ame_real_parameter,output at end of stage 3,null,0,0,null
+dirvalve_1_piecewiselinear,t3@dirvalve_1_piecewiselinear,ame_real_parameter,duration of stage 3,s,3,3,s
+dirvalve_1_piecewiselinear,start4@dirvalve_1_piecewiselinear,ame_real_parameter,output at start of stage 4,null,0,0,null
+dirvalve_1_piecewiselinear,end4@dirvalve_1_piecewiselinear,ame_real_parameter,output at end of stage 4,null,0,0,null
+dirvalve_1_piecewiselinear,t4@dirvalve_1_piecewiselinear,ame_real_parameter,duration of stage 4,s,3,3,s
+dirvalve_1_piecewiselinear,start5@dirvalve_1_piecewiselinear,ame_real_parameter,output at start of stage 5,null,0,0,null
+dirvalve_1_piecewiselinear,end5@dirvalve_1_piecewiselinear,ame_real_parameter,output at end of stage 5,null,0,0,null
+dirvalve_1_piecewiselinear,t5@dirvalve_1_piecewiselinear,ame_real_parameter,duration of stage 5,s,3,3,s
+dirvalve_1_piecewiselinear,start6@dirvalve_1_piecewiselinear,ame_real_parameter,output at start of stage 6,null,0,0,null
+dirvalve_1_piecewiselinear,end6@dirvalve_1_piecewiselinear,ame_real_parameter,output at end of stage 6,null,0,0,null
+dirvalve_1_piecewiselinear,t6@dirvalve_1_piecewiselinear,ame_real_parameter,duration of stage 6,s,3,3,s
+dirvalve_1_piecewiselinear,start7@dirvalve_1_piecewiselinear,ame_real_parameter,output at start of stage 7,null,0,0,null
+dirvalve_1_piecewiselinear,end7@dirvalve_1_piecewiselinear,ame_real_parameter,output at end of stage 7,null,0,0,null
+dirvalve_1_piecewiselinear,t7@dirvalve_1_piecewiselinear,ame_real_parameter,duration of stage 7,s,3,3,s
+dirvalve_1_piecewiselinear,start8@dirvalve_1_piecewiselinear,ame_real_parameter,output at start of stage 8,null,0,0,null
+dirvalve_1_piecewiselinear,end8@dirvalve_1_piecewiselinear,ame_real_parameter,output at end of stage 8,null,0,0,null
+dirvalve_1_piecewiselinear,t8@dirvalve_1_piecewiselinear,ame_real_parameter,duration of stage 8,s,3,3,s
+dirvalve_1_piecewiselinear,nstages@dirvalve_1_piecewiselinear,ame_integer_parameter,number of stages,,1,1,
+dirvalve_1_piecewiselinear,iscyclic@dirvalve_1_piecewiselinear,ame_integer_parameter,cyclic,,1,1,
+dirvalve_1_piecewiselinear_1,tstart@dirvalve_1_piecewiselinear_1,ame_real_parameter,time at which duty cycle starts,s,0,0,s
+dirvalve_1_piecewiselinear_1,start1@dirvalve_1_piecewiselinear_1,ame_real_parameter,output at start of stage 1,null,0,0,null
+dirvalve_1_piecewiselinear_1,end1@dirvalve_1_piecewiselinear_1,ame_real_parameter,output at end of stage 1,null,0,0,null
+dirvalve_1_piecewiselinear_1,t1@dirvalve_1_piecewiselinear_1,ame_real_parameter,duration of stage 1,s,ft,5,s
+dirvalve_1_piecewiselinear_1,start2@dirvalve_1_piecewiselinear_1,ame_real_parameter,output at start of stage 2,null,0,0,null
+dirvalve_1_piecewiselinear_1,end2@dirvalve_1_piecewiselinear_1,ame_real_parameter,output at end of stage 2,null,0,0,null
+dirvalve_1_piecewiselinear_1,t2@dirvalve_1_piecewiselinear_1,ame_real_parameter,duration of stage 2,s,3,3,s
+dirvalve_1_piecewiselinear_1,start3@dirvalve_1_piecewiselinear_1,ame_real_parameter,output at start of stage 3,null,0,0,null
+dirvalve_1_piecewiselinear_1,end3@dirvalve_1_piecewiselinear_1,ame_real_parameter,output at end of stage 3,null,0,0,null
+dirvalve_1_piecewiselinear_1,t3@dirvalve_1_piecewiselinear_1,ame_real_parameter,duration of stage 3,s,3,3,s
+dirvalve_1_piecewiselinear_1,start4@dirvalve_1_piecewiselinear_1,ame_real_parameter,output at start of stage 4,null,0,0,null
+dirvalve_1_piecewiselinear_1,end4@dirvalve_1_piecewiselinear_1,ame_real_parameter,output at end of stage 4,null,0,0,null
+dirvalve_1_piecewiselinear_1,t4@dirvalve_1_piecewiselinear_1,ame_real_parameter,duration of stage 4,s,3,3,s
+dirvalve_1_piecewiselinear_1,start5@dirvalve_1_piecewiselinear_1,ame_real_parameter,output at start of stage 5,null,0,0,null
+dirvalve_1_piecewiselinear_1,end5@dirvalve_1_piecewiselinear_1,ame_real_parameter,output at end of stage 5,null,0,0,null
+dirvalve_1_piecewiselinear_1,t5@dirvalve_1_piecewiselinear_1,ame_real_parameter,duration of stage 5,s,3,3,s
+dirvalve_1_piecewiselinear_1,start6@dirvalve_1_piecewiselinear_1,ame_real_parameter,output at start of stage 6,null,0,0,null
+dirvalve_1_piecewiselinear_1,end6@dirvalve_1_piecewiselinear_1,ame_real_parameter,output at end of stage 6,null,0,0,null
+dirvalve_1_piecewiselinear_1,t6@dirvalve_1_piecewiselinear_1,ame_real_parameter,duration of stage 6,s,3,3,s
+dirvalve_1_piecewiselinear_1,start7@dirvalve_1_piecewiselinear_1,ame_real_parameter,output at start of stage 7,null,0,0,null
+dirvalve_1_piecewiselinear_1,end7@dirvalve_1_piecewiselinear_1,ame_real_parameter,output at end of stage 7,null,0,0,null
+dirvalve_1_piecewiselinear_1,t7@dirvalve_1_piecewiselinear_1,ame_real_parameter,duration of stage 7,s,3,3,s
+dirvalve_1_piecewiselinear_1,start8@dirvalve_1_piecewiselinear_1,ame_real_parameter,output at start of stage 8,null,0,0,null
+dirvalve_1_piecewiselinear_1,end8@dirvalve_1_piecewiselinear_1,ame_real_parameter,output at end of stage 8,null,0,0,null
+dirvalve_1_piecewiselinear_1,t8@dirvalve_1_piecewiselinear_1,ame_real_parameter,duration of stage 8,s,3,3,s
+dirvalve_1_piecewiselinear_1,nstages@dirvalve_1_piecewiselinear_1,ame_integer_parameter,number of stages,,1,1,
+dirvalve_1_piecewiselinear_1,iscyclic@dirvalve_1_piecewiselinear_1,ame_integer_parameter,cyclic,,1,1,
+dirvalve_1_piecewiselinear_2,tstart@dirvalve_1_piecewiselinear_2,ame_real_parameter,time at which duty cycle starts,s,0,0,s
+dirvalve_1_piecewiselinear_2,start1@dirvalve_1_piecewiselinear_2,ame_real_parameter,output at start of stage 1,null,0,0,null
+dirvalve_1_piecewiselinear_2,end1@dirvalve_1_piecewiselinear_2,ame_real_parameter,output at end of stage 1,null,0,0,null
+dirvalve_1_piecewiselinear_2,t1@dirvalve_1_piecewiselinear_2,ame_real_parameter,duration of stage 1,s,ft,5,s
+dirvalve_1_piecewiselinear_2,start2@dirvalve_1_piecewiselinear_2,ame_real_parameter,output at start of stage 2,null,0,0,null
+dirvalve_1_piecewiselinear_2,end2@dirvalve_1_piecewiselinear_2,ame_real_parameter,output at end of stage 2,null,0,0,null
+dirvalve_1_piecewiselinear_2,t2@dirvalve_1_piecewiselinear_2,ame_real_parameter,duration of stage 2,s,3,3,s
+dirvalve_1_piecewiselinear_2,start3@dirvalve_1_piecewiselinear_2,ame_real_parameter,output at start of stage 3,null,0,0,null
+dirvalve_1_piecewiselinear_2,end3@dirvalve_1_piecewiselinear_2,ame_real_parameter,output at end of stage 3,null,0,0,null
+dirvalve_1_piecewiselinear_2,t3@dirvalve_1_piecewiselinear_2,ame_real_parameter,duration of stage 3,s,3,3,s
+dirvalve_1_piecewiselinear_2,start4@dirvalve_1_piecewiselinear_2,ame_real_parameter,output at start of stage 4,null,0,0,null
+dirvalve_1_piecewiselinear_2,end4@dirvalve_1_piecewiselinear_2,ame_real_parameter,output at end of stage 4,null,0,0,null
+dirvalve_1_piecewiselinear_2,t4@dirvalve_1_piecewiselinear_2,ame_real_parameter,duration of stage 4,s,3,3,s
+dirvalve_1_piecewiselinear_2,start5@dirvalve_1_piecewiselinear_2,ame_real_parameter,output at start of stage 5,null,0,0,null
+dirvalve_1_piecewiselinear_2,end5@dirvalve_1_piecewiselinear_2,ame_real_parameter,output at end of stage 5,null,0,0,null
+dirvalve_1_piecewiselinear_2,t5@dirvalve_1_piecewiselinear_2,ame_real_parameter,duration of stage 5,s,3,3,s
+dirvalve_1_piecewiselinear_2,start6@dirvalve_1_piecewiselinear_2,ame_real_parameter,output at start of stage 6,null,0,0,null
+dirvalve_1_piecewiselinear_2,end6@dirvalve_1_piecewiselinear_2,ame_real_parameter,output at end of stage 6,null,0,0,null
+dirvalve_1_piecewiselinear_2,t6@dirvalve_1_piecewiselinear_2,ame_real_parameter,duration of stage 6,s,3,3,s
+dirvalve_1_piecewiselinear_2,start7@dirvalve_1_piecewiselinear_2,ame_real_parameter,output at start of stage 7,null,0,0,null
+dirvalve_1_piecewiselinear_2,end7@dirvalve_1_piecewiselinear_2,ame_real_parameter,output at end of stage 7,null,0,0,null
+dirvalve_1_piecewiselinear_2,t7@dirvalve_1_piecewiselinear_2,ame_real_parameter,duration of stage 7,s,3,3,s
+dirvalve_1_piecewiselinear_2,start8@dirvalve_1_piecewiselinear_2,ame_real_parameter,output at start of stage 8,null,0,0,null
+dirvalve_1_piecewiselinear_2,end8@dirvalve_1_piecewiselinear_2,ame_real_parameter,output at end of stage 8,null,0,0,null
+dirvalve_1_piecewiselinear_2,t8@dirvalve_1_piecewiselinear_2,ame_real_parameter,duration of stage 8,s,3,3,s
+dirvalve_1_piecewiselinear_2,nstages@dirvalve_1_piecewiselinear_2,ame_integer_parameter,number of stages,,1,1,
+dirvalve_1_piecewiselinear_2,iscyclic@dirvalve_1_piecewiselinear_2,ame_integer_parameter,cyclic,,1,1,
+dirvalve_1_piecewiselinear_6,tstart@dirvalve_1_piecewiselinear_6,ame_real_parameter,time at which duty cycle starts,s,0,0,s
+dirvalve_1_piecewiselinear_6,start1@dirvalve_1_piecewiselinear_6,ame_real_parameter,output at start of stage 1,null,1,1,null
+dirvalve_1_piecewiselinear_6,end1@dirvalve_1_piecewiselinear_6,ame_real_parameter,output at end of stage 1,null,1,1,null
+dirvalve_1_piecewiselinear_6,t1@dirvalve_1_piecewiselinear_6,ame_real_parameter,duration of stage 1,s,ft,5,s
+dirvalve_1_piecewiselinear_6,start2@dirvalve_1_piecewiselinear_6,ame_real_parameter,output at start of stage 2,null,1,1,null
+dirvalve_1_piecewiselinear_6,end2@dirvalve_1_piecewiselinear_6,ame_real_parameter,output at end of stage 2,null,1,1,null
+dirvalve_1_piecewiselinear_6,t2@dirvalve_1_piecewiselinear_6,ame_real_parameter,duration of stage 2,s,ft,5,s
+dirvalve_1_piecewiselinear_6,start3@dirvalve_1_piecewiselinear_6,ame_real_parameter,output at start of stage 3,null,-1,-1,null
+dirvalve_1_piecewiselinear_6,end3@dirvalve_1_piecewiselinear_6,ame_real_parameter,output at end of stage 3,null,-1,-1,null
+dirvalve_1_piecewiselinear_6,t3@dirvalve_1_piecewiselinear_6,ame_real_parameter,duration of stage 3,s,3,3,s
+dirvalve_1_piecewiselinear_6,start4@dirvalve_1_piecewiselinear_6,ame_real_parameter,output at start of stage 4,null,0,0,null
+dirvalve_1_piecewiselinear_6,end4@dirvalve_1_piecewiselinear_6,ame_real_parameter,output at end of stage 4,null,0,0,null
+dirvalve_1_piecewiselinear_6,t4@dirvalve_1_piecewiselinear_6,ame_real_parameter,duration of stage 4,s,3,3,s
+dirvalve_1_piecewiselinear_6,start5@dirvalve_1_piecewiselinear_6,ame_real_parameter,output at start of stage 5,null,0,0,null
+dirvalve_1_piecewiselinear_6,end5@dirvalve_1_piecewiselinear_6,ame_real_parameter,output at end of stage 5,null,0,0,null
+dirvalve_1_piecewiselinear_6,t5@dirvalve_1_piecewiselinear_6,ame_real_parameter,duration of stage 5,s,3,3,s
+dirvalve_1_piecewiselinear_6,start6@dirvalve_1_piecewiselinear_6,ame_real_parameter,output at start of stage 6,null,0,0,null
+dirvalve_1_piecewiselinear_6,end6@dirvalve_1_piecewiselinear_6,ame_real_parameter,output at end of stage 6,null,0,0,null
+dirvalve_1_piecewiselinear_6,t6@dirvalve_1_piecewiselinear_6,ame_real_parameter,duration of stage 6,s,3,3,s
+dirvalve_1_piecewiselinear_6,start7@dirvalve_1_piecewiselinear_6,ame_real_parameter,output at start of stage 7,null,0,0,null
+dirvalve_1_piecewiselinear_6,end7@dirvalve_1_piecewiselinear_6,ame_real_parameter,output at end of stage 7,null,0,0,null
+dirvalve_1_piecewiselinear_6,t7@dirvalve_1_piecewiselinear_6,ame_real_parameter,duration of stage 7,s,3,3,s
+dirvalve_1_piecewiselinear_6,start8@dirvalve_1_piecewiselinear_6,ame_real_parameter,output at start of stage 8,null,0,0,null
+dirvalve_1_piecewiselinear_6,end8@dirvalve_1_piecewiselinear_6,ame_real_parameter,output at end of stage 8,null,0,0,null
+dirvalve_1_piecewiselinear_6,t8@dirvalve_1_piecewiselinear_6,ame_real_parameter,duration of stage 8,s,3,3,s
+dirvalve_1_piecewiselinear_6,nstages@dirvalve_1_piecewiselinear_6,ame_integer_parameter,number of stages,,1,1,
+dirvalve_1_piecewiselinear_6,iscyclic@dirvalve_1_piecewiselinear_6,ame_integer_parameter,cyclic,,1,1,
+piecewiselinear_4,tstart@piecewiselinear_4,ame_real_parameter,time at which duty cycle starts,s,0,0,s
+piecewiselinear_4,start1@piecewiselinear_4,ame_real_parameter,output at start of stage 1,null,0,0,null
+piecewiselinear_4,end1@piecewiselinear_4,ame_real_parameter,output at end of stage 1,null,0,0,null
+piecewiselinear_4,t1@piecewiselinear_4,ame_real_parameter,duration of stage 1,s,ft,5,s
+piecewiselinear_4,start2@piecewiselinear_4,ame_real_parameter,output at start of stage 2,null,-1,-1,null
+piecewiselinear_4,end2@piecewiselinear_4,ame_real_parameter,output at end of stage 2,null,0,0,null
+piecewiselinear_4,t2@piecewiselinear_4,ame_real_parameter,duration of stage 2,s,5,5,s
+piecewiselinear_4,start3@piecewiselinear_4,ame_real_parameter,output at start of stage 3,null,0,0,null
+piecewiselinear_4,end3@piecewiselinear_4,ame_real_parameter,output at end of stage 3,null,0,0,null
+piecewiselinear_4,t3@piecewiselinear_4,ame_real_parameter,duration of stage 3,s,3,3,s
+piecewiselinear_4,start4@piecewiselinear_4,ame_real_parameter,output at start of stage 4,null,0,0,null
+piecewiselinear_4,end4@piecewiselinear_4,ame_real_parameter,output at end of stage 4,null,0,0,null
+piecewiselinear_4,t4@piecewiselinear_4,ame_real_parameter,duration of stage 4,s,3,3,s
+piecewiselinear_4,start5@piecewiselinear_4,ame_real_parameter,output at start of stage 5,null,0,0,null
+piecewiselinear_4,end5@piecewiselinear_4,ame_real_parameter,output at end of stage 5,null,0,0,null
+piecewiselinear_4,t5@piecewiselinear_4,ame_real_parameter,duration of stage 5,s,3,3,s
+piecewiselinear_4,start6@piecewiselinear_4,ame_real_parameter,output at start of stage 6,null,0,0,null
+piecewiselinear_4,end6@piecewiselinear_4,ame_real_parameter,output at end of stage 6,null,0,0,null
+piecewiselinear_4,t6@piecewiselinear_4,ame_real_parameter,duration of stage 6,s,3,3,s
+piecewiselinear_4,start7@piecewiselinear_4,ame_real_parameter,output at start of stage 7,null,0,0,null
+piecewiselinear_4,end7@piecewiselinear_4,ame_real_parameter,output at end of stage 7,null,0,0,null
+piecewiselinear_4,t7@piecewiselinear_4,ame_real_parameter,duration of stage 7,s,3,3,s
+piecewiselinear_4,start8@piecewiselinear_4,ame_real_parameter,output at start of stage 8,null,0,0,null
+piecewiselinear_4,end8@piecewiselinear_4,ame_real_parameter,output at end of stage 8,null,0,0,null
+piecewiselinear_4,t8@piecewiselinear_4,ame_real_parameter,duration of stage 8,s,3,3,s
+piecewiselinear_4,nstages@piecewiselinear_4,ame_integer_parameter,number of stages,,1,1,
+piecewiselinear_4,iscyclic@piecewiselinear_4,ame_integer_parameter,cyclic,,1,1,
+piecewiselinear_5,tstart@piecewiselinear_5,ame_real_parameter,time at which duty cycle starts,s,0,0,s
+piecewiselinear_5,start1@piecewiselinear_5,ame_real_parameter,output at start of stage 1,null,0,0,null
+piecewiselinear_5,end1@piecewiselinear_5,ame_real_parameter,output at end of stage 1,null,0,0,null
+piecewiselinear_5,t1@piecewiselinear_5,ame_real_parameter,duration of stage 1,s,ft,5,s
+piecewiselinear_5,start2@piecewiselinear_5,ame_real_parameter,output at start of stage 2,null,0,0,null
+piecewiselinear_5,end2@piecewiselinear_5,ame_real_parameter,output at end of stage 2,null,0,0,null
+piecewiselinear_5,t2@piecewiselinear_5,ame_real_parameter,duration of stage 2,s,ft,5,s
+piecewiselinear_5,start3@piecewiselinear_5,ame_real_parameter,output at start of stage 3,null,0,0,null
+piecewiselinear_5,end3@piecewiselinear_5,ame_real_parameter,output at end of stage 3,null,0,0,null
+piecewiselinear_5,t3@piecewiselinear_5,ame_real_parameter,duration of stage 3,s,3,3,s
+piecewiselinear_5,start4@piecewiselinear_5,ame_real_parameter,output at start of stage 4,null,0,0,null
+piecewiselinear_5,end4@piecewiselinear_5,ame_real_parameter,output at end of stage 4,null,0,0,null
+piecewiselinear_5,t4@piecewiselinear_5,ame_real_parameter,duration of stage 4,s,3,3,s
+piecewiselinear_5,start5@piecewiselinear_5,ame_real_parameter,output at start of stage 5,null,0,0,null
+piecewiselinear_5,end5@piecewiselinear_5,ame_real_parameter,output at end of stage 5,null,0,0,null
+piecewiselinear_5,t5@piecewiselinear_5,ame_real_parameter,duration of stage 5,s,3,3,s
+piecewiselinear_5,start6@piecewiselinear_5,ame_real_parameter,output at start of stage 6,null,0,0,null
+piecewiselinear_5,end6@piecewiselinear_5,ame_real_parameter,output at end of stage 6,null,0,0,null
+piecewiselinear_5,t6@piecewiselinear_5,ame_real_parameter,duration of stage 6,s,3,3,s
+piecewiselinear_5,start7@piecewiselinear_5,ame_real_parameter,output at start of stage 7,null,0,0,null
+piecewiselinear_5,end7@piecewiselinear_5,ame_real_parameter,output at end of stage 7,null,0,0,null
+piecewiselinear_5,t7@piecewiselinear_5,ame_real_parameter,duration of stage 7,s,3,3,s
+piecewiselinear_5,start8@piecewiselinear_5,ame_real_parameter,output at start of stage 8,null,0,0,null
+piecewiselinear_5,end8@piecewiselinear_5,ame_real_parameter,output at end of stage 8,null,0,0,null
+piecewiselinear_5,t8@piecewiselinear_5,ame_real_parameter,duration of stage 8,s,3,3,s
+piecewiselinear_5,nstages@piecewiselinear_5,ame_integer_parameter,number of stages,,1,1,
+piecewiselinear_5,iscyclic@piecewiselinear_5,ame_integer_parameter,cyclic,,1,1,

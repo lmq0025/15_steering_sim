@@ -1,0 +1,190 @@
+SUBMODEL: FORC
+SOURCE FILES: 2
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libmec\submodels\FORC.c
+==============================================================================
+...
+     1: /* Submodel FORC skeleton created by AME Submodel editing utility
+     2:    Thu Jul 8 10:25:54 2004 */
+     3: 
+     4: 
+     5: 
+     6: #include <math.h>
+     7: #include <stdio.h>
+     8: #include <stdlib.h>
+     9: #include "ameutils.h"
+    10: /* *******************************************************************************
+    11:  
+    12: TITLE : FORC
+    13: ------------------------------------------------------------------------------
+    14: DESCRIPTION :
+    15:  
+    16: 	Submodel FORC converts a dimensionless signal input to an force
+    17: 	output of dimension N with the same value.
+    18:  
+    19: ------------------------------------------------------------------------------
+    20: USAGE :
+    21: ------------------------------------------------------------------------------
+    22: PARAMETER SETTINGS :
+    23: ------------------------------------------------------------------------------
+    24: DATE OF CREATION/AUTHOR :
+    25: ------------------------------------------------------------------------------
+    26: INDEX OF REVISIONS :
+    27: ------------------------------------------------------------------------------
+    28: LIST OF FUNCTIONS USED :
+    29: ------------------------------------------------------------------------------
+    30: SOURCE :
+    31:    Siemens Industry Software SAS
+    32:    7 place des Minimes
+    33:    42300 Roanne - France
+    34:    tel: (33).04.77.23.60.30
+    35:    fax: (33).04.77.23.60.31
+    36:    www.siemens.com/plm
+    37: 
+    38:    Copyright 2015 Siemens Industry Software NV
+    39: ******************************************************************************* */
+    40: /* >>>>>>>>>>>>Insert Private Code Here. */
+    41: /* <<<<<<<<<<<<End of Private Code. */
+    42: 
+    43: 
+    44: /* There are 0 real parameters:
+    45: 
+    46: */
+    47: 
+    48: 
+    49: 
+    50: /* There are 0 integer parameters:
+    51: 
+    52: */
+    53: 
+    54: 
+    55: 
+    56: /* There are 0 text parameters:
+    57: 
+    58: */
+    59: 
+    60: 
+    61: #ifdef _NO_PROTO
+    62: 
+    63: void forcin_(n)
+    64: 
+    65: 
+    66:    int *n;
+    67: #else
+    68: 
+    69: void forcin_(int *n)
+    70: 
+    71: #endif
+    72: {
+    73:    int error = 0;
+    74: /* >>>>>>>>>>>>Extra Initialization Function Declarations Here. */
+    75: /* <<<<<<<<<<<<End of Extra Initialization declarations. */
+    76: 
+    77: 
+    78: /* >>>>>>>>>>>>Initialization Function Check Statements. */
+    79: /* <<<<<<<<<<<<End of Initialization Check Statements. */
+    80: 
+    81:    if(ameHandleSubmodelError("FORC", *n, error))
+    82:    {
+    83:       return;
+    84:    }
+    85: 
+    86: 
+    87: /* >>>>>>>>>>>>Initialization Function Executable Statements. */
+    88: /* <<<<<<<<<<<<End of Initialization Executable Statements. */
+    89: }
+    90: 
+    91: /*  There are 2 ports.
+    92: 
+    93:       Port number 1 has 1 variable:
+    94:         Variable number 1 `input' variable scalar input
+    95:             signal input  [null]
+    96: 
+    97:       Port number 2 has 1 variable:
+    98:         Variable number 1 `force' function expression is:
+    99:             'input'
+   100:             force output  [N]
+   101:    */
+   102: 
+   103: /*  There are 0 internal variables.
+   104:    */
+   105: 
+   106: #if 0
+   107: 
+   108: /* THE CALCULATION FUNCTION WILL NOT BE CALLED. */
+   109: 
+   110: #ifdef _NO_PROTO
+   111: 
+   112: void forc_(n, input)
+   113: 
+   114: 
+   115:    int *n;
+   116:    double *input;
+   117: #else
+   118: 
+   119: void forc_(int *n, double *input)
+   120: 
+   121: #endif
+   122: {
+   123:    int logi;
+   124: /* >>>>>>>>>>>>Extra Calculation Function Declarations Here. */
+   125: /* <<<<<<<<<<<<End of Extra Calculation declarations. */
+   126:    int loop;
+   127: 
+   128: /*
+   129:    Set all submodel outputs below:
+   130: 
+   131: */
+   132: 
+   133: 
+   134: 
+   135: /* >>>>>>>>>>>>Calculation Function Executable Statements. */
+   136: /* <<<<<<<<<<<<End of Calculation Executable Statements. */
+   137: }
+   138: 
+   139: #endif
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libmec\submodels\FORC.spe
+==============================================================================
+...
+     1: <!DOCTYPE SPE>
+     2: <SPE DOC_VERSION="2" AME_VERSION="4.2.0 Beta -  June 2004">
+     3: 
+     4:  <SUBMODEL>
+     5:   <SUB_TYPE>0</SUB_TYPE>
+     6:   <SUB_ID_MAX>3</SUB_ID_MAX>
+     7:   <DEFAULT_ICON>forcecon</DEFAULT_ICON>
+     8:   <SUB_LABEL>conversion of signal input into a force in N</SUB_LABEL>
+     9:   <SUB_UNIT>1</SUB_UNIT>
+    10:   <HAS_NO_CALC>1</HAS_NO_CALC>
+    11:   <OUTPUT_TYPE>1</OUTPUT_TYPE>
+    12:   <EVARS_LIST>
+    13:    <PORT>
+    14:     <EVAR>
+    15:      <TYPE>0</TYPE>
+    16:      <SUB_ID>1</SUB_ID>
+    17:      <VARNAME>input</VARNAME>
+    18:      <TITLE>signal input</TITLE>
+    19:      <DIMENSION>1</DIMENSION>
+    20:      <IO>1</IO>
+    21:      <UNITS>null</UNITS>
+    22:     </EVAR>
+    23:    </PORT>
+    24:    <PORT>
+    25:     <EVAR>
+    26:      <TYPE>7</TYPE>
+    27:      <SUB_ID>3</SUB_ID>
+    28:      <VARNAME>force</VARNAME>
+    29:      <TITLE>force output</TITLE>
+    30:      <PRIMARY_PORT>-1</PRIMARY_PORT>
+    31:      <PRIMARY_VAR>-1</PRIMARY_VAR>
+    32:      <DUP_TYPE>0</DUP_TYPE>
+    33:      <UNITS>N</UNITS>
+    34:      <EXPRESS2>@_1_1</EXPRESS2>
+    35:     </EVAR>
+    36:    </PORT>
+    37:   </EVARS_LIST>
+    38:  </SUBMODEL>
+    39: </SPE>

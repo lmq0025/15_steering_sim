@@ -1,0 +1,165 @@
+SUBMODEL: SSINK
+SOURCE FILES: 2
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libsig\submodels\SSINK.c
+==============================================================================
+...
+     1: /* Submodel SSINK skeleton created by AME Submodel editing utility
+     2:    Mon Jul 5 16:14:21 2004 */
+     3: 
+     4: 
+     5: 
+     6: #include <math.h>
+     7: #include <stdio.h>
+     8: #include <stdlib.h>
+     9: #include "ameutils.h"
+    10: /* *******************************************************************************
+    11:  
+    12: TITLE : SSINK
+    13: ------------------------------------------------------------------------------
+    14: DESCRIPTION :
+    15:  
+    16: 	SSINK exists solely to plug a signal port.
+    17:  
+    18: ------------------------------------------------------------------------------
+    19: USAGE :
+    20: ------------------------------------------------------------------------------
+    21: PARAMETER SETTINGS :
+    22: ------------------------------------------------------------------------------
+    23: DATE OF CREATION/AUTHOR :
+    24: ------------------------------------------------------------------------------
+    25: INDEX OF REVISIONS :
+    26: ------------------------------------------------------------------------------
+    27: LIST OF FUNCTIONS USED :
+    28: ------------------------------------------------------------------------------
+    29: SOURCE :
+    30:    Siemens Industry Software SAS
+    31:    7 place des Minimes
+    32:    42300 Roanne - France
+    33:    tel: (33).04.77.23.60.30
+    34:    fax: (33).04.77.23.60.31
+    35:    www.siemens.com/plm
+    36: 
+    37:    Copyright 2015 Siemens Industry Software NV
+    38: ******************************************************************************* */
+    39: /* >>>>>>>>>>>>Insert Private Code Here. */
+    40: /* <<<<<<<<<<<<End of Private Code. */
+    41: 
+    42: 
+    43: /* There are 0 real parameters:
+    44: 
+    45: */
+    46: 
+    47: 
+    48: 
+    49: /* There are 0 integer parameters:
+    50: 
+    51: */
+    52: 
+    53: 
+    54: 
+    55: /* There are 0 text parameters:
+    56: 
+    57: */
+    58: 
+    59: 
+    60: #ifdef _NO_PROTO
+    61: 
+    62: void ssinkin_(n)
+    63: 
+    64: 
+    65:    int *n;
+    66: #else
+    67: 
+    68: void ssinkin_(int *n)
+    69: 
+    70: #endif
+    71: {
+    72:    int error = 0;
+    73: /* >>>>>>>>>>>>Extra Initialization Function Declarations Here. */
+    74: /* <<<<<<<<<<<<End of Extra Initialization declarations. */
+    75: 
+    76: 
+    77: /* >>>>>>>>>>>>Initialization Function Check Statements. */
+    78: /* <<<<<<<<<<<<End of Initialization Check Statements. */
+    79: 
+    80:    if(ameHandleSubmodelError("SSINK", *n, error))
+    81:    {
+    82:       return;
+    83:    }
+    84: 
+    85: 
+    86: /* >>>>>>>>>>>>Initialization Function Executable Statements. */
+    87: /* <<<<<<<<<<<<End of Initialization Executable Statements. */
+    88: }
+    89: 
+    90: /*  There is 1 port.
+    91: 
+    92:       Port number 1 has 1 variable:
+    93:         Variable number 1 `sink' variable scalar input
+    94:             signal input  [null]
+    95:    */
+    96: 
+    97: /*  There are 0 internal variables.
+    98:    */
+    99: 
+   100: #if 0
+   101: 
+   102: /* THE CALCULATION FUNCTION WILL NOT BE CALLED. */
+   103: 
+   104: #ifdef _NO_PROTO
+   105: 
+   106: void ssink_(n, sink)
+   107: 
+   108: 
+   109:    int *n;
+   110:    double *sink;
+   111: #else
+   112: 
+   113: void ssink_(int *n, double *sink)
+   114: 
+   115: #endif
+   116: {
+   117:    int logi;
+   118: /* >>>>>>>>>>>>Extra Calculation Function Declarations Here. */
+   119: /* <<<<<<<<<<<<End of Extra Calculation declarations. */
+   120:    int loop;
+   121: 
+   122: 
+   123: /* >>>>>>>>>>>>Calculation Function Executable Statements. */
+   124: /* <<<<<<<<<<<<End of Calculation Executable Statements. */
+   125: }
+   126: 
+   127: #endif
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libsig\submodels\SSINK.spe
+==============================================================================
+...
+     1: <!DOCTYPE SPE>
+     2: <SPE DOC_VERSION="2" AME_VERSION="4.2.0 Beta -  June 2004">
+     3: 
+     4:  <SUBMODEL>
+     5:   <SUB_TYPE>0</SUB_TYPE>
+     6:   <SUB_ID_MAX>1</SUB_ID_MAX>
+     7:   <DEFAULT_ICON>signalsink</DEFAULT_ICON>
+     8:   <SUB_LABEL>plug for signal port</SUB_LABEL>
+     9:   <SUB_UNIT>1</SUB_UNIT>
+    10:   <HAS_NO_CALC>1</HAS_NO_CALC>
+    11:   <OUTPUT_TYPE>1</OUTPUT_TYPE>
+    12:   <EVARS_LIST>
+    13:    <PORT>
+    14:     <EVAR>
+    15:      <TYPE>0</TYPE>
+    16:      <SUB_ID>1</SUB_ID>
+    17:      <VARNAME>sink</VARNAME>
+    18:      <TITLE>signal input</TITLE>
+    19:      <DIMENSION>1</DIMENSION>
+    20:      <IO>1</IO>
+    21:      <UNITS>null</UNITS>
+    22:     </EVAR>
+    23:    </PORT>
+    24:   </EVARS_LIST>
+    25:  </SUBMODEL>
+    26: </SPE>

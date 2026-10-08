@@ -1,0 +1,3 @@
+﻿alias,data_path,parameter_type,title,unit,raw_value,resolved_value,value_unit
+mass1port,mass@mass1port,ame_real_parameter,mass,kg,1000,1000,kg
+mass1port,theta@mass1port,ame_real_parameter,"inclination (+90 port 1 lowest, -90 port 1 highest)",degree,0,0,degree

@@ -1,0 +1,351 @@
+SUBMODEL: SIN0
+SOURCE FILES: 2
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libsig\submodels\SIN0.c
+==============================================================================
+...
+     1: /* Submodel SIN0 skeleton created by AME Submodel editing utility
+     2:    lun. févr. 17 09:39:57 2020 */
+     3: 
+     4: 
+     5: 
+     6: #include <math.h>
+     7: #include <stdio.h>
+     8: #include <stdlib.h>
+     9: #include "ameutils.h"
+    10: /* *******************************************************************************
+    11: TITLE : SIN0
+    12: ------------------------------------------------------------------------------
+    13: DESCRIPTION :
+    14:    
+    15:    SIN0 is a submodel of a sine wave. The user must
+    16:    supply a frequency, mean level, amplitude and phase
+    17:    shift.
+    18: 
+    19:         Note that the submodel imposes a restriction on the
+    20:         max steps size of one-quarter of the period
+    21:         of the sine wave.
+    22: ------------------------------------------------------------------------------
+    23: USAGE : 
+    24:    Use this submodel to generate a sine wave.
+    25: ------------------------------------------------------------------------------
+    26: PARAMETER SETTINGS : 
+    27:    
+    28:    If you want a constant output, set the amplitude to zero.
+    29: ------------------------------------------------------------------------------
+    30: DATE OF CREATION / AUTHOR : April/1994 by C.W.Richards
+    31: ------------------------------------------------------------------------------
+    32: INDEX OF REVISIONS : 
+    33:  
+    34:    29/01/98 CWR    Code run through AMESet and description put into
+    35:          standard form.
+    36: ------------------------------------------------------------------------------
+    37: LIST OF FUNCTIONS USED :
+    38: ------------------------------------------------------------------------------
+    39: SOURCE :
+    40:    Siemens Industry Software SAS
+    41:    7 place des Minimes
+    42:    42300 Roanne - France
+    43:    tel: (33).04.77.23.60.30
+    44:    fax: (33).04.77.23.60.31
+    45:    www.siemens.com/plm
+    46: 
+    47:    Copyright 2015 Siemens Industry Software NV
+    48: ******************************************************************************* */
+    49: 
+    50: #define _SUBMODELNAME_ "SIN0"
+    51: 
+    52: /* >>>>>>>>>>>>Insert Private Code Here. */
+    53: /* <<<<<<<<<<<<End of Private Code. */
+    54: 
+    55: 
+    56: /* There are 4 real parameters:
+    57: 
+    58:    f      sine wave frequency [Hz -> rad/s]
+    59:    level0 mean level          [null]
+    60:    a      sine wave amplitude [null]
+    61:    phi    phase shift         [degree -> rad]
+    62: */
+    63: 
+    64: void sin0in_(int *n, double rp[4], double c[2], double *f0GEN
+    65:       , double *level00GEN, double *a0GEN, double *phi0GEN)
+    66: 
+    67: {
+    68:    int loop, error;
+    69: /* >>>>>>>>>>>>Extra Initialization Function Declarations Here. */
+    70:    double period;
+    71: /* <<<<<<<<<<<<End of Extra Initialization declarations. */
+    72:    double f, level0, a, phi;
+    73: 
+    74:    f          = rp[0];
+    75:    level0     = rp[1];
+    76:    a          = rp[2];
+    77:    phi        = rp[3];
+    78:    loop = 0;
+    79:    error = 0;
+    80: 
+    81: /*
+    82:    If necessary, check values of the following:
+    83: 
+    84:    rp[0..3]
+    85: */
+    86: 
+    87: 
+    88: /* >>>>>>>>>>>>Initialization Function Check Statements. */
+    89: 
+    90:    if(f < 0.0)
+    91:    {
+    92:       error = 2;
+    93:       amefprintf(stderr, "\nFrequency must be >= 0");
+    94:    }
+    95:    /* Compute time in seconds for one cycle. This statement
+    96:     is positioned here because it must be done before units
+    97:     conversion. */
+    98: 
+    99:    period = 1/f;
+   100: 
+   101: /* <<<<<<<<<<<<End of Initialization Check Statements. */
+   102: 
+   103:    if(ameHandleSubmodelError(_SUBMODELNAME_, *n, error))
+   104:    {
+   105:       return;
+   106:    }
+   107: 
+   108: /* Common -> SI units conversions. */
+   109: 
+   110:    f        *= 6.28318530717959e+00;
+   111:    phi      *= 1.74532925199433e-02;
+   112:       *f0GEN = f;
+   113:       *level00GEN = level0;
+   114:       *a0GEN = a;
+   115:       *phi0GEN = phi;
+   116: 
+   117: 
+   118: /* >>>>>>>>>>>>Initialization Function Executable Statements. */
+   119: 
+   120:    if(a != 0.0)
+   121:    {
+   122:       /* Integration step should not be more that one quarter
+   123:          of period. Request a limitation on maximum step size. */
+   124: 
+   125:       period /= 4.0;
+   126: 
+   127:       if (isfixedstepsolver_() == 0 && setmaxstep_(&period) == 1)
+   128:       {
+   129:          amefprintf(stdout, "\nSIN0 instance %d reduced the maximum time step to %gs.\n", *n, period);
+   130:       }
+   131:    }
+   132: /* <<<<<<<<<<<<End of Initialization Executable Statements. */
+   133: }
+   134: 
+   135: /*  There is 1 port.
+   136: 
+   137:    Port 1 has 1 variable:
+   138: 
+   139:       1 output     sine wave output [null] basic variable output
+   140: */
+   141: 
+   142: /*  There are 0 internal variables.
+   143: 
+   144: */
+   145: 
+   146: void sin0_(int *n, double *output, double *f0GEN, double *level00GEN
+   147:       , double *a0GEN, double *phi0GEN, double rp[4], double c[2]
+   148:       , int *flag, double *t)
+   149: 
+   150: {
+   151:    int loop, logi;
+   152: /* >>>>>>>>>>>>Extra Calculation Function Declarations Here. */
+   153: 
+   154: /* <<<<<<<<<<<<End of Extra Calculation declarations. */
+   155:    double f, level0, a, phi;
+   156: 
+   157:    f          = rp[0];
+   158:    level0     = rp[1];
+   159:    a          = rp[2];
+   160:    phi        = rp[3];
+   161:    logi = 0;
+   162:    loop = 0;
+   163:    f = *f0GEN;
+   164:    level0 = *level00GEN;
+   165:    a = *a0GEN;
+   166:    phi = *phi0GEN;
+   167: 
+   168: /*
+   169:    Set all submodel outputs below:
+   170: 
+   171:    *output     = ??;
+   172: */
+   173: 
+   174: 
+   175: /*
+   176:    The following discrete variable(s) can be reset when the discontinuity flag is zero:
+   177: 
+   178: */
+   179: 
+   180: 
+   181: 
+   182: /* >>>>>>>>>>>>Calculation Function Executable Statements. */
+   183: 
+   184:    /* Check for tunable param */
+   185:    if (*flag == 0)
+   186:    {
+   187:       if (f < 0.0)
+   188:       {
+   189:          amefprintf(stderr, "\nError in submodel %s instance %d\n", _SUBMODELNAME_, *n);
+   190:          amefprintf(stderr, "\nFrequency must be >= 0");
+   191:          AmeExit(1);
+   192:       }
+   193:    }
+   194: 
+   195:    *output =a*sin((*t)*f+phi) + level0;
+   196: /* <<<<<<<<<<<<End of Calculation Executable Statements. */
+   197: }
+   198: 
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libsig\submodels\SIN0.spe
+==============================================================================
+...
+     1: <?xml version="1.0" encoding="ISO-8859-1"?>
+     2: <!DOCTYPE SPE>
+     3: <SPE DOC_VERSION="2" AME_VERSION="2020.1. - ">
+     4: 
+     5:  <SUBMODEL>
+     6:   <SUB_TYPE>0</SUB_TYPE>
+     7:   <SUB_ID_MAX>62</SUB_ID_MAX>
+     8:   <DEFAULT_ICON>sinewave</DEFAULT_ICON>
+     9:   <SUB_LABEL>sine signal source</SUB_LABEL>
+    10:   <SUB_UNIT>0</SUB_UNIT>
+    11:   <R_STORES_NUMBER>2</R_STORES_NUMBER>
+    12:   <DISCONTINUITY>1</DISCONTINUITY>
+    13:   <TIME_REQUIRED>1</TIME_REQUIRED>
+    14:   <OUTPUT_TYPE>1</OUTPUT_TYPE>
+    15:   <RPARAMS_LIST>
+    16:    <RPARAM>
+    17:     <SUB_ID>2</SUB_ID>
+    18:     <TITLE>sine wave frequency</TITLE>
+    19:     <VARNAME>f</VARNAME>
+    20:     <VISIBILITY>True</VISIBILITY>
+    21:     <TUNABLE>True</TUNABLE>
+    22:     <DEF_VALUE>1.00000000000000e+00</DEF_VALUE>
+    23:     <VALUE>1.00000000000000e+00</VALUE>
+    24:     <HISTORY_VARIABLE>f0GEN</HISTORY_VARIABLE>
+    25:     <MIN_VALUE>1.00000000000000e-06</MIN_VALUE>
+    26:     <MAX_VALUE>1.00000000000000e+06</MAX_VALUE>
+    27:     <UNITS>Hz</UNITS>
+    28:    </RPARAM>
+    29:    <RPARAM>
+    30:     <SUB_ID>3</SUB_ID>
+    31:     <TITLE>mean level</TITLE>
+    32:     <VARNAME>level0</VARNAME>
+    33:     <VISIBILITY>True</VISIBILITY>
+    34:     <TUNABLE>True</TUNABLE>
+    35:     <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+    36:     <VALUE>0.00000000000000e+00</VALUE>
+    37:     <HISTORY_VARIABLE>level00GEN</HISTORY_VARIABLE>
+    38:     <MIN_VALUE>-1.00000000000000e+30</MIN_VALUE>
+    39:     <MAX_VALUE>1.00000000000000e+30</MAX_VALUE>
+    40:     <UNITS>null</UNITS>
+    41:    </RPARAM>
+    42:    <RPARAM>
+    43:     <SUB_ID>4</SUB_ID>
+    44:     <TITLE>sine wave amplitude</TITLE>
+    45:     <VARNAME>a</VARNAME>
+    46:     <VISIBILITY>True</VISIBILITY>
+    47:     <TUNABLE>True</TUNABLE>
+    48:     <DEF_VALUE>1.00000000000000e+00</DEF_VALUE>
+    49:     <VALUE>1.00000000000000e+00</VALUE>
+    50:     <HISTORY_VARIABLE>a0GEN</HISTORY_VARIABLE>
+    51:     <MIN_VALUE>0.00000000000000e+00</MIN_VALUE>
+    52:     <MAX_VALUE>1.00000000000000e+30</MAX_VALUE>
+    53:     <UNITS>null</UNITS>
+    54:    </RPARAM>
+    55:    <RPARAM>
+    56:     <SUB_ID>5</SUB_ID>
+    57:     <TITLE>phase shift</TITLE>
+    58:     <VARNAME>phi</VARNAME>
+    59:     <VISIBILITY>True</VISIBILITY>
+    60:     <TUNABLE>True</TUNABLE>
+    61:     <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+    62:     <VALUE>0.00000000000000e+00</VALUE>
+    63:     <HISTORY_VARIABLE>phi0GEN</HISTORY_VARIABLE>
+    64:     <MIN_VALUE>-3.60000000000000e+02</MIN_VALUE>
+    65:     <MAX_VALUE>3.60000000000000e+02</MAX_VALUE>
+    66:     <UNITS>degree</UNITS>
+    67:    </RPARAM>
+    68:   </RPARAMS_LIST>
+    69:   <IVARS_LIST>
+    70:    <IVAR>
+    71:     <SUB_ID>59</SUB_ID>
+    72:     <TITLE>sine wave frequency - Linked variable</TITLE>
+    73:     <VARNAME>f0GEN</VARNAME>
+    74:     <VISIBILITY>False</VISIBILITY>
+    75:     <TYPE>10</TYPE>
+    76:     <DIMENSION>1</DIMENSION>
+    77:     <UNITS>Hz</UNITS>
+    78:     <MIN_VALUE>1.00000000000000e-06</MIN_VALUE>
+    79:     <MAX_VALUE>1.00000000000000e+06</MAX_VALUE>
+    80:     <DEF_VALUE>1.00000000000000e+00</DEF_VALUE>
+    81:     <VALUE>1.00000000000000e+00</VALUE>
+    82:    </IVAR>
+    83:    <IVAR>
+    84:     <SUB_ID>60</SUB_ID>
+    85:     <TITLE>mean level - Linked variable</TITLE>
+    86:     <VARNAME>level00GEN</VARNAME>
+    87:     <VISIBILITY>False</VISIBILITY>
+    88:     <TYPE>10</TYPE>
+    89:     <DIMENSION>1</DIMENSION>
+    90:     <UNITS>null</UNITS>
+    91:     <MIN_VALUE>-1.00000000000000e+30</MIN_VALUE>
+    92:     <MAX_VALUE>1.00000000000000e+30</MAX_VALUE>
+    93:     <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+    94:     <VALUE>0.00000000000000e+00</VALUE>
+    95:    </IVAR>
+    96:    <IVAR>
+    97:     <SUB_ID>61</SUB_ID>
+    98:     <TITLE>sine wave amplitude - Linked variable</TITLE>
+    99:     <VARNAME>a0GEN</VARNAME>
+   100:     <VISIBILITY>False</VISIBILITY>
+   101:     <TYPE>10</TYPE>
+   102:     <DIMENSION>1</DIMENSION>
+   103:     <UNITS>null</UNITS>
+   104:     <MIN_VALUE>0.00000000000000e+00</MIN_VALUE>
+   105:     <MAX_VALUE>1.00000000000000e+30</MAX_VALUE>
+   106:     <DEF_VALUE>1.00000000000000e+00</DEF_VALUE>
+   107:     <VALUE>1.00000000000000e+00</VALUE>
+   108:    </IVAR>
+   109:    <IVAR>
+   110:     <SUB_ID>62</SUB_ID>
+   111:     <TITLE>phase shift - Linked variable</TITLE>
+   112:     <VARNAME>phi0GEN</VARNAME>
+   113:     <VISIBILITY>False</VISIBILITY>
+   114:     <TYPE>10</TYPE>
+   115:     <DIMENSION>1</DIMENSION>
+   116:     <UNITS>degree</UNITS>
+   117:     <MIN_VALUE>-3.60000000000000e+02</MIN_VALUE>
+   118:     <MAX_VALUE>3.60000000000000e+02</MAX_VALUE>
+   119:     <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+   120:     <VALUE>0.00000000000000e+00</VALUE>
+   121:    </IVAR>
+   122:   </IVARS_LIST>
+   123:   <EVARS_LIST>
+   124:    <PORT>
+   125:     <USE_REQUIRED>0</USE_REQUIRED>
+   126:     <EVAR>
+   127:      <SUB_ID>1</SUB_ID>
+   128:      <TITLE>sine wave output</TITLE>
+   129:      <VARNAME>output</VARNAME>
+   130:      <VISIBILITY>True</VISIBILITY>
+   131:      <TYPE>0</TYPE>
+   132:      <DIMENSION>1</DIMENSION>
+   133:      <IO>2</IO>
+   134:      <UNITS>null</UNITS>
+   135:     </EVAR>
+   136:    </PORT>
+   137:   </EVARS_LIST>
+   138:   <CIR_PORTS_OVER_FRAMEWORK>1</CIR_PORTS_OVER_FRAMEWORK>
+   139:   <SUBIDS_RESET>0</SUBIDS_RESET>
+   140:  </SUBMODEL>
+   141: </SPE>

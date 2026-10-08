@@ -1,0 +1,5 @@
+﻿alias,data_path,variable_type,basic_type,title,unit,io_type,input_type,usage
+pmover01,speed@pmover01,1,ame_state_variable,shaft speed,rev/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+pmover01_1,speed@pmover01_1,1,ame_state_variable,shaft speed,rev/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+pmover01_2,speed@pmover01_2,1,ame_state_variable,shaft speed,rev/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+pmover01_3,speed@pmover01_3,1,ame_state_variable,shaft speed,rev/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used

@@ -7,6 +7,8 @@ CM3_TO_M3 = 1.0e-6
 CC_PER_REV_TO_M3_PER_REV = 1.0e-6
 CST_TO_M2PS = 1.0e-6
 CP_TO_PA_S = 1.0e-3
+RPM_TO_RAD_S = 2.0 * 3.141592653589793 / 60.0
+CC_PER_REV_TO_M3_PER_RAD = 1.0e-6 / (2.0 * 3.141592653589793)
 
 
 def bar_to_pa(value: float) -> float:
@@ -36,3 +38,18 @@ def cst_to_m2ps(value: float) -> float:
 def cp_to_pa_s(value: float) -> float:
     return float(value) * CP_TO_PA_S
 
+
+def rpm_to_rad_s(value: float) -> float:
+    return float(value) * RPM_TO_RAD_S
+
+
+def cc_per_rev_to_m3_per_rad(value: float) -> float:
+    return float(value) * CC_PER_REV_TO_M3_PER_RAD
+
+
+def pa_to_bar(value: float) -> float:
+    return float(value) / BAR_TO_PA
+
+
+def m3ps_to_lpm(value: float) -> float:
+    return float(value) / LPM_TO_M3PS

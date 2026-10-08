@@ -1,0 +1,16 @@
+{
+  "optimization_stage": "SPARSITY_CACHE",
+  "model_build_time": 0.025511300074867904,
+  "initialization_time": 0.008856399916112423,
+  "wall_time_1s": 14.192987600108609,
+  "speedup_vs_baseline": 3.8278566592695875,
+  "nfev": 2501,
+  "njev": 165,
+  "nlu": 686,
+  "algebraic_calls": 332089,
+  "actual_algebraic_solves": 109783,
+  "cache_hits": 222306,
+  "physics_regression": "FAIL",
+  "max_normalized_error": 0.8154029155942295,
+  "repetitions": 3
+}

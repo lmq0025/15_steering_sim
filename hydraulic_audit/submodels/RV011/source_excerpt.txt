@@ -1,0 +1,574 @@
+SUBMODEL: RV011
+SOURCE FILES: 2
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\RV011.c
+==============================================================================
+...
+     1: /* Submodel RV011 skeleton created by AME Submodel editing utility
+     2:    jeu. 17. mars 11:29:39 2016 */
+     3: 
+     4: 
+     5: 
+     6: #include <math.h>
+     7: #include <stdio.h>
+     8: #include <stdlib.h>
+     9: #include "ameutils.h"
+    10: /* *******************************************************************************
+    11: TITLE : RV011
+    12: ------------------------------------------------------------------------------
+    13: DESCRIPTION :
+    14: ------------------------------------------------------------------------------
+    15: USAGE :
+    16: ------------------------------------------------------------------------------
+    17: PARAMETER SETTINGS :
+    18: ------------------------------------------------------------------------------
+    19: DATE OF CREATION/AUTHOR :
+    20: ------------------------------------------------------------------------------
+    21: INDEX OF REVISIONS :
+    22: ------------------------------------------------------------------------------
+    23: LIST OF FUNCTIONS USED :
+    24:    dlimit_() : limits an input signal to a given interval
+    25: ------------------------------------------------------------------------------
+    26: SOURCE :
+    27:    Siemens Industry Software SAS
+    28:    7 place des Minimes
+    29:    42300 Roanne - France
+    30:    tel: (33).04.77.23.60.30
+    31:    fax: (33).04.77.23.60.31
+    32:    www.siemens.com/plm
+    33:  
+    34:    Copyright 2015 Siemens Industry Software NV
+    35: ******************************************************************************* */
+    36: 
+    37: #define _SUBMODELNAME_ "RV011"
+    38: 
+    39: /* >>>>>>>>>>>>Insert Private Code Here. */
+    40: #define DISC_ISOPEN     0
+    41: #define DISC_LIMIT      1
+    42: #define DISC_HYST       2
+    43: /* <<<<<<<<<<<<End of Private Code. */
+    44: 
+    45: 
+    46: /* There are 4 real parameters:
+    47: 
+    48:    pcrack maximum relief valve cracking pressure   [bar -> Pa]
+    49:    grad   relief valve flow rate pressure gradient [L/min/bar -> m**3/s/Pa]
+    50:    irate  valve rated current                      [mA -> A]
+    51:    hyst   valve hysteresis                         [bar -> Pa]
+    52: */
+    53: 
+    54: 
+    55: /* There is 1 integer parameter:
+    56: 
+    57:    indexf index of hydraulic fluid
+    58: */
+    59: 
+    60: void rv011in_(int *n, double rp[4], int ip[1], int ic[4]
+    61:       , double *actRvalve, double *energyRvalve)
+    62: 
+    63: {
+    64:    int loop, error;
+    65: /* >>>>>>>>>>>>Extra Initialization Function Declarations Here. */
+    66: /* <<<<<<<<<<<<End of Extra Initialization declarations. */
+    67:    int indexf;
+    68:    double pcrack, grad, irate, hyst;
+    69: 
+    70:    indexf     = ip[0];
+    71: 
+    72:    pcrack     = rp[0];
+    73:    grad       = rp[1];
+    74:    irate      = rp[2];
+    75:    hyst       = rp[3];
+    76:    loop = 0;
+    77:    error = 0;
+    78: 
+    79: /*
+    80:    If necessary, check values of the following:
+    81: 
+    82:    rp[0..3]
+    83:    *actRvalve
+    84:    *energyRvalve
+    85: */
+    86: 
+    87: 
+    88: /* >>>>>>>>>>>>Initialization Function Check Statements. */
+    89: 
+    90:    hyd_valid_liquid_(&indexf, &error);
+    91: 
+    92:    /* Check cracking pressure. */
+    93:    if (pcrack < 0.0)
+    94:    {
+    95:       amefprintf(stderr, "Cracking pressure should be positive (value is %le [bar].)\n",
+    96:               pcrack);
+    97:       error = 2;
+    98:    }
+    99: 
+   100:    /* Check flow rate pressure gradient. */
+   101:    if (grad < 0.0)
+   102:    {
+   103:       amefprintf(stderr,
+   104:               "Flow rate pressure gradient should be positive (value is %le [L/min/bar].)\n",
+   105:               grad);
+   106:       error = 2;
+   107:    }
+   108:    if (irate <= 0.0)
+   109:    {
+   110:       amefprintf(stderr,
+   111:               "Valve rated current should be strictly positive (value is %le [mA].)\n",
+   112:               irate);
+   113:       error = 2;
+   114:    }
+   115: 
+   116:    if (hyst < 0.0)
+   117:    {
+   118:       amefprintf(stderr, "Hysteresis value should be positive (value is %le [bar]).\n", hyst);
+   119:       error = 2;
+   120:    }
+   121: 
+   122: /* <<<<<<<<<<<<End of Initialization Check Statements. */
+   123: 
+   124: /*   Integer parameter checking:   */
+   125: 
+   126:    if (indexf < 0 || indexf > 100)
+   127:    {
+   128:       amefprintf(stderr, "\nindex of hydraulic fluid must be in range [0..100].\n");
+   129:       error = 2;
+   130:    }
+   131: 
+   132:    if(error == 1)
+   133:    {
+   134:       amefprintf(stderr, "\nWarning in %s instance %d.\n", _SUBMODELNAME_, *n);
+   135:    }
+   136:    else if(error == 2)
+   137:    {
+   138:       amefprintf(stderr, "\nFatal error in %s instance %d.\n", _SUBMODELNAME_, *n);
+   139:       amefprintf(stderr, "Terminating the program.\n");
+   140:       AmeExit(1);
+   141:    }
+   142: 
+   143: /* Common -> SI units conversions. */
+   144: 
+   145:    rp[0]    *= 1.00000000000000e+005;
+   146:    pcrack     = rp[0];
+   147:    rp[1]    *= 1.66666666666667e-010;
+   148:    grad       = rp[1];
+   149:    rp[2]    *= 1.00000000000000e-003;
+   150:    irate      = rp[2];
+   151:    rp[3]    *= 1.00000000000000e+005;
+   152:    hyst       = rp[3];
+   153: 
+   154: 
+   155: /* >>>>>>>>>>>>Initialization Function Executable Statements. */
+   156: /* <<<<<<<<<<<<End of Initialization Executable Statements. */
+   157: }
+   158: 
+   159: /*  There are 3 ports.
+   160: 
+   161:    Port 1 has 2 variables:
+   162: 
+   163:       1 q1     flow rate at port 1 [L/min -> m**3/s] basic variable output
+   164:       2 p1     pressure at port 1  [bar -> Pa]       basic variable input
+   165: 
+   166:    Port 2 has 1 variable:
+   167: 
+   168:       1 sig     input signal interpreted in mA [null] basic variable input
+   169: 
+   170:    Port 3 has 2 variables:
+   171: 
+   172:       1 q3     duplicate of q1     (sign reversed)
+   173:       2 p3     pressure at port 3  [bar -> Pa] basic variable input
+   174: */
+   175: 
+   176: /*  There are 5 internal variables.
+   177: 
+   178:       1 highlimit        high limit                                [null] basic variable  UNPLOTTABLE
+   179:       2 lowlimit         low limit                                 [null] basic variable  UNPLOTTABLE
+   180:       3 actRvalve        activity of hydraulic dissipation (valve) [J]    explicit state (derivative `dactRvalve') for activity
+   181:       4 powerRvalve      power of hydraulic dissipation (valve)    [W]    power variable
+   182:       5 energyRvalve     energy of hydraulic dissipation (valve)   [J]    explicit state (derivative `denergyRvalve') for energy
+   183: */
+   184: 
+   185: void rv011_(int *n, double *q1, double *p1, double *sig, double *p3
+   186:       , double *highlimit, double *lowlimit, double *actRvalve
+   187:       , double *dactRvalve, double *powerRvalve, double *energyRvalve
+   188:       , double *denergyRvalve, double rp[4], int ip[1], int ic[4])
+   189: 
+   190: {
+   191:    int loop;
+   192:    double powRvalve;
+   193: 
+   194: /* >>>>>>>>>>>>Extra Calculation Function Declarations Here. */
+   195:    double dp, norsig, y;
+   196:    double dphyst, dp2;
+   197:    static double zero = 0.0, one = 1.0;
+   198:    static double dplim = 1.0;   /* Pa */
+   199: /* <<<<<<<<<<<<End of Extra Calculation declarations. */
+   200:    int indexf;
+   201:    double pcrack, grad, irate, hyst;
+   202: 
+   203:    indexf     = ip[0];
+   204: 
+   205:    pcrack     = rp[0];
+   206:    grad       = rp[1];
+   207:    irate      = rp[2];
+   208:    hyst       = rp[3];
+   209:    loop = 0;
+   210: 
+   211: /* Common -> SI units conversions. */
+   212: 
+   213:    *p1       *= 1.00000000000000e+005;
+   214:    *p3       *= 1.00000000000000e+005;
+   215: 
+   216: /*
+   217:    Set all submodel outputs below:
+   218: 
+   219:    *q1         = ??;
+   220:    *highlimit  = ??;
+   221:    *lowlimit   = ??;
+   222: */
+   223: 
+   224: 
+   225: 
+   226: /* >>>>>>>>>>>>Calculation Function Executable Statements. */
+   227: 
+   228:    /* Compute normalized current. (input in mA)*/
+   229:    norsig = *sig / (irate * 1.0e3);
+   230: 
+   231:    /* limit input signal in range [0,1]. */
+   232:    y = dlimit_(&norsig, &zero, &one, &ic[DISC_LIMIT]);
+   233: 
+   234:    dp = *p3 - *p1 - pcrack * y ;
+   235: 
+   236:    if (hyst == 0.0)
+   237:    {
+   238:       dphyst = llimit_(&dp, &zero, &ic[DISC_ISOPEN]);
+   239:    }
+   240:    else
+   241:    {
+   242:       int logi;
+   243:       if (getofg_() == 0)
+   244:       {
+   245:          if (firstc_())
+   246:          {
+   247:             if (dp > 0.0)
+   248:                ic[DISC_ISOPEN] = 0;
+   249:             else
+   250:                ic[DISC_ISOPEN] = -1;
+   251:          }
+   252:          else
+   253:          {
+   254:             if (ic[DISC_ISOPEN] == -1 && dp > 0.5*hyst)
+   255:             {
+   256:                /* entering in increasing hysteresis region */
+   257:                *highlimit = dp;
+   258:                *lowlimit  = dp - hyst;
+   259: 
+   260:                ic[DISC_ISOPEN] = 0;
+   261:             }
+   262:             else if (ic[DISC_ISOPEN] == 0 && dp < -0.5*hyst)
+   263:             {
+   264:                ic[DISC_ISOPEN] = -1;
+   265:             }
+   266:          }
+   267:       }
+   268: 
+   269:       if (ic[DISC_ISOPEN] == -1)   /* valve is closed */
+   270:       {
+   271:          *highlimit = *lowlimit = 0.0;
+   272: 
+   273:          dphyst = 0.0;
+   274: 
+   275:          logi = (dp > 0.5*hyst);
+   276:       }
+   277:       else
+   278:       {
+   279:          dphyst = amehyst_(&dp, &hyst, highlimit, lowlimit, &ic[DISC_HYST]);
+   280: 
+   281:          logi = (dp < -0.5*hyst);
+   282:       }
+   283:       if (logi)   disloc_(&logi);
+   284:    }
+   285: 
+   286: 
+   287:    if (ic[DISC_ISOPEN] == -1)   /* valve is closed */
+   288:    {
+   289:       *q1 = 0.0;
+   290:    }
+   291:    else
+   292:    {
+   293:       *q1 = grad * dphyst;
+   294: 
+   295:       /* to avoid negative flow rate (if hyst > 2*pcrack) */
+   296:       dp2 = *p3 - *p1;
+   297:       *q1 = polysmooth_(&zero, q1, &dp2, &zero, &dplim);
+   298:    }
+   299: 
+   300: /* <<<<<<<<<<<<End of Calculation Executable Statements. */
+   301: 
+   302:    if(actRvalve != NULL || energyRvalve != NULL || ispower_() == 1)
+   303:    {
+   304:       /* Set the following power variables:
+   305: 
+   306:       powRvalve = ??;
+   307:       */
+   308: 
+   309:       /* >>>>>>>>>>>>Energy Common Statements. */
+   310:          double patm = getatp_();
+   311:          sethdind_(&indexf);
+   312:          powRvalve = (*q1) * ((patm+*p3) * q0top_(p3) - (patm + *p1) * q0top_(p1));
+   313:       /* <<<<<<<<<<<<End of Energy Common Statements. */
+   314: 
+   315:       if (ispower_() == 1)
+   316:       {
+   317:          *powerRvalve     = powRvalve;
+   318:       }
+   319:       if (energyRvalve != NULL)
+   320:       {
+   321:          *denergyRvalve   = powRvalve;
+   322:       }
+   323:       if (actRvalve != NULL)
+   324:       {
+   325:          /* >>>>>>>>>>>>Optional Activity Computation Statements. */
+   326:          /* <<<<<<<<<<<<End of Optional Activity Computation Statements. */
+   327:          *dactRvalve      = fabs(powRvalve);
+   328:       }
+   329:    }
+   330: 
+   331: /* SI -> Common units conversions. */
+   332: 
+   333:    *q1       /= 1.66666666666667e-005;
+   334:    *p1       /= 1.00000000000000e+005;
+   335:    *p3       /= 1.00000000000000e+005;
+   336: }
+   337: 
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\RV011.spe
+==============================================================================
+...
+     1: <?xml version="1.0" encoding="ISO-8859-1"?>
+     2: <!DOCTYPE SPE>
+     3: <SPE DOC_VERSION="2" AME_VERSION="14.0.0 -  42489-40361 2015">
+     4: 
+     5:  <SUBMODEL>
+     6:   <SUB_TYPE>0</SUB_TYPE>
+     7:   <SUB_ID_MAX>25</SUB_ID_MAX>
+     8:   <DEFAULT_ICON>signaloperatedrvalve</DEFAULT_ICON>
+     9:   <SUB_LABEL>signal operated hydraulic relief valve</SUB_LABEL>
+    10:   <SUB_UNIT>0</SUB_UNIT>
+    11:   <I_STORES_NUMBER>3</I_STORES_NUMBER>
+    12:   <OUTPUT_TYPE>1</OUTPUT_TYPE>
+    13:   <RPARAMS_LIST>
+    14:    <RPARAM>
+    15:     <SUB_ID>7</SUB_ID>
+    16:     <TITLE>maximum relief valve cracking pressure</TITLE>
+    17:     <VARNAME>pcrack</VARNAME>
+    18:     <VISIBILITY>True</VISIBILITY>
+    19:     <DEF_VALUE>1.50000000000000e+02</DEF_VALUE>
+    20:     <VALUE>1.50000000000000e+02</VALUE>
+    21:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+    22:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+    23:     <UNITS>bar</UNITS>
+    24:     <IS_DELTA>1</IS_DELTA>
+    25:    </RPARAM>
+    26:    <RPARAM>
+    27:     <SUB_ID>8</SUB_ID>
+    28:     <TITLE>relief valve flow rate pressure gradient</TITLE>
+    29:     <VARNAME>grad</VARNAME>
+    30:     <VISIBILITY>True</VISIBILITY>
+    31:     <DEF_VALUE>5.00000000000000e+02</DEF_VALUE>
+    32:     <VALUE>5.00000000000000e+02</VALUE>
+    33:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+    34:     <MAX_VALUE>1.00000000000000e+004</MAX_VALUE>
+    35:     <UNITS>L/min/bar</UNITS>
+    36:    </RPARAM>
+    37:    <RPARAM>
+    38:     <SUB_ID>9</SUB_ID>
+    39:     <TITLE>valve rated current</TITLE>
+    40:     <VARNAME>irate</VARNAME>
+    41:     <VISIBILITY>True</VISIBILITY>
+    42:     <DEF_VALUE>2.00000000000000e+02</DEF_VALUE>
+    43:     <VALUE>2.00000000000000e+02</VALUE>
+    44:     <MIN_VALUE>1.00000000000000e+000</MIN_VALUE>
+    45:     <MAX_VALUE>5.00000000000000e+003</MAX_VALUE>
+    46:     <UNITS>mA</UNITS>
+    47:    </RPARAM>
+    48:    <RPARAM>
+    49:     <SUB_ID>14</SUB_ID>
+    50:     <TITLE>valve hysteresis</TITLE>
+    51:     <VARNAME>hyst</VARNAME>
+    52:     <VISIBILITY>True</VISIBILITY>
+    53:     <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+    54:     <VALUE>0.00000000000000e+00</VALUE>
+    55:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+    56:     <MAX_VALUE>1.00000000000000e+002</MAX_VALUE>
+    57:     <UNITS>bar</UNITS>
+    58:     <IS_DELTA>1</IS_DELTA>
+    59:    </RPARAM>
+    60:   </RPARAMS_LIST>
+    61:   <IPARAMS_LIST>
+    62:    <IPARAM>
+    63:     <SUB_ID>24</SUB_ID>
+    64:     <TITLE>index of hydraulic fluid</TITLE>
+    65:     <VARNAME>indexf</VARNAME>
+    66:     <VISIBILITY>True</VISIBILITY>
+    67:     <DEF_VALUE>0</DEF_VALUE>
+    68:     <VALUE>0</VALUE>
+    69:     <MIN_VALUE>0</MIN_VALUE>
+    70:     <MAX_VALUE>100</MAX_VALUE>
+    71:    </IPARAM>
+    72:   </IPARAMS_LIST>
+    73:   <PARAMS_GROUPS_LIST>
+    74:    <PARAMS_GROUP>
+    75:     <ORIG_TITLE>power, energy, activity</ORIG_TITLE>
+    76:     <NAME>Emanagement</NAME>
+    77:     <SUB_ID>22</SUB_ID>
+    78:     <PARAM_GROUP_ELEMENT_LIST>
+    79:      <PARAM_GROUP_ELEMENT>
+    80:       <PARAM_GROUP_ELEMENT_VARNAME>powerRvalve</PARAM_GROUP_ELEMENT_VARNAME>
+    81:       <PARAM_GROUP_ELEMENT_DISPLAY>1</PARAM_GROUP_ELEMENT_DISPLAY>
+    82:      </PARAM_GROUP_ELEMENT>
+    83:      <PARAM_GROUP_ELEMENT>
+    84:       <PARAM_GROUP_ELEMENT_VARNAME>energyRvalve</PARAM_GROUP_ELEMENT_VARNAME>
+    85:       <PARAM_GROUP_ELEMENT_DISPLAY>2</PARAM_GROUP_ELEMENT_DISPLAY>
+    86:      </PARAM_GROUP_ELEMENT>
+    87:      <PARAM_GROUP_ELEMENT>
+    88:       <PARAM_GROUP_ELEMENT_VARNAME>actRvalve</PARAM_GROUP_ELEMENT_VARNAME>
+    89:       <PARAM_GROUP_ELEMENT_DISPLAY>2</PARAM_GROUP_ELEMENT_DISPLAY>
+    90:      </PARAM_GROUP_ELEMENT>
+    91:     </PARAM_GROUP_ELEMENT_LIST>
+    92:     <EDITABLE>0</EDITABLE>
+    93:    </PARAMS_GROUP>
+    94:   </PARAMS_GROUPS_LIST>
+    95:   <IVARS_LIST>
+    96:    <IVAR>
+    97:     <SUB_ID>12</SUB_ID>
+    98:     <TITLE>high limit</TITLE>
+    99:     <VARNAME>highlimit</VARNAME>
+   100:     <VISIBILITY>True</VISIBILITY>
+   101:     <TYPE>0</TYPE>
+   102:     <DIMENSION>1</DIMENSION>
+   103:     <UNPLOTTABLE>1</UNPLOTTABLE>
+   104:     <UNITS>null</UNITS>
+   105:    </IVAR>
+   106:    <IVAR>
+   107:     <SUB_ID>13</SUB_ID>
+   108:     <TITLE>low limit</TITLE>
+   109:     <VARNAME>lowlimit</VARNAME>
+   110:     <VISIBILITY>True</VISIBILITY>
+   111:     <TYPE>0</TYPE>
+   112:     <DIMENSION>1</DIMENSION>
+   113:     <UNPLOTTABLE>1</UNPLOTTABLE>
+   114:     <UNITS>null</UNITS>
+   115:    </IVAR>
+   116:    <IVAR>
+   117:     <SUB_ID>6</SUB_ID>
+   118:     <TITLE>activity of hydraulic dissipation (valve)</TITLE>
+   119:     <VARNAME>actRvalve</VARNAME>
+   120:     <VARNAME2>dactRvalve</VARNAME2>
+   121:     <VISIBILITY>True</VISIBILITY>
+   122:     <TYPE>1</TYPE>
+   123:     <DIMENSION>1</DIMENSION>
+   124:     <UNITS>J</UNITS>
+   125:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   126:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   127:     <DEF_VALUE>0</DEF_VALUE>
+   128:     <VALUE>0</VALUE>
+   129:     <PHYS_TYPE>1</PHYS_TYPE>
+   130:     <PHYS_DOMAIN>1</PHYS_DOMAIN>
+   131:     <ACT_SUFFIX>valve</ACT_SUFFIX>
+   132:     <ACT_TYPE>1</ACT_TYPE>
+   133:    </IVAR>
+   134:    <IVAR>
+   135:     <SUB_ID>20</SUB_ID>
+   136:     <TITLE>power of hydraulic dissipation (valve)</TITLE>
+   137:     <VARNAME>powerRvalve</VARNAME>
+   138:     <VISIBILITY>True</VISIBILITY>
+   139:     <TYPE>9</TYPE>
+   140:     <DIMENSION>1</DIMENSION>
+   141:     <UNITS>W</UNITS>
+   142:     <PHYS_TYPE>1</PHYS_TYPE>
+   143:     <PHYS_DOMAIN>1</PHYS_DOMAIN>
+   144:     <ACT_SUFFIX>valve</ACT_SUFFIX>
+   145:     <ACT_TYPE>2</ACT_TYPE>
+   146:    </IVAR>
+   147:    <IVAR>
+   148:     <SUB_ID>21</SUB_ID>
+   149:     <TITLE>energy of hydraulic dissipation (valve)</TITLE>
+   150:     <VARNAME>energyRvalve</VARNAME>
+   151:     <VARNAME2>denergyRvalve</VARNAME2>
+   152:     <VISIBILITY>True</VISIBILITY>
+   153:     <TYPE>1</TYPE>
+   154:     <DIMENSION>1</DIMENSION>
+   155:     <UNITS>J</UNITS>
+   156:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   157:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   158:     <DEF_VALUE>0</DEF_VALUE>
+   159:     <VALUE>0</VALUE>
+   160:     <PHYS_TYPE>1</PHYS_TYPE>
+   161:     <PHYS_DOMAIN>1</PHYS_DOMAIN>
+   162:     <ACT_SUFFIX>valve</ACT_SUFFIX>
+   163:     <ACT_TYPE>3</ACT_TYPE>
+   164:    </IVAR>
+   165:   </IVARS_LIST>
+   166:   <EVARS_LIST>
+   167:    <PORT>
+   168:     <EVAR>
+   169:      <SUB_ID>1</SUB_ID>
+   170:      <TITLE>flow rate at port 1</TITLE>
+   171:      <VARNAME>q1</VARNAME>
+   172:      <VISIBILITY>True</VISIBILITY>
+   173:      <TYPE>0</TYPE>
+   174:      <DIMENSION>1</DIMENSION>
+   175:      <IO>2</IO>
+   176:      <UNITS>L/min</UNITS>
+   177:     </EVAR>
+   178:     <EVAR>
+   179:      <SUB_ID>2</SUB_ID>
+   180:      <TITLE>pressure at port 1</TITLE>
+   181:      <VARNAME>p1</VARNAME>
+   182:      <VISIBILITY>True</VISIBILITY>
+   183:      <TYPE>0</TYPE>
+   184:      <DIMENSION>1</DIMENSION>
+   185:      <IO>1</IO>
+   186:      <UNITS>bar</UNITS>
+   187:     </EVAR>
+   188:    </PORT>
+   189:    <PORT>
+   190:     <EVAR>
+   191:      <SUB_ID>3</SUB_ID>
+   192:      <TITLE>input signal interpreted in mA</TITLE>
+   193:      <VARNAME>sig</VARNAME>
+   194:      <VISIBILITY>True</VISIBILITY>
+   195:      <TYPE>0</TYPE>
+   196:      <DIMENSION>1</DIMENSION>
+   197:      <IO>1</IO>
+   198:      <UNITS>null</UNITS>
+   199:     </EVAR>
+   200:    </PORT>
+   201:    <PORT>
+   202:     <EVAR>
+   203:      <SUB_ID>4</SUB_ID>
+   204:      <VARNAME>q3</VARNAME>
+   205:      <VISIBILITY>True</VISIBILITY>
+   206:      <TYPE>4</TYPE>
+   207:      <PRIMARY_PORT>0</PRIMARY_PORT>
+   208:      <PRIMARY_VAR>0</PRIMARY_VAR>
+   209:      <DUP_TYPE>1</DUP_TYPE>
+   210:     </EVAR>
+   211:     <EVAR>
+   212:      <SUB_ID>5</SUB_ID>
+   213:      <TITLE>pressure at port 3</TITLE>
+   214:      <VARNAME>p3</VARNAME>
+   215:      <VISIBILITY>True</VISIBILITY>
+   216:      <TYPE>0</TYPE>
+   217:      <DIMENSION>1</DIMENSION>
+   218:      <IO>1</IO>
+   219:      <UNITS>bar</UNITS>
+   220:     </EVAR>
+   221:    </PORT>
+   222:   </EVARS_LIST>
+   223:   <SUBIDS_RESET>0</SUBIDS_RESET>
+   224:  </SUBMODEL>
+   225: </SPE>

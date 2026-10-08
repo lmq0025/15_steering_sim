@@ -1,0 +1,11 @@
+﻿alias,data_path,parameter_type,title,unit,raw_value,resolved_value,value_unit
+step,out0@step,ame_real_parameter,value before step,null,0,0,null
+step,out1@step,ame_real_parameter,value after step,null,0,0,null
+step,t0@step,ame_real_parameter,step time,s,2.5,2.5,s
+step,td@step,ame_real_parameter,transition duration,s,0.1,0.1,s
+step,transitionType@step,ame_integer_parameter,transition type,,1,1,
+step_1,out0@step_1,ame_real_parameter,value before step,null,0,0,null
+step_1,out1@step_1,ame_real_parameter,value after step,null,0,0,null
+step_1,t0@step_1,ame_real_parameter,step time,s,2.5,2.5,s
+step_1,td@step_1,ame_real_parameter,transition duration,s,0.1,0.1,s
+step_1,transitionType@step_1,ame_integer_parameter,transition type,,1,1,

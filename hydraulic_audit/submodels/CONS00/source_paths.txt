@@ -1,0 +1,3 @@
+E:\Simcenter\2021.1\Amesim\libsig\submodels\CONS00.c
+E:\Simcenter\2021.1\Amesim\libsig\submodels\CONS00.py
+E:\Simcenter\2021.1\Amesim\libsig\submodels\CONS00.spe

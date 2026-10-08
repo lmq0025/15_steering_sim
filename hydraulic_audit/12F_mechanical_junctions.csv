@@ -1,0 +1,18 @@
+﻿junction_id,level,domain,bg_type,classification,source_network,connected_endpoints,endpoint_count,effort_balance,common_flow,status
+RMJ_001,1,rotation,1-junction,rotation 1-junction,rotary,pmover01:0;pump01:2,2,sum(torque)=0,angular_speed,PASS
+RMJ_002,1,rotation,1-junction,rotation 1-junction,rotary_1,pmover01_1:0;pump01_1:2,2,sum(torque)=0,angular_speed,PASS
+RMJ_003,1,rotation,1-junction,rotation 1-junction,rotary_2,pmover01_2:0;pump01_2:2,2,sum(torque)=0,angular_speed,PASS
+RMJ_004,1,rotation,1-junction,rotation 1-junction,rotary_3,pmover01_3:0;pump01_3:2,2,sum(torque)=0,angular_speed,PASS
+TMJ_001,1,translation,1-junction,translation 1-junction,linear,forcecon:1;mass_friction2port:1,2,sum(force)=0,velocity,PASS
+TMJ_002,1,translation,1-junction,translation 1-junction,linear_1,actuator002:2;mass1port:0,2,sum(force)=0,velocity,PASS
+TMJ_003,1,translation,1-junction,translation 1-junction,linear_10,forcecon_3:1;mass_friction2port_3:1,2,sum(force)=0,velocity,PASS
+TMJ_004,1,translation,1-junction,translation 1-junction,linear_11,forcecon_4:1;mass_friction2port_4:1,2,sum(force)=0,velocity,PASS
+TMJ_005,1,translation,1-junction,translation 1-junction,linear_12,forcecon_5:1;mass_friction2port_5:1,2,sum(force)=0,velocity,PASS
+TMJ_006,1,translation,1-junction,translation 1-junction,linear_2,mass_friction2port_1:0;springreturnactuator:2,2,sum(force)=0,velocity,PASS
+TMJ_007,1,translation,1-junction,translation 1-junction,linear_3,mass_friction2port_2:0;springreturnactuator_1:2,2,sum(force)=0,velocity,PASS
+TMJ_008,1,translation,1-junction,translation 1-junction,linear_4,mass_friction2port_5:0;springreturnactuator_2:2,2,sum(force)=0,velocity,PASS
+TMJ_009,1,translation,1-junction,translation 1-junction,linear_5,actuator001_1:2;mass_friction2port_3:0,2,sum(force)=0,velocity,PASS
+TMJ_010,1,translation,1-junction,translation 1-junction,linear_6,actuator001_2:2;mass_friction2port_4:0,2,sum(force)=0,velocity,PASS
+TMJ_011,1,translation,1-junction,translation 1-junction,linear_7,actuator001:2;mass_friction2port:0,2,sum(force)=0,velocity,PASS
+TMJ_012,1,translation,1-junction,translation 1-junction,linear_8,forcecon_1:1;mass_friction2port_1:1,2,sum(force)=0,velocity,PASS
+TMJ_013,1,translation,1-junction,translation 1-junction,linear_9,forcecon_2:1;mass_friction2port_2:1,2,sum(force)=0,velocity,PASS

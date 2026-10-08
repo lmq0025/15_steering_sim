@@ -1,0 +1,28 @@
+﻿alias,data_path,parameter_type,title,unit,raw_value,resolved_value,value_unit
+elementaryhydraulicprops_1,fpd@elementaryhydraulicprops_1,ame_real_parameter,density,kg/m**3,850,850,kg/m**3
+elementaryhydraulicprops_1,fpbm@elementaryhydraulicprops_1,ame_real_parameter,bulk modulus,bar,17000,17000,bar
+elementaryhydraulicprops_1,fpslope@elementaryhydraulicprops_1,ame_real_parameter,slope of bulk modulus [bar] in function of pressure [bar] (in percentage),null,0,0,null
+elementaryhydraulicprops_1,fpav@elementaryhydraulicprops_1,ame_real_parameter,absolute viscosity,cP,51,51,cP
+elementaryhydraulicprops_1,fpavag@elementaryhydraulicprops_1,ame_real_parameter,absolute viscosity of air/gas,cP,0.02,0.02,cP
+elementaryhydraulicprops_1,fpsp@elementaryhydraulicprops_1,ame_real_parameter,saturation pressure (for dissolved air/gas),bar,1000,1000,bar
+elementaryhydraulicprops_1,fpac@elementaryhydraulicprops_1,ame_real_parameter,air/gas content,%,0.1,0.1,%
+elementaryhydraulicprops_1,fpt@elementaryhydraulicprops_1,ame_real_parameter,temperature,degC,40,40,degC
+elementaryhydraulicprops_1,T1@elementaryhydraulicprops_1,ame_real_parameter,temperature T1,degC,40,40,degC
+elementaryhydraulicprops_1,nu1@elementaryhydraulicprops_1,ame_real_parameter,"kinematic viscosity at (Patm, T1)",cSt,56.47,56.47,cSt
+elementaryhydraulicprops_1,T2@elementaryhydraulicprops_1,ame_real_parameter,temperature T2,degC,100,100,degC
+elementaryhydraulicprops_1,nu2@elementaryhydraulicprops_1,ame_real_parameter,"kinematic viscosity at (Patm, T2)",cSt,9.71,9.71,cSt
+elementaryhydraulicprops_1,tvis@elementaryhydraulicprops_1,ame_real_parameter,coefficient for temperature viscosity characteristic,null,0.8,0.8,null
+elementaryhydraulicprops_1,fppi@elementaryhydraulicprops_1,ame_real_parameter,polytropic index for air/gas/vapor content,null,1.4,1.4,null
+elementaryhydraulicprops_1,hsvp@elementaryhydraulicprops_1,ame_real_parameter,(advanced user) high saturated vapor pressure,bar,-0.5,-0.5,bar
+elementaryhydraulicprops_1,lsvp@elementaryhydraulicprops_1,ame_real_parameter,(advanced user) low saturated vapor pressure,bar,-0.6,-0.6,bar
+elementaryhydraulicprops_1,muvap@elementaryhydraulicprops_1,ame_real_parameter,(advanced user) absolute viscosity of vapor,cP,0.02,0.02,cP
+elementaryhydraulicprops_1,emm@elementaryhydraulicprops_1,ame_real_parameter,(advanced user) effective molecular mass of vapor,null,200,200,null
+elementaryhydraulicprops_1,gdens@elementaryhydraulicprops_1,ame_real_parameter,(advanced user) air/gas density at atmospheric pressure 0 degC,kg/m**3,1.2,1.2,kg/m**3
+elementaryhydraulicprops_1,psat@elementaryhydraulicprops_1,ame_real_parameter,saturation pressure (for dissolved air/gas),bar,0,0,bar
+elementaryhydraulicprops_1,proptype@elementaryhydraulicprops_1,ame_integer_parameter,type of fluid properties,,2,2,
+elementaryhydraulicprops_1,rbtype@elementaryhydraulicprops_1,ame_integer_parameter,fuel type,,3,3,
+elementaryhydraulicprops_1,fluidfile@elementaryhydraulicprops_1,ame_integer_parameter,fluid property file,,1,1,
+elementaryhydraulicprops_1,bulkmod@elementaryhydraulicprops_1,ame_integer_parameter,bulk modulus type,,1,1,
+elementaryhydraulicprops_1,indexf@elementaryhydraulicprops_1,ame_integer_parameter,index of hydraulic fluid,,0,0,
+elementaryhydraulicprops_1,fluidname@elementaryhydraulicprops_1,ame_text_parameter,name of fluid,,unnamed fluid,unnamed fluid,
+elementaryhydraulicprops_1,fpfname@elementaryhydraulicprops_1,ame_text_parameter,filename for fluid properties,,$AME/tutorial/tblprop1.txt,$AME/tutorial/tblprop1.txt,

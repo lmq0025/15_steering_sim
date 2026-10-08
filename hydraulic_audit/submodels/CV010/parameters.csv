@@ -1,0 +1,25 @@
+﻿alias,data_path,parameter_type,title,unit,raw_value,resolved_value,value_unit
+presscontrol02,pcrack@presscontrol02,ame_real_parameter,check valve cracking pressure,bar,0,0,bar
+presscontrol02,grad@presscontrol02,ame_real_parameter,check valve flow rate pressure gradient,L/min/bar,500,500,L/min/bar
+presscontrol02,hyst@presscontrol02,ame_real_parameter,valve hysteresis,bar,0,0,bar
+presscontrol02,indexf@presscontrol02,ame_integer_parameter,index of hydraulic fluid,,0,0,
+presscontrol02_1,pcrack@presscontrol02_1,ame_real_parameter,check valve cracking pressure,bar,0,0,bar
+presscontrol02_1,grad@presscontrol02_1,ame_real_parameter,check valve flow rate pressure gradient,L/min/bar,500,500,L/min/bar
+presscontrol02_1,hyst@presscontrol02_1,ame_real_parameter,valve hysteresis,bar,0,0,bar
+presscontrol02_1,indexf@presscontrol02_1,ame_integer_parameter,index of hydraulic fluid,,0,0,
+presscontrol02_4,pcrack@presscontrol02_4,ame_real_parameter,check valve cracking pressure,bar,0,0,bar
+presscontrol02_4,grad@presscontrol02_4,ame_real_parameter,check valve flow rate pressure gradient,L/min/bar,500,500,L/min/bar
+presscontrol02_4,hyst@presscontrol02_4,ame_real_parameter,valve hysteresis,bar,0,0,bar
+presscontrol02_4,indexf@presscontrol02_4,ame_integer_parameter,index of hydraulic fluid,,0,0,
+presscontrol02_5,pcrack@presscontrol02_5,ame_real_parameter,check valve cracking pressure,bar,0,0,bar
+presscontrol02_5,grad@presscontrol02_5,ame_real_parameter,check valve flow rate pressure gradient,L/min/bar,500,500,L/min/bar
+presscontrol02_5,hyst@presscontrol02_5,ame_real_parameter,valve hysteresis,bar,0,0,bar
+presscontrol02_5,indexf@presscontrol02_5,ame_integer_parameter,index of hydraulic fluid,,0,0,
+presscontrol02_8,pcrack@presscontrol02_8,ame_real_parameter,check valve cracking pressure,bar,0,0,bar
+presscontrol02_8,grad@presscontrol02_8,ame_real_parameter,check valve flow rate pressure gradient,L/min/bar,500,500,L/min/bar
+presscontrol02_8,hyst@presscontrol02_8,ame_real_parameter,valve hysteresis,bar,0,0,bar
+presscontrol02_8,indexf@presscontrol02_8,ame_integer_parameter,index of hydraulic fluid,,0,0,
+presscontrol02_9,pcrack@presscontrol02_9,ame_real_parameter,check valve cracking pressure,bar,0,0,bar
+presscontrol02_9,grad@presscontrol02_9,ame_real_parameter,check valve flow rate pressure gradient,L/min/bar,500,500,L/min/bar
+presscontrol02_9,hyst@presscontrol02_9,ame_real_parameter,valve hysteresis,bar,0,0,bar
+presscontrol02_9,indexf@presscontrol02_9,ame_integer_parameter,index of hydraulic fluid,,0,0,

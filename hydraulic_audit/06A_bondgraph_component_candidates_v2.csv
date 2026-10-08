@@ -1,0 +1,404 @@
+﻿alias,parent_alias,is_internal,base_alias,submodel,library,connected_port_count,domain_combo,candidate_bg_type,physical_role,confidence,review_required,reason
+accumulator,,no,accumulator,HA001,hydr,1,hflow,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,yes,Only hydraulic ports detected; constitutive equation is required for final classification.
+accumulator_1,,no,accumulator,HA001,hydr,1,hflow,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,yes,Only hydraulic ports detected; constitutive equation is required for final classification.
+actuator001,,no,actuator001,HJ020,hydr,3,hflow+lshaft,TF/MTF,hydraulic-linear mechanical converter,high,yes,Component couples hydraulic flow/pressure and translational force/velocity domains.
+actuator001_1,,no,actuator001,HJ020,hydr,3,hflow+lshaft,TF/MTF,hydraulic-linear mechanical converter,high,yes,Component couples hydraulic flow/pressure and translational force/velocity domains.
+actuator001_2,,no,actuator001,HJ020,hydr,3,hflow+lshaft,TF/MTF,hydraulic-linear mechanical converter,high,yes,Component couples hydraulic flow/pressure and translational force/velocity domains.
+actuator002,,no,actuator002,HJ021,hydr,3,hflow+lshaft,TF/MTF,hydraulic-linear mechanical converter,high,yes,Component couples hydraulic flow/pressure and translational force/velocity domains.
+constant,,no,constant,CONS00,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+constant_1,,no,constant,CONS00,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+constant_10,,no,constant,CONS00,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+constant_11,,no,constant,CONS00,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+constant_12,,no,constant,CONS00,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+constant_13,,no,constant,CONS00,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+constant_14,,no,constant,CONS00,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+constant_2,,no,constant,CONS00,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+constant_3,,no,constant,CONS00,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+constant_4,,no,constant,CONS00,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+constant_5,,no,constant,CONS00,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+constant_6,,no,constant,CONS00,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+constant_7,,no,constant,CONS00,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+constant_8,,no,constant,CONS00,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+constant_9,,no,constant,CONS00,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+control02,,no,control02,JUN3P,sig,3,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+control02_1,,no,control02,JUN3P,sig,3,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+control02_2,,no,control02,JUN3P,sig,3,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+control04,,no,control04,SPLT0,sig,3,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+control04_1,,no,control04,SPLT0,sig,3,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+cooler,,no,cooler,HYDORT0,hydr,2,hflow,R/MR,hydraulic dissipative element,medium,yes,Component is likely governed by pressure-drop / flow relation.
+cooler_1,,no,cooler,HYDORT0,hydr,2,hflow,R/MR,hydraulic dissipative element,medium,yes,Component is likely governed by pressure-drop / flow relation.
+dirvalve_1,,no,dirvalve_1,SC_1,,5,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_1.dyn_receiv_frac_spool_pos,dirvalve_1,yes,dynamic_receiver,SIGRECEI0,sig,2,signal,SIGNAL,supercomponent signal/interface element,high,no,The Amesim remote port is treated as an interface mechanism rather than an independent power domain; the remaining physical domain is signal.
+dirvalve_1.frac_spool_pos_node,dirvalve_1,yes,splitter2p2,SPLT0,sig,6,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_1.fractional_spool_position_dynamics,dirvalve_1,yes,valvedynamics,VALVEDYNAMICS0,sig,2,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_1.orifice_13,dirvalve_1,yes,variableorifice,HYDVORF0,hydr,6,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_1.orifice_14,dirvalve_1,yes,variableorifice,HYDVORF0,hydr,6,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_1.orifice_23,dirvalve_1,yes,variableorifice,HYDVORF0,hydr,6,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_1.orifice_24,dirvalve_1,yes,variableorifice,HYDVORF0,hydr,6,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_1.signal_sink,dirvalve_1,yes,signalsink,SSINK,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_1.table_13,dirvalve_1,yes,fofx,FX00,sig,4,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_1.table_14,dirvalve_1,yes,fofx,FX00,sig,4,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_1.table_23,dirvalve_1,yes,fofx,FX00,sig,4,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_1.table_24,dirvalve_1,yes,fofx,FX00,sig,4,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_1.table_fractional_spool_position,dirvalve_1,yes,fofx,FX00,sig,3,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_1.three_way_hyd_endnode_32,dirvalve_1,yes,hydrnode3,H3NODE3,hydr,6,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_1.three_way_hyd_endnode_42,dirvalve_1,yes,hydrnode3,H3NODE3,hydr,6,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_1.three_way_hyd_startnode_14,dirvalve_1,yes,hydrnode3,H3NODE1,hydr,6,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_1.three_way_hyd_startnode_23,dirvalve_1,yes,hydrnode3,H3NODE1,hydr,6,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_1.three_way_signal_node_13,dirvalve_1,yes,splitter2p2,SPLT0,sig,6,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_1.three_way_signal_node_23,dirvalve_1,yes,splitter2p2,SPLT0,sig,6,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_1.three_way_signal_node_24,dirvalve_1,yes,splitter2p2,SPLT0,sig,6,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_1.trans_frac_spool_pos,dirvalve_1,yes,dynamic_transmitter,SIGTRANS0,sig,2,signal,SIGNAL,supercomponent signal/interface element,high,no,The Amesim remote port is treated as an interface mechanism rather than an independent power domain; the remaining physical domain is signal.
+dirvalve_1.two_port_node_bottom_1,dirvalve_1,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_1.two_port_node_bottom_2,dirvalve_1,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_1.two_port_node_top_3,dirvalve_1,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_1.two_port_node_top_4,dirvalve_1,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_10,,no,dirvalve_1,SC_1,,4,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_10.dyn_receiv_frac_spool_pos,dirvalve_10,yes,dynamic_receiver,SIGRECEI0,sig,2,signal,SIGNAL,supercomponent signal/interface element,high,no,The Amesim remote port is treated as an interface mechanism rather than an independent power domain; the remaining physical domain is signal.
+dirvalve_10.frac_spool_pos_node,dirvalve_10,yes,splitter2p2,SPLT0,sig,6,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_10.fractional_spool_position_dynamics,dirvalve_10,yes,valvedynamics,VALVEDYNAMICS0,sig,2,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_10.orifice_13,dirvalve_10,yes,variableorifice,HYDVORF0,hydr,6,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_10.orifice_23,dirvalve_10,yes,variableorifice,HYDVORF0,hydr,6,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_10.signal_sink,dirvalve_10,yes,signalsink,SSINK,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_10.table_13,dirvalve_10,yes,fofx,FX00,sig,4,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_10.table_23,dirvalve_10,yes,fofx,FX00,sig,4,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_10.table_fractional_spool_position,dirvalve_10,yes,fofx,FX00,sig,3,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_10.three_way_hyd_endnode_32,dirvalve_10,yes,hydrnode3,H3NODE3,hydr,6,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_10.three_way_signal_node_23,dirvalve_10,yes,splitter2p2,SPLT0,sig,6,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_10.trans_frac_spool_pos,dirvalve_10,yes,dynamic_transmitter,SIGTRANS0,sig,2,signal,SIGNAL,supercomponent signal/interface element,high,no,The Amesim remote port is treated as an interface mechanism rather than an independent power domain; the remaining physical domain is signal.
+dirvalve_10.two_port_node_bottom_1,dirvalve_10,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_10.two_port_node_bottom_2,dirvalve_10,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_10.two_port_node_top_3,dirvalve_10,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_11,,no,dirvalve_1,SC_1,,5,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_11.dyn_receiv_frac_spool_pos,dirvalve_11,yes,dynamic_receiver,SIGRECEI0,sig,2,signal,SIGNAL,supercomponent signal/interface element,high,no,The Amesim remote port is treated as an interface mechanism rather than an independent power domain; the remaining physical domain is signal.
+dirvalve_11.frac_spool_pos_node,dirvalve_11,yes,splitter2p2,SPLT0,sig,6,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_11.fractional_spool_position_dynamics,dirvalve_11,yes,valvedynamics,VALVEDYNAMICS0,sig,2,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_11.orifice_13,dirvalve_11,yes,variableorifice,HYDVORF0,hydr,6,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_11.orifice_14,dirvalve_11,yes,variableorifice,HYDVORF0,hydr,6,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_11.orifice_23,dirvalve_11,yes,variableorifice,HYDVORF0,hydr,6,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_11.orifice_24,dirvalve_11,yes,variableorifice,HYDVORF0,hydr,6,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_11.signal_sink,dirvalve_11,yes,signalsink,SSINK,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_11.table_13,dirvalve_11,yes,fofx,FX00,sig,4,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_11.table_14,dirvalve_11,yes,fofx,FX00,sig,4,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_11.table_23,dirvalve_11,yes,fofx,FX00,sig,4,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_11.table_24,dirvalve_11,yes,fofx,FX00,sig,4,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_11.table_fractional_spool_position,dirvalve_11,yes,fofx,FX00,sig,3,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_11.three_way_hyd_endnode_32,dirvalve_11,yes,hydrnode3,H3NODE3,hydr,6,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_11.three_way_hyd_endnode_42,dirvalve_11,yes,hydrnode3,H3NODE3,hydr,6,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_11.three_way_hyd_startnode_14,dirvalve_11,yes,hydrnode3,H3NODE1,hydr,6,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_11.three_way_hyd_startnode_23,dirvalve_11,yes,hydrnode3,H3NODE1,hydr,6,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_11.three_way_signal_node_13,dirvalve_11,yes,splitter2p2,SPLT0,sig,6,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_11.three_way_signal_node_23,dirvalve_11,yes,splitter2p2,SPLT0,sig,6,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_11.three_way_signal_node_24,dirvalve_11,yes,splitter2p2,SPLT0,sig,6,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_11.trans_frac_spool_pos,dirvalve_11,yes,dynamic_transmitter,SIGTRANS0,sig,2,signal,SIGNAL,supercomponent signal/interface element,high,no,The Amesim remote port is treated as an interface mechanism rather than an independent power domain; the remaining physical domain is signal.
+dirvalve_11.two_port_node_bottom_1,dirvalve_11,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_11.two_port_node_bottom_2,dirvalve_11,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_11.two_port_node_top_3,dirvalve_11,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_11.two_port_node_top_4,dirvalve_11,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_12,,no,dirvalve_1,SC_1,,5,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_12.dyn_receiv_frac_spool_pos,dirvalve_12,yes,dynamic_receiver,SIGRECEI0,sig,2,signal,SIGNAL,supercomponent signal/interface element,high,no,The Amesim remote port is treated as an interface mechanism rather than an independent power domain; the remaining physical domain is signal.
+dirvalve_12.frac_spool_pos_node,dirvalve_12,yes,splitter2p2,SPLT0,sig,6,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_12.fractional_spool_position_dynamics,dirvalve_12,yes,valvedynamics,VALVEDYNAMICS0,sig,2,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_12.orifice_14,dirvalve_12,yes,variableorifice,HYDVORF0,hydr,6,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_12.orifice_23,dirvalve_12,yes,variableorifice,HYDVORF0,hydr,6,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_12.signal_sink,dirvalve_12,yes,signalsink,SSINK,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_12.table_14,dirvalve_12,yes,fofx,FX00,sig,4,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_12.table_23,dirvalve_12,yes,fofx,FX00,sig,4,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_12.table_fractional_spool_position,dirvalve_12,yes,fofx,FX00,sig,3,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_12.three_way_signal_node_23,dirvalve_12,yes,splitter2p2,SPLT0,sig,6,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_12.trans_frac_spool_pos,dirvalve_12,yes,dynamic_transmitter,SIGTRANS0,sig,2,signal,SIGNAL,supercomponent signal/interface element,high,no,The Amesim remote port is treated as an interface mechanism rather than an independent power domain; the remaining physical domain is signal.
+dirvalve_12.two_port_node_bottom_1,dirvalve_12,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_12.two_port_node_bottom_2,dirvalve_12,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_12.two_port_node_top_3,dirvalve_12,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_12.two_port_node_top_4,dirvalve_12,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_13,,no,dirvalve_1,SC_1,,4,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_13.dyn_receiv_frac_spool_pos,dirvalve_13,yes,dynamic_receiver,SIGRECEI0,sig,2,signal,SIGNAL,supercomponent signal/interface element,high,no,The Amesim remote port is treated as an interface mechanism rather than an independent power domain; the remaining physical domain is signal.
+dirvalve_13.frac_spool_pos_node,dirvalve_13,yes,splitter2p2,SPLT0,sig,6,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_13.fractional_spool_position_dynamics,dirvalve_13,yes,valvedynamics,VALVEDYNAMICS0,sig,2,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_13.orifice_13,dirvalve_13,yes,variableorifice,HYDVORF0,hydr,6,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_13.orifice_23,dirvalve_13,yes,variableorifice,HYDVORF0,hydr,6,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_13.signal_sink,dirvalve_13,yes,signalsink,SSINK,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_13.table_13,dirvalve_13,yes,fofx,FX00,sig,4,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_13.table_23,dirvalve_13,yes,fofx,FX00,sig,4,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_13.table_fractional_spool_position,dirvalve_13,yes,fofx,FX00,sig,3,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_13.three_way_hyd_endnode_32,dirvalve_13,yes,hydrnode3,H3NODE3,hydr,6,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_13.three_way_signal_node_23,dirvalve_13,yes,splitter2p2,SPLT0,sig,6,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_13.trans_frac_spool_pos,dirvalve_13,yes,dynamic_transmitter,SIGTRANS0,sig,2,signal,SIGNAL,supercomponent signal/interface element,high,no,The Amesim remote port is treated as an interface mechanism rather than an independent power domain; the remaining physical domain is signal.
+dirvalve_13.two_port_node_bottom_1,dirvalve_13,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_13.two_port_node_bottom_2,dirvalve_13,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_13.two_port_node_top_3,dirvalve_13,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_1_piecewiselinear,,no,piecewiselinear,UD00,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_1_piecewiselinear_1,,no,piecewiselinear,UD00,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_1_piecewiselinear_2,,no,piecewiselinear,UD00,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_1_piecewiselinear_5,,no,piecewiselinear,UD00,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_1_piecewiselinear_6,,no,piecewiselinear,UD00,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_2,,no,dirvalve_1,SC_1,,5,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_2.dyn_receiv_frac_spool_pos,dirvalve_2,yes,dynamic_receiver,SIGRECEI0,sig,2,signal,SIGNAL,supercomponent signal/interface element,high,no,The Amesim remote port is treated as an interface mechanism rather than an independent power domain; the remaining physical domain is signal.
+dirvalve_2.frac_spool_pos_node,dirvalve_2,yes,splitter2p2,SPLT0,sig,6,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_2.fractional_spool_position_dynamics,dirvalve_2,yes,valvedynamics,VALVEDYNAMICS0,sig,2,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_2.orifice_14,dirvalve_2,yes,variableorifice,HYDVORF0,hydr,6,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_2.orifice_23,dirvalve_2,yes,variableorifice,HYDVORF0,hydr,6,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_2.signal_sink,dirvalve_2,yes,signalsink,SSINK,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_2.table_14,dirvalve_2,yes,fofx,FX00,sig,4,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_2.table_23,dirvalve_2,yes,fofx,FX00,sig,4,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_2.table_fractional_spool_position,dirvalve_2,yes,fofx,FX00,sig,3,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_2.three_way_signal_node_23,dirvalve_2,yes,splitter2p2,SPLT0,sig,6,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_2.trans_frac_spool_pos,dirvalve_2,yes,dynamic_transmitter,SIGTRANS0,sig,2,signal,SIGNAL,supercomponent signal/interface element,high,no,The Amesim remote port is treated as an interface mechanism rather than an independent power domain; the remaining physical domain is signal.
+dirvalve_2.two_port_node_bottom_1,dirvalve_2,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_2.two_port_node_bottom_2,dirvalve_2,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_2.two_port_node_top_3,dirvalve_2,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_2.two_port_node_top_4,dirvalve_2,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_3,,no,dirvalve_1,SC_1,,4,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_3.dyn_receiv_frac_spool_pos,dirvalve_3,yes,dynamic_receiver,SIGRECEI0,sig,2,signal,SIGNAL,supercomponent signal/interface element,high,no,The Amesim remote port is treated as an interface mechanism rather than an independent power domain; the remaining physical domain is signal.
+dirvalve_3.frac_spool_pos_node,dirvalve_3,yes,splitter2p2,SPLT0,sig,6,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_3.fractional_spool_position_dynamics,dirvalve_3,yes,valvedynamics,VALVEDYNAMICS0,sig,2,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_3.orifice_13,dirvalve_3,yes,variableorifice,HYDVORF0,hydr,6,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_3.orifice_23,dirvalve_3,yes,variableorifice,HYDVORF0,hydr,6,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_3.signal_sink,dirvalve_3,yes,signalsink,SSINK,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_3.table_13,dirvalve_3,yes,fofx,FX00,sig,4,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_3.table_23,dirvalve_3,yes,fofx,FX00,sig,4,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_3.table_fractional_spool_position,dirvalve_3,yes,fofx,FX00,sig,3,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_3.three_way_hyd_endnode_32,dirvalve_3,yes,hydrnode3,H3NODE3,hydr,6,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_3.three_way_signal_node_23,dirvalve_3,yes,splitter2p2,SPLT0,sig,6,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_3.trans_frac_spool_pos,dirvalve_3,yes,dynamic_transmitter,SIGTRANS0,sig,2,signal,SIGNAL,supercomponent signal/interface element,high,no,The Amesim remote port is treated as an interface mechanism rather than an independent power domain; the remaining physical domain is signal.
+dirvalve_3.two_port_node_bottom_1,dirvalve_3,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_3.two_port_node_bottom_2,dirvalve_3,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_3.two_port_node_top_3,dirvalve_3,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_6,,no,dirvalve_1,SC_1,,5,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_6.dyn_receiv_frac_spool_pos,dirvalve_6,yes,dynamic_receiver,SIGRECEI0,sig,2,signal,SIGNAL,supercomponent signal/interface element,high,no,The Amesim remote port is treated as an interface mechanism rather than an independent power domain; the remaining physical domain is signal.
+dirvalve_6.frac_spool_pos_node,dirvalve_6,yes,splitter2p2,SPLT0,sig,6,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_6.fractional_spool_position_dynamics,dirvalve_6,yes,valvedynamics,VALVEDYNAMICS0,sig,2,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_6.orifice_13,dirvalve_6,yes,variableorifice,HYDVORF0,hydr,6,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_6.orifice_14,dirvalve_6,yes,variableorifice,HYDVORF0,hydr,6,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_6.orifice_23,dirvalve_6,yes,variableorifice,HYDVORF0,hydr,6,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_6.orifice_24,dirvalve_6,yes,variableorifice,HYDVORF0,hydr,6,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_6.signal_sink,dirvalve_6,yes,signalsink,SSINK,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_6.table_13,dirvalve_6,yes,fofx,FX00,sig,4,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_6.table_14,dirvalve_6,yes,fofx,FX00,sig,4,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_6.table_23,dirvalve_6,yes,fofx,FX00,sig,4,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_6.table_24,dirvalve_6,yes,fofx,FX00,sig,4,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_6.table_fractional_spool_position,dirvalve_6,yes,fofx,FX00,sig,3,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_6.three_way_hyd_endnode_32,dirvalve_6,yes,hydrnode3,H3NODE3,hydr,6,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_6.three_way_hyd_endnode_42,dirvalve_6,yes,hydrnode3,H3NODE3,hydr,6,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_6.three_way_hyd_startnode_13,dirvalve_6,yes,hydrnode3,H3NODE1,hydr,6,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_6.three_way_hyd_startnode_24,dirvalve_6,yes,hydrnode3,H3NODE1,hydr,6,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_6.three_way_signal_node_14,dirvalve_6,yes,splitter2p2,SPLT0,sig,6,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_6.three_way_signal_node_23,dirvalve_6,yes,splitter2p2,SPLT0,sig,6,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_6.three_way_signal_node_24,dirvalve_6,yes,splitter2p2,SPLT0,sig,6,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_6.trans_frac_spool_pos,dirvalve_6,yes,dynamic_transmitter,SIGTRANS0,sig,2,signal,SIGNAL,supercomponent signal/interface element,high,no,The Amesim remote port is treated as an interface mechanism rather than an independent power domain; the remaining physical domain is signal.
+dirvalve_6.two_port_node_bottom_1,dirvalve_6,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_6.two_port_node_bottom_2,dirvalve_6,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_6.two_port_node_top_3,dirvalve_6,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_6.two_port_node_top_4,dirvalve_6,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_8,,no,dirvalve_1,SC_1,,5,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_8.dyn_receiv_frac_spool_pos,dirvalve_8,yes,dynamic_receiver,SIGRECEI0,sig,2,signal,SIGNAL,supercomponent signal/interface element,high,no,The Amesim remote port is treated as an interface mechanism rather than an independent power domain; the remaining physical domain is signal.
+dirvalve_8.frac_spool_pos_node,dirvalve_8,yes,splitter2p2,SPLT0,sig,6,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_8.fractional_spool_position_dynamics,dirvalve_8,yes,valvedynamics,VALVEDYNAMICS0,sig,2,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_8.orifice_13,dirvalve_8,yes,variableorifice,HYDVORF0,hydr,6,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_8.orifice_14,dirvalve_8,yes,variableorifice,HYDVORF0,hydr,6,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_8.orifice_23,dirvalve_8,yes,variableorifice,HYDVORF0,hydr,6,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_8.orifice_24,dirvalve_8,yes,variableorifice,HYDVORF0,hydr,6,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_8.signal_sink,dirvalve_8,yes,signalsink,SSINK,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_8.table_13,dirvalve_8,yes,fofx,FX00,sig,4,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_8.table_14,dirvalve_8,yes,fofx,FX00,sig,4,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_8.table_23,dirvalve_8,yes,fofx,FX00,sig,4,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_8.table_24,dirvalve_8,yes,fofx,FX00,sig,4,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_8.table_fractional_spool_position,dirvalve_8,yes,fofx,FX00,sig,3,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_8.three_way_hyd_endnode_32,dirvalve_8,yes,hydrnode3,H3NODE3,hydr,6,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_8.three_way_hyd_endnode_42,dirvalve_8,yes,hydrnode3,H3NODE3,hydr,6,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_8.three_way_hyd_startnode_14,dirvalve_8,yes,hydrnode3,H3NODE1,hydr,6,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_8.three_way_hyd_startnode_23,dirvalve_8,yes,hydrnode3,H3NODE1,hydr,6,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_8.three_way_signal_node_13,dirvalve_8,yes,splitter2p2,SPLT0,sig,6,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_8.three_way_signal_node_23,dirvalve_8,yes,splitter2p2,SPLT0,sig,6,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_8.three_way_signal_node_24,dirvalve_8,yes,splitter2p2,SPLT0,sig,6,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_8.trans_frac_spool_pos,dirvalve_8,yes,dynamic_transmitter,SIGTRANS0,sig,2,signal,SIGNAL,supercomponent signal/interface element,high,no,The Amesim remote port is treated as an interface mechanism rather than an independent power domain; the remaining physical domain is signal.
+dirvalve_8.two_port_node_bottom_1,dirvalve_8,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_8.two_port_node_bottom_2,dirvalve_8,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_8.two_port_node_top_3,dirvalve_8,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_8.two_port_node_top_4,dirvalve_8,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_9,,no,dirvalve_1,SC_1,,5,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_9.dyn_receiv_frac_spool_pos,dirvalve_9,yes,dynamic_receiver,SIGRECEI0,sig,2,signal,SIGNAL,supercomponent signal/interface element,high,no,The Amesim remote port is treated as an interface mechanism rather than an independent power domain; the remaining physical domain is signal.
+dirvalve_9.frac_spool_pos_node,dirvalve_9,yes,splitter2p2,SPLT0,sig,6,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_9.fractional_spool_position_dynamics,dirvalve_9,yes,valvedynamics,VALVEDYNAMICS0,sig,2,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_9.orifice_14,dirvalve_9,yes,variableorifice,HYDVORF0,hydr,6,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_9.orifice_23,dirvalve_9,yes,variableorifice,HYDVORF0,hydr,6,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+dirvalve_9.signal_sink,dirvalve_9,yes,signalsink,SSINK,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_9.table_14,dirvalve_9,yes,fofx,FX00,sig,4,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_9.table_23,dirvalve_9,yes,fofx,FX00,sig,4,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_9.table_fractional_spool_position,dirvalve_9,yes,fofx,FX00,sig,3,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_9.three_way_signal_node_23,dirvalve_9,yes,splitter2p2,SPLT0,sig,6,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+dirvalve_9.trans_frac_spool_pos,dirvalve_9,yes,dynamic_transmitter,SIGTRANS0,sig,2,signal,SIGNAL,supercomponent signal/interface element,high,no,The Amesim remote port is treated as an interface mechanism rather than an independent power domain; the remaining physical domain is signal.
+dirvalve_9.two_port_node_bottom_1,dirvalve_9,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_9.two_port_node_bottom_2,dirvalve_9,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_9.two_port_node_top_3,dirvalve_9,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+dirvalve_9.two_port_node_top_4,dirvalve_9,yes,hydrnode2,HN222A,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+elementaryhydraulicprops,,no,elementaryhydraulicprops,TFFD04,tf,0,,UNRESOLVED,unresolved/internal object,low,yes,No explicit port domain detected.
+elementaryhydraulicprops_1,,no,elementaryhydraulicprops,FP04,hydr,0,,UNRESOLVED,unresolved/internal object,low,yes,No explicit port domain detected.
+filter,,no,filter,HYDORT0,hydr,2,hflow,R/MR,hydraulic dissipative element,medium,yes,Component is likely governed by pressure-drop / flow relation.
+filter_1,,no,filter,HYDORT0,hydr,2,hflow,R/MR,hydraulic dissipative element,medium,yes,Component is likely governed by pressure-drop / flow relation.
+filter_2,,no,filter,HYDORT0,hydr,2,hflow,R/MR,hydraulic dissipative element,medium,yes,Component is likely governed by pressure-drop / flow relation.
+filter_3,,no,filter,HYDORT0,hydr,2,hflow,R/MR,hydraulic dissipative element,medium,yes,Component is likely governed by pressure-drop / flow relation.
+filter_4,,no,filter,HYDORT0,hydr,2,hflow,R/MR,hydraulic dissipative element,medium,yes,Component is likely governed by pressure-drop / flow relation.
+filter_5,,no,filter,HYDORT0,hydr,2,hflow,R/MR,hydraulic dissipative element,medium,yes,Component is likely governed by pressure-drop / flow relation.
+flowcontrol01,,no,flowcontrol01,HYDORF0,hydr,2,hflow,R/MR,hydraulic dissipative element,medium,yes,Component is likely governed by pressure-drop / flow relation.
+flowcontrol01_1,,no,flowcontrol01,HYDORF0,hydr,2,hflow,R/MR,hydraulic dissipative element,medium,yes,Component is likely governed by pressure-drop / flow relation.
+flowcontrol01_2,,no,flowcontrol01,HYDORF0,hydr,2,hflow,R/MR,hydraulic dissipative element,medium,yes,Component is likely governed by pressure-drop / flow relation.
+flowcontrol01_3,,no,flowcontrol01,HYDORF0,hydr,2,hflow,R/MR,hydraulic dissipative element,medium,yes,Component is likely governed by pressure-drop / flow relation.
+flowcontrol01_5,,no,flowcontrol01,HYDORF0,hydr,2,hflow,R/MR,hydraulic dissipative element,medium,yes,Component is likely governed by pressure-drop / flow relation.
+flowcontrol01_6,,no,flowcontrol01,HYDORF0,hydr,2,hflow,R/MR,hydraulic dissipative element,medium,yes,Component is likely governed by pressure-drop / flow relation.
+flowcontrol01_7,,no,flowcontrol01,HYDORF0,hydr,2,hflow,R/MR,hydraulic dissipative element,medium,yes,Component is likely governed by pressure-drop / flow relation.
+forcecon,,no,forcecon,FORC,meca,2,lshaft+signal,DETECTOR / MSe / MSf candidate,linear mechanical-signal interface,medium,yes,Component couples translational mechanical and signal domains; function must be checked from submodel equations.
+forcecon_1,,no,forcecon,FORC,meca,2,lshaft+signal,DETECTOR / MSe / MSf candidate,linear mechanical-signal interface,medium,yes,Component couples translational mechanical and signal domains; function must be checked from submodel equations.
+forcecon_2,,no,forcecon,FORC,meca,2,lshaft+signal,DETECTOR / MSe / MSf candidate,linear mechanical-signal interface,medium,yes,Component couples translational mechanical and signal domains; function must be checked from submodel equations.
+forcecon_3,,no,forcecon,FORC,meca,2,lshaft+signal,DETECTOR / MSe / MSf candidate,linear mechanical-signal interface,medium,yes,Component couples translational mechanical and signal domains; function must be checked from submodel equations.
+forcecon_4,,no,forcecon,FORC,meca,2,lshaft+signal,DETECTOR / MSe / MSf candidate,linear mechanical-signal interface,medium,yes,Component couples translational mechanical and signal domains; function must be checked from submodel equations.
+forcecon_5,,no,forcecon,FORC,meca,2,lshaft+signal,DETECTOR / MSe / MSf candidate,linear mechanical-signal interface,medium,yes,Component couples translational mechanical and signal domains; function must be checked from submodel equations.
+gravityicon,,no,gravityicon,GRAV0,meca,0,,UNRESOLVED,unresolved/internal object,low,yes,No explicit port domain detected.
+hydrnode3,,no,hydrnode3,H3NODE2,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_1,,no,hydrnode3,H3NODE3,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_10,,no,hydrnode3,H3NODE2,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_11,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_12,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_13,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_14,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_15,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_16,,no,hydrnode3,H3NODE3,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_17,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_18,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_19,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_2,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_20,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_21,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_22,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_23,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_24,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_25,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_26,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_27,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_28,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_29,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_3,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_30,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_31,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_32,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_33,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_34,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_35,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_36,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_37,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_38,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_39,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_4,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_40,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_41,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_42,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_43,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_44,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_45,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_46,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_47,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_48,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_49,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_5,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_50,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_51,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_52,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_53,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_54,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_55,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_6,,no,hydrnode3,H3NODE3,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_7,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_8,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode3_9,,no,hydrnode3,H3NODE1,hydr,3,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode4,,no,hydrnode4,H4NODE4,hydr,4,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode4_1,,no,hydrnode4,H4NODE4,hydr,4,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode4_10,,no,hydrnode4,H4NODE4,hydr,4,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode4_11,,no,hydrnode4,H4NODE4,hydr,4,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode4_4,,no,hydrnode4,H4NODE1,hydr,4,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+hydrnode4_9,,no,hydrnode4,H4NODE1,hydr,4,hflow,0-JUNCTION candidate,common hydraulic pressure node,high,yes,Hydraulic node represents common pressure with flow conservation.
+mass1port,,no,mass1port,MAS001,meca,1,lshaft,I,translational inertia,medium,yes,Linear mechanical energy-storage candidate.
+mass_friction2port,,no,mass_friction2port,MAS004,meca,2,lshaft,I,translational inertia,medium,yes,Linear mechanical energy-storage candidate.
+mass_friction2port_1,,no,mass_friction2port,MAS004,meca,2,lshaft,I,translational inertia,medium,yes,Linear mechanical energy-storage candidate.
+mass_friction2port_2,,no,mass_friction2port,MAS004,meca,2,lshaft,I,translational inertia,medium,yes,Linear mechanical energy-storage candidate.
+mass_friction2port_3,,no,mass_friction2port,MAS004,meca,2,lshaft,I,translational inertia,medium,yes,Linear mechanical energy-storage candidate.
+mass_friction2port_4,,no,mass_friction2port,MAS004,meca,2,lshaft,I,translational inertia,medium,yes,Linear mechanical energy-storage candidate.
+mass_friction2port_5,,no,mass_friction2port,MAS004,meca,2,lshaft,I,translational inertia,medium,yes,Linear mechanical energy-storage candidate.
+piecewiselinear_4,,no,piecewiselinear,UD00,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+piecewiselinear_5,,no,piecewiselinear,UD00,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+pmover01,,no,pmover01,PM000,meca,1,rshaft,Se/Sf candidate,rotational mechanical source,medium,yes,Prime mover/source-like component in rotational mechanical domain.
+pmover01_1,,no,pmover01,PM000,meca,1,rshaft,Se/Sf candidate,rotational mechanical source,medium,yes,Prime mover/source-like component in rotational mechanical domain.
+pmover01_2,,no,pmover01,PM000,meca,1,rshaft,Se/Sf candidate,rotational mechanical source,medium,yes,Prime mover/source-like component in rotational mechanical domain.
+pmover01_3,,no,pmover01,PM000,meca,1,rshaft,Se/Sf candidate,rotational mechanical source,medium,yes,Prime mover/source-like component in rotational mechanical domain.
+pprv_1,,no,pprv,HYDPRV0,hydr,3,hflow,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,yes,Only hydraulic ports detected; constitutive equation is required for final classification.
+pprv_2,,no,pprv,HYDPRV0,hydr,3,hflow,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,yes,Only hydraulic ports detected; constitutive equation is required for final classification.
+pprv_3,,no,pprv,HYDPRV0,hydr,3,hflow,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,yes,Only hydraulic ports detected; constitutive equation is required for final classification.
+presscontrol01,,no,presscontrol01,RV010,hydr,2,hflow,R/MR,hydraulic dissipative element,medium,yes,Component is likely governed by pressure-drop / flow relation.
+presscontrol01_1,,no,presscontrol01,RV010,hydr,2,hflow,R/MR,hydraulic dissipative element,medium,yes,Component is likely governed by pressure-drop / flow relation.
+presscontrol01_3,,no,presscontrol01,RV010,hydr,2,hflow,R/MR,hydraulic dissipative element,medium,yes,Component is likely governed by pressure-drop / flow relation.
+presscontrol02,,no,presscontrol02,CV010,hydr,2,hflow,R/MR,hydraulic dissipative element,medium,yes,Component is likely governed by pressure-drop / flow relation.
+presscontrol02_1,,no,presscontrol02,CV010,hydr,2,hflow,R/MR,hydraulic dissipative element,medium,yes,Component is likely governed by pressure-drop / flow relation.
+presscontrol02_4,,no,presscontrol02,CV010,hydr,2,hflow,R/MR,hydraulic dissipative element,medium,yes,Component is likely governed by pressure-drop / flow relation.
+presscontrol02_5,,no,presscontrol02,CV010,hydr,2,hflow,R/MR,hydraulic dissipative element,medium,yes,Component is likely governed by pressure-drop / flow relation.
+presscontrol02_8,,no,presscontrol02,CV010,hydr,2,hflow,R/MR,hydraulic dissipative element,medium,yes,Component is likely governed by pressure-drop / flow relation.
+presscontrol02_9,,no,presscontrol02,CV010,hydr,2,hflow,R/MR,hydraulic dissipative element,medium,yes,Component is likely governed by pressure-drop / flow relation.
+pressuregauge,,no,pressuregauge,HYDPG0,hydr,1,hflow,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,yes,Only hydraulic ports detected; constitutive equation is required for final classification.
+pump01,,no,pump01,PU001,hydr,3,hflow+rshaft,TF/MTF,hydraulic-rotational energy converter (pump),high,yes,Component couples hydraulic flow/pressure and rotational shaft torque/speed.
+pump01_1,,no,pump01,PU001,hydr,3,hflow+rshaft,TF/MTF,hydraulic-rotational energy converter (pump),high,yes,Component couples hydraulic flow/pressure and rotational shaft torque/speed.
+pump01_2,,no,pump01,PU001,hydr,3,hflow+rshaft,TF/MTF,hydraulic-rotational energy converter (pump),high,yes,Component couples hydraulic flow/pressure and rotational shaft torque/speed.
+pump01_3,,no,pump01,PU001,hydr,3,hflow+rshaft,TF/MTF,hydraulic-rotational energy converter (pump),high,yes,Component couples hydraulic flow/pressure and rotational shaft torque/speed.
+shuttle_control,,no,shuttle_control,HYDCONSHTL0,hydr,3,hflow,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,yes,Only hydraulic ports detected; constitutive equation is required for final classification.
+shuttle_control_1,,no,shuttle_control,HYDCONSHTL0,hydr,3,hflow,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,yes,Only hydraulic ports detected; constitutive equation is required for final classification.
+shuttle_control_2,,no,shuttle_control,HYDCONSHTL0,hydr,3,hflow,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,yes,Only hydraulic ports detected; constitutive equation is required for final classification.
+shuttle_control_3,,no,shuttle_control,HYDCONSHTL0,hydr,3,hflow,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,yes,Only hydraulic ports detected; constitutive equation is required for final classification.
+shuttle_control_4,,no,shuttle_control,HYDCONSHTL0,hydr,3,hflow,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,yes,Only hydraulic ports detected; constitutive equation is required for final classification.
+shuttle_control_5,,no,shuttle_control,HYDCONSHTL0,hydr,3,hflow,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,yes,Only hydraulic ports detected; constitutive equation is required for final classification.
+signaloperatedrvalve,,no,signaloperatedrvalve,RV011,hydr,3,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+sinewave,,no,sinewave,SIN0,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+sinewave_1,,no,sinewave,SIN0,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+sinewave_2,,no,sinewave,SIN0,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+sinewave_3,,no,sinewave,SIN0,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+sinewave_4,,no,sinewave,SIN0,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+sinewave_5,,no,sinewave,SIN0,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+sinewave_6,,no,sinewave,SIN0,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+sinewave_7,,no,sinewave,SIN0,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+sinewave_8,,no,sinewave,SIN0,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+splitter2p,,no,splitter2p,SPLT0,sig,3,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+splitter2p2,,no,splitter2p2,SPLT0,sig,3,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+splitter2p2_1,,no,splitter2p2,SPLT0,sig,3,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+splitter2p2_2,,no,splitter2p2,SPLT0,sig,3,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+splitter2p2_3,,no,splitter2p2,SPLT0,sig,3,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+splitter2p2_4,,no,splitter2p2,SPLT0,sig,3,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+splitter2p2_5,,no,splitter2p2,SPLT0,sig,3,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+springcheckvalve,,no,springcheckvalve,CV012,hydr,2,hflow,R/MR,hydraulic dissipative element,medium,yes,Component is likely governed by pressure-drop / flow relation.
+springreturnactuator,,no,springreturnactuator,HJ0022,hydr,3,hflow+lshaft,TF/MTF,hydraulic-linear mechanical converter,high,yes,Component couples hydraulic flow/pressure and translational force/velocity domains.
+springreturnactuator_1,,no,springreturnactuator,HJ0022,hydr,3,hflow+lshaft,TF/MTF,hydraulic-linear mechanical converter,high,yes,Component couples hydraulic flow/pressure and translational force/velocity domains.
+springreturnactuator_2,,no,springreturnactuator,HJ0022,hydr,3,hflow+lshaft,TF/MTF,hydraulic-linear mechanical converter,high,yes,Component couples hydraulic flow/pressure and translational force/velocity domains.
+step,,no,step,STEP0,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+step_1,,no,step,STEP0,sig,1,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+sum,,no,sum,JUN3P,sig,3,signal,SIGNAL,information/control element,high,no,Only signal-domain ports detected; not treated as a power bond element.
+tank01,,no,tank01,TK000,hydr,1,hflow,Se/C candidate,hydraulic reservoir/compliance,medium,yes,Tank may behave as pressure source or hydraulic compliance depending on submodel.
+tank01_1,,no,tank01,TK000,hydr,1,hflow,Se/C candidate,hydraulic reservoir/compliance,medium,yes,Tank may behave as pressure source or hydraulic compliance depending on submodel.
+tank01_5,,no,tank01,TK000,hydr,1,hflow,Se/C candidate,hydraulic reservoir/compliance,medium,yes,Tank may behave as pressure source or hydraulic compliance depending on submodel.
+tank01_6,,no,tank01,TK000,hydr,1,hflow,Se/C candidate,hydraulic reservoir/compliance,medium,yes,Tank may behave as pressure source or hydraulic compliance depending on submodel.
+tank01_7,,no,tank01,TK000,hydr,1,hflow,Se/C candidate,hydraulic reservoir/compliance,medium,yes,Tank may behave as pressure source or hydraulic compliance depending on submodel.
+valve02,,no,valve02,PV00022,hydr,3,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+valve02_1,,no,valve02,PV00022,hydr,3,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+valve02_2,,no,valve02,PV00022,hydr,3,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+valve02_3,,no,valve02,PV00022,hydr,3,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+valve02_4,,no,valve02,PV00022,hydr,3,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+valve02_5,,no,valve02,PV00022,hydr,3,hflow+signal,MR / COMPOSITE,signal-modulated hydraulic valve,high,yes,Hydraulic power ports plus signal port; model as modulated resistance or internal valve Bond Graph submodel.
+variableorifice,,no,variableorifice,HYDVORF0,hydr,3,hflow+signal,MR,signal-modulated hydraulic restriction,high,yes,Variable orifice controlled by signal.
+variableorifice_1,,no,variableorifice,HYDVORF0,hydr,3,hflow+signal,MR,signal-modulated hydraulic restriction,high,yes,Variable orifice controlled by signal.
+variableorifice_10,,no,variableorifice,HYDVORF0,hydr,3,hflow+signal,MR,signal-modulated hydraulic restriction,high,yes,Variable orifice controlled by signal.
+variableorifice_11,,no,variableorifice,HYDVORF0,hydr,3,hflow+signal,MR,signal-modulated hydraulic restriction,high,yes,Variable orifice controlled by signal.
+variableorifice_12,,no,variableorifice,HYDVORF0,hydr,3,hflow+signal,MR,signal-modulated hydraulic restriction,high,yes,Variable orifice controlled by signal.
+variableorifice_13,,no,variableorifice,HYDVORF0,hydr,3,hflow+signal,MR,signal-modulated hydraulic restriction,high,yes,Variable orifice controlled by signal.
+variableorifice_14,,no,variableorifice,HYDVORF0,hydr,3,hflow+signal,MR,signal-modulated hydraulic restriction,high,yes,Variable orifice controlled by signal.
+variableorifice_2,,no,variableorifice,HYDVORF0,hydr,3,hflow+signal,MR,signal-modulated hydraulic restriction,high,yes,Variable orifice controlled by signal.
+variableorifice_3,,no,variableorifice,HYDVORF0,hydr,3,hflow+signal,MR,signal-modulated hydraulic restriction,high,yes,Variable orifice controlled by signal.
+variableorifice_4,,no,variableorifice,HYDVORF0,hydr,3,hflow+signal,MR,signal-modulated hydraulic restriction,high,yes,Variable orifice controlled by signal.
+variableorifice_5,,no,variableorifice,HYDVORF0,hydr,3,hflow+signal,MR,signal-modulated hydraulic restriction,high,yes,Variable orifice controlled by signal.
+variableorifice_6,,no,variableorifice,HYDVORF0,hydr,3,hflow+signal,MR,signal-modulated hydraulic restriction,high,yes,Variable orifice controlled by signal.
+variableorifice_7,,no,variableorifice,HYDVORF0,hydr,3,hflow+signal,MR,signal-modulated hydraulic restriction,high,yes,Variable orifice controlled by signal.
+variableorifice_8,,no,variableorifice,HYDVORF0,hydr,3,hflow+signal,MR,signal-modulated hydraulic restriction,high,yes,Variable orifice controlled by signal.
+variableorifice_9,,no,variableorifice,HYDVORF0,hydr,3,hflow+signal,MR,signal-modulated hydraulic restriction,high,yes,Variable orifice controlled by signal.

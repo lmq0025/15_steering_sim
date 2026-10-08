@@ -1,0 +1,40 @@
+﻿alias,data_path,parameter_type,title,unit,raw_value,resolved_value,value_unit
+actuator001_1,xact0@actuator001_1,ame_real_parameter,#displacement of piston,m,0,0,m
+actuator001_1,diamp@actuator001_1,ame_real_parameter,piston diameter,mm,pid,sqrt(5000*4/PI),mm
+actuator001_1,diamr@actuator001_1,ame_real_parameter,rod diameter,mm,rd,sqrt((5000-3700)*4/PI),mm
+actuator001_1,stroke@actuator001_1,ame_real_parameter,length of stroke,m,sl5,0.195,m
+actuator001_1,dead1@actuator001_1,ame_real_parameter,dead volume at port 1 end,cm**3,50,50,cm**3
+actuator001_1,dead2@actuator001_1,ame_real_parameter,dead volume at port 2 end,cm**3,50,50,cm**3
+actuator001_1,visc@actuator001_1,ame_real_parameter,viscous friction coefficient,N/(m/s),0,0,N/(m/s)
+actuator001_1,leak@actuator001_1,ame_real_parameter,leakage coefficient,L/min/bar,0,0,L/min/bar
+actuator001_1,k@actuator001_1,ame_real_parameter,spring rate at endstops,N/mm,100000,100000,N/mm
+actuator001_1,cdamp@actuator001_1,ame_real_parameter,damping coefficient on endstops,N/(m/s),100000,100000,N/(m/s)
+actuator001_1,distdef@actuator001_1,ame_real_parameter,deformation on endstops at which damping rate is fully effective,mm,0.001,0.001,mm
+actuator001_1,indexf@actuator001_1,ame_integer_parameter,index of hydraulic fluid,,0,0,
+actuator001_1,usedispl@actuator001_1,ame_integer_parameter,use initial displacement,,1,1,
+actuator001,xact0@actuator001,ame_real_parameter,#displacement of piston,m,0,0,m
+actuator001,diamp@actuator001,ame_real_parameter,piston diameter,mm,pid,sqrt(5000*4/PI),mm
+actuator001,diamr@actuator001,ame_real_parameter,rod diameter,mm,rd,sqrt((5000-3700)*4/PI),mm
+actuator001,stroke@actuator001,ame_real_parameter,length of stroke,m,sl4,0.13,m
+actuator001,dead1@actuator001,ame_real_parameter,dead volume at port 1 end,cm**3,50,50,cm**3
+actuator001,dead2@actuator001,ame_real_parameter,dead volume at port 2 end,cm**3,50,50,cm**3
+actuator001,visc@actuator001,ame_real_parameter,viscous friction coefficient,N/(m/s),0,0,N/(m/s)
+actuator001,leak@actuator001,ame_real_parameter,leakage coefficient,L/min/bar,0,0,L/min/bar
+actuator001,k@actuator001,ame_real_parameter,spring rate at endstops,N/mm,100000,100000,N/mm
+actuator001,cdamp@actuator001,ame_real_parameter,damping coefficient on endstops,N/(m/s),100000,100000,N/(m/s)
+actuator001,distdef@actuator001,ame_real_parameter,deformation on endstops at which damping rate is fully effective,mm,0.001,0.001,mm
+actuator001,indexf@actuator001,ame_integer_parameter,index of hydraulic fluid,,0,0,
+actuator001,usedispl@actuator001,ame_integer_parameter,use initial displacement,,1,1,
+actuator001_2,xact0@actuator001_2,ame_real_parameter,#displacement of piston,m,0,0,m
+actuator001_2,diamp@actuator001_2,ame_real_parameter,piston diameter,mm,pid,sqrt(5000*4/PI),mm
+actuator001_2,diamr@actuator001_2,ame_real_parameter,rod diameter,mm,rd,sqrt((5000-3700)*4/PI),mm
+actuator001_2,stroke@actuator001_2,ame_real_parameter,length of stroke,m,sl6,0.265,m
+actuator001_2,dead1@actuator001_2,ame_real_parameter,dead volume at port 1 end,cm**3,50,50,cm**3
+actuator001_2,dead2@actuator001_2,ame_real_parameter,dead volume at port 2 end,cm**3,50,50,cm**3
+actuator001_2,visc@actuator001_2,ame_real_parameter,viscous friction coefficient,N/(m/s),0,0,N/(m/s)
+actuator001_2,leak@actuator001_2,ame_real_parameter,leakage coefficient,L/min/bar,0,0,L/min/bar
+actuator001_2,k@actuator001_2,ame_real_parameter,spring rate at endstops,N/mm,100000,100000,N/mm
+actuator001_2,cdamp@actuator001_2,ame_real_parameter,damping coefficient on endstops,N/(m/s),100000,100000,N/(m/s)
+actuator001_2,distdef@actuator001_2,ame_real_parameter,deformation on endstops at which damping rate is fully effective,mm,0.001,0.001,mm
+actuator001_2,indexf@actuator001_2,ame_integer_parameter,index of hydraulic fluid,,0,0,
+actuator001_2,usedispl@actuator001_2,ame_integer_parameter,use initial displacement,,1,1,

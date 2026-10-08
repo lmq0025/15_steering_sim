@@ -1,0 +1,6 @@
+﻿alias,data_path,parameter_type,title,unit,raw_value,resolved_value,value_unit
+signaloperatedrvalve,pcrack@signaloperatedrvalve,ame_real_parameter,maximum relief valve cracking pressure,bar,160,160,bar
+signaloperatedrvalve,grad@signaloperatedrvalve,ame_real_parameter,relief valve flow rate pressure gradient,L/min/bar,500,500,L/min/bar
+signaloperatedrvalve,irate@signaloperatedrvalve,ame_real_parameter,valve rated current,mA,40,40,mA
+signaloperatedrvalve,hyst@signaloperatedrvalve,ame_real_parameter,valve hysteresis,bar,0,0,bar
+signaloperatedrvalve,indexf@signaloperatedrvalve,ame_integer_parameter,index of hydraulic fluid,,0,0,

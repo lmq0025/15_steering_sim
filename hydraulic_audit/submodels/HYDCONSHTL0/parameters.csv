@@ -1,0 +1,7 @@
+﻿alias,data_path,parameter_type,title,unit,raw_value,resolved_value,value_unit
+shuttle_control,indexf@shuttle_control,ame_integer_parameter,index of hydraulic fluid,,0,0,
+shuttle_control_1,indexf@shuttle_control_1,ame_integer_parameter,index of hydraulic fluid,,0,0,
+shuttle_control_3,indexf@shuttle_control_3,ame_integer_parameter,index of hydraulic fluid,,0,0,
+shuttle_control_4,indexf@shuttle_control_4,ame_integer_parameter,index of hydraulic fluid,,0,0,
+shuttle_control_5,indexf@shuttle_control_5,ame_integer_parameter,index of hydraulic fluid,,0,0,
+shuttle_control_2,indexf@shuttle_control_2,ame_integer_parameter,index of hydraulic fluid,,0,0,

@@ -1,0 +1,77 @@
+﻿alias,data_path,variable_type,basic_type,title,unit,io_type,input_type,usage
+dirvalve_1.table_fractional_spool_position,fofx@dirvalve_1.table_fractional_spool_position,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.table_fractional_spool_position,x@dirvalve_1.table_fractional_spool_position,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.table_14,fofx@dirvalve_1.table_14,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.table_14,x@dirvalve_1.table_14,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.table_13,fofx@dirvalve_1.table_13,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.table_13,x@dirvalve_1.table_13,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.table_23,fofx@dirvalve_1.table_23,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.table_23,x@dirvalve_1.table_23,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.table_24,fofx@dirvalve_1.table_24,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.table_24,x@dirvalve_1.table_24,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_2.table_fractional_spool_position,fofx@dirvalve_2.table_fractional_spool_position,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_2.table_fractional_spool_position,x@dirvalve_2.table_fractional_spool_position,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_2.table_14,fofx@dirvalve_2.table_14,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_2.table_14,x@dirvalve_2.table_14,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_2.table_23,fofx@dirvalve_2.table_23,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_2.table_23,x@dirvalve_2.table_23,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.table_fractional_spool_position,fofx@dirvalve_6.table_fractional_spool_position,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.table_fractional_spool_position,x@dirvalve_6.table_fractional_spool_position,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.table_13,fofx@dirvalve_6.table_13,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.table_13,x@dirvalve_6.table_13,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.table_14,fofx@dirvalve_6.table_14,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.table_14,x@dirvalve_6.table_14,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.table_24,fofx@dirvalve_6.table_24,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.table_24,x@dirvalve_6.table_24,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.table_23,fofx@dirvalve_6.table_23,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.table_23,x@dirvalve_6.table_23,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_3.table_fractional_spool_position,fofx@dirvalve_3.table_fractional_spool_position,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_3.table_fractional_spool_position,x@dirvalve_3.table_fractional_spool_position,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_3.table_13,fofx@dirvalve_3.table_13,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_3.table_13,x@dirvalve_3.table_13,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_3.table_23,fofx@dirvalve_3.table_23,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_3.table_23,x@dirvalve_3.table_23,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.table_fractional_spool_position,fofx@dirvalve_8.table_fractional_spool_position,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.table_fractional_spool_position,x@dirvalve_8.table_fractional_spool_position,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.table_14,fofx@dirvalve_8.table_14,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.table_14,x@dirvalve_8.table_14,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.table_13,fofx@dirvalve_8.table_13,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.table_13,x@dirvalve_8.table_13,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.table_23,fofx@dirvalve_8.table_23,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.table_23,x@dirvalve_8.table_23,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.table_24,fofx@dirvalve_8.table_24,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.table_24,x@dirvalve_8.table_24,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_9.table_fractional_spool_position,fofx@dirvalve_9.table_fractional_spool_position,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_9.table_fractional_spool_position,x@dirvalve_9.table_fractional_spool_position,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_9.table_14,fofx@dirvalve_9.table_14,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_9.table_14,x@dirvalve_9.table_14,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_9.table_23,fofx@dirvalve_9.table_23,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_9.table_23,x@dirvalve_9.table_23,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_10.table_fractional_spool_position,fofx@dirvalve_10.table_fractional_spool_position,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_10.table_fractional_spool_position,x@dirvalve_10.table_fractional_spool_position,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_10.table_13,fofx@dirvalve_10.table_13,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_10.table_13,x@dirvalve_10.table_13,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_10.table_23,fofx@dirvalve_10.table_23,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_10.table_23,x@dirvalve_10.table_23,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.table_fractional_spool_position,fofx@dirvalve_11.table_fractional_spool_position,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.table_fractional_spool_position,x@dirvalve_11.table_fractional_spool_position,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.table_14,fofx@dirvalve_11.table_14,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.table_14,x@dirvalve_11.table_14,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.table_13,fofx@dirvalve_11.table_13,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.table_13,x@dirvalve_11.table_13,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.table_23,fofx@dirvalve_11.table_23,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.table_23,x@dirvalve_11.table_23,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.table_24,fofx@dirvalve_11.table_24,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.table_24,x@dirvalve_11.table_24,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_12.table_fractional_spool_position,fofx@dirvalve_12.table_fractional_spool_position,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_12.table_fractional_spool_position,x@dirvalve_12.table_fractional_spool_position,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_12.table_14,fofx@dirvalve_12.table_14,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_12.table_14,x@dirvalve_12.table_14,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_12.table_23,fofx@dirvalve_12.table_23,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_12.table_23,x@dirvalve_12.table_23,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_13.table_fractional_spool_position,fofx@dirvalve_13.table_fractional_spool_position,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_13.table_fractional_spool_position,x@dirvalve_13.table_fractional_spool_position,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_13.table_13,fofx@dirvalve_13.table_13,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_13.table_13,x@dirvalve_13.table_13,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_13.table_23,fofx@dirvalve_13.table_23,1,ame_basic_variable,function of input x,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_13.table_23,x@dirvalve_13.table_23,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used

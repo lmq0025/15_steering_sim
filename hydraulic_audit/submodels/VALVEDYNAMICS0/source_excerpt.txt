@@ -1,0 +1,412 @@
+SUBMODEL: VALVEDYNAMICS0
+SOURCE FILES: 2
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\submodels\VALVEDYNAMICS0.c
+==============================================================================
+...
+     1: /* Submodel VALVEDYNAMICS0 skeleton created by AME Submodel editing utility
+     2:    lun. mars 5 14:36:51 2018 */
+     3: 
+     4: 
+     5: 
+     6: #include <math.h>
+     7: #include <stdio.h>
+     8: #include <stdlib.h>
+     9: #include "ameutils.h"
+    10: /* *******************************************************************************
+    11: TITLE : VALVEDYNAMICS0
+    12: 
+    13: ------------------------------------------------------------------------------
+    14: DESCRIPTION :
+    15: 
+    16: 
+    17: ------------------------------------------------------------------------------
+    18: USAGE :
+    19: 
+    20: ------------------------------------------------------------------------------
+    21: PARAMETER SETTINGS :
+    22: ------------------------------------------------------------------------------
+    23: REVISIONS :
+    24: ------------------------------------------------------------------------------
+    25: SOURCE :
+    26:    Siemens Industry Software SAS
+    27:    7 place des Minimes
+    28:    42300 Roanne - France
+    29:    tel: (33).04.77.23.60.30
+    30:    fax: (33).04.77.23.60.31
+    31:    www.siemens.com/plm
+    32: 
+    33:    Copyright 2015 Siemens Industry Software NV
+    34: ******************************************************************************* */
+    35: 
+    36: #define _SUBMODELNAME_ "VALVEDYNAMICS0"
+    37: 
+    38: /* >>>>>>>>>>>>Insert Private Code Here. */
+    39: 
+    40: enum integer_stores
+    41: {
+    42:    DISC_LIMIT    = 0,
+    43:    DISC_ENDSTOPS = 1
+    44: };
+    45: 
+    46: /* <<<<<<<<<<<<End of Private Code. */
+    47: 
+    48: 
+    49: /* There are 5 real parameters:
+    50: 
+    51:    tau  valve time constant     [s]
+    52:    wn   valve natural frequency [Hz -> rad/s]
+    53:    zeta valve damping ratio     [null]
+    54:    xmin minimum output signal   [null]
+    55:    xmax maximum output signal   [null]
+    56: */
+    57: 
+    58: 
+    59: /* There is 1 integer parameter:
+    60: 
+    61:    spooldyn spool dynamics
+    62: */
+    63: 
+    64: void valvedynamics0in_(int *n, double *rp, int *ip, double c[5]
+    65:       , int ic[2], double *cxv, double *cxvder)
+    66: 
+    67: {
+    68:    int loop, error;
+    69: /* >>>>>>>>>>>>Extra Initialization Function Declarations Here. */
+    70: /* <<<<<<<<<<<<End of Extra Initialization declarations. */
+    71:    int cxv_size, cxvder_size;
+    72:    int spooldyn;
+    73:    double tau, wn, zeta, xmin, xmax;
+    74: 
+    75:    spooldyn   = ip[0];
+    76: 
+    77:    tau        = rp[0];
+    78:    wn         = rp[1];
+    79:    zeta       = rp[2];
+    80:    xmin       = rp[3];
+    81:    xmax       = rp[4];
+    82:    cxv_size = spooldyn>1;
+    83:    cxvder_size = spooldyn>2;
+    84:    loop = 0;
+    85:    error = 0;
+    86: 
+    87: /*
+    88:    If necessary, check values of the following:
+    89: 
+    90:    rp[0..4]
+    91:    cxv[]
+    92:    cxvder[]
+    93: */
+    94: 
+    95: 
+    96: /* >>>>>>>>>>>>Initialization Function Check Statements. */
+    97: 
+    98:    if (spooldyn == 2)
+    99:    {
+   100:       /* Valve time constant */
+   101:       if (tau <= 0)
+   102:       {
+   103:          amefprintf(stderr, "Valve time constant, value = %g [s], should be strictly positive.\n", tau);
+   104:          error = 2;
+   105:       }
+   106:    }
+   107: 
+   108:    if (spooldyn == 3)
+   109:    {
+   110:       /* Valve natural frequency */
+   111:       if (wn <= 0)
+   112:       {
+   113:          amefprintf(stderr, "Valve natural frequency, value = %g [Hz], should be strictly positive.\n", wn);
+   114:          error = 2;
+   115:       }
+   116: 
+   117:       /* Valve damping ratio */
+   118:       if (zeta < 0)
+   119:       {
+   120:          amefprintf(stderr, "Valve damping ratio, value = %g, should be positive.\n", zeta);
+   121:          error = 2;
+   122:       }
+   123:    }
+   124: 
+   125: /* <<<<<<<<<<<<End of Initialization Check Statements. */
+   126: 
+   127: /*   Integer parameter checking:   */
+   128: 
+   129:    if (spooldyn < 1 || spooldyn > 3)
+   130:    {
+   131:       amefprintf(stderr, "\nspool dynamics must be in range [1..3].\n");
+   132:       error = 2;
+   133:    }
+   134: 
+   135:    if(error == 1)
+   136:    {
+   137:       amefprintf(stderr, "\nWarning in %s instance %d.\n", _SUBMODELNAME_, *n);
+   138:    }
+   139:    else if(error == 2)
+   140:    {
+   141:       amefprintf(stderr, "\nFatal error in %s instance %d.\n", _SUBMODELNAME_, *n);
+   142:       amefprintf(stderr, "Terminating the program.\n");
+   143:       AmeExit(1);
+   144:    }
+   145: 
+   146: /* Common -> SI units conversions. */
+   147: 
+   148:    rp[1]    *= 6.28318530717959e+000;
+   149:    wn         = rp[1];
+   150: 
+   151: 
+   152: /* >>>>>>>>>>>>Initialization Function Executable Statements. */
+   153: /* <<<<<<<<<<<<End of Initialization Executable Statements. */
+   154: }
+   155: 
+   156: /*  There are 2 ports.
+   157: 
+   158:    Port 1 has 1 variable:
+   159: 
+   160:       1 output     output [null] basic variable output
+   161: 
+   162:    Port 2 has 1 variable:
+   163: 
+   164:       1 input     input [null] basic variable input
+   165: */
+   166: 
+   167: /*  There are 2 internal variables.
+   168: 
+   169:       1 cxv[]      fractional spool position [null] explicit state (derivative `cxvdot')
+   170:       2 cxvder[]   fractional spool velocity [1/s]  explicit state (derivative `cxvderdot')
+   171: */
+   172: 
+   173: void valvedynamics0_(int *n, double *output, double *input
+   174:       , double *cxv, double *cxvdot, double *cxvder, double *cxvderdot
+   175:       , double *rp, int *ip, double c[5], int ic[2])
+   176: 
+   177: {
+   178:    int loop;
+   179: /* >>>>>>>>>>>>Extra Calculation Function Declarations Here. */
+   180: 
+   181:    int initnecess = 0;
+   182:    double hyst = 0.0;
+   183:    double lowlimit, highlimit; /* for memory effect in static case and
+   184:                                   hysteresis not null -> unused here */
+   185: 
+   186: 
+   187: /* <<<<<<<<<<<<End of Extra Calculation declarations. */
+   188:    int cxv_size, cxvder_size;
+   189:    int spooldyn;
+   190:    double tau, wn, zeta, xmin, xmax;
+   191: 
+   192:    spooldyn   = ip[0];
+   193: 
+   194:    tau        = rp[0];
+   195:    wn         = rp[1];
+   196:    zeta       = rp[2];
+   197:    xmin       = rp[3];
+   198:    xmax       = rp[4];
+   199:    cxv_size = spooldyn>1;
+   200:    cxvder_size = spooldyn>2;
+   201:    loop = 0;
+   202: 
+   203: /*
+   204:    Set all submodel outputs below:
+   205: 
+   206:    *output     = ??;
+   207:    cxvdot    [] = ??;
+   208:    cxvderdot [] = ??;
+   209: */
+   210: 
+   211: 
+   212: 
+   213: /* >>>>>>>>>>>>Calculation Function Executable Statements. */
+   214: 
+   215:    *output = valvedyn2_(input, &xmin, &xmax, &hyst, &tau, &wn, &zeta,
+   216:                        &highlimit, &lowlimit, cxv, cxvdot, cxvder, cxvderdot,
+   217:                        &spooldyn, &ic[DISC_LIMIT], &ic[DISC_ENDSTOPS], &initnecess);
+   218: 
+   219: /* <<<<<<<<<<<<End of Calculation Executable Statements. */
+   220: }
+   221: 
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\submodels\VALVEDYNAMICS0.spe
+==============================================================================
+...
+     1: <?xml version="1.0" encoding="ISO-8859-1"?>
+     2: <!DOCTYPE SPE>
+     3: <SPE DOC_VERSION="2" AME_VERSION="16.0.0 - 68387-65635 2017">
+     4: 
+     5:  <SUBMODEL>
+     6:   <SUB_TYPE>4</SUB_TYPE>
+     7:   <SUB_ID_MAX>37</SUB_ID_MAX>
+     8:   <DEFAULT_ICON>valvedynamics</DEFAULT_ICON>
+     9:   <SUB_LABEL>valve dynamics with endstops</SUB_LABEL>
+    10:   <SUB_UNIT>0</SUB_UNIT>
+    11:   <R_STORES_NUMBER>5</R_STORES_NUMBER>
+    12:   <I_STORES_NUMBER>2</I_STORES_NUMBER>
+    13:   <OUTPUT_TYPE>1</OUTPUT_TYPE>
+    14:   <RPARAMS_LIST>
+    15:    <RPARAM>
+    16:     <SUB_ID>16</SUB_ID>
+    17:     <TITLE>valve time constant</TITLE>
+    18:     <VARNAME>tau</VARNAME>
+    19:     <VISIBILITY>(spooldyn == 2)</VISIBILITY>
+    20:     <DEF_VALUE>5.00000000000000e-02</DEF_VALUE>
+    21:     <VALUE>5.00000000000000e-02</VALUE>
+    22:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+    23:     <MAX_VALUE>1.00000000000000e+001</MAX_VALUE>
+    24:     <UNITS>s</UNITS>
+    25:    </RPARAM>
+    26:    <RPARAM>
+    27:     <SUB_ID>18</SUB_ID>
+    28:     <TITLE>valve natural frequency</TITLE>
+    29:     <VARNAME>wn</VARNAME>
+    30:     <VISIBILITY>(spooldyn == 3)</VISIBILITY>
+    31:     <DEF_VALUE>2.00000000000000e+01</DEF_VALUE>
+    32:     <VALUE>2.00000000000000e+01</VALUE>
+    33:     <MIN_VALUE>5.00000000000000e+000</MIN_VALUE>
+    34:     <MAX_VALUE>1.00000000000000e+003</MAX_VALUE>
+    35:     <UNITS>Hz</UNITS>
+    36:    </RPARAM>
+    37:    <RPARAM>
+    38:     <SUB_ID>19</SUB_ID>
+    39:     <TITLE>valve damping ratio</TITLE>
+    40:     <VARNAME>zeta</VARNAME>
+    41:     <VISIBILITY>(spooldyn == 3)</VISIBILITY>
+    42:     <DEF_VALUE>1.80000000000000e+00</DEF_VALUE>
+    43:     <VALUE>1.80000000000000e+00</VALUE>
+    44:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+    45:     <MAX_VALUE>5.00000000000000e+000</MAX_VALUE>
+    46:     <UNITS>null</UNITS>
+    47:    </RPARAM>
+    48:    <RPARAM>
+    49:     <SUB_ID>26</SUB_ID>
+    50:     <TITLE>minimum output signal</TITLE>
+    51:     <VARNAME>xmin</VARNAME>
+    52:     <VISIBILITY>True</VISIBILITY>
+    53:     <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+    54:     <VALUE>0.00000000000000e+00</VALUE>
+    55:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+    56:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+    57:     <UNITS>null</UNITS>
+    58:    </RPARAM>
+    59:    <RPARAM>
+    60:     <SUB_ID>29</SUB_ID>
+    61:     <TITLE>maximum output signal</TITLE>
+    62:     <VARNAME>xmax</VARNAME>
+    63:     <VISIBILITY>True</VISIBILITY>
+    64:     <DEF_VALUE>1.00000000000000e+00</DEF_VALUE>
+    65:     <VALUE>1.00000000000000e+00</VALUE>
+    66:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+    67:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+    68:     <UNITS>null</UNITS>
+    69:    </RPARAM>
+    70:   </RPARAMS_LIST>
+    71:   <IPARAMS_LIST>
+    72:    <IPARAM>
+    73:     <SUB_ID>10</SUB_ID>
+    74:     <TITLE>spool dynamics</TITLE>
+    75:     <VARNAME>spooldyn</VARNAME>
+    76:     <VISIBILITY>True</VISIBILITY>
+    77:     <DEF_VALUE>1</DEF_VALUE>
+    78:     <VALUE>1</VALUE>
+    79:     <MIN_VALUE>1</MIN_VALUE>
+    80:     <MAX_VALUE>3</MAX_VALUE>
+    81:     <ENUM_LIST>
+    82:      <ENUM>
+    83:       <ENUM_STRING>no (static)</ENUM_STRING>
+    84:       <ICON_MAP>
+    85:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+    86:        <ICON_MAP_DATA>
+    87:         H4sIAAAAAAACC21QsW7DIBD9ldN18FQDcRLFkXGkDp06dGjnKI0JRqFgATL23/fsVu1SpON44r17T9ecpk8LowrReCcLUfIClLv6zjgti/e358dDcWqbOGogoosS+5SGI2M55zJXpQ+abTjnjBj4TTlO1rj7f0RR1zVbf/HXEkW5Qfi4RPUa/M1YJTEZNyOYTuKLGZW1/ixotEQ+TAjzT8+mS73Ebb2AXhndJ4mVWNBoVH7yiwA4bGuoSO7J72Z9lhivwVu7Zj3G4XIlwyGoqMKosG306qvPFFIJbAGgGbydFwiUzkp03imEmIK/k/SBrwdh8MYlWo+oYLMrdyD2dP29DlTVfmnI2oZpKtpY+wWlMNNyfwEAAA==
+    88:        </ICON_MAP_DATA>
+    89:       </ICON_MAP>
+    90:      </ENUM>
+    91:      <ENUM>
+    92:       <ENUM_STRING>1st order</ENUM_STRING>
+    93:       <ICON_MAP>
+    94:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+    95:        <ICON_MAP_DATA>
+    96:         H4sIAAAAAAACC21RTW+cMBD9K6PpYS/UzBjD4hXeSKnUUyv10J6jza4DVhyMAMHm33egUS+tJWs+/Oa9Z7t5uL9FWPw4hdS7Ays6gO+v6Rb61h1+/fz6uT48nJtpaUGA/eSwm+fhlOfruqq1UGlsc01EuSDwD+R0j6F//R+QrbX5fop/JZGVRni+TP7HmF5C9A7n0L8jhJvDb2HxMaYnFmqHNNwR3j/iGm5z59DYreh8aLvZYcFbtQS/PqZtAAiMhULGk+i9xLQ6nK5jinH3epqGy1UEh9FPflw8npt2122fxKRnPANAs6UwzWN6Fegn2peMs1gvJGqJlSrFmXR0uWf6I8t3guEydyBXiw771Hv8l0wkv8PGkukKvgAflTE1WZtpUkwFFSVwrQpbEZcZG6XpqIlBs6pMZbjOWF7RMlMF2qjaVrXWmQwcS2JmKGjjs1RKz0hz71VSbA6bvJUt33f+DeQh3bwMAgAA
+    97:        </ICON_MAP_DATA>
+    98:       </ICON_MAP>
+    99:      </ENUM>
+   100:      <ENUM>
+   101:       <ENUM_STRING>2nd order</ENUM_STRING>
+   102:       <ICON_MAP>
+   103:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   104:        <ICON_MAP_DATA>
+   105:         H4sIAAAAAAACC22SP4+cMBDFv4rlFFthPP7v1bInpUiVIkVSnzasD6zjMAIEe98+M2yUKkgI3szveZ4Nl5fHx8C2NC+5jM0JhDyxNLblnseuOf36+a0Kp5frZdk6huC4NLxf1+lc1/u+i12LMne1klLWSPAncn4MeXz/Hwgxxvro8n8jOQjF2e/bkn7M5S0PqeFrHj85y/eGf89bGobyCrh0w+X04Ozz73PP97VvuIkk+pS7fm24BlJbTvvXQgYmmYlMo73gvLeh7A1f2rkMw5H1vEy3FgdOc1rSvCV+vXTH3O4VQyZAPd3WnmGsoeFjGRNnyzqXd/R8kcfFGeIfoJmywrZSBK2DZlJIaSMD4ZyxpACCZUqY6Mwhg1SMYAjxgJ064CerHCCrAEyF38NZh1VrnPEkfSCnj1HGSgul0INVW1mhHZBfWRlVpQRoUhYzqspg1XrymRBc5YT2R1ehNMSCDyhN9NoQrBXlkT7ishZCWIB6ON4bRdl8xGxSROcNqmhtoKLDnaM5RDxyoU00LQitDVCMANIhg7KiiE5aZJzzGqXzuA1GrCZpwOGQ55uiFfFcHCkZDK+vl7rDG3+36x8npbpWvAIAAA==
+   106:        </ICON_MAP_DATA>
+   107:       </ICON_MAP>
+   108:      </ENUM>
+   109:     </ENUM_LIST>
+   110:     <RECOMPILE>1</RECOMPILE>
+   111:    </IPARAM>
+   112:   </IPARAMS_LIST>
+   113:   <IVARS_LIST>
+   114:    <IVAR>
+   115:     <SUB_ID>33</SUB_ID>
+   116:     <TITLE>fractional spool position</TITLE>
+   117:     <NB_IN_GROUP>spooldyn>1</NB_IN_GROUP>
+   118:     <VARNAME>cxv</VARNAME>
+   119:     <VARNAME2>cxvdot</VARNAME2>
+   120:     <VISIBILITY>True</VISIBILITY>
+   121:     <TYPE>1</TYPE>
+   122:     <DIMENSION>1</DIMENSION>
+   123:     <UNITS>null</UNITS>
+   124:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   125:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   126:     <DEF_VALUE>0</DEF_VALUE>
+   127:     <VALUE>0</VALUE>
+   128:    </IVAR>
+   129:    <IVAR>
+   130:     <SUB_ID>37</SUB_ID>
+   131:     <TITLE>fractional spool velocity</TITLE>
+   132:     <NB_IN_GROUP>spooldyn>2</NB_IN_GROUP>
+   133:     <VARNAME>cxvder</VARNAME>
+   134:     <VARNAME2>cxvderdot</VARNAME2>
+   135:     <VISIBILITY>True</VISIBILITY>
+   136:     <TYPE>1</TYPE>
+   137:     <DIMENSION>1</DIMENSION>
+   138:     <UNITS>1/s</UNITS>
+   139:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   140:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   141:     <DEF_VALUE>0</DEF_VALUE>
+   142:     <VALUE>0</VALUE>
+   143:    </IVAR>
+   144:   </IVARS_LIST>
+   145:   <EVARS_LIST>
+   146:    <PORT>
+   147:     <EVAR>
+   148:      <SUB_ID>1</SUB_ID>
+   149:      <TITLE>output</TITLE>
+   150:      <VARNAME>output</VARNAME>
+   151:      <VISIBILITY>True</VISIBILITY>
+   152:      <TYPE>0</TYPE>
+   153:      <DIMENSION>1</DIMENSION>
+   154:      <IO>2</IO>
+   155:      <UNITS>null</UNITS>
+   156:     </EVAR>
+   157:    </PORT>
+   158:    <PORT>
+   159:     <EVAR>
+   160:      <SUB_ID>2</SUB_ID>
+   161:      <TITLE>input</TITLE>
+   162:      <VARNAME>input</VARNAME>
+   163:      <VISIBILITY>True</VISIBILITY>
+   164:      <TYPE>0</TYPE>
+   165:      <DIMENSION>1</DIMENSION>
+   166:      <IO>1</IO>
+   167:      <UNITS>null</UNITS>
+   168:     </EVAR>
+   169:    </PORT>
+   170:   </EVARS_LIST>
+   171:   <ICON_MAP>
+   172:    <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   173:    <ICON_MAP_DATA>
+   174:     H4sIAAAAAAACC7VUUW+bMBD+K5Y7KS8tYKBpiICq7Vop0tpETbZXxIhDrDo2wh4k/35nA1nbZdI2bbycfb677/uOs+Pr/Y6jhtaKSZGMiOONEBWFXDNRJqPPq4eLyeg6jVVTIggUKsFbraup67Zt67SBI+vS9T3PcyECdyHTPWfi5VQgiaLItaf4CImJ42P0NVd0UcsN4zTBmokDRmyd4E+soZzLjEDpBHvVHqNDb1u21tsEh5HZbCkrtzrBATG7htH2VpoE5KEwQgGkS8DbcNkmWBW15NxynaoqLwCwqqmidUNxGpcpQiiuaaEN4sS5tIjEWCDHE3z2YD+MlK7lCySfefYbHBc7pmnNGRjI845EA/8HTX+C3TR2S4CzMotvSmd+plgpco4tA2gS7RGFFPT34fYEdANpMOTS0N77Cb4Ch987XFu/kvzw1xiVZELDKPjO5Tnx0ZUxUBrZfYTQCXXk36kLray3AsPopMJSiiPZ0LNsgWYYOuOOcOebHFeRM0Hh2Alfn8J8vldUZkYAwX/QyYEFCZBvapOx6ddxZSgEY2TnzSB09Ycu9CNEftmW3r3O1Tav6xwm1j8nb9xys1FU29HopeQ7qthuuqM6X+c6t1pmd/MnJOAkwU3OG7o+wIYVyiodArKP98u759liNZs/pV9MGBriYvenAJNlvXa1mD+vlkMxs0EbewMDjPShgkU/Jeby2X8K+sYD+pCT3c5WjzeL9MPN4707K6RQbpcGt9+Bdyh2X0f1idZ3Atk/gUz+C3C3WkL337c+Nq9n+h0XaWsEiwUAAA==
+   175:    </ICON_MAP_DATA>
+   176:   </ICON_MAP>
+   177:   <SUBIDS_RESET>0</SUBIDS_RESET>
+   178:  </SUBMODEL>
+   179: </SPE>

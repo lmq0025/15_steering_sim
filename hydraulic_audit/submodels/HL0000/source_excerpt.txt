@@ -1,0 +1,1113 @@
+SUBMODEL: HL0000
+SOURCE FILES: 3
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\HL0000.c
+==============================================================================
+...
+     1: /* Submodel HL0000 skeleton created by AME Submodel editing utility
+     2:    Tue Nov 19 09:12:09 2019 */
+     3: 
+     4: 
+     5: 
+     6: #include <math.h>
+     7: #include <stdio.h>
+     8: #include <stdlib.h>
+     9: #include "ameutils.h"
+    10: /* *******************************************************************************
+    11: TITLE : HL0000
+    12: --------------------------------------------------------------------------------
+    13: DESCRIPTION :
+    14: --------------------------------------------------------------------------------
+    15: USAGE :
+    16: --------------------------------------------------------------------------------
+    17: PARAMETER SETTINGS :
+    18: --------------------------------------------------------------------------------
+    19: DATE OF CREATION/AUTHOR : 07/2015 PHI
+    20: --------------------------------------------------------------------------------
+    21: INDEX OF REVISIONS :
+    22: --------------------------------------------------------------------------------
+    23: LIST OF FUNCTIONS USED :
+    24: --------------------------------------------------------------------------------
+    25: SOURCE :
+    26:    Siemens Industry Software SAS
+    27:    7 place des Minimes
+    28:    42300 Roanne - France
+    29:    tel: (33).04.77.23.60.30
+    30:    fax: (33).04.77.23.60.31
+    31:    www.siemens.com/plm
+    32:  
+    33:    Copyright 2015 Siemens Industry Software NV
+    34: ******************************************************************************* */
+    35: 
+    36: #define _SUBMODELNAME_ "HL0000"
+    37: 
+    38: /* >>>>>>>>>>>>Insert Private Code Here. */
+    39: #define VOL       0
+    40: #define VOLCOMP   1
+    41: 
+    42: #define HOSE_BULK  0
+    43: #define HOSE_VOL   1
+    44: 
+    45: /* <<<<<<<<<<<<End of Private Code. */
+    46: 
+    47: 
+    48: /* There are 13 real parameters:
+    49: 
+    50:    diam      diameter                                                       [mm -> m]
+    51:    a         width                                                          [mm -> m]
+    52:    b         height                                                         [mm -> m]
+    53:    dinn      inner diameter                                                 [mm -> m]
+    54:    dout      outer diameter                                                 [mm -> m]
+    55:    ecc       eccentricity ratio                                             [null]
+    56:    area      cross-sectional area                                           [mm**2 -> m**2]
+    57:    dh        hydraulic diameter                                             [mm -> m]
+    58:    le        length                                                         [m]
+    59:    thick     wall thickness                                                 [mm -> m]
+    60:    emod      Young's modulus for material                                   [bar -> Pa]
+    61:    beff      user specified effective bulk modulus                          [bar -> Pa]
+    62:    bulkfluid bulk modulus of the fluid used for pipe expansion measurements [bar -> Pa]
+    63: */
+    64: 
+    65: 
+    66: /* There are 4 integer parameters:
+    67: 
+    68:    indexf     index of hydraulic fluid  
+    69:    method     evaluation of bulk modulus
+    70:    volexptype volumetric expansion      
+    71:    geom       section type              
+    72: */
+    73: 
+    74: 
+    75: /* There are 2 text parameters:
+    76: 
+    77:    dvfile     filename for volumetric expansion[cm**3/m] = f(p[bar])
+    78:    bmwallfile filename for wall bulk modulus[bar] = f(p[bar])       
+    79: */
+    80: 
+    81: void hl0000in_(int *n, double rp[13], int ip[4], char *tp[2]
+    82:       , double c[2], int ic[3], double *p1, double *actCpipe
+    83:       , double *energyCpipe)
+    84: 
+    85: {
+    86:    int loop, error;
+    87: /* >>>>>>>>>>>>Extra Initialization Function Declarations Here. */
+    88:    double p0, area_loc, dhyd;
+    89:    double numVol = 1.0; /* only one chamber */
+    90: /* <<<<<<<<<<<<End of Extra Initialization declarations. */
+    91:    int indexf, method, volexptype, geom;
+    92:    double diam, a, b, dinn, dout, ecc, area, dh, le, thick, emod, beff
+    93:       , bulkfluid;
+    94:    char *dvfile, *bmwallfile;
+    95: 
+    96:    indexf     = ip[0];
+    97:    method     = ip[1];
+    98:    volexptype = ip[2];
+    99:    geom       = ip[3];
+   100: 
+   101:    diam       = rp[0];
+   102:    a          = rp[1];
+   103:    b          = rp[2];
+   104:    dinn       = rp[3];
+   105:    dout       = rp[4];
+   106:    ecc        = rp[5];
+   107:    area       = rp[6];
+   108:    dh         = rp[7];
+   109:    le         = rp[8];
+   110:    thick      = rp[9];
+   111:    emod       = rp[10];
+   112:    beff       = rp[11];
+   113:    bulkfluid  = rp[12];
+   114: 
+   115:    dvfile     = tp[0];
+   116:    bmwallfile = tp[1];
+   117:    loop = 0;
+   118:    error = 0;
+   119: 
+   120: /*
+   121:    If necessary, check values of the following:
+   122: 
+   123:    rp[0..12]
+   124:    *p1
+   125:    *actCpipe
+   126:    *energyCpipe
+   127: */
+   128: 
+   129: 
+   130: /* >>>>>>>>>>>>Initialization Function Check Statements. */
+   131: 
+   132:    hyd_valid_liquid_(&indexf, &error);
+   133: 
+   134:    /* Check pressure value. */
+   135:    p0 = -getatp_() * 1.0e-5;
+   136:    if (*p1 < p0)
+   137:    {
+   138:       error = 2;
+   139:       amefprintf(stderr,"\nPressure at port 1 must be greater than %f bar.\n", p0);
+   140:    }
+   141: 
+   142:    if (le <= 0.0)
+   143:    {
+   144:       error = 2;
+   145:       amefprintf(stderr, "\nLength must be strictly positive.\n");
+   146:    }
+   147: 
+   148:    if (geom == 1) /* cylindrical pipe */
+   149:    {
+   150:       if (diam <= 0.0)
+   151:       {
+   152:          error = 2;
+   153:          amefprintf(stderr, "\nDiameter must be strictly positive.\n");
+   154:       }
+   155:    }
+   156:    else if (geom ==2) /* rectangular pipe */
+   157:    {
+   158:       if (a <= 0.0)
+   159:       {
+   160:          error = 2;
+   161:          amefprintf(stderr, "\nWidth must be strictly positive.\n");
+   162:       }
+   163:       if (b <= 0.0)
+   164:       {
+   165:          error = 2;
+   166:          amefprintf(stderr, "\nHeight must be strictly positive.\n");
+   167:       }
+   168:    }
+   169:    else if (geom == 3) /* annular pipe */
+   170:    {
+   171:       if (dinn < 0.0)
+   172:       {
+   173:          error = 2;
+   174:          amefprintf(stderr, "\nInner diameter must be positive.\n");
+   175:       }
+   176:       if (dout <= 0.0)
+   177:       {
+   178:          error = 2;
+   179:          amefprintf(stderr, "\nOuter diameter must be strictly positive.\n");
+   180:       }
+   181:       if (dout <= dinn)
+   182:       {
+   183:          error = 2;
+   184:          amefprintf(stderr, "\nOuter diameter must be greater than inner diameter.\n");
+   185:       }
+   186:    }
+   187:    else if (geom == 4)
+   188:    {
+   189:       if (dh <= 0.0)
+   190:       {
+   191:          error = 2;
+   192:          amefprintf(stderr, "\nHydraulic diameter must be strictly positive.\n");
+   193:       }
+   194:       if (area < 0.0)
+   195:       {
+   196:          error = 2;
+   197:          amefprintf(stderr, "\nCross-sectional area must be strictly positive.\n");
+   198:       }
+   199:    }
+   200: 
+   201: /* <<<<<<<<<<<<End of Initialization Check Statements. */
+   202: 
+   203: /*   Integer parameter checking:   */
+   204: 
+   205:    if (indexf < 0 || indexf > 100)
+   206:    {
+   207:       amefprintf(stderr, "\nindex of hydraulic fluid must be in range [0..100].\n");
+   208:       error = 2;
+   209:    }
+   210:    if (method < 1 || method > 5)
+   211:    {
+   212:       amefprintf(stderr, "\nevaluation of bulk modulus must be in range [1..5].\n");
+   213:       error = 2;
+   214:    }
+   215:    if (volexptype < 1 || volexptype > 2)
+   216:    {
+   217:       amefprintf(stderr, "\nvolumetric expansion must be in range [1..2].\n");
+   218:       error = 2;
+   219:    }
+   220:    if (geom < 1 || geom > 4)
+   221:    {
+   222:       amefprintf(stderr, "\nsection type must be in range [1..4].\n");
+   223:       error = 2;
+   224:    }
+   225: 
+   226:    if(error == 1)
+   227:    {
+   228:       amefprintf(stderr, "\nWarning in %s instance %d.\n", _SUBMODELNAME_, *n);
+   229:    }
+   230:    else if(error == 2)
+   231:    {
+   232:       amefprintf(stderr, "\nFatal error in %s instance %d.\n", _SUBMODELNAME_, *n);
+   233:       amefprintf(stderr, "Terminating the program.\n");
+   234:       AmeExit(1);
+   235:    }
+   236: 
+   237: /* Common -> SI units conversions. */
+   238: 
+   239:    rp[0]    *= 1.00000000000000e-003;
+   240:    diam       = rp[0];
+   241:    rp[1]    *= 1.00000000000000e-003;
+   242:    a          = rp[1];
+   243:    rp[2]    *= 1.00000000000000e-003;
+   244:    b          = rp[2];
+   245:    rp[3]    *= 1.00000000000000e-003;
+   246:    dinn       = rp[3];
+   247:    rp[4]    *= 1.00000000000000e-003;
+   248:    dout       = rp[4];
+   249:    rp[6]    *= 1.00000000000000e-006;
+   250:    area       = rp[6];
+   251:    rp[7]    *= 1.00000000000000e-003;
+   252:    dh         = rp[7];
+   253:    rp[9]    *= 1.00000000000000e-003;
+   254:    thick      = rp[9];
+   255:    rp[10]   *= 1.00000000000000e+005;
+   256:    emod       = rp[10];
+   257:    rp[11]   *= 1.00000000000000e+005;
+   258:    beff       = rp[11];
+   259:    rp[12]   *= 1.00000000000000e+005;
+   260:    bulkfluid  = rp[12];
+   261: 
+   262: 
+   263: /* >>>>>>>>>>>>Initialization Function Executable Statements. */
+   264: 
+   265:    /* Compute area and volume */
+   266:    if (geom == 1)
+   267:    {
+   268:       area_loc = M_PI * diam * diam * 0.25;
+   269:       dhyd     = diam;
+   270:    }
+   271:    else if (geom == 2)
+   272:    {
+   273:       area_loc = a * b;
+   274:       dhyd     = 2 * a * b / (a + b);
+   275:    }
+   276:    else if (geom == 3)
+   277:    {
+   278:       area_loc = M_PI * ((dout*dout) - (dinn*dinn)) * 0.25;
+   279:       dhyd     = dout - dinn;
+   280:    }
+   281:    else
+   282:    {
+   283:       area_loc = area;
+   284:       dhyd     = dh;
+   285:    }
+   286: 
+   287:    c[VOL] = area_loc * le;
+   288: 
+   289:    /* checks again with SI units */
+   290:    error = 0;
+   291: 
+   292:    if (method == 1) /* infinitely stiff wall */
+   293:    {
+   294:       c[VOLCOMP] = 0.0;
+   295:    }
+   296:    else if (method == 2) /* calculated wall bulk modulus */
+   297:    {
+   298:       if (thick < 0.0)
+   299:       {
+   300:          error = 2;
+   301:          amefprintf(stderr, "\nWall thickness must be positive.\n");
+   302:       }
+   303:       if (emod <= 0.0)
+   304:       {
+   305:          error = 2;
+   306:          amefprintf(stderr, "\nYoung's modulus must be strictly positive.\n");
+   307:       }
+   308:       if (geom == 3 && thick > 0.5*dinn)
+   309:       {
+   310:          error = 2;
+   311:          amefprintf(stderr, "\nWall thickness must be lower than inner radius.\n");
+   312:       }
+   313: 
+   314:       /* wall compliance */
+   315:       if (geom == 1)
+   316:       {
+   317:          c[VOLCOMP]  = compwc_(&diam, &thick, &emod);
+   318:       }
+   319:       else if (geom == 2)
+   320:       {
+   321:          c[VOLCOMP] = compwa_rect_(&a, &b, &thick, &emod);
+   322:       }
+   323:       else if (geom == 3)
+   324:       {
+   325:          c[VOLCOMP] = compwa_annu_(&dinn, &dout, &thick, &emod);
+   326:       }
+   327:       else if (geom == 4)
+   328:       {
+   329:          c[VOLCOMP] = compwc_(&dh, &thick, &emod);
+   330:       }
+   331:    }
+   332:    else if (method == 3) /* tabulated wall bulk modulus */
+   333:    {
+   334:       hosesinit2_(bmwallfile, &c[VOL], &numVol, &ic[HOSE_BULK], &ic[HOSE_VOL], &error);
+   335: 
+   336:       c[VOLCOMP] = 0.0;
+   337:    }
+   338:    else if (method == 4) /* volumetric expansion */
+   339:    {
+   340:       double bulkfluid_Pa = (volexptype == 1) ? bulkfluid : 0.0;
+   341:       hosesinitu_(dvfile, &c[VOL], &le, &bulkfluid_Pa, &numVol, &ic[HOSE_BULK], &ic[HOSE_VOL], &error);
+   342:       if (volexptype == 1 && bulkfluid < 0)
+   343:       {
+   344:          error = 2;
+   345:          amefprintf(stderr, "\nBulk modulus of the fluid used for pipe expansion measurements must be positive.\n");
+   346:       }
+   347: 
+   348:       c[VOLCOMP] = 0.0;
+   349:    }
+   350:    else   /* effective bulk modulus */
+   351:    {
+   352:       /* Check user supplied bulk modulus value. */
+   353:       if (beff <= 0.0)
+   354:       {
+   355:          error = 2;
+   356:          amefprintf(stderr, "\nUser specified effective bulk modulus must be strictly positive.\n");
+   357:       }
+   358:       else
+   359:       {
+   360:          double zero = 0.0;
+   361:          double bmfluid = bmliqonly_(&zero);
+   362:          if (beff >= bmfluid)
+   363:          {
+   364:             error = 2;
+   365:             amefprintf(stderr, "\nUser specified effective bulk modulus (%g bar) must be lower\n", beff*1e-5);
+   366:             amefprintf(stderr, "\nthan the nominal bulk modulus of the fluid (%g bar).\n", bmfluid*1e-5);
+   367:          }
+   368:          if (bmfluid <= 0.0)
+   369:          {
+   370:             error = 2;
+   371:             amefprintf(stderr, "\nNominal bulk modulus must be strictly positive.\n");
+   372:          }
+   373: 
+   374:          /* Evaluate equivalent wall compliance */
+   375:          c[VOLCOMP] = 1.0/beff - 1.0/bmfluid;
+   376:       }
+   377:    }
+   378: 
+   379:    /* Do general checks on aspect ratio and damping number. */
+   380:    {
+   381:       int checkLine = 0;
+   382:       int causality = PIPE_CAUSALITY_CC;
+   383:       double press = *p1 * 1e5;   /* Pa */
+   384: 
+   385:       checkLine = hydPipeSuggestion_(&le, &dhyd, &press, &method, &c[VOLCOMP], &ic[HOSE_BULK], NULL, NULL, &causality);
+   386:       error = MAX(checkLine, error);
+   387:    }
+   388: 
+   389:    if(error == 1)
+   390:    {
+   391:       amefprintf(stderr, "\nWarning in %s instance %d.\n", _SUBMODELNAME_, *n);
+   392:    }
+   393:    else if(error == 2)
+   394:    {
+   395:       amefprintf(stderr, "\nFatal error in %s instance %d.\n", _SUBMODELNAME_, *n);
+   396:       amefprintf(stderr, "Terminating the program.\n");
+   397:       AmeExit(1);
+   398:    }
+   399: 
+   400: /* <<<<<<<<<<<<End of Initialization Executable Statements. */
+   401: }
+   402: 
+   403: /*  There are 2 ports.
+   404: 
+   405:    Port 1 has 2 variables:
+   406: 
+   407:       1 p1     pressure            [bar -> Pa]       explicit state (derivative `dp1')
+   408:       2 q1     flow rate at port 1 [L/min -> m**3/s] basic variable input
+   409: 
+   410:    Port 2 has 2 variables:
+   411: 
+   412:       1 p2     duplicate of p1    
+   413:       2 q2     flow rate at port 2 [L/min -> m**3/s] basic variable input
+   414: */
+   415: 
+   416: /*  There are 6 internal variables.
+   417: 
+   418:       1 actCpipe        activity of hydraulic capacitance (pipe) [J]             explicit state (derivative `dactCpipe') for activity
+   419:       2 powerCpipe      power of hydraulic capacitance (pipe)    [W]             power variable
+   420:       3 energyCpipe     energy of hydraulic capacitance (pipe)   [J]             explicit state (derivative `denergyCpipe') for energy
+   421:       4 bmwall          wall bulk modulus                        [bar -> Pa]     basic variable
+   422:       5 bmeff           effective bulk modulus                   [bar -> Pa]     basic variable
+   423:       6 voleff          effective volume                         [cm**3 -> m**3] basic variable
+   424: */
+   425: 
+   426: void hl0000_(int *n, double *p1, double *dp1, double *q1, double *q2
+   427:       , double *actCpipe, double *dactCpipe, double *powerCpipe
+   428:       , double *energyCpipe, double *denergyCpipe, double *bmwall
+   429:       , double *bmeff, double *voleff, double rp[13], int ip[4]
+   430:       , char *tp[2], double c[2], int ic[3], int *flag)
+   431: 
+   432: {
+   433:    int loop, logi;
+   434:    double powCpipe;
+   435: 
+   436: /* >>>>>>>>>>>>Extra Calculation Function Declarations Here. */
+   437:    double inflow;
+   438:    static double one = 1.0; /* only one chamber */
+   439: /* <<<<<<<<<<<<End of Extra Calculation declarations. */
+   440:    int indexf, method, volexptype, geom;
+   441:    double diam, a, b, dinn, dout, ecc, area, dh, le, thick, emod, beff
+   442:       , bulkfluid;
+   443:    char *dvfile, *bmwallfile;
+   444: 
+   445:    indexf     = ip[0];
+   446:    method     = ip[1];
+   447:    volexptype = ip[2];
+   448:    geom       = ip[3];
+   449: 
+   450:    diam       = rp[0];
+   451:    a          = rp[1];
+   452:    b          = rp[2];
+   453:    dinn       = rp[3];
+   454:    dout       = rp[4];
+   455:    ecc        = rp[5];
+   456:    area       = rp[6];
+   457:    dh         = rp[7];
+   458:    le         = rp[8];
+   459:    thick      = rp[9];
+   460:    emod       = rp[10];
+   461:    beff       = rp[11];
+   462:    bulkfluid  = rp[12];
+   463: 
+   464:    dvfile     = tp[0];
+   465:    bmwallfile = tp[1];
+   466:    logi = 0;
+   467:    loop = 0;
+   468: 
+   469: /* Common -> SI units conversions. */
+   470: 
+   471:    *p1       *= 1.00000000000000e+005;
+   472:    *q1       *= 1.66666666666667e-005;
+   473:    *q2       *= 1.66666666666667e-005;
+   474: 
+   475: /*
+   476:    Set all submodel outputs below:
+   477: 
+   478:    *dp1        = ??;
+   479:    *bmwall     = ??;
+   480:    *bmeff      = ??;
+   481:    *voleff     = ??;
+   482: */
+   483: 
+   484: 
+   485: 
+   486: /* >>>>>>>>>>>>Calculation Function Executable Statements. */
+   487: 
+   488:    sethdind_(&indexf);
+   489:    inflow = *q1 + *q2;
+   490: 
+   491:    if ((method == 1) || (method == 2) || (method == 5))
+   492:    {
+   493:       *dp1 = pcdyn02_(p1, &c[VOL], &c[VOLCOMP], &inflow, bmwall, voleff, bmeff);
+   494:    }
+   495:    else /* if ((method == 3) || (method == 4)) */
+   496:    {
+   497:       *dp1 = pcdyn03_(p1, &one, &ic[HOSE_BULK], &ic[HOSE_VOL], &inflow, bmwall, voleff, bmeff);
+   498:    }
+   499: 
+   500: /* <<<<<<<<<<<<End of Calculation Executable Statements. */
+   501: 
+   502:    if(actCpipe != NULL || energyCpipe != NULL || ispower_() == 1)
+   503:    {
+   504:       /* Set the following power variables:
+   505: 
+   506:       powCpipe = ??;
+   507:       */
+   508: 
+   509:       /* >>>>>>>>>>>>Energy Common Statements. */
+   510:       double patm = getatp_();
+   511:       powCpipe = (*p1 + patm) * inflow * q0top_(p1);
+   512:       /* <<<<<<<<<<<<End of Energy Common Statements. */
+   513: 
+   514:       if (ispower_() == 1)
+   515:       {
+   516:          *powerCpipe      = powCpipe;
+   517:       }
+   518:       if (energyCpipe != NULL)
+   519:       {
+   520:          *denergyCpipe    = powCpipe;
+   521:       }
+   522:       if (actCpipe != NULL)
+   523:       {
+   524:          /* >>>>>>>>>>>>Optional Activity Computation Statements. */
+   525:          /* <<<<<<<<<<<<End of Optional Activity Computation Statements. */
+   526:          *dactCpipe       = fabs(powCpipe);
+   527:       }
+   528:    }
+   529: 
+   530: /* SI -> Common units conversions. */
+   531: 
+   532:    *p1       /= 1.00000000000000e+005;
+   533:    *dp1      /= 1.00000000000000e+005;
+   534:    *q1       /= 1.66666666666667e-005;
+   535:    *q2       /= 1.66666666666667e-005;
+   536:    *bmwall   /= 1.00000000000000e+005;
+   537:    *bmeff    /= 1.00000000000000e+005;
+   538:    *voleff   /= 1.00000000000000e-006;
+   539: }
+   540: 
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\HL0000.py
+==============================================================================
+...
+     1: from update_helpers import *
+     2: 
+     3: 
+     4: #***************************************************************************#
+     5: # From Rev15, pipe submodel HL000 and hose submodel HH000 are
+     6: # replaced by submodel HL0000.
+     7: #***************************************************************************#
+     8: 
+     9: 
+    10: def get_associations(old_submodel_name, new_submodel_name, old_interface, new_interface,
+    11:       default_associations, structural_phase, extra_data):
+    12: 
+    13:    extra_data.user_message = " The main novelty in HL0000 \
+    14: is that different cross-sectional areas are available, for which wall compliance\
+    15:  is taken into account. \n"
+    16: 
+    17:    # Match pipe length (varname has been changed from "L" to "le").
+    18:    HL0X_length   = by_title(u"pipe length", old_interface)
+    19:    HL000X_length = by_title(u"length", new_interface)
+    20:    if HL0X_length and HL000X_length:
+    21:       default_associations[HL000X_length] = HL0X_length
+    22: 
+    23:    # Match pipe diameter (HL001: varname has been changed from "D" to "diam").
+    24:    HL0X_diameter   = by_title(u"diameter of pipe", old_interface)
+    25:    HL000X_diameter = by_title(u"diameter", new_interface)
+    26:    if HL0X_diameter and HL000X_diameter:
+    27:       default_associations[HL000X_diameter] = HL0X_diameter
+    28: 
+    29:    # Concerns HL000: Match bulk modulus method when a 1/0 option were asked.
+    30:    if old_submodel_name == u"HL000":
+    31:       HL0X_bulkmethod = by_title(u"1 for calculated bulk modulus value 2 for user specified value", old_interface)
+    32:       HL000X_bulkmethod = by_name(u"method", new_interface)
+    33:       if HL0X_bulkmethod and HL000X_bulkmethod:
+    34:          default_associations[HL000X_bulkmethod] = HL0X_bulkmethod
+    35: 
+    36:    # Concerns HH000: match the enumeration for bulk modulus evaluation
+    37:    if old_submodel_name == u"HH000":
+    38:       HH0X_evalbulk = by_name(u"bulkenum", old_interface)
+    39:       HL000X_evalbulk = by_name(u"method", new_interface)
+    40:       if HH0X_evalbulk and HL000X_evalbulk:
+    41:          default_associations[HL000X_evalbulk] = HH0X_evalbulk
+    42: 
+    43:    return default_associations
+    44: 
+    45: 
+    46: def get_field_settings(
+    47:       old_submodel_name,
+    48:       new_submodel_name,
+    49:       old_interface,
+    50:       new_interface,
+    51:       default_field_settings,
+    52:       structural_phase,
+    53:       extra_data):
+    54: 
+    55:    if structural_phase == False:
+    56: 
+    57:       #***************************************************************************#
+    58:       #                            BULK MODULUS                                   #
+    59:       #***************************************************************************#
+    60: 
+    61:       # For HL000:
+    62:       # Match bulk modulus method when a 1/0 option were asked.
+    63:       if old_submodel_name == u"HL000":
+    64:          HL0X_bulkmethod = by_title(u"1 for calculated bulk modulus value 2 for user specified value", old_interface)
+    65:          HL000X_bulkmethod = by_name(u"method", new_interface)
+    66:          if HL000X_bulkmethod and HL0X_bulkmethod:
+    67:             default_field_settings[(HL000X_bulkmethod, Value)] = DiscreteMap({'1':'2', '2':'5'})
+    68: 
+    69:       # Concerns HH000
+    70:       # Match bulk modulus method from old enumeration to new enumeration:
+    71:       #     - enumeration #1 ("calculated wall bulk modulus") is now enumeration #2
+    72:       #     - enumeration #2 ("user specified value") is now enumeration #5.
+    73:       #     - enumeration #3 ("volumetric expansion") is now enumeration #4.
+    74:       if old_submodel_name == u"HH000":
+    75:          method = by_name(u"method", new_interface)
+    76:          bulkenum = by_name(u"bulkenum", old_interface)
+    77:          if bulkenum and method:
+    78:             default_field_settings[(method, Value)] = DiscreteMap({'1':'2', '2':'5', '3':'4'})
+    79: 
+    80:    return default_field_settings
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\HL0000.spe
+==============================================================================
+...
+     1: <?xml version="1.0" encoding="ISO-8859-1"?>
+     2: <!DOCTYPE SPE>
+     3: <SPE DOC_VERSION="2" AME_VERSION="14.0.0 -  42489-40361 2015">
+     4: 
+     5:  <SUBMODEL>
+     6:   <SUB_TYPE>0</SUB_TYPE>
+     7:   <SUB_ID_MAX>45</SUB_ID_MAX>
+     8:   <DEFAULT_ICON>h2port</DEFAULT_ICON>
+     9:   <SUB_LABEL>hydraulic pipe - elementary compressibility (C)</SUB_LABEL>
+    10:   <SUB_UNIT>0</SUB_UNIT>
+    11:   <R_STORES_NUMBER>2</R_STORES_NUMBER>
+    12:   <I_STORES_NUMBER>2</I_STORES_NUMBER>
+    13:   <DISCONTINUITY>1</DISCONTINUITY>
+    14:   <OUTPUT_TYPE>1</OUTPUT_TYPE>
+    15:   <RPARAMS_LIST>
+    16:    <RPARAM>
+    17:     <SUB_ID>6</SUB_ID>
+    18:     <TITLE>diameter</TITLE>
+    19:     <VARNAME>diam</VARNAME>
+    20:     <VISIBILITY>(geom == 1)</VISIBILITY>
+    21:     <DEF_VALUE>2.50000000000000e+01</DEF_VALUE>
+    22:     <VALUE>2.50000000000000e+01</VALUE>
+    23:     <MIN_VALUE>1.00000000000000e-005</MIN_VALUE>
+    24:     <MAX_VALUE>1.00000000000000e+003</MAX_VALUE>
+    25:     <UNITS>mm</UNITS>
+    26:    </RPARAM>
+    27:    <RPARAM>
+    28:     <SUB_ID>32</SUB_ID>
+    29:     <TITLE>width</TITLE>
+    30:     <VARNAME>a</VARNAME>
+    31:     <VISIBILITY>(geom==2)</VISIBILITY>
+    32:     <DEF_VALUE>2.50000000000000e+01</DEF_VALUE>
+    33:     <VALUE>2.50000000000000e+01</VALUE>
+    34:     <MIN_VALUE>1.00000000000000e-005</MIN_VALUE>
+    35:     <MAX_VALUE>1.00000000000000e+003</MAX_VALUE>
+    36:     <UNITS>mm</UNITS>
+    37:    </RPARAM>
+    38:    <RPARAM>
+    39:     <SUB_ID>33</SUB_ID>
+    40:     <TITLE>height</TITLE>
+    41:     <VARNAME>b</VARNAME>
+    42:     <VISIBILITY>(geom==2)</VISIBILITY>
+    43:     <DEF_VALUE>2.50000000000000e+01</DEF_VALUE>
+    44:     <VALUE>2.50000000000000e+01</VALUE>
+    45:     <MIN_VALUE>1.00000000000000e-005</MIN_VALUE>
+    46:     <MAX_VALUE>1.00000000000000e+003</MAX_VALUE>
+    47:     <UNITS>mm</UNITS>
+    48:    </RPARAM>
+    49:    <RPARAM>
+    50:     <SUB_ID>37</SUB_ID>
+    51:     <TITLE>inner diameter</TITLE>
+    52:     <VARNAME>dinn</VARNAME>
+    53:     <VISIBILITY>(geom==3)</VISIBILITY>
+    54:     <DEF_VALUE>2.00000000000000e+01</DEF_VALUE>
+    55:     <VALUE>2.00000000000000e+01</VALUE>
+    56:     <MIN_VALUE>1.00000000000000e-005</MIN_VALUE>
+    57:     <MAX_VALUE>1.00000000000000e+003</MAX_VALUE>
+    58:     <UNITS>mm</UNITS>
+    59:    </RPARAM>
+    60:    <RPARAM>
+    61:     <SUB_ID>38</SUB_ID>
+    62:     <TITLE>outer diameter</TITLE>
+    63:     <VARNAME>dout</VARNAME>
+    64:     <VISIBILITY>(geom==3)</VISIBILITY>
+    65:     <DEF_VALUE>2.50000000000000e+01</DEF_VALUE>
+    66:     <VALUE>2.50000000000000e+01</VALUE>
+    67:     <MIN_VALUE>1.00000000000000e-005</MIN_VALUE>
+    68:     <MAX_VALUE>1.00000000000000e+003</MAX_VALUE>
+    69:     <UNITS>mm</UNITS>
+    70:    </RPARAM>
+    71:    <RPARAM>
+    72:     <SUB_ID>39</SUB_ID>
+    73:     <TITLE>eccentricity ratio</TITLE>
+    74:     <VARNAME>ecc</VARNAME>
+    75:     <VISIBILITY>False</VISIBILITY>
+    76:     <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+    77:     <VALUE>0.00000000000000e+00</VALUE>
+    78:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+    79:     <MAX_VALUE>1.00000000000000e+000</MAX_VALUE>
+    80:     <UNITS>null</UNITS>
+    81:    </RPARAM>
+    82:    <RPARAM>
+    83:     <SUB_ID>42</SUB_ID>
+    84:     <TITLE>cross-sectional area</TITLE>
+    85:     <VARNAME>area</VARNAME>
+    86:     <VISIBILITY>(geom == 4)</VISIBILITY>
+    87:     <DEF_VALUE>5.00000000000000e+02</DEF_VALUE>
+    88:     <VALUE>5.00000000000000e+02</VALUE>
+    89:     <MIN_VALUE>1.00000000000000e-003</MIN_VALUE>
+    90:     <MAX_VALUE>1.00000000000000e+006</MAX_VALUE>
+    91:     <UNITS>mm**2</UNITS>
+    92:    </RPARAM>
+    93:    <RPARAM>
+    94:     <SUB_ID>43</SUB_ID>
+    95:     <TITLE>hydraulic diameter</TITLE>
+    96:     <VARNAME>dh</VARNAME>
+    97:     <VISIBILITY>(geom == 4)</VISIBILITY>
+    98:     <DEF_VALUE>2.50000000000000e+01</DEF_VALUE>
+    99:     <VALUE>2.50000000000000e+01</VALUE>
+   100:     <MIN_VALUE>1.00000000000000e-005</MIN_VALUE>
+   101:     <MAX_VALUE>1.00000000000000e+003</MAX_VALUE>
+   102:     <UNITS>mm</UNITS>
+   103:    </RPARAM>
+   104:    <RPARAM>
+   105:     <SUB_ID>7</SUB_ID>
+   106:     <TITLE>length</TITLE>
+   107:     <VARNAME>le</VARNAME>
+   108:     <VISIBILITY>True</VISIBILITY>
+   109:     <DEF_VALUE>1.00000000000000e+00</DEF_VALUE>
+   110:     <VALUE>1.00000000000000e+00</VALUE>
+   111:     <MIN_VALUE>1.00000000000000e-004</MIN_VALUE>
+   112:     <MAX_VALUE>1.00000000000000e+005</MAX_VALUE>
+   113:     <UNITS>m</UNITS>
+   114:    </RPARAM>
+   115:    <RPARAM>
+   116:     <SUB_ID>8</SUB_ID>
+   117:     <TITLE>wall thickness</TITLE>
+   118:     <VARNAME>thick</VARNAME>
+   119:     <VISIBILITY>(method == 2)</VISIBILITY>
+   120:     <DEF_VALUE>1.00000000000000e+01</DEF_VALUE>
+   121:     <VALUE>1.00000000000000e+01</VALUE>
+   122:     <MIN_VALUE>1.00000000000000e-005</MIN_VALUE>
+   123:     <MAX_VALUE>1.00000000000000e+003</MAX_VALUE>
+   124:     <UNITS>mm</UNITS>
+   125:    </RPARAM>
+   126:    <RPARAM>
+   127:     <SUB_ID>9</SUB_ID>
+   128:     <TITLE>Young's modulus for material</TITLE>
+   129:     <VARNAME>emod</VARNAME>
+   130:     <VISIBILITY>(method == 2)</VISIBILITY>
+   131:     <DEF_VALUE>2.06000000000000e+06</DEF_VALUE>
+   132:     <VALUE>2.06000000000000e+06</VALUE>
+   133:     <MIN_VALUE>1.00000000000000e+003</MIN_VALUE>
+   134:     <MAX_VALUE>1.00000000000000e+007</MAX_VALUE>
+   135:     <UNITS>bar</UNITS>
+   136:    </RPARAM>
+   137:    <RPARAM>
+   138:     <SUB_ID>10</SUB_ID>
+   139:     <TITLE>user specified effective bulk modulus</TITLE>
+   140:     <VARNAME>beff</VARNAME>
+   141:     <VISIBILITY>(method == 5)</VISIBILITY>
+   142:     <DEF_VALUE>8.00000000000000e+03</DEF_VALUE>
+   143:     <VALUE>8.00000000000000e+03</VALUE>
+   144:     <MIN_VALUE>1.00000000000000e+003</MIN_VALUE>
+   145:     <MAX_VALUE>1.00000000000000e+007</MAX_VALUE>
+   146:     <UNITS>bar</UNITS>
+   147:     <IS_DELTA>1</IS_DELTA>
+   148:    </RPARAM>
+   149:    <RPARAM>
+   150:     <SUB_ID>25</SUB_ID>
+   151:     <TITLE>bulk modulus of the fluid used for pipe expansion measurements</TITLE>
+   152:     <VARNAME>bulkfluid</VARNAME>
+   153:     <VISIBILITY>(method == 4) && (volexptype == 1)</VISIBILITY>
+   154:     <DEF_VALUE>1.70000000000000e+04</DEF_VALUE>
+   155:     <VALUE>1.70000000000000e+04</VALUE>
+   156:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+   157:     <MAX_VALUE>1.00000000000000e+005</MAX_VALUE>
+   158:     <UNITS>bar</UNITS>
+   159:     <IS_DELTA>1</IS_DELTA>
+   160:    </RPARAM>
+   161:   </RPARAMS_LIST>
+   162:   <IPARAMS_LIST>
+   163:    <IPARAM>
+   164:     <SUB_ID>12</SUB_ID>
+   165:     <TITLE>index of hydraulic fluid</TITLE>
+   166:     <VARNAME>indexf</VARNAME>
+   167:     <VISIBILITY>True</VISIBILITY>
+   168:     <DEF_VALUE>0</DEF_VALUE>
+   169:     <VALUE>0</VALUE>
+   170:     <MIN_VALUE>0</MIN_VALUE>
+   171:     <MAX_VALUE>100</MAX_VALUE>
+   172:    </IPARAM>
+   173:    <IPARAM>
+   174:     <SUB_ID>18</SUB_ID>
+   175:     <TITLE>evaluation of bulk modulus</TITLE>
+   176:     <VARNAME>method</VARNAME>
+   177:     <VISIBILITY>True</VISIBILITY>
+   178:     <DEF_VALUE>2</DEF_VALUE>
+   179:     <VALUE>2</VALUE>
+   180:     <MIN_VALUE>1</MIN_VALUE>
+   181:     <MAX_VALUE>5</MAX_VALUE>
+   182:     <ENUM_LIST>
+   183:      <ENUM>
+   184:       <ENUM_STRING>infinitely stiff wall</ENUM_STRING>
+   185:      </ENUM>
+   186:      <ENUM>
+   187:       <ENUM_STRING>calculated wall bulk modulus</ENUM_STRING>
+   188:      </ENUM>
+   189:      <ENUM>
+   190:       <ENUM_STRING>tabulated wall bulk modulus</ENUM_STRING>
+   191:      </ENUM>
+   192:      <ENUM>
+   193:       <ENUM_STRING>volumetric expansion</ENUM_STRING>
+   194:      </ENUM>
+   195:      <ENUM>
+   196:       <ENUM_STRING>effective bulk modulus</ENUM_STRING>
+   197:      </ENUM>
+   198:     </ENUM_LIST>
+   199:    </IPARAM>
+   200:    <IPARAM>
+   201:     <SUB_ID>23</SUB_ID>
+   202:     <TITLE>volumetric expansion</TITLE>
+   203:     <VARNAME>volexptype</VARNAME>
+   204:     <VISIBILITY>(method == 4)</VISIBILITY>
+   205:     <DEF_VALUE>1</DEF_VALUE>
+   206:     <VALUE>1</VALUE>
+   207:     <MIN_VALUE>1</MIN_VALUE>
+   208:     <MAX_VALUE>2</MAX_VALUE>
+   209:     <ENUM_LIST>
+   210:      <ENUM>
+   211:       <ENUM_STRING>measured from variation of fluid volume</ENUM_STRING>
+   212:      </ENUM>
+   213:      <ENUM>
+   214:       <ENUM_STRING>calculated as variation of pipe volume</ENUM_STRING>
+   215:      </ENUM>
+   216:     </ENUM_LIST>
+   217:    </IPARAM>
+   218:    <IPARAM>
+   219:     <SUB_ID>29</SUB_ID>
+   220:     <TITLE>section type</TITLE>
+   221:     <VARNAME>geom</VARNAME>
+   222:     <VISIBILITY>True</VISIBILITY>
+   223:     <DEF_VALUE>1</DEF_VALUE>
+   224:     <VALUE>1</VALUE>
+   225:     <MIN_VALUE>1</MIN_VALUE>
+   226:     <MAX_VALUE>4</MAX_VALUE>
+   227:     <ENUM_LIST>
+   228:      <ENUM>
+   229:       <ENUM_STRING>circular</ENUM_STRING>
+   230:      </ENUM>
+   231:      <ENUM>
+   232:       <ENUM_STRING>rectangular</ENUM_STRING>
+   233:      </ENUM>
+   234:      <ENUM>
+   235:       <ENUM_STRING>annular</ENUM_STRING>
+   236:      </ENUM>
+   237:      <ENUM>
+   238:       <ENUM_STRING>generic</ENUM_STRING>
+   239:      </ENUM>
+   240:     </ENUM_LIST>
+   241:    </IPARAM>
+   242:   </IPARAMS_LIST>
+   243:   <TPARAMS_LIST>
+   244:    <TPARAM>
+   245:     <SUB_ID>26</SUB_ID>
+   246:     <TITLE>filename for volumetric expansion[cm**3/m] = f(p[bar])</TITLE>
+   247:     <VARNAME>dvfile</VARNAME>
+   248:     <VISIBILITY>(method == 4)</VISIBILITY>
+   249:     <DEF_VALUE>$AME/libhydr/data/dV_P.data</DEF_VALUE>
+   250:     <VALUE>$AME/libhydr/data/dV_P.data</VALUE>
+   251:     <TEXT_TYPE>1</TEXT_TYPE>
+   252:    </TPARAM>
+   253:    <TPARAM>
+   254:     <SUB_ID>22</SUB_ID>
+   255:     <TITLE>filename for wall bulk modulus[bar] = f(p[bar])</TITLE>
+   256:     <VARNAME>bmwallfile</VARNAME>
+   257:     <VISIBILITY>(method == 3)</VISIBILITY>
+   258:     <DEF_VALUE>$AME/libhydr/data/bmwall_P.data</DEF_VALUE>
+   259:     <VALUE>$AME/libhydr/data/bmwall_P.data</VALUE>
+   260:     <TEXT_TYPE>1</TEXT_TYPE>
+   261:    </TPARAM>
+   262:   </TPARAMS_LIST>
+   263:   <PARAMS_GROUPS_LIST>
+   264:    <PARAMS_GROUP>
+   265:     <ORIG_TITLE>initial conditions</ORIG_TITLE>
+   266:     <NAME>initcond</NAME>
+   267:     <SUB_ID>16</SUB_ID>
+   268:     <PARAM_GROUP_ELEMENT_LIST>
+   269:      <PARAM_GROUP_ELEMENT>
+   270:       <PARAM_GROUP_ELEMENT_VARNAME>p1</PARAM_GROUP_ELEMENT_VARNAME>
+   271:       <PARAM_GROUP_ELEMENT_DISPLAY>0</PARAM_GROUP_ELEMENT_DISPLAY>
+   272:      </PARAM_GROUP_ELEMENT>
+   273:     </PARAM_GROUP_ELEMENT_LIST>
+   274:     <EDITABLE>0</EDITABLE>
+   275:    </PARAMS_GROUP>
+   276:    <PARAMS_GROUP>
+   277:     <ORIG_TITLE>wall compliance</ORIG_TITLE>
+   278:     <NAME>wallcomp</NAME>
+   279:     <SUB_ID>17</SUB_ID>
+   280:     <PARAM_GROUP_ELEMENT_LIST>
+   281:      <PARAM_GROUP_ELEMENT>
+   282:       <PARAM_GROUP_ELEMENT_VARNAME>method</PARAM_GROUP_ELEMENT_VARNAME>
+   283:       <PARAM_GROUP_ELEMENT_DISPLAY>0</PARAM_GROUP_ELEMENT_DISPLAY>
+   284:      </PARAM_GROUP_ELEMENT>
+   285:      <PARAM_GROUP_ELEMENT>
+   286:       <PARAM_GROUP_ELEMENT_VARNAME>thick</PARAM_GROUP_ELEMENT_VARNAME>
+   287:       <PARAM_GROUP_ELEMENT_DISPLAY>0</PARAM_GROUP_ELEMENT_DISPLAY>
+   288:      </PARAM_GROUP_ELEMENT>
+   289:      <PARAM_GROUP_ELEMENT>
+   290:       <PARAM_GROUP_ELEMENT_VARNAME>emod</PARAM_GROUP_ELEMENT_VARNAME>
+   291:       <PARAM_GROUP_ELEMENT_DISPLAY>0</PARAM_GROUP_ELEMENT_DISPLAY>
+   292:      </PARAM_GROUP_ELEMENT>
+   293:      <PARAM_GROUP_ELEMENT>
+   294:       <PARAM_GROUP_ELEMENT_VARNAME>beff</PARAM_GROUP_ELEMENT_VARNAME>
+   295:       <PARAM_GROUP_ELEMENT_DISPLAY>0</PARAM_GROUP_ELEMENT_DISPLAY>
+   296:      </PARAM_GROUP_ELEMENT>
+   297:      <PARAM_GROUP_ELEMENT>
+   298:       <PARAM_GROUP_ELEMENT_VARNAME>volexptype</PARAM_GROUP_ELEMENT_VARNAME>
+   299:       <PARAM_GROUP_ELEMENT_DISPLAY>0</PARAM_GROUP_ELEMENT_DISPLAY>
+   300:      </PARAM_GROUP_ELEMENT>
+   301:      <PARAM_GROUP_ELEMENT>
+   302:       <PARAM_GROUP_ELEMENT_VARNAME>bulkfluid</PARAM_GROUP_ELEMENT_VARNAME>
+   303:       <PARAM_GROUP_ELEMENT_DISPLAY>0</PARAM_GROUP_ELEMENT_DISPLAY>
+   304:      </PARAM_GROUP_ELEMENT>
+   305:      <PARAM_GROUP_ELEMENT>
+   306:       <PARAM_GROUP_ELEMENT_VARNAME>dvfile</PARAM_GROUP_ELEMENT_VARNAME>
+   307:       <PARAM_GROUP_ELEMENT_DISPLAY>0</PARAM_GROUP_ELEMENT_DISPLAY>
+   308:      </PARAM_GROUP_ELEMENT>
+   309:      <PARAM_GROUP_ELEMENT>
+   310:       <PARAM_GROUP_ELEMENT_VARNAME>bmwallfile</PARAM_GROUP_ELEMENT_VARNAME>
+   311:       <PARAM_GROUP_ELEMENT_DISPLAY>0</PARAM_GROUP_ELEMENT_DISPLAY>
+   312:      </PARAM_GROUP_ELEMENT>
+   313:     </PARAM_GROUP_ELEMENT_LIST>
+   314:     <EDITABLE>0</EDITABLE>
+   315:    </PARAMS_GROUP>
+   316:    <PARAMS_GROUP>
+   317:     <ORIG_TITLE>power, energy, activity</ORIG_TITLE>
+   318:     <NAME>Emanagement</NAME>
+   319:     <SUB_ID>15</SUB_ID>
+   320:     <PARAM_GROUP_ELEMENT_LIST>
+   321:      <PARAM_GROUP_ELEMENT>
+   322:       <PARAM_GROUP_ELEMENT_VARNAME>powerCpipe</PARAM_GROUP_ELEMENT_VARNAME>
+   323:       <PARAM_GROUP_ELEMENT_DISPLAY>1</PARAM_GROUP_ELEMENT_DISPLAY>
+   324:      </PARAM_GROUP_ELEMENT>
+   325:      <PARAM_GROUP_ELEMENT>
+   326:       <PARAM_GROUP_ELEMENT_VARNAME>energyCpipe</PARAM_GROUP_ELEMENT_VARNAME>
+   327:       <PARAM_GROUP_ELEMENT_DISPLAY>2</PARAM_GROUP_ELEMENT_DISPLAY>
+   328:      </PARAM_GROUP_ELEMENT>
+   329:      <PARAM_GROUP_ELEMENT>
+   330:       <PARAM_GROUP_ELEMENT_VARNAME>actCpipe</PARAM_GROUP_ELEMENT_VARNAME>
+   331:       <PARAM_GROUP_ELEMENT_DISPLAY>2</PARAM_GROUP_ELEMENT_DISPLAY>
+   332:      </PARAM_GROUP_ELEMENT>
+   333:     </PARAM_GROUP_ELEMENT_LIST>
+   334:     <EDITABLE>0</EDITABLE>
+   335:    </PARAMS_GROUP>
+   336:   </PARAMS_GROUPS_LIST>
+   337:   <IVARS_LIST>
+   338:    <IVAR>
+   339:     <SUB_ID>5</SUB_ID>
+   340:     <TITLE>activity of hydraulic capacitance (pipe)</TITLE>
+   341:     <VARNAME>actCpipe</VARNAME>
+   342:     <VARNAME2>dactCpipe</VARNAME2>
+   343:     <VISIBILITY>True</VISIBILITY>
+   344:     <TYPE>1</TYPE>
+   345:     <DIMENSION>1</DIMENSION>
+   346:     <UNITS>J</UNITS>
+   347:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   348:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   349:     <DEF_VALUE>0</DEF_VALUE>
+   350:     <VALUE>0</VALUE>
+   351:     <PHYS_TYPE>2</PHYS_TYPE>
+   352:     <PHYS_DOMAIN>1</PHYS_DOMAIN>
+   353:     <ACT_SUFFIX>pipe</ACT_SUFFIX>
+   354:     <ACT_TYPE>1</ACT_TYPE>
+   355:    </IVAR>
+   356:    <IVAR>
+   357:     <SUB_ID>13</SUB_ID>
+   358:     <TITLE>power of hydraulic capacitance (pipe)</TITLE>
+   359:     <VARNAME>powerCpipe</VARNAME>
+   360:     <VISIBILITY>True</VISIBILITY>
+   361:     <TYPE>9</TYPE>
+   362:     <DIMENSION>1</DIMENSION>
+   363:     <UNITS>W</UNITS>
+   364:     <PHYS_TYPE>2</PHYS_TYPE>
+   365:     <PHYS_DOMAIN>1</PHYS_DOMAIN>
+   366:     <ACT_SUFFIX>pipe</ACT_SUFFIX>
+   367:     <ACT_TYPE>2</ACT_TYPE>
+   368:    </IVAR>
+   369:    <IVAR>
+   370:     <SUB_ID>14</SUB_ID>
+   371:     <TITLE>energy of hydraulic capacitance (pipe)</TITLE>
+   372:     <VARNAME>energyCpipe</VARNAME>
+   373:     <VARNAME2>denergyCpipe</VARNAME2>
+   374:     <VISIBILITY>True</VISIBILITY>
+   375:     <TYPE>1</TYPE>
+   376:     <DIMENSION>1</DIMENSION>
+   377:     <UNITS>J</UNITS>
+   378:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   379:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   380:     <DEF_VALUE>0</DEF_VALUE>
+   381:     <VALUE>0</VALUE>
+   382:     <PHYS_TYPE>2</PHYS_TYPE>
+   383:     <PHYS_DOMAIN>1</PHYS_DOMAIN>
+   384:     <ACT_SUFFIX>pipe</ACT_SUFFIX>
+   385:     <ACT_TYPE>3</ACT_TYPE>
+   386:    </IVAR>
+   387:    <IVAR>
+   388:     <SUB_ID>19</SUB_ID>
+   389:     <TITLE>wall bulk modulus</TITLE>
+   390:     <VARNAME>bmwall</VARNAME>
+   391:     <VISIBILITY>(method != 1)</VISIBILITY>
+   392:     <TYPE>0</TYPE>
+   393:     <IS_DELTA>1</IS_DELTA>
+   394:     <DIMENSION>1</DIMENSION>
+   395:     <UNITS>bar</UNITS>
+   396:    </IVAR>
+   397:    <IVAR>
+   398:     <SUB_ID>20</SUB_ID>
+   399:     <TITLE>effective bulk modulus</TITLE>
+   400:     <VARNAME>bmeff</VARNAME>
+   401:     <VISIBILITY>True</VISIBILITY>
+   402:     <TYPE>0</TYPE>
+   403:     <IS_DELTA>1</IS_DELTA>
+   404:     <DIMENSION>1</DIMENSION>
+   405:     <UNITS>bar</UNITS>
+   406:    </IVAR>
+   407:    <IVAR>
+   408:     <SUB_ID>21</SUB_ID>
+   409:     <TITLE>effective volume</TITLE>
+   410:     <VARNAME>voleff</VARNAME>
+   411:     <VISIBILITY>True</VISIBILITY>
+   412:     <TYPE>0</TYPE>
+   413:     <DIMENSION>1</DIMENSION>
+   414:     <UNITS>cm**3</UNITS>
+   415:    </IVAR>
+   416:   </IVARS_LIST>
+   417:   <EVARS_LIST>
+   418:    <PORT>
+   419:     <EVAR>
+   420:      <SUB_ID>1</SUB_ID>
+   421:      <TITLE>pressure</TITLE>
+   422:      <VARNAME>p1</VARNAME>
+   423:      <VARNAME2>dp1</VARNAME2>
+   424:      <VISIBILITY>True</VISIBILITY>
+   425:      <TYPE>1</TYPE>
+   426:      <DIMENSION>1</DIMENSION>
+   427:      <IO>2</IO>
+   428:      <UNITS>bar</UNITS>
+   429:      <MIN_VALUE>-1.00000000000000e+000</MIN_VALUE>
+   430:      <MAX_VALUE>1.00000000000000e+006</MAX_VALUE>
+   431:      <DEF_VALUE>0.00000000000000e+000</DEF_VALUE>
+   432:      <VALUE>0.00000000000000e+000</VALUE>
+   433:     </EVAR>
+   434:     <EVAR>
+   435:      <SUB_ID>2</SUB_ID>
+   436:      <TITLE>flow rate at port 1</TITLE>
+   437:      <VARNAME>q1</VARNAME>
+   438:      <VISIBILITY>True</VISIBILITY>
+   439:      <TYPE>0</TYPE>
+   440:      <DIMENSION>1</DIMENSION>
+   441:      <IO>1</IO>
+   442:      <UNITS>L/min</UNITS>
+   443:     </EVAR>
+   444:    </PORT>
+   445:    <PORT>
+   446:     <EVAR>
+   447:      <SUB_ID>28</SUB_ID>
+   448:      <VARNAME>p2</VARNAME>
+   449:      <VISIBILITY>True</VISIBILITY>
+   450:      <TYPE>4</TYPE>
+   451:      <PRIMARY_PORT>0</PRIMARY_PORT>
+   452:      <PRIMARY_VAR>0</PRIMARY_VAR>
+   453:      <DUP_TYPE>0</DUP_TYPE>
+   454:     </EVAR>
+   455:     <EVAR>
+   456:      <SUB_ID>4</SUB_ID>
+   457:      <TITLE>flow rate at port 2</TITLE>
+   458:      <VARNAME>q2</VARNAME>
+   459:      <VISIBILITY>True</VISIBILITY>
+   460:      <TYPE>0</TYPE>
+   461:      <DIMENSION>1</DIMENSION>
+   462:      <IO>1</IO>
+   463:      <UNITS>L/min</UNITS>
+   464:     </EVAR>
+   465:    </PORT>
+   466:   </EVARS_LIST>
+   467:   <EMBEDDED_TOOLS_LIST>
+   468:    <EMBEDDED_TOOL>
+   469:     <EDITION_TOOL>ILApp $AME/scripting/python/toolbox_flu/LISA_app/LISA.app</EDITION_TOOL>
+   470:     <TOOL_NAME>Line selection assistant</TOOL_NAME>
+   471:     <TOOL_DEFAULT_ACTION_MODES>0</TOOL_DEFAULT_ACTION_MODES>
+   472:    </EMBEDDED_TOOL>
+   473:   </EMBEDDED_TOOLS_LIST>
+   474:   <SUBIDS_RESET>0</SUBIDS_RESET>
+   475:  </SUBMODEL>
+   476: </SPE>

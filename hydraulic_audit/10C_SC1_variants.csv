@@ -1,0 +1,11 @@
+﻿instance,structural_variant,structural_signature,parameterized_variant,parameterized_signature,internal_component_count,orifice_count,orifices
+dirvalve_1,SC_1_structure_A,d89b99e3c005,SC_1_variant_A,1ae6ce25fa8d,25,4,orifice_13;orifice_14;orifice_23;orifice_24
+dirvalve_2,SC_1_structure_B,47d555d516a6,SC_1_variant_B,89e44c94eeaf,15,2,orifice_14;orifice_23
+dirvalve_6,SC_1_structure_C,08705cf582c5,SC_1_variant_C,aa62baeb6804,25,4,orifice_13;orifice_14;orifice_23;orifice_24
+dirvalve_3,SC_1_structure_D,a093e5a1e47e,SC_1_variant_D,c373bbba496e,15,2,orifice_13;orifice_23
+dirvalve_8,SC_1_structure_A,d89b99e3c005,SC_1_variant_E,fb28fdcb0f7c,25,4,orifice_13;orifice_14;orifice_23;orifice_24
+dirvalve_9,SC_1_structure_B,47d555d516a6,SC_1_variant_F,e0b0d0541c11,15,2,orifice_14;orifice_23
+dirvalve_10,SC_1_structure_D,a093e5a1e47e,SC_1_variant_G,e0fc66c6457e,15,2,orifice_13;orifice_23
+dirvalve_11,SC_1_structure_A,d89b99e3c005,SC_1_variant_H,d6206a7ef1dc,25,4,orifice_13;orifice_14;orifice_23;orifice_24
+dirvalve_12,SC_1_structure_B,47d555d516a6,SC_1_variant_I,0d22c038ecd3,15,2,orifice_14;orifice_23
+dirvalve_13,SC_1_structure_D,a093e5a1e47e,SC_1_variant_J,3fa1e2280fa6,15,2,orifice_13;orifice_23

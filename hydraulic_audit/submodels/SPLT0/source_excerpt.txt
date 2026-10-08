@@ -1,0 +1,198 @@
+SUBMODEL: SPLT0
+SOURCE FILES: 2
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libsig\submodels\SPLT0.c
+==============================================================================
+...
+     1: /* Submodel SPLT0 skeleton created by AME Submodel editing utility
+     2:    Mon Jul 5 16:06:32 2004 */
+     3: 
+     4: 
+     5: 
+     6: #include <math.h>
+     7: #include <stdio.h>
+     8: #include <stdlib.h>
+     9: #include "ameutils.h"
+    10: /* *******************************************************************************
+    11: TITLE : SPLT0
+    12: ------------------------------------------------------------------------------
+    13: DESCRIPTION :
+    14:  
+    15: 	SPLT0 is a submodel used to split an input signal into two identical
+    16: 	outputs. The signal input to port 3 is split and output on port 1
+    17: 	and 2.
+    18:  
+    19: ------------------------------------------------------------------------------
+    20: USAGE :
+    21: ------------------------------------------------------------------------------
+    22: PARAMETER SETTINGS :
+    23: ------------------------------------------------------------------------------
+    24: DATE OF CREATION/AUTHOR :
+    25: ------------------------------------------------------------------------------
+    26: INDEX OF REVISIONS :
+    27: ------------------------------------------------------------------------------
+    28: LIST OF FUNCTIONS USED :
+    29: ------------------------------------------------------------------------------
+    30: SOURCE :
+    31:    Siemens Industry Software SAS
+    32:    7 place des Minimes
+    33:    42300 Roanne - France
+    34:    tel: (33).04.77.23.60.30
+    35:    fax: (33).04.77.23.60.31
+    36:    www.siemens.com/plm
+    37: 
+    38:    Copyright 2015 Siemens Industry Software NV
+    39: ******************************************************************************* */
+    40: /* >>>>>>>>>>>>Insert Private Code Here. */
+    41: /* <<<<<<<<<<<<End of Private Code. */
+    42: 
+    43: 
+    44: /* There are 0 real parameters:
+    45: 
+    46: */
+    47: 
+    48: 
+    49: 
+    50: /* There are 0 integer parameters:
+    51: 
+    52: */
+    53: 
+    54: 
+    55: 
+    56: /* There are 0 text parameters:
+    57: 
+    58: */
+    59: 
+    60: 
+    61: #ifdef _NO_PROTO
+    62: 
+    63: void splt0in_(n)
+    64: 
+    65: 
+    66:    int *n;
+    67: #else
+    68: 
+    69: void splt0in_(int *n)
+    70: 
+    71: #endif
+    72: {
+    73:    int error = 0;
+    74: /* >>>>>>>>>>>>Extra Initialization Function Declarations Here. */
+    75: /* <<<<<<<<<<<<End of Extra Initialization declarations. */
+    76: 
+    77: 
+    78: /* >>>>>>>>>>>>Initialization Function Check Statements. */
+    79: /* <<<<<<<<<<<<End of Initialization Check Statements. */
+    80: 
+    81:    if(ameHandleSubmodelError("SPLT0", *n, error))
+    82:    {
+    83:       return;
+    84:    }
+    85: 
+    86: 
+    87: /* >>>>>>>>>>>>Initialization Function Executable Statements. */
+    88: /* <<<<<<<<<<<<End of Initialization Executable Statements. */
+    89: }
+    90: 
+    91: /*  There are 3 ports.
+    92: 
+    93:       Port number 1 has 1 variable:
+    94:         Variable number 1 `out1' duplicate of port 3 variable 1 (simple)
+    95: 
+    96:       Port number 2 has 1 variable:
+    97:         Variable number 1 `out2' duplicate of port 3 variable 1 (simple)
+    98: 
+    99:       Port number 3 has 1 variable:
+   100:         Variable number 1 `in3' variable scalar input
+   101:             input to junction  [null]
+   102:    */
+   103: 
+   104: /*  There are 0 internal variables.
+   105:    */
+   106: 
+   107: #if 0
+   108: 
+   109: /* THE CALCULATION FUNCTION WILL NOT BE CALLED. */
+   110: 
+   111: #ifdef _NO_PROTO
+   112: 
+   113: void splt0_(n, in3)
+   114: 
+   115: 
+   116:    int *n;
+   117:    double *in3;
+   118: #else
+   119: 
+   120: void splt0_(int *n, double *in3)
+   121: 
+   122: #endif
+   123: {
+   124:    int logi;
+   125: /* >>>>>>>>>>>>Extra Calculation Function Declarations Here. */
+   126: /* <<<<<<<<<<<<End of Extra Calculation declarations. */
+   127:    int loop;
+   128: 
+   129: /*
+   130:    Set all submodel outputs below:
+   131: 
+   132: */
+   133: 
+   134: 
+   135: 
+   136: /* >>>>>>>>>>>>Calculation Function Executable Statements. */
+   137: /* <<<<<<<<<<<<End of Calculation Executable Statements. */
+   138: }
+   139: 
+   140: #endif
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libsig\submodels\SPLT0.spe
+==============================================================================
+...
+     1: <!DOCTYPE SPE>
+     2: <SPE DOC_VERSION="2" AME_VERSION="4.2.0 -  June 2004">
+     3: 
+     4:  <SUBMODEL>
+     5:   <SUB_TYPE>0</SUB_TYPE>
+     6:   <SUB_ID_MAX>3</SUB_ID_MAX>
+     7:   <DEFAULT_ICON>splitter2p</DEFAULT_ICON>
+     8:   <SUB_LABEL>splitter junction</SUB_LABEL>
+     9:   <SUB_UNIT>0</SUB_UNIT>
+    10:   <HAS_NO_CALC>1</HAS_NO_CALC>
+    11:   <OUTPUT_TYPE>1</OUTPUT_TYPE>
+    12:   <EVARS_LIST>
+    13:    <PORT>
+    14:     <EVAR>
+    15:      <TYPE>4</TYPE>
+    16:      <SUB_ID>1</SUB_ID>
+    17:      <VARNAME>out1</VARNAME>
+    18:      <PRIMARY_PORT>2</PRIMARY_PORT>
+    19:      <PRIMARY_VAR>0</PRIMARY_VAR>
+    20:      <DUP_TYPE>0</DUP_TYPE>
+    21:     </EVAR>
+    22:    </PORT>
+    23:    <PORT>
+    24:     <EVAR>
+    25:      <TYPE>4</TYPE>
+    26:      <SUB_ID>2</SUB_ID>
+    27:      <VARNAME>out2</VARNAME>
+    28:      <PRIMARY_PORT>2</PRIMARY_PORT>
+    29:      <PRIMARY_VAR>0</PRIMARY_VAR>
+    30:      <DUP_TYPE>0</DUP_TYPE>
+    31:     </EVAR>
+    32:    </PORT>
+    33:    <PORT>
+    34:     <EVAR>
+    35:      <TYPE>0</TYPE>
+    36:      <SUB_ID>3</SUB_ID>
+    37:      <VARNAME>in3</VARNAME>
+    38:      <TITLE>input to junction</TITLE>
+    39:      <DIMENSION>1</DIMENSION>
+    40:      <IO>1</IO>
+    41:      <UNITS>null</UNITS>
+    42:     </EVAR>
+    43:    </PORT>
+    44:   </EVARS_LIST>
+    45:  </SUBMODEL>
+    46: </SPE>

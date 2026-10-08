@@ -1,0 +1,27 @@
+{
+  "surrogate_level": "LEVEL C SURROGATE",
+  "solver": "scipy.integrate.solve_ivp(method='BDF')",
+  "minimal_hydraulic_loop": {
+    "success": true,
+    "samples": 143,
+    "initial_pressure_pa": 100000.0,
+    "final_pressure_pa": 5005172.801228015
+  },
+  "actuator_loop": {
+    "success": true,
+    "samples": 169,
+    "initial_state_si": [
+      100000.0,
+      100000.0,
+      0.15,
+      0.0
+    ],
+    "final_state_si": [
+      1616604.8892167646,
+      1219704.5798877776,
+      0.15021382804769717,
+      0.01413903549568326
+    ],
+    "final_time_s": 0.02
+  }
+}

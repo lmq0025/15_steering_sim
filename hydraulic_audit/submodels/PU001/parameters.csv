@@ -1,0 +1,13 @@
+﻿alias,data_path,parameter_type,title,unit,raw_value,resolved_value,value_unit
+pump01,displ@pump01,ame_real_parameter,pump displacement,cc/rev,pd,10,cc/rev
+pump01,wtyp@pump01,ame_real_parameter,typical pump speed,rev/min,tps,1350,rev/min
+pump01,indexf@pump01,ame_integer_parameter,index of hydraulic fluid,,0,0,
+pump01_1,displ@pump01_1,ame_real_parameter,pump displacement,cc/rev,pd,10,cc/rev
+pump01_1,wtyp@pump01_1,ame_real_parameter,typical pump speed,rev/min,tps,1350,rev/min
+pump01_1,indexf@pump01_1,ame_integer_parameter,index of hydraulic fluid,,0,0,
+pump01_2,displ@pump01_2,ame_real_parameter,pump displacement,cc/rev,pd,10,cc/rev
+pump01_2,wtyp@pump01_2,ame_real_parameter,typical pump speed,rev/min,tps,1350,rev/min
+pump01_2,indexf@pump01_2,ame_integer_parameter,index of hydraulic fluid,,0,0,
+pump01_3,displ@pump01_3,ame_real_parameter,pump displacement,cc/rev,pd,10,cc/rev
+pump01_3,wtyp@pump01_3,ame_real_parameter,typical pump speed,rev/min,tps,1350,rev/min
+pump01_3,indexf@pump01_3,ame_integer_parameter,index of hydraulic fluid,,0,0,

@@ -1,0 +1,9 @@
+﻿alias,data_path,variable_type,basic_type,title,unit,io_type,input_type,usage
+step,out@step,1,ame_basic_variable,step output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+step,out00GEN@step,1,ame_state_variable,value before step - Linked variable,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+step,out10GEN@step,1,ame_state_variable,value after step - Linked variable,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+step,t00GEN@step,1,ame_state_variable,step time - Linked variable,s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+step_1,out@step_1,1,ame_basic_variable,step output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+step_1,out00GEN@step_1,1,ame_state_variable,value before step - Linked variable,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+step_1,out10GEN@step_1,1,ame_state_variable,value after step - Linked variable,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+step_1,t00GEN@step_1,1,ame_state_variable,step time - Linked variable,s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown

@@ -1,0 +1,16 @@
+{
+  "optimization_stage": "ALGEBRAIC_CACHE",
+  "model_build_time": 0.02613870007917285,
+  "initialization_time": 0.008752299938350916,
+  "wall_time_1s": 27.19020859990269,
+  "speedup_vs_baseline": 1.9980987604560287,
+  "nfev": 2424,
+  "njev": 157,
+  "nlu": 665,
+  "algebraic_calls": 894830,
+  "actual_algebraic_solves": 107467,
+  "cache_hits": 787363,
+  "physics_regression": "PASS",
+  "max_normalized_error": 0.0,
+  "repetitions": 3
+}

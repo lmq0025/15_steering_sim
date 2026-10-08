@@ -1,0 +1,45 @@
+﻿pump_alias,record_type,base_alias,submodel,library,data_path,name_or_title,parameter_or_variable_type,basic_type,io_type,unit,raw_value,resolved_value,value_unit,global_reference,global_reference_value,global_reference_unit,system_junction,component_port
+pump01,parameter,pump01,PU001,hydr,displ@pump01,pump displacement,ame_real_parameter,,,cc/rev,pd,10,cc/rev,pd,10,,,
+pump01,parameter,pump01,PU001,hydr,wtyp@pump01,typical pump speed,ame_real_parameter,,,rev/min,tps,1350,rev/min,tps,1350,,,
+pump01,parameter,pump01,PU001,hydr,indexf@pump01,index of hydraulic fluid,ame_integer_parameter,,,,0,0,,,,,,
+pump01,variable,pump01,PU001,hydr,qin@pump01,flow rate at port 2,1,ame_basic_variable,ame_variable_io_output,L/min,,,,,,,,
+pump01,variable,pump01,PU001,hydr,pin@pump01,pressure at port 1,1,ame_basic_variable,ame_variable_io_input,bar,,,,,,,,
+pump01,variable,pump01,PU001,hydr,qout@pump01,flow rate at port 2,1,ame_basic_variable,ame_variable_io_output,L/min,,,,,,,,
+pump01,variable,pump01,PU001,hydr,pout@pump01,pressure at port 2,1,ame_basic_variable,ame_variable_io_input,bar,,,,,,,,
+pump01,variable,pump01,PU001,hydr,torque@pump01,shaft torque at port 3,1,ame_basic_variable,ame_variable_io_output,Nm,,,,,,,,
+pump01,variable,pump01,PU001,hydr,speed@pump01,shaft speed at port 3,1,ame_basic_variable,ame_variable_io_input,rev/min,,,,,,,,
+pump01,hydraulic_connection,pump01,PU001,hydr,,system hydraulic connection,,,,,,,,,,,SHJ_016,0
+pump01,hydraulic_connection,pump01,PU001,hydr,,system hydraulic connection,,,,,,,,,,,SHJ_001,1
+pump01_1,parameter,pump01,PU001,hydr,displ@pump01_1,pump displacement,ame_real_parameter,,,cc/rev,pd,10,cc/rev,pd,10,,,
+pump01_1,parameter,pump01,PU001,hydr,wtyp@pump01_1,typical pump speed,ame_real_parameter,,,rev/min,tps,1350,rev/min,tps,1350,,,
+pump01_1,parameter,pump01,PU001,hydr,indexf@pump01_1,index of hydraulic fluid,ame_integer_parameter,,,,0,0,,,,,,
+pump01_1,variable,pump01,PU001,hydr,qin@pump01_1,flow rate at port 2,1,ame_basic_variable,ame_variable_io_output,L/min,,,,,,,,
+pump01_1,variable,pump01,PU001,hydr,pin@pump01_1,pressure at port 1,1,ame_basic_variable,ame_variable_io_input,bar,,,,,,,,
+pump01_1,variable,pump01,PU001,hydr,qout@pump01_1,flow rate at port 2,1,ame_basic_variable,ame_variable_io_output,L/min,,,,,,,,
+pump01_1,variable,pump01,PU001,hydr,pout@pump01_1,pressure at port 2,1,ame_basic_variable,ame_variable_io_input,bar,,,,,,,,
+pump01_1,variable,pump01,PU001,hydr,torque@pump01_1,shaft torque at port 3,1,ame_basic_variable,ame_variable_io_output,Nm,,,,,,,,
+pump01_1,variable,pump01,PU001,hydr,speed@pump01_1,shaft speed at port 3,1,ame_basic_variable,ame_variable_io_input,rev/min,,,,,,,,
+pump01_1,hydraulic_connection,pump01,PU001,hydr,,system hydraulic connection,,,,,,,,,,,SHJ_016,0
+pump01_1,hydraulic_connection,pump01,PU001,hydr,,system hydraulic connection,,,,,,,,,,,SHJ_002,1
+pump01_2,parameter,pump01,PU001,hydr,displ@pump01_2,pump displacement,ame_real_parameter,,,cc/rev,pd,10,cc/rev,pd,10,,,
+pump01_2,parameter,pump01,PU001,hydr,wtyp@pump01_2,typical pump speed,ame_real_parameter,,,rev/min,tps,1350,rev/min,tps,1350,,,
+pump01_2,parameter,pump01,PU001,hydr,indexf@pump01_2,index of hydraulic fluid,ame_integer_parameter,,,,0,0,,,,,,
+pump01_2,variable,pump01,PU001,hydr,qin@pump01_2,flow rate at port 2,1,ame_basic_variable,ame_variable_io_output,L/min,,,,,,,,
+pump01_2,variable,pump01,PU001,hydr,pin@pump01_2,pressure at port 1,1,ame_basic_variable,ame_variable_io_input,bar,,,,,,,,
+pump01_2,variable,pump01,PU001,hydr,qout@pump01_2,flow rate at port 2,1,ame_basic_variable,ame_variable_io_output,L/min,,,,,,,,
+pump01_2,variable,pump01,PU001,hydr,pout@pump01_2,pressure at port 2,1,ame_basic_variable,ame_variable_io_input,bar,,,,,,,,
+pump01_2,variable,pump01,PU001,hydr,torque@pump01_2,shaft torque at port 3,1,ame_basic_variable,ame_variable_io_output,Nm,,,,,,,,
+pump01_2,variable,pump01,PU001,hydr,speed@pump01_2,shaft speed at port 3,1,ame_basic_variable,ame_variable_io_input,rev/min,,,,,,,,
+pump01_2,hydraulic_connection,pump01,PU001,hydr,,system hydraulic connection,,,,,,,,,,,SHJ_046,0
+pump01_2,hydraulic_connection,pump01,PU001,hydr,,system hydraulic connection,,,,,,,,,,,SHJ_047,1
+pump01_3,parameter,pump01,PU001,hydr,displ@pump01_3,pump displacement,ame_real_parameter,,,cc/rev,pd,10,cc/rev,pd,10,,,
+pump01_3,parameter,pump01,PU001,hydr,wtyp@pump01_3,typical pump speed,ame_real_parameter,,,rev/min,tps,1350,rev/min,tps,1350,,,
+pump01_3,parameter,pump01,PU001,hydr,indexf@pump01_3,index of hydraulic fluid,ame_integer_parameter,,,,0,0,,,,,,
+pump01_3,variable,pump01,PU001,hydr,qin@pump01_3,flow rate at port 2,1,ame_basic_variable,ame_variable_io_output,L/min,,,,,,,,
+pump01_3,variable,pump01,PU001,hydr,pin@pump01_3,pressure at port 1,1,ame_basic_variable,ame_variable_io_input,bar,,,,,,,,
+pump01_3,variable,pump01,PU001,hydr,qout@pump01_3,flow rate at port 2,1,ame_basic_variable,ame_variable_io_output,L/min,,,,,,,,
+pump01_3,variable,pump01,PU001,hydr,pout@pump01_3,pressure at port 2,1,ame_basic_variable,ame_variable_io_input,bar,,,,,,,,
+pump01_3,variable,pump01,PU001,hydr,torque@pump01_3,shaft torque at port 3,1,ame_basic_variable,ame_variable_io_output,Nm,,,,,,,,
+pump01_3,variable,pump01,PU001,hydr,speed@pump01_3,shaft speed at port 3,1,ame_basic_variable,ame_variable_io_input,rev/min,,,,,,,,
+pump01_3,hydraulic_connection,pump01,PU001,hydr,,system hydraulic connection,,,,,,,,,,,SHJ_046,0
+pump01_3,hydraulic_connection,pump01,PU001,hydr,,system hydraulic connection,,,,,,,,,,,SHJ_048,1

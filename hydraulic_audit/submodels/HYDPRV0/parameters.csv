@@ -1,0 +1,46 @@
+﻿alias,data_path,parameter_type,title,unit,raw_value,resolved_value,value_unit
+pprv_1,pmin@pprv_1,ame_real_parameter,minimum set pressure (spring pre-tension),bar,10,10,bar
+pprv_1,padd@pprv_1,ame_real_parameter,additional pressure for maximum closing,bar,1,1,bar
+pprv_1,qchar@pprv_1,ame_real_parameter,characteristic flow rate at maximum opening,L/min,10,10,L/min
+pprv_1,dpchar@pprv_1,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+pprv_1,rhochar@pprv_1,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+pprv_1,nuchar@pprv_1,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+pprv_1,hyst@pprv_1,ame_real_parameter,valve hysteresis,bar,0,0,bar
+pprv_1,tau@pprv_1,ame_real_parameter,valve time constant,s,0.05,0.05,s
+pprv_1,wn@pprv_1,ame_real_parameter,valve natural frequency,Hz,20,20,Hz
+pprv_1,zeta@pprv_1,ame_real_parameter,valve damping ratio,null,1.8,1.8,null
+pprv_1,lcrit@pprv_1,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+pprv_1,indexf@pprv_1,ame_integer_parameter,index of hydraulic fluid,,0,0,
+pprv_1,userfp@pprv_1,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+pprv_1,spooldyn@pprv_1,ame_integer_parameter,dynamics,,1,1,
+pprv_1,fareafromxv@pprv_1,ame_text_parameter,filename or expression for fractional area = f(xv),,xv,xv,
+pprv_2,pmin@pprv_2,ame_real_parameter,minimum set pressure (spring pre-tension),bar,10,10,bar
+pprv_2,padd@pprv_2,ame_real_parameter,additional pressure for maximum closing,bar,1,1,bar
+pprv_2,qchar@pprv_2,ame_real_parameter,characteristic flow rate at maximum opening,L/min,10,10,L/min
+pprv_2,dpchar@pprv_2,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+pprv_2,rhochar@pprv_2,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+pprv_2,nuchar@pprv_2,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+pprv_2,hyst@pprv_2,ame_real_parameter,valve hysteresis,bar,0,0,bar
+pprv_2,tau@pprv_2,ame_real_parameter,valve time constant,s,0.05,0.05,s
+pprv_2,wn@pprv_2,ame_real_parameter,valve natural frequency,Hz,20,20,Hz
+pprv_2,zeta@pprv_2,ame_real_parameter,valve damping ratio,null,1.8,1.8,null
+pprv_2,lcrit@pprv_2,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+pprv_2,indexf@pprv_2,ame_integer_parameter,index of hydraulic fluid,,0,0,
+pprv_2,userfp@pprv_2,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+pprv_2,spooldyn@pprv_2,ame_integer_parameter,dynamics,,1,1,
+pprv_2,fareafromxv@pprv_2,ame_text_parameter,filename or expression for fractional area = f(xv),,xv,xv,
+pprv_3,pmin@pprv_3,ame_real_parameter,minimum set pressure (spring pre-tension),bar,10,10,bar
+pprv_3,padd@pprv_3,ame_real_parameter,additional pressure for maximum closing,bar,1,1,bar
+pprv_3,qchar@pprv_3,ame_real_parameter,characteristic flow rate at maximum opening,L/min,10,10,L/min
+pprv_3,dpchar@pprv_3,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+pprv_3,rhochar@pprv_3,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+pprv_3,nuchar@pprv_3,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+pprv_3,hyst@pprv_3,ame_real_parameter,valve hysteresis,bar,0,0,bar
+pprv_3,tau@pprv_3,ame_real_parameter,valve time constant,s,0.05,0.05,s
+pprv_3,wn@pprv_3,ame_real_parameter,valve natural frequency,Hz,20,20,Hz
+pprv_3,zeta@pprv_3,ame_real_parameter,valve damping ratio,null,1.8,1.8,null
+pprv_3,lcrit@pprv_3,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+pprv_3,indexf@pprv_3,ame_integer_parameter,index of hydraulic fluid,,0,0,
+pprv_3,userfp@pprv_3,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+pprv_3,spooldyn@pprv_3,ame_integer_parameter,dynamics,,1,1,
+pprv_3,fareafromxv@pprv_3,ame_text_parameter,filename or expression for fractional area = f(xv),,xv,xv,

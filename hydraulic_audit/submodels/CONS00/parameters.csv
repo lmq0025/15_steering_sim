@@ -1,0 +1,16 @@
+﻿alias,data_path,parameter_type,title,unit,raw_value,resolved_value,value_unit
+constant,k@constant,ame_real_parameter,constant value,null,0,0,null
+constant_1,k@constant_1,ame_real_parameter,constant value,null,a,40,null
+constant_2,k@constant_2,ame_real_parameter,constant value,null,0,0,null
+constant_3,k@constant_3,ame_real_parameter,constant value,null,1,1,null
+constant_4,k@constant_4,ame_real_parameter,constant value,null,0,0,null
+constant_5,k@constant_5,ame_real_parameter,constant value,null,1,1,null
+constant_6,k@constant_6,ame_real_parameter,constant value,null,0,0,null
+constant_7,k@constant_7,ame_real_parameter,constant value,null,1,1,null
+constant_8,k@constant_8,ame_real_parameter,constant value,null,1,1,null
+constant_9,k@constant_9,ame_real_parameter,constant value,null,0,0,null
+constant_10,k@constant_10,ame_real_parameter,constant value,null,0,0,null
+constant_11,k@constant_11,ame_real_parameter,constant value,null,1,1,null
+constant_12,k@constant_12,ame_real_parameter,constant value,null,0,0,null
+constant_13,k@constant_13,ame_real_parameter,constant value,null,1,1,null
+constant_14,k@constant_14,ame_real_parameter,constant value,null,0,0,null

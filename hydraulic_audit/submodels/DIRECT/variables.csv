@@ -1,0 +1,1279 @@
+﻿alias,data_path,variable_type,basic_type,title,unit,io_type,input_type,usage
+dirvalve_1.hydraulic,ev1@dirvalve_1.hydraulic,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic,ev2@dirvalve_1.hydraulic,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic,ev3@dirvalve_1.hydraulic,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic,ev4@dirvalve_1.hydraulic,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic,ev5@dirvalve_1.hydraulic,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_1.hydraulic_1,ev1@dirvalve_1.hydraulic_1,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_1,ev2@dirvalve_1.hydraulic_1,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_1,ev3@dirvalve_1.hydraulic_1,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_1.hydraulic_1,ev4@dirvalve_1.hydraulic_1,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_1,ev5@dirvalve_1.hydraulic_1,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_1,ev6@dirvalve_1.hydraulic_1,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.control,ev1@dirvalve_1.control,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.control,ev2@dirvalve_1.control,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.control_1,ev1@dirvalve_1.control_1,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.control_1,ev2@dirvalve_1.control_1,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_2,ev1@dirvalve_1.hydraulic_2,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_2,ev2@dirvalve_1.hydraulic_2,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_2,ev3@dirvalve_1.hydraulic_2,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_1.hydraulic_2,ev4@dirvalve_1.hydraulic_2,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_2,ev5@dirvalve_1.hydraulic_2,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.control_2,ev1@dirvalve_1.control_2,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.control_2,ev2@dirvalve_1.control_2,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.control_3,ev1@dirvalve_1.control_3,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.control_3,ev2@dirvalve_1.control_3,1,ame_basic_variable,input to junction,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_3,ev1@dirvalve_1.hydraulic_3,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_3,ev2@dirvalve_1.hydraulic_3,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_3,ev3@dirvalve_1.hydraulic_3,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_3,ev4@dirvalve_1.hydraulic_3,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_3,ev5@dirvalve_1.hydraulic_3,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_1.hydraulic_4,ev1@dirvalve_1.hydraulic_4,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_4,ev2@dirvalve_1.hydraulic_4,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_4,ev3@dirvalve_1.hydraulic_4,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_1.hydraulic_4,ev4@dirvalve_1.hydraulic_4,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_4,ev5@dirvalve_1.hydraulic_4,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_4,ev6@dirvalve_1.hydraulic_4,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_5,ev1@dirvalve_1.hydraulic_5,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_5,ev2@dirvalve_1.hydraulic_5,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_5,ev3@dirvalve_1.hydraulic_5,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_5,ev4@dirvalve_1.hydraulic_5,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_5,ev5@dirvalve_1.hydraulic_5,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_1.hydraulic_6,ev1@dirvalve_1.hydraulic_6,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_6,ev2@dirvalve_1.hydraulic_6,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_6,ev3@dirvalve_1.hydraulic_6,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_6,ev4@dirvalve_1.hydraulic_6,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_6,ev5@dirvalve_1.hydraulic_6,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_1.hydraulic_7,ev1@dirvalve_1.hydraulic_7,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_7,ev2@dirvalve_1.hydraulic_7,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_7,ev3@dirvalve_1.hydraulic_7,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_1.hydraulic_7,ev4@dirvalve_1.hydraulic_7,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_7,ev5@dirvalve_1.hydraulic_7,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_7,ev6@dirvalve_1.hydraulic_7,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.control_4,ev1@dirvalve_1.control_4,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.control_4,ev2@dirvalve_1.control_4,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.control_5,ev1@dirvalve_1.control_5,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.control_5,ev2@dirvalve_1.control_5,1,ame_basic_variable,input to junction,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_8,ev1@dirvalve_1.hydraulic_8,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_8,ev2@dirvalve_1.hydraulic_8,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_8,ev3@dirvalve_1.hydraulic_8,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_1.hydraulic_8,ev4@dirvalve_1.hydraulic_8,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_8,ev5@dirvalve_1.hydraulic_8,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_9,ev1@dirvalve_1.hydraulic_9,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_9,ev2@dirvalve_1.hydraulic_9,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_9,ev3@dirvalve_1.hydraulic_9,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_9,ev4@dirvalve_1.hydraulic_9,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_9,ev5@dirvalve_1.hydraulic_9,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_1.hydraulic_10,ev1@dirvalve_1.hydraulic_10,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_10,ev2@dirvalve_1.hydraulic_10,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_10,ev3@dirvalve_1.hydraulic_10,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_10,ev4@dirvalve_1.hydraulic_10,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_10,ev5@dirvalve_1.hydraulic_10,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_1.hydraulic_11,ev1@dirvalve_1.hydraulic_11,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_11,ev2@dirvalve_1.hydraulic_11,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_11,ev3@dirvalve_1.hydraulic_11,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_1.hydraulic_11,ev4@dirvalve_1.hydraulic_11,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_11,ev5@dirvalve_1.hydraulic_11,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.hydraulic_11,ev6@dirvalve_1.hydraulic_11,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1.control_6,ev1@dirvalve_1.control_6,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1.control_6,ev2@dirvalve_1.control_6,1,ame_basic_variable,input to junction,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_2.hydraulic,ev1@dirvalve_2.hydraulic,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_2.hydraulic,ev2@dirvalve_2.hydraulic,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_2.hydraulic,ev3@dirvalve_2.hydraulic,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_2.hydraulic,ev4@dirvalve_2.hydraulic,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_2.hydraulic,ev5@dirvalve_2.hydraulic,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_2.hydraulic_1,ev1@dirvalve_2.hydraulic_1,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_2.hydraulic_1,ev2@dirvalve_2.hydraulic_1,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_2.hydraulic_1,ev3@dirvalve_2.hydraulic_1,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_2.hydraulic_1,ev4@dirvalve_2.hydraulic_1,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_2.hydraulic_1,ev5@dirvalve_2.hydraulic_1,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_2.control,ev1@dirvalve_2.control,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_2.control,ev2@dirvalve_2.control,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_2.control_1,ev1@dirvalve_2.control_1,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_2.control_1,ev2@dirvalve_2.control_1,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_2.hydraulic_2,ev1@dirvalve_2.hydraulic_2,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_2.hydraulic_2,ev2@dirvalve_2.hydraulic_2,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_2.hydraulic_2,ev3@dirvalve_2.hydraulic_2,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_2.hydraulic_2,ev4@dirvalve_2.hydraulic_2,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_2.hydraulic_2,ev5@dirvalve_2.hydraulic_2,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_2.hydraulic_3,ev1@dirvalve_2.hydraulic_3,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_2.hydraulic_3,ev2@dirvalve_2.hydraulic_3,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_2.hydraulic_3,ev3@dirvalve_2.hydraulic_3,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_2.hydraulic_3,ev4@dirvalve_2.hydraulic_3,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_2.hydraulic_3,ev5@dirvalve_2.hydraulic_3,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_2.control_2,ev1@dirvalve_2.control_2,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_2.control_2,ev2@dirvalve_2.control_2,1,ame_basic_variable,input to junction,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic,ev1@dirvalve_6.hydraulic,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic,ev2@dirvalve_6.hydraulic,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic,ev3@dirvalve_6.hydraulic,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic,ev4@dirvalve_6.hydraulic,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic,ev5@dirvalve_6.hydraulic,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_6.hydraulic_1,ev1@dirvalve_6.hydraulic_1,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_1,ev2@dirvalve_6.hydraulic_1,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_1,ev3@dirvalve_6.hydraulic_1,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_6.hydraulic_1,ev4@dirvalve_6.hydraulic_1,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_1,ev5@dirvalve_6.hydraulic_1,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_1,ev6@dirvalve_6.hydraulic_1,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.control,ev1@dirvalve_6.control,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.control,ev2@dirvalve_6.control,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.control_1,ev1@dirvalve_6.control_1,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.control_1,ev2@dirvalve_6.control_1,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_2,ev1@dirvalve_6.hydraulic_2,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_2,ev2@dirvalve_6.hydraulic_2,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_2,ev3@dirvalve_6.hydraulic_2,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_6.hydraulic_2,ev4@dirvalve_6.hydraulic_2,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_2,ev5@dirvalve_6.hydraulic_2,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.control_2,ev1@dirvalve_6.control_2,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.control_2,ev2@dirvalve_6.control_2,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.control_3,ev1@dirvalve_6.control_3,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.control_3,ev2@dirvalve_6.control_3,1,ame_basic_variable,input to junction,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_3,ev1@dirvalve_6.hydraulic_3,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_3,ev2@dirvalve_6.hydraulic_3,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_3,ev3@dirvalve_6.hydraulic_3,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_3,ev4@dirvalve_6.hydraulic_3,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_3,ev5@dirvalve_6.hydraulic_3,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_6.hydraulic_4,ev1@dirvalve_6.hydraulic_4,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_4,ev2@dirvalve_6.hydraulic_4,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_4,ev3@dirvalve_6.hydraulic_4,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_6.hydraulic_4,ev4@dirvalve_6.hydraulic_4,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_4,ev5@dirvalve_6.hydraulic_4,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_4,ev6@dirvalve_6.hydraulic_4,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_5,ev1@dirvalve_6.hydraulic_5,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_5,ev2@dirvalve_6.hydraulic_5,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_5,ev3@dirvalve_6.hydraulic_5,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_5,ev4@dirvalve_6.hydraulic_5,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_5,ev5@dirvalve_6.hydraulic_5,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_6.hydraulic_6,ev1@dirvalve_6.hydraulic_6,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_6,ev2@dirvalve_6.hydraulic_6,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_6,ev3@dirvalve_6.hydraulic_6,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_6,ev4@dirvalve_6.hydraulic_6,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_6,ev5@dirvalve_6.hydraulic_6,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_6.hydraulic_7,ev1@dirvalve_6.hydraulic_7,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_7,ev2@dirvalve_6.hydraulic_7,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_7,ev3@dirvalve_6.hydraulic_7,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_6.hydraulic_7,ev4@dirvalve_6.hydraulic_7,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_7,ev5@dirvalve_6.hydraulic_7,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_7,ev6@dirvalve_6.hydraulic_7,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.control_4,ev1@dirvalve_6.control_4,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.control_4,ev2@dirvalve_6.control_4,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.control_5,ev1@dirvalve_6.control_5,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.control_5,ev2@dirvalve_6.control_5,1,ame_basic_variable,input to junction,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_8,ev1@dirvalve_6.hydraulic_8,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_8,ev2@dirvalve_6.hydraulic_8,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_8,ev3@dirvalve_6.hydraulic_8,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_6.hydraulic_8,ev4@dirvalve_6.hydraulic_8,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_8,ev5@dirvalve_6.hydraulic_8,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_9,ev1@dirvalve_6.hydraulic_9,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_9,ev2@dirvalve_6.hydraulic_9,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_9,ev3@dirvalve_6.hydraulic_9,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_9,ev4@dirvalve_6.hydraulic_9,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_9,ev5@dirvalve_6.hydraulic_9,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_6.hydraulic_10,ev1@dirvalve_6.hydraulic_10,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_10,ev2@dirvalve_6.hydraulic_10,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_10,ev3@dirvalve_6.hydraulic_10,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_10,ev4@dirvalve_6.hydraulic_10,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_10,ev5@dirvalve_6.hydraulic_10,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_6.hydraulic_11,ev1@dirvalve_6.hydraulic_11,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_11,ev2@dirvalve_6.hydraulic_11,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_11,ev3@dirvalve_6.hydraulic_11,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_6.hydraulic_11,ev4@dirvalve_6.hydraulic_11,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_11,ev5@dirvalve_6.hydraulic_11,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.hydraulic_11,ev6@dirvalve_6.hydraulic_11,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6.control_6,ev1@dirvalve_6.control_6,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6.control_6,ev2@dirvalve_6.control_6,1,ame_basic_variable,input to junction,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_3.hydraulic,ev1@dirvalve_3.hydraulic,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_3.hydraulic,ev2@dirvalve_3.hydraulic,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_3.hydraulic,ev3@dirvalve_3.hydraulic,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_3.hydraulic,ev4@dirvalve_3.hydraulic,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_3.hydraulic,ev5@dirvalve_3.hydraulic,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_3.control,ev1@dirvalve_3.control,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_3.control,ev2@dirvalve_3.control,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_3.control_1,ev1@dirvalve_3.control_1,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_3.control_1,ev2@dirvalve_3.control_1,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_3.hydraulic_1,ev1@dirvalve_3.hydraulic_1,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_3.hydraulic_1,ev2@dirvalve_3.hydraulic_1,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_3.hydraulic_1,ev3@dirvalve_3.hydraulic_1,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_3.hydraulic_1,ev4@dirvalve_3.hydraulic_1,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_3.hydraulic_1,ev5@dirvalve_3.hydraulic_1,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_3.hydraulic_2,ev1@dirvalve_3.hydraulic_2,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_3.hydraulic_2,ev2@dirvalve_3.hydraulic_2,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_3.hydraulic_2,ev3@dirvalve_3.hydraulic_2,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_3.hydraulic_2,ev4@dirvalve_3.hydraulic_2,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_3.hydraulic_2,ev5@dirvalve_3.hydraulic_2,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_3.hydraulic_3,ev1@dirvalve_3.hydraulic_3,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_3.hydraulic_3,ev2@dirvalve_3.hydraulic_3,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_3.hydraulic_3,ev3@dirvalve_3.hydraulic_3,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_3.hydraulic_3,ev4@dirvalve_3.hydraulic_3,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_3.hydraulic_3,ev5@dirvalve_3.hydraulic_3,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_3.hydraulic_4,ev1@dirvalve_3.hydraulic_4,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_3.hydraulic_4,ev2@dirvalve_3.hydraulic_4,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_3.hydraulic_4,ev3@dirvalve_3.hydraulic_4,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_3.hydraulic_4,ev4@dirvalve_3.hydraulic_4,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_3.hydraulic_4,ev5@dirvalve_3.hydraulic_4,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_3.hydraulic_4,ev6@dirvalve_3.hydraulic_4,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_3.control_2,ev1@dirvalve_3.control_2,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_3.control_2,ev2@dirvalve_3.control_2,1,ame_basic_variable,input to junction,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic,ev1@dirvalve_8.hydraulic,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic,ev2@dirvalve_8.hydraulic,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic,ev3@dirvalve_8.hydraulic,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic,ev4@dirvalve_8.hydraulic,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic,ev5@dirvalve_8.hydraulic,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_8.hydraulic_1,ev1@dirvalve_8.hydraulic_1,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_1,ev2@dirvalve_8.hydraulic_1,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_1,ev3@dirvalve_8.hydraulic_1,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_8.hydraulic_1,ev4@dirvalve_8.hydraulic_1,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_1,ev5@dirvalve_8.hydraulic_1,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_1,ev6@dirvalve_8.hydraulic_1,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.control,ev1@dirvalve_8.control,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.control,ev2@dirvalve_8.control,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.control_1,ev1@dirvalve_8.control_1,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.control_1,ev2@dirvalve_8.control_1,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_2,ev1@dirvalve_8.hydraulic_2,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_2,ev2@dirvalve_8.hydraulic_2,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_2,ev3@dirvalve_8.hydraulic_2,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_8.hydraulic_2,ev4@dirvalve_8.hydraulic_2,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_2,ev5@dirvalve_8.hydraulic_2,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.control_2,ev1@dirvalve_8.control_2,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.control_2,ev2@dirvalve_8.control_2,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.control_3,ev1@dirvalve_8.control_3,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.control_3,ev2@dirvalve_8.control_3,1,ame_basic_variable,input to junction,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_3,ev1@dirvalve_8.hydraulic_3,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_3,ev2@dirvalve_8.hydraulic_3,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_3,ev3@dirvalve_8.hydraulic_3,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_3,ev4@dirvalve_8.hydraulic_3,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_3,ev5@dirvalve_8.hydraulic_3,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_8.hydraulic_4,ev1@dirvalve_8.hydraulic_4,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_4,ev2@dirvalve_8.hydraulic_4,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_4,ev3@dirvalve_8.hydraulic_4,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_8.hydraulic_4,ev4@dirvalve_8.hydraulic_4,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_4,ev5@dirvalve_8.hydraulic_4,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_4,ev6@dirvalve_8.hydraulic_4,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_5,ev1@dirvalve_8.hydraulic_5,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_5,ev2@dirvalve_8.hydraulic_5,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_5,ev3@dirvalve_8.hydraulic_5,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_5,ev4@dirvalve_8.hydraulic_5,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_5,ev5@dirvalve_8.hydraulic_5,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_8.hydraulic_6,ev1@dirvalve_8.hydraulic_6,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_6,ev2@dirvalve_8.hydraulic_6,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_6,ev3@dirvalve_8.hydraulic_6,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_6,ev4@dirvalve_8.hydraulic_6,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_6,ev5@dirvalve_8.hydraulic_6,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_8.hydraulic_7,ev1@dirvalve_8.hydraulic_7,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_7,ev2@dirvalve_8.hydraulic_7,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_7,ev3@dirvalve_8.hydraulic_7,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_8.hydraulic_7,ev4@dirvalve_8.hydraulic_7,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_7,ev5@dirvalve_8.hydraulic_7,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_7,ev6@dirvalve_8.hydraulic_7,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.control_4,ev1@dirvalve_8.control_4,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.control_4,ev2@dirvalve_8.control_4,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.control_5,ev1@dirvalve_8.control_5,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.control_5,ev2@dirvalve_8.control_5,1,ame_basic_variable,input to junction,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_8,ev1@dirvalve_8.hydraulic_8,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_8,ev2@dirvalve_8.hydraulic_8,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_8,ev3@dirvalve_8.hydraulic_8,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_8.hydraulic_8,ev4@dirvalve_8.hydraulic_8,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_8,ev5@dirvalve_8.hydraulic_8,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_9,ev1@dirvalve_8.hydraulic_9,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_9,ev2@dirvalve_8.hydraulic_9,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_9,ev3@dirvalve_8.hydraulic_9,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_9,ev4@dirvalve_8.hydraulic_9,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_9,ev5@dirvalve_8.hydraulic_9,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_8.hydraulic_10,ev1@dirvalve_8.hydraulic_10,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_10,ev2@dirvalve_8.hydraulic_10,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_10,ev3@dirvalve_8.hydraulic_10,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_10,ev4@dirvalve_8.hydraulic_10,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_10,ev5@dirvalve_8.hydraulic_10,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_8.hydraulic_11,ev1@dirvalve_8.hydraulic_11,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_11,ev2@dirvalve_8.hydraulic_11,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_11,ev3@dirvalve_8.hydraulic_11,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_8.hydraulic_11,ev4@dirvalve_8.hydraulic_11,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_11,ev5@dirvalve_8.hydraulic_11,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.hydraulic_11,ev6@dirvalve_8.hydraulic_11,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8.control_6,ev1@dirvalve_8.control_6,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8.control_6,ev2@dirvalve_8.control_6,1,ame_basic_variable,input to junction,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_9.hydraulic,ev1@dirvalve_9.hydraulic,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_9.hydraulic,ev2@dirvalve_9.hydraulic,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_9.hydraulic,ev3@dirvalve_9.hydraulic,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_9.hydraulic,ev4@dirvalve_9.hydraulic,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_9.hydraulic,ev5@dirvalve_9.hydraulic,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_9.hydraulic_1,ev1@dirvalve_9.hydraulic_1,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_9.hydraulic_1,ev2@dirvalve_9.hydraulic_1,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_9.hydraulic_1,ev3@dirvalve_9.hydraulic_1,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_9.hydraulic_1,ev4@dirvalve_9.hydraulic_1,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_9.hydraulic_1,ev5@dirvalve_9.hydraulic_1,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_9.control,ev1@dirvalve_9.control,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_9.control,ev2@dirvalve_9.control,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_9.control_1,ev1@dirvalve_9.control_1,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_9.control_1,ev2@dirvalve_9.control_1,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_9.hydraulic_2,ev1@dirvalve_9.hydraulic_2,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_9.hydraulic_2,ev2@dirvalve_9.hydraulic_2,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_9.hydraulic_2,ev3@dirvalve_9.hydraulic_2,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_9.hydraulic_2,ev4@dirvalve_9.hydraulic_2,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_9.hydraulic_2,ev5@dirvalve_9.hydraulic_2,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_9.hydraulic_3,ev1@dirvalve_9.hydraulic_3,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_9.hydraulic_3,ev2@dirvalve_9.hydraulic_3,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_9.hydraulic_3,ev3@dirvalve_9.hydraulic_3,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_9.hydraulic_3,ev4@dirvalve_9.hydraulic_3,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_9.hydraulic_3,ev5@dirvalve_9.hydraulic_3,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_9.control_2,ev1@dirvalve_9.control_2,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_9.control_2,ev2@dirvalve_9.control_2,1,ame_basic_variable,input to junction,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_10.hydraulic,ev1@dirvalve_10.hydraulic,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_10.hydraulic,ev2@dirvalve_10.hydraulic,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_10.hydraulic,ev3@dirvalve_10.hydraulic,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_10.hydraulic,ev4@dirvalve_10.hydraulic,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_10.hydraulic,ev5@dirvalve_10.hydraulic,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_10.control,ev1@dirvalve_10.control,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_10.control,ev2@dirvalve_10.control,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_10.control_1,ev1@dirvalve_10.control_1,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_10.control_1,ev2@dirvalve_10.control_1,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_10.hydraulic_1,ev1@dirvalve_10.hydraulic_1,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_10.hydraulic_1,ev2@dirvalve_10.hydraulic_1,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_10.hydraulic_1,ev3@dirvalve_10.hydraulic_1,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_10.hydraulic_1,ev4@dirvalve_10.hydraulic_1,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_10.hydraulic_1,ev5@dirvalve_10.hydraulic_1,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_10.hydraulic_2,ev1@dirvalve_10.hydraulic_2,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_10.hydraulic_2,ev2@dirvalve_10.hydraulic_2,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_10.hydraulic_2,ev3@dirvalve_10.hydraulic_2,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_10.hydraulic_2,ev4@dirvalve_10.hydraulic_2,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_10.hydraulic_2,ev5@dirvalve_10.hydraulic_2,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_10.hydraulic_3,ev1@dirvalve_10.hydraulic_3,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_10.hydraulic_3,ev2@dirvalve_10.hydraulic_3,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_10.hydraulic_3,ev3@dirvalve_10.hydraulic_3,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_10.hydraulic_3,ev4@dirvalve_10.hydraulic_3,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_10.hydraulic_3,ev5@dirvalve_10.hydraulic_3,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_10.hydraulic_4,ev1@dirvalve_10.hydraulic_4,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_10.hydraulic_4,ev2@dirvalve_10.hydraulic_4,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_10.hydraulic_4,ev3@dirvalve_10.hydraulic_4,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_10.hydraulic_4,ev4@dirvalve_10.hydraulic_4,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_10.hydraulic_4,ev5@dirvalve_10.hydraulic_4,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_10.hydraulic_4,ev6@dirvalve_10.hydraulic_4,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_10.control_2,ev1@dirvalve_10.control_2,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_10.control_2,ev2@dirvalve_10.control_2,1,ame_basic_variable,input to junction,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic,ev1@dirvalve_11.hydraulic,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic,ev2@dirvalve_11.hydraulic,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic,ev3@dirvalve_11.hydraulic,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic,ev4@dirvalve_11.hydraulic,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic,ev5@dirvalve_11.hydraulic,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_11.hydraulic_1,ev1@dirvalve_11.hydraulic_1,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_1,ev2@dirvalve_11.hydraulic_1,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_1,ev3@dirvalve_11.hydraulic_1,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_11.hydraulic_1,ev4@dirvalve_11.hydraulic_1,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_1,ev5@dirvalve_11.hydraulic_1,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_1,ev6@dirvalve_11.hydraulic_1,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.control,ev1@dirvalve_11.control,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.control,ev2@dirvalve_11.control,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.control_1,ev1@dirvalve_11.control_1,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.control_1,ev2@dirvalve_11.control_1,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_2,ev1@dirvalve_11.hydraulic_2,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_2,ev2@dirvalve_11.hydraulic_2,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_2,ev3@dirvalve_11.hydraulic_2,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_11.hydraulic_2,ev4@dirvalve_11.hydraulic_2,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_2,ev5@dirvalve_11.hydraulic_2,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.control_2,ev1@dirvalve_11.control_2,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.control_2,ev2@dirvalve_11.control_2,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.control_3,ev1@dirvalve_11.control_3,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.control_3,ev2@dirvalve_11.control_3,1,ame_basic_variable,input to junction,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_3,ev1@dirvalve_11.hydraulic_3,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_3,ev2@dirvalve_11.hydraulic_3,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_3,ev3@dirvalve_11.hydraulic_3,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_3,ev4@dirvalve_11.hydraulic_3,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_3,ev5@dirvalve_11.hydraulic_3,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_11.hydraulic_4,ev1@dirvalve_11.hydraulic_4,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_4,ev2@dirvalve_11.hydraulic_4,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_4,ev3@dirvalve_11.hydraulic_4,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_11.hydraulic_4,ev4@dirvalve_11.hydraulic_4,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_4,ev5@dirvalve_11.hydraulic_4,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_4,ev6@dirvalve_11.hydraulic_4,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_5,ev1@dirvalve_11.hydraulic_5,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_5,ev2@dirvalve_11.hydraulic_5,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_5,ev3@dirvalve_11.hydraulic_5,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_5,ev4@dirvalve_11.hydraulic_5,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_5,ev5@dirvalve_11.hydraulic_5,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_11.hydraulic_6,ev1@dirvalve_11.hydraulic_6,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_6,ev2@dirvalve_11.hydraulic_6,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_6,ev3@dirvalve_11.hydraulic_6,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_6,ev4@dirvalve_11.hydraulic_6,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_6,ev5@dirvalve_11.hydraulic_6,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_11.hydraulic_7,ev1@dirvalve_11.hydraulic_7,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_7,ev2@dirvalve_11.hydraulic_7,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_7,ev3@dirvalve_11.hydraulic_7,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_11.hydraulic_7,ev4@dirvalve_11.hydraulic_7,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_7,ev5@dirvalve_11.hydraulic_7,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_7,ev6@dirvalve_11.hydraulic_7,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.control_4,ev1@dirvalve_11.control_4,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.control_4,ev2@dirvalve_11.control_4,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.control_5,ev1@dirvalve_11.control_5,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.control_5,ev2@dirvalve_11.control_5,1,ame_basic_variable,input to junction,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_8,ev1@dirvalve_11.hydraulic_8,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_8,ev2@dirvalve_11.hydraulic_8,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_8,ev3@dirvalve_11.hydraulic_8,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_11.hydraulic_8,ev4@dirvalve_11.hydraulic_8,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_8,ev5@dirvalve_11.hydraulic_8,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_9,ev1@dirvalve_11.hydraulic_9,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_9,ev2@dirvalve_11.hydraulic_9,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_9,ev3@dirvalve_11.hydraulic_9,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_9,ev4@dirvalve_11.hydraulic_9,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_9,ev5@dirvalve_11.hydraulic_9,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_11.hydraulic_10,ev1@dirvalve_11.hydraulic_10,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_10,ev2@dirvalve_11.hydraulic_10,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_10,ev3@dirvalve_11.hydraulic_10,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_10,ev4@dirvalve_11.hydraulic_10,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_10,ev5@dirvalve_11.hydraulic_10,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_11.hydraulic_11,ev1@dirvalve_11.hydraulic_11,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_11,ev2@dirvalve_11.hydraulic_11,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_11,ev3@dirvalve_11.hydraulic_11,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_11.hydraulic_11,ev4@dirvalve_11.hydraulic_11,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_11,ev5@dirvalve_11.hydraulic_11,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.hydraulic_11,ev6@dirvalve_11.hydraulic_11,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11.control_6,ev1@dirvalve_11.control_6,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11.control_6,ev2@dirvalve_11.control_6,1,ame_basic_variable,input to junction,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_12.hydraulic,ev1@dirvalve_12.hydraulic,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_12.hydraulic,ev2@dirvalve_12.hydraulic,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_12.hydraulic,ev3@dirvalve_12.hydraulic,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_12.hydraulic,ev4@dirvalve_12.hydraulic,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_12.hydraulic,ev5@dirvalve_12.hydraulic,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_12.hydraulic_1,ev1@dirvalve_12.hydraulic_1,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_12.hydraulic_1,ev2@dirvalve_12.hydraulic_1,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_12.hydraulic_1,ev3@dirvalve_12.hydraulic_1,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_12.hydraulic_1,ev4@dirvalve_12.hydraulic_1,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_12.hydraulic_1,ev5@dirvalve_12.hydraulic_1,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_12.control,ev1@dirvalve_12.control,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_12.control,ev2@dirvalve_12.control,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_12.control_1,ev1@dirvalve_12.control_1,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_12.control_1,ev2@dirvalve_12.control_1,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_12.hydraulic_2,ev1@dirvalve_12.hydraulic_2,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_12.hydraulic_2,ev2@dirvalve_12.hydraulic_2,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_12.hydraulic_2,ev3@dirvalve_12.hydraulic_2,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_12.hydraulic_2,ev4@dirvalve_12.hydraulic_2,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_12.hydraulic_2,ev5@dirvalve_12.hydraulic_2,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_12.hydraulic_3,ev1@dirvalve_12.hydraulic_3,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_12.hydraulic_3,ev2@dirvalve_12.hydraulic_3,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_12.hydraulic_3,ev3@dirvalve_12.hydraulic_3,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_12.hydraulic_3,ev4@dirvalve_12.hydraulic_3,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_12.hydraulic_3,ev5@dirvalve_12.hydraulic_3,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_12.control_2,ev1@dirvalve_12.control_2,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_12.control_2,ev2@dirvalve_12.control_2,1,ame_basic_variable,input to junction,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_13.hydraulic,ev1@dirvalve_13.hydraulic,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_13.hydraulic,ev2@dirvalve_13.hydraulic,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_13.hydraulic,ev3@dirvalve_13.hydraulic,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_13.hydraulic,ev4@dirvalve_13.hydraulic,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_13.hydraulic,ev5@dirvalve_13.hydraulic,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_13.control,ev1@dirvalve_13.control,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_13.control,ev2@dirvalve_13.control,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_13.control_1,ev1@dirvalve_13.control_1,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_13.control_1,ev2@dirvalve_13.control_1,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_13.hydraulic_1,ev1@dirvalve_13.hydraulic_1,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_13.hydraulic_1,ev2@dirvalve_13.hydraulic_1,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_13.hydraulic_1,ev3@dirvalve_13.hydraulic_1,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_13.hydraulic_1,ev4@dirvalve_13.hydraulic_1,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_13.hydraulic_1,ev5@dirvalve_13.hydraulic_1,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_13.hydraulic_2,ev1@dirvalve_13.hydraulic_2,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_13.hydraulic_2,ev2@dirvalve_13.hydraulic_2,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_13.hydraulic_2,ev3@dirvalve_13.hydraulic_2,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_13.hydraulic_2,ev4@dirvalve_13.hydraulic_2,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_13.hydraulic_2,ev5@dirvalve_13.hydraulic_2,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_13.hydraulic_3,ev1@dirvalve_13.hydraulic_3,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_13.hydraulic_3,ev2@dirvalve_13.hydraulic_3,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_13.hydraulic_3,ev3@dirvalve_13.hydraulic_3,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_13.hydraulic_3,ev4@dirvalve_13.hydraulic_3,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_13.hydraulic_3,ev5@dirvalve_13.hydraulic_3,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_13.hydraulic_4,ev1@dirvalve_13.hydraulic_4,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_13.hydraulic_4,ev2@dirvalve_13.hydraulic_4,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_13.hydraulic_4,ev3@dirvalve_13.hydraulic_4,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+dirvalve_13.hydraulic_4,ev4@dirvalve_13.hydraulic_4,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_13.hydraulic_4,ev5@dirvalve_13.hydraulic_4,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_13.hydraulic_4,ev6@dirvalve_13.hydraulic_4,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_13.control_2,ev1@dirvalve_13.control_2,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_13.control_2,ev2@dirvalve_13.control_2,1,ame_basic_variable,input to junction,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_2,ev1@hydraulic_2,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_2,ev2@hydraulic_2,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_2,ev3@hydraulic_2,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_2,ev4@hydraulic_2,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_2,ev5@hydraulic_2,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_5,ev1@hydraulic_5,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_5,ev2@hydraulic_5,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_5,ev3@hydraulic_5,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_5,ev4@hydraulic_5,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_5,ev5@hydraulic_5,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_12,ev1@hydraulic_12,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_12,ev2@hydraulic_12,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_12,ev3@hydraulic_12,1,ame_basic_variable,pressure at junction,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_12,ev4@hydraulic_12,1,ame_basic_variable,flow rate at port 4,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_12,ev5@hydraulic_12,1,ame_basic_variable,volume at port 4,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_13,ev1@hydraulic_13,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_13,ev2@hydraulic_13,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_13,ev3@hydraulic_13,1,ame_basic_variable,pressure at junction,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_13,ev4@hydraulic_13,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_13,ev5@hydraulic_13,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_17,ev1@hydraulic_17,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_17,ev2@hydraulic_17,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_17,ev3@hydraulic_17,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_17,ev4@hydraulic_17,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_17,ev5@hydraulic_17,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_18,ev1@hydraulic_18,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_18,ev2@hydraulic_18,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_18,ev3@hydraulic_18,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_18,ev4@hydraulic_18,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_18,ev5@hydraulic_18,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_18,ev6@hydraulic_18,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_19,ev1@hydraulic_19,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_19,ev2@hydraulic_19,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_19,ev3@hydraulic_19,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_19,ev4@hydraulic_19,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_19,ev5@hydraulic_19,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_19,ev6@hydraulic_19,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_20,ev1@hydraulic_20,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_20,ev2@hydraulic_20,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_20,ev3@hydraulic_20,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_20,ev4@hydraulic_20,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_20,ev5@hydraulic_20,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_24,ev1@hydraulic_24,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_24,ev2@hydraulic_24,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_24,ev3@hydraulic_24,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_24,ev4@hydraulic_24,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_24,ev5@hydraulic_24,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_24,ev6@hydraulic_24,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_36,ev1@hydraulic_36,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_36,ev2@hydraulic_36,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_36,ev3@hydraulic_36,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_36,ev4@hydraulic_36,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_36,ev5@hydraulic_36,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_37,ev1@hydraulic_37,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_37,ev2@hydraulic_37,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_37,ev3@hydraulic_37,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_37,ev4@hydraulic_37,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_37,ev5@hydraulic_37,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_44,ev1@hydraulic_44,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_44,ev2@hydraulic_44,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_44,ev3@hydraulic_44,1,ame_basic_variable,pressure at junction,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_44,ev4@hydraulic_44,1,ame_basic_variable,flow rate at port 4,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_44,ev5@hydraulic_44,1,ame_basic_variable,volume at port 4,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_45,ev1@hydraulic_45,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_45,ev2@hydraulic_45,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_45,ev3@hydraulic_45,1,ame_basic_variable,pressure at junction,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_45,ev4@hydraulic_45,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_45,ev5@hydraulic_45,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_48,ev1@hydraulic_48,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_48,ev2@hydraulic_48,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_48,ev3@hydraulic_48,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_48,ev4@hydraulic_48,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_48,ev5@hydraulic_48,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_49,ev1@hydraulic_49,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_49,ev2@hydraulic_49,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_49,ev3@hydraulic_49,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_49,ev4@hydraulic_49,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_49,ev5@hydraulic_49,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_50,ev1@hydraulic_50,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_50,ev2@hydraulic_50,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_50,ev3@hydraulic_50,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_50,ev4@hydraulic_50,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_50,ev5@hydraulic_50,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_66,ev1@hydraulic_66,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_66,ev2@hydraulic_66,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_66,ev3@hydraulic_66,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_66,ev4@hydraulic_66,1,ame_basic_variable,flow rate at port A,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_66,ev5@hydraulic_66,1,ame_basic_variable,pressure at port P,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_55,ev1@hydraulic_55,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_55,ev2@hydraulic_55,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_55,ev3@hydraulic_55,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_55,ev4@hydraulic_55,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_55,ev5@hydraulic_55,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_55,ev6@hydraulic_55,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_82,ev1@hydraulic_82,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_82,ev2@hydraulic_82,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_82,ev3@hydraulic_82,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_82,ev4@hydraulic_82,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_82,ev5@hydraulic_82,1,ame_basic_variable,pilot pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_83,ev1@hydraulic_83,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_83,ev2@hydraulic_83,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_83,ev3@hydraulic_83,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_83,ev4@hydraulic_83,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_83,ev5@hydraulic_83,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_85,ev1@hydraulic_85,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_85,ev2@hydraulic_85,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_85,ev3@hydraulic_85,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_85,ev4@hydraulic_85,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_85,ev5@hydraulic_85,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_87,ev1@hydraulic_87,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_87,ev2@hydraulic_87,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_87,ev3@hydraulic_87,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_87,ev4@hydraulic_87,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_87,ev5@hydraulic_87,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_87,ev6@hydraulic_87,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_88,ev1@hydraulic_88,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_88,ev2@hydraulic_88,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_88,ev3@hydraulic_88,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_88,ev4@hydraulic_88,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_88,ev5@hydraulic_88,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_88,ev6@hydraulic_88,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_99,ev1@hydraulic_99,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_99,ev2@hydraulic_99,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_99,ev3@hydraulic_99,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_99,ev4@hydraulic_99,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_99,ev5@hydraulic_99,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_99,ev6@hydraulic_99,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+linear_1,ev1@linear_1,1,ame_basic_variable,velocity at port 1,m/s,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_1,ev2@linear_1,1,ame_basic_variable,displacement port 1,m,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_1,ev3@linear_1,1,ame_basic_variable,acceleration at port 1,m/s/s,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_1,ev4@linear_1,1,ame_basic_variable,force at port 1,N,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+linear_1,ev5@linear_1,1,ame_basic_variable,force exerted by actuator rod,N,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_1,ev6@linear_1,1,ame_basic_variable,input velocity,m/s,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+linear_1,ev7@linear_1,1,ame_basic_variable,input displacement,m,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_3,ev1@control_3,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_3,ev2@control_3,1,ame_basic_variable,user defined duty cycle output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_108,ev1@hydraulic_108,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_108,ev2@hydraulic_108,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_108,ev3@hydraulic_108,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_108,ev4@hydraulic_108,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_108,ev5@hydraulic_108,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_108,ev6@hydraulic_108,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_109,ev1@hydraulic_109,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_109,ev2@hydraulic_109,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_109,ev3@hydraulic_109,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_109,ev4@hydraulic_109,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_109,ev5@hydraulic_109,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_109,ev6@hydraulic_109,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_110,ev1@hydraulic_110,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_110,ev2@hydraulic_110,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_110,ev3@hydraulic_110,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_110,ev4@hydraulic_110,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_110,ev5@hydraulic_110,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_110,ev6@hydraulic_110,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+rotary,ev1@rotary,1,ame_basic_variable,shaft torque at port 3,Nm,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+rotary,ev2@rotary,1,ame_basic_variable,shaft speed at port 3,rev/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+rotary,ev3@rotary,1,ame_basic_variable,shaft speed,rev/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+rotary_1,ev1@rotary_1,1,ame_basic_variable,shaft torque at port 3,Nm,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+rotary_1,ev2@rotary_1,1,ame_basic_variable,shaft speed at port 3,rev/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+rotary_1,ev3@rotary_1,1,ame_basic_variable,shaft speed,rev/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+rotary_2,ev1@rotary_2,1,ame_basic_variable,shaft torque at port 3,Nm,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+rotary_2,ev2@rotary_2,1,ame_basic_variable,shaft speed at port 3,rev/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+rotary_2,ev3@rotary_2,1,ame_basic_variable,shaft speed,rev/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+rotary_3,ev1@rotary_3,1,ame_basic_variable,shaft torque at port 3,Nm,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+rotary_3,ev2@rotary_3,1,ame_basic_variable,shaft speed at port 3,rev/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+rotary_3,ev3@rotary_3,1,ame_basic_variable,shaft speed,rev/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_120,ev1@hydraulic_120,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_120,ev2@hydraulic_120,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_120,ev3@hydraulic_120,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_120,ev4@hydraulic_120,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_120,ev5@hydraulic_120,1,ame_basic_variable,pilot pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_123,ev1@hydraulic_123,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_123,ev2@hydraulic_123,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_123,ev3@hydraulic_123,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_123,ev4@hydraulic_123,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_123,ev5@hydraulic_123,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_125,ev1@hydraulic_125,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_125,ev2@hydraulic_125,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_125,ev3@hydraulic_125,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_125,ev4@hydraulic_125,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_125,ev5@hydraulic_125,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_125,ev6@hydraulic_125,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_126,ev1@hydraulic_126,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_126,ev2@hydraulic_126,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_126,ev3@hydraulic_126,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_126,ev4@hydraulic_126,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_126,ev5@hydraulic_126,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_126,ev6@hydraulic_126,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_139,ev1@hydraulic_139,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_139,ev2@hydraulic_139,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_139,ev3@hydraulic_139,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_139,ev4@hydraulic_139,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_139,ev5@hydraulic_139,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_139,ev6@hydraulic_139,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_140,ev1@hydraulic_140,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_140,ev2@hydraulic_140,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_140,ev3@hydraulic_140,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_140,ev4@hydraulic_140,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_140,ev5@hydraulic_140,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_140,ev6@hydraulic_140,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_141,ev1@hydraulic_141,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_141,ev2@hydraulic_141,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_141,ev3@hydraulic_141,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_141,ev4@hydraulic_141,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_141,ev5@hydraulic_141,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_141,ev6@hydraulic_141,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_144,ev1@hydraulic_144,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_144,ev2@hydraulic_144,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_144,ev3@hydraulic_144,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_144,ev4@hydraulic_144,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_144,ev5@hydraulic_144,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_151,ev1@hydraulic_151,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_151,ev2@hydraulic_151,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_151,ev3@hydraulic_151,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_151,ev4@hydraulic_151,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_151,ev5@hydraulic_151,1,ame_basic_variable,pilot pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_152,ev1@hydraulic_152,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_152,ev2@hydraulic_152,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_152,ev3@hydraulic_152,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_152,ev4@hydraulic_152,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_152,ev5@hydraulic_152,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_154,ev1@hydraulic_154,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_154,ev2@hydraulic_154,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_154,ev3@hydraulic_154,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_154,ev4@hydraulic_154,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_154,ev5@hydraulic_154,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_156,ev1@hydraulic_156,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_156,ev2@hydraulic_156,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_156,ev3@hydraulic_156,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_156,ev4@hydraulic_156,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_156,ev5@hydraulic_156,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_156,ev6@hydraulic_156,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_157,ev1@hydraulic_157,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_157,ev2@hydraulic_157,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_157,ev3@hydraulic_157,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_157,ev4@hydraulic_157,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_157,ev5@hydraulic_157,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_157,ev6@hydraulic_157,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_170,ev1@hydraulic_170,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_170,ev2@hydraulic_170,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_170,ev3@hydraulic_170,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_170,ev4@hydraulic_170,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_170,ev5@hydraulic_170,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_170,ev6@hydraulic_170,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_171,ev1@hydraulic_171,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_171,ev2@hydraulic_171,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_171,ev3@hydraulic_171,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_171,ev4@hydraulic_171,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_171,ev5@hydraulic_171,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_171,ev6@hydraulic_171,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_172,ev1@hydraulic_172,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_172,ev2@hydraulic_172,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_172,ev3@hydraulic_172,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_172,ev4@hydraulic_172,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_172,ev5@hydraulic_172,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_172,ev6@hydraulic_172,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_135,ev1@hydraulic_135,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_135,ev2@hydraulic_135,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_135,ev3@hydraulic_135,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_135,ev4@hydraulic_135,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_135,ev5@hydraulic_135,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_135,ev6@hydraulic_135,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_182,ev1@hydraulic_182,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_182,ev2@hydraulic_182,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_182,ev3@hydraulic_182,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_182,ev4@hydraulic_182,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_182,ev5@hydraulic_182,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_185,ev1@hydraulic_185,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_185,ev2@hydraulic_185,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_185,ev3@hydraulic_185,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_185,ev4@hydraulic_185,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_185,ev5@hydraulic_185,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_186,ev1@hydraulic_186,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_186,ev2@hydraulic_186,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_186,ev3@hydraulic_186,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_186,ev4@hydraulic_186,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_186,ev5@hydraulic_186,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_187,ev1@hydraulic_187,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_187,ev2@hydraulic_187,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_187,ev3@hydraulic_187,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_187,ev4@hydraulic_187,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_190,ev1@hydraulic_190,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_190,ev2@hydraulic_190,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_190,ev3@hydraulic_190,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_190,ev4@hydraulic_190,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_121,ev1@hydraulic_121,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_121,ev2@hydraulic_121,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_121,ev3@hydraulic_121,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_121,ev4@hydraulic_121,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_121,ev5@hydraulic_121,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_21,ev1@hydraulic_21,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_21,ev2@hydraulic_21,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_21,ev3@hydraulic_21,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_21,ev4@hydraulic_21,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_21,ev5@hydraulic_21,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_21,ev6@hydraulic_21,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_22,ev1@hydraulic_22,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_22,ev2@hydraulic_22,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_22,ev3@hydraulic_22,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_22,ev4@hydraulic_22,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_22,ev5@hydraulic_22,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_22,ev6@hydraulic_22,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_16,ev1@hydraulic_16,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_16,ev2@hydraulic_16,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_16,ev3@hydraulic_16,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_16,ev4@hydraulic_16,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_16,ev5@hydraulic_16,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_26,ev1@hydraulic_26,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_26,ev2@hydraulic_26,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_26,ev3@hydraulic_26,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_26,ev4@hydraulic_26,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_26,ev5@hydraulic_26,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_8,ev1@hydraulic_8,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_8,ev2@hydraulic_8,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_8,ev3@hydraulic_8,1,ame_basic_variable,pressure at junction,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_8,ev4@hydraulic_8,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_8,ev5@hydraulic_8,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_10,ev1@hydraulic_10,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_10,ev2@hydraulic_10,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_10,ev3@hydraulic_10,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_10,ev4@hydraulic_10,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_10,ev5@hydraulic_10,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_28,ev1@hydraulic_28,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_28,ev2@hydraulic_28,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_28,ev3@hydraulic_28,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_28,ev4@hydraulic_28,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_28,ev5@hydraulic_28,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_28,ev6@hydraulic_28,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_30,ev1@hydraulic_30,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_30,ev2@hydraulic_30,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_30,ev3@hydraulic_30,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_30,ev4@hydraulic_30,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_30,ev5@hydraulic_30,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_33,ev1@hydraulic_33,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_33,ev2@hydraulic_33,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_33,ev3@hydraulic_33,1,ame_basic_variable,pressure at junction,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_33,ev4@hydraulic_33,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_33,ev5@hydraulic_33,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_40,ev1@hydraulic_40,1,ame_basic_variable,flow rate at port A,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_40,ev2@hydraulic_40,1,ame_basic_variable,pressure at port P,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_40,ev3@hydraulic_40,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_40,ev4@hydraulic_40,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_40,ev5@hydraulic_40,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_42,ev1@hydraulic_42,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_42,ev2@hydraulic_42,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_42,ev3@hydraulic_42,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_42,ev4@hydraulic_42,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_42,ev5@hydraulic_42,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_42,ev6@hydraulic_42,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_43,ev1@hydraulic_43,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_43,ev2@hydraulic_43,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_43,ev3@hydraulic_43,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_43,ev4@hydraulic_43,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_43,ev5@hydraulic_43,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_46,ev1@hydraulic_46,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_46,ev2@hydraulic_46,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_46,ev3@hydraulic_46,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_46,ev4@hydraulic_46,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_46,ev5@hydraulic_46,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_47,ev1@hydraulic_47,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_47,ev2@hydraulic_47,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_47,ev3@hydraulic_47,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_47,ev4@hydraulic_47,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_47,ev5@hydraulic_47,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_51,ev1@hydraulic_51,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_51,ev2@hydraulic_51,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_51,ev3@hydraulic_51,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_51,ev4@hydraulic_51,1,ame_basic_variable,flow rate at port 4,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_51,ev5@hydraulic_51,1,ame_basic_variable,volume at port 4,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_51,ev6@hydraulic_51,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_53,ev1@hydraulic_53,1,ame_basic_variable,flow rate (always zero),L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_53,ev2@hydraulic_53,1,ame_basic_variable,input pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_53,ev3@hydraulic_53,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_53,ev4@hydraulic_53,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_52,ev1@hydraulic_52,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_52,ev2@hydraulic_52,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_52,ev3@hydraulic_52,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_52,ev4@hydraulic_52,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_52,ev5@hydraulic_52,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_54,ev1@hydraulic_54,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_54,ev2@hydraulic_54,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_54,ev3@hydraulic_54,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_54,ev4@hydraulic_54,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_54,ev5@hydraulic_54,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_60,ev1@hydraulic_60,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_60,ev2@hydraulic_60,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_60,ev3@hydraulic_60,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_60,ev4@hydraulic_60,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_60,ev5@hydraulic_60,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_60,ev6@hydraulic_60,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_29,ev1@hydraulic_29,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_29,ev2@hydraulic_29,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_29,ev3@hydraulic_29,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_29,ev4@hydraulic_29,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_29,ev5@hydraulic_29,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_29,ev6@hydraulic_29,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_64,ev1@hydraulic_64,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_64,ev2@hydraulic_64,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_64,ev3@hydraulic_64,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_64,ev4@hydraulic_64,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_64,ev5@hydraulic_64,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_64,ev6@hydraulic_64,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_65,ev1@hydraulic_65,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_65,ev2@hydraulic_65,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_65,ev3@hydraulic_65,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_65,ev4@hydraulic_65,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_65,ev5@hydraulic_65,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_65,ev6@hydraulic_65,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_67,ev1@hydraulic_67,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_67,ev2@hydraulic_67,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_67,ev3@hydraulic_67,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_67,ev4@hydraulic_67,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_67,ev5@hydraulic_67,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_67,ev6@hydraulic_67,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_72,ev1@hydraulic_72,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_72,ev2@hydraulic_72,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_72,ev3@hydraulic_72,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_72,ev4@hydraulic_72,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_72,ev5@hydraulic_72,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_72,ev6@hydraulic_72,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+control,ev1@control,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control,ev2@control,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_6,ev1@control_6,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_6,ev2@control_6,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_8,ev1@control_8,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_8,ev2@control_8,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_12,ev1@control_12,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_12,ev2@control_12,1,ame_basic_variable,input to junction,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+linear_3,ev1@linear_3,1,ame_basic_variable,force exerted by actuator rod,N,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_3,ev2@linear_3,1,ame_basic_variable,input velocity,m/s,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+linear_3,ev3@linear_3,1,ame_basic_variable,input displacement,m,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+linear_3,ev4@linear_3,1,ame_basic_variable,velocity at port 1,m/s,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_3,ev5@linear_3,1,ame_basic_variable,displacement port 1,m,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_3,ev6@linear_3,1,ame_basic_variable,acceleration at port 1,m/s/s,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_3,ev7@linear_3,1,ame_basic_variable,force at port 1,N,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+linear_4,ev1@linear_4,1,ame_basic_variable,force exerted by actuator rod,N,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_4,ev2@linear_4,1,ame_basic_variable,input velocity,m/s,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+linear_4,ev3@linear_4,1,ame_basic_variable,input displacement,m,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+linear_4,ev4@linear_4,1,ame_basic_variable,velocity at port 1,m/s,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_4,ev5@linear_4,1,ame_basic_variable,displacement port 1,m,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_4,ev6@linear_4,1,ame_basic_variable,acceleration at port 1,m/s/s,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_4,ev7@linear_4,1,ame_basic_variable,force at port 1,N,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+linear_5,ev1@linear_5,1,ame_basic_variable,force exerted by actuator rod,N,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_5,ev2@linear_5,1,ame_basic_variable,input velocity,m/s,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+linear_5,ev3@linear_5,1,ame_basic_variable,input displacement,m,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+linear_5,ev4@linear_5,1,ame_basic_variable,velocity at port 1,m/s,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_5,ev5@linear_5,1,ame_basic_variable,displacement port 1,m,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_5,ev6@linear_5,1,ame_basic_variable,acceleration at port 1,m/s/s,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_5,ev7@linear_5,1,ame_basic_variable,force at port 1,N,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+linear_6,ev1@linear_6,1,ame_basic_variable,force exerted by actuator rod,N,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_6,ev2@linear_6,1,ame_basic_variable,input velocity,m/s,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+linear_6,ev3@linear_6,1,ame_basic_variable,input displacement,m,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+linear_6,ev4@linear_6,1,ame_basic_variable,velocity at port 1,m/s,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_6,ev5@linear_6,1,ame_basic_variable,displacement port 1,m,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_6,ev6@linear_6,1,ame_basic_variable,acceleration at port 1,m/s/s,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_6,ev7@linear_6,1,ame_basic_variable,force at port 1,N,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_9,ev1@control_9,1,ame_basic_variable,input to junction,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_9,ev2@control_9,1,ame_basic_variable,user defined duty cycle output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_16,ev1@control_16,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_16,ev2@control_16,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_13,ev1@control_13,1,ame_basic_variable,input to junction,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_13,ev2@control_13,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_19,ev1@control_19,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_19,ev2@control_19,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_17,ev1@control_17,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_17,ev2@control_17,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_2,ev1@control_2,1,ame_basic_variable,input to junction,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_2,ev2@control_2,1,ame_basic_variable,user defined duty cycle output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_20,ev1@control_20,1,ame_basic_variable,input signal,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_20,ev2@control_20,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_11,ev1@control_11,1,ame_basic_variable,input to junction,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_11,ev2@control_11,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_21,ev1@control_21,1,ame_basic_variable,input signal,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_21,ev2@control_21,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_15,ev1@control_15,1,ame_basic_variable,input signal,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_15,ev2@control_15,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_10,ev1@control_10,1,ame_basic_variable,input to junction,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_10,ev2@control_10,1,ame_basic_variable,user defined duty cycle output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_22,ev1@control_22,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_22,ev2@control_22,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_14,ev1@control_14,1,ame_basic_variable,input to junction,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_14,ev2@control_14,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_23,ev1@control_23,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_23,ev2@control_23,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_18,ev1@control_18,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_18,ev2@control_18,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_4,ev1@control_4,1,ame_basic_variable,input to junction,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_4,ev2@control_4,1,ame_basic_variable,user defined duty cycle output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_7,ev1@control_7,1,ame_basic_variable,input signal,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_7,ev2@control_7,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_24,ev1@control_24,1,ame_basic_variable,input signal,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_24,ev2@control_24,1,ame_basic_variable,input to junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_73,ev1@hydraulic_73,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_73,ev2@hydraulic_73,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_73,ev3@hydraulic_73,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_73,ev4@hydraulic_73,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_73,ev5@hydraulic_73,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_73,ev6@hydraulic_73,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_74,ev1@hydraulic_74,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_74,ev2@hydraulic_74,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_74,ev3@hydraulic_74,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_74,ev4@hydraulic_74,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_74,ev5@hydraulic_74,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_74,ev6@hydraulic_74,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_75,ev1@hydraulic_75,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_75,ev2@hydraulic_75,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_75,ev3@hydraulic_75,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_75,ev4@hydraulic_75,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_75,ev5@hydraulic_75,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_75,ev6@hydraulic_75,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_76,ev1@hydraulic_76,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_76,ev2@hydraulic_76,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_76,ev3@hydraulic_76,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_76,ev4@hydraulic_76,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_76,ev5@hydraulic_76,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_76,ev6@hydraulic_76,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_78,ev1@hydraulic_78,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_78,ev2@hydraulic_78,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_78,ev3@hydraulic_78,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_78,ev4@hydraulic_78,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_78,ev5@hydraulic_78,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_78,ev6@hydraulic_78,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_86,ev1@hydraulic_86,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_86,ev2@hydraulic_86,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_86,ev3@hydraulic_86,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_86,ev4@hydraulic_86,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_86,ev5@hydraulic_86,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_86,ev6@hydraulic_86,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_90,ev1@hydraulic_90,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_90,ev2@hydraulic_90,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_90,ev3@hydraulic_90,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_90,ev4@hydraulic_90,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_90,ev5@hydraulic_90,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+control_1,ev1@control_1,1,ame_basic_variable,input at port 1,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_1,ev2@control_1,1,ame_basic_variable,sine wave output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_25,ev1@control_25,1,ame_basic_variable,input at port 3,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_25,ev2@control_25,1,ame_basic_variable,user defined duty cycle output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_26,ev1@control_26,1,ame_basic_variable,input signal,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_26,ev2@control_26,1,ame_basic_variable,output from summing junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_27,ev1@control_27,1,ame_basic_variable,input at port 3,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_27,ev2@control_27,1,ame_basic_variable,user defined duty cycle output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_28,ev1@control_28,1,ame_basic_variable,input to junction,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_28,ev2@control_28,1,ame_basic_variable,output from summing junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_25,ev1@hydraulic_25,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_25,ev2@hydraulic_25,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_25,ev3@hydraulic_25,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_25,ev4@hydraulic_25,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_29,ev1@control_29,1,ame_basic_variable,input signal,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_29,ev2@control_29,1,ame_basic_variable,output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_33,ev1@control_33,1,ame_basic_variable,signal input,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_33,ev2@control_33,1,ame_basic_variable,sine wave output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_7,ev1@linear_7,1,ame_basic_variable,force exerted by actuator rod,N,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_7,ev2@linear_7,1,ame_basic_variable,input velocity,m/s,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+linear_7,ev3@linear_7,1,ame_basic_variable,input displacement,m,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+linear_7,ev4@linear_7,1,ame_basic_variable,velocity at port 1,m/s,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_7,ev5@linear_7,1,ame_basic_variable,displacement port 1,m,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_7,ev6@linear_7,1,ame_basic_variable,acceleration at port 1,m/s/s,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_7,ev7@linear_7,1,ame_basic_variable,force at port 1,N,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_92,ev1@hydraulic_92,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_92,ev2@hydraulic_92,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_92,ev3@hydraulic_92,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_92,ev4@hydraulic_92,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_92,ev5@hydraulic_92,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_92,ev6@hydraulic_92,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_93,ev1@hydraulic_93,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_93,ev2@hydraulic_93,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_93,ev3@hydraulic_93,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_93,ev4@hydraulic_93,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_93,ev5@hydraulic_93,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_93,ev6@hydraulic_93,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_96,ev1@hydraulic_96,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_96,ev2@hydraulic_96,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_96,ev3@hydraulic_96,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_96,ev4@hydraulic_96,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_96,ev5@hydraulic_96,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_97,ev1@hydraulic_97,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_97,ev2@hydraulic_97,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_97,ev3@hydraulic_97,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_97,ev4@hydraulic_97,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_97,ev5@hydraulic_97,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_34,ev1@control_34,1,ame_basic_variable,input signal,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_34,ev2@control_34,1,ame_basic_variable,output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_98,ev1@hydraulic_98,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_98,ev2@hydraulic_98,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_98,ev3@hydraulic_98,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_98,ev4@hydraulic_98,1,ame_basic_variable,flow rate at port 1 new,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_35,ev1@control_35,1,ame_basic_variable,input signal,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_35,ev2@control_35,1,ame_basic_variable,output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear,ev1@linear,1,ame_basic_variable,velocity at port 1,m/s,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear,ev2@linear,1,ame_basic_variable,displacement port 1,m,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear,ev3@linear,1,ame_basic_variable,acceleration at port 1,m/s/s,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear,ev4@linear,1,ame_basic_variable,force at port 2,N,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+linear,ev5@linear,1,ame_basic_variable,force output,N,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_2,ev1@linear_2,1,ame_basic_variable,velocity at port 1,m/s,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_2,ev2@linear_2,1,ame_basic_variable,displacement port 1,m,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_2,ev3@linear_2,1,ame_basic_variable,acceleration at port 1,m/s/s,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_2,ev4@linear_2,1,ame_basic_variable,force at port 1,N,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+linear_2,ev5@linear_2,1,ame_basic_variable,force exerted by actuator rod,N,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_2,ev6@linear_2,1,ame_basic_variable,input velocity,m/s,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+linear_2,ev7@linear_2,1,ame_basic_variable,input displacement,m,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+linear_8,ev1@linear_8,1,ame_basic_variable,force output,N,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_8,ev2@linear_8,1,ame_basic_variable,velocity at port 1,m/s,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_8,ev3@linear_8,1,ame_basic_variable,displacement port 1,m,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_8,ev4@linear_8,1,ame_basic_variable,acceleration at port 1,m/s/s,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_8,ev5@linear_8,1,ame_basic_variable,force at port 2,N,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_36,ev1@control_36,1,ame_basic_variable,sine wave output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_36,ev2@control_36,1,ame_basic_variable,signal input,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_100,ev1@hydraulic_100,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_100,ev2@hydraulic_100,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_100,ev3@hydraulic_100,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_100,ev4@hydraulic_100,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_100,ev5@hydraulic_100,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_104,ev1@hydraulic_104,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_104,ev2@hydraulic_104,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_104,ev3@hydraulic_104,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_104,ev4@hydraulic_104,1,ame_basic_variable,flow rate at port 2 new,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_104,ev5@hydraulic_104,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_105,ev1@hydraulic_105,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_105,ev2@hydraulic_105,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_105,ev3@hydraulic_105,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_105,ev4@hydraulic_105,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_105,ev5@hydraulic_105,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_37,ev1@control_37,1,ame_basic_variable,input signal,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_37,ev2@control_37,1,ame_basic_variable,output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_102,ev1@hydraulic_102,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_102,ev2@hydraulic_102,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_102,ev3@hydraulic_102,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_102,ev4@hydraulic_102,1,ame_basic_variable,flow rate at port 2 new,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_102,ev5@hydraulic_102,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_106,ev1@hydraulic_106,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_106,ev2@hydraulic_106,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_106,ev3@hydraulic_106,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_106,ev4@hydraulic_106,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_38,ev1@control_38,1,ame_basic_variable,input signal,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_38,ev2@control_38,1,ame_basic_variable,output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_107,ev1@hydraulic_107,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_107,ev2@hydraulic_107,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_107,ev3@hydraulic_107,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_107,ev4@hydraulic_107,1,ame_basic_variable,flow rate at port 2 new,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_107,ev5@hydraulic_107,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_111,ev1@hydraulic_111,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_111,ev2@hydraulic_111,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_111,ev3@hydraulic_111,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_111,ev4@hydraulic_111,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_111,ev5@hydraulic_111,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_39,ev1@control_39,1,ame_basic_variable,input signal,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_39,ev2@control_39,1,ame_basic_variable,output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_112,ev1@hydraulic_112,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_112,ev2@hydraulic_112,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_112,ev3@hydraulic_112,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_112,ev4@hydraulic_112,1,ame_basic_variable,flow rate at port 2 new,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_112,ev5@hydraulic_112,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_40,ev1@control_40,1,ame_basic_variable,input signal,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_40,ev2@control_40,1,ame_basic_variable,output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_114,ev1@hydraulic_114,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_114,ev2@hydraulic_114,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_114,ev3@hydraulic_114,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_114,ev4@hydraulic_114,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_114,ev5@hydraulic_114,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+linear_9,ev1@linear_9,1,ame_basic_variable,force output,N,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_9,ev2@linear_9,1,ame_basic_variable,velocity at port 1,m/s,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_9,ev3@linear_9,1,ame_basic_variable,displacement port 1,m,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_9,ev4@linear_9,1,ame_basic_variable,acceleration at port 1,m/s/s,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_9,ev5@linear_9,1,ame_basic_variable,force at port 2,N,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_41,ev1@control_41,1,ame_basic_variable,sine wave output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_41,ev2@control_41,1,ame_basic_variable,signal input,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_42,ev1@control_42,1,ame_basic_variable,signal input,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_42,ev2@control_42,1,ame_basic_variable,sine wave output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_10,ev1@linear_10,1,ame_basic_variable,velocity at port 1,m/s,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_10,ev2@linear_10,1,ame_basic_variable,displacement port 1,m,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_10,ev3@linear_10,1,ame_basic_variable,acceleration at port 1,m/s/s,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_10,ev4@linear_10,1,ame_basic_variable,force at port 2,N,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+linear_10,ev5@linear_10,1,ame_basic_variable,force output,N,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_43,ev1@control_43,1,ame_basic_variable,signal input,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_43,ev2@control_43,1,ame_basic_variable,sine wave output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_11,ev1@linear_11,1,ame_basic_variable,velocity at port 1,m/s,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_11,ev2@linear_11,1,ame_basic_variable,displacement port 1,m,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_11,ev3@linear_11,1,ame_basic_variable,acceleration at port 1,m/s/s,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_11,ev4@linear_11,1,ame_basic_variable,force at port 2,N,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+linear_11,ev5@linear_11,1,ame_basic_variable,force output,N,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_12,ev1@linear_12,1,ame_basic_variable,force output,N,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_12,ev2@linear_12,1,ame_basic_variable,velocity at port 1,m/s,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_12,ev3@linear_12,1,ame_basic_variable,displacement port 1,m,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_12,ev4@linear_12,1,ame_basic_variable,acceleration at port 1,m/s/s,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+linear_12,ev5@linear_12,1,ame_basic_variable,force at port 2,N,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_44,ev1@control_44,1,ame_basic_variable,sine wave output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_44,ev2@control_44,1,ame_basic_variable,signal input,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_116,ev1@hydraulic_116,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_116,ev2@hydraulic_116,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_116,ev3@hydraulic_116,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_116,ev4@hydraulic_116,1,ame_basic_variable,flow rate at port 2 new,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_116,ev5@hydraulic_116,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_117,ev1@hydraulic_117,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_117,ev2@hydraulic_117,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_117,ev3@hydraulic_117,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_117,ev4@hydraulic_117,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_117,ev5@hydraulic_117,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_124,ev1@hydraulic_124,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_124,ev2@hydraulic_124,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_124,ev3@hydraulic_124,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_124,ev4@hydraulic_124,1,ame_basic_variable,flow rate at port 2 new,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_124,ev5@hydraulic_124,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_45,ev1@control_45,1,ame_basic_variable,input signal,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_45,ev2@control_45,1,ame_basic_variable,output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_128,ev1@hydraulic_128,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_128,ev2@hydraulic_128,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_128,ev3@hydraulic_128,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_128,ev4@hydraulic_128,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_130,ev1@hydraulic_130,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_130,ev2@hydraulic_130,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_130,ev3@hydraulic_130,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_130,ev4@hydraulic_130,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_130,ev5@hydraulic_130,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_46,ev1@control_46,1,ame_basic_variable,input signal,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_46,ev2@control_46,1,ame_basic_variable,output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_132,ev1@hydraulic_132,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_132,ev2@hydraulic_132,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_132,ev3@hydraulic_132,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_132,ev4@hydraulic_132,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_132,ev5@hydraulic_132,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_133,ev1@hydraulic_133,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_133,ev2@hydraulic_133,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_133,ev3@hydraulic_133,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_133,ev4@hydraulic_133,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_133,ev5@hydraulic_133,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_47,ev1@control_47,1,ame_basic_variable,input signal,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_47,ev2@control_47,1,ame_basic_variable,output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_48,ev1@control_48,1,ame_basic_variable,input signal,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_48,ev2@control_48,1,ame_basic_variable,output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_138,ev1@hydraulic_138,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_138,ev2@hydraulic_138,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_138,ev3@hydraulic_138,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_138,ev4@hydraulic_138,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_145,ev1@hydraulic_145,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_145,ev2@hydraulic_145,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_145,ev3@hydraulic_145,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_145,ev4@hydraulic_145,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_145,ev5@hydraulic_145,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_146,ev1@hydraulic_146,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_146,ev2@hydraulic_146,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_146,ev3@hydraulic_146,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_146,ev4@hydraulic_146,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_146,ev5@hydraulic_146,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_49,ev1@control_49,1,ame_basic_variable,input signal,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_49,ev2@control_49,1,ame_basic_variable,output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_50,ev1@control_50,1,ame_basic_variable,input signal,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_50,ev2@control_50,1,ame_basic_variable,output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_155,ev1@hydraulic_155,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_155,ev2@hydraulic_155,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_155,ev3@hydraulic_155,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_155,ev4@hydraulic_155,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_160,ev1@hydraulic_160,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_160,ev2@hydraulic_160,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_160,ev3@hydraulic_160,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_160,ev4@hydraulic_160,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_160,ev5@hydraulic_160,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_161,ev1@hydraulic_161,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_161,ev2@hydraulic_161,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_161,ev3@hydraulic_161,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_161,ev4@hydraulic_161,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_161,ev5@hydraulic_161,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_162,ev1@hydraulic_162,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_162,ev2@hydraulic_162,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_162,ev3@hydraulic_162,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydraulic_162,ev4@hydraulic_162,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_162,ev5@hydraulic_162,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_163,ev1@hydraulic_163,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_163,ev2@hydraulic_163,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_163,ev3@hydraulic_163,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_163,ev4@hydraulic_163,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_163,ev5@hydraulic_163,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+control_51,ev1@control_51,1,ame_basic_variable,input signal,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_51,ev2@control_51,1,ame_basic_variable,step output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_52,ev1@control_52,1,ame_basic_variable,input signal,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_52,ev2@control_52,1,ame_basic_variable,output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_164,ev1@hydraulic_164,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_164,ev2@hydraulic_164,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_164,ev3@hydraulic_164,1,ame_basic_variable,junction pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydraulic_164,ev4@hydraulic_164,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydraulic_164,ev5@hydraulic_164,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+control_31,ev1@control_31,1,ame_basic_variable,input at port 3,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_31,ev2@control_31,1,ame_basic_variable,output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_32,ev1@control_32,1,ame_basic_variable,input at port 1,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_32,ev2@control_32,1,ame_basic_variable,sine wave output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_53,ev1@control_53,1,ame_basic_variable,input signal interpreted in mA,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_53,ev2@control_53,1,ame_basic_variable,output from summing junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_5,ev1@control_5,1,ame_basic_variable,input at port 1,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_5,ev2@control_5,1,ame_basic_variable,output from summing junction,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_30,ev1@control_30,1,ame_basic_variable,input at port 1,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_30,ev2@control_30,1,ame_basic_variable,sine wave output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+control_54,ev1@control_54,1,ame_basic_variable,input at port 3,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+control_54,ev2@control_54,1,ame_basic_variable,step output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used

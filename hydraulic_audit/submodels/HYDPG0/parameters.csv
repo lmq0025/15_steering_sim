@@ -1,0 +1,2 @@
+﻿alias,data_path,parameter_type,title,unit,raw_value,resolved_value,value_unit
+pressuregauge,indexf@pressuregauge,ame_integer_parameter,index of hydraulic fluid,,0,0,

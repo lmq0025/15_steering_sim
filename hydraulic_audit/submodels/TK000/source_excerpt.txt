@@ -1,0 +1,197 @@
+SUBMODEL: TK000
+SOURCE FILES: 2
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\TK000.c
+==============================================================================
+...
+     1: /* Submodel TK000 skeleton created by AME Submodel editing utility
+     2:    Tue Jul 6 11:24:21 2004 */
+     3: 
+     4: 
+     5: 
+     6: #include <math.h>
+     7: #include <stdio.h>
+     8: #include <stdlib.h>
+     9: #include "ameutils.h"
+    10: /* *******************************************************************************
+    11:  
+    12: TITLE : TK000
+    13: ------------------------------------------------------------------------------
+    14: DESCRIPTION :
+    15:  
+    16:    TK000 is a model of a hydraulic tank. The tank is regarded
+    17:    as a constant pressure source in bar.
+    18:  
+    19: ------------------------------------------------------------------------------
+    20: USAGE :
+    21:  
+    22:    Any ideal fluid tank
+    23:  
+    24: ------------------------------------------------------------------------------
+    25: PARAMETER SETTINGS :
+    26: ------------------------------------------------------------------------------
+    27: DATE OF CREATION/AUTHOR : 08/02/1999 by R.RHOTE-VANEY
+    28: ------------------------------------------------------------------------------
+    29: INDEX OF REVISIONS :
+    30: ------------------------------------------------------------------------------
+    31: LIST OF FUNCTIONS USED :
+    32: ------------------------------------------------------------------------------
+    33: SOURCE :
+    34:    Siemens Industry Software SAS
+    35:    7 place des Minimes
+    36:    42300 Roanne - France
+    37:    tel: (33).04.77.23.60.30
+    38:    fax: (33).04.77.23.60.31
+    39:    www.siemens.com/plm
+    40: 
+    41:    Copyright 2015 Siemens Industry Software NV
+    42: ******************************************************************************* */
+    43: /* >>>>>>>>>>>>Insert Private Code Here. */
+    44: /* <<<<<<<<<<<<End of Private Code. */
+    45: 
+    46: 
+    47: /* There are 0 real parameters:
+    48: 
+    49: */
+    50: 
+    51: 
+    52: 
+    53: /* There are 0 integer parameters:
+    54: 
+    55: */
+    56: 
+    57: 
+    58: 
+    59: /* There are 0 text parameters:
+    60: 
+    61: */
+    62: 
+    63: 
+    64: #ifdef _NO_PROTO
+    65: 
+    66: void tk000in_(n, press)
+    67: 
+    68: 
+    69:    int *n;
+    70:    double *press;
+    71: #else
+    72: 
+    73: void tk000in_(int *n, double *press)
+    74: 
+    75: #endif
+    76: {
+    77:    int error = 0;
+    78: /* >>>>>>>>>>>>Extra Initialization Function Declarations Here. */
+    79: /* <<<<<<<<<<<<End of Extra Initialization declarations. */
+    80: 
+    81: /*
+    82:    Check and/or reset the following fixed variable
+    83: 
+    84:    *press      = ??;
+    85: */
+    86: 
+    87: 
+    88: /* >>>>>>>>>>>>Initialization Function Check Statements. */
+    89:    if(*press < -getatp_()*1.0e-5)
+    90:    {
+    91:       amefprintf(stderr,"\n\nTK000 instance %d pressure is too low\n", *n);
+    92:       amefprintf(stderr,"Reset to %g bar\n\n", -getatp_()*1.0e-5);
+    93:       *press = -getatp_()*1.0e-5;
+    94:    }
+    95: /* <<<<<<<<<<<<End of Initialization Check Statements. */
+    96: 
+    97:    if(error == 1)
+    98:    {
+    99:       amefprintf(stderr, "\nWarning in TK000 instance %d.\n", *n);
+   100:    }
+   101:    else if(error == 2)
+   102:    {
+   103:       amefprintf(stderr, "\nFatal error in TK000 instance %d.\n", *n);
+   104:       amefprintf(stderr, "Terminating the program.\n");
+   105:       AmeExit(1);
+   106:    }
+   107: 
+   108: 
+   109: /* >>>>>>>>>>>>Initialization Function Executable Statements. */
+   110: /* <<<<<<<<<<<<End of Initialization Executable Statements. */
+   111: }
+   112: 
+   113: /*  There is 1 port.
+   114: 
+   115:       Port number 1 has 1 variable:
+   116:         Variable number 1 `press' fixed scalar
+   117:             tank pressure  [bar]
+   118:    */
+   119: 
+   120: /*  There are 0 internal variables.
+   121:    */
+   122: 
+   123: #if 0
+   124: 
+   125: /* THE CALCULATION FUNCTION WILL NOT BE CALLED. */
+   126: 
+   127: #ifdef _NO_PROTO
+   128: 
+   129: void tk000_(n)
+   130: 
+   131: 
+   132:    int *n;
+   133: #else
+   134: 
+   135: void tk000_(int *n)
+   136: 
+   137: #endif
+   138: {
+   139:    int logi = 0;
+   140: /* >>>>>>>>>>>>Extra Calculation Function Declarations Here. */
+   141: /* <<<<<<<<<<<<End of Extra Calculation declarations. */
+   142:    int loop = 0;
+   143: 
+   144: /*
+   145:    Set all submodel outputs below:
+   146: 
+   147: */
+   148: 
+   149: 
+   150: 
+   151: /* >>>>>>>>>>>>Calculation Function Executable Statements. */
+   152: /* <<<<<<<<<<<<End of Calculation Executable Statements. */
+   153: }
+   154: 
+   155: #endif
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\TK000.spe
+==============================================================================
+...
+     1: <!DOCTYPE SPE>
+     2: <SPE DOC_VERSION="2" AME_VERSION="4.2.0 Beta -  June 2004">
+     3: 
+     4:  <SUBMODEL>
+     5:   <SUB_TYPE>0</SUB_TYPE>
+     6:   <SUB_ID_MAX>1</SUB_ID_MAX>
+     7:   <DEFAULT_ICON>tank01</DEFAULT_ICON>
+     8:   <SUB_LABEL>tank modelled as constant pressure source</SUB_LABEL>
+     9:   <SUB_UNIT>1</SUB_UNIT>
+    10:   <HAS_NO_CALC>1</HAS_NO_CALC>
+    11:   <OUTPUT_TYPE>1</OUTPUT_TYPE>
+    12:   <EVARS_LIST>
+    13:    <PORT>
+    14:     <EVAR>
+    15:      <TYPE>5</TYPE>
+    16:      <SUB_ID>1</SUB_ID>
+    17:      <VARNAME>press</VARNAME>
+    18:      <TITLE>tank pressure</TITLE>
+    19:      <DIMENSION>1</DIMENSION>
+    20:      <IO>2</IO>
+    21:      <UNITS>bar</UNITS>
+    22:      <MIN_VALUE>-1.00000000000000e+00</MIN_VALUE>
+    23:      <MAX_VALUE>1.00000000000000e+03</MAX_VALUE>
+    24:      <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+    25:      <VALUE>0.00000000000000e+00</VALUE>
+    26:     </EVAR>
+    27:    </PORT>
+    28:   </EVARS_LIST>
+    29:  </SUBMODEL>
+    30: </SPE>

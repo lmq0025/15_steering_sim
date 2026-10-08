@@ -1,0 +1,175 @@
+﻿component_alias,component_port,canonical_junction,domain,candidate_bg_type,physical_role,confidence,source_net
+pump01,0,SHJ_016,hydraulic,TF/MTF,hydraulic-rotational energy converter (pump),high,hydraulic_12
+pump01,1,SHJ_001,hydraulic,TF/MTF,hydraulic-rotational energy converter (pump),high,hydraulic
+pump01_1,0,SHJ_016,hydraulic,TF/MTF,hydraulic-rotational energy converter (pump),high,hydraulic_13
+pump01_1,1,SHJ_002,hydraulic,TF/MTF,hydraulic-rotational energy converter (pump),high,hydraulic_1
+presscontrol02,0,SHJ_041,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_2
+presscontrol02,1,SHJ_001,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic
+presscontrol02_1,0,SHJ_041,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_5
+presscontrol02_1,1,SHJ_002,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_1
+filter,0,SHJ_041,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_7
+filter,1,SHJ_052,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_6
+cooler,0,SHJ_057,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_9
+cooler,1,SHJ_036,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_163
+flowcontrol01,0,SHJ_035,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_4
+flowcontrol01,1,SHJ_034,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_17
+presscontrol01,0,SHJ_036,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_20
+presscontrol01,1,SHJ_035,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_160
+filter_1,0,SHJ_016,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_8
+filter_1,1,SHJ_057,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_9
+flowcontrol01_1,0,SHJ_052,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_6
+flowcontrol01_1,1,SHJ_034,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_16
+actuator002,0,SHJ_042,hydraulic,TF/MTF,hydraulic-linear mechanical converter,high,hydraulic_25
+actuator002,1,SHJ_043,hydraulic,TF/MTF,hydraulic-linear mechanical converter,high,hydraulic_26
+pump01_2,0,SHJ_046,hydraulic,TF/MTF,hydraulic-rotational energy converter (pump),high,hydraulic_44
+pump01_2,1,SHJ_047,hydraulic,TF/MTF,hydraulic-rotational energy converter (pump),high,hydraulic_34
+pump01_3,0,SHJ_046,hydraulic,TF/MTF,hydraulic-rotational energy converter (pump),high,hydraulic_45
+pump01_3,1,SHJ_048,hydraulic,TF/MTF,hydraulic-rotational energy converter (pump),high,hydraulic_35
+presscontrol02_4,0,SHJ_044,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_36
+presscontrol02_4,1,SHJ_047,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_34
+presscontrol02_5,0,SHJ_044,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_37
+presscontrol02_5,1,SHJ_048,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_35
+filter_2,0,SHJ_044,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_31
+filter_2,1,SHJ_045,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_32
+cooler_1,0,SHJ_049,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_38
+cooler_1,1,SHJ_008,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_50
+filter_3,0,SHJ_046,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_33
+filter_3,1,SHJ_049,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_38
+flowcontrol01_3,0,SHJ_045,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_32
+flowcontrol01_3,1,SHJ_010,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_48
+presscontrol02_8,0,SHJ_051,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_59
+presscontrol02_8,1,SHJ_010,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_11
+presscontrol02_9,0,SHJ_003,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_10
+presscontrol02_9,1,SHJ_051,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_59
+shuttle_control,0,SHJ_039,hydraulic,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,hydraulic_187
+shuttle_control,1,SHJ_050,hydraulic,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,hydraulic_53
+shuttle_control,2,SHJ_053,hydraulic,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,hydraulic_69
+flowcontrol01_2,0,SHJ_008,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_68
+flowcontrol01_2,1,SHJ_053,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_90
+valve02_1,0,SHJ_003,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_41
+shuttle_control_1,0,SHJ_011,hydraulic,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,hydraulic_85
+shuttle_control_1,1,SHJ_038,hydraulic,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,hydraulic_83
+shuttle_control_1,2,SHJ_009,hydraulic,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,hydraulic_84
+pprv_1,0,SHJ_027,hydraulic,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,hydraulic_15
+pprv_1,1,SHJ_038,hydraulic,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,hydraulic_82
+pprv_1,2,SHJ_056,hydraulic,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,hydraulic_89
+dirvalve_1,0,SHJ_008,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_58
+dirvalve_1,1,SHJ_056,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_89
+dirvalve_1,2,SHJ_011,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_88
+dirvalve_1,3,SHJ_009,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_87
+valve02,0,SHJ_010,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_66
+dirvalve_2,0,SHJ_008,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_108
+dirvalve_2,1,SHJ_008,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_79
+dirvalve_2,2,SHJ_009,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_109
+dirvalve_2,3,SHJ_011,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_110
+flowcontrol01_5,0,SHJ_003,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_27
+flowcontrol01_5,1,SHJ_055,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_81
+valve02_2,0,SHJ_003,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_40
+dirvalve_6,0,SHJ_036,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_24
+dirvalve_6,1,SHJ_034,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_23
+dirvalve_6,2,SHJ_043,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_26
+dirvalve_6,3,SHJ_058,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_91
+dirvalve_3,0,SHJ_008,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_60
+dirvalve_3,1,SHJ_055,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_81
+dirvalve_3,2,SHJ_054,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_80
+valve02_3,0,SHJ_054,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_80
+valve02_3,1,SHJ_005,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_103
+filter_4,0,SHJ_027,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_15
+filter_4,1,SHJ_010,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_181
+tank01_5,0,SHJ_004,hydraulic,Se/C candidate,hydraulic reservoir/compliance,medium,hydraulic_101
+pprv_2,0,SHJ_022,hydraulic,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,hydraulic_144
+pprv_2,1,SHJ_017,hydraulic,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,hydraulic_120
+pprv_2,2,SHJ_020,hydraulic,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,hydraulic_127
+dirvalve_8,0,SHJ_008,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_64
+dirvalve_8,1,SHJ_020,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_127
+dirvalve_8,2,SHJ_019,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_126
+dirvalve_8,3,SHJ_018,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_125
+dirvalve_9,0,SHJ_008,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_139
+dirvalve_9,1,SHJ_008,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_118
+dirvalve_9,2,SHJ_018,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_140
+dirvalve_9,3,SHJ_019,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_141
+flowcontrol01_6,0,SHJ_003,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_185
+flowcontrol01_6,1,SHJ_015,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_119
+dirvalve_10,0,SHJ_008,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_28
+dirvalve_10,1,SHJ_015,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_119
+dirvalve_10,2,SHJ_026,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_147
+valve02_4,0,SHJ_026,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_147
+valve02_4,1,SHJ_012,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_113
+filter_5,0,SHJ_022,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_134
+filter_5,1,SHJ_010,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_182
+tank01_6,0,SHJ_007,hydraulic,Se/C candidate,hydraulic reservoir/compliance,medium,hydraulic_115
+shuttle_control_3,0,SHJ_031,hydraulic,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,hydraulic_154
+shuttle_control_3,1,SHJ_029,hydraulic,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,hydraulic_152
+shuttle_control_3,2,SHJ_030,hydraulic,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,hydraulic_153
+pprv_3,0,SHJ_022,hydraulic,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,hydraulic_47
+pprv_3,1,SHJ_029,hydraulic,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,hydraulic_151
+pprv_3,2,SHJ_033,hydraulic,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,hydraulic_158
+dirvalve_11,0,SHJ_008,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_67
+dirvalve_11,1,SHJ_033,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_158
+dirvalve_11,2,SHJ_031,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_157
+dirvalve_11,3,SHJ_030,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_156
+dirvalve_12,0,SHJ_008,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_170
+dirvalve_12,1,SHJ_008,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_149
+dirvalve_12,2,SHJ_030,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_171
+dirvalve_12,3,SHJ_031,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_172
+flowcontrol01_7,0,SHJ_003,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_43
+flowcontrol01_7,1,SHJ_028,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_150
+dirvalve_13,0,SHJ_008,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_71
+dirvalve_13,1,SHJ_028,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_150
+dirvalve_13,2,SHJ_037,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_180
+valve02_5,0,SHJ_037,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_180
+valve02_5,1,SHJ_014,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_129
+tank01_7,0,SHJ_013,hydraulic,Se/C candidate,hydraulic reservoir/compliance,medium,hydraulic_131
+shuttle_control_4,0,SHJ_040,hydraulic,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,hydraulic_190
+shuttle_control_4,1,SHJ_039,hydraulic,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,hydraulic_187
+shuttle_control_4,2,SHJ_038,hydraulic,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,hydraulic_186
+shuttle_control_5,0,SHJ_029,hydraulic,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,hydraulic_46
+shuttle_control_5,1,SHJ_040,hydraulic,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,hydraulic_190
+shuttle_control_5,2,SHJ_017,hydraulic,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,hydraulic_30
+shuttle_control_2,0,SHJ_018,hydraulic,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,hydraulic_122
+shuttle_control_2,1,SHJ_017,hydraulic,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,hydraulic_121
+shuttle_control_2,2,SHJ_019,hydraulic,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,hydraulic_123
+pressuregauge,0,SHJ_050,hydraulic,HYDRAULIC_ELEMENT,unclassified hydraulic component,low,hydraulic_53
+presscontrol01_3,0,SHJ_008,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_54
+presscontrol01_3,1,SHJ_010,hydraulic,R/MR,hydraulic dissipative element,medium,hydraulic_52
+springreturnactuator,0,SHJ_006,hydraulic,TF/MTF,hydraulic-linear mechanical converter,high,hydraulic_106
+springreturnactuator,1,SHJ_004,hydraulic,TF/MTF,hydraulic-linear mechanical converter,high,hydraulic_100
+springreturnactuator_1,1,SHJ_007,hydraulic,TF/MTF,hydraulic-linear mechanical converter,high,hydraulic_114
+springreturnactuator_2,0,SHJ_021,hydraulic,TF/MTF,hydraulic-linear mechanical converter,high,hydraulic_128
+springreturnactuator_2,1,SHJ_013,hydraulic,TF/MTF,hydraulic-linear mechanical converter,high,hydraulic_130
+actuator001_1,0,SHJ_019,hydraulic,TF/MTF,hydraulic-linear mechanical converter,high,hydraulic_142
+actuator001_1,1,SHJ_023,hydraulic,TF/MTF,hydraulic-linear mechanical converter,high,hydraulic_138
+actuator001,0,SHJ_059,hydraulic,TF/MTF,hydraulic-linear mechanical converter,high,hydraulic_98
+actuator001,1,SHJ_009,hydraulic,TF/MTF,hydraulic-linear mechanical converter,high,hydraulic_95
+actuator001_2,0,SHJ_032,hydraulic,TF/MTF,hydraulic-linear mechanical converter,high,hydraulic_155
+actuator001_2,1,SHJ_024,hydraulic,TF/MTF,hydraulic-linear mechanical converter,high,hydraulic_159
+variableorifice,1,SHJ_058,hydraulic,MR,signal-modulated hydraulic restriction,high,hydraulic_91
+variableorifice,2,SHJ_042,hydraulic,MR,signal-modulated hydraulic restriction,high,hydraulic_25
+signaloperatedrvalve,2,SHJ_010,hydraulic,MR / COMPOSITE,signal-modulated hydraulic valve,high,hydraulic_49
+variableorifice_1,1,SHJ_011,hydraulic,MR,signal-modulated hydraulic restriction,high,hydraulic_97
+variableorifice_1,2,SHJ_009,hydraulic,MR,signal-modulated hydraulic restriction,high,hydraulic_96
+variableorifice_2,1,SHJ_011,hydraulic,MR,signal-modulated hydraulic restriction,high,hydraulic_94
+variableorifice_2,2,SHJ_059,hydraulic,MR,signal-modulated hydraulic restriction,high,hydraulic_98
+variableorifice_3,1,SHJ_004,hydraulic,MR,signal-modulated hydraulic restriction,high,hydraulic_104
+variableorifice_3,2,SHJ_005,hydraulic,MR,signal-modulated hydraulic restriction,high,hydraulic_105
+variableorifice_4,1,SHJ_005,hydraulic,MR,signal-modulated hydraulic restriction,high,hydraulic_102
+variableorifice_4,2,SHJ_006,hydraulic,MR,signal-modulated hydraulic restriction,high,hydraulic_106
+variableorifice_5,1,SHJ_007,hydraulic,MR,signal-modulated hydraulic restriction,high,hydraulic_107
+variableorifice_5,2,SHJ_012,hydraulic,MR,signal-modulated hydraulic restriction,high,hydraulic_111
+variableorifice_6,1,SHJ_012,hydraulic,MR,signal-modulated hydraulic restriction,high,hydraulic_112
+variableorifice_7,1,SHJ_013,hydraulic,MR,signal-modulated hydraulic restriction,high,hydraulic_116
+variableorifice_7,2,SHJ_014,hydraulic,MR,signal-modulated hydraulic restriction,high,hydraulic_117
+variableorifice_8,1,SHJ_014,hydraulic,MR,signal-modulated hydraulic restriction,high,hydraulic_124
+variableorifice_8,2,SHJ_021,hydraulic,MR,signal-modulated hydraulic restriction,high,hydraulic_128
+variableorifice_9,1,SHJ_018,hydraulic,MR,signal-modulated hydraulic restriction,high,hydraulic_133
+variableorifice_9,2,SHJ_019,hydraulic,MR,signal-modulated hydraulic restriction,high,hydraulic_132
+variableorifice_10,1,SHJ_018,hydraulic,MR,signal-modulated hydraulic restriction,high,hydraulic_136
+variableorifice_10,2,SHJ_023,hydraulic,MR,signal-modulated hydraulic restriction,high,hydraulic_138
+variableorifice_11,1,SHJ_025,hydraulic,MR,signal-modulated hydraulic restriction,high,hydraulic_146
+variableorifice_11,2,SHJ_024,hydraulic,MR,signal-modulated hydraulic restriction,high,hydraulic_145
+variableorifice_12,1,SHJ_025,hydraulic,MR,signal-modulated hydraulic restriction,high,hydraulic_148
+variableorifice_12,2,SHJ_032,hydraulic,MR,signal-modulated hydraulic restriction,high,hydraulic_155
+variableorifice_13,1,SHJ_036,hydraulic,MR,signal-modulated hydraulic restriction,high,hydraulic_162
+variableorifice_13,2,SHJ_035,hydraulic,MR,signal-modulated hydraulic restriction,high,hydraulic_161
+variableorifice_14,1,SHJ_003,hydraulic,MR,signal-modulated hydraulic restriction,high,hydraulic_165
+variableorifice_14,2,SHJ_003,hydraulic,MR,signal-modulated hydraulic restriction,high,hydraulic_164

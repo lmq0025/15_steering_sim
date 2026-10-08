@@ -1,0 +1,4 @@
+﻿instance,submodel,classification,reason,bondgraph_action,truth_level
+elementaryhydraulicprops,TFFD04,FLUID_PROPERTY,Configuration/property object with no power-bond constitutive port,exclude from power graph,LEVEL A — SOURCE VERIFIED
+elementaryhydraulicprops_1,FP04,FLUID_PROPERTY,Configuration/property object with no power-bond constitutive port,exclude from power graph,LEVEL A — SOURCE VERIFIED
+gravityicon,GRAV0,GRAVITY_CONFIGURATION,Configuration/property object with no power-bond constitutive port,exclude from power graph,LEVEL A — SOURCE VERIFIED

@@ -1,0 +1,3 @@
+﻿alias,data_path,variable_type,basic_type,title,unit,io_type,input_type,usage
+elementaryhydraulicprops,volume@elementaryhydraulicprops,1,ame_basic_variable,volume of fluid,L,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+elementaryhydraulicprops,mass@elementaryhydraulicprops,1,ame_basic_variable,mass of fluid,kg,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown

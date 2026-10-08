@@ -1,0 +1,121 @@
+﻿============================================================
+PU001.spe EVIDENCE
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\PU001.spe
+============================================================
+    1: <?xml version="1.0" encoding="ISO-8859-1"?>
+    2: <!DOCTYPE SPE>
+    3: <SPE DOC_VERSION="2" AME_VERSION="16.0.0 - 68387-65635 2017">
+    4: 
+    5:  <SUBMODEL>
+    6:   <SUB_TYPE>0</SUB_TYPE>
+    7:   <SUB_ID_MAX>10</SUB_ID_MAX>
+    8:   <DEFAULT_ICON>pump01</DEFAULT_ICON>
+    9:   <SUB_LABEL>ideal fixed displacement hydraulic pump</SUB_LABEL>
+   10:   <SUB_UNIT>0</SUB_UNIT>
+   11:   <OUTPUT_TYPE>1</OUTPUT_TYPE>
+   12:   <RPARAMS_LIST>
+   13:    <RPARAM>
+   14:     <SUB_ID>7</SUB_ID>
+   15:     <TITLE>pump displacement</TITLE>
+   16:     <VARNAME>displ</VARNAME>
+   17:     <VISIBILITY>True</VISIBILITY>
+   18:     <DEF_VALUE>1.00000000000000e+02</DEF_VALUE>
+   19:     <VALUE>1.00000000000000e+02</VALUE>
+   20:     <MIN_VALUE>1.00000000000000e-004</MIN_VALUE>
+   21:     <MAX_VALUE>1.00000000000000e+005</MAX_VALUE>
+   22:     <UNITS>cc/rev</UNITS>
+   23:    </RPARAM>
+   24:    <RPARAM>
+   25:     <SUB_ID>8</SUB_ID>
+   26:     <TITLE>typical pump speed</TITLE>
+   27:     <VARNAME>wtyp</VARNAME>
+   28:     <VISIBILITY>True</VISIBILITY>
+   29:     <DEF_VALUE>1.00000000000000e+03</DEF_VALUE>
+   30:     <VALUE>1.00000000000000e+03</VALUE>
+   31:     <MIN_VALUE>1.00000000000000e+000</MIN_VALUE>
+   32:     <MAX_VALUE>1.00000000000000e+004</MAX_VALUE>
+   33:     <UNITS>rev/min</UNITS>
+   34:    </RPARAM>
+   35:   </RPARAMS_LIST>
+   36:   <IPARAMS_LIST>
+   37:    <IPARAM>
+   38:     <SUB_ID>9</SUB_ID>
+   39:     <TITLE>index of hydraulic fluid</TITLE>
+   40:     <VARNAME>indexf</VARNAME>
+   41:     <VISIBILITY>True</VISIBILITY>
+   42:     <DEF_VALUE>0</DEF_VALUE>
+   43:     <VALUE>0</VALUE>
+   44:     <MIN_VALUE>0</MIN_VALUE>
+   45:     <MAX_VALUE>100</MAX_VALUE>
+   46:    </IPARAM>
+   47:   </IPARAMS_LIST>
+   48:   <EVARS_LIST>
+   49:    <PORT>
+   50:     <EVAR>
+   51:      <SUB_ID>1</SUB_ID>
+   52:      <VARNAME>qin</VARNAME>
+   53:      <VISIBILITY>True</VISIBILITY>
+   54:      <TYPE>4</TYPE>
+   55:      <PRIMARY_PORT>1</PRIMARY_PORT>
+   56:      <PRIMARY_VAR>0</PRIMARY_VAR>
+   57:      <DUP_TYPE>1</DUP_TYPE>
+   58:     </EVAR>
+   59:     <EVAR>
+   60:      <SUB_ID>2</SUB_ID>
+   61:      <TITLE>pressure at port 1</TITLE>
+   62:      <VARNAME>pin</VARNAME>
+   63:      <VISIBILITY>True</VISIBILITY>
+   64:      <TYPE>0</TYPE>
+   65:      <DIMENSION>1</DIMENSION>
+   66:      <IO>1</IO>
+   67:      <UNITS>bar</UNITS>
+   68:     </EVAR>
+   69:    </PORT>
+   70:    <PORT>
+   71:     <EVAR>
+   72:      <SUB_ID>3</SUB_ID>
+   73:      <TITLE>flow rate at port 2</TITLE>
+   74:      <VARNAME>qout</VARNAME>
+   75:      <VISIBILITY>True</VISIBILITY>
+   76:      <TYPE>0</TYPE>
+   77:      <DIMENSION>1</DIMENSION>
+   78:      <IO>2</IO>
+   79:      <UNITS>L/min</UNITS>
+   80:     </EVAR>
+   81:     <EVAR>
+   82:      <SUB_ID>4</SUB_ID>
+   83:      <TITLE>pressure at port 2</TITLE>
+   84:      <VARNAME>pout</VARNAME>
+   85:      <VISIBILITY>True</VISIBILITY>
+   86:      <TYPE>0</TYPE>
+   87:      <DIMENSION>1</DIMENSION>
+   88:      <IO>1</IO>
+   89:      <UNITS>bar</UNITS>
+   90:     </EVAR>
+   91:    </PORT>
+   92:    <PORT>
+   93:     <EVAR>
+   94:      <SUB_ID>10</SUB_ID>
+   95:      <TITLE>shaft torque at port 3</TITLE>
+   96:      <VARNAME>torque</VARNAME>
+   97:      <VISIBILITY>True</VISIBILITY>
+   98:      <TYPE>0</TYPE>
+   99:      <DIMENSION>1</DIMENSION>
+  100:      <IO>2</IO>
+  101:      <UNITS>Nm</UNITS>
+  102:     </EVAR>
+  103:     <EVAR>
+  104:      <SUB_ID>6</SUB_ID>
+  105:      <TITLE>shaft speed at port 3</TITLE>
+  106:      <VARNAME>speed</VARNAME>
+  107:      <VISIBILITY>True</VISIBILITY>
+  108:      <TYPE>0</TYPE>
+  109:      <DIMENSION>1</DIMENSION>
+  110:      <IO>1</IO>
+  111:      <UNITS>rev/min</UNITS>
+  112:     </EVAR>
+  113:    </PORT>
+  114:   </EVARS_LIST>
+  115:   <SUBIDS_RESET>0</SUBIDS_RESET>
+  116:  </SUBMODEL>
+  117: </SPE>

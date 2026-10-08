@@ -1,0 +1,279 @@
+﻿element_id,port_id,domain,effort_variable,flow_variable,sign_convention,connected_junction
+L1_pump01,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_016
+L1_pump01,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_001
+L1_pump01_1,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_016
+L1_pump01_1,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_002
+L1_presscontrol02,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_041
+L1_presscontrol02,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_001
+L1_presscontrol02_1,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_041
+L1_presscontrol02_1,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_002
+L1_filter,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_041
+L1_filter,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_052
+L1_cooler,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_057
+L1_cooler,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_036
+L1_flowcontrol01,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_035
+L1_flowcontrol01,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_034
+L1_presscontrol01,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_036
+L1_presscontrol01,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_035
+L1_filter_1,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_016
+L1_filter_1,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_057
+L1_flowcontrol01_1,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_052
+L1_flowcontrol01_1,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_034
+L1_actuator002,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_042
+L1_actuator002,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_043
+L1_pump01_2,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_046
+L1_pump01_2,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_047
+L1_pump01_3,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_046
+L1_pump01_3,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_048
+L1_presscontrol02_4,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_044
+L1_presscontrol02_4,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_047
+L1_presscontrol02_5,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_044
+L1_presscontrol02_5,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_048
+L1_filter_2,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_044
+L1_filter_2,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_045
+L1_cooler_1,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_049
+L1_cooler_1,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_008
+L1_filter_3,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_046
+L1_filter_3,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_049
+L1_flowcontrol01_3,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_045
+L1_flowcontrol01_3,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_010
+L1_presscontrol02_8,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_051
+L1_presscontrol02_8,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_010
+L1_presscontrol02_9,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_003
+L1_presscontrol02_9,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_051
+L1_shuttle_control,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_039
+L1_shuttle_control,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_050
+L1_shuttle_control,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_053
+L1_flowcontrol01_2,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_008
+L1_flowcontrol01_2,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_053
+L1_valve02_1,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_003
+L1_shuttle_control_1,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_011
+L1_shuttle_control_1,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_038
+L1_shuttle_control_1,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_009
+L1_pprv_1,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_027
+L1_pprv_1,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_038
+L1_pprv_1,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_056
+L1_dirvalve_1,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_008
+L1_dirvalve_1,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_056
+L1_dirvalve_1,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_011
+L1_dirvalve_1,3,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_009
+L1_valve02,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_010
+L1_dirvalve_2,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_008
+L1_dirvalve_2,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_008
+L1_dirvalve_2,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_009
+L1_dirvalve_2,3,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_011
+L1_flowcontrol01_5,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_003
+L1_flowcontrol01_5,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_055
+L1_valve02_2,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_003
+L1_dirvalve_6,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_036
+L1_dirvalve_6,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_034
+L1_dirvalve_6,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_043
+L1_dirvalve_6,3,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_058
+L1_dirvalve_3,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_008
+L1_dirvalve_3,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_055
+L1_dirvalve_3,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_054
+L1_valve02_3,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_054
+L1_valve02_3,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_005
+L1_filter_4,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_027
+L1_filter_4,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_010
+L1_tank01_5,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_004
+L1_pprv_2,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_022
+L1_pprv_2,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_017
+L1_pprv_2,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_020
+L1_dirvalve_8,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_008
+L1_dirvalve_8,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_020
+L1_dirvalve_8,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_019
+L1_dirvalve_8,3,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_018
+L1_dirvalve_9,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_008
+L1_dirvalve_9,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_008
+L1_dirvalve_9,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_018
+L1_dirvalve_9,3,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_019
+L1_flowcontrol01_6,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_003
+L1_flowcontrol01_6,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_015
+L1_dirvalve_10,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_008
+L1_dirvalve_10,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_015
+L1_dirvalve_10,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_026
+L1_valve02_4,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_026
+L1_valve02_4,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_012
+L1_filter_5,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_022
+L1_filter_5,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_010
+L1_tank01_6,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_007
+L1_shuttle_control_3,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_031
+L1_shuttle_control_3,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_029
+L1_shuttle_control_3,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_030
+L1_pprv_3,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_022
+L1_pprv_3,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_029
+L1_pprv_3,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_033
+L1_dirvalve_11,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_008
+L1_dirvalve_11,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_033
+L1_dirvalve_11,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_031
+L1_dirvalve_11,3,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_030
+L1_dirvalve_12,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_008
+L1_dirvalve_12,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_008
+L1_dirvalve_12,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_030
+L1_dirvalve_12,3,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_031
+L1_flowcontrol01_7,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_003
+L1_flowcontrol01_7,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_028
+L1_dirvalve_13,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_008
+L1_dirvalve_13,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_028
+L1_dirvalve_13,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_037
+L1_valve02_5,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_037
+L1_valve02_5,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_014
+L1_tank01_7,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_013
+L1_shuttle_control_4,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_040
+L1_shuttle_control_4,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_039
+L1_shuttle_control_4,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_038
+L1_shuttle_control_5,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_029
+L1_shuttle_control_5,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_040
+L1_shuttle_control_5,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_017
+L1_shuttle_control_2,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_018
+L1_shuttle_control_2,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_017
+L1_shuttle_control_2,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_019
+L1_pressuregauge,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_050
+L1_presscontrol01_3,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_008
+L1_presscontrol01_3,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_010
+L1_springreturnactuator,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_006
+L1_springreturnactuator,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_004
+L1_springreturnactuator_1,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_007
+L1_springreturnactuator_2,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_021
+L1_springreturnactuator_2,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_013
+L1_actuator001_1,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_019
+L1_actuator001_1,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_023
+L1_actuator001,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_059
+L1_actuator001,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_009
+L1_actuator001_2,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_032
+L1_actuator001_2,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_030
+L1_variableorifice,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_058
+L1_variableorifice,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_042
+L1_signaloperatedrvalve,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_010
+L1_variableorifice_1,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_011
+L1_variableorifice_1,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_009
+L1_variableorifice_2,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_011
+L1_variableorifice_2,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_059
+L1_variableorifice_3,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_004
+L1_variableorifice_3,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_005
+L1_variableorifice_4,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_005
+L1_variableorifice_4,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_006
+L1_variableorifice_5,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_007
+L1_variableorifice_5,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_012
+L1_variableorifice_6,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_012
+L1_variableorifice_7,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_013
+L1_variableorifice_7,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_014
+L1_variableorifice_8,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_014
+L1_variableorifice_8,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_021
+L1_variableorifice_9,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_018
+L1_variableorifice_9,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_019
+L1_variableorifice_10,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_018
+L1_variableorifice_10,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_023
+L1_variableorifice_11,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_031
+L1_variableorifice_11,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_030
+L1_variableorifice_12,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_031
+L1_variableorifice_12,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_032
+L1_variableorifice_13,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_036
+L1_variableorifice_13,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_035
+L1_variableorifice_14,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_003
+L1_variableorifice_14,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_003
+L1_tank01,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_016
+L1_presscontrol01_1,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_034
+L1_presscontrol01_1,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_036
+L1_springcheckvalve,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_034
+L1_springcheckvalve,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_036
+L1_tank01_1,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_046
+L1_signaloperatedrvalve,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_008
+L1_valve02,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_053
+L1_accumulator,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_DIRECT_001
+L1_valve02_1,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_DIRECT_001
+L1_accumulator_1,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_DIRECT_002
+L1_valve02_2,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_DIRECT_002
+L1_springreturnactuator_1,0,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_DIRECT_003
+L1_variableorifice_6,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SHJ_DIRECT_003
+L2_dirvalve_1_orifice_14,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_1_HJ_02
+L2_dirvalve_1_orifice_14,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_1_HJ_03
+L2_dirvalve_1_orifice_13,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_1_HJ_01
+L2_dirvalve_1_orifice_13,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_1_HJ_03
+L2_dirvalve_1_orifice_23,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_1_HJ_01
+L2_dirvalve_1_orifice_23,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_1_HJ_04
+L2_dirvalve_1_orifice_24,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_1_HJ_02
+L2_dirvalve_1_orifice_24,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_1_HJ_04
+L2_dirvalve_2_orifice_14,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_2_HJ_04
+L2_dirvalve_2_orifice_14,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_2_HJ_01
+L2_dirvalve_2_orifice_23,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_2_HJ_03
+L2_dirvalve_2_orifice_23,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_2_HJ_02
+L2_dirvalve_6_orifice_13,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_6_HJ_01
+L2_dirvalve_6_orifice_13,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_6_HJ_03
+L2_dirvalve_6_orifice_14,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_6_HJ_02
+L2_dirvalve_6_orifice_14,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_6_HJ_03
+L2_dirvalve_6_orifice_24,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_6_HJ_02
+L2_dirvalve_6_orifice_24,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_6_HJ_04
+L2_dirvalve_6_orifice_23,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_6_HJ_01
+L2_dirvalve_6_orifice_23,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_6_HJ_04
+L2_dirvalve_3_orifice_13,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_3_HJ_01
+L2_dirvalve_3_orifice_13,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_3_HJ_02
+L2_dirvalve_3_orifice_23,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_3_HJ_01
+L2_dirvalve_3_orifice_23,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_3_HJ_03
+L2_dirvalve_8_orifice_14,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_8_HJ_02
+L2_dirvalve_8_orifice_14,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_8_HJ_03
+L2_dirvalve_8_orifice_13,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_8_HJ_01
+L2_dirvalve_8_orifice_13,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_8_HJ_03
+L2_dirvalve_8_orifice_23,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_8_HJ_01
+L2_dirvalve_8_orifice_23,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_8_HJ_04
+L2_dirvalve_8_orifice_24,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_8_HJ_02
+L2_dirvalve_8_orifice_24,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_8_HJ_04
+L2_dirvalve_9_orifice_14,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_9_HJ_04
+L2_dirvalve_9_orifice_14,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_9_HJ_01
+L2_dirvalve_9_orifice_23,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_9_HJ_03
+L2_dirvalve_9_orifice_23,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_9_HJ_02
+L2_dirvalve_10_orifice_13,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_10_HJ_01
+L2_dirvalve_10_orifice_13,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_10_HJ_02
+L2_dirvalve_10_orifice_23,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_10_HJ_01
+L2_dirvalve_10_orifice_23,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_10_HJ_03
+L2_dirvalve_11_orifice_14,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_11_HJ_02
+L2_dirvalve_11_orifice_14,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_11_HJ_03
+L2_dirvalve_11_orifice_13,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_11_HJ_01
+L2_dirvalve_11_orifice_13,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_11_HJ_03
+L2_dirvalve_11_orifice_23,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_11_HJ_01
+L2_dirvalve_11_orifice_23,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_11_HJ_04
+L2_dirvalve_11_orifice_24,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_11_HJ_02
+L2_dirvalve_11_orifice_24,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_11_HJ_04
+L2_dirvalve_12_orifice_14,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_12_HJ_04
+L2_dirvalve_12_orifice_14,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_12_HJ_01
+L2_dirvalve_12_orifice_23,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_12_HJ_03
+L2_dirvalve_12_orifice_23,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_12_HJ_02
+L2_dirvalve_13_orifice_13,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_13_HJ_01
+L2_dirvalve_13_orifice_13,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_13_HJ_02
+L2_dirvalve_13_orifice_23,1,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_13_HJ_01
+L2_dirvalve_13_orifice_23,2,hydraulic,pressure,volumetric flow,positive into Amesim component port,SC1_dirvalve_13_HJ_03
+L1_pump01,2,rotation,torque,angular speed,positive into Amesim component port,RMJ_001
+L1_pump01_1,2,rotation,torque,angular speed,positive into Amesim component port,RMJ_002
+L1_pmover01,0,rotation,torque,angular speed,positive into Amesim component port,RMJ_001
+L1_pmover01_1,0,rotation,torque,angular speed,positive into Amesim component port,RMJ_002
+L1_actuator002,2,translation,force,velocity,positive into Amesim component port,TMJ_002
+L1_pump01_2,2,rotation,torque,angular speed,positive into Amesim component port,RMJ_003
+L1_pump01_3,2,rotation,torque,angular speed,positive into Amesim component port,RMJ_004
+L1_pmover01_2,0,rotation,torque,angular speed,positive into Amesim component port,RMJ_003
+L1_pmover01_3,0,rotation,torque,angular speed,positive into Amesim component port,RMJ_004
+L1_mass1port,0,translation,force,velocity,positive into Amesim component port,TMJ_002
+L1_springreturnactuator,2,translation,force,velocity,positive into Amesim component port,TMJ_006
+L1_springreturnactuator_1,2,translation,force,velocity,positive into Amesim component port,TMJ_007
+L1_springreturnactuator_2,2,translation,force,velocity,positive into Amesim component port,TMJ_008
+L1_actuator001_1,2,translation,force,velocity,positive into Amesim component port,TMJ_009
+L1_actuator001,2,translation,force,velocity,positive into Amesim component port,TMJ_011
+L1_actuator001_2,2,translation,force,velocity,positive into Amesim component port,TMJ_010
+L1_forcecon,1,translation,force,velocity,positive into Amesim component port,TMJ_001
+L1_mass_friction2port,0,translation,force,velocity,positive into Amesim component port,TMJ_011
+L1_mass_friction2port,1,translation,force,velocity,positive into Amesim component port,TMJ_001
+L1_forcecon_1,1,translation,force,velocity,positive into Amesim component port,TMJ_012
+L1_mass_friction2port_1,0,translation,force,velocity,positive into Amesim component port,TMJ_006
+L1_mass_friction2port_1,1,translation,force,velocity,positive into Amesim component port,TMJ_012
+L1_forcecon_2,1,translation,force,velocity,positive into Amesim component port,TMJ_013
+L1_mass_friction2port_2,0,translation,force,velocity,positive into Amesim component port,TMJ_007
+L1_mass_friction2port_2,1,translation,force,velocity,positive into Amesim component port,TMJ_013
+L1_forcecon_3,1,translation,force,velocity,positive into Amesim component port,TMJ_003
+L1_mass_friction2port_3,0,translation,force,velocity,positive into Amesim component port,TMJ_009
+L1_mass_friction2port_3,1,translation,force,velocity,positive into Amesim component port,TMJ_003
+L1_forcecon_4,1,translation,force,velocity,positive into Amesim component port,TMJ_004
+L1_mass_friction2port_4,0,translation,force,velocity,positive into Amesim component port,TMJ_010
+L1_mass_friction2port_4,1,translation,force,velocity,positive into Amesim component port,TMJ_004
+L1_forcecon_5,1,translation,force,velocity,positive into Amesim component port,TMJ_005
+L1_mass_friction2port_5,0,translation,force,velocity,positive into Amesim component port,TMJ_008
+L1_mass_friction2port_5,1,translation,force,velocity,positive into Amesim component port,TMJ_005

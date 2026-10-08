@@ -1,0 +1,46 @@
+﻿alias,data_path,variable_type,basic_type,title,unit,io_type,input_type,usage
+sinewave,output@sinewave,1,ame_basic_variable,sine wave output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+sinewave,f0GEN@sinewave,1,ame_state_variable,sine wave frequency - Linked variable,Hz,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave,level00GEN@sinewave,1,ame_state_variable,mean level - Linked variable,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave,a0GEN@sinewave,1,ame_state_variable,sine wave amplitude - Linked variable,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave,phi0GEN@sinewave,1,ame_state_variable,phase shift - Linked variable,degree,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_1,output@sinewave_1,1,ame_basic_variable,sine wave output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+sinewave_1,f0GEN@sinewave_1,1,ame_state_variable,sine wave frequency - Linked variable,Hz,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_1,level00GEN@sinewave_1,1,ame_state_variable,mean level - Linked variable,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_1,a0GEN@sinewave_1,1,ame_state_variable,sine wave amplitude - Linked variable,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_1,phi0GEN@sinewave_1,1,ame_state_variable,phase shift - Linked variable,degree,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_2,output@sinewave_2,1,ame_basic_variable,sine wave output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+sinewave_2,f0GEN@sinewave_2,1,ame_state_variable,sine wave frequency - Linked variable,Hz,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_2,level00GEN@sinewave_2,1,ame_state_variable,mean level - Linked variable,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_2,a0GEN@sinewave_2,1,ame_state_variable,sine wave amplitude - Linked variable,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_2,phi0GEN@sinewave_2,1,ame_state_variable,phase shift - Linked variable,degree,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_3,output@sinewave_3,1,ame_basic_variable,sine wave output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+sinewave_3,f0GEN@sinewave_3,1,ame_state_variable,sine wave frequency - Linked variable,Hz,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_3,level00GEN@sinewave_3,1,ame_state_variable,mean level - Linked variable,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_3,a0GEN@sinewave_3,1,ame_state_variable,sine wave amplitude - Linked variable,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_3,phi0GEN@sinewave_3,1,ame_state_variable,phase shift - Linked variable,degree,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_4,output@sinewave_4,1,ame_basic_variable,sine wave output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+sinewave_4,f0GEN@sinewave_4,1,ame_state_variable,sine wave frequency - Linked variable,Hz,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_4,level00GEN@sinewave_4,1,ame_state_variable,mean level - Linked variable,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_4,a0GEN@sinewave_4,1,ame_state_variable,sine wave amplitude - Linked variable,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_4,phi0GEN@sinewave_4,1,ame_state_variable,phase shift - Linked variable,degree,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_5,output@sinewave_5,1,ame_basic_variable,sine wave output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+sinewave_5,f0GEN@sinewave_5,1,ame_state_variable,sine wave frequency - Linked variable,Hz,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_5,level00GEN@sinewave_5,1,ame_state_variable,mean level - Linked variable,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_5,a0GEN@sinewave_5,1,ame_state_variable,sine wave amplitude - Linked variable,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_5,phi0GEN@sinewave_5,1,ame_state_variable,phase shift - Linked variable,degree,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_6,output@sinewave_6,1,ame_basic_variable,sine wave output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+sinewave_6,f0GEN@sinewave_6,1,ame_state_variable,sine wave frequency - Linked variable,Hz,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_6,level00GEN@sinewave_6,1,ame_state_variable,mean level - Linked variable,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_6,a0GEN@sinewave_6,1,ame_state_variable,sine wave amplitude - Linked variable,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_6,phi0GEN@sinewave_6,1,ame_state_variable,phase shift - Linked variable,degree,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_7,output@sinewave_7,1,ame_basic_variable,sine wave output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+sinewave_7,f0GEN@sinewave_7,1,ame_state_variable,sine wave frequency - Linked variable,Hz,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_7,level00GEN@sinewave_7,1,ame_state_variable,mean level - Linked variable,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_7,a0GEN@sinewave_7,1,ame_state_variable,sine wave amplitude - Linked variable,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_7,phi0GEN@sinewave_7,1,ame_state_variable,phase shift - Linked variable,degree,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_8,output@sinewave_8,1,ame_basic_variable,sine wave output,null,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+sinewave_8,f0GEN@sinewave_8,1,ame_state_variable,sine wave frequency - Linked variable,Hz,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_8,level00GEN@sinewave_8,1,ame_state_variable,mean level - Linked variable,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_8,a0GEN@sinewave_8,1,ame_state_variable,sine wave amplitude - Linked variable,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+sinewave_8,phi0GEN@sinewave_8,1,ame_state_variable,phase shift - Linked variable,degree,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown

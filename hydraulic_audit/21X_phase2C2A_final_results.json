@@ -1,0 +1,65 @@
+{
+  "pytest": "190 passed in 108.19s",
+  "fast_states": 109,
+  "fast_line_states": 67,
+  "ir_v3_changed": false,
+  "ir_v3_hashes": {
+    "17A_bondgraph_elements_v3.csv": "850ce87ede456b6a1490381b6e9170bf7755e5757910830cef8b249941fa28de",
+    "17B_bondgraph_ports_v3.csv": "83255ab8d385c26ad0e27c83eeb6b9e305d99fb9ab656d627cf93257aba83333",
+    "17C_bondgraph_junctions_v3.csv": "fdb6ca015e72802ced0eff1631a74cc9345fe52b1edc5ba3f486625d4c3c8d75",
+    "17D_physical_line_registry.csv": "c66f9fb1a1fcf95819888dfd2245701d07ca1266ba1010e5baa83b3ded7d9912",
+    "17F_BONDGRAPH_IR_FREEZE_V3.md": "a143c9d911ce23b80048a3e8d9cb5ac8e0f74fd7cae9c083204d332ab313f433"
+  },
+  "pressure_reference_fix": "PASS",
+  "tank_exact_boundary": "PASS",
+  "cv010_si_law": "PASS",
+  "rv010_si_law": "PASS",
+  "amesim_max_pump_pressure_pa": 18662269.95419734,
+  "python_before_pa": 241603581.09234568,
+  "python_final_accepted_pa": 241180804.41620567,
+  "pressure_ratio": 12.923444200953785,
+  "line_interface": {
+    "audit": "PASS",
+    "extra_artificial_drop_found": true,
+    "largest_family": "HL012",
+    "calibration": "FAIL_REJECTED",
+    "stable_capped_trial_peak_pa": 227892283.54651964,
+    "stable_capped_trial_comparison": {
+      "good": 58,
+      "acceptable": 6,
+      "poor": 90
+    },
+    "rejection_reason": "source-equivalent mapping unstable; stable cap reduced peak only 5.5% and regressed GOOD/POOR counts"
+  },
+  "hydort0": {
+    "status": "FAIL_REJECTED",
+    "reason": "isolated table law passes 0.1 s but 1 s produces NaN/Inf in HA001 coupling"
+  },
+  "hydorf0": {
+    "status": "NOT_RUN",
+    "reason": "HYDORT0 stability gate failed"
+  },
+  "opening": {
+    "presscontrol01_amesim_s": 0.084,
+    "presscontrol01_python_before": "NEVER",
+    "presscontrol01_python_after": "NEVER",
+    "presscontrol01_3_amesim_s": 0.748,
+    "presscontrol01_3_python_before": "NEVER",
+    "presscontrol01_3_python_after": "NEVER"
+  },
+  "comparison": {
+    "before_good": 48,
+    "before_acceptable": 8,
+    "before_poor": 98,
+    "after_good": 63,
+    "after_acceptable": 5,
+    "after_poor": 86
+  },
+  "pump_flow_regression": true,
+  "algebraic_failures_accepted": 0,
+  "topology_issue": false,
+  "sign_issue": false,
+  "remaining_unit_issue": false,
+  "ready_for_sc1_calibration": false,
+  "stop_condition": "Source-equivalent line/path resistance caused structural HA001-coupled instability without changing IR/states; capped substitute failed accuracy regression"
+}

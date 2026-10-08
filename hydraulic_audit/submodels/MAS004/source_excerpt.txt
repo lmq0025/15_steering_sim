@@ -1,0 +1,701 @@
+SUBMODEL: MAS004
+SOURCE FILES: 2
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libmec\submodels\MAS004.c
+==============================================================================
+...
+     1: /* Submodel MAS004 skeleton created by AME Submodel editing utility
+     2:    jeu. 25. juil. 14:45:48 2013 */
+     3: 
+     4: 
+     5: 
+     6: #include <math.h>
+     7: #include <stdio.h>
+     8: #include <stdlib.h>
+     9: #include "ameutils.h"
+    10: /* *******************************************************************************
+    11:  
+    12: TITLE : MAS004
+    13: ------------------------------------------------------------------------------
+    14: DESCRIPTION :
+    15:  
+    16:    A mass with 2 ports which is capable of one-dimensional motion
+    17:    under a external forces applied to the ports and frictional forces.
+    18:    Absolute value of inertial power is integrated and gives inertial activity.
+    19:    Absolute value of the power dissipated in the friction is integrated and
+    20:    gives dissipative activity.
+    21:  
+    22: ------------------------------------------------------------------------------
+    23: USAGE :
+    24:  
+    25:    MAS004 differs from MAS002 only in the inclusion of friction.
+    26:  
+    27: ------------------------------------------------------------------------------
+    28: PARAMETER SETTINGS :
+    29:  
+    30:    The user must define friction characteristics as follows:
+    31:  
+    32:         the coefficient of viscous friction (N/(m/s)),
+    33:         the coefficient of windage (N/(m/s)**2),
+    34:         the Couloumb friction force (N),
+    35:         the stiction force (N).
+    36:  
+    37:    None of these quantities may be negative. The stiction force is the
+    38:    maximum friction force when the mass is at rest and the Coulomb
+    39:    friction force is the friction force (assumed constant) when the
+    40:    mass is in motion. Note that the stiction level cannot be less than
+    41:    the Coulomb friction. If the stiction force is a lot bigger than
+    42:    the Coulomb friction force the motion can be very `jerky' but such
+    43:    motion does often occur.
+    44:  
+    45:    Both viscous friction (proportional to speed) and windage
+    46:    (proportional to speed squared) add damping resulting in a steady
+    47:    speed being reached quicker.  The inclination of the load (degree)
+    48:    should be in the range -90 to +90. A value of +90 indicates that
+    49:    port 1 is at the lowest point.
+    50:  
+    51: ------------------------------------------------------------------------------
+    52: DATE OF CREATION/AUTHOR : 11/02/97 C.W.Richards
+    53: ------------------------------------------------------------------------------
+    54: INDEX OF REVISIONS :
+    55: ------------------------------------------------------------------------------
+    56: LIST OF FUNCTIONS USED :
+    57:  
+    58:    linert_() : acceleration for linear motion with friction, stiction etc
+    59:  
+    60: ------------------------------------------------------------------------------
+    61: SOURCE :
+    62:    Siemens Industry Software SAS
+    63:    7 place des Minimes
+    64:    42300 Roanne - France
+    65:    tel: (33).04.77.23.60.30
+    66:    fax: (33).04.77.23.60.31
+    67:    www.siemens.com/plm
+    68: 
+    69:    Copyright 2015 Siemens Industry Software NV
+    70: ******************************************************************************* */
+    71: 
+    72: #define _SUBMODELNAME_ "MAS004"
+    73: 
+    74: /* >>>>>>>>>>>>Insert Private Code Here. */
+    75: /* <<<<<<<<<<<<End of Private Code. */
+    76: 
+    77: 
+    78: /* There are 6 real parameters:
+    79: 
+    80:    mass  mass                                                [kg]
+    81:    coefv coefficient of viscous friction                     [N/(m/s)]
+    82:    wind  coefficient of windage                              [N/(m/s)**2]
+    83:    coul  Coulomb friction force                              [N]
+    84:    stict stiction force                                      [N]
+    85:    angle inclination (+90 port 1 lowest, -90 port 1 highest) [degree -> rad]
+    86: */
+    87: 
+    88: void mas004in_(int *n, double rp[6], double c[1], int ic[6]
+    89:       , double *v1, double *x1, double *actRfrict
+    90:       , double *energyRfrict, double *actImass, double *energyImass
+    91:       , double *actSgrav, double *energySgrav)
+    92: 
+    93: {
+    94:    int loop, error;
+    95: /* >>>>>>>>>>>>Extra Initialization Function Declarations Here. */
+    96: /* <<<<<<<<<<<<End of Extra Initialization declarations. */
+    97:    double mass, coefv, wind, coul, stict, angle;
+    98: 
+    99:    mass       = rp[0];
+   100:    coefv      = rp[1];
+   101:    wind       = rp[2];
+   102:    coul       = rp[3];
+   103:    stict      = rp[4];
+   104:    angle      = rp[5];
+   105:    loop = 0;
+   106:    error = 0;
+   107: 
+   108: /*
+   109:    If necessary, check values of the following:
+   110: 
+   111:    rp[0..5]
+   112:    *v1
+   113:    *x1
+   114:    *actRfrict
+   115:    *energyRfrict
+   116:    *actImass
+   117:    *energyImass
+   118:    *actSgrav
+   119:    *energySgrav
+   120: */
+   121: 
+   122: 
+   123: /* >>>>>>>>>>>>Initialization Function Check Statements. */
+   124: 
+   125:    if(mass <= 0.0)
+   126:    {
+   127:       error = 2;
+   128:       amefprintf(stderr, "\nMass must be positive\n");
+   129:    }
+   130:    if(coul < 0.0)
+   131:    {
+   132:       error = 2;
+   133:       amefprintf(stderr, "\nCoulomb friction cannot be negative\n");
+   134:    }
+   135:    if(stict < 0.0)
+   136:    {
+   137:       error = 2;
+   138:       amefprintf(stderr, "\nStiction friction cannot be negative\n");
+   139:    }
+   140:    if(coul > stict)
+   141:    {
+   142:       error = 2;
+   143:       amefprintf(stderr, "\nCoulomb friction cannot be greater than stiction\n");
+   144:    }
+   145:    if(coefv < 0.0)
+   146:    {
+   147:       error = 2;
+   148:       amefprintf(stderr, "\nViscous friction coefficient cannot be negative\n");
+   149:    }
+   150:    if(wind < 0.0)
+   151:    {
+   152:       error = 2;
+   153:       amefprintf(stderr, "\nWindage coefficient cannot be negative\n");
+   154:    }
+   155: 
+   156: /* <<<<<<<<<<<<End of Initialization Check Statements. */
+   157: 
+   158:    if(ameHandleSubmodelError(_SUBMODELNAME_, *n, error))
+   159:    {
+   160:       return;
+   161:    }
+   162: 
+   163: /* Common -> SI units conversions. */
+   164: 
+   165:    rp[5]    *= 1.74532925199433e-002;
+   166:    angle      = rp[5];
+   167: 
+   168: 
+   169: /* >>>>>>>>>>>>Initialization Function Executable Statements. */
+   170:    c[0] = mass * sin(angle) ;
+   171: /* <<<<<<<<<<<<End of Initialization Executable Statements. */
+   172: }
+   173: 
+   174: /*  There are 2 ports.
+   175: 
+   176:    Port 1 has 4 variables:
+   177: 
+   178:       1 v1     velocity at port 1     [m/s]   explicit state (derivative `v1dot')
+   179:       2 x1     displacement port 1    [m]     explicit state (derivative `x1dot')
+   180:       3 a1     acceleration at port 1 [m/s/s] basic variable output
+   181:       4 f1     force at port 1        [N]     basic variable input
+   182: 
+   183:    Port 2 has 4 variables:
+   184: 
+   185:       1 v2     duplicate of v1        (sign reversed)
+   186:       2 x2     duplicate of x1        (sign reversed)
+   187:       3 a2     duplicate of a1        (sign reversed)
+   188:       4 f2     force at port 2        [N] basic variable input
+   189: */
+   190: 
+   191: /*  There are 10 internal variables.
+   192: 
+   193:       1 Fvisc            viscous friction force                     [N] basic variable
+   194:       2 actRfrict        activity of mechanical dissipation (frict) [J] explicit state (derivative `dactRfrict') for activity
+   195:       3 powerRfrict      power of mechanical dissipation (frict)    [W] power variable
+   196:       4 energyRfrict     energy of mechanical dissipation (frict)   [J] explicit state (derivative `denergyRfrict') for energy
+   197:       5 actImass         activity of mechanical inertia (mass)      [J] explicit state (derivative `dactImass') for activity
+   198:       6 powerImass       power of mechanical inertia (mass)         [W] power variable
+   199:       7 energyImass      energy of mechanical inertia (mass)        [J] explicit state (derivative `denergyImass') for energy
+   200:       8 actSgrav         activity of mechanical source (grav)       [J] explicit state (derivative `dactSgrav') for activity
+   201:       9 powerSgrav       power of mechanical source (grav)          [W] power variable
+   202:      10 energySgrav      energy of mechanical source (grav)         [J] explicit state (derivative `denergySgrav') for energy
+   203: */
+   204: 
+   205: void mas004_(int *n, double *v1, double *v1dot, double *x1
+   206:       , double *x1dot, double *a1, double *f1, double *f2
+   207:       , double *Fvisc, double *actRfrict, double *dactRfrict
+   208:       , double *powerRfrict, double *energyRfrict
+   209:       , double *denergyRfrict, double *actImass, double *dactImass
+   210:       , double *powerImass, double *energyImass, double *denergyImass
+   211:       , double *actSgrav, double *dactSgrav, double *powerSgrav
+   212:       , double *energySgrav, double *denergySgrav, double rp[6]
+   213:       , double c[1], int ic[6])
+   214: 
+   215: {
+   216:    int loop;
+   217:    double powRfrict, powImass, powSgrav;
+   218: 
+   219: /* >>>>>>>>>>>>Extra Calculation Function Declarations Here. */
+   220:    double force;
+   221: /* <<<<<<<<<<<<End of Extra Calculation declarations. */
+   222:    double mass, coefv, wind, coul, stict, angle;
+   223: 
+   224:    mass       = rp[0];
+   225:    coefv      = rp[1];
+   226:    wind       = rp[2];
+   227:    coul       = rp[3];
+   228:    stict      = rp[4];
+   229:    angle      = rp[5];
+   230:    loop = 0;
+   231: 
+   232: /*
+   233:    Set all submodel outputs below:
+   234: 
+   235:    *v1dot      = ??;
+   236:    *x1dot      = ??;
+   237:    *a1         = ??;
+   238:    *Fvisc      = ??;
+   239: */
+   240: 
+   241: 
+   242: 
+   243: /* >>>>>>>>>>>>Calculation Function Executable Statements. */
+   244: 
+   245:    /* Compute non-frictional force in N. */
+   246:    force = *f2 - *f1 + c[0]*getgravity_();
+   247: 
+   248:    /* Compute acceleration of mass. */
+   249:    linert_(&mass, &force, &coefv, &coul, &stict, &wind, x1dot,
+   250:            v1, v1dot, &ic[0]);
+   251: 
+   252:    *a1 = *v1dot ;
+   253: 
+   254:    *Fvisc = coefv * (*v1);
+   255: 
+   256: /* <<<<<<<<<<<<End of Calculation Executable Statements. */
+   257: 
+   258:    if(actRfrict != NULL || energyRfrict != NULL || ispower_() == 1)
+   259:    {
+   260:       /* Set the following power variables:
+   261: 
+   262:       powRfrict = ??;
+   263:       powImass = ??;
+   264:       powSgrav = ??;
+   265:       */
+   266: 
+   267:       /* >>>>>>>>>>>>Energy Common Statements. */
+   268:          powImass = mass * (*a1) * (*v1) ;
+   269: /*         enImass = 0.5 * mass * (*v1) * (*v1) ;replaced by energy state for consistency and to impose 0 as initial value*/
+   270: 
+   271:          powSgrav = c[0]*getgravity_() * (*v1) ;
+   272: /*         enSgrav =  c[0]*getgravity_() * (*x1) ;replaced by energy state for consistency and to impose 0 as initial value*/
+   273: 
+   274:          /* Use same type of computations as in linert function
+   275:             to prevent from roundoff errors in case of null friction.
+   276:             Dividing 'force' by 'mass' is the key point here since
+   277:             it makes 'force' lose its last digits. */
+   278: 
+   279:          powRfrict = -force/mass;
+   280:          powRfrict += *a1;
+   281:          powRfrict *= *v1 * mass;
+   282: 
+   283:       /* Rev12: Pr>0 if dissipated to the outside */
+   284:       powRfrict = - powRfrict;
+   285:       /* <<<<<<<<<<<<End of Energy Common Statements. */
+   286: 
+   287:       if (ispower_() == 1)
+   288:       {
+   289:          *powerRfrict     = powRfrict;
+   290:          *powerImass      = powImass;
+   291:          *powerSgrav      = powSgrav;
+   292:       }
+   293:       if (energyRfrict != NULL)
+   294:       {
+   295:          *denergyRfrict   = powRfrict;
+   296:          *denergyImass    = powImass;
+   297:          *denergySgrav    = powSgrav;
+   298:       }
+   299:       if (actRfrict != NULL)
+   300:       {
+   301:          /* >>>>>>>>>>>>Optional Activity Computation Statements. */
+   302:          /* <<<<<<<<<<<<End of Optional Activity Computation Statements. */
+   303:          *dactRfrict      = fabs(powRfrict);
+   304:          *dactImass       = fabs(powImass);
+   305:          *dactSgrav       = fabs(powSgrav);
+   306:       }
+   307:    }
+   308: }
+   309: 
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libmec\submodels\MAS004.spe
+==============================================================================
+...
+     1: <?xml version="1.0" encoding="ISO-8859-1"?>
+     2: <!DOCTYPE SPE>
+     3: <SPE DOC_VERSION="2" AME_VERSION="13.0.0 - dev -  10/07/13 20:14 - 33918-28159 2013">
+     4: 
+     5:  <SUBMODEL>
+     6:   <SUB_TYPE>0</SUB_TYPE>
+     7:   <SUB_ID_MAX>35</SUB_ID_MAX>
+     8:   <DEFAULT_ICON>mass_friction2port</DEFAULT_ICON>
+     9:   <SUB_LABEL>2 port mass capable of one-dimensional motion with friction</SUB_LABEL>
+    10:   <SUB_UNIT>0</SUB_UNIT>
+    11:   <R_STORES_NUMBER>1</R_STORES_NUMBER>
+    12:   <I_STORES_NUMBER>3</I_STORES_NUMBER>
+    13:   <OUTPUT_TYPE>1</OUTPUT_TYPE>
+    14:   <RPARAMS_LIST>
+    15:    <RPARAM>
+    16:     <SUB_ID>11</SUB_ID>
+    17:     <TITLE>mass</TITLE>
+    18:     <VARNAME>mass</VARNAME>
+    19:     <VISIBILITY>True</VISIBILITY>
+    20:     <DEF_VALUE>1.00000000000000e+002</DEF_VALUE>
+    21:     <VALUE>1.00000000000000e+002</VALUE>
+    22:     <MIN_VALUE>1.00000000000000e-006</MIN_VALUE>
+    23:     <MAX_VALUE>1.00000000000000e+006</MAX_VALUE>
+    24:     <UNITS>kg</UNITS>
+    25:    </RPARAM>
+    26:    <RPARAM>
+    27:     <SUB_ID>12</SUB_ID>
+    28:     <TITLE>coefficient of viscous friction</TITLE>
+    29:     <VARNAME>coefv</VARNAME>
+    30:     <VISIBILITY>True</VISIBILITY>
+    31:     <DEF_VALUE>0.00000000000000e+000</DEF_VALUE>
+    32:     <VALUE>0.00000000000000e+000</VALUE>
+    33:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+    34:     <MAX_VALUE>1.00000000000000e+003</MAX_VALUE>
+    35:     <UNITS>N/(m/s)</UNITS>
+    36:    </RPARAM>
+    37:    <RPARAM>
+    38:     <SUB_ID>13</SUB_ID>
+    39:     <TITLE>coefficient of windage</TITLE>
+    40:     <VARNAME>wind</VARNAME>
+    41:     <VISIBILITY>True</VISIBILITY>
+    42:     <DEF_VALUE>0.00000000000000e+000</DEF_VALUE>
+    43:     <VALUE>0.00000000000000e+000</VALUE>
+    44:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+    45:     <MAX_VALUE>1.00000000000000e+003</MAX_VALUE>
+    46:     <UNITS>N/(m/s)**2</UNITS>
+    47:    </RPARAM>
+    48:    <RPARAM>
+    49:     <SUB_ID>14</SUB_ID>
+    50:     <TITLE>Coulomb friction force</TITLE>
+    51:     <VARNAME>coul</VARNAME>
+    52:     <VISIBILITY>True</VISIBILITY>
+    53:     <DEF_VALUE>0.00000000000000e+000</DEF_VALUE>
+    54:     <VALUE>0.00000000000000e+000</VALUE>
+    55:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+    56:     <MAX_VALUE>1.00000000000000e+004</MAX_VALUE>
+    57:     <UNITS>N</UNITS>
+    58:    </RPARAM>
+    59:    <RPARAM>
+    60:     <SUB_ID>15</SUB_ID>
+    61:     <TITLE>stiction force</TITLE>
+    62:     <VARNAME>stict</VARNAME>
+    63:     <VISIBILITY>True</VISIBILITY>
+    64:     <DEF_VALUE>0.00000000000000e+000</DEF_VALUE>
+    65:     <VALUE>0.00000000000000e+000</VALUE>
+    66:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+    67:     <MAX_VALUE>1.00000000000000e+004</MAX_VALUE>
+    68:     <UNITS>N</UNITS>
+    69:    </RPARAM>
+    70:    <RPARAM>
+    71:     <SUB_ID>16</SUB_ID>
+    72:     <TITLE>inclination (+90 port 1 lowest, -90 port 1 highest)</TITLE>
+    73:     <VARNAME>angle</VARNAME>
+    74:     <VISIBILITY>True</VISIBILITY>
+    75:     <DEF_VALUE>0.00000000000000e+000</DEF_VALUE>
+    76:     <VALUE>0.00000000000000e+000</VALUE>
+    77:     <MIN_VALUE>-9.00000000000000e+001</MIN_VALUE>
+    78:     <MAX_VALUE>9.00000000000000e+001</MAX_VALUE>
+    79:     <UNITS>degree</UNITS>
+    80:    </RPARAM>
+    81:   </RPARAMS_LIST>
+    82:   <PARAMS_GROUPS_LIST>
+    83:    <PARAMS_GROUP>
+    84:     <ORIG_TITLE>power, energy, activity</ORIG_TITLE>
+    85:     <NAME>powers</NAME>
+    86:     <SUB_ID>23</SUB_ID>
+    87:     <PARAM_GROUP_ELEMENT_LIST>
+    88:      <PARAM_GROUP_ELEMENT>
+    89:       <PARAM_GROUP_ELEMENT_VARNAME>powerRfrict</PARAM_GROUP_ELEMENT_VARNAME>
+    90:       <PARAM_GROUP_ELEMENT_DISPLAY>1</PARAM_GROUP_ELEMENT_DISPLAY>
+    91:      </PARAM_GROUP_ELEMENT>
+    92:      <PARAM_GROUP_ELEMENT>
+    93:       <PARAM_GROUP_ELEMENT_VARNAME>powerImass</PARAM_GROUP_ELEMENT_VARNAME>
+    94:       <PARAM_GROUP_ELEMENT_DISPLAY>1</PARAM_GROUP_ELEMENT_DISPLAY>
+    95:      </PARAM_GROUP_ELEMENT>
+    96:      <PARAM_GROUP_ELEMENT>
+    97:       <PARAM_GROUP_ELEMENT_VARNAME>powerSgrav</PARAM_GROUP_ELEMENT_VARNAME>
+    98:       <PARAM_GROUP_ELEMENT_DISPLAY>1</PARAM_GROUP_ELEMENT_DISPLAY>
+    99:      </PARAM_GROUP_ELEMENT>
+   100:      <PARAM_GROUP_ELEMENT>
+   101:       <PARAM_GROUP_ELEMENT_VARNAME>energyRfrict</PARAM_GROUP_ELEMENT_VARNAME>
+   102:       <PARAM_GROUP_ELEMENT_DISPLAY>2</PARAM_GROUP_ELEMENT_DISPLAY>
+   103:      </PARAM_GROUP_ELEMENT>
+   104:      <PARAM_GROUP_ELEMENT>
+   105:       <PARAM_GROUP_ELEMENT_VARNAME>energyImass</PARAM_GROUP_ELEMENT_VARNAME>
+   106:       <PARAM_GROUP_ELEMENT_DISPLAY>2</PARAM_GROUP_ELEMENT_DISPLAY>
+   107:      </PARAM_GROUP_ELEMENT>
+   108:      <PARAM_GROUP_ELEMENT>
+   109:       <PARAM_GROUP_ELEMENT_VARNAME>energySgrav</PARAM_GROUP_ELEMENT_VARNAME>
+   110:       <PARAM_GROUP_ELEMENT_DISPLAY>2</PARAM_GROUP_ELEMENT_DISPLAY>
+   111:      </PARAM_GROUP_ELEMENT>
+   112:      <PARAM_GROUP_ELEMENT>
+   113:       <PARAM_GROUP_ELEMENT_VARNAME>actRfrict</PARAM_GROUP_ELEMENT_VARNAME>
+   114:       <PARAM_GROUP_ELEMENT_DISPLAY>2</PARAM_GROUP_ELEMENT_DISPLAY>
+   115:      </PARAM_GROUP_ELEMENT>
+   116:      <PARAM_GROUP_ELEMENT>
+   117:       <PARAM_GROUP_ELEMENT_VARNAME>actImass</PARAM_GROUP_ELEMENT_VARNAME>
+   118:       <PARAM_GROUP_ELEMENT_DISPLAY>2</PARAM_GROUP_ELEMENT_DISPLAY>
+   119:      </PARAM_GROUP_ELEMENT>
+   120:      <PARAM_GROUP_ELEMENT>
+   121:       <PARAM_GROUP_ELEMENT_VARNAME>actSgrav</PARAM_GROUP_ELEMENT_VARNAME>
+   122:       <PARAM_GROUP_ELEMENT_DISPLAY>2</PARAM_GROUP_ELEMENT_DISPLAY>
+   123:      </PARAM_GROUP_ELEMENT>
+   124:     </PARAM_GROUP_ELEMENT_LIST>
+   125:     <EDITABLE>0</EDITABLE>
+   126:    </PARAMS_GROUP>
+   127:   </PARAMS_GROUPS_LIST>
+   128:   <IVARS_LIST>
+   129:    <IVAR>
+   130:     <SUB_ID>35</SUB_ID>
+   131:     <TITLE>viscous friction force</TITLE>
+   132:     <VARNAME>Fvisc</VARNAME>
+   133:     <VISIBILITY>True</VISIBILITY>
+   134:     <TYPE>0</TYPE>
+   135:     <DIMENSION>1</DIMENSION>
+   136:     <UNITS>N</UNITS>
+   137:    </IVAR>
+   138:    <IVAR>
+   139:     <SUB_ID>17</SUB_ID>
+   140:     <TITLE>activity of mechanical dissipation (frict)</TITLE>
+   141:     <VARNAME>actRfrict</VARNAME>
+   142:     <VARNAME2>dactRfrict</VARNAME2>
+   143:     <VISIBILITY>True</VISIBILITY>
+   144:     <TYPE>1</TYPE>
+   145:     <DIMENSION>1</DIMENSION>
+   146:     <UNITS>J</UNITS>
+   147:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   148:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   149:     <DEF_VALUE>0</DEF_VALUE>
+   150:     <VALUE>0</VALUE>
+   151:     <PHYS_TYPE>1</PHYS_TYPE>
+   152:     <PHYS_DOMAIN>2</PHYS_DOMAIN>
+   153:     <ACT_SUFFIX>frict</ACT_SUFFIX>
+   154:     <ACT_TYPE>1</ACT_TYPE>
+   155:    </IVAR>
+   156:    <IVAR>
+   157:     <SUB_ID>18</SUB_ID>
+   158:     <TITLE>power of mechanical dissipation (frict)</TITLE>
+   159:     <VARNAME>powerRfrict</VARNAME>
+   160:     <VISIBILITY>True</VISIBILITY>
+   161:     <TYPE>9</TYPE>
+   162:     <DIMENSION>1</DIMENSION>
+   163:     <UNITS>W</UNITS>
+   164:     <PHYS_TYPE>1</PHYS_TYPE>
+   165:     <PHYS_DOMAIN>2</PHYS_DOMAIN>
+   166:     <ACT_SUFFIX>frict</ACT_SUFFIX>
+   167:     <ACT_TYPE>2</ACT_TYPE>
+   168:    </IVAR>
+   169:    <IVAR>
+   170:     <SUB_ID>19</SUB_ID>
+   171:     <TITLE>energy of mechanical dissipation (frict)</TITLE>
+   172:     <VARNAME>energyRfrict</VARNAME>
+   173:     <VARNAME2>denergyRfrict</VARNAME2>
+   174:     <VISIBILITY>True</VISIBILITY>
+   175:     <TYPE>1</TYPE>
+   176:     <DIMENSION>1</DIMENSION>
+   177:     <UNITS>J</UNITS>
+   178:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   179:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   180:     <DEF_VALUE>0</DEF_VALUE>
+   181:     <VALUE>0</VALUE>
+   182:     <PHYS_TYPE>1</PHYS_TYPE>
+   183:     <PHYS_DOMAIN>2</PHYS_DOMAIN>
+   184:     <ACT_SUFFIX>frict</ACT_SUFFIX>
+   185:     <ACT_TYPE>3</ACT_TYPE>
+   186:    </IVAR>
+   187:    <IVAR>
+   188:     <SUB_ID>20</SUB_ID>
+   189:     <TITLE>activity of mechanical inertia (mass)</TITLE>
+   190:     <VARNAME>actImass</VARNAME>
+   191:     <VARNAME2>dactImass</VARNAME2>
+   192:     <VISIBILITY>True</VISIBILITY>
+   193:     <TYPE>1</TYPE>
+   194:     <DIMENSION>1</DIMENSION>
+   195:     <UNITS>J</UNITS>
+   196:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   197:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   198:     <DEF_VALUE>0</DEF_VALUE>
+   199:     <VALUE>0</VALUE>
+   200:     <PHYS_TYPE>3</PHYS_TYPE>
+   201:     <PHYS_DOMAIN>2</PHYS_DOMAIN>
+   202:     <ACT_SUFFIX>mass</ACT_SUFFIX>
+   203:     <ACT_TYPE>1</ACT_TYPE>
+   204:    </IVAR>
+   205:    <IVAR>
+   206:     <SUB_ID>21</SUB_ID>
+   207:     <TITLE>power of mechanical inertia (mass)</TITLE>
+   208:     <VARNAME>powerImass</VARNAME>
+   209:     <VISIBILITY>True</VISIBILITY>
+   210:     <TYPE>9</TYPE>
+   211:     <DIMENSION>1</DIMENSION>
+   212:     <UNITS>W</UNITS>
+   213:     <PHYS_TYPE>3</PHYS_TYPE>
+   214:     <PHYS_DOMAIN>2</PHYS_DOMAIN>
+   215:     <ACT_SUFFIX>mass</ACT_SUFFIX>
+   216:     <ACT_TYPE>2</ACT_TYPE>
+   217:    </IVAR>
+   218:    <IVAR>
+   219:     <SUB_ID>32</SUB_ID>
+   220:     <TITLE>energy of mechanical inertia (mass)</TITLE>
+   221:     <VARNAME>energyImass</VARNAME>
+   222:     <VARNAME2>denergyImass</VARNAME2>
+   223:     <VISIBILITY>True</VISIBILITY>
+   224:     <TYPE>1</TYPE>
+   225:     <DIMENSION>1</DIMENSION>
+   226:     <UNITS>J</UNITS>
+   227:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   228:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   229:     <DEF_VALUE>0</DEF_VALUE>
+   230:     <VALUE>0</VALUE>
+   231:     <PHYS_TYPE>3</PHYS_TYPE>
+   232:     <PHYS_DOMAIN>2</PHYS_DOMAIN>
+   233:     <ACT_SUFFIX>mass</ACT_SUFFIX>
+   234:     <ACT_TYPE>3</ACT_TYPE>
+   235:    </IVAR>
+   236:    <IVAR>
+   237:     <SUB_ID>31</SUB_ID>
+   238:     <TITLE>activity of mechanical source (grav)</TITLE>
+   239:     <VARNAME>actSgrav</VARNAME>
+   240:     <VARNAME2>dactSgrav</VARNAME2>
+   241:     <VISIBILITY>True</VISIBILITY>
+   242:     <TYPE>1</TYPE>
+   243:     <DIMENSION>1</DIMENSION>
+   244:     <UNITS>J</UNITS>
+   245:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   246:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   247:     <DEF_VALUE>0</DEF_VALUE>
+   248:     <VALUE>0</VALUE>
+   249:     <PHYS_TYPE>4</PHYS_TYPE>
+   250:     <PHYS_DOMAIN>2</PHYS_DOMAIN>
+   251:     <ACT_SUFFIX>grav</ACT_SUFFIX>
+   252:     <ACT_TYPE>1</ACT_TYPE>
+   253:    </IVAR>
+   254:    <IVAR>
+   255:     <SUB_ID>27</SUB_ID>
+   256:     <TITLE>power of mechanical source (grav)</TITLE>
+   257:     <VARNAME>powerSgrav</VARNAME>
+   258:     <VISIBILITY>True</VISIBILITY>
+   259:     <TYPE>9</TYPE>
+   260:     <DIMENSION>1</DIMENSION>
+   261:     <UNITS>W</UNITS>
+   262:     <PHYS_TYPE>4</PHYS_TYPE>
+   263:     <PHYS_DOMAIN>2</PHYS_DOMAIN>
+   264:     <ACT_SUFFIX>grav</ACT_SUFFIX>
+   265:     <ACT_TYPE>2</ACT_TYPE>
+   266:    </IVAR>
+   267:    <IVAR>
+   268:     <SUB_ID>33</SUB_ID>
+   269:     <TITLE>energy of mechanical source (grav)</TITLE>
+   270:     <VARNAME>energySgrav</VARNAME>
+   271:     <VARNAME2>denergySgrav</VARNAME2>
+   272:     <VISIBILITY>True</VISIBILITY>
+   273:     <TYPE>1</TYPE>
+   274:     <DIMENSION>1</DIMENSION>
+   275:     <UNITS>J</UNITS>
+   276:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   277:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   278:     <DEF_VALUE>0</DEF_VALUE>
+   279:     <VALUE>0</VALUE>
+   280:     <PHYS_TYPE>4</PHYS_TYPE>
+   281:     <PHYS_DOMAIN>2</PHYS_DOMAIN>
+   282:     <ACT_SUFFIX>grav</ACT_SUFFIX>
+   283:     <ACT_TYPE>3</ACT_TYPE>
+   284:    </IVAR>
+   285:   </IVARS_LIST>
+   286:   <EVARS_LIST>
+   287:    <PORT>
+   288:     <EVAR>
+   289:      <SUB_ID>1</SUB_ID>
+   290:      <TITLE>velocity at port 1</TITLE>
+   291:      <VARNAME>v1</VARNAME>
+   292:      <VARNAME2>v1dot</VARNAME2>
+   293:      <VISIBILITY>True</VISIBILITY>
+   294:      <TYPE>1</TYPE>
+   295:      <DIMENSION>1</DIMENSION>
+   296:      <IO>2</IO>
+   297:      <UNITS>m/s</UNITS>
+   298:      <MIN_VALUE>-1.00000000000000e+006</MIN_VALUE>
+   299:      <MAX_VALUE>1.00000000000000e+006</MAX_VALUE>
+   300:      <DEF_VALUE>0.00000000000000e+000</DEF_VALUE>
+   301:      <VALUE>0.00000000000000e+000</VALUE>
+   302:     </EVAR>
+   303:     <EVAR>
+   304:      <SUB_ID>2</SUB_ID>
+   305:      <TITLE>displacement port 1</TITLE>
+   306:      <VARNAME>x1</VARNAME>
+   307:      <VARNAME2>x1dot</VARNAME2>
+   308:      <VISIBILITY>True</VISIBILITY>
+   309:      <TYPE>1</TYPE>
+   310:      <DIMENSION>1</DIMENSION>
+   311:      <IO>2</IO>
+   312:      <UNITS>m</UNITS>
+   313:      <MIN_VALUE>-1.00000000000000e+006</MIN_VALUE>
+   314:      <MAX_VALUE>1.00000000000000e+006</MAX_VALUE>
+   315:      <DEF_VALUE>0.00000000000000e+000</DEF_VALUE>
+   316:      <VALUE>0.00000000000000e+000</VALUE>
+   317:     </EVAR>
+   318:     <EVAR>
+   319:      <SUB_ID>3</SUB_ID>
+   320:      <TITLE>acceleration at port 1</TITLE>
+   321:      <VARNAME>a1</VARNAME>
+   322:      <VISIBILITY>True</VISIBILITY>
+   323:      <TYPE>0</TYPE>
+   324:      <DIMENSION>1</DIMENSION>
+   325:      <IO>2</IO>
+   326:      <UNITS>m/s/s</UNITS>
+   327:     </EVAR>
+   328:     <EVAR>
+   329:      <SUB_ID>4</SUB_ID>
+   330:      <TITLE>force at port 1</TITLE>
+   331:      <VARNAME>f1</VARNAME>
+   332:      <VISIBILITY>True</VISIBILITY>
+   333:      <TYPE>0</TYPE>
+   334:      <DIMENSION>1</DIMENSION>
+   335:      <IO>1</IO>
+   336:      <UNITS>N</UNITS>
+   337:     </EVAR>
+   338:    </PORT>
+   339:    <PORT>
+   340:     <EVAR>
+   341:      <SUB_ID>5</SUB_ID>
+   342:      <VARNAME>v2</VARNAME>
+   343:      <VISIBILITY>True</VISIBILITY>
+   344:      <TYPE>4</TYPE>
+   345:      <PRIMARY_PORT>0</PRIMARY_PORT>
+   346:      <PRIMARY_VAR>0</PRIMARY_VAR>
+   347:      <DUP_TYPE>1</DUP_TYPE>
+   348:     </EVAR>
+   349:     <EVAR>
+   350:      <SUB_ID>6</SUB_ID>
+   351:      <VARNAME>x2</VARNAME>
+   352:      <VISIBILITY>True</VISIBILITY>
+   353:      <TYPE>4</TYPE>
+   354:      <PRIMARY_PORT>0</PRIMARY_PORT>
+   355:      <PRIMARY_VAR>1</PRIMARY_VAR>
+   356:      <DUP_TYPE>1</DUP_TYPE>
+   357:     </EVAR>
+   358:     <EVAR>
+   359:      <SUB_ID>7</SUB_ID>
+   360:      <VARNAME>a2</VARNAME>
+   361:      <VISIBILITY>True</VISIBILITY>
+   362:      <TYPE>4</TYPE>
+   363:      <PRIMARY_PORT>0</PRIMARY_PORT>
+   364:      <PRIMARY_VAR>2</PRIMARY_VAR>
+   365:      <DUP_TYPE>1</DUP_TYPE>
+   366:     </EVAR>
+   367:     <EVAR>
+   368:      <SUB_ID>8</SUB_ID>
+   369:      <TITLE>force at port 2</TITLE>
+   370:      <VARNAME>f2</VARNAME>
+   371:      <VISIBILITY>True</VISIBILITY>
+   372:      <TYPE>0</TYPE>
+   373:      <DIMENSION>1</DIMENSION>
+   374:      <IO>1</IO>
+   375:      <UNITS>N</UNITS>
+   376:     </EVAR>
+   377:    </PORT>
+   378:   </EVARS_LIST>
+   379:  </SUBMODEL>
+   380: </SPE>

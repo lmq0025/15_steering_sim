@@ -1,0 +1,50 @@
+﻿group_id,category,element_count,junction_count,unknown_count,solver_strategy,initial_guess_strategy,expected_cost
+AG_001,SWITCHING,8,10,10,deterministic regularized active relation + warm-start Newton,previous successful solution; otherwise 1 bar,moderate
+AG_002,SWITCHING,4,6,6,deterministic regularized active relation + warm-start Newton,previous successful solution; otherwise 1 bar,moderate
+AG_003,SWITCHING,17,31,31,deterministic regularized active relation + warm-start Newton,previous successful solution; otherwise 1 bar,moderate
+AG_004,SMALL_NONLINEAR,1,3,3,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_005,SMALL_NONLINEAR,1,3,3,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_006,SMALL_NONLINEAR,1,2,2,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_007,SMALL_NONLINEAR,6,6,6,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_008,SMALL_NONLINEAR,1,2,2,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_009,SMALL_NONLINEAR,6,6,6,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_010,SMALL_NONLINEAR,1,2,2,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_011,SWITCHING,2,3,3,deterministic regularized active relation + warm-start Newton,previous successful solution; otherwise 1 bar,moderate
+AG_012,SMALL_NONLINEAR,1,2,2,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_013,SMALL_NONLINEAR,1,2,2,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_014,SMALL_NONLINEAR,2,3,3,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_015,EXPLICIT,1,1,1,direct evaluation,previous successful solution; otherwise 1 bar,low
+AG_016,EXPLICIT,1,1,1,direct evaluation,previous successful solution; otherwise 1 bar,low
+AG_017,EXPLICIT,1,1,1,direct evaluation,previous successful solution; otherwise 1 bar,low
+AG_018,EXPLICIT,1,1,1,direct evaluation,previous successful solution; otherwise 1 bar,low
+AG_019,EXPLICIT,1,1,1,direct evaluation,previous successful solution; otherwise 1 bar,low
+AG_020,EXPLICIT,1,1,1,direct evaluation,previous successful solution; otherwise 1 bar,low
+AG_021,SWITCHING,2,3,3,deterministic regularized active relation + warm-start Newton,previous successful solution; otherwise 1 bar,moderate
+AG_022,SWITCHING,2,3,3,deterministic regularized active relation + warm-start Newton,previous successful solution; otherwise 1 bar,moderate
+AG_023,SWITCHING,1,2,2,deterministic regularized active relation + warm-start Newton,previous successful solution; otherwise 1 bar,moderate
+AG_024,SWITCHING,1,2,2,deterministic regularized active relation + warm-start Newton,previous successful solution; otherwise 1 bar,moderate
+AG_025,EXPLICIT,1,1,1,direct evaluation,previous successful solution; otherwise 1 bar,low
+AG_026,EXPLICIT,1,1,1,direct evaluation,previous successful solution; otherwise 1 bar,low
+AG_027,EXPLICIT,1,1,1,direct evaluation,previous successful solution; otherwise 1 bar,low
+AG_028,SMALL_NONLINEAR,1,2,2,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_029,SMALL_NONLINEAR,1,2,2,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_030,SMALL_NONLINEAR,1,2,2,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_031,SMALL_NONLINEAR,1,2,2,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_032,SMALL_NONLINEAR,1,2,2,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_033,SMALL_NONLINEAR,2,3,3,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_034,SMALL_NONLINEAR,2,3,3,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_035,SMALL_NONLINEAR,2,3,3,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_036,SMALL_NONLINEAR,1,2,2,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_037,SMALL_NONLINEAR,2,3,3,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_038,SMALL_NONLINEAR,4,4,4,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_039,SMALL_NONLINEAR,1,2,2,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_040,SMALL_NONLINEAR,1,2,2,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_041,SMALL_NONLINEAR,2,3,3,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_042,SMALL_NONLINEAR,4,4,4,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_043,SMALL_NONLINEAR,1,2,2,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_044,SMALL_NONLINEAR,1,2,2,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_045,SMALL_NONLINEAR,2,3,3,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_046,SMALL_NONLINEAR,4,4,4,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_047,SMALL_NONLINEAR,4,4,4,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_048,SMALL_NONLINEAR,1,2,2,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate
+AG_049,SMALL_NONLINEAR,1,2,2,warm-start damped Newton,previous successful solution; otherwise 1 bar,moderate

@@ -1,0 +1,8 @@
+﻿instance,submodel,causal_priority,evidence,change_required
+hydraulic*/FAST line interfaces,HL0000/HL0002/HL011/HL012,1,first remaining divergence is before the retained line pressure state: pump01 junction 241.18 MPa versus first line state about 229.94 MPa while Amesim pump/line inlet are coincident near 18.66 MPa,DEFER: line reduction is frozen in C2A; calibrate next
+TK000/tank01,TK000,2,1 bar duplicated gauge reference shifts absolute displayed levels but cancels pressure differences,YES: boundary convention corrected
+presscontrol02*,CV010,1,runtime conductance 8e-11 vs source metadata 8.333e-8 m3/s/Pa,YES
+presscontrol01*,RV010,1,runtime conductance 8e-11 vs source metadata 8.333e-8 m3/s/Pa; valves never opened in C1,YES
+filter*/flowcontrol01*,HYDORT0/HYDORF0,2,C2A-3 path trace showed artificial drops of about 181 MPa across filter and 23 MPa across fixed orifice surrogate,YES: use existing table/area parameters
+signaloperatedrvalve,RV011,4,not required by first pump pair; retained unchanged,NO / NOT_PRIMARY
+pprv_1..3,HYDPRV0,4,C1 directed dp remained below set pressure and not on first causal divergence,NO / NOT_PRIMARY

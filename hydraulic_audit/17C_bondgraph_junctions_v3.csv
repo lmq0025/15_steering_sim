@@ -1,0 +1,180 @@
+﻿junction_id,level,domain,parent_supercomponent,source,members,connected_endpoints
+SC1_dirvalve_1_HJ_01,2,hydraulic,dirvalve_1,02_connections_fullalias.csv; internal topology union,dirvalve_1.hydraulic_5;dirvalve_1.hydraulic_6;dirvalve_1.hydraulic_7;dirvalve_1::BOUNDARY::hydraulic_88,dirvalve_1.orifice_13:1;dirvalve_1.orifice_23:1;external_port_2
+SC1_dirvalve_1_HJ_02,2,hydraulic,dirvalve_1,02_connections_fullalias.csv; internal topology union,dirvalve_1.hydraulic_10;dirvalve_1.hydraulic_11;dirvalve_1.hydraulic_9;dirvalve_1::BOUNDARY::hydraulic_87,dirvalve_1.orifice_14:1;dirvalve_1.orifice_24:1;external_port_3
+SC1_dirvalve_1_HJ_03,2,hydraulic,dirvalve_1,02_connections_fullalias.csv; internal topology union,dirvalve_1.hydraulic;dirvalve_1.hydraulic_1;dirvalve_1.hydraulic_2;dirvalve_1::BOUNDARY::hydraulic_58,dirvalve_1.orifice_13:2;dirvalve_1.orifice_14:2;external_port_0
+SC1_dirvalve_1_HJ_04,2,hydraulic,dirvalve_1,02_connections_fullalias.csv; internal topology union,dirvalve_1.hydraulic_3;dirvalve_1.hydraulic_4;dirvalve_1.hydraulic_8;dirvalve_1::BOUNDARY::hydraulic_89,dirvalve_1.orifice_23:2;dirvalve_1.orifice_24:2;external_port_1
+SC1_dirvalve_2_HJ_01,2,hydraulic,dirvalve_2,02_connections_fullalias.csv; internal topology union,dirvalve_2.hydraulic;dirvalve_2::BOUNDARY::hydraulic_108,dirvalve_2.orifice_14:2;external_port_0
+SC1_dirvalve_2_HJ_02,2,hydraulic,dirvalve_2,02_connections_fullalias.csv; internal topology union,dirvalve_2.hydraulic_2;dirvalve_2::BOUNDARY::hydraulic_79,dirvalve_2.orifice_23:2;external_port_1
+SC1_dirvalve_2_HJ_03,2,hydraulic,dirvalve_2,02_connections_fullalias.csv; internal topology union,dirvalve_2.hydraulic_3;dirvalve_2::BOUNDARY::hydraulic_109,dirvalve_2.orifice_23:1;external_port_2
+SC1_dirvalve_2_HJ_04,2,hydraulic,dirvalve_2,02_connections_fullalias.csv; internal topology union,dirvalve_2.hydraulic_1;dirvalve_2::BOUNDARY::hydraulic_110,dirvalve_2.orifice_14:1;external_port_3
+SC1_dirvalve_6_HJ_01,2,hydraulic,dirvalve_6,02_connections_fullalias.csv; internal topology union,dirvalve_6.hydraulic_10;dirvalve_6.hydraulic_11;dirvalve_6.hydraulic_9;dirvalve_6::BOUNDARY::hydraulic_26,dirvalve_6.orifice_13:1;dirvalve_6.orifice_23:1;external_port_2
+SC1_dirvalve_6_HJ_02,2,hydraulic,dirvalve_6,02_connections_fullalias.csv; internal topology union,dirvalve_6.hydraulic_5;dirvalve_6.hydraulic_6;dirvalve_6.hydraulic_7;dirvalve_6::BOUNDARY::hydraulic_91,dirvalve_6.orifice_14:1;dirvalve_6.orifice_24:1;external_port_3
+SC1_dirvalve_6_HJ_03,2,hydraulic,dirvalve_6,02_connections_fullalias.csv; internal topology union,dirvalve_6.hydraulic;dirvalve_6.hydraulic_1;dirvalve_6.hydraulic_2;dirvalve_6::BOUNDARY::hydraulic_24,dirvalve_6.orifice_13:2;dirvalve_6.orifice_14:2;external_port_0
+SC1_dirvalve_6_HJ_04,2,hydraulic,dirvalve_6,02_connections_fullalias.csv; internal topology union,dirvalve_6.hydraulic_3;dirvalve_6.hydraulic_4;dirvalve_6.hydraulic_8;dirvalve_6::BOUNDARY::hydraulic_23,dirvalve_6.orifice_23:2;dirvalve_6.orifice_24:2;external_port_1
+SC1_dirvalve_3_HJ_01,2,hydraulic,dirvalve_3,02_connections_fullalias.csv; internal topology union,dirvalve_3.hydraulic_2;dirvalve_3.hydraulic_3;dirvalve_3.hydraulic_4;dirvalve_3::BOUNDARY::hydraulic_80,dirvalve_3.orifice_13:1;dirvalve_3.orifice_23:1;external_port_2
+SC1_dirvalve_3_HJ_02,2,hydraulic,dirvalve_3,02_connections_fullalias.csv; internal topology union,dirvalve_3.hydraulic;dirvalve_3::BOUNDARY::hydraulic_60,dirvalve_3.orifice_13:2;external_port_0
+SC1_dirvalve_3_HJ_03,2,hydraulic,dirvalve_3,02_connections_fullalias.csv; internal topology union,dirvalve_3.hydraulic_1;dirvalve_3::BOUNDARY::hydraulic_81,dirvalve_3.orifice_23:2;external_port_1
+SC1_dirvalve_8_HJ_01,2,hydraulic,dirvalve_8,02_connections_fullalias.csv; internal topology union,dirvalve_8.hydraulic_5;dirvalve_8.hydraulic_6;dirvalve_8.hydraulic_7;dirvalve_8::BOUNDARY::hydraulic_126,dirvalve_8.orifice_13:1;dirvalve_8.orifice_23:1;external_port_2
+SC1_dirvalve_8_HJ_02,2,hydraulic,dirvalve_8,02_connections_fullalias.csv; internal topology union,dirvalve_8.hydraulic_10;dirvalve_8.hydraulic_11;dirvalve_8.hydraulic_9;dirvalve_8::BOUNDARY::hydraulic_125,dirvalve_8.orifice_14:1;dirvalve_8.orifice_24:1;external_port_3
+SC1_dirvalve_8_HJ_03,2,hydraulic,dirvalve_8,02_connections_fullalias.csv; internal topology union,dirvalve_8.hydraulic;dirvalve_8.hydraulic_1;dirvalve_8.hydraulic_2;dirvalve_8::BOUNDARY::hydraulic_64,dirvalve_8.orifice_13:2;dirvalve_8.orifice_14:2;external_port_0
+SC1_dirvalve_8_HJ_04,2,hydraulic,dirvalve_8,02_connections_fullalias.csv; internal topology union,dirvalve_8.hydraulic_3;dirvalve_8.hydraulic_4;dirvalve_8.hydraulic_8;dirvalve_8::BOUNDARY::hydraulic_127,dirvalve_8.orifice_23:2;dirvalve_8.orifice_24:2;external_port_1
+SC1_dirvalve_9_HJ_01,2,hydraulic,dirvalve_9,02_connections_fullalias.csv; internal topology union,dirvalve_9.hydraulic;dirvalve_9::BOUNDARY::hydraulic_139,dirvalve_9.orifice_14:2;external_port_0
+SC1_dirvalve_9_HJ_02,2,hydraulic,dirvalve_9,02_connections_fullalias.csv; internal topology union,dirvalve_9.hydraulic_2;dirvalve_9::BOUNDARY::hydraulic_118,dirvalve_9.orifice_23:2;external_port_1
+SC1_dirvalve_9_HJ_03,2,hydraulic,dirvalve_9,02_connections_fullalias.csv; internal topology union,dirvalve_9.hydraulic_3;dirvalve_9::BOUNDARY::hydraulic_140,dirvalve_9.orifice_23:1;external_port_2
+SC1_dirvalve_9_HJ_04,2,hydraulic,dirvalve_9,02_connections_fullalias.csv; internal topology union,dirvalve_9.hydraulic_1;dirvalve_9::BOUNDARY::hydraulic_141,dirvalve_9.orifice_14:1;external_port_3
+SC1_dirvalve_10_HJ_01,2,hydraulic,dirvalve_10,02_connections_fullalias.csv; internal topology union,dirvalve_10.hydraulic_2;dirvalve_10.hydraulic_3;dirvalve_10.hydraulic_4;dirvalve_10::BOUNDARY::hydraulic_147,dirvalve_10.orifice_13:1;dirvalve_10.orifice_23:1;external_port_2
+SC1_dirvalve_10_HJ_02,2,hydraulic,dirvalve_10,02_connections_fullalias.csv; internal topology union,dirvalve_10.hydraulic;dirvalve_10::BOUNDARY::hydraulic_28,dirvalve_10.orifice_13:2;external_port_0
+SC1_dirvalve_10_HJ_03,2,hydraulic,dirvalve_10,02_connections_fullalias.csv; internal topology union,dirvalve_10.hydraulic_1;dirvalve_10::BOUNDARY::hydraulic_119,dirvalve_10.orifice_23:2;external_port_1
+SC1_dirvalve_11_HJ_01,2,hydraulic,dirvalve_11,02_connections_fullalias.csv; internal topology union,dirvalve_11.hydraulic_5;dirvalve_11.hydraulic_6;dirvalve_11.hydraulic_7;dirvalve_11::BOUNDARY::hydraulic_157,dirvalve_11.orifice_13:1;dirvalve_11.orifice_23:1;external_port_2
+SC1_dirvalve_11_HJ_02,2,hydraulic,dirvalve_11,02_connections_fullalias.csv; internal topology union,dirvalve_11.hydraulic_10;dirvalve_11.hydraulic_11;dirvalve_11.hydraulic_9;dirvalve_11::BOUNDARY::hydraulic_156,dirvalve_11.orifice_14:1;dirvalve_11.orifice_24:1;external_port_3
+SC1_dirvalve_11_HJ_03,2,hydraulic,dirvalve_11,02_connections_fullalias.csv; internal topology union,dirvalve_11.hydraulic;dirvalve_11.hydraulic_1;dirvalve_11.hydraulic_2;dirvalve_11::BOUNDARY::hydraulic_67,dirvalve_11.orifice_13:2;dirvalve_11.orifice_14:2;external_port_0
+SC1_dirvalve_11_HJ_04,2,hydraulic,dirvalve_11,02_connections_fullalias.csv; internal topology union,dirvalve_11.hydraulic_3;dirvalve_11.hydraulic_4;dirvalve_11.hydraulic_8;dirvalve_11::BOUNDARY::hydraulic_158,dirvalve_11.orifice_23:2;dirvalve_11.orifice_24:2;external_port_1
+SC1_dirvalve_12_HJ_01,2,hydraulic,dirvalve_12,02_connections_fullalias.csv; internal topology union,dirvalve_12.hydraulic;dirvalve_12::BOUNDARY::hydraulic_170,dirvalve_12.orifice_14:2;external_port_0
+SC1_dirvalve_12_HJ_02,2,hydraulic,dirvalve_12,02_connections_fullalias.csv; internal topology union,dirvalve_12.hydraulic_2;dirvalve_12::BOUNDARY::hydraulic_149,dirvalve_12.orifice_23:2;external_port_1
+SC1_dirvalve_12_HJ_03,2,hydraulic,dirvalve_12,02_connections_fullalias.csv; internal topology union,dirvalve_12.hydraulic_3;dirvalve_12::BOUNDARY::hydraulic_171,dirvalve_12.orifice_23:1;external_port_2
+SC1_dirvalve_12_HJ_04,2,hydraulic,dirvalve_12,02_connections_fullalias.csv; internal topology union,dirvalve_12.hydraulic_1;dirvalve_12::BOUNDARY::hydraulic_172,dirvalve_12.orifice_14:1;external_port_3
+SC1_dirvalve_13_HJ_01,2,hydraulic,dirvalve_13,02_connections_fullalias.csv; internal topology union,dirvalve_13.hydraulic_2;dirvalve_13.hydraulic_3;dirvalve_13.hydraulic_4;dirvalve_13::BOUNDARY::hydraulic_180,dirvalve_13.orifice_13:1;dirvalve_13.orifice_23:1;external_port_2
+SC1_dirvalve_13_HJ_02,2,hydraulic,dirvalve_13,02_connections_fullalias.csv; internal topology union,dirvalve_13.hydraulic;dirvalve_13::BOUNDARY::hydraulic_71,dirvalve_13.orifice_13:2;external_port_0
+SC1_dirvalve_13_HJ_03,2,hydraulic,dirvalve_13,02_connections_fullalias.csv; internal topology union,dirvalve_13.hydraulic_1;dirvalve_13::BOUNDARY::hydraulic_150,dirvalve_13.orifice_23:2;external_port_1
+RMJ_001,1,rotation,,02_connections_fullalias.csv,rotary,pmover01:0;pump01:2
+RMJ_002,1,rotation,,02_connections_fullalias.csv,rotary_1,pmover01_1:0;pump01_1:2
+RMJ_003,1,rotation,,02_connections_fullalias.csv,rotary_2,pmover01_2:0;pump01_2:2
+RMJ_004,1,rotation,,02_connections_fullalias.csv,rotary_3,pmover01_3:0;pump01_3:2
+TMJ_001,1,translation,,02_connections_fullalias.csv,linear,forcecon:1;mass_friction2port:1
+TMJ_002,1,translation,,02_connections_fullalias.csv,linear_1,actuator002:2;mass1port:0
+TMJ_003,1,translation,,02_connections_fullalias.csv,linear_10,forcecon_3:1;mass_friction2port_3:1
+TMJ_004,1,translation,,02_connections_fullalias.csv,linear_11,forcecon_4:1;mass_friction2port_4:1
+TMJ_005,1,translation,,02_connections_fullalias.csv,linear_12,forcecon_5:1;mass_friction2port_5:1
+TMJ_006,1,translation,,02_connections_fullalias.csv,linear_2,mass_friction2port_1:0;springreturnactuator:2
+TMJ_007,1,translation,,02_connections_fullalias.csv,linear_3,mass_friction2port_2:0;springreturnactuator_1:2
+TMJ_008,1,translation,,02_connections_fullalias.csv,linear_4,mass_friction2port_5:0;springreturnactuator_2:2
+TMJ_009,1,translation,,02_connections_fullalias.csv,linear_5,actuator001_1:2;mass_friction2port_3:0
+TMJ_010,1,translation,,02_connections_fullalias.csv,linear_6,actuator001_2:2;mass_friction2port_4:0
+TMJ_011,1,translation,,02_connections_fullalias.csv,linear_7,actuator001:2;mass_friction2port:0
+TMJ_012,1,translation,,02_connections_fullalias.csv,linear_8,forcecon_1:1;mass_friction2port_1:1
+TMJ_013,1,translation,,02_connections_fullalias.csv,linear_9,forcecon_2:1;mass_friction2port_2:1
+V3_HJ_001,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,accumulator:0;valve02_1:1
+V3_HJ_002,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,accumulator_1:0;valve02_2:1
+V3_HJ_003,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_98,actuator001:0;hydraulic_98:0;hydraulic_98:1;variableorifice_2:2
+V3_HJ_004,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,actuator001:1;hydraulic_95:1
+V3_HJ_005,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,actuator001_1:0;hydraulic_142:0
+V3_HJ_006,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_138,actuator001_1:1;hydraulic_138:0;hydraulic_138:1;variableorifice_10:2
+V3_HJ_007,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_155,actuator001_2:0;hydraulic_155:0;hydraulic_155:1;variableorifice_12:2
+V3_HJ_008,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,actuator001_2:1;hydraulic_159:0
+V3_HJ_009,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_25,actuator002:0;hydraulic_25:0;hydraulic_25:1;variableorifice:2
+V3_HJ_010,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_26,actuator002:1;dirvalve_6:2;hydraulic_26:0;hydraulic_26:1
+V3_HJ_011,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,cooler:0;hydraulic_9:0
+V3_HJ_012,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_162; hydraulic_163; hydrnode3_52,cooler:1;hydraulic_162:0;hydraulic_162:1;hydraulic_163:0;hydraulic_163:1;hydraulic_3:1;hydrnode3_52:0;hydrnode3_52:1;hydrnode3_52:2;variableorifice_13:1
+V3_HJ_013,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,cooler_1:0;hydraulic_38:0
+V3_HJ_014,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_135; hydraulic_28; hydraulic_50; hydraulic_55; hydraulic_99; hydrnode3_12; hydrnode3_14; hydrnode3_31; hydrnode3_41,cooler_1:1;dirvalve_10:0;hydraulic_135:0;hydraulic_135:1;hydraulic_14:1;hydraulic_28:0;hydraulic_28:1;hydraulic_50:0;hydraulic_50:1;hydraulic_55:0;hydraulic_55:1;hydraulic_56:0;hydraulic_63:1;hydraulic_99:0;hydraulic_99:1;hydrnode3_12:0;hydrnode3_12:1;hydrnode3_12:2;hydrnode3_14:0;hydrnode3_14:1;hydrnode3_14:2;hydrnode3_31:0;hydrnode3_31:1;hydrnode3_31:2;hydrnode3_41:0;hydrnode3_41:1;hydrnode3_41:2;signaloperatedrvalve:0
+V3_HJ_015,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,dirvalve_1:0;hydraulic_58:1
+V3_HJ_016,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,dirvalve_1:1;hydraulic_89:0
+V3_HJ_017,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_110; hydraulic_73; hydraulic_85; hydraulic_88; hydraulic_92; hydraulic_97; hydrnode3_18; hydrnode3_26; hydrnode3_33,dirvalve_1:2;dirvalve_2:3;hydraulic_110:0;hydraulic_110:1;hydraulic_73:0;hydraulic_73:1;hydraulic_85:0;hydraulic_85:1;hydraulic_88:0;hydraulic_88:1;hydraulic_92:0;hydraulic_92:1;hydraulic_94:0;hydraulic_97:0;hydraulic_97:1;hydrnode3_18:0;hydrnode3_18:1;hydrnode3_18:2;hydrnode3_26:0;hydrnode3_26:1;hydrnode3_26:2;hydrnode3_33:0;hydrnode3_33:1;hydrnode3_33:2;shuttle_control_1:0;variableorifice_1:1
+V3_HJ_018,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_109; hydraulic_74; hydraulic_87; hydraulic_93; hydraulic_96; hydrnode3_19; hydrnode3_25; hydrnode3_32,dirvalve_1:3;dirvalve_2:2;hydraulic_109:0;hydraulic_109:1;hydraulic_74:0;hydraulic_74:1;hydraulic_84:1;hydraulic_87:0;hydraulic_87:1;hydraulic_93:0;hydraulic_93:1;hydraulic_95:0;hydraulic_96:0;hydraulic_96:1;hydrnode3_19:0;hydrnode3_19:1;hydrnode3_19:2;hydrnode3_25:0;hydrnode3_25:1;hydrnode3_25:2;hydrnode3_32:0;hydrnode3_32:1;hydrnode3_32:2;variableorifice_1:2
+V3_HJ_019,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,dirvalve_10:1;hydraulic_119:0
+V3_HJ_020,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,dirvalve_10:2;hydraulic_147:0
+V3_HJ_021,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_170; hydraulic_65; hydraulic_67; hydrnode3_13; hydrnode3_46,dirvalve_11:0;dirvalve_12:0;hydraulic_149:1;hydraulic_170:0;hydraulic_170:1;hydraulic_65:0;hydraulic_65:1;hydraulic_67:0;hydraulic_67:1;hydraulic_70:0;hydrnode3_13:0;hydrnode3_13:1;hydrnode3_13:2;hydrnode3_46:0;hydrnode3_46:1;hydrnode3_46:2
+V3_HJ_022,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,dirvalve_11:1;hydraulic_158:0
+V3_HJ_023,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_146; hydraulic_154; hydraulic_157; hydraulic_172; hydraulic_78; hydrnode3_48; hydrnode3_50; hydrnode3_55,dirvalve_11:2;dirvalve_12:3;hydraulic_146:0;hydraulic_146:1;hydraulic_148:0;hydraulic_154:0;hydraulic_154:1;hydraulic_157:0;hydraulic_157:1;hydraulic_172:0;hydraulic_172:1;hydraulic_78:0;hydraulic_78:1;hydrnode3_48:0;hydrnode3_48:1;hydrnode3_48:2;hydrnode3_50:0;hydrnode3_50:1;hydrnode3_50:2;hydrnode3_55:0;hydrnode3_55:1;hydrnode3_55:2;shuttle_control_3:0;variableorifice_11:1
+V3_HJ_024,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_145; hydraulic_156; hydraulic_171; hydraulic_86; hydrnode3_47; hydrnode3_51; hydrnode3_54,dirvalve_11:3;dirvalve_12:2;hydraulic_145:0;hydraulic_145:1;hydraulic_153:1;hydraulic_156:0;hydraulic_156:1;hydraulic_159:1;hydraulic_171:0;hydraulic_171:1;hydraulic_86:0;hydraulic_86:1;hydrnode3_47:0;hydrnode3_47:1;hydrnode3_47:2;hydrnode3_51:0;hydrnode3_51:1;hydrnode3_51:2;hydrnode3_54:0;hydrnode3_54:1;hydrnode3_54:2;variableorifice_11:2
+V3_HJ_025,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,dirvalve_12:1;hydraulic_149:0
+V3_HJ_026,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,dirvalve_13:0;hydraulic_71:0
+V3_HJ_027,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,dirvalve_13:1;hydraulic_150:0
+V3_HJ_028,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,dirvalve_13:2;hydraulic_180:0
+V3_HJ_029,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_108; hydrnode3_23,dirvalve_2:0;hydraulic_108:0;hydraulic_108:1;hydraulic_57:0;hydraulic_79:1;hydrnode3_23:0;hydrnode3_23:1;hydrnode3_23:2
+V3_HJ_030,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,dirvalve_2:1;hydraulic_79:0
+V3_HJ_031,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_60; hydrnode3_8,dirvalve_3:0;hydraulic_14:0;hydraulic_60:0;hydraulic_60:1;hydraulic_61:1;hydrnode3_8:0;hydrnode3_8:1;hydrnode3_8:2
+V3_HJ_032,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,dirvalve_3:1;hydraulic_81:0
+V3_HJ_033,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,dirvalve_3:2;hydraulic_80:0
+V3_HJ_034,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_18; hydraulic_20; hydraulic_22; hydraulic_24; hydrnode3_3; hydrnode3_5; hydrnode3_6,dirvalve_6:0;hydraulic_18:0;hydraulic_18:1;hydraulic_20:0;hydraulic_20:1;hydraulic_22:0;hydraulic_22:1;hydraulic_24:0;hydraulic_24:1;hydraulic_3:0;hydrnode3_3:0;hydrnode3_3:1;hydrnode3_3:2;hydrnode3_5:0;hydrnode3_5:1;hydrnode3_5:2;hydrnode3_6:0;hydrnode3_6:1;hydrnode3_6:2;presscontrol01:0;presscontrol01_1:1;springcheckvalve:1
+V3_HJ_035,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,dirvalve_6:1;hydraulic_23:1
+V3_HJ_036,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,dirvalve_6:3;hydraulic_91:1
+V3_HJ_037,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_139; hydraulic_29; hydraulic_64; hydrnode3_35; hydrnode3_9,dirvalve_8:0;dirvalve_9:0;hydraulic_118:1;hydraulic_139:0;hydraulic_139:1;hydraulic_29:0;hydraulic_29:1;hydraulic_62:0;hydraulic_64:0;hydraulic_64:1;hydrnode3_35:0;hydrnode3_35:1;hydrnode3_35:2;hydrnode3_9:0;hydrnode3_9:1;hydrnode3_9:2
+V3_HJ_038,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,dirvalve_8:1;hydraulic_127:0
+V3_HJ_039,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_123; hydraulic_126; hydraulic_141; hydraulic_75; hydrnode3_37; hydrnode3_44,dirvalve_8:2;dirvalve_9:3;hydraulic_123:0;hydraulic_123:1;hydraulic_126:0;hydraulic_126:1;hydraulic_141:0;hydraulic_141:1;hydraulic_143:1;hydraulic_75:0;hydraulic_75:1;hydrnode3_37:0;hydrnode3_37:1;hydrnode3_37:2;hydrnode3_44:0;hydrnode3_44:1;hydrnode3_44:2;shuttle_control_2:2
+V3_HJ_040,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_125; hydraulic_140; hydraulic_76; hydrnode3_36; hydrnode3_43,dirvalve_8:3;dirvalve_9:2;hydraulic_122:1;hydraulic_125:0;hydraulic_125:1;hydraulic_137:1;hydraulic_140:0;hydraulic_140:1;hydraulic_76:0;hydraulic_76:1;hydrnode3_36:0;hydrnode3_36:1;hydrnode3_36:2;hydrnode3_43:0;hydrnode3_43:1;hydrnode3_43:2
+V3_HJ_041,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,dirvalve_9:1;hydraulic_118:0
+V3_HJ_042,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,filter:0;hydraulic_7:0
+V3_HJ_043,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,filter:1;hydraulic_6:1
+V3_HJ_044,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_12; hydraulic_13; hydraulic_8; hydrnode4_4,filter_1:0;hydraulic_12:0;hydraulic_12:1;hydraulic_13:0;hydraulic_13:1;hydraulic_8:0;hydraulic_8:1;hydrnode4_4:0;hydrnode4_4:1;hydrnode4_4:2;hydrnode4_4:3;pump01:0;pump01_1:0;tank01:0
+V3_HJ_045,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,filter_1:1;hydraulic_9:1
+V3_HJ_046,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,filter_2:0;hydraulic_31:1
+V3_HJ_047,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,filter_2:1;hydraulic_32:0
+V3_HJ_048,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_33; hydraulic_44; hydraulic_45; hydrnode4_9,filter_3:0;hydraulic_33:0;hydraulic_33:1;hydraulic_44:0;hydraulic_44:1;hydraulic_45:0;hydraulic_45:1;hydrnode4_9:0;hydrnode4_9:1;hydrnode4_9:2;hydrnode4_9:3;pump01_2:0;pump01_3:0;tank01_1:0
+V3_HJ_049,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,filter_3:1;hydraulic_38:1
+V3_HJ_050,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,filter_4:0;hydraulic_15:0
+V3_HJ_051,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,filter_4:1;hydraulic_181:0
+V3_HJ_052,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,filter_5:0;hydraulic_134:1
+V3_HJ_053,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_182; hydraulic_51; hydraulic_52; hydraulic_66; hydrnode3_42; hydrnode4_11,filter_5:1;hydraulic_181:1;hydraulic_182:0;hydraulic_182:1;hydraulic_39:0;hydraulic_51:0;hydraulic_51:1;hydraulic_52:0;hydraulic_52:1;hydraulic_66:0;hydraulic_66:1;hydrnode3_42:0;hydrnode3_42:1;hydrnode3_42:2;hydrnode4_11:0;hydrnode4_11:1;hydrnode4_11:2;hydrnode4_11:3;presscontrol01_3:1;valve02:0
+V3_HJ_054,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,flowcontrol01:0;hydraulic_4:0
+V3_HJ_055,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_16; hydraulic_17; hydraulic_19; hydraulic_21; hydrnode3_1; hydrnode3_2; hydrnode3_4,flowcontrol01:1;flowcontrol01_1:1;hydraulic_16:0;hydraulic_16:1;hydraulic_17:0;hydraulic_17:1;hydraulic_19:0;hydraulic_19:1;hydraulic_21:0;hydraulic_21:1;hydraulic_23:0;hydrnode3_1:0;hydrnode3_1:1;hydrnode3_1:2;hydrnode3_2:0;hydrnode3_2:1;hydrnode3_2:2;hydrnode3_4:0;hydrnode3_4:1;hydrnode3_4:2;presscontrol01_1:0;springcheckvalve:0
+V3_HJ_056,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,flowcontrol01_1:0;hydraulic_6:0
+V3_HJ_057,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,flowcontrol01_2:0;hydraulic_68:0
+V3_HJ_058,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_90; hydrnode3_16,flowcontrol01_2:1;hydraulic_69:0;hydraulic_90:0;hydraulic_90:1;hydrnode3_16:0;hydrnode3_16:1;hydrnode3_16:2;valve02:1
+V3_HJ_059,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,flowcontrol01_3:0;hydraulic_32:1
+V3_HJ_060,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_48; hydraulic_49; hydrnode4_10,flowcontrol01_3:1;hydraulic_11:0;hydraulic_39:1;hydraulic_48:0;hydraulic_48:1;hydraulic_49:0;hydraulic_49:1;hydrnode4_10:0;hydrnode4_10:1;hydrnode4_10:2;hydrnode4_10:3;signaloperatedrvalve:2
+V3_HJ_061,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,flowcontrol01_5:0;hydraulic_27:1
+V3_HJ_062,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,flowcontrol01_5:1;hydraulic_81:1
+V3_HJ_063,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_185; hydraulic_40; hydraulic_42; hydraulic_43; hydrnode3_20; hydrnode4,flowcontrol01_6:0;flowcontrol01_7:0;hydraulic_185:0;hydraulic_185:1;hydraulic_27:0;hydraulic_40:0;hydraulic_40:1;hydraulic_42:0;hydraulic_42:1;hydraulic_43:0;hydraulic_43:1;hydraulic_77:1;hydrnode3_20:0;hydrnode3_20:1;hydrnode3_20:2;hydrnode4:0;hydrnode4:1;hydrnode4:2;hydrnode4:3;valve02_2:0
+V3_HJ_064,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,flowcontrol01_6:1;hydraulic_119:1
+V3_HJ_065,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,flowcontrol01_7:1;hydraulic_150:1
+V3_HJ_066,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic:0;pump01:1
+V3_HJ_067,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic:1;presscontrol02:1
+V3_HJ_068,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_1:0;pump01_1:1
+V3_HJ_069,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_1:1;presscontrol02_1:1
+V3_HJ_070,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_10; hydrnode4_1,hydraulic_10:0;hydraulic_10:1;hydraulic_165:1;hydraulic_166:1;hydraulic_77:0;hydrnode4_1:0;hydrnode4_1:1;hydrnode4_1:2;hydrnode4_1:3;presscontrol02_9:0
+V3_HJ_071,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_100; hydraulic_104; hydrnode3_28,hydraulic_100:0;hydraulic_100:1;hydraulic_101:0;hydraulic_104:0;hydraulic_104:1;hydrnode3_28:0;hydrnode3_28:1;hydrnode3_28:2;springreturnactuator:1;variableorifice_3:1
+V3_HJ_072,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_101:1;tank01_5:0
+V3_HJ_073,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_102; hydraulic_105; hydrnode3_27,hydraulic_102:0;hydraulic_102:1;hydraulic_103:0;hydraulic_105:0;hydraulic_105:1;hydrnode3_27:0;hydrnode3_27:1;hydrnode3_27:2;variableorifice_3:2;variableorifice_4:1
+V3_HJ_074,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_103:1;valve02_3:1
+V3_HJ_075,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_106,hydraulic_106:0;hydraulic_106:1;springreturnactuator:0;variableorifice_4:2
+V3_HJ_076,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_107; hydraulic_114; hydrnode3_30,hydraulic_107:0;hydraulic_107:1;hydraulic_114:0;hydraulic_114:1;hydraulic_115:0;hydrnode3_30:0;hydrnode3_30:1;hydrnode3_30:2;springreturnactuator_1:1;variableorifice_5:1
+V3_HJ_077,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_11:1;presscontrol02_8:1
+V3_HJ_078,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_111; hydraulic_112; hydrnode3_29,hydraulic_111:0;hydraulic_111:1;hydraulic_112:0;hydraulic_112:1;hydraulic_113:0;hydrnode3_29:0;hydrnode3_29:1;hydrnode3_29:2;variableorifice_5:2;variableorifice_6:1
+V3_HJ_079,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_113:1;valve02_4:1
+V3_HJ_080,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_115:1;tank01_6:0
+V3_HJ_081,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_116; hydraulic_130; hydrnode3_39,hydraulic_116:0;hydraulic_116:1;hydraulic_130:0;hydraulic_130:1;hydraulic_131:0;hydrnode3_39:0;hydrnode3_39:1;hydrnode3_39:2;springreturnactuator_2:1;variableorifice_7:1
+V3_HJ_082,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_117; hydraulic_124; hydrnode3_34,hydraulic_117:0;hydraulic_117:1;hydraulic_124:0;hydraulic_124:1;hydraulic_129:0;hydrnode3_34:0;hydrnode3_34:1;hydrnode3_34:2;variableorifice_7:2;variableorifice_8:1
+V3_HJ_083,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_120; hydraulic_121; hydraulic_30; hydrnode3_24,hydraulic_120:0;hydraulic_120:1;hydraulic_121:0;hydraulic_121:1;hydraulic_30:0;hydraulic_30:1;hydrnode3_24:0;hydrnode3_24:1;hydrnode3_24:2;pprv_2:1;shuttle_control_2:1;shuttle_control_5:2
+V3_HJ_084,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_122:0;shuttle_control_2:0
+V3_HJ_085,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_127:1;pprv_2:2
+V3_HJ_086,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_128,hydraulic_128:0;hydraulic_128:1;springreturnactuator_2:0;variableorifice_8:2
+V3_HJ_087,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_129:1;valve02_5:1
+V3_HJ_088,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_131:1;tank01_7:0
+V3_HJ_089,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_132; hydrnode3_49,hydraulic_132:0;hydraulic_132:1;hydraulic_142:1;hydraulic_143:0;hydrnode3_49:0;hydrnode3_49:1;hydrnode3_49:2;variableorifice_9:2
+V3_HJ_090,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_133; hydrnode3_40,hydraulic_133:0;hydraulic_133:1;hydraulic_136:0;hydraulic_137:0;hydrnode3_40:0;hydrnode3_40:1;hydrnode3_40:2;variableorifice_9:1
+V3_HJ_091,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_144; hydraulic_47; hydrnode3_38,hydraulic_134:0;hydraulic_144:0;hydraulic_144:1;hydraulic_47:0;hydraulic_47:1;hydrnode3_38:0;hydrnode3_38:1;hydrnode3_38:2;pprv_2:0;pprv_3:0
+V3_HJ_092,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_136:1;variableorifice_10:1
+V3_HJ_093,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_147:1;valve02_4:0
+V3_HJ_094,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_148:1;variableorifice_12:1
+V3_HJ_095,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_15:1;pprv_1:0
+V3_HJ_096,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_151; hydraulic_152; hydraulic_46; hydrnode3_45,hydraulic_151:0;hydraulic_151:1;hydraulic_152:0;hydraulic_152:1;hydraulic_46:0;hydraulic_46:1;hydrnode3_45:0;hydrnode3_45:1;hydrnode3_45:2;pprv_3:1;shuttle_control_3:1;shuttle_control_5:0
+V3_HJ_097,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_153:0;shuttle_control_3:2
+V3_HJ_098,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_158:1;pprv_3:2
+V3_HJ_099,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_160; hydraulic_161; hydrnode3_53,hydraulic_160:0;hydraulic_160:1;hydraulic_161:0;hydraulic_161:1;hydraulic_4:1;hydrnode3_53:0;hydrnode3_53:1;hydrnode3_53:2;presscontrol01:1;variableorifice_13:2
+V3_HJ_100,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_164; hydrnode3_21,hydraulic_164:0;hydraulic_164:1;hydraulic_166:0;hydraulic_41:1;hydrnode3_21:0;hydrnode3_21:1;hydrnode3_21:2;variableorifice_14:2
+V3_HJ_101,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_165:0;variableorifice_14:1
+V3_HJ_102,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_180:1;valve02_5:0
+V3_HJ_103,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_186; hydraulic_82; hydraulic_83; hydrnode3_22,hydraulic_186:0;hydraulic_186:1;hydraulic_82:0;hydraulic_82:1;hydraulic_83:0;hydraulic_83:1;hydrnode3_22:0;hydrnode3_22:1;hydrnode3_22:2;pprv_1:1;shuttle_control_1:1;shuttle_control_4:2
+V3_HJ_104,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_187,hydraulic_187:0;hydraulic_187:1;shuttle_control:0;shuttle_control_4:1
+V3_HJ_105,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_190,hydraulic_190:0;hydraulic_190:1;shuttle_control_4:0;shuttle_control_5:1
+V3_HJ_106,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_2; hydraulic_5; hydrnode3,hydraulic_2:0;hydraulic_2:1;hydraulic_5:0;hydraulic_5:1;hydraulic_7:1;hydrnode3:0;hydrnode3:1;hydrnode3:2;presscontrol02:0;presscontrol02_1:0
+V3_HJ_107,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_36; hydraulic_37; hydrnode3_10,hydraulic_31:0;hydraulic_36:0;hydraulic_36:1;hydraulic_37:0;hydraulic_37:1;hydrnode3_10:0;hydrnode3_10:1;hydrnode3_10:2;presscontrol02_4:0;presscontrol02_5:0
+V3_HJ_108,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_34:0;pump01_2:1
+V3_HJ_109,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_34:1;presscontrol02_4:1
+V3_HJ_110,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_35:0;pump01_3:1
+V3_HJ_111,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_35:1;presscontrol02_5:1
+V3_HJ_112,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_41:0;valve02_1:0
+V3_HJ_113,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_53,hydraulic_53:0;hydraulic_53:1;pressuregauge:0;shuttle_control:1
+V3_HJ_114,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_54; hydrnode3_15,hydraulic_54:0;hydraulic_54:1;hydraulic_56:1;hydraulic_68:1;hydrnode3_15:0;hydrnode3_15:1;hydrnode3_15:2;presscontrol01_3:0
+V3_HJ_115,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydrnode3_7,hydraulic_57:1;hydraulic_58:0;hydraulic_61:0;hydrnode3_7:0;hydrnode3_7:1;hydrnode3_7:2
+V3_HJ_116,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_59:0;presscontrol02_8:0
+V3_HJ_117,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_59:1;presscontrol02_9:1
+V3_HJ_118,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,hydraulic_72; hydrnode3_11; hydrnode3_17,hydraulic_62:1;hydraulic_63:0;hydraulic_70:1;hydraulic_71:1;hydraulic_72:0;hydraulic_72:1;hydrnode3_11:0;hydrnode3_11:1;hydrnode3_11:2;hydrnode3_17:0;hydrnode3_17:1;hydrnode3_17:2
+V3_HJ_119,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_69:1;shuttle_control:2
+V3_HJ_120,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_80:1;valve02_3:0
+V3_HJ_121,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_84:0;shuttle_control_1:2
+V3_HJ_122,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_89:1;pprv_1:2
+V3_HJ_123,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_91:0;variableorifice:1
+V3_HJ_124,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,hydraulic_94:1;variableorifice_2:1
+V3_HJ_125,1,hydraulic,,02_connections_fullalias.csv; physical HL line ports kept separate,,springreturnactuator_1:0;variableorifice_6:2

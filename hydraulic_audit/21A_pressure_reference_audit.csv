@@ -1,0 +1,7 @@
+﻿instance,variable,amesim_convention,python_convention,reference_pressure_pa,used_in_constitutive_equation_as,comparison_conversion,status,evidence
+TK000,press,gauge,gauge after C2A-1,101325.0,gauge pressure difference; add patm only for absolute-property/cavitation calculations,bar gauge * 1e5 -> Pa gauge,PASS,gauge boundary; fixed press is checked against -atmospheric pressure
+PU001,p1/p2,gauge,gauge after C2A-1,101325.0,gauge pressure difference; add patm only for absolute-property/cavitation calculations,bar gauge * 1e5 -> Pa gauge,PASS,gauge at ports; pressure difference drives torque
+HL0000/HL0002/HL011/HL012,p1/p2,gauge,gauge after C2A-1,101325.0,gauge pressure difference; add patm only for absolute-property/cavitation calculations,bar gauge * 1e5 -> Pa gauge,PASS,gauge state and port pressure
+HJ020/HJ021/HJ0022,p1/p2,gauge,gauge after C2A-1,101325.0,gauge pressure difference; add patm only for absolute-property/cavitation calculations,bar gauge * 1e5 -> Pa gauge,PASS,gauge chamber pressures; differences produce force
+CV010/RV010,p1/p2,gauge,gauge after C2A-1,101325.0,gauge pressure difference; add patm only for absolute-property/cavitation calculations,bar gauge * 1e5 -> Pa gauge,PASS,gauge ports; dp=p2-p1-pcrack
+HYDPRV0/RV011,p1/p2,gauge,gauge after C2A-1,101325.0,gauge pressure difference; add patm only for absolute-property/cavitation calculations,bar gauge * 1e5 -> Pa gauge,PASS,gauge ports; absolute pressure only for fluid/property functions

@@ -1,0 +1,825 @@
+SUBMODEL: UD00
+SOURCE FILES: 2
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libsig\submodels\UD00.c
+==============================================================================
+...
+     1: /* Submodel UD00 skeleton created by AME Submodel editing utility
+     2:    ven. mars 24 15:19:56 2017 */
+     3: 
+     4: 
+     5: 
+     6: #include <math.h>
+     7: #include <stdio.h>
+     8: #include <stdlib.h>
+     9: #include "ameutils.h"
+    10: /* *******************************************************************************
+    11: TITLE : UD00
+    12: ------------------------------------------------------------------------------
+    13: DESCRIPTION :
+    14: 	
+    15: 	UD00 is a duty cycle submodel with a dimensionless output.
+    16: 	The user may specify up to 8 stages giving a start value,
+    17: 	end value and duration for each stage. Linear interpolation
+    18: 	is used to determine the output. Thus constant sections,
+    19: 	ramps and steps may be constructed.
+    20: 	
+    21: 	The user may also employ a delay specifying the time at
+    22: 	which the duty cycle is to start. For a time value below
+    23: 	this value, the submodels sets the output value to be the
+    24: 	value at the start of stage 1.
+    25: 	
+    26: 	If all 8 stages are completed, the output is set to the
+    27: 	final value of the 8th stage.
+    28:  
+    29: ------------------------------------------------------------------------------
+    30: USAGE : 
+    31: ------------------------------------------------------------------------------
+    32: PARAMETER SETTINGS :
+    33: 	
+    34: 	The duration of each stage should be a positive number.
+    35: ------------------------------------------------------------------------------
+    36: DATE OF CREATION/AUTHOR : C.W.Richards April 1994
+    37: ------------------------------------------------------------------------------
+    38: INDEX OF REVISIONS : 
+    39:  
+    40: 	29/01/98 CWR 	Code run through AMESet and description put into
+    41: 			standard form.
+    42: ------------------------------------------------------------------------------
+    43: LIST OF FUNCTIONS USED :
+    44: 	------------------------------------------------------------------------------
+    45: SOURCE :
+    46:    Siemens Industry Software SAS
+    47:    7 place des Minimes
+    48:    42300 Roanne - France
+    49:    tel: (33).04.77.23.60.30
+    50:    fax: (33).04.77.23.60.31
+    51:    www.siemens.com/plm
+    52: 
+    53:    Copyright 2015 Siemens Industry Software NV
+    54: ******************************************************************************* */
+    55: 
+    56: #define _SUBMODELNAME_ "UD00"
+    57: 
+    58: /* >>>>>>>>>>>>Insert Private Code Here. */
+    59: #define MAX_NSTAGES 8
+    60: #define PERIOD c[9]
+    61: #define TNEXT  c[10]
+    62: /* <<<<<<<<<<<<End of Private Code. */
+    63: 
+    64: 
+    65: /* There are 25 real parameters:
+    66: 
+    67:    tstart time at which duty cycle starts [s]
+    68:    start1 output at start of stage 1      [null]
+    69:    end1   output at end of stage 1        [null]
+    70:    t1     duration of stage 1             [s]
+    71:    start2 output at start of stage 2      [null]
+    72:    end2   output at end of stage 2        [null]
+    73:    t2     duration of stage 2             [s]
+    74:    start3 output at start of stage 3      [null]
+    75:    end3   output at end of stage 3        [null]
+    76:    t3     duration of stage 3             [s]
+    77:    start4 output at start of stage 4      [null]
+    78:    end4   output at end of stage 4        [null]
+    79:    t4     duration of stage 4             [s]
+    80:    start5 output at start of stage 5      [null]
+    81:    end5   output at end of stage 5        [null]
+    82:    t5     duration of stage 5             [s]
+    83:    start6 output at start of stage 6      [null]
+    84:    end6   output at end of stage 6        [null]
+    85:    t6     duration of stage 6             [s]
+    86:    start7 output at start of stage 7      [null]
+    87:    end7   output at end of stage 7        [null]
+    88:    t7     duration of stage 7             [s]
+    89:    start8 output at start of stage 8      [null]
+    90:    end8   output at end of stage 8        [null]
+    91:    t8     duration of stage 8             [s]
+    92: */
+    93: 
+    94: 
+    95: /* There are 2 integer parameters:
+    96: 
+    97:    nstages  number of stages
+    98:    iscyclic cyclic          
+    99: */
+   100: 
+   101: void ud00in_(int *n, double rp[25], int ip[2], double c[11], int ic[3])
+   102: 
+   103: {
+   104:    int loop, error;
+   105: /* >>>>>>>>>>>>Extra Initialization Function Declarations Here. */
+   106:    int i;
+   107: /* <<<<<<<<<<<<End of Extra Initialization declarations. */
+   108:    int nstages, iscyclic;
+   109:    double tstart, start1, end1, t1, start2, end2, t2, start3, end3, t3
+   110:       , start4, end4, t4, start5, end5, t5, start6, end6, t6, start7, 
+   111:       end7, t7, start8, end8, t8;
+   112: 
+   113:    nstages    = ip[0];
+   114:    iscyclic   = ip[1];
+   115: 
+   116:    tstart     = rp[0];
+   117:    start1     = rp[1];
+   118:    end1       = rp[2];
+   119:    t1         = rp[3];
+   120:    start2     = rp[4];
+   121:    end2       = rp[5];
+   122:    t2         = rp[6];
+   123:    start3     = rp[7];
+   124:    end3       = rp[8];
+   125:    t3         = rp[9];
+   126:    start4     = rp[10];
+   127:    end4       = rp[11];
+   128:    t4         = rp[12];
+   129:    start5     = rp[13];
+   130:    end5       = rp[14];
+   131:    t5         = rp[15];
+   132:    start6     = rp[16];
+   133:    end6       = rp[17];
+   134:    t6         = rp[18];
+   135:    start7     = rp[19];
+   136:    end7       = rp[20];
+   137:    t7         = rp[21];
+   138:    start8     = rp[22];
+   139:    end8       = rp[23];
+   140:    t8         = rp[24];
+   141:    loop = 0;
+   142:    error = 0;
+   143: 
+   144: /*
+   145:    If necessary, check values of the following:
+   146: 
+   147:    rp[0..24]
+   148: */
+   149: 
+   150: 
+   151: /* >>>>>>>>>>>>Initialization Function Check Statements. */
+   152: 
+   153:    c[0] = rp[0];
+   154: 
+   155:    for(i=1;i<=nstages;i++)
+   156:    {
+   157:       c[i] = c[i-1] + rp[3*i];
+   158: 
+   159:       if(c[i] <= c[i-1])
+   160:       {
+   161:          amefprintf(stderr, "Stage %d has duration %g\n", i, rp[3*i]);
+   162:          amefprintf(stderr, "This is not possible");
+   163:          error = 2;
+   164:          break;
+   165:       }
+   166:    }
+   167: 
+   168: /* <<<<<<<<<<<<End of Initialization Check Statements. */
+   169: 
+   170: /*   Integer parameter checking:   */
+   171: 
+   172:    if (nstages < 1 || nstages > 8)
+   173:    {
+   174:       amefprintf(stderr, "\nnumber of stages must be in range [1..8].\n");
+   175:       error = 2;
+   176:    }
+   177:    if (iscyclic < 1 || iscyclic > 2)
+   178:    {
+   179:       amefprintf(stderr, "\ncyclic must be in range [1..2].\n");
+   180:       error = 2;
+   181:    }
+   182: 
+   183:    if(ameHandleSubmodelError(_SUBMODELNAME_, *n, error))
+   184:    {
+   185:       return;
+   186:    }
+   187: 
+   188: 
+   189: /* >>>>>>>>>>>>Initialization Function Executable Statements. */
+   190:  
+   191:    /* Cycle index (reference is 0 for "inside de definition cycle"). */
+   192: 
+   193:    ic[0] = 0;
+   194:    ic[1] = 0;
+   195: 
+   196:    /* Flag indicating whether warning has already been displayed or not. */
+   197:    ic[2] = 0;
+   198: 
+   199:    if (iscyclic == 2)
+   200:    {
+   201:       double relative_start;
+   202: 
+   203:       PERIOD = c[nstages] - c[0];
+   204: 
+   205:       relative_start = tstart - getstarttime_();
+   206:       if (relative_start == 0.0)
+   207:       {
+   208:          ic[0] = 1;
+   209:          TNEXT = rp[3] + getstarttime_();
+   210:       }
+   211:       else if (relative_start > 0.0)
+   212:       {
+   213:          ic[0] = 0;
+   214:          TNEXT = tstart;
+   215:       }
+   216:       else if (relative_start < 0.0)
+   217:       {
+   218:          TNEXT = tstart;
+   219: 
+   220:          for(i=0;i<=nstages;i++)
+   221:          {
+   222:             ic[0] = i;
+   223:             if(0.0 < c[i])
+   224:             {
+   225:                /* This counts as interval i. */
+   226:                break;
+   227:             }
+   228:             TNEXT += rp[3*(i+1)];
+   229:          }
+   230:       }
+   231:    }
+   232: /* <<<<<<<<<<<<End of Initialization Executable Statements. */
+   233: }
+   234: 
+   235: /*  There is 1 port.
+   236: 
+   237:    Port 1 has 1 variable:
+   238: 
+   239:       1 output     user defined duty cycle output [null] basic variable output
+   240: */
+   241: 
+   242: /*  There are 0 internal variables.
+   243: 
+   244: */
+   245: 
+   246: void ud00_(int *n, double *output, double rp[25], int ip[2]
+   247:       , double c[11], int ic[3], int *flag, double *t)
+   248: 
+   249: {
+   250:    int loop, logi;
+   251: /* >>>>>>>>>>>>Extra Calculation Function Declarations Here. */
+   252:    int i;
+   253:    double svalue, evalue, duration, fraction;
+   254: /* <<<<<<<<<<<<End of Extra Calculation declarations. */
+   255:    int nstages, iscyclic;
+   256:    double tstart, start1, end1, t1, start2, end2, t2, start3, end3, t3
+   257:       , start4, end4, t4, start5, end5, t5, start6, end6, t6, start7, 
+   258:       end7, t7, start8, end8, t8;
+   259: 
+   260:    nstages    = ip[0];
+   261:    iscyclic   = ip[1];
+   262: 
+   263:    tstart     = rp[0];
+   264:    start1     = rp[1];
+   265:    end1       = rp[2];
+   266:    t1         = rp[3];
+   267:    start2     = rp[4];
+   268:    end2       = rp[5];
+   269:    t2         = rp[6];
+   270:    start3     = rp[7];
+   271:    end3       = rp[8];
+   272:    t3         = rp[9];
+   273:    start4     = rp[10];
+   274:    end4       = rp[11];
+   275:    t4         = rp[12];
+   276:    start5     = rp[13];
+   277:    end5       = rp[14];
+   278:    t5         = rp[15];
+   279:    start6     = rp[16];
+   280:    end6       = rp[17];
+   281:    t6         = rp[18];
+   282:    start7     = rp[19];
+   283:    end7       = rp[20];
+   284:    t7         = rp[21];
+   285:    start8     = rp[22];
+   286:    end8       = rp[23];
+   287:    t8         = rp[24];
+   288:    logi = 0;
+   289:    loop = 0;
+   290: 
+   291: /*
+   292:    Set all submodel outputs below:
+   293: 
+   294:    *output     = ??;
+   295: */
+   296: 
+   297: 
+   298: 
+   299: /* >>>>>>>>>>>>Calculation Function Executable Statements. */
+   300:  
+   301:  
+   302:    if (iscyclic == 2)
+   303:    {
+   304:       if (*t <= tstart)
+   305:       {
+   306:          *output = start1;
+   307:       }
+   308:       else
+   309:       {
+   310:          if (firstc_() && isconrun_())
+   311:          {
+   312:             /* Continuation run: need to find correct TNEXT and interval ic[0] that depend on t and not tstart. */
+   313:             int num_cycles;
+   314: 
+   315:             num_cycles = (int)((*t - tstart)/PERIOD);
+   316:             TNEXT = tstart + num_cycles*PERIOD;
+   317: 
+   318:             for (i=0; i<=nstages; i++)
+   319:             {
+   320:                if (*t - num_cycles*PERIOD < c[i])
+   321:                {
+   322:                   /* This counts as interval i. */
+   323:                   break;
+   324:                }
+   325:                TNEXT += rp[3*(i+1)];
+   326:             }
+   327:             ic[0] = i;
+   328:          }
+   329: 
+   330:          if (*flag == 0)
+   331:          {
+   332:             if (*t >= TNEXT)
+   333:             {
+   334:                ic[0] += 1;
+   335:                if (ic[0] > nstages)
+   336:                   ic[0] = 1;
+   337:                TNEXT += rp[3*(ic[0])];
+   338:             }
+   339:          }
+   340: 
+   341:          if(ic[0] == 0)
+   342:          {
+   343:             *output = start1;
+   344:          }
+   345:          else if(ic[0] == nstages+1)
+   346:          {
+   347:             *output = rp[3*(ic[0]-1)-1];
+   348:          }
+   349:          else
+   350:          {
+   351:             /* Interval ic[0] in range 1 to 8. */
+   352:             
+   353:             svalue = rp[3*ic[0]-2];
+   354:             evalue = rp[3*ic[0]-1];
+   355:             duration = rp[3*ic[0]];
+   356: 
+   357:             fraction = (duration - TNEXT + *t) / duration;
+   358: 
+   359:             *output = svalue + fraction * (evalue-svalue);
+   360:          }
+   361:       }
+   362: 
+   363:       if (*t >= TNEXT)
+   364:       {
+   365:          distim_(&TNEXT);
+   366:       }
+   367: 
+   368:    }
+   369:    else
+   370:    {
+   371:       /* Non cyclic mode. Can use distim for disc handling. */
+   372:  
+   373:       if(*flag == 0)
+   374:       {
+   375:          for(i=0;i<=nstages;i++)
+   376:          {
+   377:             ic[0] = i;
+   378: 
+   379:             if(*t < c[i])
+   380:             {
+   381:                /* This counts as interval i. */
+   382: 
+   383:                break;
+   384:             }
+   385:             if(i == nstages)
+   386:             {
+   387:                /* Have gone past supplied data.
+   388:                   This counts as interval N+1. */
+   389: 
+   390:                ic[0] = nstages+1;
+   391: 
+   392:                if (nstages < MAX_NSTAGES && ic[2] == 0)
+   393:                {
+   394:                   /* Intrapolating into a region defined by real
+   395:                      parameters not defined by user... */
+   396: 
+   397:                   amefprintf(stderr, "\nEntering into stage %d which has not been defined (t=%gs).", nstages+1, *t);
+   398:                   amefprintf(stderr, "\nThe stages are set for time up to %gs.", c[nstages]);
+   399:                   amefprintf(stderr, "\nOutput value will remain constant to %g.", rp[3*(ic[0]-1)-1]);
+   400:                   amefprintf(stderr, "\nWarning in %s instance %d\n", _SUBMODELNAME_, *n);
+   401:                   ic[2] = 1;
+   402:                }
+   403:             }
+   404:          }
+   405:       }
+   406:       if(ic[0] == 0)
+   407:       {
+   408:          *output = rp[1];
+   409: 
+   410:          if(*t >= c[0])
+   411:          {
+   412:             distim_(&c[0]);
+   413:          }
+   414:       }
+   415:       else if(ic[0] == nstages+1)
+   416:       {
+   417:          *output = rp[3*(ic[0]-1)-1];
+   418:       }
+   419:       else
+   420:       {
+   421:          /* Interval ic[0] in range 1 to nstages. */
+   422: 
+   423:          svalue = rp[3*ic[0]-2];
+   424:          evalue = rp[3*ic[0]-1];
+   425:          duration = rp[3*ic[0]];
+   426:          fraction = (*t-c[ic[0]-1])/duration;
+   427: 
+   428:          *output = svalue + fraction * (evalue-svalue);
+   429: 
+   430:          /* Check for progression to stage ic[0]+1. */
+   431: 
+   432:          if(*t >= c[ic[0]])
+   433:          {
+   434:             distim_(&c[ic[0]]);
+   435:          }
+   436:       }
+   437:    }
+   438: 
+   439: /* <<<<<<<<<<<<End of Calculation Executable Statements. */
+   440: }
+   441: 
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libsig\submodels\UD00.spe
+==============================================================================
+...
+     1: <?xml version="1.0" encoding="ISO-8859-1"?>
+     2: <!DOCTYPE SPE>
+     3: <SPE DOC_VERSION="2" AME_VERSION="16.0.0 - DEV - 19/03/17 23:09 - 62107-57035 2017">
+     4: 
+     5:  <SUBMODEL>
+     6:   <SUB_TYPE>0</SUB_TYPE>
+     7:   <SUB_ID_MAX>28</SUB_ID_MAX>
+     8:   <DEFAULT_ICON>piecewiselinear</DEFAULT_ICON>
+     9:   <SUB_LABEL>piecewise linear signal source</SUB_LABEL>
+    10:   <SUB_UNIT>0</SUB_UNIT>
+    11:   <R_STORES_NUMBER>11</R_STORES_NUMBER>
+    12:   <I_STORES_NUMBER>3</I_STORES_NUMBER>
+    13:   <DISCONTINUITY>1</DISCONTINUITY>
+    14:   <TIME_REQUIRED>1</TIME_REQUIRED>
+    15:   <OUTPUT_TYPE>1</OUTPUT_TYPE>
+    16:   <RPARAMS_LIST>
+    17:    <RPARAM>
+    18:     <SUB_ID>2</SUB_ID>
+    19:     <TITLE>time at which duty cycle starts</TITLE>
+    20:     <VARNAME>tstart</VARNAME>
+    21:     <VISIBILITY>True</VISIBILITY>
+    22:     <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+    23:     <VALUE>0.00000000000000e+00</VALUE>
+    24:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+    25:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+    26:     <UNITS>s</UNITS>
+    27:    </RPARAM>
+    28:    <RPARAM>
+    29:     <SUB_ID>3</SUB_ID>
+    30:     <TITLE>output at start of stage 1</TITLE>
+    31:     <VARNAME>start1</VARNAME>
+    32:     <VISIBILITY>True</VISIBILITY>
+    33:     <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+    34:     <VALUE>0.00000000000000e+00</VALUE>
+    35:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+    36:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+    37:     <UNITS>null</UNITS>
+    38:    </RPARAM>
+    39:    <RPARAM>
+    40:     <SUB_ID>4</SUB_ID>
+    41:     <TITLE>output at end of stage 1</TITLE>
+    42:     <VARNAME>end1</VARNAME>
+    43:     <VISIBILITY>True</VISIBILITY>
+    44:     <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+    45:     <VALUE>0.00000000000000e+00</VALUE>
+    46:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+    47:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+    48:     <UNITS>null</UNITS>
+    49:    </RPARAM>
+    50:    <RPARAM>
+    51:     <SUB_ID>5</SUB_ID>
+    52:     <TITLE>duration of stage 1</TITLE>
+    53:     <VARNAME>t1</VARNAME>
+    54:     <VISIBILITY>True</VISIBILITY>
+    55:     <DEF_VALUE>4.00000000000000e+00</DEF_VALUE>
+    56:     <VALUE>4.00000000000000e+00</VALUE>
+    57:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+    58:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+    59:     <UNITS>s</UNITS>
+    60:    </RPARAM>
+    61:    <RPARAM>
+    62:     <SUB_ID>6</SUB_ID>
+    63:     <TITLE>output at start of stage 2</TITLE>
+    64:     <VARNAME>start2</VARNAME>
+    65:     <VISIBILITY>(nstages == 2)||(nstages == 3)||(nstages == 4)||(nstages == 5)||(nstages == 6)||(nstages == 7)||(nstages == 8)</VISIBILITY>
+    66:     <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+    67:     <VALUE>0.00000000000000e+00</VALUE>
+    68:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+    69:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+    70:     <UNITS>null</UNITS>
+    71:    </RPARAM>
+    72:    <RPARAM>
+    73:     <SUB_ID>7</SUB_ID>
+    74:     <TITLE>output at end of stage 2</TITLE>
+    75:     <VARNAME>end2</VARNAME>
+    76:     <VISIBILITY>(nstages == 2)||(nstages == 3)||(nstages == 4)||(nstages == 5)||(nstages == 6)||(nstages == 7)||(nstages == 8)</VISIBILITY>
+    77:     <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+    78:     <VALUE>0.00000000000000e+00</VALUE>
+    79:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+    80:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+    81:     <UNITS>null</UNITS>
+    82:    </RPARAM>
+    83:    <RPARAM>
+    84:     <SUB_ID>8</SUB_ID>
+    85:     <TITLE>duration of stage 2</TITLE>
+    86:     <VARNAME>t2</VARNAME>
+    87:     <VISIBILITY>(nstages == 2)||(nstages == 3)||(nstages == 4)||(nstages == 5)||(nstages == 6)||(nstages == 7)||(nstages == 8)</VISIBILITY>
+    88:     <DEF_VALUE>3.00000000000000e+00</DEF_VALUE>
+    89:     <VALUE>3.00000000000000e+00</VALUE>
+    90:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+    91:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+    92:     <UNITS>s</UNITS>
+    93:    </RPARAM>
+    94:    <RPARAM>
+    95:     <SUB_ID>9</SUB_ID>
+    96:     <TITLE>output at start of stage 3</TITLE>
+    97:     <VARNAME>start3</VARNAME>
+    98:     <VISIBILITY>(nstages == 3)||(nstages == 4)||(nstages == 5)||(nstages == 6)||(nstages == 7)||(nstages == 8)</VISIBILITY>
+    99:     <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+   100:     <VALUE>0.00000000000000e+00</VALUE>
+   101:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   102:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   103:     <UNITS>null</UNITS>
+   104:    </RPARAM>
+   105:    <RPARAM>
+   106:     <SUB_ID>10</SUB_ID>
+   107:     <TITLE>output at end of stage 3</TITLE>
+   108:     <VARNAME>end3</VARNAME>
+   109:     <VISIBILITY>(nstages == 3)||(nstages == 4)||(nstages == 5)||(nstages == 6)||(nstages == 7)||(nstages == 8)</VISIBILITY>
+   110:     <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+   111:     <VALUE>0.00000000000000e+00</VALUE>
+   112:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   113:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   114:     <UNITS>null</UNITS>
+   115:    </RPARAM>
+   116:    <RPARAM>
+   117:     <SUB_ID>11</SUB_ID>
+   118:     <TITLE>duration of stage 3</TITLE>
+   119:     <VARNAME>t3</VARNAME>
+   120:     <VISIBILITY>(nstages == 3)||(nstages == 4)||(nstages == 5)||(nstages == 6)||(nstages == 7)||(nstages == 8)</VISIBILITY>
+   121:     <DEF_VALUE>3.00000000000000e+00</DEF_VALUE>
+   122:     <VALUE>3.00000000000000e+00</VALUE>
+   123:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+   124:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   125:     <UNITS>s</UNITS>
+   126:    </RPARAM>
+   127:    <RPARAM>
+   128:     <SUB_ID>12</SUB_ID>
+   129:     <TITLE>output at start of stage 4</TITLE>
+   130:     <VARNAME>start4</VARNAME>
+   131:     <VISIBILITY>(nstages == 4)||(nstages == 5)||(nstages == 6)||(nstages == 7)||(nstages == 8)</VISIBILITY>
+   132:     <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+   133:     <VALUE>0.00000000000000e+00</VALUE>
+   134:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   135:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   136:     <UNITS>null</UNITS>
+   137:    </RPARAM>
+   138:    <RPARAM>
+   139:     <SUB_ID>13</SUB_ID>
+   140:     <TITLE>output at end of stage 4</TITLE>
+   141:     <VARNAME>end4</VARNAME>
+   142:     <VISIBILITY>(nstages == 4)||(nstages == 5)||(nstages == 6)||(nstages == 7)||(nstages == 8)</VISIBILITY>
+   143:     <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+   144:     <VALUE>0.00000000000000e+00</VALUE>
+   145:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   146:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   147:     <UNITS>null</UNITS>
+   148:    </RPARAM>
+   149:    <RPARAM>
+   150:     <SUB_ID>14</SUB_ID>
+   151:     <TITLE>duration of stage 4</TITLE>
+   152:     <VARNAME>t4</VARNAME>
+   153:     <VISIBILITY>(nstages == 4)||(nstages == 5)||(nstages == 6)||(nstages == 7)||(nstages == 8)</VISIBILITY>
+   154:     <DEF_VALUE>3.00000000000000e+00</DEF_VALUE>
+   155:     <VALUE>3.00000000000000e+00</VALUE>
+   156:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+   157:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   158:     <UNITS>s</UNITS>
+   159:    </RPARAM>
+   160:    <RPARAM>
+   161:     <SUB_ID>15</SUB_ID>
+   162:     <TITLE>output at start of stage 5</TITLE>
+   163:     <VARNAME>start5</VARNAME>
+   164:     <VISIBILITY>(nstages == 5)||(nstages == 6)||(nstages == 7)||(nstages == 8)</VISIBILITY>
+   165:     <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+   166:     <VALUE>0.00000000000000e+00</VALUE>
+   167:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   168:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   169:     <UNITS>null</UNITS>
+   170:    </RPARAM>
+   171:    <RPARAM>
+   172:     <SUB_ID>16</SUB_ID>
+   173:     <TITLE>output at end of stage 5</TITLE>
+   174:     <VARNAME>end5</VARNAME>
+   175:     <VISIBILITY>(nstages == 5)||(nstages == 6)||(nstages == 7)||(nstages == 8)</VISIBILITY>
+   176:     <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+   177:     <VALUE>0.00000000000000e+00</VALUE>
+   178:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   179:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   180:     <UNITS>null</UNITS>
+   181:    </RPARAM>
+   182:    <RPARAM>
+   183:     <SUB_ID>17</SUB_ID>
+   184:     <TITLE>duration of stage 5</TITLE>
+   185:     <VARNAME>t5</VARNAME>
+   186:     <VISIBILITY>(nstages == 5)||(nstages == 6)||(nstages == 7)||(nstages == 8)</VISIBILITY>
+   187:     <DEF_VALUE>3.00000000000000e+00</DEF_VALUE>
+   188:     <VALUE>3.00000000000000e+00</VALUE>
+   189:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+   190:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   191:     <UNITS>s</UNITS>
+   192:    </RPARAM>
+   193:    <RPARAM>
+   194:     <SUB_ID>18</SUB_ID>
+   195:     <TITLE>output at start of stage 6</TITLE>
+   196:     <VARNAME>start6</VARNAME>
+   197:     <VISIBILITY>(nstages == 6)||(nstages == 7)||(nstages == 8)</VISIBILITY>
+   198:     <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+   199:     <VALUE>0.00000000000000e+00</VALUE>
+   200:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   201:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   202:     <UNITS>null</UNITS>
+   203:    </RPARAM>
+   204:    <RPARAM>
+   205:     <SUB_ID>19</SUB_ID>
+   206:     <TITLE>output at end of stage 6</TITLE>
+   207:     <VARNAME>end6</VARNAME>
+   208:     <VISIBILITY>(nstages == 6)||(nstages == 7)||(nstages == 8)</VISIBILITY>
+   209:     <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+   210:     <VALUE>0.00000000000000e+00</VALUE>
+   211:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   212:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   213:     <UNITS>null</UNITS>
+   214:    </RPARAM>
+   215:    <RPARAM>
+   216:     <SUB_ID>20</SUB_ID>
+   217:     <TITLE>duration of stage 6</TITLE>
+   218:     <VARNAME>t6</VARNAME>
+   219:     <VISIBILITY>(nstages == 6)||(nstages == 7)||(nstages == 8)</VISIBILITY>
+   220:     <DEF_VALUE>3.00000000000000e+00</DEF_VALUE>
+   221:     <VALUE>3.00000000000000e+00</VALUE>
+   222:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+   223:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   224:     <UNITS>s</UNITS>
+   225:    </RPARAM>
+   226:    <RPARAM>
+   227:     <SUB_ID>21</SUB_ID>
+   228:     <TITLE>output at start of stage 7</TITLE>
+   229:     <VARNAME>start7</VARNAME>
+   230:     <VISIBILITY>(nstages == 7)||(nstages == 8)</VISIBILITY>
+   231:     <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+   232:     <VALUE>0.00000000000000e+00</VALUE>
+   233:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   234:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   235:     <UNITS>null</UNITS>
+   236:    </RPARAM>
+   237:    <RPARAM>
+   238:     <SUB_ID>22</SUB_ID>
+   239:     <TITLE>output at end of stage 7</TITLE>
+   240:     <VARNAME>end7</VARNAME>
+   241:     <VISIBILITY>(nstages == 7)||(nstages == 8)</VISIBILITY>
+   242:     <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+   243:     <VALUE>0.00000000000000e+00</VALUE>
+   244:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   245:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   246:     <UNITS>null</UNITS>
+   247:    </RPARAM>
+   248:    <RPARAM>
+   249:     <SUB_ID>23</SUB_ID>
+   250:     <TITLE>duration of stage 7</TITLE>
+   251:     <VARNAME>t7</VARNAME>
+   252:     <VISIBILITY>(nstages == 7)||(nstages == 8)</VISIBILITY>
+   253:     <DEF_VALUE>3.00000000000000e+00</DEF_VALUE>
+   254:     <VALUE>3.00000000000000e+00</VALUE>
+   255:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+   256:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   257:     <UNITS>s</UNITS>
+   258:    </RPARAM>
+   259:    <RPARAM>
+   260:     <SUB_ID>24</SUB_ID>
+   261:     <TITLE>output at start of stage 8</TITLE>
+   262:     <VARNAME>start8</VARNAME>
+   263:     <VISIBILITY>(nstages == 8)</VISIBILITY>
+   264:     <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+   265:     <VALUE>0.00000000000000e+00</VALUE>
+   266:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   267:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   268:     <UNITS>null</UNITS>
+   269:    </RPARAM>
+   270:    <RPARAM>
+   271:     <SUB_ID>25</SUB_ID>
+   272:     <TITLE>output at end of stage 8</TITLE>
+   273:     <VARNAME>end8</VARNAME>
+   274:     <VISIBILITY>(nstages == 8)</VISIBILITY>
+   275:     <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+   276:     <VALUE>0.00000000000000e+00</VALUE>
+   277:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   278:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   279:     <UNITS>null</UNITS>
+   280:    </RPARAM>
+   281:    <RPARAM>
+   282:     <SUB_ID>26</SUB_ID>
+   283:     <TITLE>duration of stage 8</TITLE>
+   284:     <VARNAME>t8</VARNAME>
+   285:     <VISIBILITY>(nstages == 8)</VISIBILITY>
+   286:     <DEF_VALUE>3.00000000000000e+00</DEF_VALUE>
+   287:     <VALUE>3.00000000000000e+00</VALUE>
+   288:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+   289:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   290:     <UNITS>s</UNITS>
+   291:    </RPARAM>
+   292:   </RPARAMS_LIST>
+   293:   <IPARAMS_LIST>
+   294:    <IPARAM>
+   295:     <SUB_ID>27</SUB_ID>
+   296:     <TITLE>number of stages</TITLE>
+   297:     <VARNAME>nstages</VARNAME>
+   298:     <VISIBILITY>True</VISIBILITY>
+   299:     <DEF_VALUE>3</DEF_VALUE>
+   300:     <VALUE>3</VALUE>
+   301:     <MIN_VALUE>1</MIN_VALUE>
+   302:     <MAX_VALUE>8</MAX_VALUE>
+   303:     <ENUM_LIST>
+   304:      <ENUM>
+   305:       <ENUM_STRING>1</ENUM_STRING>
+   306:      </ENUM>
+   307:      <ENUM>
+   308:       <ENUM_STRING>2</ENUM_STRING>
+   309:      </ENUM>
+   310:      <ENUM>
+   311:       <ENUM_STRING>3</ENUM_STRING>
+   312:      </ENUM>
+   313:      <ENUM>
+   314:       <ENUM_STRING>4</ENUM_STRING>
+   315:      </ENUM>
+   316:      <ENUM>
+   317:       <ENUM_STRING>5</ENUM_STRING>
+   318:      </ENUM>
+   319:      <ENUM>
+   320:       <ENUM_STRING>6</ENUM_STRING>
+   321:      </ENUM>
+   322:      <ENUM>
+   323:       <ENUM_STRING>7</ENUM_STRING>
+   324:      </ENUM>
+   325:      <ENUM>
+   326:       <ENUM_STRING>8</ENUM_STRING>
+   327:      </ENUM>
+   328:     </ENUM_LIST>
+   329:    </IPARAM>
+   330:    <IPARAM>
+   331:     <SUB_ID>28</SUB_ID>
+   332:     <TITLE>cyclic</TITLE>
+   333:     <VARNAME>iscyclic</VARNAME>
+   334:     <VISIBILITY>True</VISIBILITY>
+   335:     <DEF_VALUE>1</DEF_VALUE>
+   336:     <VALUE>1</VALUE>
+   337:     <MIN_VALUE>1</MIN_VALUE>
+   338:     <MAX_VALUE>2</MAX_VALUE>
+   339:     <ENUM_LIST>
+   340:      <ENUM>
+   341:       <ENUM_STRING>no</ENUM_STRING>
+   342:      </ENUM>
+   343:      <ENUM>
+   344:       <ENUM_STRING>yes</ENUM_STRING>
+   345:      </ENUM>
+   346:     </ENUM_LIST>
+   347:    </IPARAM>
+   348:   </IPARAMS_LIST>
+   349:   <EVARS_LIST>
+   350:    <PORT>
+   351:     <EVAR>
+   352:      <SUB_ID>1</SUB_ID>
+   353:      <TITLE>user defined duty cycle output</TITLE>
+   354:      <VARNAME>output</VARNAME>
+   355:      <VISIBILITY>True</VISIBILITY>
+   356:      <TYPE>0</TYPE>
+   357:      <DIMENSION>1</DIMENSION>
+   358:      <IO>2</IO>
+   359:      <UNITS>null</UNITS>
+   360:     </EVAR>
+   361:    </PORT>
+   362:   </EVARS_LIST>
+   363:   <EMBEDDED_TOOLS_LIST>
+   364:    <EMBEDDED_TOOL>
+   365:     <EDITION_TOOL>ILApp $AME/libsig/utils/SIGPiecewiseLinearDesigner_app/SIGPiecewiseLinearDesigner.app</EDITION_TOOL>
+   366:     <TOOL_NAME>piecewise linear designer</TOOL_NAME>
+   367:     <TOOL_DEFAULT_ACTION_MODES>4</TOOL_DEFAULT_ACTION_MODES>
+   368:    </EMBEDDED_TOOL>
+   369:   </EMBEDDED_TOOLS_LIST>
+   370:   <SUBIDS_RESET>0</SUBIDS_RESET>
+   371:  </SUBMODEL>
+   372: </SPE>

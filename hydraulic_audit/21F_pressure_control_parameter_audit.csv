@@ -1,0 +1,37 @@
+﻿instance,submodel,parameter,amesim_value,amesim_unit,python_value_before,python_value,python_unit,conversion_factor,expected_python_value,match
+presscontrol02,CV010,check valve cracking pressure,0.0,bar,0.0,0.0,Pa,100000.0,0.0,PASS
+presscontrol02,CV010,check valve flow rate pressure gradient,500.0,L/min/bar,8e-11,8.33333333333335e-08,m^3/s/Pa,1.66666666666667e-10,8.33333333333335e-08,PASS
+presscontrol02,CV010,valve hysteresis,0.0,bar,0.0,0.0,Pa,100000.0,0.0,PASS
+presscontrol02,CV010,index of hydraulic fluid,0.0,,0.0,0.0,,1.0,0.0,PASS
+presscontrol02_1,CV010,check valve cracking pressure,0.0,bar,0.0,0.0,Pa,100000.0,0.0,PASS
+presscontrol02_1,CV010,check valve flow rate pressure gradient,500.0,L/min/bar,8e-11,8.33333333333335e-08,m^3/s/Pa,1.66666666666667e-10,8.33333333333335e-08,PASS
+presscontrol02_1,CV010,valve hysteresis,0.0,bar,0.0,0.0,Pa,100000.0,0.0,PASS
+presscontrol02_1,CV010,index of hydraulic fluid,0.0,,0.0,0.0,,1.0,0.0,PASS
+presscontrol01,RV010,relief valve cracking pressure,160.0,bar,16000000.0,16000000.0,Pa,100000.0,16000000.0,PASS
+presscontrol01,RV010,relief valve flow rate pressure gradient,500.0,L/min/bar,8e-11,8.33333333333335e-08,m^3/s/Pa,1.66666666666667e-10,8.33333333333335e-08,PASS
+presscontrol01,RV010,valve hysteresis,0.0,bar,0.0,0.0,Pa,100000.0,0.0,PASS
+presscontrol01,RV010,index of hydraulic fluid,0.0,,0.0,0.0,,1.0,0.0,PASS
+presscontrol01_1,RV010,relief valve cracking pressure,90.0,bar,9000000.0,9000000.0,Pa,100000.0,9000000.0,PASS
+presscontrol01_1,RV010,relief valve flow rate pressure gradient,500.0,L/min/bar,8e-11,8.33333333333335e-08,m^3/s/Pa,1.66666666666667e-10,8.33333333333335e-08,PASS
+presscontrol01_1,RV010,valve hysteresis,0.0,bar,0.0,0.0,Pa,100000.0,0.0,PASS
+presscontrol01_1,RV010,index of hydraulic fluid,0.0,,0.0,0.0,,1.0,0.0,PASS
+presscontrol02_4,CV010,check valve cracking pressure,0.0,bar,0.0,0.0,Pa,100000.0,0.0,PASS
+presscontrol02_4,CV010,check valve flow rate pressure gradient,500.0,L/min/bar,8e-11,8.33333333333335e-08,m^3/s/Pa,1.66666666666667e-10,8.33333333333335e-08,PASS
+presscontrol02_4,CV010,valve hysteresis,0.0,bar,0.0,0.0,Pa,100000.0,0.0,PASS
+presscontrol02_4,CV010,index of hydraulic fluid,0.0,,0.0,0.0,,1.0,0.0,PASS
+presscontrol02_5,CV010,check valve cracking pressure,0.0,bar,0.0,0.0,Pa,100000.0,0.0,PASS
+presscontrol02_5,CV010,check valve flow rate pressure gradient,500.0,L/min/bar,8e-11,8.33333333333335e-08,m^3/s/Pa,1.66666666666667e-10,8.33333333333335e-08,PASS
+presscontrol02_5,CV010,valve hysteresis,0.0,bar,0.0,0.0,Pa,100000.0,0.0,PASS
+presscontrol02_5,CV010,index of hydraulic fluid,0.0,,0.0,0.0,,1.0,0.0,PASS
+presscontrol02_8,CV010,check valve cracking pressure,0.0,bar,0.0,0.0,Pa,100000.0,0.0,PASS
+presscontrol02_8,CV010,check valve flow rate pressure gradient,500.0,L/min/bar,8e-11,8.33333333333335e-08,m^3/s/Pa,1.66666666666667e-10,8.33333333333335e-08,PASS
+presscontrol02_8,CV010,valve hysteresis,0.0,bar,0.0,0.0,Pa,100000.0,0.0,PASS
+presscontrol02_8,CV010,index of hydraulic fluid,0.0,,0.0,0.0,,1.0,0.0,PASS
+presscontrol02_9,CV010,check valve cracking pressure,0.0,bar,0.0,0.0,Pa,100000.0,0.0,PASS
+presscontrol02_9,CV010,check valve flow rate pressure gradient,500.0,L/min/bar,8e-11,8.33333333333335e-08,m^3/s/Pa,1.66666666666667e-10,8.33333333333335e-08,PASS
+presscontrol02_9,CV010,valve hysteresis,0.0,bar,0.0,0.0,Pa,100000.0,0.0,PASS
+presscontrol02_9,CV010,index of hydraulic fluid,0.0,,0.0,0.0,,1.0,0.0,PASS
+presscontrol01_3,RV010,relief valve cracking pressure,150.0,bar,15000000.0,15000000.0,Pa,100000.0,15000000.0,PASS
+presscontrol01_3,RV010,relief valve flow rate pressure gradient,500.0,L/min/bar,8e-11,8.33333333333335e-08,m^3/s/Pa,1.66666666666667e-10,8.33333333333335e-08,PASS
+presscontrol01_3,RV010,valve hysteresis,0.0,bar,0.0,0.0,Pa,100000.0,0.0,PASS
+presscontrol01_3,RV010,index of hydraulic fluid,0.0,,0.0,0.0,,1.0,0.0,PASS

@@ -1,0 +1,193 @@
+﻿alias,data_path,parameter_type,title,unit,raw_value,resolved_value,value_unit
+dirvalve_1,qchar_P_A@dirvalve_1,ame_real_parameter,P-A characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_1,dpchar_P_A@dirvalve_1,ame_real_parameter,P-A corresponding pressure drop,bar,1,1,bar
+dirvalve_1,lamc_P_A@dirvalve_1,ame_real_parameter,P-A critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_1,qchar_P_B@dirvalve_1,ame_real_parameter,P-B characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_1,dpchar_P_B@dirvalve_1,ame_real_parameter,P-B corresponding pressure drop,bar,1,1,bar
+dirvalve_1,lamc_P_B@dirvalve_1,ame_real_parameter,P-B critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_1,qchar_T_B@dirvalve_1,ame_real_parameter,T-B characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_1,dpchar_T_B@dirvalve_1,ame_real_parameter,T-B corresponding pressure drop,bar,1,1,bar
+dirvalve_1,lamc_T_B@dirvalve_1,ame_real_parameter,T-B critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_1,qchar_T_A@dirvalve_1,ame_real_parameter,T-A characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_1,dpchar_T_A@dirvalve_1,ame_real_parameter,T-A corresponding pressure drop,bar,1,1,bar
+dirvalve_1,lamc_T_A@dirvalve_1,ame_real_parameter,T-A critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_1,tau@dirvalve_1,ame_real_parameter,valve time constant,s,0.05,0.05,s
+dirvalve_1,wn@dirvalve_1,ame_real_parameter,valve natural frequency,Hz,20,20,Hz
+dirvalve_1,zeta@dirvalve_1,ame_real_parameter,valve damping ratio,null,1.8,1.8,null
+dirvalve_1,spooldyn@dirvalve_1,ame_integer_parameter,spool dynamics,,1,1,
+dirvalve_1,frac_spool_pos_vs_input@dirvalve_1,ame_text_parameter,fractional spool position [null] function of Fractional displacement [null],,+(x<=0)*(-1+1*(x+1))+(0<x)*(0+1*(x-0)),+(x<=0)*(-1+1*(x+1))+(0<x)*(0+1*(x-0)),
+dirvalve_1,frac_area_P_A_vs_spool_pos@dirvalve_1,ame_text_parameter,P-A fractional area [null] function of fractional spool position [null],,+(x<=0)*(0+100*(x+1))+(0<x)*(100+0*(x-0)),+(x<=0)*(0+100*(x+1))+(0<x)*(100+0*(x-0)),
+dirvalve_1,frac_area_P_B_vs_spool_pos@dirvalve_1,ame_text_parameter,P-B fractional area [null] function of fractional spool position [null],,+(x<=0)*(100+0*(x+1))+(0<x)*(100-100*(x-0)),+(x<=0)*(100+0*(x+1))+(0<x)*(100-100*(x-0)),
+dirvalve_1,frac_area_T_B_vs_spool_pos@dirvalve_1,ame_text_parameter,T-B fractional area [null] function of fractional spool position [null],,+(x<=0)*(0+0*(x+1))+(0<x)*(0+100*(x-0)),+(x<=0)*(0+0*(x+1))+(0<x)*(0+100*(x-0)),
+dirvalve_1,frac_area_T_A_vs_spool_pos@dirvalve_1,ame_text_parameter,T-A fractional area [null] function of fractional spool position [null],,+(x<=0)*(100-100*(x+1))+(0<x)*(0+0*(x-0)),+(x<=0)*(100-100*(x+1))+(0<x)*(0+0*(x-0)),
+dirvalve_1,rhochar@dirvalve_1,ame_real_parameter,nominal density [kg/m**3],null,850,850,null
+dirvalve_1,nuchar@dirvalve_1,ame_real_parameter,nominal kinematic viscosity [cSt],null,60,60,null
+dirvalve_1,indexf@dirvalve_1,ame_integer_parameter,index of hydraulic fluid,,0,0,
+dirvalve_2,qchar_P_A@dirvalve_2,ame_real_parameter,P-A characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_2,dpchar_P_A@dirvalve_2,ame_real_parameter,P-A corresponding pressure drop,bar,1,1,bar
+dirvalve_2,lamc_P_A@dirvalve_2,ame_real_parameter,P-A critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_2,qchar_T_B@dirvalve_2,ame_real_parameter,T-B characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_2,dpchar_T_B@dirvalve_2,ame_real_parameter,T-B corresponding pressure drop,bar,1,1,bar
+dirvalve_2,lamc_T_B@dirvalve_2,ame_real_parameter,T-B critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_2,tau@dirvalve_2,ame_real_parameter,valve time constant,s,0.05,0.05,s
+dirvalve_2,wn@dirvalve_2,ame_real_parameter,valve natural frequency,Hz,20,20,Hz
+dirvalve_2,zeta@dirvalve_2,ame_real_parameter,valve damping ratio,null,1.8,1.8,null
+dirvalve_2,spooldyn@dirvalve_2,ame_integer_parameter,spool dynamics,,1,1,
+dirvalve_2,frac_spool_pos_vs_input@dirvalve_2,ame_text_parameter,fractional spool position [null] function of Fractional displacement [null],,0+1*(x-0),0+1*(x-0),
+dirvalve_2,frac_area_P_A_vs_spool_pos@dirvalve_2,ame_text_parameter,P-A fractional area [null] function of fractional spool position [null],,0+100*(x-0),0+100*(x-0),
+dirvalve_2,frac_area_T_B_vs_spool_pos@dirvalve_2,ame_text_parameter,T-B fractional area [null] function of fractional spool position [null],,0+100*(x-0),0+100*(x-0),
+dirvalve_2,rhochar@dirvalve_2,ame_real_parameter,nominal density [kg/m**3],null,850,850,null
+dirvalve_2,nuchar@dirvalve_2,ame_real_parameter,nominal kinematic viscosity [cSt],null,60,60,null
+dirvalve_2,indexf@dirvalve_2,ame_integer_parameter,index of hydraulic fluid,,0,0,
+dirvalve_6,qchar_P_B@dirvalve_6,ame_real_parameter,P-B characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_6,dpchar_P_B@dirvalve_6,ame_real_parameter,P-B corresponding pressure drop,bar,1,1,bar
+dirvalve_6,lamc_P_B@dirvalve_6,ame_real_parameter,P-B critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_6,qchar_P_A@dirvalve_6,ame_real_parameter,P-A characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_6,dpchar_P_A@dirvalve_6,ame_real_parameter,P-A corresponding pressure drop,bar,1,1,bar
+dirvalve_6,lamc_P_A@dirvalve_6,ame_real_parameter,P-A critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_6,qchar_T_A@dirvalve_6,ame_real_parameter,T-A characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_6,dpchar_T_A@dirvalve_6,ame_real_parameter,T-A corresponding pressure drop,bar,1,1,bar
+dirvalve_6,lamc_T_A@dirvalve_6,ame_real_parameter,T-A critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_6,qchar_T_B@dirvalve_6,ame_real_parameter,T-B characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_6,dpchar_T_B@dirvalve_6,ame_real_parameter,T-B corresponding pressure drop,bar,1,1,bar
+dirvalve_6,lamc_T_B@dirvalve_6,ame_real_parameter,T-B critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_6,tau@dirvalve_6,ame_real_parameter,valve time constant,s,0.05,0.05,s
+dirvalve_6,wn@dirvalve_6,ame_real_parameter,valve natural frequency,Hz,20,20,Hz
+dirvalve_6,zeta@dirvalve_6,ame_real_parameter,valve damping ratio,null,1.8,1.8,null
+dirvalve_6,spooldyn@dirvalve_6,ame_integer_parameter,spool dynamics,,1,1,
+dirvalve_6,frac_spool_pos_vs_input@dirvalve_6,ame_text_parameter,fractional spool position [null] function of Fractional displacement [null],,+(x<=0)*(-1+1*(x+1))+(0<x)*(0+1*(x-0)),+(x<=0)*(-1+1*(x+1))+(0<x)*(0+1*(x-0)),
+dirvalve_6,frac_area_P_B_vs_spool_pos@dirvalve_6,ame_text_parameter,P-B fractional area [null] function of fractional spool position [null],,+(x<=0)*(0+100*(x+1))+(0<x)*(100+0*(x-0)),+(x<=0)*(0+100*(x+1))+(0<x)*(100+0*(x-0)),
+dirvalve_6,frac_area_P_A_vs_spool_pos@dirvalve_6,ame_text_parameter,P-A fractional area [null] function of fractional spool position [null],,+(x<=0)*(100+0*(x+1))+(0<x)*(100-100*(x-0)),+(x<=0)*(100+0*(x+1))+(0<x)*(100-100*(x-0)),
+dirvalve_6,frac_area_T_A_vs_spool_pos@dirvalve_6,ame_text_parameter,T-A fractional area [null] function of fractional spool position [null],,+(x<=0)*(0+100*(x+1))+(0<x)*(100+0*(x-0)),+(x<=0)*(0+100*(x+1))+(0<x)*(100+0*(x-0)),
+dirvalve_6,frac_area_T_B_vs_spool_pos@dirvalve_6,ame_text_parameter,T-B fractional area [null] function of fractional spool position [null],,+(x<=0)*(100+0*(x+1))+(0<x)*(100-100*(x-0)),+(x<=0)*(100+0*(x+1))+(0<x)*(100-100*(x-0)),
+dirvalve_6,rhochar@dirvalve_6,ame_real_parameter,nominal density [kg/m**3],null,850,850,null
+dirvalve_6,nuchar@dirvalve_6,ame_real_parameter,nominal kinematic viscosity [cSt],null,60,60,null
+dirvalve_6,indexf@dirvalve_6,ame_integer_parameter,index of hydraulic fluid,,0,0,
+dirvalve_3,qchar_P_A@dirvalve_3,ame_real_parameter,P-A characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_3,dpchar_P_A@dirvalve_3,ame_real_parameter,P-A corresponding pressure drop,bar,1,1,bar
+dirvalve_3,lamc_P_A@dirvalve_3,ame_real_parameter,P-A critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_3,qchar_T_A@dirvalve_3,ame_real_parameter,T-A characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_3,dpchar_T_A@dirvalve_3,ame_real_parameter,T-A corresponding pressure drop,bar,1,1,bar
+dirvalve_3,lamc_T_A@dirvalve_3,ame_real_parameter,T-A critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_3,tau@dirvalve_3,ame_real_parameter,valve time constant,s,0.05,0.05,s
+dirvalve_3,wn@dirvalve_3,ame_real_parameter,valve natural frequency,Hz,20,20,Hz
+dirvalve_3,zeta@dirvalve_3,ame_real_parameter,valve damping ratio,null,1.8,1.8,null
+dirvalve_3,spooldyn@dirvalve_3,ame_integer_parameter,spool dynamics,,1,1,
+dirvalve_3,frac_spool_pos_vs_input@dirvalve_3,ame_text_parameter,fractional spool position [null] function of Fractional displacement [null],,0+1*(x-0),0+1*(x-0),
+dirvalve_3,frac_area_P_A_vs_spool_pos@dirvalve_3,ame_text_parameter,P-A fractional area [null] function of fractional spool position [null],,0+100*(x-0),0+100*(x-0),
+dirvalve_3,frac_area_T_A_vs_spool_pos@dirvalve_3,ame_text_parameter,T-A fractional area [null] function of fractional spool position [null],,100-100*(x-0),100-100*(x-0),
+dirvalve_3,rhochar@dirvalve_3,ame_real_parameter,nominal density [kg/m**3],null,850,850,null
+dirvalve_3,nuchar@dirvalve_3,ame_real_parameter,nominal kinematic viscosity [cSt],null,60,60,null
+dirvalve_3,indexf@dirvalve_3,ame_integer_parameter,index of hydraulic fluid,,0,0,
+dirvalve_8,qchar_P_A@dirvalve_8,ame_real_parameter,P-A characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_8,dpchar_P_A@dirvalve_8,ame_real_parameter,P-A corresponding pressure drop,bar,1,1,bar
+dirvalve_8,lamc_P_A@dirvalve_8,ame_real_parameter,P-A critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_8,qchar_P_B@dirvalve_8,ame_real_parameter,P-B characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_8,dpchar_P_B@dirvalve_8,ame_real_parameter,P-B corresponding pressure drop,bar,1,1,bar
+dirvalve_8,lamc_P_B@dirvalve_8,ame_real_parameter,P-B critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_8,qchar_T_B@dirvalve_8,ame_real_parameter,T-B characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_8,dpchar_T_B@dirvalve_8,ame_real_parameter,T-B corresponding pressure drop,bar,1,1,bar
+dirvalve_8,lamc_T_B@dirvalve_8,ame_real_parameter,T-B critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_8,qchar_T_A@dirvalve_8,ame_real_parameter,T-A characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_8,dpchar_T_A@dirvalve_8,ame_real_parameter,T-A corresponding pressure drop,bar,1,1,bar
+dirvalve_8,lamc_T_A@dirvalve_8,ame_real_parameter,T-A critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_8,tau@dirvalve_8,ame_real_parameter,valve time constant,s,0.05,0.05,s
+dirvalve_8,wn@dirvalve_8,ame_real_parameter,valve natural frequency,Hz,20,20,Hz
+dirvalve_8,zeta@dirvalve_8,ame_real_parameter,valve damping ratio,null,1.8,1.8,null
+dirvalve_8,spooldyn@dirvalve_8,ame_integer_parameter,spool dynamics,,1,1,
+dirvalve_8,frac_spool_pos_vs_input@dirvalve_8,ame_text_parameter,fractional spool position [null] function of Fractional displacement [null],,+(x<=0)*(-1+1*(x+1))+(0<x)*(0+1*(x-0)),+(x<=0)*(-1+1*(x+1))+(0<x)*(0+1*(x-0)),
+dirvalve_8,frac_area_P_A_vs_spool_pos@dirvalve_8,ame_text_parameter,P-A fractional area [null] function of fractional spool position [null],,+(x<=0)*(0+100*(x+1))+(0<x)*(100+0*(x-0)),+(x<=0)*(0+100*(x+1))+(0<x)*(100+0*(x-0)),
+dirvalve_8,frac_area_P_B_vs_spool_pos@dirvalve_8,ame_text_parameter,P-B fractional area [null] function of fractional spool position [null],,+(x<=0)*(100+0*(x+1))+(0<x)*(100-100*(x-0)),+(x<=0)*(100+0*(x+1))+(0<x)*(100-100*(x-0)),
+dirvalve_8,frac_area_T_B_vs_spool_pos@dirvalve_8,ame_text_parameter,T-B fractional area [null] function of fractional spool position [null],,+(x<=0)*(0+0*(x+1))+(0<x)*(0+100*(x-0)),+(x<=0)*(0+0*(x+1))+(0<x)*(0+100*(x-0)),
+dirvalve_8,frac_area_T_A_vs_spool_pos@dirvalve_8,ame_text_parameter,T-A fractional area [null] function of fractional spool position [null],,+(x<=0)*(100-100*(x+1))+(0<x)*(0+0*(x-0)),+(x<=0)*(100-100*(x+1))+(0<x)*(0+0*(x-0)),
+dirvalve_8,rhochar@dirvalve_8,ame_real_parameter,nominal density [kg/m**3],null,850,850,null
+dirvalve_8,nuchar@dirvalve_8,ame_real_parameter,nominal kinematic viscosity [cSt],null,60,60,null
+dirvalve_8,indexf@dirvalve_8,ame_integer_parameter,index of hydraulic fluid,,0,0,
+dirvalve_9,qchar_P_A@dirvalve_9,ame_real_parameter,P-A characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_9,dpchar_P_A@dirvalve_9,ame_real_parameter,P-A corresponding pressure drop,bar,1,1,bar
+dirvalve_9,lamc_P_A@dirvalve_9,ame_real_parameter,P-A critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_9,qchar_T_B@dirvalve_9,ame_real_parameter,T-B characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_9,dpchar_T_B@dirvalve_9,ame_real_parameter,T-B corresponding pressure drop,bar,1,1,bar
+dirvalve_9,lamc_T_B@dirvalve_9,ame_real_parameter,T-B critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_9,tau@dirvalve_9,ame_real_parameter,valve time constant,s,0.05,0.05,s
+dirvalve_9,wn@dirvalve_9,ame_real_parameter,valve natural frequency,Hz,20,20,Hz
+dirvalve_9,zeta@dirvalve_9,ame_real_parameter,valve damping ratio,null,1.8,1.8,null
+dirvalve_9,spooldyn@dirvalve_9,ame_integer_parameter,spool dynamics,,1,1,
+dirvalve_9,frac_spool_pos_vs_input@dirvalve_9,ame_text_parameter,fractional spool position [null] function of Fractional displacement [null],,0+1*(x-0),0+1*(x-0),
+dirvalve_9,frac_area_P_A_vs_spool_pos@dirvalve_9,ame_text_parameter,P-A fractional area [null] function of fractional spool position [null],,0+100*(x-0),0+100*(x-0),
+dirvalve_9,frac_area_T_B_vs_spool_pos@dirvalve_9,ame_text_parameter,T-B fractional area [null] function of fractional spool position [null],,0+100*(x-0),0+100*(x-0),
+dirvalve_9,rhochar@dirvalve_9,ame_real_parameter,nominal density [kg/m**3],null,850,850,null
+dirvalve_9,nuchar@dirvalve_9,ame_real_parameter,nominal kinematic viscosity [cSt],null,60,60,null
+dirvalve_9,indexf@dirvalve_9,ame_integer_parameter,index of hydraulic fluid,,0,0,
+dirvalve_10,qchar_P_A@dirvalve_10,ame_real_parameter,P-A characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_10,dpchar_P_A@dirvalve_10,ame_real_parameter,P-A corresponding pressure drop,bar,1,1,bar
+dirvalve_10,lamc_P_A@dirvalve_10,ame_real_parameter,P-A critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_10,qchar_T_A@dirvalve_10,ame_real_parameter,T-A characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_10,dpchar_T_A@dirvalve_10,ame_real_parameter,T-A corresponding pressure drop,bar,1,1,bar
+dirvalve_10,lamc_T_A@dirvalve_10,ame_real_parameter,T-A critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_10,tau@dirvalve_10,ame_real_parameter,valve time constant,s,0.05,0.05,s
+dirvalve_10,wn@dirvalve_10,ame_real_parameter,valve natural frequency,Hz,20,20,Hz
+dirvalve_10,zeta@dirvalve_10,ame_real_parameter,valve damping ratio,null,1.8,1.8,null
+dirvalve_10,spooldyn@dirvalve_10,ame_integer_parameter,spool dynamics,,1,1,
+dirvalve_10,frac_spool_pos_vs_input@dirvalve_10,ame_text_parameter,fractional spool position [null] function of Fractional displacement [null],,0+1*(x-0),0+1*(x-0),
+dirvalve_10,frac_area_P_A_vs_spool_pos@dirvalve_10,ame_text_parameter,P-A fractional area [null] function of fractional spool position [null],,0+100*(x-0),0+100*(x-0),
+dirvalve_10,frac_area_T_A_vs_spool_pos@dirvalve_10,ame_text_parameter,T-A fractional area [null] function of fractional spool position [null],,100-100*(x-0),100-100*(x-0),
+dirvalve_10,rhochar@dirvalve_10,ame_real_parameter,nominal density [kg/m**3],null,850,850,null
+dirvalve_10,nuchar@dirvalve_10,ame_real_parameter,nominal kinematic viscosity [cSt],null,60,60,null
+dirvalve_10,indexf@dirvalve_10,ame_integer_parameter,index of hydraulic fluid,,0,0,
+dirvalve_11,qchar_P_A@dirvalve_11,ame_real_parameter,P-A characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_11,dpchar_P_A@dirvalve_11,ame_real_parameter,P-A corresponding pressure drop,bar,1,1,bar
+dirvalve_11,lamc_P_A@dirvalve_11,ame_real_parameter,P-A critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_11,qchar_P_B@dirvalve_11,ame_real_parameter,P-B characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_11,dpchar_P_B@dirvalve_11,ame_real_parameter,P-B corresponding pressure drop,bar,1,1,bar
+dirvalve_11,lamc_P_B@dirvalve_11,ame_real_parameter,P-B critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_11,qchar_T_B@dirvalve_11,ame_real_parameter,T-B characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_11,dpchar_T_B@dirvalve_11,ame_real_parameter,T-B corresponding pressure drop,bar,1,1,bar
+dirvalve_11,lamc_T_B@dirvalve_11,ame_real_parameter,T-B critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_11,qchar_T_A@dirvalve_11,ame_real_parameter,T-A characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_11,dpchar_T_A@dirvalve_11,ame_real_parameter,T-A corresponding pressure drop,bar,1,1,bar
+dirvalve_11,lamc_T_A@dirvalve_11,ame_real_parameter,T-A critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_11,tau@dirvalve_11,ame_real_parameter,valve time constant,s,0.05,0.05,s
+dirvalve_11,wn@dirvalve_11,ame_real_parameter,valve natural frequency,Hz,20,20,Hz
+dirvalve_11,zeta@dirvalve_11,ame_real_parameter,valve damping ratio,null,1.8,1.8,null
+dirvalve_11,spooldyn@dirvalve_11,ame_integer_parameter,spool dynamics,,1,1,
+dirvalve_11,frac_spool_pos_vs_input@dirvalve_11,ame_text_parameter,fractional spool position [null] function of Fractional displacement [null],,+(x<=0)*(-1+1*(x+1))+(0<x)*(0+1*(x-0)),+(x<=0)*(-1+1*(x+1))+(0<x)*(0+1*(x-0)),
+dirvalve_11,frac_area_P_A_vs_spool_pos@dirvalve_11,ame_text_parameter,P-A fractional area [null] function of fractional spool position [null],,+(x<=0)*(0+100*(x+1))+(0<x)*(100+0*(x-0)),+(x<=0)*(0+100*(x+1))+(0<x)*(100+0*(x-0)),
+dirvalve_11,frac_area_P_B_vs_spool_pos@dirvalve_11,ame_text_parameter,P-B fractional area [null] function of fractional spool position [null],,+(x<=0)*(100+0*(x+1))+(0<x)*(100-100*(x-0)),+(x<=0)*(100+0*(x+1))+(0<x)*(100-100*(x-0)),
+dirvalve_11,frac_area_T_B_vs_spool_pos@dirvalve_11,ame_text_parameter,T-B fractional area [null] function of fractional spool position [null],,+(x<=0)*(0+0*(x+1))+(0<x)*(0+100*(x-0)),+(x<=0)*(0+0*(x+1))+(0<x)*(0+100*(x-0)),
+dirvalve_11,frac_area_T_A_vs_spool_pos@dirvalve_11,ame_text_parameter,T-A fractional area [null] function of fractional spool position [null],,+(x<=0)*(100-100*(x+1))+(0<x)*(0+0*(x-0)),+(x<=0)*(100-100*(x+1))+(0<x)*(0+0*(x-0)),
+dirvalve_11,rhochar@dirvalve_11,ame_real_parameter,nominal density [kg/m**3],null,850,850,null
+dirvalve_11,nuchar@dirvalve_11,ame_real_parameter,nominal kinematic viscosity [cSt],null,60,60,null
+dirvalve_11,indexf@dirvalve_11,ame_integer_parameter,index of hydraulic fluid,,0,0,
+dirvalve_12,qchar_P_A@dirvalve_12,ame_real_parameter,P-A characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_12,dpchar_P_A@dirvalve_12,ame_real_parameter,P-A corresponding pressure drop,bar,1,1,bar
+dirvalve_12,lamc_P_A@dirvalve_12,ame_real_parameter,P-A critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_12,qchar_T_B@dirvalve_12,ame_real_parameter,T-B characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_12,dpchar_T_B@dirvalve_12,ame_real_parameter,T-B corresponding pressure drop,bar,1,1,bar
+dirvalve_12,lamc_T_B@dirvalve_12,ame_real_parameter,T-B critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_12,tau@dirvalve_12,ame_real_parameter,valve time constant,s,0.05,0.05,s
+dirvalve_12,wn@dirvalve_12,ame_real_parameter,valve natural frequency,Hz,20,20,Hz
+dirvalve_12,zeta@dirvalve_12,ame_real_parameter,valve damping ratio,null,1.8,1.8,null
+dirvalve_12,spooldyn@dirvalve_12,ame_integer_parameter,spool dynamics,,1,1,
+dirvalve_12,frac_spool_pos_vs_input@dirvalve_12,ame_text_parameter,fractional spool position [null] function of Fractional displacement [null],,0+1*(x-0),0+1*(x-0),
+dirvalve_12,frac_area_P_A_vs_spool_pos@dirvalve_12,ame_text_parameter,P-A fractional area [null] function of fractional spool position [null],,0+100*(x-0),0+100*(x-0),
+dirvalve_12,frac_area_T_B_vs_spool_pos@dirvalve_12,ame_text_parameter,T-B fractional area [null] function of fractional spool position [null],,0+100*(x-0),0+100*(x-0),
+dirvalve_12,rhochar@dirvalve_12,ame_real_parameter,nominal density [kg/m**3],null,850,850,null
+dirvalve_12,nuchar@dirvalve_12,ame_real_parameter,nominal kinematic viscosity [cSt],null,60,60,null
+dirvalve_12,indexf@dirvalve_12,ame_integer_parameter,index of hydraulic fluid,,0,0,
+dirvalve_13,qchar_P_A@dirvalve_13,ame_real_parameter,P-A characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_13,dpchar_P_A@dirvalve_13,ame_real_parameter,P-A corresponding pressure drop,bar,1,1,bar
+dirvalve_13,lamc_P_A@dirvalve_13,ame_real_parameter,P-A critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_13,qchar_T_A@dirvalve_13,ame_real_parameter,T-A characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_13,dpchar_T_A@dirvalve_13,ame_real_parameter,T-A corresponding pressure drop,bar,1,1,bar
+dirvalve_13,lamc_T_A@dirvalve_13,ame_real_parameter,T-A critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_13,tau@dirvalve_13,ame_real_parameter,valve time constant,s,0.05,0.05,s
+dirvalve_13,wn@dirvalve_13,ame_real_parameter,valve natural frequency,Hz,20,20,Hz
+dirvalve_13,zeta@dirvalve_13,ame_real_parameter,valve damping ratio,null,1.8,1.8,null
+dirvalve_13,spooldyn@dirvalve_13,ame_integer_parameter,spool dynamics,,1,1,
+dirvalve_13,frac_spool_pos_vs_input@dirvalve_13,ame_text_parameter,fractional spool position [null] function of Fractional displacement [null],,0+1*(x-0),0+1*(x-0),
+dirvalve_13,frac_area_P_A_vs_spool_pos@dirvalve_13,ame_text_parameter,P-A fractional area [null] function of fractional spool position [null],,0+100*(x-0),0+100*(x-0),
+dirvalve_13,frac_area_T_A_vs_spool_pos@dirvalve_13,ame_text_parameter,T-A fractional area [null] function of fractional spool position [null],,100-100*(x-0),100-100*(x-0),
+dirvalve_13,rhochar@dirvalve_13,ame_real_parameter,nominal density [kg/m**3],null,850,850,null
+dirvalve_13,nuchar@dirvalve_13,ame_real_parameter,nominal kinematic viscosity [cSt],null,60,60,null
+dirvalve_13,indexf@dirvalve_13,ame_integer_parameter,index of hydraulic fluid,,0,0,

@@ -1,0 +1,1231 @@
+SUBMODEL: HJ0022
+SOURCE FILES: 2
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\HJ0022.c
+==============================================================================
+...
+     1: /* Submodel HJ0022 skeleton created by AME Submodel editing utility
+     2:    mer. 26. sept. 10:02:20 2012 */
+     3: 
+     4: 
+     5: 
+     6: #include <math.h>
+     7: #include <stdio.h>
+     8: #include <stdlib.h>
+     9: #include "ameutils.h"
+    10: /* *******************************************************************************
+    11: TITLE : HJ0022
+    12: ------------------------------------------------------------------------------
+    13: DESCRIPTION :
+    14:    A double hydraulic chamber, single rod jack, actuator or cylinder
+    15:    with spring assistance at the rod end and a fixed body.
+    16: ------------------------------------------------------------------------------
+    17: USAGE :
+    18:    The submodel includes pressure dynamics in the volumes either side
+    19:    of the piston, viscous friction, and leakage past the piston.
+    20:  
+    21:    If you intend to attach a mass to the jack, it is better to use
+    22:    HJ002 rather than HJ0022 because HJ002 uses a simpler treatment of
+    23:    the actuator end stops. HJ0022 uses an end stop model based on a
+    24:    spring and damper rate whereas HJ002 uses a completely inelastic
+    25:    collision. There are fewer parameters to set with HJ002.
+    26: ------------------------------------------------------------------------------
+    27: PARAMETER SETTINGS :
+    28:    The dead volumes prevent the hydraulic volume becoming zero at the
+    29:    ends of the stroke. If in doubt, set these volumes to zero and the
+    30:    submodel will reset them to 1/1000 the maximum hydraulic volume.
+    31:  
+    32:    The user may set a spring and damper rate for the contact at the
+    33:    ends of the stroke and also a deformation at which the end stop
+    34:    damping is fully effective. FOR MOST SITUATIONS THE DEFAULT
+    35:    SETTINGS FOR THESE QUANTITIES ARE SATISFACTORY. If you do need to
+    36:    change the values, follow the following advice.
+    37:  
+    38:    If the end stop spring and damper rate values are numerically of
+    39:    roughly the same magnitude, there will probably be no bounce when
+    40:    the end stop is reached. This is normally a desirable situation. A
+    41:    lower damping rate may result in a bounce and if it is very much
+    42:    lower, there may a lot of bouncing. In extreme cases the simulation
+    43:    may stop because there are too many discontinuities.
+    44:  
+    45:    Actuators are normally designed to provide controlled deceleration
+    46:    at the extreme positions. The decelerating force increases steadily
+    47:    with actuator position. To allow for this, an end stop deformation
+    48:    at which the damping rate is fully effective is used. This ensures
+    49:    that corresponding damping force is a continuous function of
+    50:    actuator position.
+    51:  
+    52:    If the end stop spring rate is set too high, the simulation run may
+    53:    be very slow.
+    54:  
+    55:    The index of hydraulic fluid parameter refers to a fluid type
+    56:    defined by an icon put on the sketch.
+    57: ------------------------------------------------------------------------------
+    58: DATE OF CREATION/AUTHOR : 11/02/97 C.W.Richards.
+    59: ------------------------------------------------------------------------------
+    60: INDEX OF REVISIONS :
+    61:    30/12/1999 : Index of hydraulic fluid management is introduced (STC).
+    62:    06/05/2002 : *x input is multiplied by -1 for sign convention
+    63:                 We have to multiply it back before the end. (FG)
+    64: ------------------------------------------------------------------------------
+    65: LIST OF FUNCTIONS USED :
+    66:    firstc_() : checks if this is the first call to this submodel
+    67:    disloc_() : signals a discontinuity to the discontinuity handler
+    68:    llimit_() : limits an input signal to a lower value
+    69:    q0top_()  : flowrate at a specified pressure from flowrate at ref. pressure
+    70:    pcdyn2_() : rate of pressure change in a compressible fluid
+    71: ------------------------------------------------------------------------------
+    72: SOURCE :
+    73:    Siemens Industry Software SAS
+    74:    7 place des Minimes
+    75:    42300 Roanne - France
+    76:    tel: (33).04.77.23.60.30
+    77:    fax: (33).04.77.23.60.31
+    78:    www.siemens.com/plm
+    79: 
+    80:    Copyright 2015 Siemens Industry Software NV
+    81: ******************************************************************************* */
+    82: 
+    83: #define _SUBMODELNAME_ "HJ0022"
+    84: 
+    85: /* >>>>>>>>>>>>Insert Private Code Here. */
+    86: /* <<<<<<<<<<<<End of Private Code. */
+    87: 
+    88: 
+    89: /* There are 13 real parameters:
+    90: 
+    91:    xact0   #displacement of piston                                          [m]
+    92:    diamp   piston diameter                                                  [mm -> m]
+    93:    diamr   rod diameter                                                     [mm -> m]
+    94:    stroke  length of stroke                                                 [m]
+    95:    dead1   dead volume at port 1 end                                        [cm**3 -> m**3]
+    96:    dead2   dead volume at port 2 end                                        [cm**3 -> m**3]
+    97:    cvisc   viscous friction coefficient                                     [N/(m/s)]
+    98:    cleak   leakage coefficient                                              [L/min/bar -> m**3/s/Pa]
+    99:    preld   spring preload                                                   [N]
+   100:    ksprng  spring rate                                                      [N/m]
+   101:    k       spring rate at endstops                                          [N/mm -> N/m]
+   102:    cdamp   damping coefficient on endstops                                  [N/(m/s)]
+   103:    distdef deformation on endstops at which damping rate is fully effective [mm -> m]
+   104: */
+   105: 
+   106: 
+   107: /* There are 2 integer parameters:
+   108: 
+   109:    indexf   index of hydraulic fluid
+   110:    usedispl use initial displacement
+   111: */
+   112: 
+   113: void hj0022in_(int *n, double rp[13], int ip[2], double c[7]
+   114:       , int ic[15], double *p1, double *p2, double *actRleak
+   115:       , double *energyRleak, double *actCchamber1
+   116:       , double *energyCchamber1, double *actCchamber2
+   117:       , double *energyCchamber2, double *actRfrict
+   118:       , double *energyRfrict, double *actCspring
+   119:       , double *energyCspring, double *actSpatm, double *energySpatm)
+   120: 
+   121: {
+   122:    int loop, error;
+   123: /* >>>>>>>>>>>>Extra Initialization Function Declarations Here. */
+   124:    double minvol, p0;
+   125: /* <<<<<<<<<<<<End of Extra Initialization declarations. */
+   126:    int indexf, usedispl;
+   127:    double xact0, diamp, diamr, stroke, dead1, dead2, cvisc, cleak, 
+   128:       preld, ksprng, k, cdamp, distdef;
+   129: 
+   130:    indexf     = ip[0];
+   131:    usedispl   = ip[1];
+   132: 
+   133:    xact0      = rp[0];
+   134:    diamp      = rp[1];
+   135:    diamr      = rp[2];
+   136:    stroke     = rp[3];
+   137:    dead1      = rp[4];
+   138:    dead2      = rp[5];
+   139:    cvisc      = rp[6];
+   140:    cleak      = rp[7];
+   141:    preld      = rp[8];
+   142:    ksprng     = rp[9];
+   143:    k          = rp[10];
+   144:    cdamp      = rp[11];
+   145:    distdef    = rp[12];
+   146:    loop = 0;
+   147:    error = 0;
+   148: 
+   149: /*
+   150:    If necessary, check values of the following:
+   151: 
+   152:    rp[0..12]
+   153:    *p1
+   154:    *p2
+   155:    *actRleak
+   156:    *energyRleak
+   157:    *actCchamber1
+   158:    *energyCchamber1
+   159:    *actCchamber2
+   160:    *energyCchamber2
+   161:    *actRfrict
+   162:    *energyRfrict
+   163:    *actCspring
+   164:    *energyCspring
+   165:    *actSpatm
+   166:    *energySpatm
+   167: */
+   168: 
+   169: 
+   170: /* >>>>>>>>>>>>Initialization Function Check Statements. */
+   171: 
+   172:    hyd_valid_liquid_(&indexf, &error);
+   173: 
+   174:    /* Check pressure values correcting if necessary. */
+   175:    p0 = -getatp_() * 1.0e-5;
+   176:    if(*p1 < p0)
+   177:    {
+   178:       error = MAX(error, 1);
+   179:       amefprintf(stderr,
+   180:                  "\nPressure at port 1 (%g bar) is too low. Reset to %g bar.\n",
+   181:                  *p1, p0);
+   182:       *p1 = p0;
+   183:    }
+   184:    if(*p2 < p0)
+   185:    {
+   186:       error = MAX(error, 1);
+   187:       amefprintf(stderr,
+   188:                  "\nPressure at port 2 (%g bar) is too low. Reset to %g bar.\n",
+   189:                  *p2, p0);
+   190:       *p2 = p0;
+   191:    }
+   192: 
+   193:    /* Check piston diameter. */
+   194:    if(diamp <= 0.0)
+   195:    {
+   196:        error = 2;
+   197:        amefprintf(stderr, "\nPiston diameter must be positive\n");
+   198:    }
+   199: 
+   200:    /* Check rod diameter. */
+   201:    if(diamr < 0.0)
+   202:    {
+   203:       error = 2;
+   204:       amefprintf(stderr, "\nRod diameter cannot be negative\n");
+   205:    }
+   206: 
+   207:    /* Compare two diameters. */
+   208:    if(diamr >= diamp)
+   209:    {
+   210:       error = 2;
+   211:       amefprintf(stderr, "\nRod diameter must be less than piston diameter\n");
+   212:    }
+   213: 
+   214:    /* Check stroke. */
+   215:    if(stroke <= 0.0)
+   216:    {
+   217:       error = 2;
+   218:       amefprintf(stderr, "\nStroke must be positive\n");
+   219:    }
+   220: 
+   221:    /* Check viscous friction coefficient. */
+   222:    if(cvisc < 0.0)
+   223:    {
+   224:       error = 2;
+   225:       amefprintf(stderr, "\nViscous friction coefficient can't be negative\n");
+   226:    }
+   227: 
+   228:    /* Check piston leakage coeff. */
+   229:    if(cleak < 0.0)
+   230:    {
+   231:       error = 2;
+   232:       amefprintf(stderr, "\nLeakage coefficient cannot be negative\n");
+   233:    }
+   234: 
+   235:    /* Check spring preload. */
+   236:    if(preld < 0.0)
+   237:    {
+   238:       error = 2;
+   239:       amefprintf(stderr, "\nSpring preload can't be negative\n");
+   240:    }
+   241: 
+   242:    /* Check spring rate. */
+   243:    if(ksprng < 0.0)
+   244:    {
+   245:       error = 2;
+   246:       amefprintf(stderr, "\nSpring rate rate can't be negative\n");
+   247:    }
+   248:    if(k <= 0.0)
+   249:    {
+   250:       error = 2;
+   251:       amefprintf(stderr, "\nEndstops spring rate must be positive\n");
+   252:    }
+   253:    if(cdamp <= 0.0)
+   254:    {
+   255:       error = 2;
+   256:       amefprintf(stderr, "\nEndstops damping coefficient must be positive\n");
+   257:    }
+   258:    if(distdef <= 0.0)
+   259:    {
+   260:       error = 2;
+   261:       amefprintf(stderr, "\nDeformation distance must be positive\n");
+   262:    }
+   263: 
+   264: 
+   265: 
+   266: 
+   267: /* <<<<<<<<<<<<End of Initialization Check Statements. */
+   268: 
+   269: /*   Integer parameter checking:   */
+   270: 
+   271:    if (indexf < 0 || indexf > 100)
+   272:    {
+   273:       amefprintf(stderr, "\nindex of hydraulic fluid must be in range [0..100].\n");
+   274:       error = 2;
+   275:    }
+   276:    if (usedispl < 1 || usedispl > 2)
+   277:    {
+   278:       amefprintf(stderr, "\nuse initial displacement must be in range [1..2].\n");
+   279:       error = 2;
+   280:    }
+   281: 
+   282:    if(error == 1)
+   283:    {
+   284:       amefprintf(stderr, "\nWarning in %s instance %d.\n", _SUBMODELNAME_, *n);
+   285:    }
+   286:    else if(error == 2)
+   287:    {
+   288:       amefprintf(stderr, "\nFatal error in %s instance %d.\n", _SUBMODELNAME_, *n);
+   289:       amefprintf(stderr, "Terminating the program.\n");
+   290:       AmeExit(1);
+   291:    }
+   292: 
+   293: /* Common -> SI units conversions. */
+   294: 
+   295:    rp[1]    *= 1.00000000000000e-003;
+   296:    diamp      = rp[1];
+   297:    rp[2]    *= 1.00000000000000e-003;
+   298:    diamr      = rp[2];
+   299:    rp[4]    *= 1.00000000000000e-006;
+   300:    dead1      = rp[4];
+   301:    rp[5]    *= 1.00000000000000e-006;
+   302:    dead2      = rp[5];
+   303:    rp[7]    *= 1.66666666666667e-010;
+   304:    cleak      = rp[7];
+   305:    rp[10]   *= 1.00000000000000e+003;
+   306:    k          = rp[10];
+   307:    rp[12]   *= 1.00000000000000e-003;
+   308:    distdef    = rp[12];
+   309: 
+   310: 
+   311: /* >>>>>>>>>>>>Initialization Function Executable Statements. */
+   312: 
+   313:    /* Set constants. */
+   314:    c[0] = M_PI * diamp * diamp * 0.25;
+   315:    c[1] = c[0] - M_PI * diamr * diamr * 0.25;
+   316: 
+   317:    /* Check dead volume. */
+   318:    minvol = stroke * c[0] / 10000.0;
+   319:    if(dead1 < minvol)
+   320:    {
+   321:       amefprintf(stderr,"HJ0022 instance %d.\n", *n);
+   322:       amefprintf(stderr,"\nDead volume at port 1 end value %le too small.\n", dead1);
+   323:       amefprintf(stderr,"Reset to %le m^3\n\n", minvol);
+   324:       dead1 = rp[4] = minvol;
+   325:    }
+   326: 
+   327:    minvol = stroke * c[1] / 10000.0;
+   328:    if(dead2 < minvol)
+   329:    {
+   330:       amefprintf(stderr,"HJ0022 instance %d.\n", *n);
+   331:       amefprintf(stderr,"\nDead volume at port 2 end value %le too small.\n", dead2);
+   332:       amefprintf(stderr,"Reset to %le m^3\n\n", minvol);
+   333:       dead2 = rp[5] = minvol;
+   334:    }
+   335: 
+   336: /* <<<<<<<<<<<<End of Initialization Executable Statements. */
+   337: }
+   338: 
+   339: /*  There are 3 ports.
+   340: 
+   341:    Port 1 has 2 variables:
+   342: 
+   343:       1 p1     pressure at port 1  [bar -> Pa]       explicit state (derivative `p1dot')
+   344:       2 q1     flow rate at port 1 [L/min -> m**3/s] basic variable input
+   345: 
+   346:    Port 2 has 2 variables:
+   347: 
+   348:       1 p2     pressure at port 2  [bar -> Pa]       explicit state (derivative `p2dot')
+   349:       2 q2     flow rate at port 2 [L/min -> m**3/s] basic variable input
+   350: 
+   351:    Port 3 has 3 variables:
+   352: 
+   353:       1 frod     force exerted by actuator rod [N]   basic variable output
+   354:       2 v        input velocity                [m/s] basic variable input
+   355:       3 x        input displacement            [m]   basic variable input
+   356: */
+   357: 
+   358: /*  There are 20 internal variables.
+   359: 
+   360:       1 xact                displacement of piston                       [m]               basic variable
+   361:       2 qleak               leakage flow rate                            [L/min -> m**3/s] basic variable
+   362:       3 actRleak            activity of hydraulic dissipation (leak)     [J]               explicit state (derivative `dactRleak') for activity
+   363:       4 powerRleak          power of hydraulic dissipation (leak)        [W]               power variable
+   364:       5 energyRleak         energy of hydraulic dissipation (leak)       [J]               explicit state (derivative `denergyRleak') for energy
+   365:       6 actCchamber1        activity of hydraulic capacitance (chamber1) [J]               explicit state (derivative `dactCchamber1') for activity
+   366:       7 powerCchamber1      power of hydraulic capacitance (chamber1)    [W]               power variable
+   367:       8 energyCchamber1     energy of hydraulic capacitance (chamber1)   [J]               explicit state (derivative `denergyCchamber1') for energy
+   368:       9 actCchamber2        activity of hydraulic capacitance (chamber2) [J]               explicit state (derivative `dactCchamber2') for activity
+   369:      10 powerCchamber2      power of hydraulic capacitance (chamber2)    [W]               power variable
+   370:      11 energyCchamber2     energy of hydraulic capacitance (chamber2)   [J]               explicit state (derivative `denergyCchamber2') for energy
+   371:      12 actRfrict           activity of mechanical dissipation (frict)   [J]               explicit state (derivative `dactRfrict') for activity
+   372:      13 powerRfrict         power of mechanical dissipation (frict)      [W]               power variable
+   373:      14 energyRfrict        energy of mechanical dissipation (frict)     [J]               explicit state (derivative `denergyRfrict') for energy
+   374:      15 actCspring          activity of mechanical capacitance (spring)  [J]               explicit state (derivative `dactCspring') for activity
+   375:      16 powerCspring        power of mechanical capacitance (spring)     [W]               power variable
+   376:      17 energyCspring       energy of mechanical capacitance (spring)    [J]               explicit state (derivative `denergyCspring') for energy
+   377:      18 actSpatm            activity of hydraulic source (patm)          [J]               explicit state (derivative `dactSpatm') for activity
+   378:      19 powerSpatm          power of hydraulic source (patm)             [W]               power variable
+   379:      20 energySpatm         energy of hydraulic source (patm)            [J]               explicit state (derivative `denergySpatm') for energy
+   380: */
+   381: 
+   382: void hj0022_(int *n, double *p1, double *p1dot, double *q1, double *p2
+   383:       , double *p2dot, double *q2, double *frod, double *v, double *x
+   384:       , double *xact, double *qleak, double *actRleak
+   385:       , double *dactRleak, double *powerRleak, double *energyRleak
+   386:       , double *denergyRleak, double *actCchamber1
+   387:       , double *dactCchamber1, double *powerCchamber1
+   388:       , double *energyCchamber1, double *denergyCchamber1
+   389:       , double *actCchamber2, double *dactCchamber2
+   390:       , double *powerCchamber2, double *energyCchamber2
+   391:       , double *denergyCchamber2, double *actRfrict
+   392:       , double *dactRfrict, double *powerRfrict, double *energyRfrict
+   393:       , double *denergyRfrict, double *actCspring, double *dactCspring
+   394:       , double *powerCspring, double *energyCspring
+   395:       , double *denergyCspring, double *actSpatm, double *dactSpatm
+   396:       , double *powerSpatm, double *energySpatm, double *denergySpatm
+   397:       , double rp[13], int ip[2], double c[7], int ic[15], int *flag)
+   398: 
+   399: {
+   400:    int loop, logi;
+   401:    double powRleak, powCchamber1, powCchamber2, powRfrict, powCspring
+   402:       , powSpatm;
+   403: 
+   404: /* >>>>>>>>>>>>Extra Calculation Function Declarations Here. */
+   405:    static double zero = 0.0;
+   406:    double vol, inflow1,inflow2, xlower, flower, xupper, fupper, vupper;
+   407:    double patm = getatp_();
+   408: /* <<<<<<<<<<<<End of Extra Calculation declarations. */
+   409:    int indexf, usedispl;
+   410:    double xact0, diamp, diamr, stroke, dead1, dead2, cvisc, cleak, 
+   411:       preld, ksprng, k, cdamp, distdef;
+   412: 
+   413:    indexf     = ip[0];
+   414:    usedispl   = ip[1];
+   415: 
+   416:    xact0      = rp[0];
+   417:    diamp      = rp[1];
+   418:    diamr      = rp[2];
+   419:    stroke     = rp[3];
+   420:    dead1      = rp[4];
+   421:    dead2      = rp[5];
+   422:    cvisc      = rp[6];
+   423:    cleak      = rp[7];
+   424:    preld      = rp[8];
+   425:    ksprng     = rp[9];
+   426:    k          = rp[10];
+   427:    cdamp      = rp[11];
+   428:    distdef    = rp[12];
+   429:    logi = 0;
+   430:    loop = 0;
+   431: 
+   432: /* Common -> SI units conversions. */
+   433: 
+   434:    *p1       *= 1.00000000000000e+005;
+   435:    *q1       *= 1.66666666666667e-005;
+   436:    *p2       *= 1.00000000000000e+005;
+   437:    *q2       *= 1.66666666666667e-005;
+   438: 
+   439: /*
+   440:    Set all submodel outputs below:
+   441: 
+   442:    *p1dot      = ??;
+   443:    *p2dot      = ??;
+   444:    *frod       = ??;
+   445:    *xact       = ??;
+   446:    *qleak      = ??;
+   447: */
+   448: 
+   449: 
+   450: 
+   451: /* >>>>>>>>>>>>Calculation Function Executable Statements. */
+   452: 
+   453:    /* Index of hydraulic fluid management by STC on 11/19/99 */
+   454:    sethdind_(&indexf);
+   455: 
+   456:    if (firstc_())
+   457:    {
+   458:       if(usedispl == 1)
+   459:       {
+   460:          if (initnec_() == 0)
+   461:          {
+   462:             c[2] = *xact + *x;
+   463:          }
+   464:          else
+   465:          {
+   466:             c[2] = xact0 + *x;
+   467:          }
+   468:       }
+   469:       else
+   470:       {
+   471:          /* Use the initial displacement of the connected inertia. */
+   472:          c[2] = 0.0;
+   473:       }
+   474:    }
+   475:    *xact = c[2] - *x;
+   476: 
+   477:    if(firstc_())
+   478:    {
+   479:        /* Check displacement of piston. */
+   480:        if((*xact < 0.0) || (*xact > stroke))
+   481:        {
+   482:           amefprintf(stderr, "Simulation starts with initial rod position\n");
+   483:           amefprintf(stderr, "negative or greater than stroke.\n");
+   484:           amefprintf(stderr, "This may give rise to a very large contact force.");
+   485:           amefprintf(stderr, "\nWarning in HJ0022 instance %d.\n", *n);
+   486:        }
+   487:    }
+   488: 
+   489:    /* Compute force due to pressures and viscous friction. */
+   490:    *frod = (*p1 * c[0] - *p2 * c[1]) + *v * cvisc - preld - ksprng * (*xact);
+   491: 
+   492:    /* Modify force if on endstops. */
+   493:    xlower = - (*xact);
+   494:    endst1b_(&xlower, v, &k, &cdamp, &distdef, &flower, &ic[0]);
+   495:    xupper = (*xact) - stroke;
+   496:    vupper = - (*v);
+   497:    endst1b_(&xupper, &vupper, &k, &cdamp, &distdef, &fupper, &ic[1]);
+   498: 
+   499:    *frod += (flower) - (fupper);
+   500: 
+   501:    /* Compute leakage past piston. */
+   502:    *qleak = (*p1 - (*p2)) * cleak;
+   503: 
+   504: 
+   505:    /* Compute piston end pressure dynamics. First compute volume of fluid ... */
+   506:    vol = c[0] * (*xact) + dead1;
+   507: 
+   508:    /* ... and limit to dead1.  */
+   509:    vol = llimit_(&vol, &dead1, &ic[2]);
+   510:    inflow1 = *v*c[0]/q0top_(p1) - *qleak + *q1;
+   511:    *p1dot = pcdyn2_(p1, &zero, &vol, &inflow1);
+   512: 
+   513:    /* Compute rod end pressure dynamics. First compute volume of fluid ... */
+   514:    vol = c[1] * (stroke - (*xact)) + dead2;
+   515: 
+   516:    /* ... and limit to dead2.  */
+   517:    vol = llimit_(&vol, &dead2, &ic[3]);
+   518:    inflow2 = - (*v) * c[1] / q0top_(p2) + *qleak + *q2;
+   519:    *p2dot = pcdyn2_(p2, &zero, &vol, &inflow2);
+   520: 
+   521: /* <<<<<<<<<<<<End of Calculation Executable Statements. */
+   522: 
+   523:    if(actRleak != NULL || energyRleak != NULL || ispower_() == 1)
+   524:    {
+   525:       /* Set the following power variables:
+   526: 
+   527:       powRleak = ??;
+   528:       powCchamber1 = ??;
+   529:       powCchamber2 = ??;
+   530:       powRfrict = ??;
+   531:       powCspring = ??;
+   532:       powSpatm = ??;
+   533:       */
+   534: 
+   535:       /* >>>>>>>>>>>>Energy Common Statements. */
+   536:       powRfrict = *v * (*v) * cvisc;
+   537:       powCspring = (- *xact*ksprng - preld) * (*v);
+   538:       if(ic[0] == 0)
+   539:       {
+   540:          /* On lower endstop. */
+   541:          powRfrict += *v * (*v) * cdamp;
+   542:          powCspring -= k * (*xact) * (*v);
+   543:       }
+   544:       else if(ic[1] == 0)
+   545:       {
+   546:          /* On upper endstop. */
+   547:          powRfrict += *v * (*v) * cdamp;
+   548:          powCspring -= k * (*xact - stroke) * (*v);
+   549:       }
+   550:       powRleak = *qleak * ((patm + *p1) * q0top_(p1) - (patm + *p2) * q0top_(p2));
+   551:       powCchamber1 = (*p1 + patm) * inflow1 * q0top_(p1);
+   552:       powCchamber2 = (*p2 + patm) * inflow2 * q0top_(p2);
+   553:       powSpatm = patm * (c[0]-c[1]) * (*v);
+   554:       /* <<<<<<<<<<<<End of Energy Common Statements. */
+   555: 
+   556:       if (ispower_() == 1)
+   557:       {
+   558:          *powerRleak      = powRleak;
+   559:          *powerCchamber1  = powCchamber1;
+   560:          *powerCchamber2  = powCchamber2;
+   561:          *powerRfrict     = powRfrict;
+   562:          *powerCspring    = powCspring;
+   563:          *powerSpatm      = powSpatm;
+   564:       }
+   565:       if (energyRleak != NULL)
+   566:       {
+   567:          *denergyRleak    = powRleak;
+   568:          *denergyCchamber1 = powCchamber1;
+   569:          *denergyCchamber2 = powCchamber2;
+   570:          *denergyRfrict   = powRfrict;
+   571:          *denergyCspring  = powCspring;
+   572:          *denergySpatm    = powSpatm;
+   573:       }
+   574:       if (actRleak != NULL)
+   575:       {
+   576:          /* >>>>>>>>>>>>Optional Activity Computation Statements. */
+   577:          /* <<<<<<<<<<<<End of Optional Activity Computation Statements. */
+   578:          *dactRleak       = fabs(powRleak);
+   579:          *dactCchamber1   = fabs(powCchamber1);
+   580:          *dactCchamber2   = fabs(powCchamber2);
+   581:          *dactRfrict      = fabs(powRfrict);
+   582:          *dactCspring     = fabs(powCspring);
+   583:          *dactSpatm       = fabs(powSpatm);
+   584:       }
+   585:    }
+   586: 
+   587: /* SI -> Common units conversions. */
+   588: 
+   589:    *p1       /= 1.00000000000000e+005;
+   590:    *p1dot    /= 1.00000000000000e+005;
+   591:    *q1       /= 1.66666666666667e-005;
+   592:    *p2       /= 1.00000000000000e+005;
+   593:    *p2dot    /= 1.00000000000000e+005;
+   594:    *q2       /= 1.66666666666667e-005;
+   595:    *qleak    /= 1.66666666666667e-005;
+   596: }
+   597: 
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\HJ0022.spe
+==============================================================================
+...
+     1: <?xml version="1.0" encoding="ISO-8859-1"?>
+     2: <!DOCTYPE SPE>
+     3: <SPE AME_VERSION="12.0.0 - Dev -  13/09/12 23:47 - 29151-21548 2012" DOC_VERSION="2">
+     4: 
+     5:  <SUBMODEL>
+     6:   <SUB_TYPE>0</SUB_TYPE>
+     7:   <SUB_ID_MAX>55</SUB_ID_MAX>
+     8:   <DEFAULT_ICON>springreturnactuator</DEFAULT_ICON>
+     9:   <SUB_LABEL>double hydraulic chamber single rod jack with spring assistance</SUB_LABEL>
+    10:   <SUB_UNIT>0</SUB_UNIT>
+    11:   <R_STORES_NUMBER>7</R_STORES_NUMBER>
+    12:   <I_STORES_NUMBER>9</I_STORES_NUMBER>
+    13:   <DISCONTINUITY>1</DISCONTINUITY>
+    14:   <OUTPUT_TYPE>1</OUTPUT_TYPE>
+    15:   <RPARAMS_LIST>
+    16:    <RPARAM>
+    17:     <SUB_ID>28</SUB_ID>
+    18:     <TITLE>#displacement of piston</TITLE>
+    19:     <VARNAME>xact0</VARNAME>
+    20:     <VISIBILITY>(usedispl == 1)</VISIBILITY>
+    21:     <DEF_VALUE>0.00000000000000e+000</DEF_VALUE>
+    22:     <VALUE>0.00000000000000e+000</VALUE>
+    23:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+    24:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+    25:     <UNITS>m</UNITS>
+    26:    </RPARAM>
+    27:    <RPARAM>
+    28:     <SUB_ID>13</SUB_ID>
+    29:     <TITLE>piston diameter</TITLE>
+    30:     <VARNAME>diamp</VARNAME>
+    31:     <VISIBILITY>True</VISIBILITY>
+    32:     <DEF_VALUE>2.50000000000000e+001</DEF_VALUE>
+    33:     <VALUE>2.50000000000000e+001</VALUE>
+    34:     <MIN_VALUE>1.00000000000000e-006</MIN_VALUE>
+    35:     <MAX_VALUE>1.00000000000000e+003</MAX_VALUE>
+    36:     <UNITS>mm</UNITS>
+    37:    </RPARAM>
+    38:    <RPARAM>
+    39:     <SUB_ID>14</SUB_ID>
+    40:     <TITLE>rod diameter</TITLE>
+    41:     <VARNAME>diamr</VARNAME>
+    42:     <VISIBILITY>True</VISIBILITY>
+    43:     <DEF_VALUE>1.20000000000000e+001</DEF_VALUE>
+    44:     <VALUE>1.20000000000000e+001</VALUE>
+    45:     <MIN_VALUE>1.00000000000000e-006</MIN_VALUE>
+    46:     <MAX_VALUE>1.00000000000000e+003</MAX_VALUE>
+    47:     <UNITS>mm</UNITS>
+    48:    </RPARAM>
+    49:    <RPARAM>
+    50:     <SUB_ID>15</SUB_ID>
+    51:     <TITLE>length of stroke</TITLE>
+    52:     <VARNAME>stroke</VARNAME>
+    53:     <VISIBILITY>True</VISIBILITY>
+    54:     <DEF_VALUE>3.00000000000000e-001</DEF_VALUE>
+    55:     <VALUE>3.00000000000000e-001</VALUE>
+    56:     <MIN_VALUE>1.00000000000000e-006</MIN_VALUE>
+    57:     <MAX_VALUE>1.00000000000000e+003</MAX_VALUE>
+    58:     <UNITS>m</UNITS>
+    59:    </RPARAM>
+    60:    <RPARAM>
+    61:     <SUB_ID>16</SUB_ID>
+    62:     <TITLE>dead volume at port 1 end</TITLE>
+    63:     <VARNAME>dead1</VARNAME>
+    64:     <VISIBILITY>True</VISIBILITY>
+    65:     <DEF_VALUE>5.00000000000000e+001</DEF_VALUE>
+    66:     <VALUE>5.00000000000000e+001</VALUE>
+    67:     <MIN_VALUE>1.00000000000000e+001</MIN_VALUE>
+    68:     <MAX_VALUE>1.00000000000000e+004</MAX_VALUE>
+    69:     <UNITS>cm**3</UNITS>
+    70:    </RPARAM>
+    71:    <RPARAM>
+    72:     <SUB_ID>17</SUB_ID>
+    73:     <TITLE>dead volume at port 2 end</TITLE>
+    74:     <VARNAME>dead2</VARNAME>
+    75:     <VISIBILITY>True</VISIBILITY>
+    76:     <DEF_VALUE>5.00000000000000e+001</DEF_VALUE>
+    77:     <VALUE>5.00000000000000e+001</VALUE>
+    78:     <MIN_VALUE>1.00000000000000e+001</MIN_VALUE>
+    79:     <MAX_VALUE>1.00000000000000e+004</MAX_VALUE>
+    80:     <UNITS>cm**3</UNITS>
+    81:    </RPARAM>
+    82:    <RPARAM>
+    83:     <SUB_ID>18</SUB_ID>
+    84:     <TITLE>viscous friction coefficient</TITLE>
+    85:     <VARNAME>cvisc</VARNAME>
+    86:     <VISIBILITY>True</VISIBILITY>
+    87:     <DEF_VALUE>0.00000000000000e+000</DEF_VALUE>
+    88:     <VALUE>0.00000000000000e+000</VALUE>
+    89:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+    90:     <MAX_VALUE>1.00000000000000e+003</MAX_VALUE>
+    91:     <UNITS>N/(m/s)</UNITS>
+    92:    </RPARAM>
+    93:    <RPARAM>
+    94:     <SUB_ID>19</SUB_ID>
+    95:     <TITLE>leakage coefficient</TITLE>
+    96:     <VARNAME>cleak</VARNAME>
+    97:     <VISIBILITY>True</VISIBILITY>
+    98:     <DEF_VALUE>0.00000000000000e+000</DEF_VALUE>
+    99:     <VALUE>0.00000000000000e+000</VALUE>
+   100:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+   101:     <MAX_VALUE>1.00000000000000e+002</MAX_VALUE>
+   102:     <UNITS>L/min/bar</UNITS>
+   103:    </RPARAM>
+   104:    <RPARAM>
+   105:     <SUB_ID>20</SUB_ID>
+   106:     <TITLE>spring preload</TITLE>
+   107:     <VARNAME>preld</VARNAME>
+   108:     <VISIBILITY>True</VISIBILITY>
+   109:     <DEF_VALUE>0.00000000000000e+000</DEF_VALUE>
+   110:     <VALUE>0.00000000000000e+000</VALUE>
+   111:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+   112:     <MAX_VALUE>1.00000000000000e+006</MAX_VALUE>
+   113:     <UNITS>N</UNITS>
+   114:    </RPARAM>
+   115:    <RPARAM>
+   116:     <SUB_ID>21</SUB_ID>
+   117:     <TITLE>spring rate</TITLE>
+   118:     <VARNAME>ksprng</VARNAME>
+   119:     <VISIBILITY>True</VISIBILITY>
+   120:     <DEF_VALUE>1.00000000000000e+004</DEF_VALUE>
+   121:     <VALUE>1.00000000000000e+004</VALUE>
+   122:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+   123:     <MAX_VALUE>1.00000000000000e+006</MAX_VALUE>
+   124:     <UNITS>N/m</UNITS>
+   125:    </RPARAM>
+   126:    <RPARAM>
+   127:     <SUB_ID>22</SUB_ID>
+   128:     <TITLE>spring rate at endstops</TITLE>
+   129:     <VARNAME>k</VARNAME>
+   130:     <VISIBILITY>True</VISIBILITY>
+   131:     <DEF_VALUE>1.00000000000000e+005</DEF_VALUE>
+   132:     <VALUE>1.00000000000000e+005</VALUE>
+   133:     <MIN_VALUE>1.00000000000000e+004</MIN_VALUE>
+   134:     <MAX_VALUE>1.00000000000000e+007</MAX_VALUE>
+   135:     <UNITS>N/mm</UNITS>
+   136:    </RPARAM>
+   137:    <RPARAM>
+   138:     <SUB_ID>23</SUB_ID>
+   139:     <TITLE>damping coefficient on endstops</TITLE>
+   140:     <VARNAME>cdamp</VARNAME>
+   141:     <VISIBILITY>True</VISIBILITY>
+   142:     <DEF_VALUE>1.00000000000000e+005</DEF_VALUE>
+   143:     <VALUE>1.00000000000000e+005</VALUE>
+   144:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+   145:     <MAX_VALUE>1.00000000000000e+007</MAX_VALUE>
+   146:     <UNITS>N/(m/s)</UNITS>
+   147:    </RPARAM>
+   148:    <RPARAM>
+   149:     <SUB_ID>24</SUB_ID>
+   150:     <TITLE>deformation on endstops at which damping rate is fully effective</TITLE>
+   151:     <VARNAME>distdef</VARNAME>
+   152:     <VISIBILITY>True</VISIBILITY>
+   153:     <DEF_VALUE>1.00000000000000e-003</DEF_VALUE>
+   154:     <VALUE>1.00000000000000e-003</VALUE>
+   155:     <MIN_VALUE>1.00000000000000e-006</MIN_VALUE>
+   156:     <MAX_VALUE>1.00000000000000e-001</MAX_VALUE>
+   157:     <UNITS>mm</UNITS>
+   158:    </RPARAM>
+   159:   </RPARAMS_LIST>
+   160:   <IPARAMS_LIST>
+   161:    <IPARAM>
+   162:     <SUB_ID>25</SUB_ID>
+   163:     <TITLE>index of hydraulic fluid</TITLE>
+   164:     <VARNAME>indexf</VARNAME>
+   165:     <VISIBILITY>True</VISIBILITY>
+   166:     <DEF_VALUE>0</DEF_VALUE>
+   167:     <VALUE>0</VALUE>
+   168:     <MIN_VALUE>0</MIN_VALUE>
+   169:     <MAX_VALUE>100</MAX_VALUE>
+   170:    </IPARAM>
+   171:    <IPARAM>
+   172:     <SUB_ID>29</SUB_ID>
+   173:     <TITLE>use initial displacement</TITLE>
+   174:     <VARNAME>usedispl</VARNAME>
+   175:     <VISIBILITY>True</VISIBILITY>
+   176:     <DEF_VALUE>1</DEF_VALUE>
+   177:     <VALUE>1</VALUE>
+   178:     <MIN_VALUE>1</MIN_VALUE>
+   179:     <MAX_VALUE>2</MAX_VALUE>
+   180:     <ENUM_LIST>
+   181:      <ENUM>
+   182:       <ENUM_STRING>yes</ENUM_STRING>
+   183:      </ENUM>
+   184:      <ENUM>
+   185:       <ENUM_STRING>no</ENUM_STRING>
+   186:      </ENUM>
+   187:     </ENUM_LIST>
+   188:    </IPARAM>
+   189:   </IPARAMS_LIST>
+   190:   <PARAMS_GROUPS_LIST>
+   191:    <PARAMS_GROUP>
+   192:     <ORIG_TITLE>power, energy, activity</ORIG_TITLE>
+   193:     <NAME>Emanagement</NAME>
+   194:     <SUB_ID>47</SUB_ID>
+   195:     <SUB_IDS>
+   196:      33 1
+   197:      36 1
+   198:      39 1
+   199:      42 1
+   200:      45 1
+   201:      55 1
+   202:      34 2
+   203:      37 2
+   204:      40 2
+   205:      43 2
+   206:      46 2
+   207:      54 2
+   208:      32 2
+   209:      35 2
+   210:      38 2
+   211:      41 2
+   212:      44 2
+   213:      51 2
+   214:     </SUB_IDS>
+   215:     <EDITABLE>0</EDITABLE>
+   216:    </PARAMS_GROUP>
+   217:   </PARAMS_GROUPS_LIST>
+   218:   <IVARS_LIST>
+   219:    <IVAR>
+   220:     <SUB_ID>26</SUB_ID>
+   221:     <TITLE>displacement of piston</TITLE>
+   222:     <VARNAME>xact</VARNAME>
+   223:     <VISIBILITY>True</VISIBILITY>
+   224:     <TYPE>0</TYPE>
+   225:     <DIMENSION>1</DIMENSION>
+   226:     <UNITS>m</UNITS>
+   227:    </IVAR>
+   228:    <IVAR>
+   229:     <SUB_ID>31</SUB_ID>
+   230:     <TITLE>leakage flow rate</TITLE>
+   231:     <VARNAME>qleak</VARNAME>
+   232:     <VISIBILITY>True</VISIBILITY>
+   233:     <TYPE>0</TYPE>
+   234:     <DIMENSION>1</DIMENSION>
+   235:     <UNITS>L/min</UNITS>
+   236:    </IVAR>
+   237:    <IVAR>
+   238:     <SUB_ID>32</SUB_ID>
+   239:     <TITLE>activity of hydraulic dissipation (leak)</TITLE>
+   240:     <VARNAME>actRleak</VARNAME>
+   241:     <VARNAME2>dactRleak</VARNAME2>
+   242:     <VISIBILITY>True</VISIBILITY>
+   243:     <TYPE>1</TYPE>
+   244:     <DIMENSION>1</DIMENSION>
+   245:     <UNITS>J</UNITS>
+   246:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   247:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   248:     <DEF_VALUE>0</DEF_VALUE>
+   249:     <VALUE>0</VALUE>
+   250:     <PHYS_TYPE>1</PHYS_TYPE>
+   251:     <PHYS_DOMAIN>1</PHYS_DOMAIN>
+   252:     <ACT_SUFFIX>leak</ACT_SUFFIX>
+   253:     <ACT_TYPE>1</ACT_TYPE>
+   254:    </IVAR>
+   255:    <IVAR>
+   256:     <SUB_ID>33</SUB_ID>
+   257:     <TITLE>power of hydraulic dissipation (leak)</TITLE>
+   258:     <VARNAME>powerRleak</VARNAME>
+   259:     <VISIBILITY>True</VISIBILITY>
+   260:     <TYPE>9</TYPE>
+   261:     <DIMENSION>1</DIMENSION>
+   262:     <UNITS>W</UNITS>
+   263:     <PHYS_TYPE>1</PHYS_TYPE>
+   264:     <PHYS_DOMAIN>1</PHYS_DOMAIN>
+   265:     <ACT_SUFFIX>leak</ACT_SUFFIX>
+   266:     <ACT_TYPE>2</ACT_TYPE>
+   267:    </IVAR>
+   268:    <IVAR>
+   269:     <SUB_ID>34</SUB_ID>
+   270:     <TITLE>energy of hydraulic dissipation (leak)</TITLE>
+   271:     <VARNAME>energyRleak</VARNAME>
+   272:     <VARNAME2>denergyRleak</VARNAME2>
+   273:     <VISIBILITY>True</VISIBILITY>
+   274:     <TYPE>1</TYPE>
+   275:     <DIMENSION>1</DIMENSION>
+   276:     <UNITS>J</UNITS>
+   277:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   278:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   279:     <DEF_VALUE>0</DEF_VALUE>
+   280:     <VALUE>0</VALUE>
+   281:     <PHYS_TYPE>1</PHYS_TYPE>
+   282:     <PHYS_DOMAIN>1</PHYS_DOMAIN>
+   283:     <ACT_SUFFIX>leak</ACT_SUFFIX>
+   284:     <ACT_TYPE>3</ACT_TYPE>
+   285:    </IVAR>
+   286:    <IVAR>
+   287:     <SUB_ID>35</SUB_ID>
+   288:     <TITLE>activity of hydraulic capacitance (chamber1)</TITLE>
+   289:     <VARNAME>actCchamber1</VARNAME>
+   290:     <VARNAME2>dactCchamber1</VARNAME2>
+   291:     <VISIBILITY>True</VISIBILITY>
+   292:     <TYPE>1</TYPE>
+   293:     <DIMENSION>1</DIMENSION>
+   294:     <UNITS>J</UNITS>
+   295:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   296:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   297:     <DEF_VALUE>0</DEF_VALUE>
+   298:     <VALUE>0</VALUE>
+   299:     <PHYS_TYPE>2</PHYS_TYPE>
+   300:     <PHYS_DOMAIN>1</PHYS_DOMAIN>
+   301:     <ACT_SUFFIX>chamber1</ACT_SUFFIX>
+   302:     <ACT_TYPE>1</ACT_TYPE>
+   303:    </IVAR>
+   304:    <IVAR>
+   305:     <SUB_ID>36</SUB_ID>
+   306:     <TITLE>power of hydraulic capacitance (chamber1)</TITLE>
+   307:     <VARNAME>powerCchamber1</VARNAME>
+   308:     <VISIBILITY>True</VISIBILITY>
+   309:     <TYPE>9</TYPE>
+   310:     <DIMENSION>1</DIMENSION>
+   311:     <UNITS>W</UNITS>
+   312:     <PHYS_TYPE>2</PHYS_TYPE>
+   313:     <PHYS_DOMAIN>1</PHYS_DOMAIN>
+   314:     <ACT_SUFFIX>chamber1</ACT_SUFFIX>
+   315:     <ACT_TYPE>2</ACT_TYPE>
+   316:    </IVAR>
+   317:    <IVAR>
+   318:     <SUB_ID>37</SUB_ID>
+   319:     <TITLE>energy of hydraulic capacitance (chamber1)</TITLE>
+   320:     <VARNAME>energyCchamber1</VARNAME>
+   321:     <VARNAME2>denergyCchamber1</VARNAME2>
+   322:     <VISIBILITY>True</VISIBILITY>
+   323:     <TYPE>1</TYPE>
+   324:     <DIMENSION>1</DIMENSION>
+   325:     <UNITS>J</UNITS>
+   326:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   327:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   328:     <DEF_VALUE>0</DEF_VALUE>
+   329:     <VALUE>0</VALUE>
+   330:     <PHYS_TYPE>2</PHYS_TYPE>
+   331:     <PHYS_DOMAIN>1</PHYS_DOMAIN>
+   332:     <ACT_SUFFIX>chamber1</ACT_SUFFIX>
+   333:     <ACT_TYPE>3</ACT_TYPE>
+   334:    </IVAR>
+   335:    <IVAR>
+   336:     <SUB_ID>38</SUB_ID>
+   337:     <TITLE>activity of hydraulic capacitance (chamber2)</TITLE>
+   338:     <VARNAME>actCchamber2</VARNAME>
+   339:     <VARNAME2>dactCchamber2</VARNAME2>
+   340:     <VISIBILITY>True</VISIBILITY>
+   341:     <TYPE>1</TYPE>
+   342:     <DIMENSION>1</DIMENSION>
+   343:     <UNITS>J</UNITS>
+   344:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   345:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   346:     <DEF_VALUE>0</DEF_VALUE>
+   347:     <VALUE>0</VALUE>
+   348:     <PHYS_TYPE>2</PHYS_TYPE>
+   349:     <PHYS_DOMAIN>1</PHYS_DOMAIN>
+   350:     <ACT_SUFFIX>chamber2</ACT_SUFFIX>
+   351:     <ACT_TYPE>1</ACT_TYPE>
+   352:    </IVAR>
+   353:    <IVAR>
+   354:     <SUB_ID>39</SUB_ID>
+   355:     <TITLE>power of hydraulic capacitance (chamber2)</TITLE>
+   356:     <VARNAME>powerCchamber2</VARNAME>
+   357:     <VISIBILITY>True</VISIBILITY>
+   358:     <TYPE>9</TYPE>
+   359:     <DIMENSION>1</DIMENSION>
+   360:     <UNITS>W</UNITS>
+   361:     <PHYS_TYPE>2</PHYS_TYPE>
+   362:     <PHYS_DOMAIN>1</PHYS_DOMAIN>
+   363:     <ACT_SUFFIX>chamber2</ACT_SUFFIX>
+   364:     <ACT_TYPE>2</ACT_TYPE>
+   365:    </IVAR>
+   366:    <IVAR>
+   367:     <SUB_ID>40</SUB_ID>
+   368:     <TITLE>energy of hydraulic capacitance (chamber2)</TITLE>
+   369:     <VARNAME>energyCchamber2</VARNAME>
+   370:     <VARNAME2>denergyCchamber2</VARNAME2>
+   371:     <VISIBILITY>True</VISIBILITY>
+   372:     <TYPE>1</TYPE>
+   373:     <DIMENSION>1</DIMENSION>
+   374:     <UNITS>J</UNITS>
+   375:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   376:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   377:     <DEF_VALUE>0</DEF_VALUE>
+   378:     <VALUE>0</VALUE>
+   379:     <PHYS_TYPE>2</PHYS_TYPE>
+   380:     <PHYS_DOMAIN>1</PHYS_DOMAIN>
+   381:     <ACT_SUFFIX>chamber2</ACT_SUFFIX>
+   382:     <ACT_TYPE>3</ACT_TYPE>
+   383:    </IVAR>
+   384:    <IVAR>
+   385:     <SUB_ID>41</SUB_ID>
+   386:     <TITLE>activity of mechanical dissipation (frict)</TITLE>
+   387:     <VARNAME>actRfrict</VARNAME>
+   388:     <VARNAME2>dactRfrict</VARNAME2>
+   389:     <VISIBILITY>True</VISIBILITY>
+   390:     <TYPE>1</TYPE>
+   391:     <DIMENSION>1</DIMENSION>
+   392:     <UNITS>J</UNITS>
+   393:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   394:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   395:     <DEF_VALUE>0</DEF_VALUE>
+   396:     <VALUE>0</VALUE>
+   397:     <PHYS_TYPE>1</PHYS_TYPE>
+   398:     <PHYS_DOMAIN>2</PHYS_DOMAIN>
+   399:     <ACT_SUFFIX>frict</ACT_SUFFIX>
+   400:     <ACT_TYPE>1</ACT_TYPE>
+   401:    </IVAR>
+   402:    <IVAR>
+   403:     <SUB_ID>42</SUB_ID>
+   404:     <TITLE>power of mechanical dissipation (frict)</TITLE>
+   405:     <VARNAME>powerRfrict</VARNAME>
+   406:     <VISIBILITY>True</VISIBILITY>
+   407:     <TYPE>9</TYPE>
+   408:     <DIMENSION>1</DIMENSION>
+   409:     <UNITS>W</UNITS>
+   410:     <PHYS_TYPE>1</PHYS_TYPE>
+   411:     <PHYS_DOMAIN>2</PHYS_DOMAIN>
+   412:     <ACT_SUFFIX>frict</ACT_SUFFIX>
+   413:     <ACT_TYPE>2</ACT_TYPE>
+   414:    </IVAR>
+   415:    <IVAR>
+   416:     <SUB_ID>43</SUB_ID>
+   417:     <TITLE>energy of mechanical dissipation (frict)</TITLE>
+   418:     <VARNAME>energyRfrict</VARNAME>
+   419:     <VARNAME2>denergyRfrict</VARNAME2>
+   420:     <VISIBILITY>True</VISIBILITY>
+   421:     <TYPE>1</TYPE>
+   422:     <DIMENSION>1</DIMENSION>
+   423:     <UNITS>J</UNITS>
+   424:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   425:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   426:     <DEF_VALUE>0</DEF_VALUE>
+   427:     <VALUE>0</VALUE>
+   428:     <PHYS_TYPE>1</PHYS_TYPE>
+   429:     <PHYS_DOMAIN>2</PHYS_DOMAIN>
+   430:     <ACT_SUFFIX>frict</ACT_SUFFIX>
+   431:     <ACT_TYPE>3</ACT_TYPE>
+   432:    </IVAR>
+   433:    <IVAR>
+   434:     <SUB_ID>44</SUB_ID>
+   435:     <TITLE>activity of mechanical capacitance (spring)</TITLE>
+   436:     <VARNAME>actCspring</VARNAME>
+   437:     <VARNAME2>dactCspring</VARNAME2>
+   438:     <VISIBILITY>True</VISIBILITY>
+   439:     <TYPE>1</TYPE>
+   440:     <DIMENSION>1</DIMENSION>
+   441:     <UNITS>J</UNITS>
+   442:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   443:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   444:     <DEF_VALUE>0</DEF_VALUE>
+   445:     <VALUE>0</VALUE>
+   446:     <PHYS_TYPE>2</PHYS_TYPE>
+   447:     <PHYS_DOMAIN>2</PHYS_DOMAIN>
+   448:     <ACT_SUFFIX>spring</ACT_SUFFIX>
+   449:     <ACT_TYPE>1</ACT_TYPE>
+   450:    </IVAR>
+   451:    <IVAR>
+   452:     <SUB_ID>45</SUB_ID>
+   453:     <TITLE>power of mechanical capacitance (spring)</TITLE>
+   454:     <VARNAME>powerCspring</VARNAME>
+   455:     <VISIBILITY>True</VISIBILITY>
+   456:     <TYPE>9</TYPE>
+   457:     <DIMENSION>1</DIMENSION>
+   458:     <UNITS>W</UNITS>
+   459:     <PHYS_TYPE>2</PHYS_TYPE>
+   460:     <PHYS_DOMAIN>2</PHYS_DOMAIN>
+   461:     <ACT_SUFFIX>spring</ACT_SUFFIX>
+   462:     <ACT_TYPE>2</ACT_TYPE>
+   463:    </IVAR>
+   464:    <IVAR>
+   465:     <SUB_ID>46</SUB_ID>
+   466:     <TITLE>energy of mechanical capacitance (spring)</TITLE>
+   467:     <VARNAME>energyCspring</VARNAME>
+   468:     <VARNAME2>denergyCspring</VARNAME2>
+   469:     <VISIBILITY>True</VISIBILITY>
+   470:     <TYPE>1</TYPE>
+   471:     <DIMENSION>1</DIMENSION>
+   472:     <UNITS>J</UNITS>
+   473:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   474:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   475:     <DEF_VALUE>0</DEF_VALUE>
+   476:     <VALUE>0</VALUE>
+   477:     <PHYS_TYPE>2</PHYS_TYPE>
+   478:     <PHYS_DOMAIN>2</PHYS_DOMAIN>
+   479:     <ACT_SUFFIX>spring</ACT_SUFFIX>
+   480:     <ACT_TYPE>3</ACT_TYPE>
+   481:    </IVAR>
+   482:    <IVAR>
+   483:     <SUB_ID>51</SUB_ID>
+   484:     <TITLE>activity of hydraulic source (patm)</TITLE>
+   485:     <VARNAME>actSpatm</VARNAME>
+   486:     <VARNAME2>dactSpatm</VARNAME2>
+   487:     <VISIBILITY>True</VISIBILITY>
+   488:     <TYPE>1</TYPE>
+   489:     <DIMENSION>1</DIMENSION>
+   490:     <UNITS>J</UNITS>
+   491:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   492:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   493:     <DEF_VALUE>0</DEF_VALUE>
+   494:     <VALUE>0</VALUE>
+   495:     <PHYS_TYPE>4</PHYS_TYPE>
+   496:     <PHYS_DOMAIN>1</PHYS_DOMAIN>
+   497:     <ACT_SUFFIX>patm</ACT_SUFFIX>
+   498:     <ACT_TYPE>1</ACT_TYPE>
+   499:    </IVAR>
+   500:    <IVAR>
+   501:     <SUB_ID>55</SUB_ID>
+   502:     <TITLE>power of hydraulic source (patm)</TITLE>
+   503:     <VARNAME>powerSpatm</VARNAME>
+   504:     <VARNAME2>dactSpatm</VARNAME2>
+   505:     <VISIBILITY>True</VISIBILITY>
+   506:     <TYPE>9</TYPE>
+   507:     <DIMENSION>1</DIMENSION>
+   508:     <UNITS>W</UNITS>
+   509:     <PHYS_TYPE>4</PHYS_TYPE>
+   510:     <PHYS_DOMAIN>1</PHYS_DOMAIN>
+   511:     <ACT_SUFFIX>patm</ACT_SUFFIX>
+   512:     <ACT_TYPE>2</ACT_TYPE>
+   513:    </IVAR>
+   514:    <IVAR>
+   515:     <SUB_ID>54</SUB_ID>
+   516:     <TITLE>energy of hydraulic source (patm)</TITLE>
+   517:     <VARNAME>energySpatm</VARNAME>
+   518:     <VARNAME2>denergySpatm</VARNAME2>
+   519:     <VISIBILITY>True</VISIBILITY>
+   520:     <TYPE>1</TYPE>
+   521:     <DIMENSION>1</DIMENSION>
+   522:     <UNITS>J</UNITS>
+   523:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   524:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   525:     <DEF_VALUE>0</DEF_VALUE>
+   526:     <VALUE>0</VALUE>
+   527:     <PHYS_TYPE>4</PHYS_TYPE>
+   528:     <PHYS_DOMAIN>1</PHYS_DOMAIN>
+   529:     <ACT_SUFFIX>patm</ACT_SUFFIX>
+   530:     <ACT_TYPE>3</ACT_TYPE>
+   531:    </IVAR>
+   532:   </IVARS_LIST>
+   533:   <EVARS_LIST>
+   534:    <PORT>
+   535:     <EVAR>
+   536:      <SUB_ID>1</SUB_ID>
+   537:      <TITLE>pressure at port 1</TITLE>
+   538:      <VARNAME>p1</VARNAME>
+   539:      <VARNAME2>p1dot</VARNAME2>
+   540:      <VISIBILITY>True</VISIBILITY>
+   541:      <TYPE>1</TYPE>
+   542:      <DIMENSION>1</DIMENSION>
+   543:      <IO>2</IO>
+   544:      <UNITS>bar</UNITS>
+   545:      <MIN_VALUE>-1.00000000000000e+000</MIN_VALUE>
+   546:      <MAX_VALUE>1.00000000000000e+003</MAX_VALUE>
+   547:      <DEF_VALUE>0.00000000000000e+000</DEF_VALUE>
+   548:      <VALUE>0.00000000000000e+000</VALUE>
+   549:     </EVAR>
+   550:     <EVAR>
+   551:      <SUB_ID>2</SUB_ID>
+   552:      <TITLE>flow rate at port 1</TITLE>
+   553:      <VARNAME>q1</VARNAME>
+   554:      <VISIBILITY>True</VISIBILITY>
+   555:      <TYPE>0</TYPE>
+   556:      <DIMENSION>1</DIMENSION>
+   557:      <IO>1</IO>
+   558:      <UNITS>L/min</UNITS>
+   559:     </EVAR>
+   560:    </PORT>
+   561:    <PORT>
+   562:     <EVAR>
+   563:      <SUB_ID>3</SUB_ID>
+   564:      <TITLE>pressure at port 2</TITLE>
+   565:      <VARNAME>p2</VARNAME>
+   566:      <VARNAME2>p2dot</VARNAME2>
+   567:      <VISIBILITY>True</VISIBILITY>
+   568:      <TYPE>1</TYPE>
+   569:      <DIMENSION>1</DIMENSION>
+   570:      <IO>2</IO>
+   571:      <UNITS>bar</UNITS>
+   572:      <MIN_VALUE>-1.00000000000000e+000</MIN_VALUE>
+   573:      <MAX_VALUE>1.00000000000000e+003</MAX_VALUE>
+   574:      <DEF_VALUE>0.00000000000000e+000</DEF_VALUE>
+   575:      <VALUE>0.00000000000000e+000</VALUE>
+   576:     </EVAR>
+   577:     <EVAR>
+   578:      <SUB_ID>4</SUB_ID>
+   579:      <TITLE>flow rate at port 2</TITLE>
+   580:      <VARNAME>q2</VARNAME>
+   581:      <VISIBILITY>True</VISIBILITY>
+   582:      <TYPE>0</TYPE>
+   583:      <DIMENSION>1</DIMENSION>
+   584:      <IO>1</IO>
+   585:      <UNITS>L/min</UNITS>
+   586:     </EVAR>
+   587:    </PORT>
+   588:    <PORT>
+   589:     <EVAR>
+   590:      <SUB_ID>5</SUB_ID>
+   591:      <TITLE>force exerted by actuator rod</TITLE>
+   592:      <VARNAME>frod</VARNAME>
+   593:      <VISIBILITY>True</VISIBILITY>
+   594:      <TYPE>0</TYPE>
+   595:      <DIMENSION>1</DIMENSION>
+   596:      <IO>2</IO>
+   597:      <UNITS>N</UNITS>
+   598:     </EVAR>
+   599:     <EVAR>
+   600:      <SUB_ID>6</SUB_ID>
+   601:      <TITLE>input velocity</TITLE>
+   602:      <VARNAME>v</VARNAME>
+   603:      <VISIBILITY>True</VISIBILITY>
+   604:      <TYPE>0</TYPE>
+   605:      <DIMENSION>1</DIMENSION>
+   606:      <IO>1</IO>
+   607:      <UNITS>m/s</UNITS>
+   608:     </EVAR>
+   609:     <EVAR>
+   610:      <SUB_ID>7</SUB_ID>
+   611:      <TITLE>input displacement</TITLE>
+   612:      <VARNAME>x</VARNAME>
+   613:      <VISIBILITY>True</VISIBILITY>
+   614:      <TYPE>0</TYPE>
+   615:      <DIMENSION>1</DIMENSION>
+   616:      <IO>1</IO>
+   617:      <UNITS>m</UNITS>
+   618:     </EVAR>
+   619:    </PORT>
+   620:   </EVARS_LIST>
+   621:  </SUBMODEL>
+   622: </SPE>

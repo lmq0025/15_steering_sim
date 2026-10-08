@@ -1,0 +1,73 @@
+{
+  "amesim": {
+    "success": true,
+    "duration_s": 1.0,
+    "wall_time_s": 11.078132629394531,
+    "closed_without_save": true
+  },
+  "python": {
+    "success": true,
+    "duration_s": 1.0,
+    "wall_time_s": 33.167295600054786,
+    "short_0p1_wall_time_s": 7.375466000055894,
+    "states": 109,
+    "sparse_jacobian": false,
+    "algebraic_failures": 0
+  },
+  "initialization": {
+    "mapped_states": 109,
+    "engineering_default_states": 0
+  },
+  "comparison": {
+    "variables_total": 154,
+    "good": 48,
+    "acceptable": 8,
+    "poor": 98,
+    "unit_or_sign_errors_found": 0,
+    "topology_errors_found": 0,
+    "level_c_surrogate_suspects": 36,
+    "fast_reduction_suspects": 4
+  },
+  "pump_pressure": {
+    "python_max_pa": 241603581.09234568,
+    "amesim_max_pa": 18662269.95419734,
+    "same_order_of_magnitude": false,
+    "first_divergence_location": "pump outlet junctions V3_HJ_066/V3_HJ_068/V3_HJ_108/V3_HJ_110; downstream RV010 opening schedules then diverge",
+    "phenomenon": "PYTHON_ONLY",
+    "first_divergence_time_s_by_pump": {
+      "pump01": 0.028,
+      "pump01_1": 0.028,
+      "pump01_2": 0.028,
+      "pump01_3": 0.028
+    },
+    "relief_opening_finding": "Amesim presscontrol01 opens at 0.084 s and presscontrol01_3 at 0.748 s; Python opens neither within 1 s"
+  },
+  "error_categories": {
+    "LEVEL_C_SURROGATE": 83,
+    "INITIALIZATION": 11,
+    "UNKNOWN": 4,
+    "FAST_LINE_REDUCTION": 8
+  },
+  "sanity": {
+    "passed": 15,
+    "total": 15
+  },
+  "hashes": {
+    "17A_bondgraph_elements_v3.csv": "850ce87ede456b6a1490381b6e9170bf7755e5757910830cef8b249941fa28de",
+    "17B_bondgraph_ports_v3.csv": "83255ab8d385c26ad0e27c83eeb6b9e305d99fb9ab656d627cf93257aba83333",
+    "17C_bondgraph_junctions_v3.csv": "fdb6ca015e72802ced0eff1631a74cc9345fe52b1edc5ba3f486625d4c3c8d75",
+    "17D_physical_line_registry.csv": "c66f9fb1a1fcf95819888dfd2245701d07ca1266ba1010e5baa83b3ded7d9912",
+    "17F_BONDGRAPH_IR_FREEZE_V3.md": "a143c9d911ce23b80048a3e8d9cb5ac8e0f74fd7cae9c083204d332ab313f433"
+  },
+  "ready_for_targeted_calibration": true,
+  "pressure_control": {
+    "instances_checked": 19,
+    "direction": "p2-p1",
+    "opening_summary_file": "20J_pressure_control_opening_summary.csv"
+  },
+  "performance": {
+    "amesim_1s_wall_time_s": 11.078132629394531,
+    "python_1s_wall_time_s": 33.167295600054786,
+    "python_to_amesim_wall_ratio": 2.993942815962434
+  }
+}

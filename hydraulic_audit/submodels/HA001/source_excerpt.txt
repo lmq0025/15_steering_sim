@@ -1,0 +1,683 @@
+SUBMODEL: HA001
+SOURCE FILES: 2
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\HA001.c
+==============================================================================
+...
+     1: /* Submodel HA001 skeleton created by AME Submodel editing utility
+     2:    mar. 13. sept. 11:39:52 2011 */
+     3: 
+     4: 
+     5: 
+     6: #include <math.h>
+     7: #include <stdio.h>
+     8: #include <stdlib.h>
+     9: #include "ameutils.h"
+    10: /* *******************************************************************************
+    11: TITLE : HA001
+    12: 
+    13: ------------------------------------------------------------------------------
+    14: DESCRIPTION :
+    15: 
+    16:    HA001 is a dynamic submodel of a hydraulic accumulator. The
+    17:    accumulator gas is assumed to obey a polytropic gas law of the form
+    18: 
+    19:       gamma
+    20:    P V     = polyconstant
+    21: 
+    22:    where the constant is defined by the initial state of the accumulator
+    23:    (depending on the #gas pressure).
+    24:    This initial state (actually the gas volume) is whether computed with
+    25:    an isothermal law:
+    26: 
+    27:    P V = constant1
+    28: 
+    29:    or with an adiabatic law depending on a supplied parameter (0 or 1)
+    30: 
+    31:        gamma
+    32:    P V      = constant1
+    33: 
+    34:    this constant is given by the gas precharge pressure and the accumulator
+    35:    volume.
+    36: 
+    37:    The gas pressure is assumed to be the same as of the hydraulic fluid
+    38:    in the accumulator when the unit is not fully charged or
+    39:    discharged.
+    40: 
+    41:    When it is fully discharged, the hydraulic pressure is
+    42:    computed using the equation for a compressible volume of fluid with
+    43:    an assumed volume of 1/1000 of the accumulator volume.
+    44: 
+    45:    When the gas volume becomes 1/1000 of the accumulator volume, the
+    46:    accumulator is assumed to be fully charged. This prevents problems
+    47:    that would occur if the gas volume tended to zero.
+    48: 
+    49: ------------------------------------------------------------------------------
+    50: USAGE :
+    51: 
+    52:    There is no orifice law at the inlet which gives HA001 different
+    53:    port input and output requirements to HA000.  HA001 gives pressure
+    54:    in bar as an output and requires flow rate in L/min as an
+    55:    input. This is the opposite of HA000.
+    56: 
+    57: ------------------------------------------------------------------------------
+    58: PARAMETER SETTINGS :
+    59: 
+    60:    If you require a stabilizing run, there should be thermal equilibrium.
+    61:    Hence it is better to set the polytropic index to 1 before performing
+    62:    the stabilizing run. If you want to use these values as starting values
+    63:    for a transient run, reset the polytropic index to your chosen value
+    64:    and use the 'Run with old final values' facility.
+    65: 
+    66:    The index of hydraulic fluid parameter refers to a fluid type
+    67:    defined by an icon put on the sketch.
+    68: 
+    69: ------------------------------------------------------------------------------
+    70: DATE OF CREATION/AUTHOR :
+    71: ------------------------------------------------------------------------------
+    72: INDEX OF REVISIONS :
+    73: 
+    74:    30/12/1999 : Index of hydraulic fluid management is introduced (STC).
+    75: 
+    76:    ED  18/11/02 Added gas volume initialization depending on user choice
+    77:                 Fixed the continuation run case.
+    78: 
+    79: ------------------------------------------------------------------------------
+    80: LIST OF FUNCTIONS USED :
+    81: 
+    82:    pcdyn2_()  : rate of pressure change in a compressible fluid
+    83:    disloc_()  : signals a discontinuity to the discontinuity handler
+    84: 
+    85: ------------------------------------------------------------------------------
+    86: SOURCE :
+    87:    Siemens Industry Software SAS
+    88:    7 place des Minimes
+    89:    42300 Roanne - France
+    90:    tel: (33).04.77.23.60.30
+    91:    fax: (33).04.77.23.60.31
+    92:    www.siemens.com/plm
+    93: 
+    94:    Copyright 2015 Siemens Industry Software NV
+    95: ******************************************************************************* */
+    96: /* >>>>>>>>>>>>Insert Private Code Here. */
+    97: #define POLYCONSTANT c[0]
+    98: #define VMIN         c[1]
+    99: #define PMIN         c[2]
+   100: #define PMAX         c[3]
+   101: 
+   102: #define LOWEST_P   -getatp_()*1.0e-5
+   103: 
+   104: /* <<<<<<<<<<<<End of Private Code. */
+   105: 
+   106: 
+   107: /* There are 3 real parameters:
+   108: 
+   109:    gaspc  gas precharge pressure [bar -> Pa]
+   110:    accvol accumulator volume     [L -> m**3]
+   111:    gamma  polytropic index       [null]
+   112: */
+   113: 
+   114: 
+   115: /* There are 2 integer parameters:
+   116: 
+   117:    indexf index of hydraulic fluid
+   118:    init   isothermal initialization (0) or adiabatic initialization (1)
+   119: */
+   120: 
+   121: void ha001in_(int *n, double rp[3], int ip[2], double c[5], int ic[3]
+   122:       , double *pout, double *actCaccu, double *energyCaccu)
+   123: 
+   124: {
+   125:    int loop, error;
+   126: /* >>>>>>>>>>>>Extra Initialization Function Declarations Here. */
+   127: /* <<<<<<<<<<<<End of Extra Initialization declarations. */
+   128:    int indexf, init;
+   129:    double gaspc, accvol, gamma;
+   130: 
+   131:    indexf     = ip[0];
+   132:    init       = ip[1];
+   133: 
+   134:    gaspc      = rp[0];
+   135:    accvol     = rp[1];
+   136:    gamma      = rp[2];
+   137:    loop = 0;
+   138:    error = 0;
+   139: 
+   140: /*
+   141:    If necessary, check values of the following:
+   142: 
+   143:    rp[0..2]
+   144:    *pout
+   145:    *actCaccu
+   146:    *energyCaccu
+   147: */
+   148: 
+   149: 
+   150: /* >>>>>>>>>>>>Initialization Function Check Statements. */
+   151: 
+   152:    hyd_valid_liquid_(&indexf, &error);
+   153: 
+   154:    /* Check precharge pressure. */
+   155:    if(gaspc < 0.0 || gaspc > 1.0e4)
+   156:    {
+   157:       error = 2;
+   158:       amefprintf(stderr, "Unacceptable precharge pressure (value %le)\n", gaspc);
+   159:    }
+   160: 
+   161:    /* Check accumulator volume. */
+   162:    if(accvol < 1.0e-6 || accvol > 1.0e6)
+   163:    {
+   164:       error = 2;
+   165:       amefprintf(stderr, "Unacceptable accumulator volume (value %le)\n", accvol);
+   166:    }
+   167: 
+   168:    /* Check polytropic index. */
+   169:    if(gamma < 0.2 || gamma > 2.7)
+   170:    {
+   171:       error = 2;
+   172:       amefprintf(stderr, "Unacceptable polytropic index (value %le)\n", gamma);
+   173:    }
+   174: 
+   175:    /* Check initial value of gas pressure. */
+   176:    if(*pout < LOWEST_P || *pout > 1.0e6)
+   177:    {
+   178:       error = MAX(error, 1);
+   179:       amefprintf(stderr, "Unacceptable outlet pressure in bar (value %le)\n", *pout);
+   180: 
+   181:       if(*pout < LOWEST_P)
+   182:       {
+   183:          *pout = LOWEST_P;
+   184:          amefprintf(stderr, "Resetting to %g bar\n\n", LOWEST_P);
+   185:       }
+   186:       else if(*pout > 1.0e6)
+   187:       {
+   188:          *pout = 1.0e6;
+   189:          amefprintf(stderr, "Resetting to 1.0e6 bar\n\n");
+   190:       }
+   191:    }
+   192: 
+   193:    /* Check initial value of initialization option. */
+   194:    if(init != 0 && init != 1)
+   195:    {
+   196:       amefprintf(stderr, "Unacceptable initial value of initialization option.\n");
+   197:       amefprintf(stderr, "The initial value must be 0 or 1.\n");
+   198:       error = 2;
+   199:    }
+   200: 
+   201: 
+   202: 
+   203: /* <<<<<<<<<<<<End of Initialization Check Statements. */
+   204: 
+   205: /*   Integer parameter checking:   */
+   206: 
+   207:    if (indexf < 0 || indexf > 100)
+   208:    {
+   209:       amefprintf(stderr, "\nindex of hydraulic fluid must be in range [0..100].\n");
+   210:       error = 2;
+   211:    }
+   212:    if (init < 0 || init > 1)
+   213:    {
+   214:       amefprintf(stderr, "\nisothermal initialization (0) or adiabatic initialization (1) must be in range [0..1].\n");
+   215:       error = 2;
+   216:    }
+   217: 
+   218:    if(error == 1)
+   219:    {
+   220:       amefprintf(stderr, "\nWarning in HA001 instance %d.\n", *n);
+   221:    }
+   222:    else if(error == 2)
+   223:    {
+   224:       amefprintf(stderr, "\nFatal error in HA001 instance %d.\n", *n);
+   225:       amefprintf(stderr, "Terminating the program.\n");
+   226:       AmeExit(1);
+   227:    }
+   228: 
+   229: /* Common -> SI units conversions. */
+   230: 
+   231:    rp[0]    *= 1.00000000000000e+005;
+   232:    gaspc      = rp[0];
+   233:    rp[1]    *= 1.00000000000000e-003;
+   234:    accvol     = rp[1];
+   235: 
+   236: 
+   237: /* >>>>>>>>>>>>Initialization Function Executable Statements. */
+   238: 
+   239: /*
+   240:    Integer stores:
+   241: 
+   242:    ic[0]    - charge state:
+   243:               -1 for fully discharged
+   244:                0 neither fully discharged or fully charged
+   245:                1 for fully charged
+   246:    ic[1]    - activity index
+   247: */
+   248: 
+   249:    VMIN = accvol * 0.001 ;
+   250: 
+   251: /* <<<<<<<<<<<<End of Initialization Executable Statements. */
+   252: }
+   253: 
+   254: /*  There is 1 port.
+   255: 
+   256:    Port 1 has 2 variables:
+   257: 
+   258:       1 pout     pressure at port 1  [bar -> Pa]       explicit state (derivative `poutdt')
+   259:       2 qout     flow rate at port 1 [L/min -> m**3/s] basic variable input
+   260: */
+   261: 
+   262: /*  There are 5 internal variables.
+   263: 
+   264:       1 pgas            gas pressure                             [bar -> Pa] basic variable
+   265:       2 gasvol          gas volume                               [L -> m**3] basic variable
+   266:       3 actCaccu        activity of hydraulic capacitance (accu) [J]         explicit state (derivative `dactCaccu') for activity
+   267:       4 powerCaccu      power of hydraulic capacitance (accu)    [J/s -> W]  power variable
+   268:       5 energyCaccu     energy of hydraulic capacitance (accu)   [J]         explicit state (derivative `denergyCaccu') for energy
+   269: */
+   270: 
+   271: void ha001_(int *n, double *pout, double *poutdt, double *qout
+   272:       , double *pgas, double *gasvol, double *actCaccu
+   273:       , double *dactCaccu, double *powerCaccu, double *energyCaccu
+   274:       , double *denergyCaccu, double rp[3], int ip[2], double c[5]
+   275:       , int ic[3], int *flag)
+   276: 
+   277: {
+   278:    int loop, logi;
+   279:    double powCaccu;
+   280: 
+   281: /* >>>>>>>>>>>>Extra Calculation Function Declarations Here. */
+   282:    double zero = 0.0;
+   283:    double patm = getatp_();
+   284:    double index = 1.0 / rp[2];
+   285:    double temp;
+   286: /* <<<<<<<<<<<<End of Extra Calculation declarations. */
+   287:    int indexf, init;
+   288:    double gaspc, accvol, gamma;
+   289: 
+   290:    indexf     = ip[0];
+   291:    init       = ip[1];
+   292: 
+   293:    gaspc      = rp[0];
+   294:    accvol     = rp[1];
+   295:    gamma      = rp[2];
+   296:    logi = 0;
+   297:    loop = 0;
+   298: 
+   299: /* Common -> SI units conversions. */
+   300: 
+   301:    *pout     *= 1.00000000000000e+005;
+   302:    *qout     *= 1.66666666666667e-005;
+   303: 
+   304: /*
+   305:    Set all submodel outputs below:
+   306: 
+   307:    *poutdt     = ??;
+   308:    *pgas       = ??;
+   309:    *gasvol     = ??;
+   310: */
+   311: 
+   312: 
+   313: 
+   314: /* >>>>>>>>>>>>Calculation Function Executable Statements. */
+   315: 
+   316:    /* Index of hydraulic fluid management by STC on 11/19/99 */
+   317:    sethdind_(&indexf);
+   318: 
+   319:    /* *************************************************************** */
+   320:    /*      Compute initial gas volume corresponding to the user       */
+   321:    /*           supplied starting gas pressure                        */
+   322:    /* *************************************************************** */
+   323:    if (firstc_())
+   324:    {
+   325:       if (!isconrun_())
+   326:       {
+   327:          /* hypothesis made for the calculation of initial gas volume */
+   328:          *pgas = *pout;
+   329: 
+   330:          if (init == 0)
+   331:          {
+   332:             /* isothermal law between (gaspc/accvol) */
+   333:             /* and the initial state (pgas/gasvol)   */
+   334:             *gasvol = (gaspc + patm) / (*pgas + patm) * accvol;
+   335:          }
+   336:          else
+   337:          {
+   338:             /* adiabatic law between (gaspc/accvol) */
+   339:             /* and the initial state (pgas/gasvol)  */
+   340:             *gasvol = pow((gaspc + patm) / (*pgas + patm), index) * accvol;
+   341:          }
+   342: 
+   343:       }
+   344:       else
+   345:       {
+   346:          /* Common -> SI units conversions */
+   347:          /* get the last values of previous run as initial state */
+   348:          *gasvol   *= 1.00000000000000e-003;
+   349:          *pgas     *= 1.00000000000000e+005;
+   350:       }
+   351: 
+   352:       /* check the initial gas volume */
+   353:       if (*gasvol >= accvol)
+   354:       {
+   355:          *gasvol = accvol;
+   356:          /* Set references values when the accumulator starts fully
+   357:             discharged */
+   358:          PMIN         =  gaspc;
+   359:          POLYCONSTANT = (gaspc + patm) * pow(accvol, gamma);
+   360:          PMAX         = (gaspc + patm) * pow(1000.0, gamma) - patm;
+   361:          amefprintf(stderr, "\nWarning in HA001 instance %d.\n", *n);
+   362:          amefprintf(stderr, "\nThe initial gas pressure would imply a gas volume\n");
+   363:          amefprintf(stderr, "greater than the accumulator volume.");
+   364:          amefprintf(stderr, "\nThe gas pressure is set to gas precharge.");
+   365:          amefprintf(stderr, "\nThe accumulator is fully discharged.\n");
+   366: 
+   367:       }
+   368:       else if (*gasvol <= VMIN)
+   369:       {
+   370:          *gasvol = VMIN;
+   371:          /* Set references values when the accumulator starts fully charged */
+   372:          PMAX         = *pgas;
+   373:          PMIN         = (PMAX + patm) * pow(VMIN / accvol, gamma) - patm;
+   374:          POLYCONSTANT = (PMAX + patm) * pow(VMIN, gamma);
+   375:          amefprintf(stderr, "\nWarning in HA001 instance %d.\n", *n);
+   376:          amefprintf(stderr, "\nThe initial gas pressure would imply a gas volume\n");
+   377:          amefprintf(stderr, "lower than the minimal accepted gas volume.");
+   378:          amefprintf(stderr, "\nThe accumulator is fully charged.\n");
+   379:       }
+   380:       else
+   381:       {
+   382:          /* Set references values when the accumulator is partially charged */
+   383:          PMIN         = (*pgas + patm) * pow(*gasvol / accvol, gamma) - patm;
+   384:          POLYCONSTANT = (*pgas + patm) * pow(*gasvol, gamma);
+   385:          PMAX         = (*pgas + patm) * pow(1000.0, gamma) - patm;
+   386:       }
+   387: 
+   388:    }
+   389: 
+   390:    /* *************************************************************** */
+   391:    /*          Discontinuity handling, definition of regions          */
+   392:    /* *************************************************************** */
+   393:    if(*flag == 0)
+   394:    {
+   395:       if(*pout < PMIN)
+   396:       {
+   397:          /* Accumulator is fully discharged. */
+   398:          ic[0] = - 1;
+   399:       }
+   400:       else if(*pout >= PMAX)
+   401:       {
+   402:          /* Accumulator is fully charged. */
+   403:          ic[0] = 1;
+   404:       }
+   405:       else
+   406:       {
+   407:          /* Neither fully charged or discharged. */
+   408:          ic[0] = 0;
+   409:       }
+   410:    }
+   411: 
+   412: 
+   413:    /* *************************************************************** */
+   414:    /*          Discontinuity handling, computation statements         */
+   415:    /* *************************************************************** */
+   416:    if(ic[0] == -1)
+   417:    {
+   418:       /* Accumulator is fully discharged. Work in SI units. */
+   419:       *poutdt = pcdyn2_(pout, &zero, &VMIN, qout);
+   420:       *pgas = PMIN;
+   421:       *gasvol = accvol;
+   422: 
+   423:       /* Check for entering normal state. */
+   424:       logi = (*pout >= PMIN);
+   425:    }
+   426:    else if(ic[0] == 1)
+   427:    {
+   428:       /* Accumulator is fully charged. */
+   429:       *pgas = PMAX;
+   430:       *gasvol = VMIN;
+   431:       *poutdt = pcdyn2_(pout, &zero, &accvol, qout);
+   432: 
+   433:       /* Check for entering normal state. */
+   434:       logi = (*pout < PMAX);
+   435:    }
+   436:    else
+   437:    {
+   438:       /* Accumulator is neither fully charged nor fully discharged. */
+   439:       /* Compute gas volume by solving polytropic equation. */
+   440: 
+   441:       temp = POLYCONSTANT / (*pout + patm);
+   442: 
+   443:       if(temp < 1.0e-20)
+   444:       {
+   445:          /* The pressure has gone too low. Set temp to a very low value */
+   446:          /* and order a step reduction. */
+   447: 
+   448:          temp = 1.0e-20;
+   449:          stepdn_();
+   450:       }
+   451: 
+   452:       *gasvol = pow(temp, index);
+   453:       *pgas   = *pout;
+   454:       *poutdt = gamma * (*pout + patm) * (*qout) / (*gasvol);
+   455: 
+   456:       /* Check for becoming fully charged or fully discharged. */
+   457: 
+   458:       logi = (*pout >= PMAX) || (*pout < PMIN);
+   459:    }
+   460:    disloc_(&logi);
+   461: 
+   462: /* <<<<<<<<<<<<End of Calculation Executable Statements. */
+   463: 
+   464:    if (actCaccu != NULL || energyCaccu != NULL || ispower_() == 1)
+   465:    {
+   466:       /* Set the following power variables:
+   467: 
+   468:       powCaccu = ??;
+   469:       */
+   470: 
+   471:       /* >>>>>>>>>>>>Energy Common Statements. */
+   472:          powCaccu =  *qout * (*pout + patm) * q0top_(pout);
+   473:       /* <<<<<<<<<<<<End of Energy Common Statements. */
+   474: 
+   475:       if (ispower_() == 1)
+   476:       {
+   477:          *powerCaccu      = powCaccu;
+   478:       }
+   479:       if (energyCaccu != NULL)
+   480:       {
+   481:          *denergyCaccu    = powCaccu;
+   482:       }
+   483:       if (actCaccu != NULL)
+   484:       {
+   485:          /* >>>>>>>>>>>>Optional Activity Computation Statements. */
+   486:          /* <<<<<<<<<<<<End of Optional Activity Computation Statements. */
+   487:          *dactCaccu       = fabs(powCaccu);
+   488:       }
+   489:    }
+   490: 
+   491: /* SI -> Common units conversions. */
+   492: 
+   493:    *pout     /= 1.00000000000000e+005;
+   494:    *poutdt   /= 1.00000000000000e+005;
+   495:    *qout     /= 1.66666666666667e-005;
+   496:    *pgas     /= 1.00000000000000e+005;
+   497:    *gasvol   /= 1.00000000000000e-003;
+   498: }
+   499: 
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\HA001.spe
+==============================================================================
+...
+     1: <?xml version="1.0" encoding="ISO-8859-1"?>
+     2: <!DOCTYPE SPE>
+     3: <SPE AME_VERSION="10.0.0 - DEV -  2010" DOC_VERSION="2">
+     4: 
+     5:  <SUBMODEL>
+     6:   <SUB_TYPE>0</SUB_TYPE>
+     7:   <SUB_ID_MAX>13</SUB_ID_MAX>
+     8:   <DEFAULT_ICON>accumulator</DEFAULT_ICON>
+     9:   <SUB_LABEL>hydraulic accumulator without inlet orifice</SUB_LABEL>
+    10:   <SUB_UNIT>0</SUB_UNIT>
+    11:   <R_STORES_NUMBER>5</R_STORES_NUMBER>
+    12:   <I_STORES_NUMBER>2</I_STORES_NUMBER>
+    13:   <DISCONTINUITY>1</DISCONTINUITY>
+    14:   <OUTPUT_TYPE>1</OUTPUT_TYPE>
+    15:   <RPARAMS_LIST>
+    16:    <RPARAM>
+    17:     <SUB_ID>6</SUB_ID>
+    18:     <TITLE>gas precharge pressure</TITLE>
+    19:     <VARNAME>gaspc</VARNAME>
+    20:     <DEF_VALUE>1.00000000000000e+002</DEF_VALUE>
+    21:     <VALUE>1.00000000000000e+002</VALUE>
+    22:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+    23:     <MAX_VALUE>1.00000000000000e+003</MAX_VALUE>
+    24:     <UNITS>bar</UNITS>
+    25:    </RPARAM>
+    26:    <RPARAM>
+    27:     <SUB_ID>7</SUB_ID>
+    28:     <TITLE>accumulator volume</TITLE>
+    29:     <VARNAME>accvol</VARNAME>
+    30:     <DEF_VALUE>1.00000000000000e+000</DEF_VALUE>
+    31:     <VALUE>1.00000000000000e+000</VALUE>
+    32:     <MIN_VALUE>1.00000000000000e-006</MIN_VALUE>
+    33:     <MAX_VALUE>1.00000000000000e+006</MAX_VALUE>
+    34:     <UNITS>L</UNITS>
+    35:    </RPARAM>
+    36:    <RPARAM>
+    37:     <SUB_ID>8</SUB_ID>
+    38:     <TITLE>polytropic index</TITLE>
+    39:     <VARNAME>gamma</VARNAME>
+    40:     <DEF_VALUE>1.40000000000000e+000</DEF_VALUE>
+    41:     <VALUE>1.40000000000000e+000</VALUE>
+    42:     <MIN_VALUE>1.00000000000000e+000</MIN_VALUE>
+    43:     <MAX_VALUE>1.70000000000000e+000</MAX_VALUE>
+    44:     <UNITS>null</UNITS>
+    45:    </RPARAM>
+    46:   </RPARAMS_LIST>
+    47:   <IPARAMS_LIST>
+    48:    <IPARAM>
+    49:     <SUB_ID>9</SUB_ID>
+    50:     <TITLE>index of hydraulic fluid</TITLE>
+    51:     <VARNAME>indexf</VARNAME>
+    52:     <DEF_VALUE>0</DEF_VALUE>
+    53:     <VALUE>0</VALUE>
+    54:     <MIN_VALUE>0</MIN_VALUE>
+    55:     <MAX_VALUE>100</MAX_VALUE>
+    56:    </IPARAM>
+    57:    <IPARAM>
+    58:     <SUB_ID>10</SUB_ID>
+    59:     <TITLE>isothermal initialization (0) or adiabatic initialization (1)</TITLE>
+    60:     <VARNAME>init</VARNAME>
+    61:     <DEF_VALUE>1</DEF_VALUE>
+    62:     <VALUE>1</VALUE>
+    63:     <MIN_VALUE>0</MIN_VALUE>
+    64:     <MAX_VALUE>1</MAX_VALUE>
+    65:    </IPARAM>
+    66:   </IPARAMS_LIST>
+    67:   <IVARS_LIST>
+    68:    <IVAR>
+    69:     <SUB_ID>3</SUB_ID>
+    70:     <TITLE>gas pressure</TITLE>
+    71:     <VARNAME>pgas</VARNAME>
+    72:     <TYPE>0</TYPE>
+    73:     <DIMENSION>1</DIMENSION>
+    74:     <UNITS>bar</UNITS>
+    75:    </IVAR>
+    76:    <IVAR>
+    77:     <SUB_ID>4</SUB_ID>
+    78:     <TITLE>gas volume</TITLE>
+    79:     <VARNAME>gasvol</VARNAME>
+    80:     <TYPE>0</TYPE>
+    81:     <DIMENSION>1</DIMENSION>
+    82:     <UNITS>L</UNITS>
+    83:    </IVAR>
+    84:    <IVAR>
+    85:     <SUB_ID>5</SUB_ID>
+    86:     <TITLE>activity of hydraulic capacitance (accu)</TITLE>
+    87:     <VARNAME>actCaccu</VARNAME>
+    88:     <VARNAME2>dactCaccu</VARNAME2>
+    89:     <TYPE>1</TYPE>
+    90:     <DIMENSION>1</DIMENSION>
+    91:     <UNITS>J</UNITS>
+    92:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+    93:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+    94:     <DEF_VALUE>0</DEF_VALUE>
+    95:     <VALUE>0</VALUE>
+    96:     <PHYS_TYPE>2</PHYS_TYPE>
+    97:     <PHYS_DOMAIN>1</PHYS_DOMAIN>
+    98:     <ACT_SUFFIX>accu</ACT_SUFFIX>
+    99:     <ACT_TYPE>1</ACT_TYPE>
+   100:    </IVAR>
+   101:    <IVAR>
+   102:     <SUB_ID>11</SUB_ID>
+   103:     <TITLE>power of hydraulic capacitance (accu)</TITLE>
+   104:     <VARNAME>powerCaccu</VARNAME>
+   105:     <TYPE>9</TYPE>
+   106:     <DIMENSION>1</DIMENSION>
+   107:     <UNITS>W</UNITS>
+   108:     <PHYS_TYPE>2</PHYS_TYPE>
+   109:     <PHYS_DOMAIN>1</PHYS_DOMAIN>
+   110:     <ACT_SUFFIX>accu</ACT_SUFFIX>
+   111:     <ACT_TYPE>2</ACT_TYPE>
+   112:    </IVAR>
+   113:    <IVAR>
+   114:     <SUB_ID>12</SUB_ID>
+   115:     <TITLE>energy of hydraulic capacitance (accu)</TITLE>
+   116:     <VARNAME>energyCaccu</VARNAME>
+   117:     <VARNAME2>denergyCaccu</VARNAME2>
+   118:     <TYPE>1</TYPE>
+   119:     <DIMENSION>1</DIMENSION>
+   120:     <UNITS>J</UNITS>
+   121:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   122:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   123:     <DEF_VALUE>0</DEF_VALUE>
+   124:     <VALUE>0</VALUE>
+   125:     <PHYS_TYPE>2</PHYS_TYPE>
+   126:     <PHYS_DOMAIN>1</PHYS_DOMAIN>
+   127:     <ACT_SUFFIX>accu</ACT_SUFFIX>
+   128:     <ACT_TYPE>3</ACT_TYPE>
+   129:    </IVAR>
+   130:   </IVARS_LIST>
+   131:   <PARAMS_GROUPS_LIST>
+   132:    <PARAMS_GROUP>
+   133:     <ORIG_TITLE>power, energy, activity</ORIG_TITLE>
+   134:     <NAME>Emanagement</NAME>
+   135:     <SUB_ID>13</SUB_ID>
+   136:     <SUB_IDS>
+   137:      11 1
+   138:      12 2
+   139:      5 2
+   140:     </SUB_IDS>
+   141:     <EDITABLE>0</EDITABLE>
+   142:    </PARAMS_GROUP>
+   143:   </PARAMS_GROUPS_LIST>
+   144:   <EVARS_LIST>
+   145:    <PORT>
+   146:     <EVAR>
+   147:      <SUB_ID>1</SUB_ID>
+   148:      <TITLE>pressure at port 1</TITLE>
+   149:      <VARNAME>pout</VARNAME>
+   150:      <VARNAME2>poutdt</VARNAME2>
+   151:      <TYPE>1</TYPE>
+   152:      <DIMENSION>1</DIMENSION>
+   153:      <IO>2</IO>
+   154:      <UNITS>bar</UNITS>
+   155:      <MIN_VALUE>-1.00000000000000e+000</MIN_VALUE>
+   156:      <MAX_VALUE>1.00000000000000e+003</MAX_VALUE>
+   157:      <DEF_VALUE>0.00000000000000e+000</DEF_VALUE>
+   158:      <VALUE>0.00000000000000e+000</VALUE>
+   159:     </EVAR>
+   160:     <EVAR>
+   161:      <SUB_ID>2</SUB_ID>
+   162:      <TITLE>flow rate at port 1</TITLE>
+   163:      <VARNAME>qout</VARNAME>
+   164:      <TYPE>0</TYPE>
+   165:      <DIMENSION>1</DIMENSION>
+   166:      <IO>1</IO>
+   167:      <UNITS>L/min</UNITS>
+   168:     </EVAR>
+   169:    </PORT>
+   170:   </EVARS_LIST>
+   171:  </SUBMODEL>
+   172: </SPE>

@@ -1,0 +1,938 @@
+SUBMODEL: HYDORT0
+SOURCE FILES: 3
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\HYDORT0.c
+==============================================================================
+...
+     1: /* Submodel HYDORT0 skeleton created by AME Submodel editing utility
+     2:    mer. 26. avr. 10:16:45 2017 */
+     3: 
+     4: 
+     5: 
+     6: #include <math.h>
+     7: #include <stdio.h>
+     8: #include <stdlib.h>
+     9: #include "ameutils.h"
+    10: /* *******************************************************************************
+    11: TITLE : HYDORT1
+    12: ------------------------------------------------------------------------------
+    13: DESCRIPTION :
+    14: ------------------------------------------------------------------------------
+    15: USAGE :
+    16: ------------------------------------------------------------------------------
+    17: PARAMETER SETTINGS :
+    18: ------------------------------------------------------------------------------
+    19: DATE OF CREATION/AUTHOR : 01/2016 PHI
+    20: ------------------------------------------------------------------------------
+    21: INDEX OF REVISIONS :
+    22: ------------------------------------------------------------------------------
+    23: LIST OF FUNCTIONS USED :
+    24: ------------------------------------------------------------------------------
+    25: SOURCE :
+    26:    Siemens Industry Software SAS
+    27:    7 place des Minimes
+    28:    42300 Roanne - France
+    29:    tel: (33).04.77.23.60.30
+    30:    fax: (33).04.77.23.60.31
+    31:    www.siemens.com/plm
+    32:  
+    33:    Copyright 2015 Siemens Industry Software NV
+    34: ******************************************************************************* */
+    35: 
+    36: #define _SUBMODELNAME_ "HYDORT0"
+    37: 
+    38: /* >>>>>>>>>>>>Insert Private Code Here. */
+    39: 
+    40: #define FLOW12        -1
+    41: #define FLOW21        1
+    42: 
+    43: /* for c[] storage */
+    44: #define RHOCHAR        0
+    45: 
+    46: /* for ic[] storage */
+    47: #define Q_TABLE        0
+    48: #define Q_TABLE12      1
+    49: #define Q_TABLE21      2
+    50: #define REG            3
+    51: 
+    52: /* <<<<<<<<<<<<End of Private Code. */
+    53: 
+    54: 
+    55: /* There are 2 real parameters:
+    56: 
+    57:    hys     hysteresis                                    [bar -> Pa]
+    58:    rhochar working density for pressure drop measurement [kg/m**3]
+    59: */
+    60: 
+    61: 
+    62: /* There are 7 integer parameters:
+    63: 
+    64:    indexf  index of hydraulic fluid                      
+    65:    nbor    number of parallel orifices                   
+    66:    flowr   type of flow rate                                
+    67:    interp  spline type                                   
+    68:    disc    discontinuity handling                        
+    69:    revflow reverse flow                                  
+    70:    userfp  fluid properties for pressure drop measurement
+    71: */
+    72: 
+    73: 
+    74: /* There are 8 text parameters:
+    75: 
+    76:    filenameq     filename for q[L/min] = f(dp[bar], (T[degC])) with dp = p2-p1                    
+    77:    filenameexpq  filename or expression for q[L/min] = f(dp[bar], (T[degC])) with dp = p2-p1      
+    78:    filenameq12   filename for q[L/min] = f(dp[bar], (T[degC])) flow direction 1->2 with dp = p1-p2
+    79:    filenameq21   filename for q[L/min] = f(dp[bar], (T[degC])) flow direction 2->1 with dp = p2-p1
+    80:    filenamedm    filename for dm[kg/s] = f(dp[bar], (T[degC])) with dp = p2-p1                    
+    81:    filenameexpdm filename or expression for dm[kg/s] = f(dp[bar], (T[degC])) with dp = p2-p1      
+    82:    filenamedm12  filename for dm[kg/s] = f(dp[bar], (T[degC])) flow direction 1->2 with dp = p1-p2
+    83:    filenamedm21  filename for dm[kg/s] = f(dp[bar], (T[degC])) flow direction 2->1 with dp = p2-p1
+    84: */
+    85: 
+    86: void hydort0in_(int *n, double rp[2], int ip[7], char *tp[8]
+    87:       , double c[2], int ic[5], double *actRorif, double *energyRorif)
+    88: 
+    89: {
+    90:    int loop, error;
+    91: /* >>>>>>>>>>>>Extra Initialization Function Declarations Here. */
+    92:    static char *tokens[] = {"dp", "T"};
+    93:    static char *unit_info_Q[] = {"L/min", "bar is_difference", "degC"};
+    94:    static char *unit_info_dm[] = {"kg/s", "bar is_difference", "degC"};
+    95:    char ** unit_info;
+    96: 
+    97:    int bcond[4] = {1, 1, 1, 1}; /* natural cubic spline extrapolation y''=0 */
+    98:    int ext_mode[4] = {1, 1, 1, 1}; /* out of range : linear extrapolation */
+    99:    double slopes[4] = {0.0, 0.0, 0.0, 0.0}; /* this value is not used since linear extrapolation */
+   100:    
+   101:    char *filename, *filename12, *filename21;
+   102: 
+   103:    int err = 0, flow_dir = 0;
+   104:    int num_tokens = 2;
+   105: 
+   106:    double zero = 0.0;
+   107: /* <<<<<<<<<<<<End of Extra Initialization declarations. */
+   108:    int indexf, nbor, flowr, interp, disc, revflow, userfp;
+   109:    double hys, rhochar;
+   110:    char *filenameq, *filenameexpq, *filenameq12, *filenameq21, 
+   111:       *filenamedm, *filenameexpdm, *filenamedm12, *filenamedm21;
+   112: 
+   113:    indexf     = ip[0];
+   114:    nbor       = ip[1];
+   115:    flowr      = ip[2];
+   116:    interp     = ip[3];
+   117:    disc       = ip[4];
+   118:    revflow    = ip[5];
+   119:    userfp     = ip[6];
+   120: 
+   121:    hys        = rp[0];
+   122:    rhochar    = rp[1];
+   123: 
+   124:    filenameq  = tp[0];
+   125:    filenameexpq = tp[1];
+   126:    filenameq12 = tp[2];
+   127:    filenameq21 = tp[3];
+   128:    filenamedm = tp[4];
+   129:    filenameexpdm = tp[5];
+   130:    filenamedm12 = tp[6];
+   131:    filenamedm21 = tp[7];
+   132:    loop = 0;
+   133:    error = 0;
+   134: 
+   135: /*
+   136:    If necessary, check values of the following:
+   137: 
+   138:    rp[0..1]
+   139:    *actRorif
+   140:    *energyRorif
+   141: */
+   142: 
+   143: 
+   144: /* >>>>>>>>>>>>Initialization Function Check Statements. */
+   145: 
+   146:    hyd_valid_liquid_(&indexf, &error);
+   147: 
+   148:    sethdind_(&indexf);
+   149: 
+   150:    if (revflow == 3)
+   151:    {
+   152:       if (hys < 0.0)
+   153:       {
+   154:          error = 2;
+   155:          amefprintf(stderr, "Pressure hysteresis should be positive (value is %le [bar]).\n",hys);
+   156:       }
+   157:    }
+   158: 
+   159:    if (userfp == 2)
+   160:    {
+   161:       if (rhochar <= 0.0)
+   162:       {
+   163:          amefprintf(stderr, "Working density for pressure drop measurement must be" \
+   164:                             " strictly positive (value is %g [kg/m**3]).\n", rhochar);
+   165:          error = 2;
+   166:       }
+   167:    }
+   168: 
+   169: /* <<<<<<<<<<<<End of Initialization Check Statements. */
+   170: 
+   171: /*   Integer parameter checking:   */
+   172: 
+   173:    if (indexf < 0 || indexf > 100)
+   174:    {
+   175:       amefprintf(stderr, "\nindex of hydraulic fluid must be in range [0..100].\n");
+   176:       error = 2;
+   177:    }
+   178:    if (nbor < 1 || nbor > 10000)
+   179:    {
+   180:       amefprintf(stderr, "\nnumber of parallel orifices must be in range [1..10000].\n");
+   181:       error = 2;
+   182:    }
+   183:    if (flowr < 1 || flowr > 2)
+   184:    {
+   185:       amefprintf(stderr, "\nvariable for Y must be in range [1..2].\n");
+   186:       error = 2;
+   187:    }
+   188:    if (interp < 1 || interp > 2)
+   189:    {
+   190:       amefprintf(stderr, "\nspline type must be in range [1..2].\n");
+   191:       error = 2;
+   192:    }
+   193:    if (disc < 1 || disc > 2)
+   194:    {
+   195:       amefprintf(stderr, "\ndiscontinuity handling must be in range [1..2].\n");
+   196:       error = 2;
+   197:    }
+   198:    if (revflow < 1 || revflow > 3)
+   199:    {
+   200:       amefprintf(stderr, "\nreverse flow must be in range [1..3].\n");
+   201:       error = 2;
+   202:    }
+   203:    if (userfp < 1 || userfp > 2)
+   204:    {
+   205:       amefprintf(stderr, "\nfluid properties for pressure drop measurement must be in range [1..2].\n");
+   206:       error = 2;
+   207:    }
+   208: 
+   209:    if(error == 1)
+   210:    {
+   211:       amefprintf(stderr, "\nWarning in %s instance %d.\n", _SUBMODELNAME_, *n);
+   212:    }
+   213:    else if(error == 2)
+   214:    {
+   215:       amefprintf(stderr, "\nFatal error in %s instance %d.\n", _SUBMODELNAME_, *n);
+   216:       amefprintf(stderr, "Terminating the program.\n");
+   217:       AmeExit(1);
+   218:    }
+   219: 
+   220: /* Common -> SI units conversions. */
+   221: 
+   222:    rp[0]    *= 1.00000000000000e+005;
+   223:    hys        = rp[0];
+   224: 
+   225: 
+   226: /* >>>>>>>>>>>>Initialization Function Executable Statements. */
+   227: 
+   228:    sethdind_(&indexf);
+   229: 
+   230:    /* initialize region indicator as "undefined region" */
+   231:    ic[REG] = -1;
+   232: 
+   233:    if (flowr == 1)
+   234:    {
+   235:       unit_info = unit_info_Q;
+   236:       if (revflow == 1)
+   237:       {
+   238:          filename = filenameq;
+   239:       }
+   240:       else if (revflow == 2)
+   241:       {
+   242:          filename = filenameexpq;
+   243:       }
+   244:       filename12 = filenameq12;
+   245:       filename21 = filenameq21;
+   246:    }
+   247:    else if (flowr == 2)
+   248:    {
+   249:       unit_info = unit_info_dm;
+   250:       if (revflow == 1)
+   251:       {
+   252:          filename = filenamedm;
+   253:       }
+   254:       else if (revflow == 2)
+   255:       {
+   256:          filename = filenameexpdm;
+   257:       }
+   258:       filename12 = filenamedm12;
+   259:       filename21 = filenamedm21;
+   260:    }
+   261: 
+   262:    if (userfp == 1)
+   263:    {
+   264:       c[RHOCHAR] = rhoatp_(&zero);
+   265:    }
+   266:    else if (userfp == 2)
+   267:    {
+   268:       if (rhochar <= 0)
+   269:       {
+   270:          amefprintf(stderr,
+   271:             "The working density for pressure drop measurement should be positive (rhochar = %g [kg/m**3]).\n",
+   272:             rhochar);
+   273:          error = 2;
+   274:       }
+   275:       c[RHOCHAR] = rhochar;
+   276:    }
+   277: 
+   278:    disc--;
+   279:    if (revflow == 1 || revflow == 2)
+   280:    {
+   281:       ic[Q_TABLE] = SetUpFlowdPTable2(filename, &flowr, &revflow, &flow_dir, &c[RHOCHAR], 
+   282:                                       tokens, &num_tokens, &interp, bcond, ext_mode,
+   283:                                       slopes, &disc, unit_info, &err);
+   284:       error = MAX(error, err);
+   285:       if (ic[Q_TABLE] < 0)
+   286:       {
+   287:          error = 2;
+   288:          amefprintf(stderr, "\nSpline could not be created from file: %s.\n", filename);
+   289:       }
+   290:    }
+   291:    else if (revflow == 3)
+   292:    {
+   293:       flow_dir = FLOW12; /* dp < 0 */
+   294:       ic[Q_TABLE12] = SetUpFlowdPTable2(filename12, &flowr, &revflow, &flow_dir, &c[RHOCHAR], 
+   295:                                         tokens, &num_tokens, &interp, bcond, ext_mode,
+   296:                                         slopes, &disc, unit_info, &err);
+   297:       error = MAX(error, err);
+   298:       if (ic[Q_TABLE12] < 0)
+   299:       {
+   300:          error = 2;
+   301:          amefprintf(stderr, "\nSpline could not be created from file: %s.\n", filename12);
+   302:       }
+   303: 
+   304:       flow_dir = FLOW21; /* dp > 0 */
+   305:       ic[Q_TABLE21] = SetUpFlowdPTable2(filename21, &flowr, &revflow, &flow_dir, &c[RHOCHAR], 
+   306:                                         tokens, &num_tokens, &interp, bcond, ext_mode,
+   307:                                         slopes, &disc, unit_info, &err);
+   308:       error = MAX(error, err);
+   309:       if (ic[Q_TABLE21] < 0)
+   310:       {
+   311:          error = 2;
+   312:          amefprintf(stderr, "\nSpline could not be created from file: %s.\n", filename21);
+   313:       }
+   314:    }
+   315:    disc++;
+   316: 
+   317:    if(error == 1)
+   318:    {
+   319:       amefprintf(stderr, "\nWarning in %s instance %d.\n", _SUBMODELNAME_, *n);
+   320:    }
+   321:    else if(error == 2)
+   322:    {
+   323:       amefprintf(stderr, "\nFatal error in %s instance %d.\n", _SUBMODELNAME_, *n);
+   324:       amefprintf(stderr, "Terminating the program.\n");
+   325:       AmeExit(1);
+   326:    }
+   327: 
+   328: /* <<<<<<<<<<<<End of Initialization Executable Statements. */
+   329: }
+   330: 
+   331: /*  There are 2 ports.
+   332: 
+   333:    Port 1 has 2 variables:
+   334: 
+   335:       1 q1     flow rate at port 1 [L/min -> m**3/s] basic variable output
+   336:       2 p1     pressure at port 1  [bar -> Pa]       basic variable input
+   337: 
+   338:    Port 2 has 2 variables:
+   339: 
+   340:       1 q2     duplicate of q1     (sign reversed)
+   341:       2 p2     pressure at port 2  [bar -> Pa] basic variable input
+   342: */
+   343: 
+   344: /*  There are 5 internal variables.
+   345: 
+   346:       1 dm1             mass flow rate at port 1                 [kg/s]      basic variable
+   347:       2 deltap          pressure drop (p2 - p1)                  [bar -> Pa] basic variable
+   348:       3 actRorif        activity of hydraulic dissipation (orif) [J]         explicit state (derivative `dactRorif') for activity
+   349:       4 powerRorif      power of hydraulic dissipation (orif)    [W]         power variable
+   350:       5 energyRorif     energy of hydraulic dissipation (orif)   [J]         explicit state (derivative `denergyRorif') for energy
+   351: */
+   352: 
+   353: void hydort0_(int *n, double *q1, double *p1, double *p2, double *dm1
+   354:       , double *deltap, double *actRorif, double *dactRorif
+   355:       , double *powerRorif, double *energyRorif, double *denergyRorif
+   356:       , double rp[2], int ip[7], char *tp[8], double c[2], int ic[5]
+   357:       , int *flag)
+   358: 
+   359: {
+   360:    int loop, logi;
+   361:    double powRorif;
+   362: 
+   363: /* >>>>>>>>>>>>Extra Calculation Function Declarations Here. */
+   364:    double pmid;
+   365:    double dp, rho0;
+   366:    double values[2];
+   367: 
+   368:    int ind = ic[Q_TABLE];
+   369: 
+   370:    double zero = 0.0;
+   371: /* <<<<<<<<<<<<End of Extra Calculation declarations. */
+   372:    int indexf, nbor, flowr, interp, disc, revflow, userfp;
+   373:    double hys, rhochar;
+   374:    char *filenameq, *filenameexpq, *filenameq12, *filenameq21, 
+   375:       *filenamedm, *filenameexpdm, *filenamedm12, *filenamedm21;
+   376: 
+   377:    indexf     = ip[0];
+   378:    nbor       = ip[1];
+   379:    flowr      = ip[2];
+   380:    interp     = ip[3];
+   381:    disc       = ip[4];
+   382:    revflow    = ip[5];
+   383:    userfp     = ip[6];
+   384: 
+   385:    hys        = rp[0];
+   386:    rhochar    = rp[1];
+   387: 
+   388:    filenameq  = tp[0];
+   389:    filenameexpq = tp[1];
+   390:    filenameq12 = tp[2];
+   391:    filenameq21 = tp[3];
+   392:    filenamedm = tp[4];
+   393:    filenameexpdm = tp[5];
+   394:    filenamedm12 = tp[6];
+   395:    filenamedm21 = tp[7];
+   396:    logi = 0;
+   397:    loop = 0;
+   398: 
+   399: /* Common -> SI units conversions. */
+   400: 
+   401:    *p1       *= 1.00000000000000e+005;
+   402:    *p2       *= 1.00000000000000e+005;
+   403: 
+   404: /*
+   405:    Set all submodel outputs below:
+   406: 
+   407:    *q1         = ??;
+   408:    *dm1        = ??;
+   409:    *deltap     = ??;
+   410: */
+   411: 
+   412: 
+   413: 
+   414: /* >>>>>>>>>>>>Calculation Function Executable Statements. */
+   415: 
+   416:    sethdind_(&indexf);
+   417: 
+   418:    if (revflow == 3)
+   419:    {
+   420:       hydHandleDisc_(p1, p2, &hys, &ic[REG]);
+   421: 
+   422:       if ( ic[REG] == 1 ) /* flow 1-> 2, dp < 0 */
+   423:       {
+   424:          ind = ic[Q_TABLE12];
+   425:       }
+   426:       else
+   427:       {
+   428:          ind = ic[Q_TABLE21];
+   429:       }
+   430:    }
+   431: 
+   432:    dp   = (*p2 - *p1) * 1e-5;
+   433:    pmid = (*p1 + *p2) * 0.5;
+   434:    rho0 = rhoatp_(&zero);
+   435: 
+   436:    values[0] = dp;
+   437:    values[1] = K_TO_DEGC(tatp_(&pmid));
+   438: 
+   439:    get_flow_from_table_(&ind, &flowr, &c[RHOCHAR], values, dm1);
+   440:    *dm1 *= nbor;
+   441: 
+   442:    *q1 = *dm1 / rho0;
+   443: 
+   444:    *deltap = dp * 1e5;
+   445: 
+   446: /* <<<<<<<<<<<<End of Calculation Executable Statements. */
+   447: 
+   448:    if(actRorif != NULL || energyRorif != NULL || ispower_() == 1)
+   449:    {
+   450:       /* Set the following power variables:
+   451: 
+   452:       powRorif = ??;
+   453:       */
+   454: 
+   455:       /* >>>>>>>>>>>>Energy Common Statements. */
+   456:       double patm = getatp_();
+   457:       powRorif = (*q1) * ((patm + *p2) * q0top_(p2) - (patm + *p1) * q0top_(p1));
+   458:       /* <<<<<<<<<<<<End of Energy Common Statements. */
+   459: 
+   460:       if (ispower_() == 1)
+   461:       {
+   462:          *powerRorif      = powRorif;
+   463:       }
+   464:       if (energyRorif != NULL)
+   465:       {
+   466:          *denergyRorif    = powRorif;
+   467:       }
+   468:       if (actRorif != NULL)
+   469:       {
+   470:          /* >>>>>>>>>>>>Optional Activity Computation Statements. */
+   471:          /* <<<<<<<<<<<<End of Optional Activity Computation Statements. */
+   472:          *dactRorif       = fabs(powRorif);
+   473:       }
+   474:    }
+   475: 
+   476: /* SI -> Common units conversions. */
+   477: 
+   478:    *q1       /= 1.66666666666667e-005;
+   479:    *p1       /= 1.00000000000000e+005;
+   480:    *p2       /= 1.00000000000000e+005;
+   481:    *deltap   /= 1.00000000000000e+005;
+   482: }
+   483: 
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\HYDORT0.py
+==============================================================================
+...
+     1: from update_helpers import *
+     2: 
+     3: #***************************************************************************#
+     4: # From Rev15, HYDORT0 replaces OR001 and OR0001.
+     5: #***************************************************************************#
+     6: 
+     7: def get_associations(old_submodel_name, new_submodel_name, old_interface, new_interface,
+     8:       default_associations, structural_phase, extra_data):
+     9: 
+    10:    extra_data.user_message = ""
+    11: 
+    12:    if old_submodel_name == u"OR0001":
+    13: 
+    14:       OR0001_filenameexp = by_title(u"filename or expression for flow rate[L/min] = f(dp[bar])", old_interface)
+    15:       HYDORT0_filenameexp  = by_title(u"filename or expression for q[L/min] = f(dp[bar]) with dp = p2-p1", new_interface)
+    16: 
+    17:       OR0001_interp = by_title(u"interpolation type", old_interface)
+    18:       HYDORT0_interp = by_title(u"spline type", new_interface)
+    19: 
+    20:       if HYDORT0_filenameexp and OR0001_filenameexp:
+    21:          default_associations[HYDORT0_filenameexp] = OR0001_filenameexp
+    22: 
+    23:       if HYDORT0_interp and OR0001_interp:
+    24:          default_associations[HYDORT0_interp]      = OR0001_interp
+    25: 
+    26:    return default_associations
+    27: 
+    28: 
+    29: def get_field_settings(
+    30:       old_submodel_name,
+    31:       new_submodel_name,
+    32:       old_interface,
+    33:       new_interface,
+    34:       default_field_settings,
+    35:       structural_phase,
+    36:       extra_data):
+    37: 
+    38: 
+    39:    if structural_phase == False:
+    40: 
+    41:       #***************************************************************************#
+    42:       #                               REVERSE FLOW ENUM                           #
+    43:       #***************************************************************************#
+    44: 
+    45:       if old_submodel_name == u"OR0001":
+    46:          HYDORT0_reverseflow = by_title(u"reverse flow", new_interface)
+    47:          if HYDORT0_reverseflow:
+    48:             default_field_settings[(HYDORT0_reverseflow, Value)] = Force(u"2")
+    49: 
+    50:    return default_field_settings
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\HYDORT0.spe
+==============================================================================
+...
+     1: <?xml version="1.0" encoding="ISO-8859-1"?>
+     2: <!DOCTYPE SPE>
+     3: <SPE DOC_VERSION="2" AME_VERSION="14.1.0 -  45543-42458 2015">
+     4: 
+     5:  <SUBMODEL>
+     6:   <SUB_TYPE>0</SUB_TYPE>
+     7:   <SUB_ID_MAX>94</SUB_ID_MAX>
+     8:   <DEFAULT_ICON>flowcontrol01</DEFAULT_ICON>
+     9:   <SUB_LABEL>hydraulic orifice - fixed, using tables (q or dm) = f(dp, (T))</SUB_LABEL>
+    10:   <SUB_UNIT>0</SUB_UNIT>
+    11:   <R_STORES_NUMBER>2</R_STORES_NUMBER>
+    12:   <I_STORES_NUMBER>4</I_STORES_NUMBER>
+    13:   <DISCONTINUITY>1</DISCONTINUITY>
+    14:   <OUTPUT_TYPE>1</OUTPUT_TYPE>
+    15:   <RPARAMS_LIST>
+    16:    <RPARAM>
+    17:     <SUB_ID>42</SUB_ID>
+    18:     <TITLE>hysteresis</TITLE>
+    19:     <VARNAME>hys</VARNAME>
+    20:     <VISIBILITY>revflow==3</VISIBILITY>
+    21:     <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+    22:     <VALUE>0.00000000000000e+00</VALUE>
+    23:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+    24:     <MAX_VALUE>1.00000000000000e-001</MAX_VALUE>
+    25:     <UNITS>bar</UNITS>
+    26:     <IS_DELTA>1</IS_DELTA>
+    27:    </RPARAM>
+    28:    <RPARAM>
+    29:     <SUB_ID>70</SUB_ID>
+    30:     <TITLE>working density for pressure drop measurement</TITLE>
+    31:     <VARNAME>rhochar</VARNAME>
+    32:     <VISIBILITY>(flowr==1) && (userfp == 2)</VISIBILITY>
+    33:     <DEF_VALUE>8.50000000000000e+02</DEF_VALUE>
+    34:     <VALUE>8.50000000000000e+02</VALUE>
+    35:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+    36:     <MAX_VALUE>1.00000000000000e+004</MAX_VALUE>
+    37:     <UNITS>kg/m**3</UNITS>
+    38:    </RPARAM>
+    39:   </RPARAMS_LIST>
+    40:   <IPARAMS_LIST>
+    41:    <IPARAM>
+    42:     <SUB_ID>17</SUB_ID>
+    43:     <TITLE>index of hydraulic fluid</TITLE>
+    44:     <VARNAME>indexf</VARNAME>
+    45:     <VISIBILITY>True</VISIBILITY>
+    46:     <DEF_VALUE>0</DEF_VALUE>
+    47:     <VALUE>0</VALUE>
+    48:     <MIN_VALUE>0</MIN_VALUE>
+    49:     <MAX_VALUE>100</MAX_VALUE>
+    50:    </IPARAM>
+    51:    <IPARAM>
+    52:     <SUB_ID>90</SUB_ID>
+    53:     <TITLE>number of parallel orifices</TITLE>
+    54:     <VARNAME>nbor</VARNAME>
+    55:     <VISIBILITY>True</VISIBILITY>
+    56:     <DEF_VALUE>1</DEF_VALUE>
+    57:     <VALUE>1</VALUE>
+    58:     <MIN_VALUE>1</MIN_VALUE>
+    59:     <MAX_VALUE>10000</MAX_VALUE>
+    60:    </IPARAM>
+    61:    <IPARAM>
+    62:     <SUB_ID>68</SUB_ID>
+    63:     <TITLE>type of flow rate</TITLE>
+    64:     <VARNAME>flowr</VARNAME>
+    65:     <VISIBILITY>True</VISIBILITY>
+    66:     <DEF_VALUE>1</DEF_VALUE>
+    67:     <VALUE>1</VALUE>
+    68:     <MIN_VALUE>1</MIN_VALUE>
+    69:     <MAX_VALUE>2</MAX_VALUE>
+    70:     <ENUM_LIST>
+    71:      <ENUM>
+    72:       <ENUM_STRING>q</ENUM_STRING>
+    73:      </ENUM>
+    74:      <ENUM>
+    75:       <ENUM_STRING>dm</ENUM_STRING>
+    76:      </ENUM>
+    77:     </ENUM_LIST>
+    78:    </IPARAM>
+    79:    <IPARAM>
+    80:     <SUB_ID>31</SUB_ID>
+    81:     <TITLE>spline type</TITLE>
+    82:     <VARNAME>interp</VARNAME>
+    83:     <VISIBILITY>True</VISIBILITY>
+    84:     <DEF_VALUE>2</DEF_VALUE>
+    85:     <VALUE>2</VALUE>
+    86:     <MIN_VALUE>1</MIN_VALUE>
+    87:     <MAX_VALUE>2</MAX_VALUE>
+    88:     <ENUM_LIST>
+    89:      <ENUM>
+    90:       <ENUM_STRING>cubic</ENUM_STRING>
+    91:      </ENUM>
+    92:      <ENUM>
+    93:       <ENUM_STRING>linear</ENUM_STRING>
+    94:      </ENUM>
+    95:     </ENUM_LIST>
+    96:    </IPARAM>
+    97:    <IPARAM>
+    98:     <SUB_ID>51</SUB_ID>
+    99:     <TITLE>discontinuity handling</TITLE>
+   100:     <VARNAME>disc</VARNAME>
+   101:     <VISIBILITY>(interp == 2)</VISIBILITY>
+   102:     <DEF_VALUE>2</DEF_VALUE>
+   103:     <VALUE>2</VALUE>
+   104:     <MIN_VALUE>1</MIN_VALUE>
+   105:     <MAX_VALUE>2</MAX_VALUE>
+   106:     <ENUM_LIST>
+   107:      <ENUM>
+   108:       <ENUM_STRING>inactive</ENUM_STRING>
+   109:      </ENUM>
+   110:      <ENUM>
+   111:       <ENUM_STRING>active</ENUM_STRING>
+   112:      </ENUM>
+   113:     </ENUM_LIST>
+   114:    </IPARAM>
+   115:    <IPARAM>
+   116:     <SUB_ID>61</SUB_ID>
+   117:     <TITLE>reverse flow</TITLE>
+   118:     <VARNAME>revflow</VARNAME>
+   119:     <VISIBILITY>True</VISIBILITY>
+   120:     <DEF_VALUE>1</DEF_VALUE>
+   121:     <VALUE>1</VALUE>
+   122:     <MIN_VALUE>1</MIN_VALUE>
+   123:     <MAX_VALUE>3</MAX_VALUE>
+   124:     <ENUM_LIST>
+   125:      <ENUM>
+   126:       <ENUM_STRING>symmetric</ENUM_STRING>
+   127:      </ENUM>
+   128:      <ENUM>
+   129:       <ENUM_STRING>using 1 table</ENUM_STRING>
+   130:      </ENUM>
+   131:      <ENUM>
+   132:       <ENUM_STRING>using 2 tables</ENUM_STRING>
+   133:      </ENUM>
+   134:     </ENUM_LIST>
+   135:    </IPARAM>
+   136:    <IPARAM>
+   137:     <SUB_ID>72</SUB_ID>
+   138:     <TITLE>fluid properties for pressure drop measurement</TITLE>
+   139:     <VARNAME>userfp</VARNAME>
+   140:     <VISIBILITY>(flowr == 1)</VISIBILITY>
+   141:     <DEF_VALUE>1</DEF_VALUE>
+   142:     <VALUE>1</VALUE>
+   143:     <MIN_VALUE>1</MIN_VALUE>
+   144:     <MAX_VALUE>2</MAX_VALUE>
+   145:     <ENUM_LIST>
+   146:      <ENUM>
+   147:       <ENUM_STRING>at reference conditions</ENUM_STRING>
+   148:      </ENUM>
+   149:      <ENUM>
+   150:       <ENUM_STRING>at specified density</ENUM_STRING>
+   151:      </ENUM>
+   152:     </ENUM_LIST>
+   153:    </IPARAM>
+   154:   </IPARAMS_LIST>
+   155:   <TPARAMS_LIST>
+   156:    <TPARAM>
+   157:     <SUB_ID>94</SUB_ID>
+   158:     <TITLE>filename for q[L/min] = f(dp[bar], (T[degC])) with dp = p2-p1</TITLE>
+   159:     <VARNAME>filenameq</VARNAME>
+   160:     <VISIBILITY>(revflow == 1) && (flowr == 1)</VISIBILITY>
+   161:     <DEF_VALUE>$AME/libhydr/data/q_dP_coolant_sym.data</DEF_VALUE>
+   162:     <VALUE>$AME/libhydr/data/q_dP_coolant_sym.data</VALUE>
+   163:     <TEXT_TYPE>1</TEXT_TYPE>
+   164:    </TPARAM>
+   165:    <TPARAM>
+   166:     <SUB_ID>81</SUB_ID>
+   167:     <TITLE>filename or expression for q[L/min] = f(dp[bar], (T[degC])) with dp = p2-p1</TITLE>
+   168:     <VARNAME>filenameexpq</VARNAME>
+   169:     <VISIBILITY>(revflow == 2) && (flowr == 1)</VISIBILITY>
+   170:     <DEF_VALUE>$AME/libhydr/data/q_dP_coolant.data</DEF_VALUE>
+   171:     <VALUE>$AME/libhydr/data/q_dP_coolant.data</VALUE>
+   172:     <TEXT_TYPE>0</TEXT_TYPE>
+   173:    </TPARAM>
+   174:    <TPARAM>
+   175:     <SUB_ID>82</SUB_ID>
+   176:     <TITLE>filename for q[L/min] = f(dp[bar], (T[degC])) flow direction 1->2 with dp = p1-p2</TITLE>
+   177:     <VARNAME>filenameq12</VARNAME>
+   178:     <VISIBILITY>(revflow == 3) && (flowr == 1)</VISIBILITY>
+   179:     <DEF_VALUE>$AME/libhydr/data/q_dP_coolant_sym.data</DEF_VALUE>
+   180:     <VALUE>$AME/libhydr/data/q_dP_coolant_sym.data</VALUE>
+   181:     <TEXT_TYPE>1</TEXT_TYPE>
+   182:    </TPARAM>
+   183:    <TPARAM>
+   184:     <SUB_ID>88</SUB_ID>
+   185:     <TITLE>filename for q[L/min] = f(dp[bar], (T[degC])) flow direction 2->1 with dp = p2-p1</TITLE>
+   186:     <VARNAME>filenameq21</VARNAME>
+   187:     <VISIBILITY>(revflow == 3) && (flowr == 1)</VISIBILITY>
+   188:     <DEF_VALUE>$AME/libhydr/data/q_dP_coolant_sym.data</DEF_VALUE>
+   189:     <VALUE>$AME/libhydr/data/q_dP_coolant_sym.data</VALUE>
+   190:     <TEXT_TYPE>1</TEXT_TYPE>
+   191:    </TPARAM>
+   192:    <TPARAM>
+   193:     <SUB_ID>93</SUB_ID>
+   194:     <TITLE>filename for dm[kg/s] = f(dp[bar], (T[degC])) with dp = p2-p1</TITLE>
+   195:     <VARNAME>filenamedm</VARNAME>
+   196:     <VISIBILITY>(revflow == 1) && (flowr == 2)</VISIBILITY>
+   197:     <DEF_VALUE>$AME/libhydr/data/dm_dP_coolant_sym.data</DEF_VALUE>
+   198:     <VALUE>$AME/libhydr/data/dm_dP_coolant_sym.data</VALUE>
+   199:     <TEXT_TYPE>1</TEXT_TYPE>
+   200:    </TPARAM>
+   201:    <TPARAM>
+   202:     <SUB_ID>85</SUB_ID>
+   203:     <TITLE>filename or expression for dm[kg/s] = f(dp[bar], (T[degC])) with dp = p2-p1</TITLE>
+   204:     <VARNAME>filenameexpdm</VARNAME>
+   205:     <VISIBILITY>(revflow == 2) && (flowr == 2)</VISIBILITY>
+   206:     <DEF_VALUE>$AME/libhydr/data/dm_dP_coolant.data</DEF_VALUE>
+   207:     <VALUE>$AME/libhydr/data/dm_dP_coolant.data</VALUE>
+   208:     <TEXT_TYPE>0</TEXT_TYPE>
+   209:    </TPARAM>
+   210:    <TPARAM>
+   211:     <SUB_ID>86</SUB_ID>
+   212:     <TITLE>filename for dm[kg/s] = f(dp[bar], (T[degC])) flow direction 1->2 with dp = p1-p2</TITLE>
+   213:     <VARNAME>filenamedm12</VARNAME>
+   214:     <VISIBILITY>(revflow == 3) && (flowr == 2)</VISIBILITY>
+   215:     <DEF_VALUE>$AME/libhydr/data/dm_dP_coolant_sym.data</DEF_VALUE>
+   216:     <VALUE>$AME/libhydr/data/dm_dP_coolant_sym.data</VALUE>
+   217:     <TEXT_TYPE>1</TEXT_TYPE>
+   218:    </TPARAM>
+   219:    <TPARAM>
+   220:     <SUB_ID>87</SUB_ID>
+   221:     <TITLE>filename for dm[kg/s] = f(dp[bar], (T[degC])) flow direction 2->1 with dp = p2-p1</TITLE>
+   222:     <VARNAME>filenamedm21</VARNAME>
+   223:     <VISIBILITY>(revflow == 3) && (flowr == 2)</VISIBILITY>
+   224:     <DEF_VALUE>$AME/libhydr/data/dm_dP_coolant_sym.data</DEF_VALUE>
+   225:     <VALUE>$AME/libhydr/data/dm_dP_coolant_sym.data</VALUE>
+   226:     <TEXT_TYPE>1</TEXT_TYPE>
+   227:    </TPARAM>
+   228:   </TPARAMS_LIST>
+   229:   <PARAMS_GROUPS_LIST>
+   230:    <PARAMS_GROUP>
+   231:     <ORIG_TITLE>table settings</ORIG_TITLE>
+   232:     <NAME>tabattr</NAME>
+   233:     <SUB_ID>50</SUB_ID>
+   234:     <PARAM_GROUP_ELEMENT_LIST>
+   235:      <PARAM_GROUP_ELEMENT>
+   236:       <PARAM_GROUP_ELEMENT_VARNAME>interp</PARAM_GROUP_ELEMENT_VARNAME>
+   237:       <PARAM_GROUP_ELEMENT_DISPLAY>0</PARAM_GROUP_ELEMENT_DISPLAY>
+   238:      </PARAM_GROUP_ELEMENT>
+   239:      <PARAM_GROUP_ELEMENT>
+   240:       <PARAM_GROUP_ELEMENT_VARNAME>disc</PARAM_GROUP_ELEMENT_VARNAME>
+   241:       <PARAM_GROUP_ELEMENT_DISPLAY>0</PARAM_GROUP_ELEMENT_DISPLAY>
+   242:      </PARAM_GROUP_ELEMENT>
+   243:      <PARAM_GROUP_ELEMENT>
+   244:       <PARAM_GROUP_ELEMENT_VARNAME>hys</PARAM_GROUP_ELEMENT_VARNAME>
+   245:       <PARAM_GROUP_ELEMENT_DISPLAY>0</PARAM_GROUP_ELEMENT_DISPLAY>
+   246:      </PARAM_GROUP_ELEMENT>
+   247:     </PARAM_GROUP_ELEMENT_LIST>
+   248:     <EDITABLE>0</EDITABLE>
+   249:    </PARAMS_GROUP>
+   250:    <PARAMS_GROUP>
+   251:     <ORIG_TITLE>power, energy, activity</ORIG_TITLE>
+   252:     <NAME>Emanagement</NAME>
+   253:     <SUB_ID>49</SUB_ID>
+   254:     <PARAM_GROUP_ELEMENT_LIST>
+   255:      <PARAM_GROUP_ELEMENT>
+   256:       <PARAM_GROUP_ELEMENT_VARNAME>powerRorif</PARAM_GROUP_ELEMENT_VARNAME>
+   257:       <PARAM_GROUP_ELEMENT_DISPLAY>1</PARAM_GROUP_ELEMENT_DISPLAY>
+   258:      </PARAM_GROUP_ELEMENT>
+   259:      <PARAM_GROUP_ELEMENT>
+   260:       <PARAM_GROUP_ELEMENT_VARNAME>energyRorif</PARAM_GROUP_ELEMENT_VARNAME>
+   261:       <PARAM_GROUP_ELEMENT_DISPLAY>2</PARAM_GROUP_ELEMENT_DISPLAY>
+   262:      </PARAM_GROUP_ELEMENT>
+   263:      <PARAM_GROUP_ELEMENT>
+   264:       <PARAM_GROUP_ELEMENT_VARNAME>actRorif</PARAM_GROUP_ELEMENT_VARNAME>
+   265:       <PARAM_GROUP_ELEMENT_DISPLAY>2</PARAM_GROUP_ELEMENT_DISPLAY>
+   266:      </PARAM_GROUP_ELEMENT>
+   267:     </PARAM_GROUP_ELEMENT_LIST>
+   268:     <EDITABLE>0</EDITABLE>
+   269:    </PARAMS_GROUP>
+   270:   </PARAMS_GROUPS_LIST>
+   271:   <IVARS_LIST>
+   272:    <IVAR>
+   273:     <SUB_ID>73</SUB_ID>
+   274:     <TITLE>mass flow rate at port 1</TITLE>
+   275:     <VARNAME>dm1</VARNAME>
+   276:     <VISIBILITY>True</VISIBILITY>
+   277:     <TYPE>0</TYPE>
+   278:     <DIMENSION>1</DIMENSION>
+   279:     <UNITS>kg/s</UNITS>
+   280:    </IVAR>
+   281:    <IVAR>
+   282:     <SUB_ID>77</SUB_ID>
+   283:     <TITLE>pressure drop (p2 - p1)</TITLE>
+   284:     <VARNAME>deltap</VARNAME>
+   285:     <VISIBILITY>True</VISIBILITY>
+   286:     <TYPE>0</TYPE>
+   287:     <IS_DELTA>1</IS_DELTA>
+   288:     <DIMENSION>1</DIMENSION>
+   289:     <UNITS>bar</UNITS>
+   290:    </IVAR>
+   291:    <IVAR>
+   292:     <SUB_ID>46</SUB_ID>
+   293:     <TITLE>activity of hydraulic dissipation (orif)</TITLE>
+   294:     <VARNAME>actRorif</VARNAME>
+   295:     <VARNAME2>dactRorif</VARNAME2>
+   296:     <VISIBILITY>True</VISIBILITY>
+   297:     <TYPE>1</TYPE>
+   298:     <DIMENSION>1</DIMENSION>
+   299:     <UNITS>J</UNITS>
+   300:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   301:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   302:     <DEF_VALUE>0</DEF_VALUE>
+   303:     <VALUE>0</VALUE>
+   304:     <PHYS_TYPE>1</PHYS_TYPE>
+   305:     <PHYS_DOMAIN>1</PHYS_DOMAIN>
+   306:     <ACT_SUFFIX>orif</ACT_SUFFIX>
+   307:     <ACT_TYPE>1</ACT_TYPE>
+   308:    </IVAR>
+   309:    <IVAR>
+   310:     <SUB_ID>47</SUB_ID>
+   311:     <TITLE>power of hydraulic dissipation (orif)</TITLE>
+   312:     <VARNAME>powerRorif</VARNAME>
+   313:     <VISIBILITY>True</VISIBILITY>
+   314:     <TYPE>9</TYPE>
+   315:     <DIMENSION>1</DIMENSION>
+   316:     <UNITS>W</UNITS>
+   317:     <PHYS_TYPE>1</PHYS_TYPE>
+   318:     <PHYS_DOMAIN>1</PHYS_DOMAIN>
+   319:     <ACT_SUFFIX>orif</ACT_SUFFIX>
+   320:     <ACT_TYPE>2</ACT_TYPE>
+   321:    </IVAR>
+   322:    <IVAR>
+   323:     <SUB_ID>48</SUB_ID>
+   324:     <TITLE>energy of hydraulic dissipation (orif)</TITLE>
+   325:     <VARNAME>energyRorif</VARNAME>
+   326:     <VARNAME2>denergyRorif</VARNAME2>
+   327:     <VISIBILITY>True</VISIBILITY>
+   328:     <TYPE>1</TYPE>
+   329:     <DIMENSION>1</DIMENSION>
+   330:     <UNITS>J</UNITS>
+   331:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   332:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   333:     <DEF_VALUE>0</DEF_VALUE>
+   334:     <VALUE>0</VALUE>
+   335:     <PHYS_TYPE>1</PHYS_TYPE>
+   336:     <PHYS_DOMAIN>1</PHYS_DOMAIN>
+   337:     <ACT_SUFFIX>orif</ACT_SUFFIX>
+   338:     <ACT_TYPE>3</ACT_TYPE>
+   339:    </IVAR>
+   340:   </IVARS_LIST>
+   341:   <EVARS_LIST>
+   342:    <PORT>
+   343:     <EVAR>
+   344:      <SUB_ID>1</SUB_ID>
+   345:      <TITLE>flow rate at port 1</TITLE>
+   346:      <VARNAME>q1</VARNAME>
+   347:      <VISIBILITY>True</VISIBILITY>
+   348:      <TYPE>0</TYPE>
+   349:      <DIMENSION>1</DIMENSION>
+   350:      <IO>2</IO>
+   351:      <UNITS>L/min</UNITS>
+   352:     </EVAR>
+   353:     <EVAR>
+   354:      <SUB_ID>3</SUB_ID>
+   355:      <TITLE>pressure at port 1</TITLE>
+   356:      <VARNAME>p1</VARNAME>
+   357:      <VISIBILITY>True</VISIBILITY>
+   358:      <TYPE>0</TYPE>
+   359:      <DIMENSION>1</DIMENSION>
+   360:      <IO>1</IO>
+   361:      <UNITS>bar</UNITS>
+   362:     </EVAR>
+   363:    </PORT>
+   364:    <PORT>
+   365:     <EVAR>
+   366:      <SUB_ID>4</SUB_ID>
+   367:      <VARNAME>q2</VARNAME>
+   368:      <VISIBILITY>True</VISIBILITY>
+   369:      <TYPE>4</TYPE>
+   370:      <PRIMARY_PORT>0</PRIMARY_PORT>
+   371:      <PRIMARY_VAR>0</PRIMARY_VAR>
+   372:      <DUP_TYPE>1</DUP_TYPE>
+   373:     </EVAR>
+   374:     <EVAR>
+   375:      <SUB_ID>6</SUB_ID>
+   376:      <TITLE>pressure at port 2</TITLE>
+   377:      <VARNAME>p2</VARNAME>
+   378:      <VISIBILITY>True</VISIBILITY>
+   379:      <TYPE>0</TYPE>
+   380:      <DIMENSION>1</DIMENSION>
+   381:      <IO>1</IO>
+   382:      <UNITS>bar</UNITS>
+   383:     </EVAR>
+   384:    </PORT>
+   385:   </EVARS_LIST>
+   386:   <SUBIDS_RESET>0</SUBIDS_RESET>
+   387:  </SUBMODEL>
+   388: </SPE>

@@ -1,0 +1,50 @@
+﻿group_id,elements,junctions,unknown_count,solver_method
+AG_001,cooler;dirvalve_6;flowcontrol01;flowcontrol01_1;presscontrol01;presscontrol01_1;springcheckvalve;variableorifice_13,V3_HJ_010;V3_HJ_011;V3_HJ_012;V3_HJ_034;V3_HJ_035;V3_HJ_036;V3_HJ_054;V3_HJ_055;V3_HJ_056;V3_HJ_099,10,local damped Newton
+AG_002,cooler_1;dirvalve_10;flowcontrol01_3;signaloperatedrvalve,V3_HJ_013;V3_HJ_014;V3_HJ_019;V3_HJ_020;V3_HJ_059;V3_HJ_060,6,local damped Newton
+AG_003,dirvalve_1;dirvalve_11;dirvalve_12;dirvalve_2;dirvalve_8;dirvalve_9;pprv_1;pprv_2;pprv_3;shuttle_control;shuttle_control_1;shuttle_control_2;shuttle_control_3;shuttle_control_4;shuttle_control_5;variableorifice_1;variableorifice_11,V3_HJ_015;V3_HJ_016;V3_HJ_017;V3_HJ_018;V3_HJ_021;V3_HJ_022;V3_HJ_023;V3_HJ_024;V3_HJ_025;V3_HJ_029;V3_HJ_030;V3_HJ_037;V3_HJ_038;V3_HJ_039;V3_HJ_040;V3_HJ_041;V3_HJ_083;V3_HJ_084;V3_HJ_085;V3_HJ_091;V3_HJ_095;V3_HJ_096;V3_HJ_097;V3_HJ_098;V3_HJ_103;V3_HJ_104;V3_HJ_105;V3_HJ_113;V3_HJ_119;V3_HJ_121;V3_HJ_122,31,local damped Newton
+AG_004,dirvalve_13,V3_HJ_026;V3_HJ_027;V3_HJ_028,3,local damped Newton
+AG_005,dirvalve_3,V3_HJ_031;V3_HJ_032;V3_HJ_033,3,local damped Newton
+AG_006,filter,V3_HJ_042;V3_HJ_043,2,local damped Newton
+AG_007,filter_1;pmover01;pmover01_1;pump01;pump01_1;tank01,RMJ_001;RMJ_002;V3_HJ_044;V3_HJ_045;V3_HJ_066;V3_HJ_068,6,local damped Newton
+AG_008,filter_2,V3_HJ_046;V3_HJ_047,2,local damped Newton
+AG_009,filter_3;pmover01_2;pmover01_3;pump01_2;pump01_3;tank01_1,RMJ_003;RMJ_004;V3_HJ_048;V3_HJ_049;V3_HJ_108;V3_HJ_110,6,local damped Newton
+AG_010,filter_4,V3_HJ_050;V3_HJ_051,2,local damped Newton
+AG_011,filter_5;presscontrol01_3,V3_HJ_052;V3_HJ_053;V3_HJ_114,3,local damped Newton
+AG_012,flowcontrol01_2,V3_HJ_057;V3_HJ_058,2,local damped Newton
+AG_013,flowcontrol01_5,V3_HJ_061;V3_HJ_062,2,local damped Newton
+AG_014,flowcontrol01_6;flowcontrol01_7,V3_HJ_063;V3_HJ_064;V3_HJ_065,3,local damped Newton
+AG_015,forcecon,TMJ_001,1,explicit/one-dimensional root
+AG_016,forcecon_1,TMJ_012,1,explicit/one-dimensional root
+AG_017,forcecon_2,TMJ_013,1,explicit/one-dimensional root
+AG_018,forcecon_3,TMJ_003,1,explicit/one-dimensional root
+AG_019,forcecon_4,TMJ_004,1,explicit/one-dimensional root
+AG_020,forcecon_5,TMJ_005,1,explicit/one-dimensional root
+AG_021,presscontrol02;presscontrol02_1,V3_HJ_067;V3_HJ_069;V3_HJ_106,3,local damped Newton
+AG_022,presscontrol02_4;presscontrol02_5,V3_HJ_107;V3_HJ_109;V3_HJ_111,3,local damped Newton
+AG_023,presscontrol02_8,V3_HJ_077;V3_HJ_116,2,local damped Newton
+AG_024,presscontrol02_9,V3_HJ_070;V3_HJ_117,2,local damped Newton
+AG_025,tank01_5,V3_HJ_072,1,explicit/one-dimensional root
+AG_026,tank01_6,V3_HJ_080,1,explicit/one-dimensional root
+AG_027,tank01_7,V3_HJ_088,1,explicit/one-dimensional root
+AG_028,variableorifice,V3_HJ_009;V3_HJ_123,2,local damped Newton
+AG_029,variableorifice_10,V3_HJ_006;V3_HJ_092,2,local damped Newton
+AG_030,variableorifice_12,V3_HJ_007;V3_HJ_094,2,local damped Newton
+AG_031,variableorifice_14,V3_HJ_100;V3_HJ_101,2,local damped Newton
+AG_032,variableorifice_2,V3_HJ_003;V3_HJ_124,2,local damped Newton
+AG_033,variableorifice_3;variableorifice_4,V3_HJ_071;V3_HJ_073;V3_HJ_075,3,local damped Newton
+AG_034,variableorifice_5;variableorifice_6,V3_HJ_076;V3_HJ_078;V3_HJ_125,3,local damped Newton
+AG_035,variableorifice_7;variableorifice_8,V3_HJ_081;V3_HJ_082;V3_HJ_086,3,local damped Newton
+AG_036,variableorifice_9,V3_HJ_089;V3_HJ_090,2,local damped Newton
+AG_037,dirvalve_10.orifice_13;dirvalve_10.orifice_23,SC1_dirvalve_10_HJ_01;SC1_dirvalve_10_HJ_02;SC1_dirvalve_10_HJ_03,3,local damped Newton
+AG_038,dirvalve_11.orifice_13;dirvalve_11.orifice_14;dirvalve_11.orifice_23;dirvalve_11.orifice_24,SC1_dirvalve_11_HJ_01;SC1_dirvalve_11_HJ_02;SC1_dirvalve_11_HJ_03;SC1_dirvalve_11_HJ_04,4,local damped Newton
+AG_039,dirvalve_12.orifice_14,SC1_dirvalve_12_HJ_01;SC1_dirvalve_12_HJ_04,2,local damped Newton
+AG_040,dirvalve_12.orifice_23,SC1_dirvalve_12_HJ_02;SC1_dirvalve_12_HJ_03,2,local damped Newton
+AG_041,dirvalve_13.orifice_13;dirvalve_13.orifice_23,SC1_dirvalve_13_HJ_01;SC1_dirvalve_13_HJ_02;SC1_dirvalve_13_HJ_03,3,local damped Newton
+AG_042,dirvalve_1.orifice_13;dirvalve_1.orifice_14;dirvalve_1.orifice_23;dirvalve_1.orifice_24,SC1_dirvalve_1_HJ_01;SC1_dirvalve_1_HJ_02;SC1_dirvalve_1_HJ_03;SC1_dirvalve_1_HJ_04,4,local damped Newton
+AG_043,dirvalve_2.orifice_14,SC1_dirvalve_2_HJ_01;SC1_dirvalve_2_HJ_04,2,local damped Newton
+AG_044,dirvalve_2.orifice_23,SC1_dirvalve_2_HJ_02;SC1_dirvalve_2_HJ_03,2,local damped Newton
+AG_045,dirvalve_3.orifice_13;dirvalve_3.orifice_23,SC1_dirvalve_3_HJ_01;SC1_dirvalve_3_HJ_02;SC1_dirvalve_3_HJ_03,3,local damped Newton
+AG_046,dirvalve_6.orifice_13;dirvalve_6.orifice_14;dirvalve_6.orifice_23;dirvalve_6.orifice_24,SC1_dirvalve_6_HJ_01;SC1_dirvalve_6_HJ_02;SC1_dirvalve_6_HJ_03;SC1_dirvalve_6_HJ_04,4,local damped Newton
+AG_047,dirvalve_8.orifice_13;dirvalve_8.orifice_14;dirvalve_8.orifice_23;dirvalve_8.orifice_24,SC1_dirvalve_8_HJ_01;SC1_dirvalve_8_HJ_02;SC1_dirvalve_8_HJ_03;SC1_dirvalve_8_HJ_04,4,local damped Newton
+AG_048,dirvalve_9.orifice_14,SC1_dirvalve_9_HJ_01;SC1_dirvalve_9_HJ_04,2,local damped Newton
+AG_049,dirvalve_9.orifice_23,SC1_dirvalve_9_HJ_02;SC1_dirvalve_9_HJ_03,2,local damped Newton

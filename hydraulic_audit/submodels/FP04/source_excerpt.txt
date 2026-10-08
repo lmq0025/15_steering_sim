@@ -1,0 +1,807 @@
+SUBMODEL: FP04
+SOURCE FILES: 3
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\FP04.c
+==============================================================================
+...
+     1: /* Submodel FP04 skeleton created by AME Submodel editing utility
+     2:    jeu. juil. 26 16:58:01 2018 */
+     3: 
+     4: 
+     5: 
+     6: #include <math.h>
+     7: #include <stdio.h>
+     8: #include <stdlib.h>
+     9: #include "ameutils.h"
+    10: /* *******************************************************************************
+    11: TITLE : FP04
+    12: ------------------------------------------------------------------------------
+    13: DESCRIPTION : This submodel is used to set the characteristics of the hydraulic fluid.
+    14: The fluid is identified by an "index of hydraulic fluid" (integer parameter) that must be used
+    15: by all the other submodels having hydraulic properties and using this particular fluid.
+    16:  
+    17: FP04 proposes 7 different "type of fluid properties" to define the hydraulic properties,
+    18: each type having particular characteristics.
+    19:  
+    20: In order to test the characteristics of your fluid properties we recommend using
+    21: the FPROP submodel in conjunction to PS00.
+    22: ------------------------------------------------------------------------------
+    23: USAGE :   Replaces all the former hydraulic fluid properties (FP01, FP02, FP03,..., FP04).
+    24: ------------------------------------------------------------------------------
+    25: PARAMETER SETTINGS : Please refer to the html documentation and to the TB 117.
+    26: ------------------------------------------------------------------------------
+    27: DATE OF CREATION/AUTHOR : 07/06/04 OS (from FP01, FP02, FP03, SPROP0, RBFP10).
+    28: ------------------------------------------------------------------------------
+    29: INDEX OF REVISIONS :
+    30: 10/04/06 PC:   Add calculated kinematic viscosity for elementary and advanced fluid properties
+    31: 14/04/06 PC:   Improve the html documentation
+    32: ------------------------------------------------------------------------------
+    33: LIST OF FUNCTIONS USED :
+    34: getatp_
+    35: fpspind_
+    36: fptables_
+    37: fprprop_
+    38: fpcondmu_
+    39: sethdind_
+    40: ------------------------------------------------------------------------------
+    41:  
+    42: IMAGINE Roanne (42)
+    43: 5, rue Brison
+    44: 42300 ROANNE           tel: (33).04.77.23.60.30
+    45: FRANCE                 fax: (33).04.77.23.60.31
+    46:  
+    47: --------------------------------------------------------------------------------
+    48: SOURCE :
+    49:    Siemens Industry Software SAS
+    50:    7 place des Minimes
+    51:    42300 Roanne - France
+    52:    tel: (33).04.77.23.60.30
+    53:    fax: (33).04.77.23.60.31
+    54:    www.siemens.com/plm
+    55: 
+    56:    Copyright 2015 Siemens Industry Software NV
+    57: ******************************************************************************* */
+    58: 
+    59: #define _SUBMODELNAME_ "FP04"
+    60: 
+    61: /* >>>>>>>>>>>>Insert Private Code Here. */
+    62: #include <string.h> /* for strcpy and strcat. */
+    63: /* <<<<<<<<<<<<End of Private Code. */
+    64: 
+    65: 
+    66: /* There are 20 real parameters:
+    67: 
+    68:    fpd     density                                                                   [kg/m**3]
+    69:    fpbm    bulk modulus                                                              [bar -> Pa]
+    70:    fpslope slope of bulk modulus [bar] in function of pressure [bar] (in percentage) [null]
+    71:    fpav    absolute viscosity                                                        [cP -> Ns/m**2]
+    72:    fpavag  absolute viscosity of air/gas                                             [cP -> Ns/m**2]
+    73:    fpsp    saturation pressure (for dissolved air/gas)                               [bar -> Pa]
+    74:    fpac    air/gas content                                                           [%]
+    75:    fpt     temperature                                                               [degC]
+    76:    T1      temperature T1                                                            [degC]
+    77:    nu1     kinematic viscosity at (Patm, T1)                                         [cSt -> m**2/s]
+    78:    T2      temperature T2                                                            [degC]
+    79:    nu2     kinematic viscosity at (Patm, T2)                                         [cSt -> m**2/s]
+    80:    tvis    coefficient for temperature viscosity characteristic                      [null]
+    81:    fppi    polytropic index for air/gas/vapor content                                [null]
+    82:    hsvp    (advanced user) high saturated vapor pressure                             [bar -> Pa]
+    83:    lsvp    (advanced user) low saturated vapor pressure                              [bar -> Pa]
+    84:    muvap   (advanced user) absolute viscosity of vapor                               [cP -> Ns/m**2]
+    85:    emm     (advanced user) effective molecular mass of vapor                         [null]
+    86:    gdens   (advanced user) air/gas density at atmospheric pressure 0 degC            [kg/m**3]
+    87:    psat    saturation pressure (for dissolved air/gas)                               [bar -> Pa]
+    88: */
+    89: 
+    90: 
+    91: /* There are 5 integer parameters:
+    92: 
+    93:    proptype  type of fluid properties
+    94:    rbtype    fuel type               
+    95:    fluidfile fluid property file     
+    96:    bulkmod   bulk modulus type       
+    97:    indexf    index of hydraulic fluid
+    98: */
+    99: 
+   100: 
+...
+   120:    int res;
+   121: /* <<<<<<<<<<<<End of Extra Initialization declarations. */
+   122:    int proptype, rbtype, fluidfile, bulkmod, indexf;
+   123:    double fpd, fpbm, fpslope, fpav, fpavag, fpsp, fpac, fpt, T1, nu1, 
+   124:       T2, nu2, tvis, fppi, hsvp, lsvp, muvap, emm, gdens, psat;
+   125:    char *fluidname, *fpfname;
+...
+   128:    rbtype     = ip[1];
+   129:    fluidfile  = ip[2];
+   130:    bulkmod    = ip[3];
+   131:    indexf     = ip[4];
+   132: 
+   133:    fpd        = rp[0];
+...
+   164: 
+   165: 
+   166: /* >>>>>>>>>>>>Initialization Function Check Statements. */
+   167: 
+   168:    loop = 0;
+   169:    p0 = -getatp_()*1.0e-5;
+   170: 
+   171:    /* Check parameters: warnings */
+   172:    if (fpac > 10.0)
+...
+   185:       if ((tvis < 0.7) || (tvis > 0.8))
+   186:       {
+   187:          amefprintf(stderr, "\nAccording to the literature the coefficient for " \
+   188:          "temperature viscosity characteristic should be set to 0.7 or 0.8.\n");
+   189:          error = MAX(error, 1);
+   190:       }
+...
+   226:       if (fpd <= 0.0)
+   227:       {
+   228:          amefprintf(stderr, "\nThe density must be strictly positive.\n");
+   229:          error = 2;
+   230:       }
+   231:       if (fpbm <= 0.0)
+   232:       {
+   233:          amefprintf(stderr, "\nThe bulk modulus must be strictly positive.\n");
+   234:          error = 2;
+   235:       }
+   236:       if (fpav <= 0.0)
+...
+   241:       if (psat <= p0)
+   242:       {
+   243:          amefprintf(stderr, "\nThe saturation pressure must be strictly greater than %g bar.\n", p0);
+   244:          error = 2;
+   245:       }
+   246:       if (fpt < -273.15)
+...
+   260:       if (fpd <= 0.0)
+   261:       {
+   262:          amefprintf(stderr, "\nThe density must be strictly positive.\n");
+   263:          error = 2;
+   264:       }
+   265:       if (fpbm <= 0.0)
+   266:       {
+   267:          amefprintf(stderr, "\nThe bulk modulus must be strictly positive.\n");
+   268:          error = 2;
+   269:       }
+   270:       if (fpav <= 0.0)
+...
+   280:       if (fpsp <= p0)
+   281:       {
+   282:          amefprintf(stderr, "\nThe saturation pressure must be strictly greater than %g bar.\n", p0);
+   283:          error = 2;
+   284:       }
+   285:       if (fpt < -273.15)
+...
+   299:       if (fpd <= 0.0)
+   300:       {
+   301:          amefprintf(stderr, "\nThe density must be strictly positive.\n");
+   302:          error = 2;
+   303:       }
+   304:       if (fpbm <= 0.0)
+   305:       {
+   306:          amefprintf(stderr, "\nThe bulk modulus must be strictly positive.\n");
+   307:          error = 2;
+   308:       }
+   309:       if (fpslope < 0.0)
+   310:       {
+   311:          amefprintf(stderr, "\nThe slope of bulk modulus must be positive.\n");
+   312:          error = 2;
+   313:       }
+   314:       if (fpav <= 0.0)
+...
+   324:       if (fpsp <= p0)
+   325:       {
+   326:          amefprintf(stderr, "\nThe saturation pressure must be strictly greater than %g bar.\n", p0);
+   327:          error = 2;
+   328:       }
+   329:       if (fpt < -273.15)
+...
+   339:       if (hsvp <= p0)
+   340:       {
+   341:          amefprintf(stderr, "\nIllegal value of high saturation pressure.\n");
+   342:          amefprintf(stderr, "Value is %g.\n", hsvp);
+   343:          error = 2;
+   344:       }
+   345:       if (lsvp  <= p0)
+   346:       {
+   347:          amefprintf(stderr, "\nIllegal value of low saturation pressure.\n");
+   348:          amefprintf(stderr, "Value is %g.\n", lsvp);
+   349:          error = 2;
+   350:       }
+   351:       if (fpsp <= hsvp)
+   352:       {
+   353:          amefprintf(stderr, "\nIllegal value of high saturated vapor pressure.\n");
+   354:          amefprintf(stderr, "High saturated vapor pressure (%g) must be less than saturation pressure (%g).\n",hsvp, fpsp);
+   355:          error = 2;
+   356:       }
+   357:       if(hsvp <= lsvp)
+   358:       {
+   359:          amefprintf(stderr, "\nIllegal values of saturation pressures.\n");
+   360:          amefprintf(stderr, "Low value (%g) must be less than high value (%g).\n",lsvp, hsvp);
+   361:          error = 2;
+   362:       }
+...
+   368:       if(emm < 1.0)
+   369:       {
+   370:          amefprintf(stderr, "\nThe effective molecular mass of vapor must be greater than 1.\n");
+   371:          error = 2;
+   372:       }
+   373:       if(gdens <= 0.0)
+   374:       {
+   375:          amefprintf(stderr, "\nThe air/gas density at atmospheric pressure 0 degC must be strictly positive.\n");
+   376:          error = 2;
+   377:       }
+   378:    }
+...
+   387:       if (fpsp <= p0)
+   388:       {
+   389:          amefprintf(stderr, "\nThe saturation pressure must be strictly greater than %g bar.\n", p0);
+   390:          error = 2;
+   391:       }
+   392:       if (fpt < -273.15)
+...
+   402:       if (hsvp <= p0)
+   403:       {
+   404:          amefprintf(stderr, "\nIllegal value of high saturation pressure.\n");
+   405:          amefprintf(stderr, "Value is %g.\n", hsvp);
+   406:          error = 2;
+   407:       }
+   408:       if (lsvp <= p0)
+   409:       {
+   410:          amefprintf(stderr, "\nIllegal value of low saturation pressure.\n");
+   411:          amefprintf(stderr, "Value is %g.\n", lsvp);
+   412:          error = 2;
+   413:       }
+   414:       if (fpsp <= hsvp)
+   415:       {
+   416:          amefprintf(stderr, "\nIllegal value of high saturated vapor pressure.\n");
+   417:          amefprintf(stderr, "High saturated vapor pressure (%g) must be less than saturation pressure (%g).\n",hsvp, fpsp);
+   418:          error = 2;
+   419:       }
+   420:       if(hsvp <= lsvp)
+   421:       {
+   422:          amefprintf(stderr, "\nIllegal values of saturation pressures.\n");
+   423:          amefprintf(stderr, "Low value (%g) must be less than high value (%g).\n",lsvp, hsvp);
+   424:          error = 2;
+   425:       }
+...
+   431:       if(emm < 1.0)
+   432:       {
+   433:          amefprintf(stderr, "\nThe effective molecular mass of vapor must be greater than 1.\n");
+   434:          error = 2;
+   435:       }
+   436:       if(gdens <= 0.0)
+   437:       {
+   438:          amefprintf(stderr, "\nThe air/gas density at atmospheric pressure 0 degC must be strictly positive.\n");
+   439:          error = 2;
+   440:       }
+   441:    }
+...
+   460:       if (hsvp <= p0)
+   461:       {
+   462:          amefprintf(stderr, "\nIllegal value of high saturation pressure.\n");
+   463:          amefprintf(stderr, "Value is %g.\n", hsvp);
+   464:          error = 2;
+   465:       }
+   466:       if (lsvp <= p0)
+   467:       {
+   468:          amefprintf(stderr, "\nIllegal value of low saturation pressure.\n");
+   469:          amefprintf(stderr, "Value is %g.\n", lsvp);
+   470:          error = 2;
+   471:       }
+   472:       if(hsvp <= lsvp)
+   473:       {
+   474:          amefprintf(stderr, "\nIllegal values of saturation pressures.\n");
+   475:          amefprintf(stderr, "Low value (%g) must be less than high value (%g).\n",lsvp, hsvp);
+   476:          error = 2;
+   477:       }
+...
+   483:       if(emm < 1.0)
+   484:       {
+   485:          amefprintf(stderr, "\nThe effective molecular mass of vapor must be greater than 1.\n");
+   486:          error = 2;
+   487:       }
+   488:    }
+...
+   492:       if (fpd <= 0.0)
+   493:       {
+   494:          amefprintf(stderr, "\nThe density must be strictly positive.\n");
+   495:          error = 2;
+   496:       }
+   497:       if (fpbm <= 0.0)
+   498:       {
+   499:          amefprintf(stderr, "\nThe bulk modulus must be strictly positive.\n");
+   500:          error = 2;
+   501:       }
+   502:       if (fpavag <= 0.0)
+...
+   507:       if (fpsp <= p0)
+   508:       {
+   509:         amefprintf(stderr, "\nThe saturation pressure must be strictly greater than %g bar.\n", p0);
+   510:          error = 2;
+   511:       }
+   512:       if (fpt < -273.15)
+...
+   551:       if (fpd <= 0.0)
+   552:       {
+   553:          amefprintf(stderr, "\nThe density must be strictly positive.\n");
+   554:          error = 2;
+   555:       }
+   556:       if (fpbm <= 0.0)
+   557:       {
+   558:          amefprintf(stderr, "\nThe bulk modulus must be strictly positive.\n");
+   559:          error = 2;
+   560:       }
+   561:       if (fpavag <= 0.0)
+...
+   566:       if (fpsp <= p0)
+   567:       {
+   568:          amefprintf(stderr, "\nThe saturation pressure must be strictly greater than %g bar.\n", p0);
+   569:          error = 2;
+   570:       }
+   571:       if (fpt < -273.15)
+...
+   581:       if (hsvp <= p0)
+   582:       {
+   583:          amefprintf(stderr, "\nIllegal value of high saturation pressure.\n");
+   584:          amefprintf(stderr, "Value is %g.\n", hsvp);
+   585:          error = 2;
+   586:       }
+   587:       if (lsvp <= p0)
+   588:       {
+   589:          amefprintf(stderr, "\nIllegal value of low saturation pressure.\n");
+   590:          amefprintf(stderr, "Value is %g.\n", lsvp);
+   591:          error = 2;
+   592:       }
+   593:       if (fpsp <= hsvp)
+   594:       {
+   595:          amefprintf(stderr, "\nIllegal value of high saturated vapor pressure.\n");
+   596:          amefprintf(stderr, "High saturated vapor pressure (%g) must be less than saturation pressure (%g).\n",hsvp, fpsp);
+   597:          error = 2;
+   598:       }
+   599:       if(hsvp <= lsvp)
+   600:       {
+   601:          amefprintf(stderr, "\nIllegal values of saturation pressures.\n");
+   602:          amefprintf(stderr, "Low value (%g) must be less than high value (%g).\n",lsvp, hsvp);
+   603:          error = 2;
+   604:       }
+...
+   610:       if(emm < 1.0)
+   611:       {
+   612:          amefprintf(stderr, "\nThe effective molecular mass of vapor must be greater than 1.\n");
+   613:          error = 2;
+   614:       }
+   615:       if(gdens <= 0.0)
+   616:       {
+   617:          amefprintf(stderr, "\nThe air/gas density at atmospheric pressure 0 degC must be strictly positive.\n");
+   618:          error = 2;
+   619:       }
+   620:       if (T1 < -272.0)
+...
+   647: 
+   648: 
+   649: /* <<<<<<<<<<<<End of Initialization Check Statements. */
+   650: 
+   651: /*   Integer parameter checking:   */
+   652: 
+...
+   666:       error = 2;
+   667:    }
+   668:    if (bulkmod < 1 || bulkmod > 2)
+   669:    {
+   670:       amefprintf(stderr, "\nbulk modulus type must be in range [1..2].\n");
+   671:       error = 2;
+   672:    }
+   673:    if (indexf < 0 || indexf > 100)
+...
+   713: 
+   714: 
+   715: /* >>>>>>>>>>>>Initialization Function Executable Statements. */
+   716: 
+   717:    if (proptype == 1) /* Simplest properties. */
+   718:    {
+...
+   723:       and associate it with an index.
+   724:          indexf, fluid index (an integer between 0 and 100)
+   725:          fpd, density [kg/m**3]
+   726:          fpbm, bulk modulus [Pa]
+   727:          fpav, absolute viscosity of liquid [Pa]
+   728:          psat, saturation pressure [Pa]
+   729:          fpac, air content [%]
+   730:          fpt, temperature [degC]
+   731:          fppi, polytropic index [null]
+...
+   744:                  &hsvp, &lsvp, &muvap, &emm, &gdens );
+   745: 
+   746:       /* The utility fpconbmu installs a fuid with constant bulk modulus and viscosity.
+   747:       The model also allows an air (or other gas) content and considers cavitation.
+   748:          indexf, fluid index (an integer between 0 and 10)
+   749:          fpd, reference density [kg/m**3]
+   750:          fpbm, bulk modulus [Pa]
+   751:          fpav, absolute viscosity of liquid [Ns/m**2]
+   752:          fpsp, saturation pressure [Pa gauge]
+   753:          fpac, air content [%]
+   754:          fpt, temperature [degC]
+   755:          fppi, polytropic index for air/gas/vapor content[null]
+   756:          fpavag, absolute viscosity of air/gas [Ns/m**2]
+   757:          hsvp, high saturated vapor pressure [Pa gauge]
+   758:          lsvp, low saturated vapor pressure [Pa]
+   759:          muvap, absolute viscosity of vapor [Ns/m**2]
+   760:          emm, effective molecular mass [null]
+   761:          gdens, air/gas density [kg/m**3] */
+   762:    }
+   763:    else if (proptype == 3) /* Advanced properties. */
+   764:    {
+...
+   832:               default : strcat(amefile, "15W30");
+   833:            }
+   834:            if (bulkmod == 1)
+   835:            {
+   836:                strcat(amefile, "_Bs.data");
+   837:            }
+...
+   855:       /* fptables is used to install a fluid with properties defined in tables.
+   856:          indexf, fluid index (an integer between 0 and 10)
+   857:          fpsp, saturation pressure
+   858:          fpac, air content
+   859:          fpt, temperature
+   860:          fppi, polytropic index for air/gas/vapor content
+   861:          filetouse, name of the file containing the tables
+   862:          fpavag, absolute viscosity of air/gas
+   863:          hsvp, high saturated vapor pressure
+   864:          lsvp, low saturated vapor pressure
+   865:          muvap, absolute viscosity of vapor
+   866:          emm, effective molecular mass
+   867:          gdens, air/gas density */
+   868:    }
+   869:    else if (proptype == 5) /* Robert Bosch diesel fuel. */
+   870:    {
+...
+   875:          rbtype, fuel type (an integer between 1 and 9)
+   876:          indexf, fluid index (an integer between 0 and 10)
+   877:          hsvp, high saturated vapor pressure [Pa]
+   878:          lsvp, low saturated vapor pressure [Pa]
+   879:          emm, effective molecular mass [null]
+   880:          fpavag, absolute viscosity of air/gas [Ns/m**2]
+   881:          muvap, absolute viscosity of vapor [Ns/m**2]
+   882:          fpac, air content [%]
+...
+   902: 
+   903:       /* calculation of the kinematic viscosity [cSt = mm**2/s] at atmospheric
+   904:       pressure and at the current temperature */
+   905:       nuT = pow( 10.0, pow(10.0, const1) * pow( DEGC_TO_K(fpt), -const2) ) - tvis;
+   906:       amefprintf(stdout, "\n ___________________________________ \n");
+   907:       amefprintf(stdout, "\nFP04 instance %d:\n", *n);
+...
+   909: 
+   910:       /* calculation of the absolute viscosity [N.s/m**2] at atmospheric
+   911:       pressure at the current temperature */
+   912:       muT = nuT * 1e-6 * fpd;
+   913:       amefprintf(stdout, "\nthe calculated absolute viscosity at %g degC is set to %g [cP].\n", fpt, muT*1000);
+   914:       amefprintf(stdout, "\n ___________________________________ \n");
+...
+   917:                   &hsvp, &lsvp, &muvap, &emm, &gdens );
+   918: 
+   919:       /* The utility fpconbmu installs a fuid with constant bulk modulus and viscosity.
+   920:       The model also allows an air (or other gas) content and considers cavitation.
+   921:          indexf, fluid index (an integer between 0 and 10)
+   922:          fpd, reference density [kg/m**3]
+   923:          fpbm, bulk modulus [Pa]
+   924:          fpav, absolute viscosity of liquid [Ns/m**2]
+   925:          fpsp, saturation pressure [Pa gauge]
+   926:          fpac, air content [%]
+   927:          fpt, temperature [degC]
+   928:          fppi, polytropic index for air/gas/vapor content[null]
+   929:          fpavag, absolute viscosity of air/gas [Ns/m**2]
+   930:          hsvp, high saturated vapor pressure [Pa gauge]
+   931:          lsvp, low saturated vapor pressure [Pa]
+   932:          muvap, absolute viscosity of vapor [Ns/m**2]
+   933:          emm, effective molecular mass [null]
+   934:          gdens, air/gas density [kg/m**3] */
+   935:    }
+   936:    else if (proptype == 7) /* Advanced properties with calculated kinematic viscosity. */
+   937:    {
+...
+   944: 
+   945:       /* calculation of the kinematic viscosity [cSt = mm**2/s] at atmospheric
+   946:       pressure at the current temperature */
+   947:       nuT = pow( 10.0, pow(10.0, const1) * pow( DEGC_TO_K(fpt), -const2) ) - tvis;
+   948:       amefprintf(stdout, "\n ___________________________________ \n");
+   949:       amefprintf(stdout, "\nFP04 instance %d:\n", *n);
+...
+   951: 
+   952:       /* calculation of the absolute viscosity [N.s/m**2] at atmospheric
+   953:       pressure at the current temperature */
+   954:       muT = nuT * 1e-6 * fpd;
+   955:       amefprintf(stdout, "\nThe calculated absolute viscosity at %g degC is %g [cP].\n", fpt, muT*1000);
+   956:       amefprintf(stdout, "\n ___________________________________ \n");
+...
+   965:    sethdind_(&indexf);
+   966: 
+   967: /* <<<<<<<<<<<<End of Initialization Executable Statements. */
+   968: }
+   969: 
+   970: /*  There are 0 ports.
+...
+   973: /*  There are 2 internal variables.
+   974: 
+   975:       1 volume     volume of fluid [L -> m**3] basic variable
+   976:       2 mass       mass of fluid   [kg]        basic variable
+   977: */
+   978: 
+   979: void fp04_(int *n, double *volume, double *mass, double rp[20]
+   980:       , int ip[5], char *tp[2])
+   981: 
+   982: {
+...
+   984: /* >>>>>>>>>>>>Extra Calculation Function Declarations Here. */
+   985: /* <<<<<<<<<<<<End of Extra Calculation declarations. */
+   986:    int proptype, rbtype, fluidfile, bulkmod, indexf;
+   987:    double fpd, fpbm, fpslope, fpav, fpavag, fpsp, fpac, fpt, T1, nu1, 
+   988:       T2, nu2, tvis, fppi, hsvp, lsvp, muvap, emm, gdens, psat;
+   989:    char *fluidname, *fpfname;
+...
+   992:    rbtype     = ip[1];
+   993:    fluidfile  = ip[2];
+   994:    bulkmod    = ip[3];
+   995:    indexf     = ip[4];
+   996: 
+   997:    fpd        = rp[0];
+...
+  1023:    Set all submodel outputs below:
+  1024: 
+  1025:    *volume     = ??;
+  1026:    *mass       = ??;
+  1027: */
+  1028: 
+  1029: 
+  1030: 
+  1031: /* >>>>>>>>>>>>Calculation Function Executable Statements. */
+  1032: 
+  1033:    sethdind_(&indexf);
+  1034:    hydrinit_volmass_(volume, mass, &indexf);
+  1035: 
+  1036: /* <<<<<<<<<<<<End of Calculation Executable Statements. */
+  1037: 
+  1038: /* SI -> Common units conversions. */
+  1039: 
+  1040:    *volume   /= 1.00000000000000e-003;
+  1041: }
+  1042: 
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\FP04.py
+==============================================================================
+...
+     1: from update_helpers import *
+     2: 
+     3: def get_associations(old_submodel_name, new_submodel_name, old_interface, new_interface,
+     4:       default_associations, structural_phase, extra_data):
+     5: 
+     6:    if old_submodel_name in [u"FP01", u"FP02"]:
+     7:       extra_data.user_message = "FP04 is a generic submodel allowing the user to define different levels of fluid properties.\n"\
+     8:          + "Seven different types of fluid properties are proposed, each type having particular characteristics.\n"\
+     9:          + "For more information refer to the documentation.\n\n"
+    10: 
+    11:    if old_submodel_name == u"FP01":
+    12:       extra_data.user_message += "Your current "+ old_submodel_name +" parameters will be copied to the FP04 equivalent \"elementary\" type."
+    13: 
+    14:    if old_submodel_name == u"FP02":
+    15:       extra_data.user_message += "Your current "+ old_submodel_name +" parameters will be copied to the FP04 equivalent \"advanced\" type."
+    16: 
+    17:       FP02_vapvisc = by_name(u"avov", old_interface)
+    18:       FP04_vapvisc = by_name(u"muvap", new_interface)
+    19: 
+    20:       if FP02_vapvisc and FP04_vapvisc:
+    21:          default_associations[FP04_vapvisc] = FP02_vapvisc
+    22: 
+    23:    return default_associations
+    24: 
+    25: def get_field_settings(
+    26:       old_submodel_name,
+    27:       new_submodel_name,
+    28:       old_interface,
+    29:       new_interface,
+    30:       default_field_settings,
+    31:       structural_phase,
+    32:       extra_data):
+    33: 
+    34:    #***************************************************************************#
+    35:    #                   FROM FP02 "proptype setup to advanced"                  #
+    36:    #***************************************************************************#
+    37: 
+    38:    if old_submodel_name == u"FP02":
+    39:       FP04_prop = by_name(u"proptype", new_interface)
+    40:       if FP04_prop:
+    41:          default_field_settings[(FP04_prop, Value)] = Force(u"3")
+    42: 
+    43:    return default_field_settings
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\FP04.spe
+==============================================================================
+...
+     1: <?xml version="1.0" encoding="ISO-8859-1"?>
+     2: <!DOCTYPE SPE>
+     3: <SPE DOC_VERSION="2" AME_VERSION="16.0.0 - 68207-65611 2017">
+     4: 
+     5:  <SUBMODEL>
+     6:   <SUB_TYPE>0</SUB_TYPE>
+     7:   <SUB_ID_MAX>58</SUB_ID_MAX>
+     8:   <DEFAULT_ICON>elementaryhydraulicprops</DEFAULT_ICON>
+     9:   <SUB_LABEL>indexed hydraulic fluid properties</SUB_LABEL>
+    10:   <SUB_UNIT>0</SUB_UNIT>
+    11:   <OUTPUT_TYPE>1</OUTPUT_TYPE>
+    12:   <RPARAMS_LIST>
+    13:    <RPARAM>
+    14:     <SUB_ID>16</SUB_ID>
+    15:     <TITLE>density</TITLE>
+    16:     <VARNAME>fpd</VARNAME>
+    17:     <VISIBILITY>(proptype == 1)||(proptype == 2)||(proptype == 3)||(proptype == 6)||(proptype == 7)</VISIBILITY>
+    18:     <DEF_VALUE>8.50000000000000e+02</DEF_VALUE>
+    19:     <VALUE>8.50000000000000e+02</VALUE>
+    20:     <MIN_VALUE>1.00000000000000e-030</MIN_VALUE>
+    21:     <MAX_VALUE>1.00000000000000e+004</MAX_VALUE>
+    22:     <UNITS>kg/m**3</UNITS>
+    23:    </RPARAM>
+    24:    <RPARAM>
+    25:     <SUB_ID>18</SUB_ID>
+    26:     <TITLE>bulk modulus</TITLE>
+    27:     <VARNAME>fpbm</VARNAME>
+    28:     <VISIBILITY>(proptype == 1)||(proptype == 2)||(proptype == 3)||(proptype == 6)||(proptype == 7)</VISIBILITY>
+    29:     <DEF_VALUE>1.70000000000000e+04</DEF_VALUE>
+    30:     <VALUE>1.70000000000000e+04</VALUE>
+    31:     <MIN_VALUE>1.00000000000000e-030</MIN_VALUE>
+    32:     <MAX_VALUE>1.00000000000000e+005</MAX_VALUE>
+    33:     <UNITS>bar</UNITS>
+    34:    </RPARAM>
+    35:    <RPARAM>
+    36:     <SUB_ID>49</SUB_ID>
+    37:     <TITLE>slope of bulk modulus [bar] in function of pressure [bar] (in percentage)</TITLE>
+    38:     <VARNAME>fpslope</VARNAME>
+    39:     <VISIBILITY>(proptype == 3)||(proptype == 7)</VISIBILITY>
+    40:     <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+    41:     <VALUE>0.00000000000000e+00</VALUE>
+    42:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+    43:     <MAX_VALUE>1.00000000000000e+006</MAX_VALUE>
+    44:     <UNITS>null</UNITS>
+    45:    </RPARAM>
+    46:    <RPARAM>
+    47:     <SUB_ID>21</SUB_ID>
+    48:     <TITLE>absolute viscosity</TITLE>
+    49:     <VARNAME>fpav</VARNAME>
+    50:     <VISIBILITY>(proptype == 1)||(proptype == 2)||(proptype == 3)</VISIBILITY>
+    51:     <DEF_VALUE>5.10000000000000e+01</DEF_VALUE>
+    52:     <VALUE>5.10000000000000e+01</VALUE>
+    53:     <MIN_VALUE>1.00000000000000e-030</MIN_VALUE>
+    54:     <MAX_VALUE>1.00000000000000e+003</MAX_VALUE>
+    55:     <UNITS>cP</UNITS>
+    56:    </RPARAM>
+    57:    <RPARAM>
+    58:     <SUB_ID>23</SUB_ID>
+    59:     <TITLE>absolute viscosity of air/gas</TITLE>
+    60:     <VARNAME>fpavag</VARNAME>
+    61:     <VISIBILITY>(proptype == 2)||(proptype == 3)||(proptype == 4)||(proptype == 5)||(proptype == 6)||(proptype == 7)</VISIBILITY>
+    62:     <DEF_VALUE>2.00000000000000e-02</DEF_VALUE>
+    63:     <VALUE>2.00000000000000e-02</VALUE>
+    64:     <MIN_VALUE>1.00000000000000e-030</MIN_VALUE>
+    65:     <MAX_VALUE>1.00000000000000e+000</MAX_VALUE>
+    66:     <UNITS>cP</UNITS>
+    67:    </RPARAM>
+    68:    <RPARAM>
+    69:     <SUB_ID>29</SUB_ID>
+    70:     <TITLE>saturation pressure (for dissolved air/gas)</TITLE>
+    71:     <VARNAME>fpsp</VARNAME>
+    72:     <VISIBILITY>(proptype == 2)||(proptype == 3)||(proptype == 4)||(proptype == 6)||(proptype == 7)</VISIBILITY>
+    73:     <DEF_VALUE>1.00000000000000e+03</DEF_VALUE>
+    74:     <VALUE>1.00000000000000e+03</VALUE>
+    75:     <MIN_VALUE>-9.90000000000000e-001</MIN_VALUE>
+    76:     <MAX_VALUE>1.00000000000000e+005</MAX_VALUE>
+    77:     <UNITS>bar</UNITS>
+    78:    </RPARAM>
+    79:    <RPARAM>
+    80:     <SUB_ID>6</SUB_ID>
+    81:     <TITLE>air/gas content</TITLE>
+    82:     <VARNAME>fpac</VARNAME>
+    83:     <VISIBILITY>True</VISIBILITY>
+    84:     <DEF_VALUE>1.00000000000000e-01</DEF_VALUE>
+    85:     <VALUE>1.00000000000000e-01</VALUE>
+    86:     <MIN_VALUE>1.00000000000000e-004</MIN_VALUE>
+    87:     <MAX_VALUE>1.00000000000000e+002</MAX_VALUE>
+    88:     <UNITS>%</UNITS>
+    89:    </RPARAM>
+    90:    <RPARAM>
+    91:     <SUB_ID>31</SUB_ID>
+    92:     <TITLE>temperature</TITLE>
+    93:     <VARNAME>fpt</VARNAME>
+    94:     <VISIBILITY>True</VISIBILITY>
+    95:     <DEF_VALUE>4.00000000000000e+01</DEF_VALUE>
+    96:     <VALUE>4.00000000000000e+01</VALUE>
+    97:     <MIN_VALUE>-2.73000000000000e+002</MIN_VALUE>
+    98:     <MAX_VALUE>1.00000000000000e+003</MAX_VALUE>
+    99:     <UNITS>degC</UNITS>
+   100:    </RPARAM>
+...
+   145:    <RPARAM>
+   146:     <SUB_ID>45</SUB_ID>
+   147:     <TITLE>coefficient for temperature viscosity characteristic</TITLE>
+   148:     <VARNAME>tvis</VARNAME>
+   149:     <VISIBILITY>(proptype == 6)||(proptype == 7)</VISIBILITY>
+   150:     <DEF_VALUE>8.00000000000000e-01</DEF_VALUE>
+...
+   167:    <RPARAM>
+   168:     <SUB_ID>1</SUB_ID>
+   169:     <TITLE>(advanced user) high saturated vapor pressure</TITLE>
+   170:     <VARNAME>hsvp</VARNAME>
+   171:     <VISIBILITY>(proptype == 3)||(proptype == 4)||(proptype == 5)||(proptype == 7)</VISIBILITY>
+   172:     <DEF_VALUE>-5.00000000000000e-01</DEF_VALUE>
+...
+   178:    <RPARAM>
+   179:     <SUB_ID>2</SUB_ID>
+   180:     <TITLE>(advanced user) low saturated vapor pressure</TITLE>
+   181:     <VARNAME>lsvp</VARNAME>
+   182:     <VISIBILITY>(proptype == 3)||(proptype == 4)||(proptype == 5)||(proptype == 7)</VISIBILITY>
+   183:     <DEF_VALUE>-6.00000000000000e-01</DEF_VALUE>
+...
+   200:    <RPARAM>
+   201:     <SUB_ID>3</SUB_ID>
+   202:     <TITLE>(advanced user) effective molecular mass of vapor</TITLE>
+   203:     <VARNAME>emm</VARNAME>
+   204:     <VISIBILITY>(proptype == 3)||(proptype == 4)||(proptype == 5)||(proptype == 7)</VISIBILITY>
+   205:     <DEF_VALUE>2.00000000000000e+02</DEF_VALUE>
+...
+   211:    <RPARAM>
+   212:     <SUB_ID>26</SUB_ID>
+   213:     <TITLE>(advanced user) air/gas density at atmospheric pressure 0 degC</TITLE>
+   214:     <VARNAME>gdens</VARNAME>
+   215:     <VISIBILITY>(proptype == 3)||(proptype == 4)||(proptype == 7)</VISIBILITY>
+   216:     <DEF_VALUE>1.20000000000000e+00</DEF_VALUE>
+...
+   222:    <RPARAM>
+   223:     <SUB_ID>56</SUB_ID>
+   224:     <TITLE>saturation pressure (for dissolved air/gas)</TITLE>
+   225:     <VARNAME>psat</VARNAME>
+   226:     <VISIBILITY>(proptype == 1)</VISIBILITY>
+   227:     <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+...
+   298:      </ENUM>
+   299:      <ENUM>
+   300:       <ENUM_STRING>high density diesel fuel (843 kg/m**3)</ENUM_STRING>
+   301:      </ENUM>
+   302:      <ENUM>
+   303:       <ENUM_STRING>SHELL HCU diesel</ENUM_STRING>
+...
+   475:    <IPARAM>
+   476:     <SUB_ID>13</SUB_ID>
+   477:     <TITLE>bulk modulus type</TITLE>
+   478:     <VARNAME>bulkmod</VARNAME>
+   479:     <VISIBILITY>(proptype == 4)&&(fluidfile!=1)</VISIBILITY>
+   480:     <DEF_VALUE>1</DEF_VALUE>
+   481:     <VALUE>1</VALUE>
+...
+   576:    </PARAMS_GROUP>
+   577:    <PARAMS_GROUP>
+   578:     <ORIG_TITLE>Cavitation</ORIG_TITLE>
+   579:     <NAME>cavitation</NAME>
+   580:     <SUB_ID>53</SUB_ID>
+   581:     <PARAM_GROUP_ELEMENT_LIST>
+   582:      <PARAM_GROUP_ELEMENT>
+...
+   635:    <IVAR>
+   636:     <SUB_ID>58</SUB_ID>
+   637:     <TITLE>volume of fluid</TITLE>
+   638:     <VARNAME>volume</VARNAME>
+   639:     <VISIBILITY>True</VISIBILITY>
+   640:     <TYPE>0</TYPE>
+   641:     <DIMENSION>1</DIMENSION>
+...
+   644:    <IVAR>
+   645:     <SUB_ID>57</SUB_ID>
+   646:     <TITLE>mass of fluid</TITLE>
+   647:     <VARNAME>mass</VARNAME>
+   648:     <VISIBILITY>True</VISIBILITY>
+   649:     <TYPE>0</TYPE>
+   650:     <DIMENSION>1</DIMENSION>

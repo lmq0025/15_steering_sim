@@ -1,0 +1,25 @@
+﻿alias,data_path,variable_type,basic_type,title,unit,io_type,input_type,usage
+hydrnode4_4,q1@hydrnode4_4,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydrnode4_4,vol1@hydrnode4_4,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydrnode4_4,pjunc@hydrnode4_4,1,ame_basic_variable,pressure at junction,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydrnode4_4,pjunc2@hydrnode4_4,1,ame_basic_variable,pressure at junction,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydrnode4_4,q2@hydrnode4_4,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydrnode4_4,vol2@hydrnode4_4,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydrnode4_4,pjunc3@hydrnode4_4,1,ame_basic_variable,pressure at junction,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydrnode4_4,q3@hydrnode4_4,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydrnode4_4,vol3@hydrnode4_4,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydrnode4_4,pjunc4@hydrnode4_4,1,ame_basic_variable,pressure at junction,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydrnode4_4,q4@hydrnode4_4,1,ame_basic_variable,flow rate at port 4,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydrnode4_4,vol4@hydrnode4_4,1,ame_basic_variable,volume at port 4,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydrnode4_9,q1@hydrnode4_9,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydrnode4_9,vol1@hydrnode4_9,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydrnode4_9,pjunc@hydrnode4_9,1,ame_basic_variable,pressure at junction,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydrnode4_9,pjunc2@hydrnode4_9,1,ame_basic_variable,pressure at junction,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydrnode4_9,q2@hydrnode4_9,1,ame_basic_variable,flow rate at port 2,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydrnode4_9,vol2@hydrnode4_9,1,ame_basic_variable,volume at port 2,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydrnode4_9,pjunc3@hydrnode4_9,1,ame_basic_variable,pressure at junction,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydrnode4_9,q3@hydrnode4_9,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydrnode4_9,vol3@hydrnode4_9,1,ame_basic_variable,volume at port 3,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used
+hydrnode4_9,pjunc4@hydrnode4_9,1,ame_basic_variable,pressure at junction,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+hydrnode4_9,q4@hydrnode4_9,1,ame_basic_variable,flow rate at port 4,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+hydrnode4_9,vol4@hydrnode4_9,1,ame_basic_variable,volume at port 4,cm**3,ame_variable_io_input,ame_variable_input_default,ame_variable_used

@@ -1,0 +1,37 @@
+﻿alias,data_path,parameter_type,title,unit,raw_value,resolved_value,value_unit
+sinewave,f@sinewave,ame_real_parameter,sine wave frequency,Hz,1,1,Hz
+sinewave,level0@sinewave,ame_real_parameter,mean level,null,0,0,null
+sinewave,a@sinewave,ame_real_parameter,sine wave amplitude,null,0,0,null
+sinewave,phi@sinewave,ame_real_parameter,phase shift,degree,0,0,degree
+sinewave_1,f@sinewave_1,ame_real_parameter,sine wave frequency,Hz,1,1,Hz
+sinewave_1,level0@sinewave_1,ame_real_parameter,mean level,null,0,0,null
+sinewave_1,a@sinewave_1,ame_real_parameter,sine wave amplitude,null,0,0,null
+sinewave_1,phi@sinewave_1,ame_real_parameter,phase shift,degree,0,0,degree
+sinewave_2,f@sinewave_2,ame_real_parameter,sine wave frequency,Hz,1,1,Hz
+sinewave_2,level0@sinewave_2,ame_real_parameter,mean level,null,0,0,null
+sinewave_2,a@sinewave_2,ame_real_parameter,sine wave amplitude,null,0,0,null
+sinewave_2,phi@sinewave_2,ame_real_parameter,phase shift,degree,0,0,degree
+sinewave_3,f@sinewave_3,ame_real_parameter,sine wave frequency,Hz,1,1,Hz
+sinewave_3,level0@sinewave_3,ame_real_parameter,mean level,null,0,0,null
+sinewave_3,a@sinewave_3,ame_real_parameter,sine wave amplitude,null,0,0,null
+sinewave_3,phi@sinewave_3,ame_real_parameter,phase shift,degree,0,0,degree
+sinewave_4,f@sinewave_4,ame_real_parameter,sine wave frequency,Hz,1,1,Hz
+sinewave_4,level0@sinewave_4,ame_real_parameter,mean level,null,0,0,null
+sinewave_4,a@sinewave_4,ame_real_parameter,sine wave amplitude,null,0,0,null
+sinewave_4,phi@sinewave_4,ame_real_parameter,phase shift,degree,0,0,degree
+sinewave_5,f@sinewave_5,ame_real_parameter,sine wave frequency,Hz,1,1,Hz
+sinewave_5,level0@sinewave_5,ame_real_parameter,mean level,null,0,0,null
+sinewave_5,a@sinewave_5,ame_real_parameter,sine wave amplitude,null,0,0,null
+sinewave_5,phi@sinewave_5,ame_real_parameter,phase shift,degree,0,0,degree
+sinewave_6,f@sinewave_6,ame_real_parameter,sine wave frequency,Hz,1,1,Hz
+sinewave_6,level0@sinewave_6,ame_real_parameter,mean level,null,0,0,null
+sinewave_6,a@sinewave_6,ame_real_parameter,sine wave amplitude,null,0,0,null
+sinewave_6,phi@sinewave_6,ame_real_parameter,phase shift,degree,0,0,degree
+sinewave_7,f@sinewave_7,ame_real_parameter,sine wave frequency,Hz,1,1,Hz
+sinewave_7,level0@sinewave_7,ame_real_parameter,mean level,null,0,0,null
+sinewave_7,a@sinewave_7,ame_real_parameter,sine wave amplitude,null,0,0,null
+sinewave_7,phi@sinewave_7,ame_real_parameter,phase shift,degree,0,0,degree
+sinewave_8,f@sinewave_8,ame_real_parameter,sine wave frequency,Hz,1,1,Hz
+sinewave_8,level0@sinewave_8,ame_real_parameter,mean level,null,0,0,null
+sinewave_8,a@sinewave_8,ame_real_parameter,sine wave amplitude,null,0,0,null
+sinewave_8,phi@sinewave_8,ame_real_parameter,phase shift,degree,0,0,degree

@@ -1,0 +1,21 @@
+{
+  "initial_hold": {
+    "description": "Frozen baseline commands and nominal 1350 rev/min pump speed",
+    "pump_speed_rpm": 1350.0,
+    "valve_command": 0.2
+  },
+  "small_step": {
+    "description": "Representative command changes from 0.20 to 0.25 at 20 ms",
+    "pump_speed_rpm": 1350.0,
+    "command_initial": 0.2,
+    "command_final": 0.25,
+    "step_time_s": 0.02
+  },
+  "steering_like": {
+    "description": "Bounded deterministic sinusoidal steering-like command",
+    "pump_speed_rpm": 1350.0,
+    "command_offset": 0.2,
+    "command_amplitude": 0.1,
+    "frequency_hz": 0.5
+  }
+}

@@ -1,0 +1,264 @@
+﻿alias,data_path,variable_type,basic_type,title,unit,io_type,input_type,usage
+dirvalve_1,q2@dirvalve_1.two_port_node_bottom_1,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1,vol2@dirvalve_1.two_port_node_bottom_1,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1,p2@dirvalve_1.two_port_node_bottom_1,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1,q2@dirvalve_1.two_port_node_bottom_2,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1,vol2@dirvalve_1.two_port_node_bottom_2,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1,p2@dirvalve_1.two_port_node_bottom_2,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1,q2@dirvalve_1.two_port_node_top_3,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1,vol2@dirvalve_1.two_port_node_top_3,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1,p2@dirvalve_1.two_port_node_top_3,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1,q2@dirvalve_1.two_port_node_top_4,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1,vol2@dirvalve_1.two_port_node_top_4,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_1,p2@dirvalve_1.two_port_node_top_4,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1,x@dirvalve_1.table_fractional_spool_position,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_1,frac_spool_position@dirvalve_1,1,ame_basic_variable,fractional spool position [null],null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_1,signal_input@dirvalve_1,1,ame_basic_variable,fractional displacement at port 5 [null],null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_1,marea_P_A@dirvalve_1,1,ame_basic_variable,ports P to A flow area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_1,marea_P_B@dirvalve_1,1,ame_basic_variable,ports P to B flow area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_1,marea_T_B@dirvalve_1,1,ame_basic_variable,ports T to B flow area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_1,marea_T_A@dirvalve_1,1,ame_basic_variable,ports T to A flow area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_1,q_P@dirvalve_1,1,ame_basic_variable,flow rate at port P,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_1,p_P@dirvalve_1,1,ame_basic_variable,pressure at port P,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_1,q_T@dirvalve_1,1,ame_basic_variable,flow rate at port T,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_1,p_T@dirvalve_1,1,ame_basic_variable,pressure at port T,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_1,q_B@dirvalve_1,1,ame_basic_variable,flow rate at port B new,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_1,p_B@dirvalve_1,1,ame_basic_variable,pressure at port B,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_1,q_A@dirvalve_1,1,ame_basic_variable,flow rate at port A,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_1,p_A@dirvalve_1,1,ame_basic_variable,pressure at port A,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_1,cxv@dirvalve_1,1,ame_state_variable,fractional spool position,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_1,cxvder@dirvalve_1,1,ame_state_variable,fractional spool velocity,1/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_2,q2@dirvalve_2.two_port_node_bottom_1,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_2,vol2@dirvalve_2.two_port_node_bottom_1,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_2,p2@dirvalve_2.two_port_node_bottom_1,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_2,q2@dirvalve_2.two_port_node_bottom_2,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_2,vol2@dirvalve_2.two_port_node_bottom_2,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_2,p2@dirvalve_2.two_port_node_bottom_2,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_2,q2@dirvalve_2.two_port_node_top_3,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_2,vol2@dirvalve_2.two_port_node_top_3,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_2,p2@dirvalve_2.two_port_node_top_3,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_2,q2@dirvalve_2.two_port_node_top_4,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_2,vol2@dirvalve_2.two_port_node_top_4,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_2,p2@dirvalve_2.two_port_node_top_4,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_2,x@dirvalve_2.table_fractional_spool_position,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_2,frac_spool_position@dirvalve_2,1,ame_basic_variable,fractional spool position [null],null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_2,signal_input@dirvalve_2,1,ame_basic_variable,fractional displacement at port 5 [null],null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_2,marea_P_A@dirvalve_2,1,ame_basic_variable,ports P to A flow area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_2,marea_T_B@dirvalve_2,1,ame_basic_variable,ports T to B flow area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_2,q_P@dirvalve_2,1,ame_basic_variable,flow rate at port P,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_2,p_P@dirvalve_2,1,ame_basic_variable,pressure at port P,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_2,q_T@dirvalve_2,1,ame_basic_variable,flow rate at port T,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_2,p_T@dirvalve_2,1,ame_basic_variable,pressure at port T,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_2,q_B@dirvalve_2,1,ame_basic_variable,flow rate at port B,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_2,p_B@dirvalve_2,1,ame_basic_variable,pressure at port B,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_2,q_A@dirvalve_2,1,ame_basic_variable,flow rate at port A,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_2,p_A@dirvalve_2,1,ame_basic_variable,pressure at port A,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_2,cxv@dirvalve_2,1,ame_state_variable,fractional spool position,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_2,cxvder@dirvalve_2,1,ame_state_variable,fractional spool velocity,1/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_6,q2@dirvalve_6.two_port_node_bottom_1,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6,vol2@dirvalve_6.two_port_node_bottom_1,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6,p2@dirvalve_6.two_port_node_bottom_1,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6,q2@dirvalve_6.two_port_node_bottom_2,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6,vol2@dirvalve_6.two_port_node_bottom_2,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6,p2@dirvalve_6.two_port_node_bottom_2,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6,q2@dirvalve_6.two_port_node_top_3,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6,vol2@dirvalve_6.two_port_node_top_3,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6,p2@dirvalve_6.two_port_node_top_3,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6,q2@dirvalve_6.two_port_node_top_4,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6,vol2@dirvalve_6.two_port_node_top_4,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_6,p2@dirvalve_6.two_port_node_top_4,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6,x@dirvalve_6.table_fractional_spool_position,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_6,frac_spool_position@dirvalve_6,1,ame_basic_variable,fractional spool position [null],null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_6,signal_input@dirvalve_6,1,ame_basic_variable,fractional displacement at port 5 [null],null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_6,marea_P_B@dirvalve_6,1,ame_basic_variable,ports P to B flow area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_6,marea_P_A@dirvalve_6,1,ame_basic_variable,ports P to A flow area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_6,marea_T_A@dirvalve_6,1,ame_basic_variable,ports T to A flow area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_6,marea_T_B@dirvalve_6,1,ame_basic_variable,ports T to B flow area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_6,q_P@dirvalve_6,1,ame_basic_variable,flow rate at port P,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_6,p_P@dirvalve_6,1,ame_basic_variable,pressure at port P,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_6,q_T@dirvalve_6,1,ame_basic_variable,flow rate at port T,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_6,p_T@dirvalve_6,1,ame_basic_variable,pressure at port T,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_6,q_B@dirvalve_6,1,ame_basic_variable,flow rate at port B,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_6,p_B@dirvalve_6,1,ame_basic_variable,pressure at port B,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_6,q_A@dirvalve_6,1,ame_basic_variable,flow rate at port A,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_6,p_A@dirvalve_6,1,ame_basic_variable,pressure at port A,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_6,cxv@dirvalve_6,1,ame_state_variable,fractional spool position,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_6,cxvder@dirvalve_6,1,ame_state_variable,fractional spool velocity,1/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_3,q2@dirvalve_3.two_port_node_bottom_1,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_3,vol2@dirvalve_3.two_port_node_bottom_1,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_3,p2@dirvalve_3.two_port_node_bottom_1,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_3,q2@dirvalve_3.two_port_node_bottom_2,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_3,vol2@dirvalve_3.two_port_node_bottom_2,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_3,p2@dirvalve_3.two_port_node_bottom_2,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_3,q2@dirvalve_3.two_port_node_top_3,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_3,vol2@dirvalve_3.two_port_node_top_3,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_3,p2@dirvalve_3.two_port_node_top_3,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_3,x@dirvalve_3.table_fractional_spool_position,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_3,frac_spool_position@dirvalve_3,1,ame_basic_variable,fractional spool position [null],null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_3,signal_input@dirvalve_3,1,ame_basic_variable,fractional displacement at port 4 [null],null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_3,marea_P_A@dirvalve_3,1,ame_basic_variable,ports P to A flow area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_3,marea_T_A@dirvalve_3,1,ame_basic_variable,ports T to A flow area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_3,q_P@dirvalve_3,1,ame_basic_variable,flow rate at port P,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_3,p_P@dirvalve_3,1,ame_basic_variable,pressure at port P,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_3,q_T@dirvalve_3,1,ame_basic_variable,flow rate at port T,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_3,p_T@dirvalve_3,1,ame_basic_variable,pressure at port T,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_3,q_A@dirvalve_3,1,ame_basic_variable,flow rate at port A,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_3,p_A@dirvalve_3,1,ame_basic_variable,pressure at port A,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_3,cxv@dirvalve_3,1,ame_state_variable,fractional spool position,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_3,cxvder@dirvalve_3,1,ame_state_variable,fractional spool velocity,1/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_8,q2@dirvalve_8.two_port_node_bottom_1,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8,vol2@dirvalve_8.two_port_node_bottom_1,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8,p2@dirvalve_8.two_port_node_bottom_1,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8,q2@dirvalve_8.two_port_node_bottom_2,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8,vol2@dirvalve_8.two_port_node_bottom_2,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8,p2@dirvalve_8.two_port_node_bottom_2,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8,q2@dirvalve_8.two_port_node_top_3,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8,vol2@dirvalve_8.two_port_node_top_3,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8,p2@dirvalve_8.two_port_node_top_3,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8,q2@dirvalve_8.two_port_node_top_4,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8,vol2@dirvalve_8.two_port_node_top_4,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_8,p2@dirvalve_8.two_port_node_top_4,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8,x@dirvalve_8.table_fractional_spool_position,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_8,frac_spool_position@dirvalve_8,1,ame_basic_variable,fractional spool position [null],null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_8,signal_input@dirvalve_8,1,ame_basic_variable,fractional displacement at port 5 [null],null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_8,marea_P_A@dirvalve_8,1,ame_basic_variable,ports P to A flow area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_8,marea_P_B@dirvalve_8,1,ame_basic_variable,ports P to B flow area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_8,marea_T_B@dirvalve_8,1,ame_basic_variable,ports T to B flow area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_8,marea_T_A@dirvalve_8,1,ame_basic_variable,ports T to A flow area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_8,q_P@dirvalve_8,1,ame_basic_variable,flow rate at port P,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_8,p_P@dirvalve_8,1,ame_basic_variable,pressure at port P,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_8,q_T@dirvalve_8,1,ame_basic_variable,flow rate at port T,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_8,p_T@dirvalve_8,1,ame_basic_variable,pressure at port T,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_8,q_B@dirvalve_8,1,ame_basic_variable,flow rate at port B,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_8,p_B@dirvalve_8,1,ame_basic_variable,pressure at port B,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_8,q_A@dirvalve_8,1,ame_basic_variable,flow rate at port A,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_8,p_A@dirvalve_8,1,ame_basic_variable,pressure at port A,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_8,cxv@dirvalve_8,1,ame_state_variable,fractional spool position,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_8,cxvder@dirvalve_8,1,ame_state_variable,fractional spool velocity,1/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_9,q2@dirvalve_9.two_port_node_bottom_1,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_9,vol2@dirvalve_9.two_port_node_bottom_1,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_9,p2@dirvalve_9.two_port_node_bottom_1,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_9,q2@dirvalve_9.two_port_node_bottom_2,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_9,vol2@dirvalve_9.two_port_node_bottom_2,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_9,p2@dirvalve_9.two_port_node_bottom_2,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_9,q2@dirvalve_9.two_port_node_top_3,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_9,vol2@dirvalve_9.two_port_node_top_3,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_9,p2@dirvalve_9.two_port_node_top_3,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_9,q2@dirvalve_9.two_port_node_top_4,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_9,vol2@dirvalve_9.two_port_node_top_4,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_9,p2@dirvalve_9.two_port_node_top_4,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_9,x@dirvalve_9.table_fractional_spool_position,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_9,frac_spool_position@dirvalve_9,1,ame_basic_variable,fractional spool position [null],null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_9,signal_input@dirvalve_9,1,ame_basic_variable,fractional displacement at port 5 [null],null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_9,marea_P_A@dirvalve_9,1,ame_basic_variable,ports P to A flow area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_9,marea_T_B@dirvalve_9,1,ame_basic_variable,ports T to B flow area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_9,q_P@dirvalve_9,1,ame_basic_variable,flow rate at port P,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_9,p_P@dirvalve_9,1,ame_basic_variable,pressure at port P,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_9,q_T@dirvalve_9,1,ame_basic_variable,flow rate at port T,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_9,p_T@dirvalve_9,1,ame_basic_variable,pressure at port T,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_9,q_B@dirvalve_9,1,ame_basic_variable,flow rate at port B,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_9,p_B@dirvalve_9,1,ame_basic_variable,pressure at port B,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_9,q_A@dirvalve_9,1,ame_basic_variable,flow rate at port A,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_9,p_A@dirvalve_9,1,ame_basic_variable,pressure at port A,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_9,cxv@dirvalve_9,1,ame_state_variable,fractional spool position,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_9,cxvder@dirvalve_9,1,ame_state_variable,fractional spool velocity,1/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_10,q2@dirvalve_10.two_port_node_bottom_1,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_10,vol2@dirvalve_10.two_port_node_bottom_1,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_10,p2@dirvalve_10.two_port_node_bottom_1,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_10,q2@dirvalve_10.two_port_node_bottom_2,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_10,vol2@dirvalve_10.two_port_node_bottom_2,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_10,p2@dirvalve_10.two_port_node_bottom_2,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_10,q2@dirvalve_10.two_port_node_top_3,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_10,vol2@dirvalve_10.two_port_node_top_3,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_10,p2@dirvalve_10.two_port_node_top_3,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_10,x@dirvalve_10.table_fractional_spool_position,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_10,frac_spool_position@dirvalve_10,1,ame_basic_variable,fractional spool position [null],null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_10,signal_input@dirvalve_10,1,ame_basic_variable,fractional displacement at port 4 [null],null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_10,marea_P_A@dirvalve_10,1,ame_basic_variable,ports P to A flow area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_10,marea_T_A@dirvalve_10,1,ame_basic_variable,ports T to A flow area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_10,q_P@dirvalve_10,1,ame_basic_variable,flow rate at port P,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_10,p_P@dirvalve_10,1,ame_basic_variable,pressure at port P,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_10,q_T@dirvalve_10,1,ame_basic_variable,flow rate at port T,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_10,p_T@dirvalve_10,1,ame_basic_variable,pressure at port T,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_10,q_A@dirvalve_10,1,ame_basic_variable,flow rate at port A,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_10,p_A@dirvalve_10,1,ame_basic_variable,pressure at port A,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_10,cxv@dirvalve_10,1,ame_state_variable,fractional spool position,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_10,cxvder@dirvalve_10,1,ame_state_variable,fractional spool velocity,1/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_11,q2@dirvalve_11.two_port_node_bottom_1,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11,vol2@dirvalve_11.two_port_node_bottom_1,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11,p2@dirvalve_11.two_port_node_bottom_1,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11,q2@dirvalve_11.two_port_node_bottom_2,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11,vol2@dirvalve_11.two_port_node_bottom_2,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11,p2@dirvalve_11.two_port_node_bottom_2,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11,q2@dirvalve_11.two_port_node_top_3,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11,vol2@dirvalve_11.two_port_node_top_3,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11,p2@dirvalve_11.two_port_node_top_3,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11,q2@dirvalve_11.two_port_node_top_4,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11,vol2@dirvalve_11.two_port_node_top_4,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_11,p2@dirvalve_11.two_port_node_top_4,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11,x@dirvalve_11.table_fractional_spool_position,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_11,frac_spool_position@dirvalve_11,1,ame_basic_variable,fractional spool position [null],null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_11,signal_input@dirvalve_11,1,ame_basic_variable,fractional displacement at port 5 [null],null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_11,marea_P_A@dirvalve_11,1,ame_basic_variable,ports P to A flow area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_11,marea_P_B@dirvalve_11,1,ame_basic_variable,ports P to B flow area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_11,marea_T_B@dirvalve_11,1,ame_basic_variable,ports T to B flow area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_11,marea_T_A@dirvalve_11,1,ame_basic_variable,ports T to A flow area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_11,q_P@dirvalve_11,1,ame_basic_variable,flow rate at port P,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_11,p_P@dirvalve_11,1,ame_basic_variable,pressure at port P,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_11,q_T@dirvalve_11,1,ame_basic_variable,flow rate at port T,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_11,p_T@dirvalve_11,1,ame_basic_variable,pressure at port T,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_11,q_B@dirvalve_11,1,ame_basic_variable,flow rate at port B,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_11,p_B@dirvalve_11,1,ame_basic_variable,pressure at port B,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_11,q_A@dirvalve_11,1,ame_basic_variable,flow rate at port A,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_11,p_A@dirvalve_11,1,ame_basic_variable,pressure at port A,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_11,cxv@dirvalve_11,1,ame_state_variable,fractional spool position,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_11,cxvder@dirvalve_11,1,ame_state_variable,fractional spool velocity,1/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_12,q2@dirvalve_12.two_port_node_bottom_1,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_12,vol2@dirvalve_12.two_port_node_bottom_1,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_12,p2@dirvalve_12.two_port_node_bottom_1,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_12,q2@dirvalve_12.two_port_node_bottom_2,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_12,vol2@dirvalve_12.two_port_node_bottom_2,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_12,p2@dirvalve_12.two_port_node_bottom_2,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_12,q2@dirvalve_12.two_port_node_top_3,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_12,vol2@dirvalve_12.two_port_node_top_3,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_12,p2@dirvalve_12.two_port_node_top_3,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_12,q2@dirvalve_12.two_port_node_top_4,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_12,vol2@dirvalve_12.two_port_node_top_4,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_12,p2@dirvalve_12.two_port_node_top_4,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_12,x@dirvalve_12.table_fractional_spool_position,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_12,frac_spool_position@dirvalve_12,1,ame_basic_variable,fractional spool position [null],null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_12,signal_input@dirvalve_12,1,ame_basic_variable,fractional displacement at port 5 [null],null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_12,marea_P_A@dirvalve_12,1,ame_basic_variable,ports P to A flow area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_12,marea_T_B@dirvalve_12,1,ame_basic_variable,ports T to B flow area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_12,q_P@dirvalve_12,1,ame_basic_variable,flow rate at port P,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_12,p_P@dirvalve_12,1,ame_basic_variable,pressure at port P,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_12,q_T@dirvalve_12,1,ame_basic_variable,flow rate at port T,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_12,p_T@dirvalve_12,1,ame_basic_variable,pressure at port T,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_12,q_B@dirvalve_12,1,ame_basic_variable,flow rate at port B,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_12,p_B@dirvalve_12,1,ame_basic_variable,pressure at port B,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_12,q_A@dirvalve_12,1,ame_basic_variable,flow rate at port A,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_12,p_A@dirvalve_12,1,ame_basic_variable,pressure at port A,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_12,cxv@dirvalve_12,1,ame_state_variable,fractional spool position,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_12,cxvder@dirvalve_12,1,ame_state_variable,fractional spool velocity,1/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_13,q2@dirvalve_13.two_port_node_bottom_1,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_13,vol2@dirvalve_13.two_port_node_bottom_1,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_13,p2@dirvalve_13.two_port_node_bottom_1,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_13,q2@dirvalve_13.two_port_node_bottom_2,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_13,vol2@dirvalve_13.two_port_node_bottom_2,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_13,p2@dirvalve_13.two_port_node_bottom_2,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_13,q2@dirvalve_13.two_port_node_top_3,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_13,vol2@dirvalve_13.two_port_node_top_3,1,ame_basic_variable,volume at port 1,cm**3,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+dirvalve_13,p2@dirvalve_13.two_port_node_top_3,1,ame_basic_variable,junction pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_13,x@dirvalve_13.table_fractional_spool_position,1,ame_basic_variable,input to f(x),null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+dirvalve_13,frac_spool_position@dirvalve_13,1,ame_basic_variable,fractional spool position [null],null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_13,signal_input@dirvalve_13,1,ame_basic_variable,fractional displacement at port 4 [null],null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_13,marea_P_A@dirvalve_13,1,ame_basic_variable,ports P to A flow area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_13,marea_T_A@dirvalve_13,1,ame_basic_variable,ports T to A flow area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_13,q_P@dirvalve_13,1,ame_basic_variable,flow rate at port P,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_13,p_P@dirvalve_13,1,ame_basic_variable,pressure at port P,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_13,q_T@dirvalve_13,1,ame_basic_variable,flow rate at port T,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_13,p_T@dirvalve_13,1,ame_basic_variable,pressure at port T,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_13,q_A@dirvalve_13,1,ame_basic_variable,flow rate at port A,L/min,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_13,p_A@dirvalve_13,1,ame_basic_variable,pressure at port A,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_13,cxv@dirvalve_13,1,ame_state_variable,fractional spool position,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+dirvalve_13,cxvder@dirvalve_13,1,ame_state_variable,fractional spool velocity,1/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown

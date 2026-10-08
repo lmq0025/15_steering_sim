@@ -1,0 +1,85 @@
+﻿alias,data_path,variable_type,basic_type,title,unit,io_type,input_type,usage
+valve02_1,qa@valve02_1,1,ame_basic_variable,flow rate at port A,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+valve02_1,pa@valve02_1,1,ame_basic_variable,pressure at port P,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+valve02_1,qb@valve02_1,1,ame_basic_variable,flow rate at port A,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+valve02_1,pb@valve02_1,1,ame_basic_variable,pressure at port A,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+valve02_1,sigin@valve02_1,1,ame_basic_variable,input signal,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+valve02_1,x@valve02_1,1,ame_state_variable,fractional spool position,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_1,v@valve02_1,1,ame_state_variable,fractional spool velocity,1/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_1,cq@valve02_1,1,ame_basic_variable,flow coefficient (Cq),null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_1,lambda@valve02_1,1,ame_basic_variable,flow number (lambda),null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_1,flv@valve02_1,1,ame_basic_variable,mean fluid velocity,m/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_1,area@valve02_1,1,ame_basic_variable,cross sectional area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_1,actRvalve@valve02_1,1,ame_state_variable,activity of hydraulic dissipation (valve),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_1,powerRvalve@valve02_1,1,ame_basic_variable,power of hydraulic dissipation (valve),W,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_1,energyRvalve@valve02_1,1,ame_state_variable,energy of hydraulic dissipation (valve),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02,qa@valve02,1,ame_basic_variable,flow rate at port A,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+valve02,pa@valve02,1,ame_basic_variable,pressure at port P,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+valve02,qb@valve02,1,ame_basic_variable,flow rate at port A,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+valve02,pb@valve02,1,ame_basic_variable,pressure at port A,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+valve02,sigin@valve02,1,ame_basic_variable,input signal,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+valve02,x@valve02,1,ame_state_variable,fractional spool position,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02,v@valve02,1,ame_state_variable,fractional spool velocity,1/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02,cq@valve02,1,ame_basic_variable,flow coefficient (Cq),null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02,lambda@valve02,1,ame_basic_variable,flow number (lambda),null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02,flv@valve02,1,ame_basic_variable,mean fluid velocity,m/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02,area@valve02,1,ame_basic_variable,cross sectional area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02,actRvalve@valve02,1,ame_state_variable,activity of hydraulic dissipation (valve),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02,powerRvalve@valve02,1,ame_basic_variable,power of hydraulic dissipation (valve),W,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02,energyRvalve@valve02,1,ame_state_variable,energy of hydraulic dissipation (valve),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_2,qa@valve02_2,1,ame_basic_variable,flow rate at port A,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+valve02_2,pa@valve02_2,1,ame_basic_variable,pressure at port P,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+valve02_2,qb@valve02_2,1,ame_basic_variable,flow rate at port A,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+valve02_2,pb@valve02_2,1,ame_basic_variable,pressure at port A,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+valve02_2,sigin@valve02_2,1,ame_basic_variable,input signal,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+valve02_2,x@valve02_2,1,ame_state_variable,fractional spool position,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_2,v@valve02_2,1,ame_state_variable,fractional spool velocity,1/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_2,cq@valve02_2,1,ame_basic_variable,flow coefficient (Cq),null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_2,lambda@valve02_2,1,ame_basic_variable,flow number (lambda),null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_2,flv@valve02_2,1,ame_basic_variable,mean fluid velocity,m/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_2,area@valve02_2,1,ame_basic_variable,cross sectional area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_2,actRvalve@valve02_2,1,ame_state_variable,activity of hydraulic dissipation (valve),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_2,powerRvalve@valve02_2,1,ame_basic_variable,power of hydraulic dissipation (valve),W,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_2,energyRvalve@valve02_2,1,ame_state_variable,energy of hydraulic dissipation (valve),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_3,qa@valve02_3,1,ame_basic_variable,flow rate at port A,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+valve02_3,pa@valve02_3,1,ame_basic_variable,pressure at port P,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+valve02_3,qb@valve02_3,1,ame_basic_variable,flow rate at port A,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+valve02_3,pb@valve02_3,1,ame_basic_variable,pressure at port A,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+valve02_3,sigin@valve02_3,1,ame_basic_variable,input signal,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+valve02_3,x@valve02_3,1,ame_state_variable,fractional spool position,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_3,v@valve02_3,1,ame_state_variable,fractional spool velocity,1/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_3,cq@valve02_3,1,ame_basic_variable,flow coefficient (Cq),null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_3,lambda@valve02_3,1,ame_basic_variable,flow number (lambda),null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_3,flv@valve02_3,1,ame_basic_variable,mean fluid velocity,m/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_3,area@valve02_3,1,ame_basic_variable,cross sectional area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_3,actRvalve@valve02_3,1,ame_state_variable,activity of hydraulic dissipation (valve),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_3,powerRvalve@valve02_3,1,ame_basic_variable,power of hydraulic dissipation (valve),W,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_3,energyRvalve@valve02_3,1,ame_state_variable,energy of hydraulic dissipation (valve),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_4,qa@valve02_4,1,ame_basic_variable,flow rate at port A,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+valve02_4,pa@valve02_4,1,ame_basic_variable,pressure at port P,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+valve02_4,qb@valve02_4,1,ame_basic_variable,flow rate at port A,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+valve02_4,pb@valve02_4,1,ame_basic_variable,pressure at port A,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+valve02_4,sigin@valve02_4,1,ame_basic_variable,input signal,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+valve02_4,x@valve02_4,1,ame_state_variable,fractional spool position,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_4,v@valve02_4,1,ame_state_variable,fractional spool velocity,1/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_4,cq@valve02_4,1,ame_basic_variable,flow coefficient (Cq),null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_4,lambda@valve02_4,1,ame_basic_variable,flow number (lambda),null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_4,flv@valve02_4,1,ame_basic_variable,mean fluid velocity,m/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_4,area@valve02_4,1,ame_basic_variable,cross sectional area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_4,actRvalve@valve02_4,1,ame_state_variable,activity of hydraulic dissipation (valve),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_4,powerRvalve@valve02_4,1,ame_basic_variable,power of hydraulic dissipation (valve),W,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_4,energyRvalve@valve02_4,1,ame_state_variable,energy of hydraulic dissipation (valve),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_5,qa@valve02_5,1,ame_basic_variable,flow rate at port A,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+valve02_5,pa@valve02_5,1,ame_basic_variable,pressure at port P,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+valve02_5,qb@valve02_5,1,ame_basic_variable,flow rate at port A,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+valve02_5,pb@valve02_5,1,ame_basic_variable,pressure at port A,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+valve02_5,sigin@valve02_5,1,ame_basic_variable,input signal,null,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+valve02_5,x@valve02_5,1,ame_state_variable,fractional spool position,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_5,v@valve02_5,1,ame_state_variable,fractional spool velocity,1/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_5,cq@valve02_5,1,ame_basic_variable,flow coefficient (Cq),null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_5,lambda@valve02_5,1,ame_basic_variable,flow number (lambda),null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_5,flv@valve02_5,1,ame_basic_variable,mean fluid velocity,m/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_5,area@valve02_5,1,ame_basic_variable,cross sectional area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_5,actRvalve@valve02_5,1,ame_state_variable,activity of hydraulic dissipation (valve),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_5,powerRvalve@valve02_5,1,ame_basic_variable,power of hydraulic dissipation (valve),W,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+valve02_5,energyRvalve@valve02_5,1,ame_state_variable,energy of hydraulic dissipation (valve),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown

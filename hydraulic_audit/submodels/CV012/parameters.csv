@@ -1,0 +1,15 @@
+﻿alias,data_path,parameter_type,title,unit,raw_value,resolved_value,value_unit
+springcheckvalve,pcrack@springcheckvalve,ame_real_parameter,check valve cracking pressure,bar,90,90,bar
+springcheckvalve,grad@springcheckvalve,ame_real_parameter,check valve flow rate pressure gradient,L/min/bar,50,50,L/min/bar
+springcheckvalve,qchar@springcheckvalve,ame_real_parameter,characteristic flow rate at maximum opening,L/min,10,10,L/min
+springcheckvalve,dpchar@springcheckvalve,ame_real_parameter,corresponding pressure drop,bar,10,10,bar
+springcheckvalve,lcrit@springcheckvalve,ame_real_parameter,critical flow number,null,1000,1000,null
+springcheckvalve,rhochar@springcheckvalve,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+springcheckvalve,nuchar@springcheckvalve,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+springcheckvalve,hyst@springcheckvalve,ame_real_parameter,valve hysteresis,bar,0,0,bar
+springcheckvalve,tau@springcheckvalve,ame_real_parameter,valve time constant,s,0.05,0.05,s
+springcheckvalve,wn@springcheckvalve,ame_real_parameter,valve natural frequency,Hz,20,20,Hz
+springcheckvalve,zeta@springcheckvalve,ame_real_parameter,valve damping ratio,null,1.8,1.8,null
+springcheckvalve,indexf@springcheckvalve,ame_integer_parameter,index of hydraulic fluid,,0,0,
+springcheckvalve,userfp@springcheckvalve,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+springcheckvalve,spooldyn@springcheckvalve,ame_integer_parameter,dynamics,,1,1,

@@ -1,0 +1,159 @@
+﻿physical_quantity,amesim_alias,amesim_data_path,amesim_unit,python_output,python_unit,conversion,sign_relation,comparison_priority,mapping_status
+pump speed,pump01,speed@pump01,rev/min,pump01.speed_rad_s,rad/s,x*pi/30,+1,HIGH,DIRECT
+pump outlet flow,pump01,qout@pump01,L/min,pump01.flow_m3_s,m^3/s,x/60000,+1,HIGH,DIRECT
+pump inlet flow,pump01,qin@pump01,L/min,pump01.flow_m3_s,m^3/s,x/60000,-1,MEDIUM,DIRECT
+pump inlet pressure,pump01,pin@pump01,bar,pump01.pin_pa,Pa,x*1e5,+1,HIGH,DIRECT
+pump outlet pressure,pump01,pout@pump01,bar,pump01.pout_pa,Pa,x*1e5,+1,HIGH,DIRECT
+pump torque,pump01,torque@pump01,Nm,pump01.torque_nm,N*m,x,+1,HIGH,DIRECT
+pump speed,pump01_1,speed@pump01_1,rev/min,pump01_1.speed_rad_s,rad/s,x*pi/30,+1,HIGH,DIRECT
+pump outlet flow,pump01_1,qout@pump01_1,L/min,pump01_1.flow_m3_s,m^3/s,x/60000,+1,HIGH,DIRECT
+pump inlet flow,pump01_1,qin@pump01_1,L/min,pump01_1.flow_m3_s,m^3/s,x/60000,-1,MEDIUM,DIRECT
+pump inlet pressure,pump01_1,pin@pump01_1,bar,pump01_1.pin_pa,Pa,x*1e5,+1,HIGH,DIRECT
+pump outlet pressure,pump01_1,pout@pump01_1,bar,pump01_1.pout_pa,Pa,x*1e5,+1,HIGH,DIRECT
+pump torque,pump01_1,torque@pump01_1,Nm,pump01_1.torque_nm,N*m,x,+1,HIGH,DIRECT
+pump speed,pump01_2,speed@pump01_2,rev/min,pump01_2.speed_rad_s,rad/s,x*pi/30,+1,HIGH,DIRECT
+pump outlet flow,pump01_2,qout@pump01_2,L/min,pump01_2.flow_m3_s,m^3/s,x/60000,+1,HIGH,DIRECT
+pump inlet flow,pump01_2,qin@pump01_2,L/min,pump01_2.flow_m3_s,m^3/s,x/60000,-1,MEDIUM,DIRECT
+pump inlet pressure,pump01_2,pin@pump01_2,bar,pump01_2.pin_pa,Pa,x*1e5,+1,HIGH,DIRECT
+pump outlet pressure,pump01_2,pout@pump01_2,bar,pump01_2.pout_pa,Pa,x*1e5,+1,HIGH,DIRECT
+pump torque,pump01_2,torque@pump01_2,Nm,pump01_2.torque_nm,N*m,x,+1,HIGH,DIRECT
+pump speed,pump01_3,speed@pump01_3,rev/min,pump01_3.speed_rad_s,rad/s,x*pi/30,+1,HIGH,DIRECT
+pump outlet flow,pump01_3,qout@pump01_3,L/min,pump01_3.flow_m3_s,m^3/s,x/60000,+1,HIGH,DIRECT
+pump inlet flow,pump01_3,qin@pump01_3,L/min,pump01_3.flow_m3_s,m^3/s,x/60000,-1,MEDIUM,DIRECT
+pump inlet pressure,pump01_3,pin@pump01_3,bar,pump01_3.pin_pa,Pa,x*1e5,+1,HIGH,DIRECT
+pump outlet pressure,pump01_3,pout@pump01_3,bar,pump01_3.pout_pa,Pa,x*1e5,+1,HIGH,DIRECT
+pump torque,pump01_3,torque@pump01_3,Nm,pump01_3.torque_nm,N*m,x,+1,HIGH,DIRECT
+pressure chamber 1,actuator001,p1@actuator001,bar,actuator001.p1_pa,Pa,x*1e5,+1,HIGH,DIRECT
+pressure chamber 2,actuator001,p2@actuator001,bar,actuator001.p2_pa,Pa,x*1e5,+1,HIGH,DIRECT
+rod force,actuator001,frod@actuator001,N,actuator001.force_n,N,x,+1,HIGH,DIRECT
+rod position,actuator001,x@actuator001,m,actuator001.position_m,m,x,+1,HIGH,DIRECT
+rod velocity,actuator001,v@actuator001,m/s,actuator001.velocity_m_s,m/s,x,+1,HIGH,DIRECT
+pressure chamber 1,actuator001_1,p1@actuator001_1,bar,actuator001_1.p1_pa,Pa,x*1e5,+1,HIGH,DIRECT
+pressure chamber 2,actuator001_1,p2@actuator001_1,bar,actuator001_1.p2_pa,Pa,x*1e5,+1,HIGH,DIRECT
+rod force,actuator001_1,frod@actuator001_1,N,actuator001_1.force_n,N,x,+1,HIGH,DIRECT
+rod position,actuator001_1,x@actuator001_1,m,actuator001_1.position_m,m,x,+1,HIGH,DIRECT
+rod velocity,actuator001_1,v@actuator001_1,m/s,actuator001_1.velocity_m_s,m/s,x,+1,HIGH,DIRECT
+pressure chamber 1,actuator001_2,p1@actuator001_2,bar,actuator001_2.p1_pa,Pa,x*1e5,+1,HIGH,DIRECT
+pressure chamber 2,actuator001_2,p2@actuator001_2,bar,actuator001_2.p2_pa,Pa,x*1e5,+1,HIGH,DIRECT
+rod force,actuator001_2,frod@actuator001_2,N,actuator001_2.force_n,N,x,+1,HIGH,DIRECT
+rod position,actuator001_2,x@actuator001_2,m,actuator001_2.position_m,m,x,+1,HIGH,DIRECT
+rod velocity,actuator001_2,v@actuator001_2,m/s,actuator001_2.velocity_m_s,m/s,x,+1,HIGH,DIRECT
+pressure chamber 1,actuator002,p1@actuator002,bar,actuator002.p1_pa,Pa,x*1e5,+1,HIGH,DIRECT
+pressure chamber 2,actuator002,p2@actuator002,bar,actuator002.p2_pa,Pa,x*1e5,+1,HIGH,DIRECT
+rod force,actuator002,frod@actuator002,N,actuator002.force_n,N,x,+1,HIGH,DIRECT
+rod position,actuator002,x@actuator002,m,actuator002.position_m,m,x,+1,HIGH,DIRECT
+rod velocity,actuator002,v@actuator002,m/s,actuator002.velocity_m_s,m/s,x,+1,HIGH,DIRECT
+pressure chamber 1,springreturnactuator,p1@springreturnactuator,bar,springreturnactuator.p1_pa,Pa,x*1e5,+1,HIGH,DIRECT
+pressure chamber 2,springreturnactuator,p2@springreturnactuator,bar,springreturnactuator.p2_pa,Pa,x*1e5,+1,HIGH,DIRECT
+rod force,springreturnactuator,frod@springreturnactuator,N,springreturnactuator.force_n,N,x,+1,HIGH,DIRECT
+rod position,springreturnactuator,x@springreturnactuator,m,springreturnactuator.position_m,m,x,+1,HIGH,DIRECT
+rod velocity,springreturnactuator,v@springreturnactuator,m/s,springreturnactuator.velocity_m_s,m/s,x,+1,HIGH,DIRECT
+pressure chamber 1,springreturnactuator_1,p1@springreturnactuator_1,bar,springreturnactuator_1.p1_pa,Pa,x*1e5,+1,HIGH,DIRECT
+pressure chamber 2,springreturnactuator_1,p2@springreturnactuator_1,bar,springreturnactuator_1.p2_pa,Pa,x*1e5,+1,HIGH,DIRECT
+rod force,springreturnactuator_1,frod@springreturnactuator_1,N,springreturnactuator_1.force_n,N,x,+1,HIGH,DIRECT
+rod position,springreturnactuator_1,x@springreturnactuator_1,m,springreturnactuator_1.position_m,m,x,+1,HIGH,DIRECT
+rod velocity,springreturnactuator_1,v@springreturnactuator_1,m/s,springreturnactuator_1.velocity_m_s,m/s,x,+1,HIGH,DIRECT
+pressure chamber 1,springreturnactuator_2,p1@springreturnactuator_2,bar,springreturnactuator_2.p1_pa,Pa,x*1e5,+1,HIGH,DIRECT
+pressure chamber 2,springreturnactuator_2,p2@springreturnactuator_2,bar,springreturnactuator_2.p2_pa,Pa,x*1e5,+1,HIGH,DIRECT
+rod force,springreturnactuator_2,frod@springreturnactuator_2,N,springreturnactuator_2.force_n,N,x,+1,HIGH,DIRECT
+rod position,springreturnactuator_2,x@springreturnactuator_2,m,springreturnactuator_2.position_m,m,x,+1,HIGH,DIRECT
+rod velocity,springreturnactuator_2,v@springreturnactuator_2,m/s,springreturnactuator_2.velocity_m_s,m/s,x,+1,HIGH,DIRECT
+SC_1 external command,dirvalve_1,signal_input@dirvalve_1,null,dirvalve_1.command,1,x,+1,HIGH,DIRECT
+SC_1 fractional spool position,dirvalve_1,frac_spool_position@dirvalve_1,null,dirvalve_1.opening,1,x,+1,HIGH,FAST_STATIC_MAPPING
+SC_1 P-A area,dirvalve_1,marea_P_A@dirvalve_1,mm**2,dirvalve_1.opening,1,normalized proxy,+1,MEDIUM,PROXY_NOT_DIRECTLY_COMPARABLE
+SC_1 active MR branch flow,dirvalve_1.orifice_13,q2@dirvalve_1.orifice_13,L/min,dirvalve_1.flow_m3_s,m^3/s,x/60000,+1,MEDIUM,FAST_AGGREGATE_PROXY
+SC_1 external command,dirvalve_2,signal_input@dirvalve_2,null,dirvalve_2.command,1,x,+1,HIGH,DIRECT
+SC_1 fractional spool position,dirvalve_2,frac_spool_position@dirvalve_2,null,dirvalve_2.opening,1,x,+1,HIGH,FAST_STATIC_MAPPING
+SC_1 P-A area,dirvalve_2,marea_P_A@dirvalve_2,mm**2,dirvalve_2.opening,1,normalized proxy,+1,MEDIUM,PROXY_NOT_DIRECTLY_COMPARABLE
+SC_1 active MR branch flow,dirvalve_2.orifice_14,q2@dirvalve_2.orifice_14,L/min,dirvalve_2.flow_m3_s,m^3/s,x/60000,+1,MEDIUM,FAST_AGGREGATE_PROXY
+SC_1 external command,dirvalve_6,signal_input@dirvalve_6,null,dirvalve_6.command,1,x,+1,HIGH,DIRECT
+SC_1 fractional spool position,dirvalve_6,frac_spool_position@dirvalve_6,null,dirvalve_6.opening,1,x,+1,HIGH,FAST_STATIC_MAPPING
+SC_1 P-A area,dirvalve_6,marea_P_A@dirvalve_6,mm**2,dirvalve_6.opening,1,normalized proxy,+1,MEDIUM,PROXY_NOT_DIRECTLY_COMPARABLE
+SC_1 active MR branch flow,dirvalve_6.orifice_13,q2@dirvalve_6.orifice_13,L/min,dirvalve_6.flow_m3_s,m^3/s,x/60000,+1,MEDIUM,FAST_AGGREGATE_PROXY
+SC_1 external command,dirvalve_3,signal_input@dirvalve_3,null,dirvalve_3.command,1,x,+1,HIGH,DIRECT
+SC_1 fractional spool position,dirvalve_3,frac_spool_position@dirvalve_3,null,dirvalve_3.opening,1,x,+1,HIGH,FAST_STATIC_MAPPING
+SC_1 P-A area,dirvalve_3,marea_P_A@dirvalve_3,mm**2,dirvalve_3.opening,1,normalized proxy,+1,MEDIUM,PROXY_NOT_DIRECTLY_COMPARABLE
+SC_1 active MR branch flow,dirvalve_3.orifice_13,q2@dirvalve_3.orifice_13,L/min,dirvalve_3.flow_m3_s,m^3/s,x/60000,+1,MEDIUM,FAST_AGGREGATE_PROXY
+control valve p1,presscontrol02,p1@presscontrol02,bar,presscontrol02.p1_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve p2,presscontrol02,p2@presscontrol02,bar,presscontrol02.p2_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve flow,presscontrol02,q2@presscontrol02,L/min,presscontrol02.flow_m3_s,m^3/s,x/60000,+1,HIGH,RUNTIME_DERIVED
+control valve p1,presscontrol02_1,p1@presscontrol02_1,bar,presscontrol02_1.p1_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve p2,presscontrol02_1,p2@presscontrol02_1,bar,presscontrol02_1.p2_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve flow,presscontrol02_1,q2@presscontrol02_1,L/min,presscontrol02_1.flow_m3_s,m^3/s,x/60000,+1,HIGH,RUNTIME_DERIVED
+control valve p1,presscontrol01,p1@presscontrol01,bar,presscontrol01.p1_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve p2,presscontrol01,p2@presscontrol01,bar,presscontrol01.p2_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve flow,presscontrol01,q2@presscontrol01,L/min,presscontrol01.flow_m3_s,m^3/s,x/60000,+1,HIGH,RUNTIME_DERIVED
+control valve p1,presscontrol01_1,p1@presscontrol01_1,bar,presscontrol01_1.p1_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve p2,presscontrol01_1,p2@presscontrol01_1,bar,presscontrol01_1.p2_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve flow,presscontrol01_1,q2@presscontrol01_1,L/min,presscontrol01_1.flow_m3_s,m^3/s,x/60000,+1,HIGH,RUNTIME_DERIVED
+control valve p1,springcheckvalve,p1@springcheckvalve,bar,springcheckvalve.p1_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve p2,springcheckvalve,p2@springcheckvalve,bar,springcheckvalve.p2_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve flow,springcheckvalve,q2@springcheckvalve,L/min,springcheckvalve.flow_m3_s,m^3/s,x/60000,+1,HIGH,RUNTIME_DERIVED
+control valve p1,presscontrol02_4,p1@presscontrol02_4,bar,presscontrol02_4.p1_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve p2,presscontrol02_4,p2@presscontrol02_4,bar,presscontrol02_4.p2_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve flow,presscontrol02_4,q2@presscontrol02_4,L/min,presscontrol02_4.flow_m3_s,m^3/s,x/60000,+1,HIGH,RUNTIME_DERIVED
+control valve p1,presscontrol02_5,p1@presscontrol02_5,bar,presscontrol02_5.p1_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve p2,presscontrol02_5,p2@presscontrol02_5,bar,presscontrol02_5.p2_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve flow,presscontrol02_5,q2@presscontrol02_5,L/min,presscontrol02_5.flow_m3_s,m^3/s,x/60000,+1,HIGH,RUNTIME_DERIVED
+control valve p1,presscontrol02_8,p1@presscontrol02_8,bar,presscontrol02_8.p1_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve p2,presscontrol02_8,p2@presscontrol02_8,bar,presscontrol02_8.p2_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve flow,presscontrol02_8,q2@presscontrol02_8,L/min,presscontrol02_8.flow_m3_s,m^3/s,x/60000,+1,HIGH,RUNTIME_DERIVED
+control valve p1,presscontrol02_9,p1@presscontrol02_9,bar,presscontrol02_9.p1_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve p2,presscontrol02_9,p2@presscontrol02_9,bar,presscontrol02_9.p2_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve flow,presscontrol02_9,q2@presscontrol02_9,L/min,presscontrol02_9.flow_m3_s,m^3/s,x/60000,+1,HIGH,RUNTIME_DERIVED
+control valve p1,valve02_1,pa@valve02_1,bar,valve02_1.p1_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve p2,valve02_1,pb@valve02_1,bar,valve02_1.p2_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve flow,valve02_1,qb@valve02_1,L/min,valve02_1.flow_m3_s,m^3/s,x/60000,+1,HIGH,RUNTIME_DERIVED
+control valve opening,valve02_1,x@valve02_1,null,valve02_1.opening,1,x,+1,MEDIUM,RUNTIME_DERIVED
+control valve command,valve02_1,sigin@valve02_1,null,valve02_1.command,1,x,+1,MEDIUM,RUNTIME_DERIVED
+control valve p1,pprv_1,p1@pprv_1,bar,pprv_1.p1_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve p2,pprv_1,p2@pprv_1,bar,pprv_1.p2_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve flow,pprv_1,q2@pprv_1,L/min,pprv_1.flow_m3_s,m^3/s,x/60000,+1,HIGH,RUNTIME_DERIVED
+control valve p1,valve02,pa@valve02,bar,valve02.p1_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve p2,valve02,pb@valve02,bar,valve02.p2_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve flow,valve02,qb@valve02,L/min,valve02.flow_m3_s,m^3/s,x/60000,+1,HIGH,RUNTIME_DERIVED
+control valve opening,valve02,x@valve02,null,valve02.opening,1,x,+1,MEDIUM,RUNTIME_DERIVED
+control valve command,valve02,sigin@valve02,null,valve02.command,1,x,+1,MEDIUM,RUNTIME_DERIVED
+control valve p1,valve02_2,pa@valve02_2,bar,valve02_2.p1_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve p2,valve02_2,pb@valve02_2,bar,valve02_2.p2_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve flow,valve02_2,qb@valve02_2,L/min,valve02_2.flow_m3_s,m^3/s,x/60000,+1,HIGH,RUNTIME_DERIVED
+control valve opening,valve02_2,x@valve02_2,null,valve02_2.opening,1,x,+1,MEDIUM,RUNTIME_DERIVED
+control valve command,valve02_2,sigin@valve02_2,null,valve02_2.command,1,x,+1,MEDIUM,RUNTIME_DERIVED
+control valve p1,valve02_3,pa@valve02_3,bar,valve02_3.p1_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve p2,valve02_3,pb@valve02_3,bar,valve02_3.p2_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve flow,valve02_3,qb@valve02_3,L/min,valve02_3.flow_m3_s,m^3/s,x/60000,+1,HIGH,RUNTIME_DERIVED
+control valve opening,valve02_3,x@valve02_3,null,valve02_3.opening,1,x,+1,MEDIUM,RUNTIME_DERIVED
+control valve command,valve02_3,sigin@valve02_3,null,valve02_3.command,1,x,+1,MEDIUM,RUNTIME_DERIVED
+control valve p1,pprv_2,p1@pprv_2,bar,pprv_2.p1_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve p2,pprv_2,p2@pprv_2,bar,pprv_2.p2_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve flow,pprv_2,q2@pprv_2,L/min,pprv_2.flow_m3_s,m^3/s,x/60000,+1,HIGH,RUNTIME_DERIVED
+control valve p1,valve02_4,pa@valve02_4,bar,valve02_4.p1_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve p2,valve02_4,pb@valve02_4,bar,valve02_4.p2_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve flow,valve02_4,qb@valve02_4,L/min,valve02_4.flow_m3_s,m^3/s,x/60000,+1,HIGH,RUNTIME_DERIVED
+control valve opening,valve02_4,x@valve02_4,null,valve02_4.opening,1,x,+1,MEDIUM,RUNTIME_DERIVED
+control valve command,valve02_4,sigin@valve02_4,null,valve02_4.command,1,x,+1,MEDIUM,RUNTIME_DERIVED
+control valve p1,pprv_3,p1@pprv_3,bar,pprv_3.p1_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve p2,pprv_3,p2@pprv_3,bar,pprv_3.p2_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve flow,pprv_3,q2@pprv_3,L/min,pprv_3.flow_m3_s,m^3/s,x/60000,+1,HIGH,RUNTIME_DERIVED
+control valve p1,valve02_5,pa@valve02_5,bar,valve02_5.p1_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve p2,valve02_5,pb@valve02_5,bar,valve02_5.p2_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve flow,valve02_5,qb@valve02_5,L/min,valve02_5.flow_m3_s,m^3/s,x/60000,+1,HIGH,RUNTIME_DERIVED
+control valve opening,valve02_5,x@valve02_5,null,valve02_5.opening,1,x,+1,MEDIUM,RUNTIME_DERIVED
+control valve command,valve02_5,sigin@valve02_5,null,valve02_5.command,1,x,+1,MEDIUM,RUNTIME_DERIVED
+control valve p1,presscontrol01_3,p1@presscontrol01_3,bar,presscontrol01_3.p1_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve p2,presscontrol01_3,p2@presscontrol01_3,bar,presscontrol01_3.p2_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+control valve flow,presscontrol01_3,q2@presscontrol01_3,L/min,presscontrol01_3.flow_m3_s,m^3/s,x/60000,+1,HIGH,RUNTIME_DERIVED
+control valve p1,signaloperatedrvalve,p1@signaloperatedrvalve,bar,signaloperatedrvalve.p1_pa,Pa,x*1e5,+1,HIGH,RUNTIME_DERIVED
+tank pressure,tank01,press@tank01,bar,tank01.pressure_pa,Pa,x*1e5,+1,HIGH,DIRECT
+key physical line inlet pressure,hydraulic,p1@hydraulic,bar,hydraulic.p1_pa,Pa,x*1e5,+1,HIGH,DIRECT
+key physical line outlet pressure,hydraulic,p2@hydraulic,bar,hydraulic.p2_pa,Pa,x*1e5,+1,HIGH,DIRECT
+key physical line inlet flow,hydraulic,q1@hydraulic,L/min,hydraulic.flow_m3_s,m^3/s,x/60000,+1,HIGH,DIRECT
+key physical line inlet pressure,hydraulic_1,p1@hydraulic_1,bar,hydraulic_1.p1_pa,Pa,x*1e5,+1,HIGH,DIRECT
+key physical line outlet pressure,hydraulic_1,p2@hydraulic_1,bar,hydraulic_1.p2_pa,Pa,x*1e5,+1,HIGH,DIRECT
+key physical line inlet flow,hydraulic_1,q1@hydraulic_1,L/min,hydraulic_1.flow_m3_s,m^3/s,x/60000,+1,HIGH,DIRECT
+key physical line inlet pressure,hydraulic_34,p1@hydraulic_34,bar,hydraulic_34.p1_pa,Pa,x*1e5,+1,HIGH,DIRECT
+key physical line outlet pressure,hydraulic_34,p2@hydraulic_34,bar,hydraulic_34.p2_pa,Pa,x*1e5,+1,HIGH,DIRECT
+key physical line inlet flow,hydraulic_34,q1@hydraulic_34,L/min,hydraulic_34.flow_m3_s,m^3/s,x/60000,+1,HIGH,DIRECT
+key physical line inlet pressure,hydraulic_35,p1@hydraulic_35,bar,hydraulic_35.p1_pa,Pa,x*1e5,+1,HIGH,DIRECT
+key physical line outlet pressure,hydraulic_35,p2@hydraulic_35,bar,hydraulic_35.p2_pa,Pa,x*1e5,+1,HIGH,DIRECT
+key physical line inlet flow,hydraulic_35,q1@hydraulic_35,L/min,hydraulic_35.flow_m3_s,m^3/s,x/60000,+1,HIGH,DIRECT

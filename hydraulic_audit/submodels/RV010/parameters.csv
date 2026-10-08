@@ -1,0 +1,13 @@
+﻿alias,data_path,parameter_type,title,unit,raw_value,resolved_value,value_unit
+presscontrol01,pcrack@presscontrol01,ame_real_parameter,relief valve cracking pressure,bar,160,160,bar
+presscontrol01,grad@presscontrol01,ame_real_parameter,relief valve flow rate pressure gradient,L/min/bar,500,500,L/min/bar
+presscontrol01,hyst@presscontrol01,ame_real_parameter,valve hysteresis,bar,0,0,bar
+presscontrol01,indexf@presscontrol01,ame_integer_parameter,index of hydraulic fluid,,0,0,
+presscontrol01_1,pcrack@presscontrol01_1,ame_real_parameter,relief valve cracking pressure,bar,90,90,bar
+presscontrol01_1,grad@presscontrol01_1,ame_real_parameter,relief valve flow rate pressure gradient,L/min/bar,500,500,L/min/bar
+presscontrol01_1,hyst@presscontrol01_1,ame_real_parameter,valve hysteresis,bar,0,0,bar
+presscontrol01_1,indexf@presscontrol01_1,ame_integer_parameter,index of hydraulic fluid,,0,0,
+presscontrol01_3,pcrack@presscontrol01_3,ame_real_parameter,relief valve cracking pressure,bar,150,150,bar
+presscontrol01_3,grad@presscontrol01_3,ame_real_parameter,relief valve flow rate pressure gradient,L/min/bar,500,500,L/min/bar
+presscontrol01_3,hyst@presscontrol01_3,ame_real_parameter,valve hysteresis,bar,0,0,bar
+presscontrol01_3,indexf@presscontrol01_3,ame_integer_parameter,index of hydraulic fluid,,0,0,

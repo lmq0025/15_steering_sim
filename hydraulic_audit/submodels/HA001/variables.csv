@@ -1,0 +1,15 @@
+﻿alias,data_path,variable_type,basic_type,title,unit,io_type,input_type,usage
+accumulator,pout@accumulator,1,ame_state_variable,pressure at port 1,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+accumulator,qout@accumulator,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+accumulator,pgas@accumulator,1,ame_basic_variable,gas pressure,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+accumulator,gasvol@accumulator,1,ame_basic_variable,gas volume,L,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+accumulator,actCaccu@accumulator,1,ame_state_variable,activity of hydraulic capacitance (accu),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+accumulator,powerCaccu@accumulator,1,ame_basic_variable,power of hydraulic capacitance (accu),W,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+accumulator,energyCaccu@accumulator,1,ame_state_variable,energy of hydraulic capacitance (accu),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+accumulator_1,pout@accumulator_1,1,ame_state_variable,pressure at port 1,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+accumulator_1,qout@accumulator_1,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+accumulator_1,pgas@accumulator_1,1,ame_basic_variable,gas pressure,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+accumulator_1,gasvol@accumulator_1,1,ame_basic_variable,gas volume,L,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+accumulator_1,actCaccu@accumulator_1,1,ame_state_variable,activity of hydraulic capacitance (accu),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+accumulator_1,powerCaccu@accumulator_1,1,ame_basic_variable,power of hydraulic capacitance (accu),W,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+accumulator_1,energyCaccu@accumulator_1,1,ame_state_variable,energy of hydraulic capacitance (accu),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown

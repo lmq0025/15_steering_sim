@@ -1,0 +1,14 @@
+﻿connection,action,result,evidence
+tank01:0<->hydrnode4_4:0,ADD_COMPONENT_PORT_TO_NODE_JUNCTION,SHJ_016,02_connections_fullalias.csv + 08C
+presscontrol01_1:0<->hydrnode3_2:1,ADD_COMPONENT_PORT_TO_NODE_JUNCTION,SHJ_034,02_connections_fullalias.csv + 08C
+presscontrol01_1:1<->hydrnode3_3:1,ADD_COMPONENT_PORT_TO_NODE_JUNCTION,SHJ_036,02_connections_fullalias.csv + 08C
+springcheckvalve:0<->hydrnode3_4:1,ADD_COMPONENT_PORT_TO_NODE_JUNCTION,SHJ_034,02_connections_fullalias.csv + 08C
+springcheckvalve:1<->hydrnode3_5:1,ADD_COMPONENT_PORT_TO_NODE_JUNCTION,SHJ_036,02_connections_fullalias.csv + 08C
+tank01_1:0<->hydrnode4_9:0,ADD_COMPONENT_PORT_TO_NODE_JUNCTION,SHJ_046,02_connections_fullalias.csv + 08C
+hydrnode3_14:2<->signaloperatedrvalve:0,ADD_COMPONENT_PORT_TO_NODE_JUNCTION,SHJ_008,02_connections_fullalias.csv + 08C
+hydrnode3_16:0<->valve02:1,ADD_COMPONENT_PORT_TO_NODE_JUNCTION,SHJ_053,02_connections_fullalias.csv + 08C
+accumulator:0<->valve02_1:1,ADD_TWO_BOND_ZERO_JUNCTION,SHJ_DIRECT_001,02_connections_fullalias.csv
+accumulator_1:0<->valve02_2:1,ADD_TWO_BOND_ZERO_JUNCTION,SHJ_DIRECT_002,02_connections_fullalias.csv
+hydrnode3_54:2<->hydrnode3_51:0,MERGE_V4_JUNCTIONS,SHJ_030,02_connections_fullalias.csv
+hydrnode3_55:0<->hydrnode3_50:2,MERGE_V4_JUNCTIONS,SHJ_031,02_connections_fullalias.csv
+springreturnactuator_1:0<->variableorifice_6:2,ADD_TWO_BOND_ZERO_JUNCTION,SHJ_DIRECT_003,02_connections_fullalias.csv

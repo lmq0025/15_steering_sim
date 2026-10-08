@@ -1,0 +1,16 @@
+{
+  "optimization_stage": "BASELINE",
+  "model_build_time": 0.025986599968746305,
+  "initialization_time": 0.008750700042583048,
+  "wall_time_1s": 54.328722100006416,
+  "speedup_vs_baseline": 1.0,
+  "nfev": 2424,
+  "njev": 157,
+  "nlu": 665,
+  "algebraic_calls": 894830,
+  "actual_algebraic_solves": 894830,
+  "cache_hits": 0,
+  "physics_regression": "REFERENCE",
+  "max_normalized_error": 0.0,
+  "repetitions": 3
+}

@@ -1,0 +1,15 @@
+﻿check,status,evidence
+physical_lines_in_elements,PASS,65/65
+physical_line_ports_present,PASS,130/130
+line_states_have_owner,PASS,323/323
+every_physical_state_has_owner,PASS,365/365
+every_stateful_line_is_power_element,PASS,65/65
+every_physical_line_has_two_external_endpoints,PASS,65/65
+pure_connectivity_lines_not_power_elements,PASS,305 DIRECT aliases excluded
+no_physical_line_collapsed_as_junction,PASS,65/65 two distinct junctions
+pump_ports_separated,PASS,4/4
+actuator_chambers_separated,PASS,7/7
+all_power_ports_connected,PASS,408/408
+all_physical_states_owned,PASS,365/365
+SC_1 hierarchy,PASS,Level 1 parent aliases remain opaque; Level 2 retained
+variableorifice_14_rechecked,PASS,V3_HJ_100;V3_HJ_101

@@ -1,0 +1,459 @@
+SUBMODEL: STEP0
+SOURCE FILES: 2
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libsig\submodels\STEP0.c
+==============================================================================
+...
+     1: /* Submodel STEP0 skeleton created by AME Submodel editing utility
+     2:    ven. févr. 14 15:38:16 2020 */
+     3: 
+     4: 
+     5: 
+     6: #include <math.h>
+     7: #include <stdio.h>
+     8: #include <stdlib.h>
+     9: #include "ameutils.h"
+    10: /* *******************************************************************************
+    11:  
+    12: TITLE : STEP0
+    13: ------------------------------------------------------------------------------
+    14: DESCRIPTION :
+    15:    STEP0 is a submodel of a step of the form:
+    16:     
+    17:    y = y0     for  t < t0
+    18:    y = y1     for  t >= t0
+    19:     
+    20:    where y is the output and t the time.
+    21:     
+    22:    The user must supply initial output (y0) value, the final output
+    23:    value (y1), and the step time (t0)
+    24: ------------------------------------------------------------------------------
+    25: USAGE : 
+    26:    Use this submodel to generate a step.
+    27: ------------------------------------------------------------------------------
+    28: PARAMETER SETTINGS : 
+    29: ------------------------------------------------------------------------------
+    30: DATE OF CREATION / AUTHOR : Jan/1999 by D.Gagne
+    31: ------------------------------------------------------------------------------
+    32: INDEX OF REVISIONS : 
+    33: ------------------------------------------------------------------------------
+    34: LIST OF FUNCTIONS USED :
+    35: ------------------------------------------------------------------------------
+    36: SOURCE :
+    37:    Siemens Industry Software SAS
+    38:    7 place des Minimes
+    39:    42300 Roanne - France
+    40:    tel: (33).04.77.23.60.30
+    41:    fax: (33).04.77.23.60.31
+    42:    www.siemens.com/plm
+    43: 
+    44:    Copyright 2015 Siemens Industry Software NV
+    45: ******************************************************************************* */
+    46: 
+    47: #define _SUBMODELNAME_ "STEP0"
+    48: 
+    49: /* >>>>>>>>>>>>Insert Private Code Here. */
+    50: /* <<<<<<<<<<<<End of Private Code. */
+    51: 
+    52: 
+    53: /* There are 4 real parameters:
+    54: 
+    55:    out0 value before step   [null]
+    56:    out1 value after step    [null]
+    57:    t0   step time           [s]
+    58:    td   transition duration [s]
+    59: */
+    60: 
+    61: 
+    62: /* There is 1 integer parameter:
+    63: 
+    64:    transitionType transition type
+    65: */
+    66: 
+    67: void step0in_(int *n, double rp[4], int ip[1], double c[6], int ic[1]
+    68:       , double *out00GEN, double *out10GEN, double *t00GEN)
+    69: 
+    70: {
+    71:    int loop, error;
+    72: /* >>>>>>>>>>>>Extra Initialization Function Declarations Here. */
+    73: /* <<<<<<<<<<<<End of Extra Initialization declarations. */
+    74:    int transitionType;
+    75:    double out0, out1, t0, td;
+    76: 
+    77:    transitionType = ip[0];
+    78: 
+    79:    out0       = rp[0];
+    80:    out1       = rp[1];
+    81:    t0         = rp[2];
+    82:    td         = rp[3];
+    83:    loop = 0;
+    84:    error = 0;
+    85: 
+    86: /*
+    87:    If necessary, check values of the following:
+    88: 
+    89:    rp[0..3]
+    90: */
+    91: 
+    92: 
+    93: /* >>>>>>>>>>>>Initialization Function Check Statements. */
+    94:    if (transitionType > 1)
+    95:    {
+    96:       if (td <= 0)
+    97:       {
+    98:          amefprintf(stderr, "\nTransition duration must be strictly positive.\n");
+    99:          error = 2;
+   100:       }
+   101:    }
+   102:    if (transitionType == 2 || transitionType == 3)
+   103:    {
+   104:       int ok;
+   105:       double rhs[6], t_start, t_end;
+   106: 
+   107:       t_start = t0-0.5*td;
+   108:       t_end   = t0+0.5*td;
+   109: 
+   110:       rhs[0] = out0;
+   111:       rhs[1] = out1;
+   112:       rhs[2] = 0.0;
+   113:       rhs[3] = 0.0;
+   114:       rhs[4] = 0.0;
+   115:       rhs[5] = 0.0;
+   116: 
+   117:       if (transitionType == 2)
+   118:       {
+   119:          ok = ameFindPoly3Coeffs_(rhs, c, &t_start, &t_end);
+   120:       }
+   121:       else
+   122:       {
+   123:          ok = ameFindPoly5Coeffs_(rhs, c, &t_start, &t_end);
+   124:       }
+   125:       if (ok == 0)
+   126:       {
+   127:          error = 2;
+   128:       }
+   129:    }
+   130: /* <<<<<<<<<<<<End of Initialization Check Statements. */
+   131: 
+   132: /*   Integer parameter checking:   */
+   133: 
+   134:    if (transitionType < 1 || transitionType > 3)
+   135:    {
+   136:       amefprintf(stderr, "\ntransition type must be in range [1..3].\n");
+   137:       error = 2;
+   138:    }
+   139: 
+   140:    if(ameHandleSubmodelError(_SUBMODELNAME_, *n, error))
+   141:    {
+   142:       return;
+   143:    }
+   144:       *out00GEN = out0;
+   145:       *out10GEN = out1;
+   146:       *t00GEN = t0;
+   147: 
+   148: 
+   149: /* >>>>>>>>>>>>Initialization Function Executable Statements. */
+   150: 
+   151: /* <<<<<<<<<<<<End of Initialization Executable Statements. */
+   152: }
+   153: 
+   154: /*  There is 1 port.
+   155: 
+   156:    Port 1 has 1 variable:
+   157: 
+   158:       1 out     step output [null] basic variable output
+   159: */
+   160: 
+   161: /*  There are 0 internal variables.
+   162: 
+   163: */
+   164: 
+   165: void step0_(int *n, double *out, double *out00GEN, double *out10GEN
+   166:       , double *t00GEN, double rp[4], int ip[1], double c[6]
+   167:       , int ic[1], int *flag, double *t)
+   168: 
+   169: {
+   170:    int loop, logi;
+   171: /* >>>>>>>>>>>>Extra Calculation Function Declarations Here. */
+   172: /* <<<<<<<<<<<<End of Extra Calculation declarations. */
+   173:    int transitionType;
+   174:    double out0, out1, t0, td;
+   175: 
+   176:    transitionType = ip[0];
+   177: 
+   178:    out0       = rp[0];
+   179:    out1       = rp[1];
+   180:    t0         = rp[2];
+   181:    td         = rp[3];
+   182:    logi = 0;
+   183:    loop = 0;
+   184:    out0 = *out00GEN;
+   185:    out1 = *out10GEN;
+   186:    t0 = *t00GEN;
+   187: 
+   188: /*
+   189:    Set all submodel outputs below:
+   190: 
+   191:    *out        = ??;
+   192: */
+   193: 
+   194: 
+   195: /*
+   196:    The following discrete variable(s) can be reset when the discontinuity flag is zero:
+   197: 
+   198: */
+   199: 
+   200: 
+   201: 
+   202: /* >>>>>>>>>>>>Calculation Function Executable Statements. */
+   203:    if (transitionType == 1)
+   204:    {
+   205:       if(*flag == 0)
+   206:       {
+   207:          if(*t < t0)
+   208:          {
+   209:             /* before step */
+   210:             ic[0] = 0;
+   211:          }
+   212:          else
+   213:          {
+   214:             /* after step */
+   215:             ic[0] = 1;
+   216:          }
+   217:       }
+   218:       if(ic[0] == 0)
+   219:       {
+   220:          *out = out0;
+   221:          if(*t >= t0)
+   222:          {
+   223:             distim_(&t0);
+   224:          }
+   225:       }
+   226:       else
+   227:       {
+   228:          *out = out1;
+   229:       }
+   230:    }
+   231:    else
+   232:    {
+   233:       double t_start, t_end;
+   234: 
+   235:       t_start = t0-0.5*td;
+   236:       t_end   = t0+0.5*td;
+   237: 
+   238:       /* Need to recompute polynomial coefficients for tunable param */
+   239:       if (*flag == 0)
+   240:       {
+   241:          int ok;
+   242:          double rhs[6];
+   243: 
+   244:          rhs[0] = out0;
+   245:          rhs[1] = out1;
+   246:          rhs[2] = 0.0;
+   247:          rhs[3] = 0.0;
+   248:          rhs[4] = 0.0;
+   249:          rhs[5] = 0.0;
+   250: 
+   251:          if (transitionType == 2)
+   252:          {
+   253:             ok = ameFindPoly3Coeffs_(rhs, c, &t_start, &t_end);
+   254:          }
+   255:          else
+   256:          {
+   257:             ok = ameFindPoly5Coeffs_(rhs, c, &t_start, &t_end);
+   258:          }
+   259:          if (ok == 0)
+   260:          {
+   261:             AmeExit(1);
+   262:          }
+   263:       }
+   264: 
+   265:       if (transitionType == 2) /* 3rd order polynomial. */
+   266:       {
+   267:          if (*t <= t_start)
+   268:             *out = out0;
+   269:          else if (*t >= t_end)
+   270:             *out = out1;
+   271:          else
+   272:          {
+   273:             *out = c[3] + (*t)*(c[2] + (*t)*(c[1] + (*t)*c[0]));
+   274:             /* Polynomial can create out of bound output, even though interval
+   275:                of application is "strictly inside". Force min+max. */
+   276:             *out = MAX(MIN(out0, out1), *out);
+   277:             *out = MIN(MAX(out0, out1), *out);
+   278:          }
+   279:       }
+   280:       else if (transitionType == 3) /* 5th order polynomial. */
+   281:       {
+   282:          if (*t <= t_start)
+   283:             *out = out0;
+   284:          else if (*t >= t_end)
+   285:             *out = out1;
+   286:          else
+   287:          {
+   288:             *out = c[5] + (*t)*(c[4] + (*t)*(c[3] + (*t)*(c[2] + (*t)*(c[1] + (*t)*c[0]))));
+   289:             /* Polynomial can create out of bound output, even though interval
+   290:                of application is "strictly inside". Force min+max. */
+   291:             *out = MAX(MIN(out0, out1), *out);
+   292:             *out = MIN(MAX(out0, out1), *out);
+   293:          }
+   294:       }
+   295:    }
+   296: /* <<<<<<<<<<<<End of Calculation Executable Statements. */
+   297: }
+   298: 
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libsig\submodels\STEP0.spe
+==============================================================================
+...
+     1: <?xml version="1.0" encoding="ISO-8859-1"?>
+     2: <!DOCTYPE SPE>
+     3: <SPE DOC_VERSION="2" AME_VERSION="17.1.0 - dev - 24/01/19 19:07 - 80306-78615 2019">
+     4: 
+     5:  <SUBMODEL>
+     6:   <SUB_TYPE>0</SUB_TYPE>
+     7:   <SUB_ID_MAX>37</SUB_ID_MAX>
+     8:   <DEFAULT_ICON>step</DEFAULT_ICON>
+     9:   <SUB_LABEL>step function</SUB_LABEL>
+    10:   <SUB_UNIT>0</SUB_UNIT>
+    11:   <R_STORES_NUMBER>6</R_STORES_NUMBER>
+    12:   <I_STORES_NUMBER>1</I_STORES_NUMBER>
+    13:   <DISCONTINUITY>1</DISCONTINUITY>
+    14:   <TIME_REQUIRED>1</TIME_REQUIRED>
+    15:   <OUTPUT_TYPE>1</OUTPUT_TYPE>
+    16:   <RPARAMS_LIST>
+    17:    <RPARAM>
+    18:     <SUB_ID>2</SUB_ID>
+    19:     <TITLE>value before step</TITLE>
+    20:     <VARNAME>out0</VARNAME>
+    21:     <VISIBILITY>True</VISIBILITY>
+    22:     <TUNABLE>True</TUNABLE>
+    23:     <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+    24:     <VALUE>0.00000000000000e+00</VALUE>
+    25:     <HISTORY_VARIABLE>out00GEN</HISTORY_VARIABLE>
+    26:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+    27:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+    28:     <UNITS>null</UNITS>
+    29:    </RPARAM>
+    30:    <RPARAM>
+    31:     <SUB_ID>3</SUB_ID>
+    32:     <TITLE>value after step</TITLE>
+    33:     <VARNAME>out1</VARNAME>
+    34:     <VISIBILITY>True</VISIBILITY>
+    35:     <TUNABLE>True</TUNABLE>
+    36:     <DEF_VALUE>1.00000000000000e+00</DEF_VALUE>
+    37:     <VALUE>1.00000000000000e+00</VALUE>
+    38:     <HISTORY_VARIABLE>out10GEN</HISTORY_VARIABLE>
+    39:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+    40:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+    41:     <UNITS>null</UNITS>
+    42:    </RPARAM>
+    43:    <RPARAM>
+    44:     <SUB_ID>4</SUB_ID>
+    45:     <TITLE>step time</TITLE>
+    46:     <VARNAME>t0</VARNAME>
+    47:     <VISIBILITY>True</VISIBILITY>
+    48:     <TUNABLE>True</TUNABLE>
+    49:     <DEF_VALUE>0.00000000000000e+00</DEF_VALUE>
+    50:     <VALUE>0.00000000000000e+00</VALUE>
+    51:     <HISTORY_VARIABLE>t00GEN</HISTORY_VARIABLE>
+    52:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+    53:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+    54:     <UNITS>s</UNITS>
+    55:    </RPARAM>
+    56:    <RPARAM>
+    57:     <SUB_ID>7</SUB_ID>
+    58:     <TITLE>transition duration</TITLE>
+    59:     <VARNAME>td</VARNAME>
+    60:     <VISIBILITY>transitionType>1</VISIBILITY>
+    61:     <DEF_VALUE>1.00000000000000e-01</DEF_VALUE>
+    62:     <VALUE>1.00000000000000e-01</VALUE>
+    63:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+    64:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+    65:     <UNITS>s</UNITS>
+    66:    </RPARAM>
+    67:   </RPARAMS_LIST>
+    68:   <IPARAMS_LIST>
+    69:    <IPARAM>
+    70:     <SUB_ID>5</SUB_ID>
+    71:     <TITLE>transition type</TITLE>
+    72:     <VARNAME>transitionType</VARNAME>
+    73:     <VISIBILITY>True</VISIBILITY>
+    74:     <DEF_VALUE>1</DEF_VALUE>
+    75:     <VALUE>1</VALUE>
+    76:     <MIN_VALUE>1</MIN_VALUE>
+    77:     <MAX_VALUE>3</MAX_VALUE>
+    78:     <ENUM_LIST>
+    79:      <ENUM>
+    80:       <ENUM_STRING>discontinuous</ENUM_STRING>
+    81:      </ENUM>
+    82:      <ENUM>
+    83:       <ENUM_STRING>polynomial (order 3)</ENUM_STRING>
+    84:      </ENUM>
+    85:      <ENUM>
+    86:       <ENUM_STRING>polynomial (order 5)</ENUM_STRING>
+    87:      </ENUM>
+    88:     </ENUM_LIST>
+    89:    </IPARAM>
+    90:   </IPARAMS_LIST>
+    91:   <IVARS_LIST>
+    92:    <IVAR>
+    93:     <SUB_ID>35</SUB_ID>
+    94:     <TITLE>value before step - Linked variable</TITLE>
+    95:     <VARNAME>out00GEN</VARNAME>
+    96:     <VISIBILITY>False</VISIBILITY>
+    97:     <TYPE>10</TYPE>
+    98:     <DIMENSION>1</DIMENSION>
+    99:     <UNITS>null</UNITS>
+   100:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   101:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   102:     <DEF_VALUE>0</DEF_VALUE>
+   103:     <VALUE>0</VALUE>
+   104:    </IVAR>
+   105:    <IVAR>
+   106:     <SUB_ID>36</SUB_ID>
+   107:     <TITLE>value after step - Linked variable</TITLE>
+   108:     <VARNAME>out10GEN</VARNAME>
+   109:     <VISIBILITY>False</VISIBILITY>
+   110:     <TYPE>10</TYPE>
+   111:     <DIMENSION>1</DIMENSION>
+   112:     <UNITS>null</UNITS>
+   113:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   114:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   115:     <DEF_VALUE>0</DEF_VALUE>
+   116:     <VALUE>0</VALUE>
+   117:    </IVAR>
+   118:    <IVAR>
+   119:     <SUB_ID>37</SUB_ID>
+   120:     <TITLE>step time - Linked variable</TITLE>
+   121:     <VARNAME>t00GEN</VARNAME>
+   122:     <VISIBILITY>False</VISIBILITY>
+   123:     <TYPE>10</TYPE>
+   124:     <DIMENSION>1</DIMENSION>
+   125:     <UNITS>s</UNITS>
+   126:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   127:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   128:     <DEF_VALUE>0</DEF_VALUE>
+   129:     <VALUE>0</VALUE>
+   130:    </IVAR>
+   131:   </IVARS_LIST>
+   132:   <EVARS_LIST>
+   133:    <PORT>
+   134:     <EVAR>
+   135:      <SUB_ID>1</SUB_ID>
+   136:      <TITLE>step output</TITLE>
+   137:      <VARNAME>out</VARNAME>
+   138:      <VISIBILITY>True</VISIBILITY>
+   139:      <TYPE>0</TYPE>
+   140:      <DIMENSION>1</DIMENSION>
+   141:      <IO>2</IO>
+   142:      <UNITS>null</UNITS>
+   143:     </EVAR>
+   144:    </PORT>
+   145:   </EVARS_LIST>
+   146:   <CIR_PORTS_OVER_FRAMEWORK>0</CIR_PORTS_OVER_FRAMEWORK>
+   147:   <SUBIDS_RESET>0</SUBIDS_RESET>
+   148:  </SUBMODEL>
+   149: </SPE>

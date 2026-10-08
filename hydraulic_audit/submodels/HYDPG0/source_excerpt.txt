@@ -1,0 +1,145 @@
+SUBMODEL: HYDPG0
+SOURCE FILES: 2
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\HYDPG0.c
+==============================================================================
+...
+     1: /* Submodel HYDPG0 skeleton created by AME Submodel editing utility
+     2:    lun. juil. 29 17:01:31 2019 */
+     3: 
+     4: 
+     5: 
+     6: #include <math.h>
+     7: #include <stdio.h>
+     8: #include <stdlib.h>
+     9: #include "ameutils.h"
+    10: /* *******************************************************************************
+    11: TITLE : HYDPG0
+    12: --------------------------------------------------------------------------------
+    13: DESCRIPTION :
+    14: --------------------------------------------------------------------------------
+    15: DATE OF CREATION/AUTHOR : 04/2020
+    16: --------------------------------------------------------------------------------
+    17: INDEX OF REVISIONS :
+    18: --------------------------------------------------------------------------------
+    19: LIST OF FUNCTIONS USED :
+    20: --------------------------------------------------------------------------------
+    21: SOURCE :
+    22:    Siemens Industry Software SAS
+    23:    7 place des Minimes
+    24:    42300 Roanne - France
+    25:    tel: (33).04.77.23.60.30
+    26:    fax: (33).04.77.23.60.31
+    27:    www.siemens.com/plm
+    28:  
+    29:    Copyright 2015 Siemens Industry Software NV
+    30: ******************************************************************************* */
+    31: 
+    32: #define _SUBMODELNAME_ "HYDPG0"
+    33: 
+    34: /* >>>>>>>>>>>>Insert Private Code Here. */
+    35: /* <<<<<<<<<<<<End of Private Code. */
+    36: 
+    37: /* There is 1 integer parameter:
+    38: 
+    39:    indexf index of hydraulic fluid
+    40: */
+    41: 
+    42: void hydpg0in_(int *n, int ip[1], double *q1)
+    43: 
+    44: {
+    45: }
+    46: 
+    47: /*  There is 1 port.
+    48: 
+    49:    Port 1 has 2 variables:
+    50: 
+    51:       1 q1     flow rate (always zero) [L/min]     fixed  UNPLOTTABLE
+    52:       2 p1     input pressure          [bar -> Pa] basic variable input  UNPLOTTABLE
+    53: */
+    54: 
+    55: /*  There is 1 internal variable.
+    56: 
+    57:       1 p     pressure [bar -> Pa] basic variable
+    58: */
+    59: 
+    60: void hydpg0_(int *n, double *p1, double *p, int ip[1])
+    61: 
+    62: {
+    63:    *p = *p1;
+    64: }
+    65: 
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\HYDPG0.spe
+==============================================================================
+...
+     1: <?xml version="1.0" encoding="ISO-8859-1"?>
+     2: <!DOCTYPE SPE>
+     3: <SPE DOC_VERSION="2" AME_VERSION="2019.1.0 - dev - 05/03/19 19:10 - 81319-80345 2019">
+     4: 
+     5:  <SUBMODEL>
+     6:   <SUB_TYPE>0</SUB_TYPE>
+     7:   <SUB_ID_MAX>7</SUB_ID_MAX>
+     8:   <DEFAULT_ICON>pressuregauge</DEFAULT_ICON>
+     9:   <SUB_LABEL>hydraulic pressure gauge</SUB_LABEL>
+    10:   <SUB_UNIT>0</SUB_UNIT>
+    11:   <OUTPUT_TYPE>1</OUTPUT_TYPE>
+    12:   <IPARAMS_LIST>
+    13:    <IPARAM>
+    14:     <SUB_ID>7</SUB_ID>
+    15:     <TITLE>index of hydraulic fluid</TITLE>
+    16:     <VARNAME>indexf</VARNAME>
+    17:     <VISIBILITY>True</VISIBILITY>
+    18:     <DEF_VALUE>0</DEF_VALUE>
+    19:     <VALUE>0</VALUE>
+    20:     <MIN_VALUE>0</MIN_VALUE>
+    21:     <MAX_VALUE>100</MAX_VALUE>
+    22:    </IPARAM>
+    23:   </IPARAMS_LIST>
+    24:   <IVARS_LIST>
+    25:    <IVAR>
+    26:     <SUB_ID>5</SUB_ID>
+    27:     <TITLE>pressure</TITLE>
+    28:     <VARNAME>p</VARNAME>
+    29:     <VISIBILITY>True</VISIBILITY>
+    30:     <TYPE>0</TYPE>
+    31:     <DIMENSION>1</DIMENSION>
+    32:     <UNITS>bar</UNITS>
+    33:    </IVAR>
+    34:   </IVARS_LIST>
+    35:   <EVARS_LIST>
+    36:    <PORT>
+    37:     <EVAR>
+    38:      <SUB_ID>3</SUB_ID>
+    39:      <TITLE>flow rate (always zero)</TITLE>
+    40:      <VARNAME>q1</VARNAME>
+    41:      <VISIBILITY>True</VISIBILITY>
+    42:      <TYPE>5</TYPE>
+    43:      <DIMENSION>1</DIMENSION>
+    44:      <IO>2</IO>
+    45:      <UNPLOTTABLE>1</UNPLOTTABLE>
+    46:      <UNITS>L/min</UNITS>
+    47:      <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+    48:      <MAX_VALUE>0.00000000000000e+000</MAX_VALUE>
+    49:      <DEF_VALUE>0.00000000000000e+000</DEF_VALUE>
+    50:      <VALUE>0.00000000000000e+000</VALUE>
+    51:     </EVAR>
+    52:     <EVAR>
+    53:      <SUB_ID>4</SUB_ID>
+    54:      <TITLE>input pressure</TITLE>
+    55:      <VARNAME>p1</VARNAME>
+    56:      <VISIBILITY>True</VISIBILITY>
+    57:      <TYPE>0</TYPE>
+    58:      <DIMENSION>1</DIMENSION>
+    59:      <IO>1</IO>
+    60:      <UNPLOTTABLE>1</UNPLOTTABLE>
+    61:      <UNITS>bar</UNITS>
+    62:     </EVAR>
+    63:    </PORT>
+    64:   </EVARS_LIST>
+    65:   <CIR_PORTS_OVER_FRAMEWORK>1</CIR_PORTS_OVER_FRAMEWORK>
+    66:   <SUBIDS_RESET>0</SUBIDS_RESET>
+    67:  </SUBMODEL>
+    68: </SPE>

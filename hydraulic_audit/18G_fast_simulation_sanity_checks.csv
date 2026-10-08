@@ -1,0 +1,37 @@
+﻿run,check,status,evidence
+0.01s,no_NaN,PASS,0
+0.01s,no_Inf,PASS,0
+0.01s,positive_chamber_volumes,PASS,minimum position=0 m
+0.01s,no_impossible_negative_absolute_pressure,PASS,minimum gauge pressure=99933.5 Pa
+0.01s,pump_speed_finite,PASS,all recorded pump speeds finite
+0.01s,actuator_displacement_within_stroke,PASS,range=0..7.80786e-12 m
+0.01s,no_uncontrolled_pressure_blowup,PASS,maximum pressure=3.62788e+07 Pa
+0.01s,hydraulic_junction_mass_balance,PASS,max residual=9.26149e-08 m^3/s
+0.01s,mechanical_constraints,PASS,common velocity is shared by construction at every mechanical 1-junction
+0.01s,all_algebraic_groups_converged,PASS,failures=0
+0.01s,no_silently_dropped_component,PASS,194/194 active elements have strategy
+0.01s,all_109_RHS_entries_supplied,PASS,109/109
+0.1s,no_NaN,PASS,0
+0.1s,no_Inf,PASS,0
+0.1s,positive_chamber_volumes,PASS,minimum position=-9.50259e-26 m
+0.1s,no_impossible_negative_absolute_pressure,PASS,minimum gauge pressure=99275.5 Pa
+0.1s,pump_speed_finite,PASS,all recorded pump speeds finite
+0.1s,actuator_displacement_within_stroke,PASS,range=-9.50259e-26..4.59334e-07 m
+0.1s,no_uncontrolled_pressure_blowup,PASS,maximum pressure=7.15287e+07 Pa
+0.1s,hydraulic_junction_mass_balance,PASS,max residual=9.1227e-08 m^3/s
+0.1s,mechanical_constraints,PASS,common velocity is shared by construction at every mechanical 1-junction
+0.1s,all_algebraic_groups_converged,PASS,failures=0
+0.1s,no_silently_dropped_component,PASS,194/194 active elements have strategy
+0.1s,all_109_RHS_entries_supplied,PASS,109/109
+1s,no_NaN,PASS,0
+1s,no_Inf,PASS,0
+1s,positive_chamber_volumes,PASS,minimum position=-2.26874e-25 m
+1s,no_impossible_negative_absolute_pressure,PASS,minimum gauge pressure=98821.3 Pa
+1s,pump_speed_finite,PASS,all recorded pump speeds finite
+1s,actuator_displacement_within_stroke,PASS,range=-2.26874e-25..0.00127415 m
+1s,no_uncontrolled_pressure_blowup,PASS,maximum pressure=2.79685e+08 Pa
+1s,hydraulic_junction_mass_balance,PASS,max residual=1.58624e-07 m^3/s
+1s,mechanical_constraints,PASS,common velocity is shared by construction at every mechanical 1-junction
+1s,all_algebraic_groups_converged,PASS,failures=0
+1s,no_silently_dropped_component,PASS,194/194 active elements have strategy
+1s,all_109_RHS_entries_supplied,PASS,109/109

@@ -1,0 +1,8 @@
+﻿check,status,value,limit
+hydraulic_junction_flow_residual,PASS,5.7461035173996736e-08,1e-06
+mechanical_force_torque_residual,PASS,0.0,1e-06
+negative_chamber_volume,PASS,0,0
+invalid_absolute_pressure,PASS,97902.91812022662,-90000.0
+NaN,PASS,0,0
+Inf,PASS,0,0
+algebraic_convergence,PASS,0,0

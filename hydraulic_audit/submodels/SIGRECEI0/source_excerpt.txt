@@ -1,0 +1,619 @@
+SUBMODEL: SIGRECEI0
+SOURCE FILES: 2
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libsig\submodels\SIGRECEI0.c
+==============================================================================
+...
+     1: /* Submodel SIGRECEI0 skeleton created by AME Submodel editing utility
+     2:    mer. juin 27 14:53:54 2018 */
+     3: 
+     4: 
+     5: 
+     6: #include <math.h>
+     7: #include <stdio.h>
+     8: #include <stdlib.h>
+     9: #include "ameutils.h"
+    10: /* *******************************************************************************
+    11: TITLE : RECEI0
+    12:  
+    13: ------------------------------------------------------------------------------
+    14: DESCRIPTION :
+    15:  
+    16:    This submodel can be used to receive a variable from a transmitter submodel 
+    17:    without any visible connection on the sketch.
+    18:  
+    19:    A transmitter and a receiver behave as if the output of the transmitter was 
+    20:    connected to the input of the receiver. As a result of this, the receiver 
+    21:    output is actually a duplicate of the transmitter input.
+    22:  
+    23:    However this connection is not visible on the sketch since these two 
+    24:    components are not directly connected and not linked by any line.
+    25:  
+    26: ------------------------------------------------------------------------------
+    27: USAGE :
+    28:  
+    29:    Use this submodel with a transmitter when you want to transfer a signal 
+    30:    without any visible connection on the sketch.
+    31:  
+    32:    The association of a receiver with a transmitter is made using port tags. 
+    33:    Each receiver having the same port tag as a given transmitter will have this
+    34:    transmitter input as output. A receiver can be associated with only one 
+    35:    transmitter.
+    36:  
+    37:    Assigning a port tag to a receiver submodel is described in the AMESim 
+    38:    manual.
+    39:  
+    40: ------------------------------------------------------------------------------
+    41: PARAMETER SETTINGS :
+    42:  
+    43: ------------------------------------------------------------------------------
+    44: REVISIONS :
+    45:  
+    46: --------------------------------------------------------------------------------
+    47: SOURCE :
+    48:    Siemens Industry Software SAS
+    49:    7 place des Minimes
+    50:    42300 Roanne - France
+    51:    tel: (33).04.77.23.60.30
+    52:    fax: (33).04.77.23.60.31
+    53:    www.siemens.com/plm
+    54: 
+    55:    Copyright 2015 Siemens Industry Software NV
+    56: ******************************************************************************* */
+    57: 
+    58: #define _SUBMODELNAME_ "SIGRECEI0"
+    59: 
+    60: /* >>>>>>>>>>>>Insert Private Code Here. */
+    61: /* <<<<<<<<<<<<End of Private Code. */
+    62: 
+    63: /* There are 2 integer parameters:
+    64: 
+    65:    label     display label
+    66:    showDigit display digit
+    67: */
+    68: 
+    69: 
+    70: /* There are 2 structural parameters:
+    71: 
+    72:    numInp number of inputs       
+    73:    dimInp dimension of each input
+    74: */
+    75: 
+    76: 
+    77: void sigrecei0in_(int *n, int *numInp, int *dimInp, int *ip)
+    78: 
+    79: {
+    80:    int loop, error;
+    81: /* >>>>>>>>>>>>Extra Initialization Function Declarations Here. */
+    82: /* <<<<<<<<<<<<End of Extra Initialization declarations. */
+    83:    int output_size;
+    84:    int output_dim;
+    85:    int input_size;
+    86:    int input_dim;
+    87:    int label, showDigit;
+    88: 
+    89:    label      = ip[0];
+    90:    showDigit  = ip[1];
+    91:    output_size = (*numInp);
+    92:    output_dim = (*dimInp);
+    93:    input_size = (*numInp);
+    94:    input_dim = (*dimInp);
+    95:    loop = 0;
+    96:    error = 0;
+    97: 
+    98: 
+    99: /* >>>>>>>>>>>>Initialization Function Check Statements. */
+   100: /* <<<<<<<<<<<<End of Initialization Check Statements. */
+   101: 
+   102: /*   Integer parameter checking:   */
+   103: 
+   104:    if (label < 1 || label > 27)
+   105:    {
+   106:       amefprintf(stderr, "\ndisplay label must be in range [1..27].\n");
+   107:       error = 2;
+   108:    }
+   109:    if (showDigit < 1 || showDigit > 11)
+   110:    {
+   111:       amefprintf(stderr, "\ndisplay digit must be in range [1..11].\n");
+   112:       error = 2;
+   113:    }
+   114: 
+   115:    if(ameHandleSubmodelError(_SUBMODELNAME_, *n, error))
+   116:    {
+   117:       return;
+   118:    }
+   119: 
+   120: 
+   121: /* >>>>>>>>>>>>Initialization Function Executable Statements. */
+   122: /* <<<<<<<<<<<<End of Initialization Executable Statements. */
+   123: }
+   124: 
+   125: /*  There are 2 ports.
+   126: 
+   127:    Port 1 has 1 variable:
+   128: 
+   129:       1 output[]   receiver output [null] basic variable output
+   130: 
+   131:    Port 2 has 1 variable:
+   132: 
+   133:       1 input[]   receiver input [null] basic variable input
+   134: */
+   135: 
+   136: /*  There are 0 internal variables.
+   137: 
+   138: */
+   139: 
+   140: void sigrecei0_(int *n, int *numInp, int *dimInp, double *output
+   141:       , double *input, int *ip)
+   142: 
+   143: {
+   144:    int loop;
+   145: /* >>>>>>>>>>>>Extra Calculation Function Declarations Here. */
+   146:    int i;
+   147: /* <<<<<<<<<<<<End of Extra Calculation declarations. */
+   148:    int output_size;
+   149:    int output_dim;
+   150:    int input_size;
+   151:    int input_dim;
+   152:    int label, showDigit;
+   153: 
+   154:    label      = ip[0];
+   155:    showDigit  = ip[1];
+   156:    output_size = (*numInp);
+   157:    output_dim = (*dimInp);
+   158:    input_size = (*numInp);
+   159:    input_dim = (*dimInp);
+   160:    loop = 0;
+   161: 
+   162: /*
+   163:    Set all submodel outputs below:
+   164: 
+   165:    output    [] = ??;
+   166: */
+   167: 
+   168: 
+   169: 
+   170: /* >>>>>>>>>>>>Calculation Function Executable Statements. */
+   171:    for (i=0; i<(*dimInp)*(*numInp); i++)
+   172:    {
+   173:       output[i] = input[i];
+   174:    }
+   175: 
+   176: /* <<<<<<<<<<<<End of Calculation Executable Statements. */
+   177: }
+   178: 
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libsig\submodels\SIGRECEI0.spe
+==============================================================================
+...
+     1: <?xml version="1.0" encoding="ISO-8859-1"?>
+     2: <!DOCTYPE SPE>
+     3: <SPE DOC_VERSION="2" AME_VERSION="17.0.0 - dev - 19/06/18 19:06 - 73595-71979 2018">
+     4: 
+     5:  <SUBMODEL>
+     6:   <SUB_TYPE>0</SUB_TYPE>
+     7:   <SUB_ID_MAX>14</SUB_ID_MAX>
+     8:   <DEFAULT_ICON>dynamic_receiver</DEFAULT_ICON>
+     9:   <SUB_LABEL>receiver</SUB_LABEL>
+    10:   <SUB_UNIT>1</SUB_UNIT>
+    11:   <OUTPUT_TYPE>1</OUTPUT_TYPE>
+    12:   <DYNAMIC_PARAMS_LIST>
+    13:    <IPARAM>
+    14:     <SUB_ID>9</SUB_ID>
+    15:     <TITLE>number of inputs</TITLE>
+    16:     <VARNAME>numInp</VARNAME>
+    17:     <VISIBILITY>True</VISIBILITY>
+    18:     <DEF_VALUE>1</DEF_VALUE>
+    19:     <VALUE>1</VALUE>
+    20:     <MIN_VALUE>1</MIN_VALUE>
+    21:     <MAX_VALUE>1000</MAX_VALUE>
+    22:    </IPARAM>
+    23:    <IPARAM>
+    24:     <SUB_ID>10</SUB_ID>
+    25:     <TITLE>dimension of each input</TITLE>
+    26:     <VARNAME>dimInp</VARNAME>
+    27:     <VISIBILITY>True</VISIBILITY>
+    28:     <DEF_VALUE>1</DEF_VALUE>
+    29:     <VALUE>1</VALUE>
+    30:     <MIN_VALUE>1</MIN_VALUE>
+    31:     <MAX_VALUE>1000</MAX_VALUE>
+    32:    </IPARAM>
+    33:   </DYNAMIC_PARAMS_LIST>
+    34:   <IPARAMS_LIST>
+    35:    <IPARAM>
+    36:     <SUB_ID>13</SUB_ID>
+    37:     <TITLE>display label</TITLE>
+    38:     <VARNAME>label</VARNAME>
+    39:     <VISIBILITY>True</VISIBILITY>
+    40:     <DEF_VALUE>1</DEF_VALUE>
+    41:     <VALUE>1</VALUE>
+    42:     <MIN_VALUE>1</MIN_VALUE>
+    43:     <MAX_VALUE>27</MAX_VALUE>
+    44:     <ENUM_LIST>
+    45:      <ENUM>
+    46:       <ENUM_STRING>none</ENUM_STRING>
+    47:      </ENUM>
+    48:      <ENUM>
+    49:       <ENUM_STRING>A</ENUM_STRING>
+    50:       <ICON_MAP>
+    51:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+    52:        <ICON_MAP_DATA>
+    53:         H4sIAAAAAAACC22PwW6DMAyGz6vUd7B86XYoEOAwEGnVnXfYG0wMAlgLCUoyQvf0S7oedtjJsv378/83522WsApjSSuOLMkQhOp0T2rk+OWG4zOeT/tdY9fxryxH+GiteDN6ICk4OlJXBOo5vtIqpNTvDPe7Bwh0ZTlOzi11mnrvE18k2oxpnmVZGqD4K6k3SerzPyGrqiq9bYOUY7ZsCNd79dS7iWNZxGYSNE4umKtCF3+vJPyLjjeQQVkAqxB0yDBI7Tnazmgpb+9ru7RdCLEYYYVZBcbATmwOnGmVHbSZOc6tM7Q9Mog0BqwEVjwhDFq549DOJIOpw8VQKw/3qaXvAGV5sHO6NGkERnBMHeoP2m8pFHoBAAA=
+    54:        </ICON_MAP_DATA>
+    55:       </ICON_MAP>
+    56:      </ENUM>
+    57:      <ENUM>
+    58:       <ENUM_STRING>B</ENUM_STRING>
+    59:       <ICON_MAP>
+    60:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+    61:        <ICON_MAP_DATA>
+    62:         H4sIAAAAAAACC22PwW6DMAyGz6vUd7B86XYoEOAwEGm1nnfYG0wMAlgLCUoyQvf0S7oedtjJsv378/83522WsApjSSuOLMkQhOp0T2rk+OWG4zOeT/tdY9fxryxH+GiteDN6ICk4OlJXBOo5vtIqpNTvDPe7Bwh0ZTlOzi11mnrvE18k2oxpnmVZGqD4K6k3SerzPyGrqiq9bYOUY7ZsCNd79dS7iWNZxGYSNE4umKtCF3+vJPxFxxvIoCyAVQg6ZBik9hxtZ7SUt/e1XdouhFiMsMKsAmNgJzYHzrTKDtrMHOfWGdoeGUQaA1YCK54QBq3ccWhnksHU4cVQKw/3qaXvAGV5sHO6NGkERnBMHeoPuLKv/noBAAA=
+    63:        </ICON_MAP_DATA>
+    64:       </ICON_MAP>
+    65:      </ENUM>
+    66:      <ENUM>
+    67:       <ENUM_STRING>C</ENUM_STRING>
+    68:       <ICON_MAP>
+    69:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+    70:        <ICON_MAP_DATA>
+    71:         H4sIAAAAAAACC22PsW6EMAyG555072B5uXY4IMBQELlT27VD36CiEMBqSFCSEq5P3+R6Q4dOlu3fn/+/OW+zhFUYS1pxZEmGIFSne1Ijxy83HB/xfNrvGruOf2U5wkdrxZvRA0nB0ZG6IFDP8ZVWIaV+Z7jf3UGgK8txcm6p09R7n/gi0WZM8yzL0gDFX0m9SVKf/wlZVVXpdRukHLNlQ7jcqqfeTRzLIjaToHFywVwVuvh7JeGfdbyBDMoCWIWgQ4ZBas/RdkZLeX1f26XtQojFCCvMKjAGdmJz4Eyr7KDNzHFunaHtnkGkMWAlsOIBYdDKHYd2JhlMHZ4MtfJwm1r6DlCWBzunlyaNwAiOqUP9AVkE/RF6AQAA
+    72:        </ICON_MAP_DATA>
+    73:       </ICON_MAP>
+    74:      </ENUM>
+    75:      <ENUM>
+    76:       <ENUM_STRING>D</ENUM_STRING>
+    77:       <ICON_MAP>
+    78:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+    79:        <ICON_MAP_DATA>
+    80:         H4sIAAAAAAACC22PsW6EMAyG555072B5uXY4IMBQELlTq44d+gYVhQBWQ4KSlHB9+ibXGzp0smz//vz/zXmbJazCWNKKI0syBKE63ZMaOX654fiI59N+19h1/CvLET5aK96MHkgKjo7UBYF6jq+0Cin1O8P97g4CXVmOk3NLnabe+8QXiTZjmmdZlgYo/krqTZL6/E/IqqpKr9sg5ZgtG8LlVj31buJYFrGZBI2TC+aq0MXfKwn/rOMNZFAWwCoEHTIMUnuOtjNayuv72i5tF0IsRlhhVoExsBObA2daZQdtZo5z6wxt9wwijQErgRUPCINW7ji0M8lg6vBkqJWH29TSd4CyPNg5vTRpBEZwTB3qDz0O0/B6AQAA
+    81:        </ICON_MAP_DATA>
+    82:       </ICON_MAP>
+    83:      </ENUM>
+    84:      <ENUM>
+    85:       <ENUM_STRING>E</ENUM_STRING>
+    86:       <ICON_MAP>
+    87:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+    88:        <ICON_MAP_DATA>
+    89:         H4sIAAAAAAACC22PsW6EMAyG555072B5uXY4IMBQELlTK3Xr0DeoKASwGhKUpITr0ze53tChk2X79+f/b87bLGEVxpJWHFmSIQjV6Z7UyPHLDcdHPJ/2u8au419ZjvDRWvFm9EBScHSkLgjUc3ylVUip3xnud3cQ6MpynJxb6jT13ie+SLQZ0zzLsjRA8VdSb5LU539CVlVVet0GKcds2RAut+qpdxPHsojNJGicXDBXhS7+Xkn4Zx1vIIOyAFYh6JBhkNpztJ3RUl7f13ZpuxBiMcIKswqMgZ3YHDjTKjtoM3OcW2dou2cQaQxYCax4QBi0csehnUkGU4cnQ6083KaWvgOU5cHO6aVJIzCCY+pQfwDcuIEfegEAAA==
+    90:        </ICON_MAP_DATA>
+    91:       </ICON_MAP>
+    92:      </ENUM>
+    93:      <ENUM>
+    94:       <ENUM_STRING>F</ENUM_STRING>
+    95:       <ICON_MAP>
+    96:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+    97:        <ICON_MAP_DATA>
+    98:         H4sIAAAAAAACC22PsW6EMAyG555072B5uXY4IMBQELlTO3Tq0DeoKASwGhKUpITr0ze53tChk2X79+f/b87bLGEVxpJWHFmSIQjV6Z7UyPHLDcdHPJ/2u8au419ZjvDRWvFm9EBScHSkLgjUc3ylVUip3xnud3cQ6MpynJxb6jT13ie+SLQZ0zzLsjRA8VdSb5LU539CVlVVet0GKcds2RAut+qpdxPHsojNJGicXDBXhS7+Xkn4Zx1vIIOyAFYh6JBhkNpztJ3RUl7f13ZpuxBiMcIKswqMgZ3YHDjTKjtoM3OcW2dou2cQaQxYCax4QBi0csehnUkGU4cnQ6083KaWvgOU5cHO6aVJIzCCY+pQfwC+ZQf1egEAAA==
+    99:        </ICON_MAP_DATA>
+   100:       </ICON_MAP>
+   101:      </ENUM>
+   102:      <ENUM>
+   103:       <ENUM_STRING>G</ENUM_STRING>
+   104:       <ICON_MAP>
+   105:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   106:        <ICON_MAP_DATA>
+   107:         H4sIAAAAAAACC22PsW6EMAyG555072B5uXY4IMBQELlTu3Tp0DeoKASwGhKUpITr0ze53tChk2X79+f/b87bLGEVxpJWHFmSIQjV6Z7UyPHLDcdHPJ/2u8au419ZjvDRWvFm9EBScHSkLgjUc3ylVUip3xnud3cQ6MpynJxb6jT13ie+SLQZ0zzLsjRA8VdSb5LU539CVlVVet0GKcds2RAut+qpdxPHsojNJGicXDBXhS7+Xkn4Zx1vIIOyAFYh6JBhkNpztJ3RUl7f13ZpuxBiMcIKswqMgZ3YHDjTKjtoM3OcW2dou2cQaQxYCax4QBi0csehnUkGU4cnQ6083KaWvgOU5cHO6aVJIzCCY+pQfwBf01UaegEAAA==
+   108:        </ICON_MAP_DATA>
+   109:       </ICON_MAP>
+   110:      </ENUM>
+   111:      <ENUM>
+   112:       <ENUM_STRING>H</ENUM_STRING>
+   113:       <ICON_MAP>
+   114:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   115:        <ICON_MAP_DATA>
+   116:         H4sIAAAAAAACC22PsW6EMAyG555072B5uXY4IMBQELlTO3Xo0DeoKASwGhKUpITr0ze53tChk2X79+f/b87bLGEVxpJWHFmSIQjV6Z7UyPHLDcdHPJ/2u8au419ZjvDRWvFm9EBScHSkLgjUc3ylVUip3xnud3cQ6MpynJxb6jT13ie+SLQZ0zzLsjRA8VdSb5LU539CVlVVet0GKcds2RAut+qpdxPHsojNJGicXDBXhS7+Xkn4Zx1vIIOyAFYh6JBhkNpztJ3RUl7f13ZpuxBiMcIKswqMgZ3YHDjTKjtoM3OcW2dou2cQaQxYCax4QBi0csehnUkGU4cnQ6083KaWvgOU5cHO6aVJIzCCY+pQfwA3dyrsegEAAA==
+   117:        </ICON_MAP_DATA>
+   118:       </ICON_MAP>
+   119:      </ENUM>
+   120:      <ENUM>
+   121:       <ENUM_STRING>I</ENUM_STRING>
+   122:       <ICON_MAP>
+   123:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   124:        <ICON_MAP_DATA>
+   125:         H4sIAAAAAAACC22PwU7DMAyGz0zaO1i+DA5rm3YStGo2wQ2JA2+AujZtLdKkSkLT8fQkYwcOnCzbvz//f31aJwmLMJa04siSDEGoVnekBo5frt8/4em43dR2Gf7KcoRzY8W70T1JwdGRuiBQx/GNFiGl/mC43dxBoCvLcXRurtLUe5/4ItFmSPMsy9IAxV9JtUpSn/8JWVmW6XUbpByzeUW43Kqnzo0cD0VsRkHD6IK5MnTx90LCv+h4AxkcCmAlgg4Zeqk9R9saLeX1fWXnpg0hZiOsMIvAGNiJ1YEzjbK9NhPHqXGG1nsGkcaAPQIrHhB6rdy+byaSwdTu2VAjd7eppe8AZXmwc3yt0wiM4Jg61B8osVZJegEAAA==
+   126:        </ICON_MAP_DATA>
+   127:       </ICON_MAP>
+   128:      </ENUM>
+   129:      <ENUM>
+   130:       <ENUM_STRING>J</ENUM_STRING>
+   131:       <ICON_MAP>
+   132:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   133:        <ICON_MAP_DATA>
+   134:         H4sIAAAAAAACC22PsW6EMAyG555072B5uXY4IMBQELlTO1Yd+gYVhQBWQ4KSlHB9+ibXGzp0smz//vz/zXmbJazCWNKKI0syBKE63ZMaOX654fiI59N+19h1/CvLET5aK96MHkgKjo7UBYF6jq+0Cin1O8P97g4CXVmOk3NLnabe+8QXiTZjmmdZlgYo/krqTZL6/E/IqqpKr9sg5ZgtG8LlVj31buJYFrGZBI2TC+aq0MXfKwn/rOMNZFAWwCoEHTIMUnuOtjNayuv72i5tF0IsRlhhVoExsBObA2daZQdtZo5z6wxt9wwijQErgRUPCINW7ji0M8lg6vBkqJWH29TSd4CyPNg5vTRpBEZwTB3qD7Qc/ul6AQAA
+   135:        </ICON_MAP_DATA>
+   136:       </ICON_MAP>
+   137:      </ENUM>
+   138:      <ENUM>
+   139:       <ENUM_STRING>K</ENUM_STRING>
+   140:       <ICON_MAP>
+   141:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   142:        <ICON_MAP_DATA>
+   143:         H4sIAAAAAAACC22PsW6EMAyG555072B5uXY4IMBQELlTu7ZD36CiEMBqSFCSEq5P3+R6Q4dOlu3fn/+/OW+zhFUYS1pxZEmGIFSne1Ijxy83HB/xfNrvGruOf2U5wkdrxZvRA0nB0ZG6IFDP8ZVWIaV+Z7jf3UGgK8txcm6p09R7n/gi0WZM8yzL0gDFX0m9SVKf/wlZVVXpdRukHLNlQ7jcqqfeTRzLIjaToHFywVwVuvh7JeGfdbyBDMoCWIWgQ4ZBas/RdkZLeX1f26XtQojFCCvMKjAGdmJz4Eyr7KDNzHFunaHtnkGkMWAlsOIBYdDKHYd2JhlMHZ4MtfJwm1r6DlCWBzunlyaNwAiOqUP9AVWqrAZ6AQAA
+   144:        </ICON_MAP_DATA>
+   145:       </ICON_MAP>
+   146:      </ENUM>
+   147:      <ENUM>
+   148:       <ENUM_STRING>L</ENUM_STRING>
+   149:       <ICON_MAP>
+   150:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   151:        <ICON_MAP_DATA>
+   152:         H4sIAAAAAAACC22PwW6DMAyGz6vUd7B86XYoEOAwEGm1nXvYG0wMAlgLCUoyQvf0S7oedtjJsv378/83522WsApjSSuOLMkQhOp0T2rk+OWG4zOeT/tdY9fxryxH+GiteDN6ICk4OlJXBOo5XmgVUup3hvvdAwS6shwn55Y6Tb33iS8SbcY0z7IsDVD8ldSbJPX5n5BVVZXetkHKMVs2hOu9eurdxLEsYjMJGicXzFWhi79XEv5VxxvIoCyAVQg6ZBik9hxtZ7SUt/e1XdouhFiMsMKsAmNgJzYHzrTKDtrMHOfWGdoeGUQaA1YCK54QBq3ccWhnksHU4cVQKw/3qaXvAGV5sHO6NGkERnBMHeoPMaCC53oBAAA=
+   153:        </ICON_MAP_DATA>
+   154:       </ICON_MAP>
+   155:      </ENUM>
+   156:      <ENUM>
+   157:       <ENUM_STRING>M</ENUM_STRING>
+   158:       <ICON_MAP>
+   159:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   160:        <ICON_MAP_DATA>
+   161:         H4sIAAAAAAACC22PwW6DMAyGz6vUd7B86XYoEOAwEGm1nTdpbzAxCGAtJCjJCN3TL+l62GEny/bvz//fnLdZwiqMJa04siRDEKrTPamR45cbjo94Pu13jV3Hv7Ic4aO14s3ogaTg6EhdEKjn+EKrkFK/M9zv7iDQleU4ObfUaeq9T3yRaDOmeZZlaYDir6TeJKnP/4Ssqqr0ug1SjtmyIVxu1VPvJo5lEZtJ0Di5YK4KXfy9kvDPOt5ABmUBrELQIcMgtedoO6OlvL6v7dJ2IcRihBVmFRgDO7E5cKZVdtBm5ji3ztB2zyDSGLASWPGAMGjljkM7kwymDk+GWnm4TS19ByjLg53Ta5NGYATH1KH+ANAW0Ah6AQAA
+   162:        </ICON_MAP_DATA>
+   163:       </ICON_MAP>
+   164:      </ENUM>
+   165:      <ENUM>
+   166:       <ENUM_STRING>N</ENUM_STRING>
+   167:       <ICON_MAP>
+   168:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   169:        <ICON_MAP_DATA>
+   170:         H4sIAAAAAAACC22PwW6DMAyGz6vUd7B86XYoEOAwEGm1nadpbzAxCGAtJCjJCN3TL+l62GEny/bvz//fnLdZwiqMJa04siRDEKrTPamR45cbjo94Pu13jV3Hv7Ic4aO14s3ogaTg6EhdEKjn+EKrkFK/M9zv7iDQleU4ObfUaeq9T3yRaDOmeZZlaYDir6TeJKnP/4Ssqqr0ug1SjtmyIVxu1VPvJo5lEZtJ0Di5YK4KXfy9kvDPOt5ABmUBrELQIcMgtedoO6OlvL6v7dJ2IcRihBVmFRgDO7E5cKZVdtBm5ji3ztB2zyDSGLASWPGAMGjljkM7kwymDk+GWnm4TS19ByjLg53Ta5NGYATH1KH+ALLLVuJ6AQAA
+   171:        </ICON_MAP_DATA>
+   172:       </ICON_MAP>
+   173:      </ENUM>
+   174:      <ENUM>
+   175:       <ENUM_STRING>O</ENUM_STRING>
+   176:       <ICON_MAP>
+   177:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   178:        <ICON_MAP_DATA>
+   179:         H4sIAAAAAAACC22PwW6DMAyGz6vUd7B86XYoEOAwEGm1nSdtbzAxCGAtJCjJCN3TL+l62GEny/bvz//fnLdZwiqMJa04siRDEKrTPamR45cbjo94Pu13jV3Hv7Ic4aO14s3ogaTg6EhdEKjn+EKrkFK/M9zv7iDQleU4ObfUaeq9T3yRaDOmeZZlaYDir6TeJKnP/4Ssqqr0ug1SjtmyIVxu1VPvJo5lEZtJ0Di5YK4KXfy9kvDPOt5ABmUBrELQIcMgtedoO6OlvL6v7dJ2IcRihBVmFRgDO7E5cKZVdtBm5ji3ztB2zyDSGLASWPGAMGjljkM7kwymDk+GWnm4TS19ByjLg53Ta5NGYATH1KH+AFN9BA16AQAA
+   180:        </ICON_MAP_DATA>
+   181:       </ICON_MAP>
+   182:      </ENUM>
+   183:      <ENUM>
+   184:       <ENUM_STRING>P</ENUM_STRING>
+   185:       <ICON_MAP>
+   186:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   187:        <ICON_MAP_DATA>
+   188:         H4sIAAAAAAACC22PwW6DMAyGz6vUd7B86XYoEOAwEGm1nXfoG0wMAlgLCUoyQvf0S7oedtjJsv378/83522WsApjSSuOLMkQhOp0T2rk+OWG4zOeT/tdY9fxryxH+GituBg9kBQcHakrAvUc32gVUup3hvvdAwS6shwn55Y6Tb33iS8SbcY0z7IsDVD8ldSbJPX5n5BVVZXetkHKMVs2hOu9eurdxLEsYjMJGicXzFWhi79XEv5VxxvIoCyAVQg6ZBik9hxtZ7SUt/e1XdouhFiMsMKsAmNgJzYHzrTKDtrMHOfWGdoeGUQaA1YCK54QBq3ccWhnksHU4cVQKw/3qaXvAGV5sHO6NGkERnBMHeoPI4XY1XoBAAA=
+   189:        </ICON_MAP_DATA>
+   190:       </ICON_MAP>
+   191:      </ENUM>
+   192:      <ENUM>
+   193:       <ENUM_STRING>Q</ENUM_STRING>
+   194:       <ICON_MAP>
+   195:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   196:        <ICON_MAP_DATA>
+   197:         H4sIAAAAAAACC22PsW6EMAyG555072B5uXY4IMBQELlTO3don6CiEMBqSFCSEq5P3+R6Q4dOlu3fn/+/OW+zhFUYS1pxZEmGIFSne1Ijxy83HB/xfNrvGruOf2U5wkdrxavRA0nB0ZG6IFDP8YVWIaV+Z7jf3UGgK8txcm6p09R7n/gi0WZM8yzL0gDFX0m9SVKf/wlZVVXpdRukHLNlQ7jcqqfeTRzLIjaToHFywVwVuvh7JeGfdbyBDMoCWIWgQ4ZBas/RdkZLeX1f26XtQojFCCvMKjAGdmJz4Eyr7KDNzHFunaHtnkGkMWAlsOIBYdDKHYd2JhlMHZ4MtfJwm1r6DlCWBzuntyaNwAiOqUP9AcIzijp6AQAA
+   198:        </ICON_MAP_DATA>
+   199:       </ICON_MAP>
+   200:      </ENUM>
+   201:      <ENUM>
+   202:       <ENUM_STRING>R</ENUM_STRING>
+   203:       <ICON_MAP>
+   204:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   205:        <ICON_MAP_DATA>
+   206:         H4sIAAAAAAACC22PsW6EMAyG555072B5uXY4IMBQELlTO3eo+gIVhQBWQ4KSlHB9+ibXGzp0smz//vz/zXmbJazCWNKKI0syBKE63ZMaOX654fiI59N+19h1/CvLET5aK16NHkgKjo7UBYF6ji+0Cin1O8P97g4CXVmOk3NLnabe+8QXiTZjmmdZlgYo/krqTZL6/E/IqqpKr9sg5ZgtG8LlVj31buJYFrGZBI2TC+aq0MXfKwn/rOMNZFAWwCoEHTIMUnuOtjNayuv72i5tF0IsRlhhVoExsBObA2daZQdtZo5z6wxt9wwijQErgRUPCINW7ji0M8lg6vBkqJWH29TSd4CyPNg5vTVpBEZwTB3qD6DuDNB6AQAA
+   207:        </ICON_MAP_DATA>
+   208:       </ICON_MAP>
+   209:      </ENUM>
+   210:      <ENUM>
+   211:       <ENUM_STRING>S</ENUM_STRING>
+   212:       <ICON_MAP>
+   213:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   214:        <ICON_MAP_DATA>
+   215:         H4sIAAAAAAACC22PsW6EMAyG555072B5uXY4IMBQELlTO3eo1AeoKASwGhKUpITr0ze53tChk2X79+f/b87bLGEVxpJWHFmSIQjV6Z7UyPHLDcdHPJ/2u8au419ZjvDRWvFq9EBScHSkLgjUc3yhVUip3xnud3cQ6MpynJxb6jT13ie+SLQZ0zzLsjRA8VdSb5LU539CVlVVet0GKcds2RAut+qpdxPHsojNJGicXDBXhS7+Xkn4Zx1vIIOyAFYh6JBhkNpztJ3RUl7f13ZpuxBiMcIKswqMgZ3YHDjTKjtoM3OcW2dou2cQaQxYCax4QBi0csehnUkGU4cnQ6083KaWvgOU5cHO6a1JIzCCY+pQfwBBWF4/egEAAA==
+   216:        </ICON_MAP_DATA>
+   217:       </ICON_MAP>
+   218:      </ENUM>
+   219:      <ENUM>
+   220:       <ENUM_STRING>T</ENUM_STRING>
+   221:       <ICON_MAP>
+   222:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   223:        <ICON_MAP_DATA>
+   224:         H4sIAAAAAAACC22PMW+EMAyF5550/8Hycu1wQIChIHKndu7QoXtFIYDVkKAkJVx/fZPrDR06WbafP7/XnLdZwiqMJa04siRDEKrTPamR45cbjo94Pu13jV3Hv7Ic4aO14tXogaTg6EhdEKjn+EKrkFK/M9zv7iDQleU4ObfUaeq9T3yRaDOmeZZlaYDir6TeJKnP/4Ssqqr0ug1SjtmyIVxu1VPvJo5lEZtJ0Di5YK4KXfy9kvDPOt5ABmUBrELQIcMgtedoO6OlvL6v7dJ2IcRihBVmFRgDO7E5cKZVdtBm5ji3ztB2zyDSGLASWPGAMGjljkM7kwymDk+GWnm4TS19ByjLg53TW5NGYATH1KH+ACVScN56AQAA
+   225:        </ICON_MAP_DATA>
+   226:       </ICON_MAP>
+   227:      </ENUM>
+   228:      <ENUM>
+   229:       <ENUM_STRING>U</ENUM_STRING>
+   230:       <ICON_MAP>
+   231:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   232:        <ICON_MAP_DATA>
+   233:         H4sIAAAAAAACC22PMW+EMAyF5550/8Hycu1wQIChIHKndu7QpXNFIYDVkKAkJVx/fZPrDR06WbafP7/XnLdZwiqMJa04siRDEKrTPamR45cbjo94Pu13jV3Hv7Ic4aO14tXogaTg6EhdEKjn+EKrkFK/M9zv7iDQleU4ObfUaeq9T3yRaDOmeZZlaYDir6TeJKnP/4Ssqqr0ug1SjtmyIVxu1VPvJo5lEZtJ0Di5YK4KXfy9kvDPOt5ABmUBrELQIcMgtedoO6OlvL6v7dJ2IcRihBVmFRgDO7E5cKZVdtBm5ji3ztB2zyDSGLASWPGAMGjljkM7kwymDk+GWnm4TS19ByjLg53TW5NGYATH1KH+AMTkIjF6AQAA
+   234:        </ICON_MAP_DATA>
+   235:       </ICON_MAP>
+   236:      </ENUM>
+   237:      <ENUM>
+   238:       <ENUM_STRING>V</ENUM_STRING>
+   239:       <ICON_MAP>
+   240:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   241:        <ICON_MAP_DATA>
+   242:         H4sIAAAAAAACC22PMW+EMAyF5550/8Hycu1wQIChIHKndu7QqWtFIYDVkKAkJVx/fZPrDR06WbafP7/XnLdZwiqMJa04siRDEKrTPamR45cbjo94Pu13jV3Hv7Ic4aO14tXogaTg6EhdEKjn+EKrkFK/M9zv7iDQleU4ObfUaeq9T3yRaDOmeZZlaYDir6TeJKnP/4Ssqqr0ug1SjtmyIVxu1VPvJo5lEZtJ0Di5YK4KXfy9kvDPOt5ABmUBrELQIcMgtedoO6OlvL6v7dJ2IcRihBVmFRgDO7E5cKZVdtBm5ji3ztB2zyDSGLASWPGAMGjljkM7kwymDk+GWnm4TS19ByjLg53TW5NGYATH1KH+AKY5pNt6AQAA
+   243:        </ICON_MAP_DATA>
+   244:       </ICON_MAP>
+   245:      </ENUM>
+   246:      <ENUM>
+   247:       <ENUM_STRING>W</ENUM_STRING>
+   248:       <ICON_MAP>
+   249:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   250:        <ICON_MAP_DATA>
+   251:         H4sIAAAAAAACC22PMW+EMAyF5550/8Hycu1wQIChIHKndu7QrWNFIYDVkKAkJVx/fZPrDR06WbafP7/XnLdZwiqMJa04siRDEKrTPamR45cbjo94Pu13jV3Hv7Ic4aO14tXogaTg6EhdEKjn+EKrkFK/M9zv7iDQleU4ObfUaeq9T3yRaDOmeZZlaYDir6TeJKnP/4Ssqqr0ug1SjtmyIVxu1VPvJo5lEZtJ0Di5YK4KXfy9kvDPOt5ABmUBrELQIcMgtedoO6OlvL6v7dJ2IcRihBVmFRgDO7E5cKZVdtBm5ji3ztB2zyDSGLASWPGAMGjljkM7kwymDk+GWnm4TS19ByjLg53TW5NGYATH1KH+AEeP9jR6AQAA
+   252:        </ICON_MAP_DATA>
+   253:       </ICON_MAP>
+   254:      </ENUM>
+   255:      <ENUM>
+   256:       <ENUM_STRING>X</ENUM_STRING>
+   257:       <ICON_MAP>
+   258:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   259:        <ICON_MAP_DATA>
+   260:         H4sIAAAAAAACC22PMW+EMAyF5550/8Hycu1wQIChIHKndu7QsVtFIYDVkKAkJVx/fZPrDR06WbafP7/XnLdZwiqMJa04siRDEKrTPamR45cbjo94Pu13jV3Hv7Ic4aO14tXogaTg6EhdEKjn+EKrkFK/M9zv7iDQleU4ObfUaeq9T3yRaDOmeZZlaYDir6TeJKnP/4Ssqqr0ug1SjtmyIVxu1VPvJo5lEZtJ0Di5YK4KXfy9kvDPOt5ABmUBrELQIcMgtedoO6OlvL6v7dJ2IcRihBVmFRgDO7E5cKZVdtBm5ji3ztB2zyDSGLASWPGAMGjljkM7kwymDk+GWnm4TS19ByjLg53TW5NGYATH1KH+AC8ricJ6AQAA
+   261:        </ICON_MAP_DATA>
+   262:       </ICON_MAP>
+   263:      </ENUM>
+   264:      <ENUM>
+   265:       <ENUM_STRING>Y</ENUM_STRING>
+   266:       <ICON_MAP>
+   267:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   268:        <ICON_MAP_DATA>
+   269:         H4sIAAAAAAACC22PMW+EMAyF5550/8Hycu1wQIChIHKndu7QtVNFIYDVkKAkJVx/fZPrDR06WbafP7/XnLdZwiqMJa04siRDEKrTPamR45cbjo94Pu13jV3Hv7Ic4aO14tXogaTg6EhdEKjn+EKrkFK/M9zv7iDQleU4ObfUaeq9T3yRaDOmeZZlaYDir6TeJKnP/4Ssqqr0ug1SjtmyIVxu1VPvJo5lEZtJ0Di5YK4KXfy9kvDPOt5ABmUBrELQIcMgtedoO6OlvL6v7dJ2IcRihBVmFRgDO7E5cKZVdtBm5ji3ztB2zyDSGLASWPGAMGjljkM7kwymDk+GWnm4TS19ByjLg53TW5NGYATH1KH+AM6d2y16AQAA
+   270:        </ICON_MAP_DATA>
+   271:       </ICON_MAP>
+   272:      </ENUM>
+   273:      <ENUM>
+   274:       <ENUM_STRING>Z</ENUM_STRING>
+   275:       <ICON_MAP>
+   276:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   277:        <ICON_MAP_DATA>
+   278:         H4sIAAAAAAACC22PMW+EMAyF5550/8Hycu1wQIChIHKndu7QuUtFIYDVkKAkJVx/fZPrDR06WbafP7/XnLdZwiqMJa04siRDEKrTPamR45cbjo94Pu13jV3Hv7Ic4aO14tXogaTg6EhdEKjn+EKrkFK/M9zv7iDQleU4ObfUaeq9T3yRaDOmeZZlaYDir6TeJKnP/4Ssqqr0ug1SjtmyIVxu1VPvJo5lEZtJ0Di5YK4KXfy9kvDPOt5ABmUBrELQIcMgtedoO6OlvL6v7dJ2IcRihBVmFRgDO7E5cKZVdtBm5ji3ztB2zyDSGLASWPGAMGjljkM7kwymDk+GWnm4TS19ByjLg53TW5NGYATH1KH+AKxAXcd6AQAA
+   279:        </ICON_MAP_DATA>
+   280:       </ICON_MAP>
+   281:      </ENUM>
+   282:     </ENUM_LIST>
+   283:    </IPARAM>
+   284:    <IPARAM>
+   285:     <SUB_ID>14</SUB_ID>
+   286:     <TITLE>display digit</TITLE>
+   287:     <VARNAME>showDigit</VARNAME>
+   288:     <VISIBILITY>True</VISIBILITY>
+   289:     <DEF_VALUE>1</DEF_VALUE>
+   290:     <VALUE>1</VALUE>
+   291:     <MIN_VALUE>1</MIN_VALUE>
+   292:     <MAX_VALUE>11</MAX_VALUE>
+   293:     <ENUM_LIST>
+   294:      <ENUM>
+   295:       <ENUM_STRING>none</ENUM_STRING>
+   296:      </ENUM>
+   297:      <ENUM>
+   298:       <ENUM_STRING>0</ENUM_STRING>
+   299:       <ICON_MAP>
+   300:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   301:        <ICON_MAP_DATA>
+   302:         H4sIAAAAAAACC22PwU7DMAyGz0zaO1i+DA5bk3ZItGo2wZkDb4BKm7YWaVIloel4epKxAwdOlu3fn/+/Pq+TgkVaR0YL5AeGIHVrOtKDwC/f75/wfNpuarcMf2U5wkfj5Js1PSkp0JO+IFAn8JUWqZR557jd3EGkaydw9H6usiyEcAjFwdghyxljWYTir6RaFenP/4S8LMvsuo1SgWxeES63Gqjzo8BjkZpR0jD6aK6MXfq9kAwvJt0Ag2MBvEQwMUOvTBDoWmuUur6v3Ny0McRspZN2kZgCe7l68LbRrjd2Ejg13tJ6zyHROOSPwIsHhN5ov++biVQ0tXu21KjdberoO0J5Hu2cWJ0lYAKn1LH+AI2Raed6AQAA
+   303:        </ICON_MAP_DATA>
+   304:       </ICON_MAP>
+   305:      </ENUM>
+   306:      <ENUM>
+   307:       <ENUM_STRING>1</ENUM_STRING>
+   308:       <ICON_MAP>
+   309:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   310:        <ICON_MAP_DATA>
+   311:         H4sIAAAAAAACC22PwU7DMAyGz0zaO1i+DA5bm3ZItGo2wZkDb4BKm7QWaVIloel4epKxAwdOlu3fn/+/Oa+TgkVYR0ZzZIccQejO9KQHjl9e7p/wfNpuGrcMf2UFwkfrxJs1kpTg6ElfEKjn+EqLUMq8M9xu7iDSteM4ej/XWRZCOITyYOyQFXmeZxGKv5J6VaQ//xOyqqqy6zZKOebzinC51UC9Hzkey9SMgobRR3NV7NLvhUR4MekGcjiWwCoEEzNIZQJH11mj1PV97ea2iyFmK5ywi8AU2IvVg7etdtLYiePUekvrPYNEY1A8AisfEKTRfi/biVQ0tXu21KrdberoO0JZEe2cWJMlYAKn1LH+AGwnOwh6AQAA
+   312:        </ICON_MAP_DATA>
+   313:       </ICON_MAP>
+   314:      </ENUM>
+   315:      <ENUM>
+   316:       <ENUM_STRING>2</ENUM_STRING>
+   317:       <ICON_MAP>
+   318:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   319:        <ICON_MAP_DATA>
+   320:         H4sIAAAAAAACC22PwU7DMAyGz0zaO1i+DA5bm3ZItGo2wZkDb4BKm7QWaVIloel4epKxAwdOlu3fn/+/Oa+TgkVYR0ZzZIccQejO9KQHjl9e7p/wfNpuGrcMf2UFwkfrxJs1kpTg6ElfEKjn+EqLUMq8M9xu7iDSteM4ej/XWRZCOITyYOyQFXmeZxGKv5J6VaQ//xOyqqqy6zZKOebzinC51UC9Hzkey9SMgobRR3NV7NLvhUR4MekGcjiWwCoEEzNIZQJH11mj1PV97ea2iyFmK5ywi8AU2IvVg7etdtLYiePUekvrPYNEY1A8AisfEKTRfi/biVQ0tXu21KrdberoO0JZEe2ciiZLwAROqWP9AQ76veJ6AQAA
+   321:        </ICON_MAP_DATA>
+   322:       </ICON_MAP>
+   323:      </ENUM>
+   324:      <ENUM>
+   325:       <ENUM_STRING>3</ENUM_STRING>
+   326:       <ICON_MAP>
+   327:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   328:        <ICON_MAP_DATA>
+   329:         H4sIAAAAAAACC22PwU7DMAyGz0zaO1i+DA5bm3ZItGo2wZkDb4BKm7QWaVIloel4epKxAwdOlu3fn/+/Oa+TgkVYR0ZzZIccQejO9KQHjl9e7p/wfNpuGrcMf2UFwkfrxJs1kpTg6ElfEKjn+EqLUMq8M9xu7iDSteM4ej/XWRZCOITyYOyQFXmeZxGKv5J6VaQ//xOyqqqy6zZKOebzinC51UC9Hzkey9SMgobRR3NV7NLvhUR4MekGcjiWwCoEEzNIZQJH11mj1PV97ea2iyFmK5ywi8AU2IvVg7etdtLYiePUekvrPYNEY1A8AisfEKTRfi/biVQ0tXu21KrdberoO0JZEe2cyiZLwAROqWP9Ae9M7w16AQAA
+   330:        </ICON_MAP_DATA>
+   331:       </ICON_MAP>
+   332:      </ENUM>
+   333:      <ENUM>
+   334:       <ENUM_STRING>4</ENUM_STRING>
+   335:       <ICON_MAP>
+   336:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   337:        <ICON_MAP_DATA>
+   338:         H4sIAAAAAAACC22PwW6DMAyGz6vUd7B86XYoEGDSQKTVdt5hbzAxCGAtJCjJCN3TL+l62GEny/bvz//fnLdZwiqMJa04siRDEKrTPamR45cbjk94Pu13jV3Hv7Ic4aO14s3ogaTg6EhdEKjn+EqrkFK/M9zv7iDQleU4ObfUaeq9T3yRaDOmeZZlaYDir6TeJKnP/4Ssqqr0ug1SjtmyIVxu1VPvJo5lEZtJ0Di5YK4KXfy9kvAvOt5ABmUBrELQIcMgtedoO6OlvL6v7dJ2IcRihBVmFRgDO7E5cKZVdtBm5ji3ztB2zyDSGOSPwIoHhEErdxzamWQwdXg21MrDbWrpO0BZHuycyiaNwAiOqUP9AYtGwex6AQAA
+   339:        </ICON_MAP_DATA>
+   340:       </ICON_MAP>
+   341:      </ENUM>
+   342:      <ENUM>
+   343:       <ENUM_STRING>5</ENUM_STRING>
+   344:       <ICON_MAP>
+   345:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   346:        <ICON_MAP_DATA>
+   347:         H4sIAAAAAAACC22PwW6DMAyGz6vUd7B86XooEGilgUir7bzD3mBiEMBaSFCSEbqnX9L1sMNOlu3fn/+/vqyThEUYS1pxZEmGIFSrO1IDxy/XH57wct5uarsMf2U5wkdjxZvRPUnB0ZG6IlDH8ZUWIaV+Z7jdPECgK8txdG6u0tR7n/gi0WZI8yzL0gDFX0m1SlKf/wlZWZbpbRukHLN5Rbjeq6fOjRyPRWxGQcPogrkydPH3QsK/6HgDGRwLYCWCDhl6qT1H2xot5e19ZeemDSFmI6wwi8AY2InVgTONsr02E8epcYbWRwaRxiA/ASv2CL1W7tA3E8lgavdsqJG7+9TSd4CyPNg5n+o0AiM4pg71B2rwkwN6AQAA
+   348:        </ICON_MAP_DATA>
+   349:       </ICON_MAP>
+   350:      </ENUM>
+   351:      <ENUM>
+   352:       <ENUM_STRING>6</ENUM_STRING>
+   353:       <ICON_MAP>
+   354:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   355:        <ICON_MAP_DATA>
+   356:         H4sIAAAAAAACC22PwU7DMAyGz0zaO1i+DA5rm3YgWjWb4MyBN0Bdm7YWaVIloel4epKxAwdOlu3fn/+/Pq2ThEUYS1pxZEmGIFSrO1IDxy/X75/xdNxuarsMf2U5wrmx4t3onqTg6EhdEKjj+EaLkFJ/MNxu7iDQleU4OjdXaeq9T3yRaDOkeZZlaYDir6RaJanP/4SsLMv0ug1Sjtm8Ilxu1VPnRo6HIjajoGF0wVwZuvh7IeFfdbyBDA4FsBJBhwy91J6jbY2W8vq+snPThhCzEVaYRWAM7MTqwJlG2V6biePUOEPrPYNIY5A/AiseEHqt3L5vJpLB1O7FUCN3t6ml7wBlebBzfKrTCIzgmDrUHwgtFel6AQAA
+   357:        </ICON_MAP_DATA>
+   358:       </ICON_MAP>
+   359:      </ENUM>
+   360:      <ENUM>
+   361:       <ENUM_STRING>7</ENUM_STRING>
+   362:       <ICON_MAP>
+   363:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   364:        <ICON_MAP_DATA>
+   365:         H4sIAAAAAAACC22PwU7DMAyGz0zaO1i+DA5rm3YIWjWb4MyBN0Bdm7YWaVIloel4epKxAwdOlu3fn/+/Pq2ThEUYS1pxZEmGIFSrO1IDxy/X75/xdNxuarsMf2U5wrmx4t3onqTg6EhdEKjj+EaLkFJ/MNxu7iDQleU4OjdXaeq9T3yRaDOkeZZlaYDir6RaJanP/4SsLMv0ug1Sjtm8Ilxu1VPnRo6HIjajoGF0wVwZuvh7IeFfdbyBDA4FsBJBhwy91J6jbY2W8vq+snPThhCzEVaYRWAM7MTqwJlG2V6biePUOEPrPYNIY5A/AiseEHqt3L5vJpLB1O7FUCN3t6ml7wBlebBzfKrTCIzgmDrUH+mbRwZ6AQAA
+   366:        </ICON_MAP_DATA>
+   367:       </ICON_MAP>
+   368:      </ENUM>
+   369:      <ENUM>
+   370:       <ENUM_STRING>8</ENUM_STRING>
+   371:       <ICON_MAP>
+   372:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   373:        <ICON_MAP_DATA>
+   374:         H4sIAAAAAAACC22PwW6DMAyGz6vUd7B86XYoEGilgkir7bzD3mBiEMBaSFCSEbqnX9L1sMNOlu3fn/+/vqyThEUYS1pxZEmGIFSrO1IDxy/X7094OW83tV2Gv7Ic4aOx4s3onqTg6EhdEajj+EqLkFK/M9xuHiDQleU4OjdXaeq9T3yRaDOkeZZlaYDir6RaJanP/4SsLMv0tg1Sjtm8Ilzv1VPnRo6HIjajoGF0wVwZuvh7IeFfdLyBDA4FsBJBhwy91J6jbY2W8va+snPThhCzEVaYRWAM7MTqwJlG2V6biePUOEPrI4NIY5AfgRVPCL1Wbt83E8lgavdsqJG7+9TSd4CyPNg5n+o0AiM4pg71B4E/OPB6AQAA
+   375:        </ICON_MAP_DATA>
+   376:       </ICON_MAP>
+   377:      </ENUM>
+   378:      <ENUM>
+   379:       <ENUM_STRING>9</ENUM_STRING>
+   380:       <ICON_MAP>
+   381:        <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   382:        <ICON_MAP_DATA>
+   383:         H4sIAAAAAAACC22PwU7DMAyGz0zaO1i+DA5bm3ZItGo2wZkDb4BKm7QWaVIloel4epKxAwdOlu3fn/+/Oa+TgkVYR0ZzZIccQejO9KQHjl9e7p/wfNpuGrcMf2UFwkfrxJs1kpTg6ElfEKjn+EqLUMq8M9xu7iDSteM4ej/XWRZCOITyYOyQFXmeZxGKv5J6VaQ//xOyqqqy6zZKOebzinC51UC9Hzkey9SMgobRR3NV7NLvhUR4MekGcjiWwCoEEzNIZQJH11mj1PV97ea2iyFmK5ywi8AU2IvVg7etdtLYiePUekvrPYNEY1A8AisfEKTRfi/biVQ0tXu21KrdberoO0JZEe2cqiZLwAROqWP9AWCJah96AQAA
+   384:        </ICON_MAP_DATA>
+   385:       </ICON_MAP>
+   386:      </ENUM>
+   387:     </ENUM_LIST>
+   388:    </IPARAM>
+   389:   </IPARAMS_LIST>
+   390:   <EVARS_LIST>
+   391:    <PORT>
+   392:     <EVAR>
+   393:      <SUB_ID>11</SUB_ID>
+   394:      <TITLE>receiver output</TITLE>
+   395:      <NB_IN_GROUP>numInp</NB_IN_GROUP>
+   396:      <VARNAME>output</VARNAME>
+   397:      <VISIBILITY>True</VISIBILITY>
+   398:      <TYPE>0</TYPE>
+   399:      <DIMENSION>1</DIMENSION>
+   400:      <DIM_EXPRESSION>dimInp</DIM_EXPRESSION>
+   401:      <IO>2</IO>
+   402:      <UNITS>null</UNITS>
+   403:     </EVAR>
+   404:    </PORT>
+   405:    <PORT>
+   406:     <EVAR>
+   407:      <SUB_ID>3</SUB_ID>
+   408:      <TITLE>receiver input</TITLE>
+   409:      <NB_IN_GROUP>numInp</NB_IN_GROUP>
+   410:      <VARNAME>input</VARNAME>
+   411:      <VISIBILITY>True</VISIBILITY>
+   412:      <TYPE>0</TYPE>
+   413:      <DIMENSION>1</DIMENSION>
+   414:      <DIM_EXPRESSION>dimInp</DIM_EXPRESSION>
+   415:      <IO>1</IO>
+   416:      <UNITS>null</UNITS>
+   417:     </EVAR>
+   418:    </PORT>
+   419:   </EVARS_LIST>
+   420:   <ICON_MAP>
+   421:    <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   422:    <ICON_MAP_DATA>
+   423:     H4sIAAAAAAACC91WXW+bMBR936+wvJdNaow/SApV3Yf9E5oYcEswMm6B/fpdO4RCR7s9bKpSpMTXxyfX+Pj4Orftc4Getep+mF5iiiiKBWIpRv2xqluJS+eamyjquo50ghhbRJxSGsGvRspNX+n6cY3I0jSNwii+uy2QPkhs7h/U3jGGo1cIBwowFeqZxCLBaIA2JVuYhEscCwD4COS6qjb2qVIS16b+qazByNmsbnNjjxIfM2d1/40RCouZvpbd73g29+6UMmRTGLXOmkfI/ZWG5wxsDllbZtZmg8QLzOR5qxxIR2Zkv5R91kh8/+TcAn0wuoaX1E7ZCQ+9SkMjMVvkMU221w6mZHO00wdXjhgI2ZhqKEyNGkjtYMsYI1t6lZId7KWPWEzYGG599DK+LuaLNOIszSRG4K++1YcpFq8KRlcEo6Ngk9HoK58l/9Fm8aXaTLxhM+EHrnbgJSSuwVfgKB8GlPFZLEgCcULSBWVL+Dn0Of5kxevPaUULS0O9P7NgPWgwGgkczl6pdFH6zYLFWyBBVbZDaP61Odmkbh6eC1L3vco4v2KS6RJqdVFn1fzCof7AD6eC4OvAqc/Dfvyd1EHWDVvKHPPQ/11t+kYtyPMLuXKiYvaB/wJ3X34BnS/TLEgIAAA=
+   424:    </ICON_MAP_DATA>
+   425:   </ICON_MAP>
+   426:   <CIR_PORTS_OVER_FRAMEWORK>0</CIR_PORTS_OVER_FRAMEWORK>
+   427:   <SUBIDS_RESET>0</SUBIDS_RESET>
+   428:  </SUBMODEL>
+   429: </SPE>

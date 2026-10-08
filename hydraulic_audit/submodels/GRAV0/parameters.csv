@@ -1,0 +1,6 @@
+﻿alias,data_path,parameter_type,title,unit,raw_value,resolved_value,value_unit
+gravityicon,fixedg@gravityicon,ame_real_parameter,constant gravity value,m/s/s,9.80665,9.80665,m/s/s
+gravityicon,gtype@gravityicon,ame_integer_parameter,setting type,,1,1,
+gravityicon,mode@gravityicon,ame_integer_parameter,data out of range mode,,1,1,
+gravityicon,disc@gravityicon,ame_integer_parameter,discontinuity handling,,2,2,
+gravityicon,gfile@gravityicon,ame_text_parameter,filename for g = f(t),,file.data,file.data,

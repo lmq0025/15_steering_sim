@@ -1,0 +1,5 @@
+﻿variant,alias,command_nrmse,spool_nrmse,branch_flow_nrmse,finding
+A,dirvalve_1,0.0,0.0,1.873120139456138,command/spool direction matched; aggregate FAST branch flow is not Amesim-equivalent
+B,dirvalve_2,0.0,0.0,0.11486743354783835,command/spool direction matched; aggregate FAST branch flow is not Amesim-equivalent
+C,dirvalve_6,0.0,0.0,0.14331476869586862,command/spool direction matched; aggregate FAST branch flow is not Amesim-equivalent
+D,dirvalve_3,0.0,0.0,1.7444346684572705,command/spool direction matched; aggregate FAST branch flow is not Amesim-equivalent

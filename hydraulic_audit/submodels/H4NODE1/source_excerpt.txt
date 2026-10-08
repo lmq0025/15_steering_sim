@@ -1,0 +1,296 @@
+SUBMODEL: H4NODE1
+SOURCE FILES: 2
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\H4NODE1.c
+==============================================================================
+...
+     1: /* Submodel H4NODE1 skeleton created by AME Submodel editing utility
+     2:    ven. 16. avr. 10:04:39 2010 */
+     3: 
+     4: 
+     5: 
+     6: #include <math.h>
+     7: #include <stdio.h>
+     8: #include <stdlib.h>
+     9: #include "ameutils.h"
+    10: /* *******************************************************************************
+    11:  
+    12: TITLE : H4NODE1
+    13: ------------------------------------------------------------------------------
+    14: DESCRIPTION :
+    15: 	
+    16: 	This submodel is a 4-port hydraulic junction with pressure
+    17: 	fixed by port 1.
+    18: 	   
+    19: 	The flow rates at port 2, 3 and 4 are summed and passed as 
+    20:         output to port 1. To ensure compatibility with the HCD
+    21:         library, the volumes at ports 2, 3 and 4 are summed and passed
+    22:         as output to port 1. These are inputs with default so that
+    23:         when used with hydraulic components they are always zero.
+    24:  
+    25: ------------------------------------------------------------------------------
+    26: USAGE :
+    27: 	
+    28: 	This submodel is suitable as a general purpose hydraulic 4-port
+    29: 	node.
+    30: ------------------------------------------------------------------------------
+    31: PARAMETER SETTINGS :
+    32: 	
+    33: 	There are no parameters to set.
+    34: --------------------------------------------------------------------------------
+    35: SOURCE :
+    36:    Siemens Industry Software SAS
+    37:    7 place des Minimes
+    38:    42300 Roanne - France
+    39:    tel: (33).04.77.23.60.30
+    40:    fax: (33).04.77.23.60.31
+    41:    www.siemens.com/plm
+    42: 
+    43:    Copyright 2015 Siemens Industry Software NV
+    44: ******************************************************************************* */
+    45: /* >>>>>>>>>>>>Insert Private Code Here. */
+    46: /* <<<<<<<<<<<<End of Private Code. */
+    47: void h4node1in_(int *n, double *vol2, double *vol3, double *vol4)
+    48: 
+    49: {
+    50:    int loop = 0, error = 0;
+    51: /* >>>>>>>>>>>>Extra Initialization Function Declarations Here. */
+    52: /* <<<<<<<<<<<<End of Extra Initialization declarations. */
+    53: 
+    54: /* Assign default values to input(s) with default.  */
+    55: 
+    56:    *vol2      =     0.00000000000000e+000;
+    57:    *vol3      =     0.00000000000000e+000;
+    58:    *vol4      =     0.00000000000000e+000;
+    59: 
+    60: 
+    61: /* >>>>>>>>>>>>Initialization Function Check Statements. */
+    62: /* <<<<<<<<<<<<End of Initialization Check Statements. */
+    63: 
+    64:    if(error == 1)
+    65:    {
+    66:       amefprintf(stderr, "\nWarning in H4NODE1 instance %d.\n", *n);
+    67:    }
+    68:    else if(error == 2)
+    69:    {
+    70:       amefprintf(stderr, "\nFatal error in H4NODE1 instance %d.\n", *n);
+    71:       amefprintf(stderr, "Terminating the program.\n");
+    72:       AmeExit(1);
+    73:    }
+    74: 
+    75: 
+    76: /* >>>>>>>>>>>>Initialization Function Executable Statements. */
+    77: /* <<<<<<<<<<<<End of Initialization Executable Statements. */
+    78: }
+    79: 
+    80: /*  There are 4 ports.
+    81: 
+    82:    Port 1 has 3 variables:
+    83: 
+    84:       1 q1        flow rate at port 1  [L/min] one line macro 'q2+q3+q4'
+    85:       2 vol1      volume at port 1     [cm**3] one line macro 'vol2+vol3+vol4'
+    86:       3 pjunc     pressure at junction [bar]   basic variable input
+    87: 
+    88:    Port 2 has 3 variables:
+    89: 
+    90:       1 pjunc2     duplicate of pjunc  
+    91:       2 q2         flow rate at port 2  [L/min] basic variable input
+    92:       3 vol2       volume at port 2     [cm**3] basic variable input with default 0.000000e+000
+    93: 
+    94:    Port 3 has 3 variables:
+    95: 
+    96:       1 pjunc3     duplicate of pjunc  
+    97:       2 q3         flow rate at port 3  [L/min] basic variable input
+    98:       3 vol3       volume at port 3     [cm**3] basic variable input with default 0.000000e+000
+    99: 
+   100:    Port 4 has 3 variables:
+   101: 
+   102:       1 pjunc4     duplicate of pjunc  
+   103:       2 q4         flow rate at port 4  [L/min] basic variable input
+   104:       3 vol4       volume at port 4     [cm**3] basic variable input with default 0.000000e+000
+   105: */
+   106: 
+   107: /*  There are 0 internal variables.
+   108: 
+   109: */
+   110: 
+   111: #if 0
+   112: 
+   113: /* THE CALCULATION FUNCTION WILL NOT BE CALLED. */
+   114: 
+   115: void h4node1_(int *n, double *pjunc, double *q2, double *vol2
+   116:       , double *q3, double *vol3, double *q4, double *vol4)
+   117: 
+   118: {
+   119:    int logi = 0;
+   120: /* >>>>>>>>>>>>Extra Calculation Function Declarations Here. */
+   121: /* <<<<<<<<<<<<End of Extra Calculation declarations. */
+   122:    int loop = 0;
+   123: 
+   124: /*
+   125:    Set all submodel outputs below:
+   126: 
+   127: */
+   128: 
+   129: 
+   130: 
+   131: /* >>>>>>>>>>>>Calculation Function Executable Statements. */
+   132: /* <<<<<<<<<<<<End of Calculation Executable Statements. */
+   133: }
+   134: 
+   135: #endif
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\H4NODE1.spe
+==============================================================================
+...
+     1: <?xml version="1.0" encoding="ISO-8859-1"?>
+     2: <!DOCTYPE SPE>
+     3: <SPE DOC_VERSION="2" AME_VERSION="16.0.0 - DEV - 20/08/17 19:07 - 66328-61629 2017">
+     4: 
+     5:  <SUBMODEL>
+     6:   <SUB_TYPE>0</SUB_TYPE>
+     7:   <SUB_ID_MAX>12</SUB_ID_MAX>
+     8:   <DEFAULT_ICON>hydrnode4</DEFAULT_ICON>
+     9:   <SUB_LABEL>hydraulic junction 4 ports (pressure fixed by port 1)</SUB_LABEL>
+    10:   <SUB_UNIT>1</SUB_UNIT>
+    11:   <HAS_NO_CALC>1</HAS_NO_CALC>
+    12:   <OUTPUT_TYPE>1</OUTPUT_TYPE>
+    13:   <EVARS_LIST>
+    14:    <PORT>
+    15:     <EVAR>
+    16:      <SUB_ID>1</SUB_ID>
+    17:      <TITLE>flow rate at port 1</TITLE>
+    18:      <VARNAME>q1</VARNAME>
+    19:      <VISIBILITY>True</VISIBILITY>
+    20:      <TYPE>7</TYPE>
+    21:      <UNITS>L/min</UNITS>
+    22:      <EXPRESS2>@_2_2+@_3_2+@_4_2</EXPRESS2>
+    23:     </EVAR>
+    24:     <EVAR>
+    25:      <SUB_ID>2</SUB_ID>
+    26:      <TITLE>volume at port 1</TITLE>
+    27:      <VARNAME>vol1</VARNAME>
+    28:      <VISIBILITY>True</VISIBILITY>
+    29:      <TYPE>7</TYPE>
+    30:      <UNITS>cm**3</UNITS>
+    31:      <EXPRESS2>@_2_3+@_3_3+@_4_3</EXPRESS2>
+    32:     </EVAR>
+    33:     <EVAR>
+    34:      <SUB_ID>3</SUB_ID>
+    35:      <TITLE>pressure at junction</TITLE>
+    36:      <VARNAME>pjunc</VARNAME>
+    37:      <VISIBILITY>True</VISIBILITY>
+    38:      <TYPE>0</TYPE>
+    39:      <DIMENSION>1</DIMENSION>
+    40:      <IO>1</IO>
+    41:      <UNITS>bar</UNITS>
+    42:     </EVAR>
+    43:    </PORT>
+    44:    <PORT>
+    45:     <EVAR>
+    46:      <SUB_ID>4</SUB_ID>
+    47:      <VARNAME>pjunc2</VARNAME>
+    48:      <VISIBILITY>True</VISIBILITY>
+    49:      <TYPE>4</TYPE>
+    50:      <PRIMARY_PORT>0</PRIMARY_PORT>
+    51:      <PRIMARY_VAR>2</PRIMARY_VAR>
+    52:      <DUP_TYPE>0</DUP_TYPE>
+    53:     </EVAR>
+    54:     <EVAR>
+    55:      <SUB_ID>5</SUB_ID>
+    56:      <TITLE>flow rate at port 2</TITLE>
+    57:      <VARNAME>q2</VARNAME>
+    58:      <VISIBILITY>True</VISIBILITY>
+    59:      <TYPE>0</TYPE>
+    60:      <DIMENSION>1</DIMENSION>
+    61:      <IO>1</IO>
+    62:      <UNITS>L/min</UNITS>
+    63:     </EVAR>
+    64:     <EVAR>
+    65:      <SUB_ID>6</SUB_ID>
+    66:      <TITLE>volume at port 2</TITLE>
+    67:      <VARNAME>vol2</VARNAME>
+    68:      <VISIBILITY>True</VISIBILITY>
+    69:      <TYPE>0</TYPE>
+    70:      <DIMENSION>1</DIMENSION>
+    71:      <IO>3</IO>
+    72:      <UNITS>cm**3</UNITS>
+    73:      <DEF_VALUE>0</DEF_VALUE>
+    74:     </EVAR>
+    75:    </PORT>
+    76:    <PORT>
+    77:     <EVAR>
+    78:      <SUB_ID>7</SUB_ID>
+    79:      <VARNAME>pjunc3</VARNAME>
+    80:      <VISIBILITY>True</VISIBILITY>
+    81:      <TYPE>4</TYPE>
+    82:      <PRIMARY_PORT>0</PRIMARY_PORT>
+    83:      <PRIMARY_VAR>2</PRIMARY_VAR>
+    84:      <DUP_TYPE>0</DUP_TYPE>
+    85:     </EVAR>
+    86:     <EVAR>
+    87:      <SUB_ID>8</SUB_ID>
+    88:      <TITLE>flow rate at port 3</TITLE>
+    89:      <VARNAME>q3</VARNAME>
+    90:      <VISIBILITY>True</VISIBILITY>
+    91:      <TYPE>0</TYPE>
+    92:      <DIMENSION>1</DIMENSION>
+    93:      <IO>1</IO>
+    94:      <UNITS>L/min</UNITS>
+    95:     </EVAR>
+    96:     <EVAR>
+    97:      <SUB_ID>9</SUB_ID>
+    98:      <TITLE>volume at port 3</TITLE>
+    99:      <VARNAME>vol3</VARNAME>
+   100:      <VISIBILITY>True</VISIBILITY>
+   101:      <TYPE>0</TYPE>
+   102:      <DIMENSION>1</DIMENSION>
+   103:      <IO>3</IO>
+   104:      <UNITS>cm**3</UNITS>
+   105:      <DEF_VALUE>0</DEF_VALUE>
+   106:     </EVAR>
+   107:    </PORT>
+   108:    <PORT>
+   109:     <EVAR>
+   110:      <SUB_ID>10</SUB_ID>
+   111:      <VARNAME>pjunc4</VARNAME>
+   112:      <VISIBILITY>True</VISIBILITY>
+   113:      <TYPE>4</TYPE>
+   114:      <PRIMARY_PORT>0</PRIMARY_PORT>
+   115:      <PRIMARY_VAR>2</PRIMARY_VAR>
+   116:      <DUP_TYPE>0</DUP_TYPE>
+   117:     </EVAR>
+   118:     <EVAR>
+   119:      <SUB_ID>11</SUB_ID>
+   120:      <TITLE>flow rate at port 4</TITLE>
+   121:      <VARNAME>q4</VARNAME>
+   122:      <VISIBILITY>True</VISIBILITY>
+   123:      <TYPE>0</TYPE>
+   124:      <DIMENSION>1</DIMENSION>
+   125:      <IO>1</IO>
+   126:      <UNITS>L/min</UNITS>
+   127:     </EVAR>
+   128:     <EVAR>
+   129:      <SUB_ID>12</SUB_ID>
+   130:      <TITLE>volume at port 4</TITLE>
+   131:      <VARNAME>vol4</VARNAME>
+   132:      <VISIBILITY>True</VISIBILITY>
+   133:      <TYPE>0</TYPE>
+   134:      <DIMENSION>1</DIMENSION>
+   135:      <IO>3</IO>
+   136:      <UNITS>cm**3</UNITS>
+   137:      <DEF_VALUE>0</DEF_VALUE>
+   138:     </EVAR>
+   139:    </PORT>
+   140:   </EVARS_LIST>
+   141:   <ICON_MAP>
+   142:    <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   143:    <ICON_MAP_DATA>
+   144:     H4sIAAAAAAACC62TUW+CMBCAnzXxPzS350GLW1wNncme97B/YBxWaKwtaSvgv98V2eI2WbJEQrhrOe7rRyFfdQdNGum8skYASygQaQq7VaYUcAy7+ydYPc+muW/Ky7IMyPvGyzdnd0pLAUGZExC1FfCqGqm1XTOYTScEuxsvoAqhXqZp27ZJO0+sK9OMUppiUziXLDutzP5aIeOcp/1dLBVA6w7IaYit2oYKl8PjoJKqrMIwiuxGyfbFxmcIJYzjCcSiw07bVoAvnNW6xy99vSlQonbSS9dIiMIlXiZ5oVyhJfHB2T1W3NH+gGHi/qCCdFphQC5OF0jjySMmpyFxAjKMad8NLSTBF6YFGGskjPYdxOajoI4N/U+YMNyNLvucwIQtBmSelr1LvzPF0Yf1w7qK/vC/9VzD0zO8h0b64szmo+j5zdBf5vSH+GIEnd0MHd/1N+34Vf3tzW7v/XvH+SU8/lgYPwDdzKPM3QMAAA==
+   145:    </ICON_MAP_DATA>
+   146:   </ICON_MAP>
+   147:   <SUBIDS_RESET>0</SUBIDS_RESET>
+   148:  </SUBMODEL>
+   149: </SPE>

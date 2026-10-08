@@ -1,0 +1,75 @@
+﻿alias,data_path,parameter_type,title,unit,raw_value,resolved_value,value_unit
+elementaryhydraulicprops,top@elementaryhydraulicprops,ame_real_parameter,temperature at reference pressure,degC,20,20,degC
+elementaryhydraulicprops,psat@elementaryhydraulicprops,ame_real_parameter,saturation pressure (for dissolved gas),barA,2500,2500,barA
+elementaryhydraulicprops,pvaph@elementaryhydraulicprops,ame_real_parameter,high saturated vapor pressure,barA,0.5,0.5,barA
+elementaryhydraulicprops,pvapl@elementaryhydraulicprops,ame_real_parameter,low saturated vapor pressure,barA,0.4,0.4,barA
+elementaryhydraulicprops,xair@elementaryhydraulicprops,ame_real_parameter,default gas content,%,0.1,0.1,%
+elementaryhydraulicprops,gamma@elementaryhydraulicprops,ame_real_parameter,polytropic index for air/gas vapor content,null,1.4,1.4,null
+elementaryhydraulicprops,muair@elementaryhydraulicprops,ame_real_parameter,absolute viscosity of gas,cP,0.02,0.02,cP
+elementaryhydraulicprops,muvap@elementaryhydraulicprops,ame_real_parameter,absolute viscosity of vapor,cP,0.02,0.02,cP
+elementaryhydraulicprops,mvap@elementaryhydraulicprops,ame_real_parameter,effective molecular mass of vapor,g/mol,200,200,g/mol
+elementaryhydraulicprops,rhoair@elementaryhydraulicprops,ame_real_parameter,density of gas,kg/m**3,1.2,1.2,kg/m**3
+elementaryhydraulicprops,cpgas@elementaryhydraulicprops,ame_real_parameter,constant-pressure specific heat of gas,J/kg/K,1004,1004,J/kg/K
+elementaryhydraulicprops,cpvap@elementaryhydraulicprops,ame_real_parameter,constant-pressure specific heat of vapor,J/kg/K,1850,1850,J/kg/K
+elementaryhydraulicprops,lambdagas@elementaryhydraulicprops,ame_real_parameter,thermal conductivity of gas,W/m/K,0.026,0.026,W/m/K
+elementaryhydraulicprops,lambdavap@elementaryhydraulicprops,ame_real_parameter,thermal conductivity of vapor,W/m/K,0.017,0.017,W/m/K
+elementaryhydraulicprops,aeratau@elementaryhydraulicprops,ame_real_parameter,aeration time constant,s,0.001,0.001,s
+elementaryhydraulicprops,disstau@elementaryhydraulicprops,ame_real_parameter,dissolution time constant,s,1,1,s
+elementaryhydraulicprops,rhob@elementaryhydraulicprops,ame_real_parameter,rhob,kg/m**3,1050,1050,kg/m**3
+elementaryhydraulicprops,alph@elementaryhydraulicprops,ame_real_parameter,alpha,1/K,0.0005,0.0005,1/K
+elementaryhydraulicprops,A@elementaryhydraulicprops,ame_real_parameter,A,null,0.9,0.9,null
+elementaryhydraulicprops,B1@elementaryhydraulicprops,ame_real_parameter,B1,bar,11500,11500,bar
+elementaryhydraulicprops,B2@elementaryhydraulicprops,ame_real_parameter,B2,bar/K,9,9,bar/K
+elementaryhydraulicprops,B3@elementaryhydraulicprops,ame_real_parameter,B3,bar/K**2,0,0,bar/K**2
+elementaryhydraulicprops,B4@elementaryhydraulicprops,ame_real_parameter,B4,bar/K**3,0,0,bar/K**3
+elementaryhydraulicprops,cp00@elementaryhydraulicprops,ame_real_parameter,"cp(p0,T) - constant term",J/kg/K,2025.7,2025.7,J/kg/K
+elementaryhydraulicprops,cp0t@elementaryhydraulicprops,ame_real_parameter,"cp(p0,T) - linear term",J/kg/K**2,4.1289,4.1289,J/kg/K**2
+elementaryhydraulicprops,cp0t2@elementaryhydraulicprops,ame_real_parameter,"cp(p0,T) - quadratic term",J/kg/K**3,0,0,J/kg/K**3
+elementaryhydraulicprops,cs00@elementaryhydraulicprops,ame_real_parameter,"cs(p0,T) - constant term",m/s,1479.6,1479.6,m/s
+elementaryhydraulicprops,cs0t@elementaryhydraulicprops,ame_real_parameter,"cs(p0,T) - linear term",m/s/K,1.4056,1.4056,m/s/K
+elementaryhydraulicprops,cs0t2@elementaryhydraulicprops,ame_real_parameter,"cs(p0,T) - quadratic term",m/s/K**2,0.00054803,0.00054803,m/s/K**2
+elementaryhydraulicprops,fpd@elementaryhydraulicprops,ame_real_parameter,density,kg/m**3,883,883,kg/m**3
+elementaryhydraulicprops,fpdslope@elementaryhydraulicprops,ame_real_parameter,expansion coefficient,1/K,0.00055,0.00055,1/K
+elementaryhydraulicprops,fpbm@elementaryhydraulicprops,ame_real_parameter,isothermal bulk modulus,bar,17000,17000,bar
+elementaryhydraulicprops,fpslope@elementaryhydraulicprops,ame_real_parameter,slope of bulk modulus [bar] in function of pressure [bar] (in percentage),null,0,0,null
+elementaryhydraulicprops,pref@elementaryhydraulicprops,ame_real_parameter,reference state pressure,barA,1.013,1.013,barA
+elementaryhydraulicprops,Tref@elementaryhydraulicprops,ame_real_parameter,reference state temperature,degC,20,20,degC
+elementaryhydraulicprops,href@elementaryhydraulicprops,ame_real_parameter,specific enthalpy at reference state,J/kg,0,0,J/kg
+elementaryhydraulicprops,sref@elementaryhydraulicprops,ame_real_parameter,specific entropy at reference state,J/K/kg,0,0,J/K/kg
+elementaryhydraulicprops,T1@elementaryhydraulicprops,ame_real_parameter,temperature T1,degC,40,40,degC
+elementaryhydraulicprops,nu1@elementaryhydraulicprops,ame_real_parameter,"kinematic viscosity at (Patm, T1)",cSt,56.47,56.47,cSt
+elementaryhydraulicprops,T2@elementaryhydraulicprops,ame_real_parameter,temperature T2,degC,100,100,degC
+elementaryhydraulicprops,nu2@elementaryhydraulicprops,ame_real_parameter,"kinematic viscosity at (Patm, T2)",cSt,9.71,9.71,cSt
+elementaryhydraulicprops,tvis@elementaryhydraulicprops,ame_real_parameter,coefficient for temperature viscosity characteristic,null,0.8,0.8,null
+elementaryhydraulicprops,p0eos@elementaryhydraulicprops,ame_real_parameter,definition pressure parameter p0 for equation of state,barA,1.013,1.013,barA
+elementaryhydraulicprops,T0eos@elementaryhydraulicprops,ame_real_parameter,definition temperature parameter T0 for equation of state,degC,20,20,degC
+elementaryhydraulicprops,p0cporcs@elementaryhydraulicprops,ame_real_parameter,definition pressure parameter p0 for cp or cs,barA,1.013,1.013,barA
+elementaryhydraulicprops,T0cporcs@elementaryhydraulicprops,ame_real_parameter,definition temperature parameter T0 for cp or cs,degC,20,20,degC
+elementaryhydraulicprops,pmin@elementaryhydraulicprops,ame_real_parameter,minimum pressure allowed,barA,0,0,barA
+elementaryhydraulicprops,pmax@elementaryhydraulicprops,ame_real_parameter,maximum pressure allowed,barA,500,500,barA
+elementaryhydraulicprops,Tmin@elementaryhydraulicprops,ame_real_parameter,minimum temperature allowed,degC,-20,-20,degC
+elementaryhydraulicprops,Tmax@elementaryhydraulicprops,ame_real_parameter,maximum temperature allowed,degC,180,180,degC
+elementaryhydraulicprops,bunsen@elementaryhydraulicprops,ame_real_parameter,Bunsen coefficient,null,0.09,0.09,null
+elementaryhydraulicprops,fi@elementaryhydraulicprops,ame_integer_parameter,index of thermal hydraulic fluid,,1,1,
+elementaryhydraulicprops,ftype@elementaryhydraulicprops,ame_integer_parameter,fluid type,,2,2,
+elementaryhydraulicprops,cavtype@elementaryhydraulicprops,ame_integer_parameter,cavitation and aeration model,,3,3,
+elementaryhydraulicprops,refdb@elementaryhydraulicprops,ame_integer_parameter,reference database,,2,2,
+elementaryhydraulicprops,bddata@elementaryhydraulicprops,ame_integer_parameter,equation of state parameter type,,1,1,
+elementaryhydraulicprops,cpcsdata@elementaryhydraulicprops,ame_integer_parameter,caloric properties parameter type,,1,1,
+elementaryhydraulicprops,viscdata@elementaryhydraulicprops,ame_integer_parameter,viscosity data type,,1,1,
+elementaryhydraulicprops,visctype@elementaryhydraulicprops,ame_integer_parameter,absolute / kinematic viscosity type selection,,1,1,
+elementaryhydraulicprops,lamdata@elementaryhydraulicprops,ame_integer_parameter,thermal conductivity data type,,1,1,
+elementaryhydraulicprops,cporcs@elementaryhydraulicprops,ame_integer_parameter,input type selection,,1,1,
+elementaryhydraulicprops,thhmode@elementaryhydraulicprops,ame_integer_parameter,assumption level,,1,1,
+elementaryhydraulicprops,inittemp@elementaryhydraulicprops,ame_integer_parameter,temperature initialization,,1,1,
+elementaryhydraulicprops,aeropt@elementaryhydraulicprops,ame_integer_parameter,aeration/dissolution,,1,1,
+elementaryhydraulicprops,solubility@elementaryhydraulicprops,ame_integer_parameter,solubility definition,,1,1,
+elementaryhydraulicprops,dynaeradiss@elementaryhydraulicprops,ame_integer_parameter,dynamics of aeration and dissolution,,1,1,
+elementaryhydraulicprops,fluidname@elementaryhydraulicprops,ame_text_parameter,name of fluid,,unnamed fluid,unnamed fluid,
+elementaryhydraulicprops,pvaph2T@elementaryhydraulicprops,ame_text_parameter,filename or expression for high saturated vapor pressure in cavitation[barA] = f(T[degC]),,10^(6.20963-2354.731/(280.709+T))+0.02,10^(6.20963-2354.731/(280.709+T))+0.02,
+elementaryhydraulicprops,pvapl2T@elementaryhydraulicprops,ame_text_parameter,filename or expression for low saturated vapor pressure in cavitation[barA] = f(T[degC]),,10^(6.20963-2354.731/(280.709+T)),10^(6.20963-2354.731/(280.709+T)),
+elementaryhydraulicprops,viscfileorexpr@elementaryhydraulicprops,ame_text_parameter,"filename or expression for viscosity[cP or cSt] = f(T[degC], P[barA])",,21.63*10^(1-2.311e-2*(T-20)+7.863e-5*(T-20)^2),21.63*10^(1-2.311e-2*(T-20)+7.863e-5*(T-20)^2),
+elementaryhydraulicprops,lamfileorexpr@elementaryhydraulicprops,ame_text_parameter,"filename or expression for thermal conductivity[W/m/degC] = f(T[degC], P[barA])",,0.1425-1.7e-4*T,0.1425-1.7e-4*T,
+elementaryhydraulicprops,bdtable@elementaryhydraulicprops,ame_text_parameter,path to user-defined file,,$AME/libthh/data_bode/15w30.data,$AME/libthh/data_bode/15w30.data,
+elementaryhydraulicprops,dynaeration@elementaryhydraulicprops,ame_text_parameter,"expression for gas release rate[1/s] = f(p[barA], psat[barA], xu, xueq, T[degC])",,2000*(xueq-xu)*sqrt(fabs(psat-p)),2000*(xueq-xu)*sqrt(fabs(psat-p)),
+elementaryhydraulicprops,dyndissolution@elementaryhydraulicprops,ame_text_parameter,"expression for gas dissolution rate[1/s] = f(p[barA], psat[barA], xu, xueq, T[degC])",,-0.1*xu*sqrt(fabs(p-psat)),-0.1*xu*sqrt(fabs(p-psat)),

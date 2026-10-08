@@ -1,0 +1,226 @@
+SUBMODEL: HN222A
+SOURCE FILES: 2
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\HN222A.c
+==============================================================================
+...
+     1: /* Submodel HN222A skeleton created by AME Submodel editing utility
+     2:    mar. 24. août 16:39:53 2010 */
+     3: 
+     4: 
+     5: 
+     6: #include <math.h>
+     7: #include <stdio.h>
+     8: #include <stdlib.h>
+     9: #include "ameutils.h"
+    10: /* *******************************************************************************
+    11:  
+    12: TITLE : HN222A
+    13: ------------------------------------------------------------------------------
+    14: DESCRIPTION :
+    15:    This submodel is a 2-port hydraulic junction with pressure
+    16:    fixed by port 2.
+    17:    
+    18:    The flow rate at port 1 is passed as a duplicate output to 
+    19:    port 2. To make the submodel compatible with the HCD library,
+    20:    there is an input with default volume on port 1 which is
+    21:    duplicated as an output on port 2. When used with hydraulic
+    22:    components this is always zero.
+    23: ------------------------------------------------------------------------------
+    24: USAGE :
+    25:    This submodel in older versions of AMESim was used to join
+    26:    standard AMESim components and line submodels to the AMEBel
+    27:    hydraulic chamber submodel BHC11. With the current version of
+    28:    AMESim it can still be used for this but is unnecessary. 
+    29:  
+    30:    Use HN222A to join two AMESim line submodels.
+    31:  
+    32:    HN222A differs from HN221A only in that the variables at the 
+    33:    ports are mirrored.
+    34: ------------------------------------------------------------------------------
+    35: PARAMETER SETTINGS :
+    36:    There are no parameters to set.
+    37: ------------------------------------------------------------------------------
+    38: DATE OF CREATION/AUTHOR : 06/01/1998 Denis (IMAGINE-Roanne(42300))
+    39: ------------------------------------------------------------------------------
+    40: INDEX OF REVISIONS :
+    41: ------------------------------------------------------------------------------
+    42: LIST OF FUNCTIONS USED :
+    43: ------------------------------------------------------------------------------
+    44: SOURCE :
+    45:    Siemens Industry Software SAS
+    46:    7 place des Minimes
+    47:    42300 Roanne - France
+    48:    tel: (33).04.77.23.60.30
+    49:    fax: (33).04.77.23.60.31
+    50:    www.siemens.com/plm
+    51: 
+    52:    Copyright 2015 Siemens Industry Software NV
+    53: ******************************************************************************* */
+    54: /* >>>>>>>>>>>>Insert Private Code Here. */
+    55: /* <<<<<<<<<<<<End of Private Code. */
+    56: void hn222ain_(int *n, double *vol1)
+    57: 
+    58: {
+    59:    int error = 0;
+    60: /* >>>>>>>>>>>>Extra Initialization Function Declarations Here. */
+    61: /* <<<<<<<<<<<<End of Extra Initialization declarations. */
+    62: 
+    63: /* Assign default values to input(s) with default.  */
+    64: 
+    65:    *vol1      =     0.00000000000000e+000;
+    66: 
+    67: 
+    68: /* >>>>>>>>>>>>Initialization Function Check Statements. */
+    69: /* <<<<<<<<<<<<End of Initialization Check Statements. */
+    70: 
+    71:    if(error == 1)
+    72:    {
+    73:       amefprintf(stderr, "\nWarning in HN222A instance %d.\n", *n);
+    74:    }
+    75:    else if(error == 2)
+    76:    {
+    77:       amefprintf(stderr, "\nFatal error in HN222A instance %d.\n", *n);
+    78:       amefprintf(stderr, "Terminating the program.\n");
+    79:       AmeExit(1);
+    80:    }
+    81: 
+    82: 
+    83: /* >>>>>>>>>>>>Initialization Function Executable Statements. */
+    84: /* <<<<<<<<<<<<End of Initialization Executable Statements. */
+    85: }
+    86: 
+    87: /*  There are 2 ports.
+    88: 
+    89:    Port 1 has 3 variables:
+    90: 
+    91:       1 p1       duplicate of p2    
+    92:       2 q1       flow rate at port 1 [L/min] basic variable input
+    93:       3 vol1     volume at port 1    [cm**3] basic variable input with default 0.000000e+000
+    94: 
+    95:    Port 2 has 3 variables:
+    96: 
+    97:       1 q2       duplicate of q1    
+    98:       2 vol2     duplicate of vol1  
+    99:       3 p2       junction pressure   [bar] basic variable input
+   100: */
+   101: 
+   102: /*  There are 0 internal variables.
+   103: 
+   104: */
+   105: 
+   106: #if 0
+   107: 
+   108: /* THE CALCULATION FUNCTION WILL NOT BE CALLED. */
+   109: 
+   110: void hn222a_(int *n, double *q1, double *vol1, double *p2)
+   111: 
+   112: {
+   113:    int logi = 0;
+   114: /* >>>>>>>>>>>>Extra Calculation Function Declarations Here. */
+   115: /* <<<<<<<<<<<<End of Extra Calculation declarations. */
+   116:    int loop = 0;
+   117: 
+   118: /*
+   119:    Set all submodel outputs below:
+   120: 
+   121: */
+   122: 
+   123: 
+   124: 
+   125: /* >>>>>>>>>>>>Calculation Function Executable Statements. */
+   126: /* <<<<<<<<<<<<End of Calculation Executable Statements. */
+   127: }
+   128: 
+   129: #endif
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\HN222A.spe
+==============================================================================
+...
+     1: <?xml version="1.0" encoding="ISO-8859-1"?>
+     2: <!DOCTYPE SPE>
+     3: <SPE DOC_VERSION="2" AME_VERSION="16.0.0 - DEV - 20/08/17 19:07 - 66328-61629 2017">
+     4: 
+     5:  <SUBMODEL>
+     6:   <SUB_TYPE>0</SUB_TYPE>
+     7:   <SUB_ID_MAX>6</SUB_ID_MAX>
+     8:   <DEFAULT_ICON>hydrnode2</DEFAULT_ICON>
+     9:   <SUB_LABEL>hydraulic junction 2 ports (pressure fixed by port 2)</SUB_LABEL>
+    10:   <SUB_UNIT>1</SUB_UNIT>
+    11:   <HAS_NO_CALC>1</HAS_NO_CALC>
+    12:   <OUTPUT_TYPE>1</OUTPUT_TYPE>
+    13:   <EVARS_LIST>
+    14:    <PORT>
+    15:     <EVAR>
+    16:      <SUB_ID>1</SUB_ID>
+    17:      <VARNAME>p1</VARNAME>
+    18:      <VISIBILITY>True</VISIBILITY>
+    19:      <TYPE>4</TYPE>
+    20:      <PRIMARY_PORT>1</PRIMARY_PORT>
+    21:      <PRIMARY_VAR>2</PRIMARY_VAR>
+    22:      <DUP_TYPE>0</DUP_TYPE>
+    23:     </EVAR>
+    24:     <EVAR>
+    25:      <SUB_ID>2</SUB_ID>
+    26:      <TITLE>flow rate at port 1</TITLE>
+    27:      <VARNAME>q1</VARNAME>
+    28:      <VISIBILITY>True</VISIBILITY>
+    29:      <TYPE>0</TYPE>
+    30:      <DIMENSION>1</DIMENSION>
+    31:      <IO>1</IO>
+    32:      <UNITS>L/min</UNITS>
+    33:     </EVAR>
+    34:     <EVAR>
+    35:      <SUB_ID>3</SUB_ID>
+    36:      <TITLE>volume at port 1</TITLE>
+    37:      <VARNAME>vol1</VARNAME>
+    38:      <VISIBILITY>True</VISIBILITY>
+    39:      <TYPE>0</TYPE>
+    40:      <DIMENSION>1</DIMENSION>
+    41:      <IO>3</IO>
+    42:      <UNITS>cm**3</UNITS>
+    43:      <DEF_VALUE>0</DEF_VALUE>
+    44:     </EVAR>
+    45:    </PORT>
+    46:    <PORT>
+    47:     <EVAR>
+    48:      <SUB_ID>4</SUB_ID>
+    49:      <VARNAME>q2</VARNAME>
+    50:      <VISIBILITY>True</VISIBILITY>
+    51:      <TYPE>4</TYPE>
+    52:      <PRIMARY_PORT>0</PRIMARY_PORT>
+    53:      <PRIMARY_VAR>1</PRIMARY_VAR>
+    54:      <DUP_TYPE>0</DUP_TYPE>
+    55:     </EVAR>
+    56:     <EVAR>
+    57:      <SUB_ID>5</SUB_ID>
+    58:      <VARNAME>vol2</VARNAME>
+    59:      <VISIBILITY>True</VISIBILITY>
+    60:      <TYPE>4</TYPE>
+    61:      <PRIMARY_PORT>0</PRIMARY_PORT>
+    62:      <PRIMARY_VAR>2</PRIMARY_VAR>
+    63:      <DUP_TYPE>0</DUP_TYPE>
+    64:     </EVAR>
+    65:     <EVAR>
+    66:      <SUB_ID>6</SUB_ID>
+    67:      <TITLE>junction pressure</TITLE>
+    68:      <VARNAME>p2</VARNAME>
+    69:      <VISIBILITY>True</VISIBILITY>
+    70:      <TYPE>0</TYPE>
+    71:      <DIMENSION>1</DIMENSION>
+    72:      <IO>1</IO>
+    73:      <UNITS>bar</UNITS>
+    74:     </EVAR>
+    75:    </PORT>
+    76:   </EVARS_LIST>
+    77:   <ICON_MAP>
+    78:    <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+    79:    <ICON_MAP_DATA>
+    80:     H4sIAAAAAAACC62STW7DIBCF14nUO6DpOuYnqlpHppG67qI3iFKH2CgELCDGvn0Hx4uqShaRaiEPg8fv4zFU2+FsSK980M5K4AUDomztDto2Ei7xuHqD7fvTsgp987tMAPneB/Xl3VEbJSFqOwLRBwmfulfGuB2Hp+WCoLoNEtoYuw2lKaUirQvnGyoYYxRF4VqyGYy2p1uFvCxLOn3FUgmsG4CMc0z6EFvcTpmTVummjXOW2b1W6cPlfwgjvMQBxKGHo3FJQqi9M2bCb0K3r9FE51VQvleQDTf4WlS19rVRJETvTljxzKYH5oXVWUfljcaAXFyukVYWLzgZ54mXIDDSSQ1dKIIHZiRYZxXc1Z2Nre+CBp67gPojn0GDkPCKubjmGVjRZnIy9aW+hLgTuza7h8d2cwvOHkXzf0Nz8YedG3sDnq8Xxh8j8S9a4wIAAA==
+    81:    </ICON_MAP_DATA>
+    82:   </ICON_MAP>
+    83:   <SUBIDS_RESET>0</SUBIDS_RESET>
+    84:  </SUBMODEL>
+    85: </SPE>

@@ -1,0 +1,141 @@
+﻿alias,data_path,parameter_type,title,unit,raw_value,resolved_value,value_unit
+flowcontrol01,qchar@flowcontrol01,ame_real_parameter,characteristic flow rate,L/min,1,1,L/min
+flowcontrol01,dpchar@flowcontrol01,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+flowcontrol01,cqmax@flowcontrol01,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+flowcontrol01,zetamin@flowcontrol01,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+flowcontrol01,cvmax@flowcontrol01,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+flowcontrol01,kvmax@flowcontrol01,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+flowcontrol01,lamc@flowcontrol01,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+flowcontrol01,rec@flowcontrol01,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+flowcontrol01,ordiam@flowcontrol01,ame_real_parameter,diameter,mm,5,5,mm
+flowcontrol01,carea@flowcontrol01,ame_real_parameter,cross-sectional area,mm**2,20,20,mm**2
+flowcontrol01,dh@flowcontrol01,ame_real_parameter,hydraulic diameter,mm,5,5,mm
+flowcontrol01,a@flowcontrol01,ame_real_parameter,width,mm,5,5,mm
+flowcontrol01,b@flowcontrol01,ame_real_parameter,height,mm,5,5,mm
+flowcontrol01,rhochar@flowcontrol01,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+flowcontrol01,nuchar@flowcontrol01,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+flowcontrol01,indexf@flowcontrol01,ame_integer_parameter,index of hydraulic fluid,,0,0,
+flowcontrol01,nbor@flowcontrol01,ame_integer_parameter,number of parallel orifices,,1,1,
+flowcontrol01,method@flowcontrol01,ame_integer_parameter,pressure drop definition method,,2,2,
+flowcontrol01,geom@flowcontrol01,ame_integer_parameter,section type,,1,1,
+flowcontrol01,userfp@flowcontrol01,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+flowcontrol01_1,qchar@flowcontrol01_1,ame_real_parameter,characteristic flow rate,L/min,1,1,L/min
+flowcontrol01_1,dpchar@flowcontrol01_1,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+flowcontrol01_1,cqmax@flowcontrol01_1,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+flowcontrol01_1,zetamin@flowcontrol01_1,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+flowcontrol01_1,cvmax@flowcontrol01_1,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+flowcontrol01_1,kvmax@flowcontrol01_1,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+flowcontrol01_1,lamc@flowcontrol01_1,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+flowcontrol01_1,rec@flowcontrol01_1,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+flowcontrol01_1,ordiam@flowcontrol01_1,ame_real_parameter,diameter,mm,5,5,mm
+flowcontrol01_1,carea@flowcontrol01_1,ame_real_parameter,cross-sectional area,mm**2,20,20,mm**2
+flowcontrol01_1,dh@flowcontrol01_1,ame_real_parameter,hydraulic diameter,mm,5,5,mm
+flowcontrol01_1,a@flowcontrol01_1,ame_real_parameter,width,mm,5,5,mm
+flowcontrol01_1,b@flowcontrol01_1,ame_real_parameter,height,mm,5,5,mm
+flowcontrol01_1,rhochar@flowcontrol01_1,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+flowcontrol01_1,nuchar@flowcontrol01_1,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+flowcontrol01_1,indexf@flowcontrol01_1,ame_integer_parameter,index of hydraulic fluid,,0,0,
+flowcontrol01_1,nbor@flowcontrol01_1,ame_integer_parameter,number of parallel orifices,,1,1,
+flowcontrol01_1,method@flowcontrol01_1,ame_integer_parameter,pressure drop definition method,,2,2,
+flowcontrol01_1,geom@flowcontrol01_1,ame_integer_parameter,section type,,1,1,
+flowcontrol01_1,userfp@flowcontrol01_1,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+flowcontrol01_3,qchar@flowcontrol01_3,ame_real_parameter,characteristic flow rate,L/min,1,1,L/min
+flowcontrol01_3,dpchar@flowcontrol01_3,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+flowcontrol01_3,cqmax@flowcontrol01_3,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+flowcontrol01_3,zetamin@flowcontrol01_3,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+flowcontrol01_3,cvmax@flowcontrol01_3,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+flowcontrol01_3,kvmax@flowcontrol01_3,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+flowcontrol01_3,lamc@flowcontrol01_3,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+flowcontrol01_3,rec@flowcontrol01_3,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+flowcontrol01_3,ordiam@flowcontrol01_3,ame_real_parameter,diameter,mm,5,5,mm
+flowcontrol01_3,carea@flowcontrol01_3,ame_real_parameter,cross-sectional area,mm**2,20,20,mm**2
+flowcontrol01_3,dh@flowcontrol01_3,ame_real_parameter,hydraulic diameter,mm,5,5,mm
+flowcontrol01_3,a@flowcontrol01_3,ame_real_parameter,width,mm,5,5,mm
+flowcontrol01_3,b@flowcontrol01_3,ame_real_parameter,height,mm,5,5,mm
+flowcontrol01_3,rhochar@flowcontrol01_3,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+flowcontrol01_3,nuchar@flowcontrol01_3,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+flowcontrol01_3,indexf@flowcontrol01_3,ame_integer_parameter,index of hydraulic fluid,,0,0,
+flowcontrol01_3,nbor@flowcontrol01_3,ame_integer_parameter,number of parallel orifices,,1,1,
+flowcontrol01_3,method@flowcontrol01_3,ame_integer_parameter,pressure drop definition method,,2,2,
+flowcontrol01_3,geom@flowcontrol01_3,ame_integer_parameter,section type,,1,1,
+flowcontrol01_3,userfp@flowcontrol01_3,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+flowcontrol01_2,qchar@flowcontrol01_2,ame_real_parameter,characteristic flow rate,L/min,1,1,L/min
+flowcontrol01_2,dpchar@flowcontrol01_2,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+flowcontrol01_2,cqmax@flowcontrol01_2,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+flowcontrol01_2,zetamin@flowcontrol01_2,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+flowcontrol01_2,cvmax@flowcontrol01_2,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+flowcontrol01_2,kvmax@flowcontrol01_2,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+flowcontrol01_2,lamc@flowcontrol01_2,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+flowcontrol01_2,rec@flowcontrol01_2,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+flowcontrol01_2,ordiam@flowcontrol01_2,ame_real_parameter,diameter,mm,5,5,mm
+flowcontrol01_2,carea@flowcontrol01_2,ame_real_parameter,cross-sectional area,mm**2,20,20,mm**2
+flowcontrol01_2,dh@flowcontrol01_2,ame_real_parameter,hydraulic diameter,mm,5,5,mm
+flowcontrol01_2,a@flowcontrol01_2,ame_real_parameter,width,mm,5,5,mm
+flowcontrol01_2,b@flowcontrol01_2,ame_real_parameter,height,mm,5,5,mm
+flowcontrol01_2,rhochar@flowcontrol01_2,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+flowcontrol01_2,nuchar@flowcontrol01_2,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+flowcontrol01_2,indexf@flowcontrol01_2,ame_integer_parameter,index of hydraulic fluid,,0,0,
+flowcontrol01_2,nbor@flowcontrol01_2,ame_integer_parameter,number of parallel orifices,,1,1,
+flowcontrol01_2,method@flowcontrol01_2,ame_integer_parameter,pressure drop definition method,,2,2,
+flowcontrol01_2,geom@flowcontrol01_2,ame_integer_parameter,section type,,1,1,
+flowcontrol01_2,userfp@flowcontrol01_2,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+flowcontrol01_5,qchar@flowcontrol01_5,ame_real_parameter,characteristic flow rate,L/min,1,1,L/min
+flowcontrol01_5,dpchar@flowcontrol01_5,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+flowcontrol01_5,cqmax@flowcontrol01_5,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+flowcontrol01_5,zetamin@flowcontrol01_5,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+flowcontrol01_5,cvmax@flowcontrol01_5,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+flowcontrol01_5,kvmax@flowcontrol01_5,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+flowcontrol01_5,lamc@flowcontrol01_5,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+flowcontrol01_5,rec@flowcontrol01_5,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+flowcontrol01_5,ordiam@flowcontrol01_5,ame_real_parameter,diameter,mm,5,5,mm
+flowcontrol01_5,carea@flowcontrol01_5,ame_real_parameter,cross-sectional area,mm**2,20,20,mm**2
+flowcontrol01_5,dh@flowcontrol01_5,ame_real_parameter,hydraulic diameter,mm,5,5,mm
+flowcontrol01_5,a@flowcontrol01_5,ame_real_parameter,width,mm,5,5,mm
+flowcontrol01_5,b@flowcontrol01_5,ame_real_parameter,height,mm,5,5,mm
+flowcontrol01_5,rhochar@flowcontrol01_5,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+flowcontrol01_5,nuchar@flowcontrol01_5,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+flowcontrol01_5,indexf@flowcontrol01_5,ame_integer_parameter,index of hydraulic fluid,,0,0,
+flowcontrol01_5,nbor@flowcontrol01_5,ame_integer_parameter,number of parallel orifices,,1,1,
+flowcontrol01_5,method@flowcontrol01_5,ame_integer_parameter,pressure drop definition method,,2,2,
+flowcontrol01_5,geom@flowcontrol01_5,ame_integer_parameter,section type,,1,1,
+flowcontrol01_5,userfp@flowcontrol01_5,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+flowcontrol01_6,qchar@flowcontrol01_6,ame_real_parameter,characteristic flow rate,L/min,1,1,L/min
+flowcontrol01_6,dpchar@flowcontrol01_6,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+flowcontrol01_6,cqmax@flowcontrol01_6,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+flowcontrol01_6,zetamin@flowcontrol01_6,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+flowcontrol01_6,cvmax@flowcontrol01_6,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+flowcontrol01_6,kvmax@flowcontrol01_6,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+flowcontrol01_6,lamc@flowcontrol01_6,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+flowcontrol01_6,rec@flowcontrol01_6,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+flowcontrol01_6,ordiam@flowcontrol01_6,ame_real_parameter,diameter,mm,5,5,mm
+flowcontrol01_6,carea@flowcontrol01_6,ame_real_parameter,cross-sectional area,mm**2,20,20,mm**2
+flowcontrol01_6,dh@flowcontrol01_6,ame_real_parameter,hydraulic diameter,mm,5,5,mm
+flowcontrol01_6,a@flowcontrol01_6,ame_real_parameter,width,mm,5,5,mm
+flowcontrol01_6,b@flowcontrol01_6,ame_real_parameter,height,mm,5,5,mm
+flowcontrol01_6,rhochar@flowcontrol01_6,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+flowcontrol01_6,nuchar@flowcontrol01_6,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+flowcontrol01_6,indexf@flowcontrol01_6,ame_integer_parameter,index of hydraulic fluid,,0,0,
+flowcontrol01_6,nbor@flowcontrol01_6,ame_integer_parameter,number of parallel orifices,,1,1,
+flowcontrol01_6,method@flowcontrol01_6,ame_integer_parameter,pressure drop definition method,,2,2,
+flowcontrol01_6,geom@flowcontrol01_6,ame_integer_parameter,section type,,1,1,
+flowcontrol01_6,userfp@flowcontrol01_6,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+flowcontrol01_7,qchar@flowcontrol01_7,ame_real_parameter,characteristic flow rate,L/min,1,1,L/min
+flowcontrol01_7,dpchar@flowcontrol01_7,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+flowcontrol01_7,cqmax@flowcontrol01_7,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+flowcontrol01_7,zetamin@flowcontrol01_7,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+flowcontrol01_7,cvmax@flowcontrol01_7,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+flowcontrol01_7,kvmax@flowcontrol01_7,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+flowcontrol01_7,lamc@flowcontrol01_7,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+flowcontrol01_7,rec@flowcontrol01_7,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+flowcontrol01_7,ordiam@flowcontrol01_7,ame_real_parameter,diameter,mm,5,5,mm
+flowcontrol01_7,carea@flowcontrol01_7,ame_real_parameter,cross-sectional area,mm**2,20,20,mm**2
+flowcontrol01_7,dh@flowcontrol01_7,ame_real_parameter,hydraulic diameter,mm,5,5,mm
+flowcontrol01_7,a@flowcontrol01_7,ame_real_parameter,width,mm,5,5,mm
+flowcontrol01_7,b@flowcontrol01_7,ame_real_parameter,height,mm,5,5,mm
+flowcontrol01_7,rhochar@flowcontrol01_7,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+flowcontrol01_7,nuchar@flowcontrol01_7,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+flowcontrol01_7,indexf@flowcontrol01_7,ame_integer_parameter,index of hydraulic fluid,,0,0,
+flowcontrol01_7,nbor@flowcontrol01_7,ame_integer_parameter,number of parallel orifices,,1,1,
+flowcontrol01_7,method@flowcontrol01_7,ame_integer_parameter,pressure drop definition method,,2,2,
+flowcontrol01_7,geom@flowcontrol01_7,ame_integer_parameter,section type,,1,1,
+flowcontrol01_7,userfp@flowcontrol01_7,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,

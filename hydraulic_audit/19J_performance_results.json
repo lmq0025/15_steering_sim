@@ -1,0 +1,42 @@
+{
+  "baseline": {
+    "physical_time_s": 1.0,
+    "wall_time_s": 54.328722100006416,
+    "real_time_factor": 54.328722100006416
+  },
+  "phase2b_reported_legacy_wall_time_s": 150.88667049992364,
+  "optimized": {
+    "physical_time_s": 1.0,
+    "wall_time_s": 27.19020859990269,
+    "real_time_factor": 27.19020859990269
+  },
+  "speedup": 1.9980987604560287,
+  "speedup_vs_phase2b_reported": 5.549301688713916,
+  "jacobian": {
+    "states": 109,
+    "nonzeros": 987,
+    "density": 0.08307381533540947,
+    "colors": 27,
+    "analytic_blocks": 0,
+    "sparse_runtime_accepted": false,
+    "rejection_reason": "1 s physics regression"
+  },
+  "algebraic": {
+    "groups": 49,
+    "calls": 892680,
+    "actual_solves": 105293,
+    "cache_hits": 787387,
+    "cache_hit_rate": 0.8820484384101805,
+    "failures": 0
+  },
+  "regression": {
+    "pass": true,
+    "max_relative_error": 0.0
+  },
+  "physical_sanity": {
+    "passed": 14,
+    "total": 14
+  },
+  "pytest": "183 passed",
+  "ready_for_amesim_comparison": true
+}

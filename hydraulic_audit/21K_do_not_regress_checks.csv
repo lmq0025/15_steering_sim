@@ -1,0 +1,8 @@
+﻿check,before_peak_m3_s,after_peak_m3_s,max_abs_difference,status
+pump01 displacement flow unchanged,0.00022499999999999953,0.00022499999999999953,0.0,PASS
+pump01_1 displacement flow unchanged,0.00022499999999999953,0.00022499999999999953,0.0,PASS
+pump01_2 displacement flow unchanged,0.00022499999999999953,0.00022499999999999953,0.0,PASS
+pump01_3 displacement flow unchanged,0.00022499999999999953,0.00022499999999999953,0.0,PASS
+input replay unchanged,,,,PASS
+FAST states unchanged,,,,PASS
+IR V3 unchanged,,,,PASS

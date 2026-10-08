@@ -1,0 +1,15 @@
+﻿check,status,evidence
+fast_state_count_109,PASS,109
+fast_line_state_count_67,PASS,67
+simulation_success,PASS,The solver successfully reached the end of the integration interval.
+no_NaN,PASS,0
+no_Inf,PASS,0
+pressure_finite,PASS,239835424.89155492
+no_impossible_negative_absolute_pressure,PASS,97902.91812022662
+no_uncontrolled_pressure_blowup,PASS,239835424.89155492
+actuator_stroke,PASS,-9.10349742051032e-25..0.0008416182493447586
+hydraulic_mass_balance,PASS,0.0
+algebraic_failures_zero,PASS,0
+rhs_coverage_109,PASS,109
+physics_regression,PASS,0.0
+sparse_path_disabled,PASS,False

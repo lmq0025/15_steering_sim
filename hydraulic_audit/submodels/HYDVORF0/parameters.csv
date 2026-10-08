@@ -1,0 +1,1033 @@
+﻿alias,data_path,parameter_type,title,unit,raw_value,resolved_value,value_unit
+dirvalve_1.orifice_14,qchar@dirvalve_1.orifice_14,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_1.orifice_14,dpchar@dirvalve_1.orifice_14,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+dirvalve_1.orifice_14,cqmax@dirvalve_1.orifice_14,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+dirvalve_1.orifice_14,zetamin@dirvalve_1.orifice_14,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+dirvalve_1.orifice_14,cvmax@dirvalve_1.orifice_14,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+dirvalve_1.orifice_14,kvmax@dirvalve_1.orifice_14,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+dirvalve_1.orifice_14,lamc@dirvalve_1.orifice_14,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_1.orifice_14,rec@dirvalve_1.orifice_14,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+dirvalve_1.orifice_14,ordiammax@dirvalve_1.orifice_14,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+dirvalve_1.orifice_14,amax@dirvalve_1.orifice_14,ame_real_parameter,width at maximum opening,mm,5,5,mm
+dirvalve_1.orifice_14,bmax@dirvalve_1.orifice_14,ame_real_parameter,height at maximum opening,mm,5,5,mm
+dirvalve_1.orifice_14,rhochar@dirvalve_1.orifice_14,ame_real_parameter,working density for pressure drop measurement,kg/m**3,rhochar__SC_1_1,rhochar__SC_1_1,kg/m**3
+dirvalve_1.orifice_14,nuchar@dirvalve_1.orifice_14,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,nuchar__SC_1_1,nuchar__SC_1_1,cSt
+dirvalve_1.orifice_14,sigmin@dirvalve_1.orifice_14,ame_real_parameter,minimum signal value,null,0,0,null
+dirvalve_1.orifice_14,sigmax@dirvalve_1.orifice_14,ame_real_parameter,maximum signal value,null,100,100,null
+dirvalve_1.orifice_14,indexf@dirvalve_1.orifice_14,ame_integer_parameter,index of hydraulic fluid,,indexf__SC_1_1,indexf__SC_1_1,
+dirvalve_1.orifice_14,nbor@dirvalve_1.orifice_14,ame_integer_parameter,number of parallel orifices,,1,1,
+dirvalve_1.orifice_14,method@dirvalve_1.orifice_14,ame_integer_parameter,pressure drop definition method,,1,1,
+dirvalve_1.orifice_14,geom@dirvalve_1.orifice_14,ame_integer_parameter,section type,,1,1,
+dirvalve_1.orifice_14,userfp@dirvalve_1.orifice_14,ame_integer_parameter,fluid properties for pressure drop measurement,,2,2,
+dirvalve_1.orifice_14,hdvar@dirvalve_1.orifice_14,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+dirvalve_1.orifice_14,areax@dirvalve_1.orifice_14,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+dirvalve_1.orifice_14,hdx@dirvalve_1.orifice_14,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+dirvalve_1.orifice_14,hdarea@dirvalve_1.orifice_14,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+dirvalve_1.orifice_13,qchar@dirvalve_1.orifice_13,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_1.orifice_13,dpchar@dirvalve_1.orifice_13,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+dirvalve_1.orifice_13,cqmax@dirvalve_1.orifice_13,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+dirvalve_1.orifice_13,zetamin@dirvalve_1.orifice_13,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+dirvalve_1.orifice_13,cvmax@dirvalve_1.orifice_13,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+dirvalve_1.orifice_13,kvmax@dirvalve_1.orifice_13,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+dirvalve_1.orifice_13,lamc@dirvalve_1.orifice_13,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_1.orifice_13,rec@dirvalve_1.orifice_13,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+dirvalve_1.orifice_13,ordiammax@dirvalve_1.orifice_13,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+dirvalve_1.orifice_13,amax@dirvalve_1.orifice_13,ame_real_parameter,width at maximum opening,mm,5,5,mm
+dirvalve_1.orifice_13,bmax@dirvalve_1.orifice_13,ame_real_parameter,height at maximum opening,mm,5,5,mm
+dirvalve_1.orifice_13,rhochar@dirvalve_1.orifice_13,ame_real_parameter,working density for pressure drop measurement,kg/m**3,rhochar__SC_1_1,rhochar__SC_1_1,kg/m**3
+dirvalve_1.orifice_13,nuchar@dirvalve_1.orifice_13,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,nuchar__SC_1_1,nuchar__SC_1_1,cSt
+dirvalve_1.orifice_13,sigmin@dirvalve_1.orifice_13,ame_real_parameter,minimum signal value,null,0,0,null
+dirvalve_1.orifice_13,sigmax@dirvalve_1.orifice_13,ame_real_parameter,maximum signal value,null,100,100,null
+dirvalve_1.orifice_13,indexf@dirvalve_1.orifice_13,ame_integer_parameter,index of hydraulic fluid,,indexf__SC_1_1,indexf__SC_1_1,
+dirvalve_1.orifice_13,nbor@dirvalve_1.orifice_13,ame_integer_parameter,number of parallel orifices,,1,1,
+dirvalve_1.orifice_13,method@dirvalve_1.orifice_13,ame_integer_parameter,pressure drop definition method,,1,1,
+dirvalve_1.orifice_13,geom@dirvalve_1.orifice_13,ame_integer_parameter,section type,,1,1,
+dirvalve_1.orifice_13,userfp@dirvalve_1.orifice_13,ame_integer_parameter,fluid properties for pressure drop measurement,,2,2,
+dirvalve_1.orifice_13,hdvar@dirvalve_1.orifice_13,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+dirvalve_1.orifice_13,areax@dirvalve_1.orifice_13,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+dirvalve_1.orifice_13,hdx@dirvalve_1.orifice_13,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+dirvalve_1.orifice_13,hdarea@dirvalve_1.orifice_13,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+dirvalve_1.orifice_23,qchar@dirvalve_1.orifice_23,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_1.orifice_23,dpchar@dirvalve_1.orifice_23,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+dirvalve_1.orifice_23,cqmax@dirvalve_1.orifice_23,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+dirvalve_1.orifice_23,zetamin@dirvalve_1.orifice_23,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+dirvalve_1.orifice_23,cvmax@dirvalve_1.orifice_23,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+dirvalve_1.orifice_23,kvmax@dirvalve_1.orifice_23,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+dirvalve_1.orifice_23,lamc@dirvalve_1.orifice_23,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_1.orifice_23,rec@dirvalve_1.orifice_23,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+dirvalve_1.orifice_23,ordiammax@dirvalve_1.orifice_23,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+dirvalve_1.orifice_23,amax@dirvalve_1.orifice_23,ame_real_parameter,width at maximum opening,mm,5,5,mm
+dirvalve_1.orifice_23,bmax@dirvalve_1.orifice_23,ame_real_parameter,height at maximum opening,mm,5,5,mm
+dirvalve_1.orifice_23,rhochar@dirvalve_1.orifice_23,ame_real_parameter,working density for pressure drop measurement,kg/m**3,rhochar__SC_1_1,rhochar__SC_1_1,kg/m**3
+dirvalve_1.orifice_23,nuchar@dirvalve_1.orifice_23,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,nuchar__SC_1_1,nuchar__SC_1_1,cSt
+dirvalve_1.orifice_23,sigmin@dirvalve_1.orifice_23,ame_real_parameter,minimum signal value,null,0,0,null
+dirvalve_1.orifice_23,sigmax@dirvalve_1.orifice_23,ame_real_parameter,maximum signal value,null,100,100,null
+dirvalve_1.orifice_23,indexf@dirvalve_1.orifice_23,ame_integer_parameter,index of hydraulic fluid,,indexf__SC_1_1,indexf__SC_1_1,
+dirvalve_1.orifice_23,nbor@dirvalve_1.orifice_23,ame_integer_parameter,number of parallel orifices,,1,1,
+dirvalve_1.orifice_23,method@dirvalve_1.orifice_23,ame_integer_parameter,pressure drop definition method,,1,1,
+dirvalve_1.orifice_23,geom@dirvalve_1.orifice_23,ame_integer_parameter,section type,,1,1,
+dirvalve_1.orifice_23,userfp@dirvalve_1.orifice_23,ame_integer_parameter,fluid properties for pressure drop measurement,,2,2,
+dirvalve_1.orifice_23,hdvar@dirvalve_1.orifice_23,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+dirvalve_1.orifice_23,areax@dirvalve_1.orifice_23,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+dirvalve_1.orifice_23,hdx@dirvalve_1.orifice_23,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+dirvalve_1.orifice_23,hdarea@dirvalve_1.orifice_23,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+dirvalve_1.orifice_24,qchar@dirvalve_1.orifice_24,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_1.orifice_24,dpchar@dirvalve_1.orifice_24,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+dirvalve_1.orifice_24,cqmax@dirvalve_1.orifice_24,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+dirvalve_1.orifice_24,zetamin@dirvalve_1.orifice_24,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+dirvalve_1.orifice_24,cvmax@dirvalve_1.orifice_24,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+dirvalve_1.orifice_24,kvmax@dirvalve_1.orifice_24,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+dirvalve_1.orifice_24,lamc@dirvalve_1.orifice_24,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_1.orifice_24,rec@dirvalve_1.orifice_24,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+dirvalve_1.orifice_24,ordiammax@dirvalve_1.orifice_24,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+dirvalve_1.orifice_24,amax@dirvalve_1.orifice_24,ame_real_parameter,width at maximum opening,mm,5,5,mm
+dirvalve_1.orifice_24,bmax@dirvalve_1.orifice_24,ame_real_parameter,height at maximum opening,mm,5,5,mm
+dirvalve_1.orifice_24,rhochar@dirvalve_1.orifice_24,ame_real_parameter,working density for pressure drop measurement,kg/m**3,rhochar__SC_1_1,rhochar__SC_1_1,kg/m**3
+dirvalve_1.orifice_24,nuchar@dirvalve_1.orifice_24,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,nuchar__SC_1_1,nuchar__SC_1_1,cSt
+dirvalve_1.orifice_24,sigmin@dirvalve_1.orifice_24,ame_real_parameter,minimum signal value,null,0,0,null
+dirvalve_1.orifice_24,sigmax@dirvalve_1.orifice_24,ame_real_parameter,maximum signal value,null,100,100,null
+dirvalve_1.orifice_24,indexf@dirvalve_1.orifice_24,ame_integer_parameter,index of hydraulic fluid,,indexf__SC_1_1,indexf__SC_1_1,
+dirvalve_1.orifice_24,nbor@dirvalve_1.orifice_24,ame_integer_parameter,number of parallel orifices,,1,1,
+dirvalve_1.orifice_24,method@dirvalve_1.orifice_24,ame_integer_parameter,pressure drop definition method,,1,1,
+dirvalve_1.orifice_24,geom@dirvalve_1.orifice_24,ame_integer_parameter,section type,,1,1,
+dirvalve_1.orifice_24,userfp@dirvalve_1.orifice_24,ame_integer_parameter,fluid properties for pressure drop measurement,,2,2,
+dirvalve_1.orifice_24,hdvar@dirvalve_1.orifice_24,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+dirvalve_1.orifice_24,areax@dirvalve_1.orifice_24,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+dirvalve_1.orifice_24,hdx@dirvalve_1.orifice_24,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+dirvalve_1.orifice_24,hdarea@dirvalve_1.orifice_24,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+dirvalve_2.orifice_14,qchar@dirvalve_2.orifice_14,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_2.orifice_14,dpchar@dirvalve_2.orifice_14,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+dirvalve_2.orifice_14,cqmax@dirvalve_2.orifice_14,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+dirvalve_2.orifice_14,zetamin@dirvalve_2.orifice_14,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+dirvalve_2.orifice_14,cvmax@dirvalve_2.orifice_14,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+dirvalve_2.orifice_14,kvmax@dirvalve_2.orifice_14,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+dirvalve_2.orifice_14,lamc@dirvalve_2.orifice_14,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_2.orifice_14,rec@dirvalve_2.orifice_14,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+dirvalve_2.orifice_14,ordiammax@dirvalve_2.orifice_14,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+dirvalve_2.orifice_14,amax@dirvalve_2.orifice_14,ame_real_parameter,width at maximum opening,mm,5,5,mm
+dirvalve_2.orifice_14,bmax@dirvalve_2.orifice_14,ame_real_parameter,height at maximum opening,mm,5,5,mm
+dirvalve_2.orifice_14,rhochar@dirvalve_2.orifice_14,ame_real_parameter,working density for pressure drop measurement,kg/m**3,rhochar__SC_1_2,rhochar__SC_1_2,kg/m**3
+dirvalve_2.orifice_14,nuchar@dirvalve_2.orifice_14,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,nuchar__SC_1_2,nuchar__SC_1_2,cSt
+dirvalve_2.orifice_14,sigmin@dirvalve_2.orifice_14,ame_real_parameter,minimum signal value,null,0,0,null
+dirvalve_2.orifice_14,sigmax@dirvalve_2.orifice_14,ame_real_parameter,maximum signal value,null,100,100,null
+dirvalve_2.orifice_14,indexf@dirvalve_2.orifice_14,ame_integer_parameter,index of hydraulic fluid,,indexf__SC_1_2,indexf__SC_1_2,
+dirvalve_2.orifice_14,nbor@dirvalve_2.orifice_14,ame_integer_parameter,number of parallel orifices,,1,1,
+dirvalve_2.orifice_14,method@dirvalve_2.orifice_14,ame_integer_parameter,pressure drop definition method,,1,1,
+dirvalve_2.orifice_14,geom@dirvalve_2.orifice_14,ame_integer_parameter,section type,,1,1,
+dirvalve_2.orifice_14,userfp@dirvalve_2.orifice_14,ame_integer_parameter,fluid properties for pressure drop measurement,,2,2,
+dirvalve_2.orifice_14,hdvar@dirvalve_2.orifice_14,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+dirvalve_2.orifice_14,areax@dirvalve_2.orifice_14,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+dirvalve_2.orifice_14,hdx@dirvalve_2.orifice_14,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+dirvalve_2.orifice_14,hdarea@dirvalve_2.orifice_14,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+dirvalve_2.orifice_23,qchar@dirvalve_2.orifice_23,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_2.orifice_23,dpchar@dirvalve_2.orifice_23,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+dirvalve_2.orifice_23,cqmax@dirvalve_2.orifice_23,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+dirvalve_2.orifice_23,zetamin@dirvalve_2.orifice_23,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+dirvalve_2.orifice_23,cvmax@dirvalve_2.orifice_23,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+dirvalve_2.orifice_23,kvmax@dirvalve_2.orifice_23,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+dirvalve_2.orifice_23,lamc@dirvalve_2.orifice_23,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_2.orifice_23,rec@dirvalve_2.orifice_23,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+dirvalve_2.orifice_23,ordiammax@dirvalve_2.orifice_23,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+dirvalve_2.orifice_23,amax@dirvalve_2.orifice_23,ame_real_parameter,width at maximum opening,mm,5,5,mm
+dirvalve_2.orifice_23,bmax@dirvalve_2.orifice_23,ame_real_parameter,height at maximum opening,mm,5,5,mm
+dirvalve_2.orifice_23,rhochar@dirvalve_2.orifice_23,ame_real_parameter,working density for pressure drop measurement,kg/m**3,rhochar__SC_1_2,rhochar__SC_1_2,kg/m**3
+dirvalve_2.orifice_23,nuchar@dirvalve_2.orifice_23,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,nuchar__SC_1_2,nuchar__SC_1_2,cSt
+dirvalve_2.orifice_23,sigmin@dirvalve_2.orifice_23,ame_real_parameter,minimum signal value,null,0,0,null
+dirvalve_2.orifice_23,sigmax@dirvalve_2.orifice_23,ame_real_parameter,maximum signal value,null,100,100,null
+dirvalve_2.orifice_23,indexf@dirvalve_2.orifice_23,ame_integer_parameter,index of hydraulic fluid,,indexf__SC_1_2,indexf__SC_1_2,
+dirvalve_2.orifice_23,nbor@dirvalve_2.orifice_23,ame_integer_parameter,number of parallel orifices,,1,1,
+dirvalve_2.orifice_23,method@dirvalve_2.orifice_23,ame_integer_parameter,pressure drop definition method,,1,1,
+dirvalve_2.orifice_23,geom@dirvalve_2.orifice_23,ame_integer_parameter,section type,,1,1,
+dirvalve_2.orifice_23,userfp@dirvalve_2.orifice_23,ame_integer_parameter,fluid properties for pressure drop measurement,,2,2,
+dirvalve_2.orifice_23,hdvar@dirvalve_2.orifice_23,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+dirvalve_2.orifice_23,areax@dirvalve_2.orifice_23,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+dirvalve_2.orifice_23,hdx@dirvalve_2.orifice_23,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+dirvalve_2.orifice_23,hdarea@dirvalve_2.orifice_23,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+dirvalve_6.orifice_13,qchar@dirvalve_6.orifice_13,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_6.orifice_13,dpchar@dirvalve_6.orifice_13,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+dirvalve_6.orifice_13,cqmax@dirvalve_6.orifice_13,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+dirvalve_6.orifice_13,zetamin@dirvalve_6.orifice_13,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+dirvalve_6.orifice_13,cvmax@dirvalve_6.orifice_13,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+dirvalve_6.orifice_13,kvmax@dirvalve_6.orifice_13,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+dirvalve_6.orifice_13,lamc@dirvalve_6.orifice_13,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_6.orifice_13,rec@dirvalve_6.orifice_13,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+dirvalve_6.orifice_13,ordiammax@dirvalve_6.orifice_13,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+dirvalve_6.orifice_13,amax@dirvalve_6.orifice_13,ame_real_parameter,width at maximum opening,mm,5,5,mm
+dirvalve_6.orifice_13,bmax@dirvalve_6.orifice_13,ame_real_parameter,height at maximum opening,mm,5,5,mm
+dirvalve_6.orifice_13,rhochar@dirvalve_6.orifice_13,ame_real_parameter,working density for pressure drop measurement,kg/m**3,rhochar__SC_1_3,rhochar__SC_1_3,kg/m**3
+dirvalve_6.orifice_13,nuchar@dirvalve_6.orifice_13,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,nuchar__SC_1_3,nuchar__SC_1_3,cSt
+dirvalve_6.orifice_13,sigmin@dirvalve_6.orifice_13,ame_real_parameter,minimum signal value,null,0,0,null
+dirvalve_6.orifice_13,sigmax@dirvalve_6.orifice_13,ame_real_parameter,maximum signal value,null,100,100,null
+dirvalve_6.orifice_13,indexf@dirvalve_6.orifice_13,ame_integer_parameter,index of hydraulic fluid,,indexf__SC_1_3,indexf__SC_1_3,
+dirvalve_6.orifice_13,nbor@dirvalve_6.orifice_13,ame_integer_parameter,number of parallel orifices,,1,1,
+dirvalve_6.orifice_13,method@dirvalve_6.orifice_13,ame_integer_parameter,pressure drop definition method,,1,1,
+dirvalve_6.orifice_13,geom@dirvalve_6.orifice_13,ame_integer_parameter,section type,,1,1,
+dirvalve_6.orifice_13,userfp@dirvalve_6.orifice_13,ame_integer_parameter,fluid properties for pressure drop measurement,,2,2,
+dirvalve_6.orifice_13,hdvar@dirvalve_6.orifice_13,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+dirvalve_6.orifice_13,areax@dirvalve_6.orifice_13,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+dirvalve_6.orifice_13,hdx@dirvalve_6.orifice_13,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+dirvalve_6.orifice_13,hdarea@dirvalve_6.orifice_13,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+dirvalve_6.orifice_14,qchar@dirvalve_6.orifice_14,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_6.orifice_14,dpchar@dirvalve_6.orifice_14,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+dirvalve_6.orifice_14,cqmax@dirvalve_6.orifice_14,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+dirvalve_6.orifice_14,zetamin@dirvalve_6.orifice_14,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+dirvalve_6.orifice_14,cvmax@dirvalve_6.orifice_14,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+dirvalve_6.orifice_14,kvmax@dirvalve_6.orifice_14,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+dirvalve_6.orifice_14,lamc@dirvalve_6.orifice_14,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_6.orifice_14,rec@dirvalve_6.orifice_14,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+dirvalve_6.orifice_14,ordiammax@dirvalve_6.orifice_14,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+dirvalve_6.orifice_14,amax@dirvalve_6.orifice_14,ame_real_parameter,width at maximum opening,mm,5,5,mm
+dirvalve_6.orifice_14,bmax@dirvalve_6.orifice_14,ame_real_parameter,height at maximum opening,mm,5,5,mm
+dirvalve_6.orifice_14,rhochar@dirvalve_6.orifice_14,ame_real_parameter,working density for pressure drop measurement,kg/m**3,rhochar__SC_1_3,rhochar__SC_1_3,kg/m**3
+dirvalve_6.orifice_14,nuchar@dirvalve_6.orifice_14,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,nuchar__SC_1_3,nuchar__SC_1_3,cSt
+dirvalve_6.orifice_14,sigmin@dirvalve_6.orifice_14,ame_real_parameter,minimum signal value,null,0,0,null
+dirvalve_6.orifice_14,sigmax@dirvalve_6.orifice_14,ame_real_parameter,maximum signal value,null,100,100,null
+dirvalve_6.orifice_14,indexf@dirvalve_6.orifice_14,ame_integer_parameter,index of hydraulic fluid,,indexf__SC_1_3,indexf__SC_1_3,
+dirvalve_6.orifice_14,nbor@dirvalve_6.orifice_14,ame_integer_parameter,number of parallel orifices,,1,1,
+dirvalve_6.orifice_14,method@dirvalve_6.orifice_14,ame_integer_parameter,pressure drop definition method,,1,1,
+dirvalve_6.orifice_14,geom@dirvalve_6.orifice_14,ame_integer_parameter,section type,,1,1,
+dirvalve_6.orifice_14,userfp@dirvalve_6.orifice_14,ame_integer_parameter,fluid properties for pressure drop measurement,,2,2,
+dirvalve_6.orifice_14,hdvar@dirvalve_6.orifice_14,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+dirvalve_6.orifice_14,areax@dirvalve_6.orifice_14,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+dirvalve_6.orifice_14,hdx@dirvalve_6.orifice_14,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+dirvalve_6.orifice_14,hdarea@dirvalve_6.orifice_14,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+dirvalve_6.orifice_24,qchar@dirvalve_6.orifice_24,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_6.orifice_24,dpchar@dirvalve_6.orifice_24,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+dirvalve_6.orifice_24,cqmax@dirvalve_6.orifice_24,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+dirvalve_6.orifice_24,zetamin@dirvalve_6.orifice_24,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+dirvalve_6.orifice_24,cvmax@dirvalve_6.orifice_24,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+dirvalve_6.orifice_24,kvmax@dirvalve_6.orifice_24,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+dirvalve_6.orifice_24,lamc@dirvalve_6.orifice_24,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_6.orifice_24,rec@dirvalve_6.orifice_24,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+dirvalve_6.orifice_24,ordiammax@dirvalve_6.orifice_24,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+dirvalve_6.orifice_24,amax@dirvalve_6.orifice_24,ame_real_parameter,width at maximum opening,mm,5,5,mm
+dirvalve_6.orifice_24,bmax@dirvalve_6.orifice_24,ame_real_parameter,height at maximum opening,mm,5,5,mm
+dirvalve_6.orifice_24,rhochar@dirvalve_6.orifice_24,ame_real_parameter,working density for pressure drop measurement,kg/m**3,rhochar__SC_1_3,rhochar__SC_1_3,kg/m**3
+dirvalve_6.orifice_24,nuchar@dirvalve_6.orifice_24,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,nuchar__SC_1_3,nuchar__SC_1_3,cSt
+dirvalve_6.orifice_24,sigmin@dirvalve_6.orifice_24,ame_real_parameter,minimum signal value,null,0,0,null
+dirvalve_6.orifice_24,sigmax@dirvalve_6.orifice_24,ame_real_parameter,maximum signal value,null,100,100,null
+dirvalve_6.orifice_24,indexf@dirvalve_6.orifice_24,ame_integer_parameter,index of hydraulic fluid,,indexf__SC_1_3,indexf__SC_1_3,
+dirvalve_6.orifice_24,nbor@dirvalve_6.orifice_24,ame_integer_parameter,number of parallel orifices,,1,1,
+dirvalve_6.orifice_24,method@dirvalve_6.orifice_24,ame_integer_parameter,pressure drop definition method,,1,1,
+dirvalve_6.orifice_24,geom@dirvalve_6.orifice_24,ame_integer_parameter,section type,,1,1,
+dirvalve_6.orifice_24,userfp@dirvalve_6.orifice_24,ame_integer_parameter,fluid properties for pressure drop measurement,,2,2,
+dirvalve_6.orifice_24,hdvar@dirvalve_6.orifice_24,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+dirvalve_6.orifice_24,areax@dirvalve_6.orifice_24,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+dirvalve_6.orifice_24,hdx@dirvalve_6.orifice_24,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+dirvalve_6.orifice_24,hdarea@dirvalve_6.orifice_24,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+dirvalve_6.orifice_23,qchar@dirvalve_6.orifice_23,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_6.orifice_23,dpchar@dirvalve_6.orifice_23,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+dirvalve_6.orifice_23,cqmax@dirvalve_6.orifice_23,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+dirvalve_6.orifice_23,zetamin@dirvalve_6.orifice_23,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+dirvalve_6.orifice_23,cvmax@dirvalve_6.orifice_23,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+dirvalve_6.orifice_23,kvmax@dirvalve_6.orifice_23,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+dirvalve_6.orifice_23,lamc@dirvalve_6.orifice_23,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_6.orifice_23,rec@dirvalve_6.orifice_23,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+dirvalve_6.orifice_23,ordiammax@dirvalve_6.orifice_23,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+dirvalve_6.orifice_23,amax@dirvalve_6.orifice_23,ame_real_parameter,width at maximum opening,mm,5,5,mm
+dirvalve_6.orifice_23,bmax@dirvalve_6.orifice_23,ame_real_parameter,height at maximum opening,mm,5,5,mm
+dirvalve_6.orifice_23,rhochar@dirvalve_6.orifice_23,ame_real_parameter,working density for pressure drop measurement,kg/m**3,rhochar__SC_1_3,rhochar__SC_1_3,kg/m**3
+dirvalve_6.orifice_23,nuchar@dirvalve_6.orifice_23,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,nuchar__SC_1_3,nuchar__SC_1_3,cSt
+dirvalve_6.orifice_23,sigmin@dirvalve_6.orifice_23,ame_real_parameter,minimum signal value,null,0,0,null
+dirvalve_6.orifice_23,sigmax@dirvalve_6.orifice_23,ame_real_parameter,maximum signal value,null,100,100,null
+dirvalve_6.orifice_23,indexf@dirvalve_6.orifice_23,ame_integer_parameter,index of hydraulic fluid,,indexf__SC_1_3,indexf__SC_1_3,
+dirvalve_6.orifice_23,nbor@dirvalve_6.orifice_23,ame_integer_parameter,number of parallel orifices,,1,1,
+dirvalve_6.orifice_23,method@dirvalve_6.orifice_23,ame_integer_parameter,pressure drop definition method,,1,1,
+dirvalve_6.orifice_23,geom@dirvalve_6.orifice_23,ame_integer_parameter,section type,,1,1,
+dirvalve_6.orifice_23,userfp@dirvalve_6.orifice_23,ame_integer_parameter,fluid properties for pressure drop measurement,,2,2,
+dirvalve_6.orifice_23,hdvar@dirvalve_6.orifice_23,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+dirvalve_6.orifice_23,areax@dirvalve_6.orifice_23,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+dirvalve_6.orifice_23,hdx@dirvalve_6.orifice_23,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+dirvalve_6.orifice_23,hdarea@dirvalve_6.orifice_23,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+dirvalve_3.orifice_13,qchar@dirvalve_3.orifice_13,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_3.orifice_13,dpchar@dirvalve_3.orifice_13,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+dirvalve_3.orifice_13,cqmax@dirvalve_3.orifice_13,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+dirvalve_3.orifice_13,zetamin@dirvalve_3.orifice_13,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+dirvalve_3.orifice_13,cvmax@dirvalve_3.orifice_13,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+dirvalve_3.orifice_13,kvmax@dirvalve_3.orifice_13,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+dirvalve_3.orifice_13,lamc@dirvalve_3.orifice_13,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_3.orifice_13,rec@dirvalve_3.orifice_13,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+dirvalve_3.orifice_13,ordiammax@dirvalve_3.orifice_13,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+dirvalve_3.orifice_13,amax@dirvalve_3.orifice_13,ame_real_parameter,width at maximum opening,mm,5,5,mm
+dirvalve_3.orifice_13,bmax@dirvalve_3.orifice_13,ame_real_parameter,height at maximum opening,mm,5,5,mm
+dirvalve_3.orifice_13,rhochar@dirvalve_3.orifice_13,ame_real_parameter,working density for pressure drop measurement,kg/m**3,rhochar__SC_1_4,rhochar__SC_1_4,kg/m**3
+dirvalve_3.orifice_13,nuchar@dirvalve_3.orifice_13,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,nuchar__SC_1_4,nuchar__SC_1_4,cSt
+dirvalve_3.orifice_13,sigmin@dirvalve_3.orifice_13,ame_real_parameter,minimum signal value,null,0,0,null
+dirvalve_3.orifice_13,sigmax@dirvalve_3.orifice_13,ame_real_parameter,maximum signal value,null,100,100,null
+dirvalve_3.orifice_13,indexf@dirvalve_3.orifice_13,ame_integer_parameter,index of hydraulic fluid,,indexf__SC_1_4,indexf__SC_1_4,
+dirvalve_3.orifice_13,nbor@dirvalve_3.orifice_13,ame_integer_parameter,number of parallel orifices,,1,1,
+dirvalve_3.orifice_13,method@dirvalve_3.orifice_13,ame_integer_parameter,pressure drop definition method,,1,1,
+dirvalve_3.orifice_13,geom@dirvalve_3.orifice_13,ame_integer_parameter,section type,,1,1,
+dirvalve_3.orifice_13,userfp@dirvalve_3.orifice_13,ame_integer_parameter,fluid properties for pressure drop measurement,,2,2,
+dirvalve_3.orifice_13,hdvar@dirvalve_3.orifice_13,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+dirvalve_3.orifice_13,areax@dirvalve_3.orifice_13,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+dirvalve_3.orifice_13,hdx@dirvalve_3.orifice_13,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+dirvalve_3.orifice_13,hdarea@dirvalve_3.orifice_13,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+dirvalve_3.orifice_23,qchar@dirvalve_3.orifice_23,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_3.orifice_23,dpchar@dirvalve_3.orifice_23,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+dirvalve_3.orifice_23,cqmax@dirvalve_3.orifice_23,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+dirvalve_3.orifice_23,zetamin@dirvalve_3.orifice_23,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+dirvalve_3.orifice_23,cvmax@dirvalve_3.orifice_23,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+dirvalve_3.orifice_23,kvmax@dirvalve_3.orifice_23,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+dirvalve_3.orifice_23,lamc@dirvalve_3.orifice_23,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_3.orifice_23,rec@dirvalve_3.orifice_23,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+dirvalve_3.orifice_23,ordiammax@dirvalve_3.orifice_23,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+dirvalve_3.orifice_23,amax@dirvalve_3.orifice_23,ame_real_parameter,width at maximum opening,mm,5,5,mm
+dirvalve_3.orifice_23,bmax@dirvalve_3.orifice_23,ame_real_parameter,height at maximum opening,mm,5,5,mm
+dirvalve_3.orifice_23,rhochar@dirvalve_3.orifice_23,ame_real_parameter,working density for pressure drop measurement,kg/m**3,rhochar__SC_1_4,rhochar__SC_1_4,kg/m**3
+dirvalve_3.orifice_23,nuchar@dirvalve_3.orifice_23,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,nuchar__SC_1_4,nuchar__SC_1_4,cSt
+dirvalve_3.orifice_23,sigmin@dirvalve_3.orifice_23,ame_real_parameter,minimum signal value,null,0,0,null
+dirvalve_3.orifice_23,sigmax@dirvalve_3.orifice_23,ame_real_parameter,maximum signal value,null,100,100,null
+dirvalve_3.orifice_23,indexf@dirvalve_3.orifice_23,ame_integer_parameter,index of hydraulic fluid,,indexf__SC_1_4,indexf__SC_1_4,
+dirvalve_3.orifice_23,nbor@dirvalve_3.orifice_23,ame_integer_parameter,number of parallel orifices,,1,1,
+dirvalve_3.orifice_23,method@dirvalve_3.orifice_23,ame_integer_parameter,pressure drop definition method,,1,1,
+dirvalve_3.orifice_23,geom@dirvalve_3.orifice_23,ame_integer_parameter,section type,,1,1,
+dirvalve_3.orifice_23,userfp@dirvalve_3.orifice_23,ame_integer_parameter,fluid properties for pressure drop measurement,,2,2,
+dirvalve_3.orifice_23,hdvar@dirvalve_3.orifice_23,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+dirvalve_3.orifice_23,areax@dirvalve_3.orifice_23,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+dirvalve_3.orifice_23,hdx@dirvalve_3.orifice_23,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+dirvalve_3.orifice_23,hdarea@dirvalve_3.orifice_23,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+dirvalve_8.orifice_14,qchar@dirvalve_8.orifice_14,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_8.orifice_14,dpchar@dirvalve_8.orifice_14,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+dirvalve_8.orifice_14,cqmax@dirvalve_8.orifice_14,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+dirvalve_8.orifice_14,zetamin@dirvalve_8.orifice_14,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+dirvalve_8.orifice_14,cvmax@dirvalve_8.orifice_14,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+dirvalve_8.orifice_14,kvmax@dirvalve_8.orifice_14,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+dirvalve_8.orifice_14,lamc@dirvalve_8.orifice_14,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_8.orifice_14,rec@dirvalve_8.orifice_14,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+dirvalve_8.orifice_14,ordiammax@dirvalve_8.orifice_14,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+dirvalve_8.orifice_14,amax@dirvalve_8.orifice_14,ame_real_parameter,width at maximum opening,mm,5,5,mm
+dirvalve_8.orifice_14,bmax@dirvalve_8.orifice_14,ame_real_parameter,height at maximum opening,mm,5,5,mm
+dirvalve_8.orifice_14,rhochar@dirvalve_8.orifice_14,ame_real_parameter,working density for pressure drop measurement,kg/m**3,rhochar__SC_1_5,rhochar__SC_1_5,kg/m**3
+dirvalve_8.orifice_14,nuchar@dirvalve_8.orifice_14,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,nuchar__SC_1_5,nuchar__SC_1_5,cSt
+dirvalve_8.orifice_14,sigmin@dirvalve_8.orifice_14,ame_real_parameter,minimum signal value,null,0,0,null
+dirvalve_8.orifice_14,sigmax@dirvalve_8.orifice_14,ame_real_parameter,maximum signal value,null,100,100,null
+dirvalve_8.orifice_14,indexf@dirvalve_8.orifice_14,ame_integer_parameter,index of hydraulic fluid,,indexf__SC_1_5,indexf__SC_1_5,
+dirvalve_8.orifice_14,nbor@dirvalve_8.orifice_14,ame_integer_parameter,number of parallel orifices,,1,1,
+dirvalve_8.orifice_14,method@dirvalve_8.orifice_14,ame_integer_parameter,pressure drop definition method,,1,1,
+dirvalve_8.orifice_14,geom@dirvalve_8.orifice_14,ame_integer_parameter,section type,,1,1,
+dirvalve_8.orifice_14,userfp@dirvalve_8.orifice_14,ame_integer_parameter,fluid properties for pressure drop measurement,,2,2,
+dirvalve_8.orifice_14,hdvar@dirvalve_8.orifice_14,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+dirvalve_8.orifice_14,areax@dirvalve_8.orifice_14,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+dirvalve_8.orifice_14,hdx@dirvalve_8.orifice_14,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+dirvalve_8.orifice_14,hdarea@dirvalve_8.orifice_14,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+dirvalve_8.orifice_13,qchar@dirvalve_8.orifice_13,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_8.orifice_13,dpchar@dirvalve_8.orifice_13,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+dirvalve_8.orifice_13,cqmax@dirvalve_8.orifice_13,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+dirvalve_8.orifice_13,zetamin@dirvalve_8.orifice_13,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+dirvalve_8.orifice_13,cvmax@dirvalve_8.orifice_13,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+dirvalve_8.orifice_13,kvmax@dirvalve_8.orifice_13,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+dirvalve_8.orifice_13,lamc@dirvalve_8.orifice_13,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_8.orifice_13,rec@dirvalve_8.orifice_13,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+dirvalve_8.orifice_13,ordiammax@dirvalve_8.orifice_13,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+dirvalve_8.orifice_13,amax@dirvalve_8.orifice_13,ame_real_parameter,width at maximum opening,mm,5,5,mm
+dirvalve_8.orifice_13,bmax@dirvalve_8.orifice_13,ame_real_parameter,height at maximum opening,mm,5,5,mm
+dirvalve_8.orifice_13,rhochar@dirvalve_8.orifice_13,ame_real_parameter,working density for pressure drop measurement,kg/m**3,rhochar__SC_1_5,rhochar__SC_1_5,kg/m**3
+dirvalve_8.orifice_13,nuchar@dirvalve_8.orifice_13,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,nuchar__SC_1_5,nuchar__SC_1_5,cSt
+dirvalve_8.orifice_13,sigmin@dirvalve_8.orifice_13,ame_real_parameter,minimum signal value,null,0,0,null
+dirvalve_8.orifice_13,sigmax@dirvalve_8.orifice_13,ame_real_parameter,maximum signal value,null,100,100,null
+dirvalve_8.orifice_13,indexf@dirvalve_8.orifice_13,ame_integer_parameter,index of hydraulic fluid,,indexf__SC_1_5,indexf__SC_1_5,
+dirvalve_8.orifice_13,nbor@dirvalve_8.orifice_13,ame_integer_parameter,number of parallel orifices,,1,1,
+dirvalve_8.orifice_13,method@dirvalve_8.orifice_13,ame_integer_parameter,pressure drop definition method,,1,1,
+dirvalve_8.orifice_13,geom@dirvalve_8.orifice_13,ame_integer_parameter,section type,,1,1,
+dirvalve_8.orifice_13,userfp@dirvalve_8.orifice_13,ame_integer_parameter,fluid properties for pressure drop measurement,,2,2,
+dirvalve_8.orifice_13,hdvar@dirvalve_8.orifice_13,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+dirvalve_8.orifice_13,areax@dirvalve_8.orifice_13,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+dirvalve_8.orifice_13,hdx@dirvalve_8.orifice_13,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+dirvalve_8.orifice_13,hdarea@dirvalve_8.orifice_13,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+dirvalve_8.orifice_23,qchar@dirvalve_8.orifice_23,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_8.orifice_23,dpchar@dirvalve_8.orifice_23,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+dirvalve_8.orifice_23,cqmax@dirvalve_8.orifice_23,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+dirvalve_8.orifice_23,zetamin@dirvalve_8.orifice_23,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+dirvalve_8.orifice_23,cvmax@dirvalve_8.orifice_23,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+dirvalve_8.orifice_23,kvmax@dirvalve_8.orifice_23,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+dirvalve_8.orifice_23,lamc@dirvalve_8.orifice_23,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_8.orifice_23,rec@dirvalve_8.orifice_23,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+dirvalve_8.orifice_23,ordiammax@dirvalve_8.orifice_23,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+dirvalve_8.orifice_23,amax@dirvalve_8.orifice_23,ame_real_parameter,width at maximum opening,mm,5,5,mm
+dirvalve_8.orifice_23,bmax@dirvalve_8.orifice_23,ame_real_parameter,height at maximum opening,mm,5,5,mm
+dirvalve_8.orifice_23,rhochar@dirvalve_8.orifice_23,ame_real_parameter,working density for pressure drop measurement,kg/m**3,rhochar__SC_1_5,rhochar__SC_1_5,kg/m**3
+dirvalve_8.orifice_23,nuchar@dirvalve_8.orifice_23,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,nuchar__SC_1_5,nuchar__SC_1_5,cSt
+dirvalve_8.orifice_23,sigmin@dirvalve_8.orifice_23,ame_real_parameter,minimum signal value,null,0,0,null
+dirvalve_8.orifice_23,sigmax@dirvalve_8.orifice_23,ame_real_parameter,maximum signal value,null,100,100,null
+dirvalve_8.orifice_23,indexf@dirvalve_8.orifice_23,ame_integer_parameter,index of hydraulic fluid,,indexf__SC_1_5,indexf__SC_1_5,
+dirvalve_8.orifice_23,nbor@dirvalve_8.orifice_23,ame_integer_parameter,number of parallel orifices,,1,1,
+dirvalve_8.orifice_23,method@dirvalve_8.orifice_23,ame_integer_parameter,pressure drop definition method,,1,1,
+dirvalve_8.orifice_23,geom@dirvalve_8.orifice_23,ame_integer_parameter,section type,,1,1,
+dirvalve_8.orifice_23,userfp@dirvalve_8.orifice_23,ame_integer_parameter,fluid properties for pressure drop measurement,,2,2,
+dirvalve_8.orifice_23,hdvar@dirvalve_8.orifice_23,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+dirvalve_8.orifice_23,areax@dirvalve_8.orifice_23,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+dirvalve_8.orifice_23,hdx@dirvalve_8.orifice_23,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+dirvalve_8.orifice_23,hdarea@dirvalve_8.orifice_23,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+dirvalve_8.orifice_24,qchar@dirvalve_8.orifice_24,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_8.orifice_24,dpchar@dirvalve_8.orifice_24,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+dirvalve_8.orifice_24,cqmax@dirvalve_8.orifice_24,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+dirvalve_8.orifice_24,zetamin@dirvalve_8.orifice_24,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+dirvalve_8.orifice_24,cvmax@dirvalve_8.orifice_24,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+dirvalve_8.orifice_24,kvmax@dirvalve_8.orifice_24,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+dirvalve_8.orifice_24,lamc@dirvalve_8.orifice_24,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_8.orifice_24,rec@dirvalve_8.orifice_24,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+dirvalve_8.orifice_24,ordiammax@dirvalve_8.orifice_24,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+dirvalve_8.orifice_24,amax@dirvalve_8.orifice_24,ame_real_parameter,width at maximum opening,mm,5,5,mm
+dirvalve_8.orifice_24,bmax@dirvalve_8.orifice_24,ame_real_parameter,height at maximum opening,mm,5,5,mm
+dirvalve_8.orifice_24,rhochar@dirvalve_8.orifice_24,ame_real_parameter,working density for pressure drop measurement,kg/m**3,rhochar__SC_1_5,rhochar__SC_1_5,kg/m**3
+dirvalve_8.orifice_24,nuchar@dirvalve_8.orifice_24,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,nuchar__SC_1_5,nuchar__SC_1_5,cSt
+dirvalve_8.orifice_24,sigmin@dirvalve_8.orifice_24,ame_real_parameter,minimum signal value,null,0,0,null
+dirvalve_8.orifice_24,sigmax@dirvalve_8.orifice_24,ame_real_parameter,maximum signal value,null,100,100,null
+dirvalve_8.orifice_24,indexf@dirvalve_8.orifice_24,ame_integer_parameter,index of hydraulic fluid,,indexf__SC_1_5,indexf__SC_1_5,
+dirvalve_8.orifice_24,nbor@dirvalve_8.orifice_24,ame_integer_parameter,number of parallel orifices,,1,1,
+dirvalve_8.orifice_24,method@dirvalve_8.orifice_24,ame_integer_parameter,pressure drop definition method,,1,1,
+dirvalve_8.orifice_24,geom@dirvalve_8.orifice_24,ame_integer_parameter,section type,,1,1,
+dirvalve_8.orifice_24,userfp@dirvalve_8.orifice_24,ame_integer_parameter,fluid properties for pressure drop measurement,,2,2,
+dirvalve_8.orifice_24,hdvar@dirvalve_8.orifice_24,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+dirvalve_8.orifice_24,areax@dirvalve_8.orifice_24,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+dirvalve_8.orifice_24,hdx@dirvalve_8.orifice_24,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+dirvalve_8.orifice_24,hdarea@dirvalve_8.orifice_24,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+dirvalve_9.orifice_14,qchar@dirvalve_9.orifice_14,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_9.orifice_14,dpchar@dirvalve_9.orifice_14,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+dirvalve_9.orifice_14,cqmax@dirvalve_9.orifice_14,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+dirvalve_9.orifice_14,zetamin@dirvalve_9.orifice_14,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+dirvalve_9.orifice_14,cvmax@dirvalve_9.orifice_14,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+dirvalve_9.orifice_14,kvmax@dirvalve_9.orifice_14,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+dirvalve_9.orifice_14,lamc@dirvalve_9.orifice_14,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_9.orifice_14,rec@dirvalve_9.orifice_14,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+dirvalve_9.orifice_14,ordiammax@dirvalve_9.orifice_14,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+dirvalve_9.orifice_14,amax@dirvalve_9.orifice_14,ame_real_parameter,width at maximum opening,mm,5,5,mm
+dirvalve_9.orifice_14,bmax@dirvalve_9.orifice_14,ame_real_parameter,height at maximum opening,mm,5,5,mm
+dirvalve_9.orifice_14,rhochar@dirvalve_9.orifice_14,ame_real_parameter,working density for pressure drop measurement,kg/m**3,rhochar__SC_1_6,rhochar__SC_1_6,kg/m**3
+dirvalve_9.orifice_14,nuchar@dirvalve_9.orifice_14,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,nuchar__SC_1_6,nuchar__SC_1_6,cSt
+dirvalve_9.orifice_14,sigmin@dirvalve_9.orifice_14,ame_real_parameter,minimum signal value,null,0,0,null
+dirvalve_9.orifice_14,sigmax@dirvalve_9.orifice_14,ame_real_parameter,maximum signal value,null,100,100,null
+dirvalve_9.orifice_14,indexf@dirvalve_9.orifice_14,ame_integer_parameter,index of hydraulic fluid,,indexf__SC_1_6,indexf__SC_1_6,
+dirvalve_9.orifice_14,nbor@dirvalve_9.orifice_14,ame_integer_parameter,number of parallel orifices,,1,1,
+dirvalve_9.orifice_14,method@dirvalve_9.orifice_14,ame_integer_parameter,pressure drop definition method,,1,1,
+dirvalve_9.orifice_14,geom@dirvalve_9.orifice_14,ame_integer_parameter,section type,,1,1,
+dirvalve_9.orifice_14,userfp@dirvalve_9.orifice_14,ame_integer_parameter,fluid properties for pressure drop measurement,,2,2,
+dirvalve_9.orifice_14,hdvar@dirvalve_9.orifice_14,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+dirvalve_9.orifice_14,areax@dirvalve_9.orifice_14,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+dirvalve_9.orifice_14,hdx@dirvalve_9.orifice_14,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+dirvalve_9.orifice_14,hdarea@dirvalve_9.orifice_14,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+dirvalve_9.orifice_23,qchar@dirvalve_9.orifice_23,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_9.orifice_23,dpchar@dirvalve_9.orifice_23,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+dirvalve_9.orifice_23,cqmax@dirvalve_9.orifice_23,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+dirvalve_9.orifice_23,zetamin@dirvalve_9.orifice_23,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+dirvalve_9.orifice_23,cvmax@dirvalve_9.orifice_23,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+dirvalve_9.orifice_23,kvmax@dirvalve_9.orifice_23,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+dirvalve_9.orifice_23,lamc@dirvalve_9.orifice_23,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_9.orifice_23,rec@dirvalve_9.orifice_23,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+dirvalve_9.orifice_23,ordiammax@dirvalve_9.orifice_23,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+dirvalve_9.orifice_23,amax@dirvalve_9.orifice_23,ame_real_parameter,width at maximum opening,mm,5,5,mm
+dirvalve_9.orifice_23,bmax@dirvalve_9.orifice_23,ame_real_parameter,height at maximum opening,mm,5,5,mm
+dirvalve_9.orifice_23,rhochar@dirvalve_9.orifice_23,ame_real_parameter,working density for pressure drop measurement,kg/m**3,rhochar__SC_1_6,rhochar__SC_1_6,kg/m**3
+dirvalve_9.orifice_23,nuchar@dirvalve_9.orifice_23,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,nuchar__SC_1_6,nuchar__SC_1_6,cSt
+dirvalve_9.orifice_23,sigmin@dirvalve_9.orifice_23,ame_real_parameter,minimum signal value,null,0,0,null
+dirvalve_9.orifice_23,sigmax@dirvalve_9.orifice_23,ame_real_parameter,maximum signal value,null,100,100,null
+dirvalve_9.orifice_23,indexf@dirvalve_9.orifice_23,ame_integer_parameter,index of hydraulic fluid,,indexf__SC_1_6,indexf__SC_1_6,
+dirvalve_9.orifice_23,nbor@dirvalve_9.orifice_23,ame_integer_parameter,number of parallel orifices,,1,1,
+dirvalve_9.orifice_23,method@dirvalve_9.orifice_23,ame_integer_parameter,pressure drop definition method,,1,1,
+dirvalve_9.orifice_23,geom@dirvalve_9.orifice_23,ame_integer_parameter,section type,,1,1,
+dirvalve_9.orifice_23,userfp@dirvalve_9.orifice_23,ame_integer_parameter,fluid properties for pressure drop measurement,,2,2,
+dirvalve_9.orifice_23,hdvar@dirvalve_9.orifice_23,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+dirvalve_9.orifice_23,areax@dirvalve_9.orifice_23,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+dirvalve_9.orifice_23,hdx@dirvalve_9.orifice_23,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+dirvalve_9.orifice_23,hdarea@dirvalve_9.orifice_23,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+dirvalve_10.orifice_13,qchar@dirvalve_10.orifice_13,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_10.orifice_13,dpchar@dirvalve_10.orifice_13,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+dirvalve_10.orifice_13,cqmax@dirvalve_10.orifice_13,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+dirvalve_10.orifice_13,zetamin@dirvalve_10.orifice_13,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+dirvalve_10.orifice_13,cvmax@dirvalve_10.orifice_13,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+dirvalve_10.orifice_13,kvmax@dirvalve_10.orifice_13,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+dirvalve_10.orifice_13,lamc@dirvalve_10.orifice_13,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_10.orifice_13,rec@dirvalve_10.orifice_13,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+dirvalve_10.orifice_13,ordiammax@dirvalve_10.orifice_13,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+dirvalve_10.orifice_13,amax@dirvalve_10.orifice_13,ame_real_parameter,width at maximum opening,mm,5,5,mm
+dirvalve_10.orifice_13,bmax@dirvalve_10.orifice_13,ame_real_parameter,height at maximum opening,mm,5,5,mm
+dirvalve_10.orifice_13,rhochar@dirvalve_10.orifice_13,ame_real_parameter,working density for pressure drop measurement,kg/m**3,rhochar__SC_1_7,rhochar__SC_1_7,kg/m**3
+dirvalve_10.orifice_13,nuchar@dirvalve_10.orifice_13,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,nuchar__SC_1_7,nuchar__SC_1_7,cSt
+dirvalve_10.orifice_13,sigmin@dirvalve_10.orifice_13,ame_real_parameter,minimum signal value,null,0,0,null
+dirvalve_10.orifice_13,sigmax@dirvalve_10.orifice_13,ame_real_parameter,maximum signal value,null,100,100,null
+dirvalve_10.orifice_13,indexf@dirvalve_10.orifice_13,ame_integer_parameter,index of hydraulic fluid,,indexf__SC_1_7,indexf__SC_1_7,
+dirvalve_10.orifice_13,nbor@dirvalve_10.orifice_13,ame_integer_parameter,number of parallel orifices,,1,1,
+dirvalve_10.orifice_13,method@dirvalve_10.orifice_13,ame_integer_parameter,pressure drop definition method,,1,1,
+dirvalve_10.orifice_13,geom@dirvalve_10.orifice_13,ame_integer_parameter,section type,,1,1,
+dirvalve_10.orifice_13,userfp@dirvalve_10.orifice_13,ame_integer_parameter,fluid properties for pressure drop measurement,,2,2,
+dirvalve_10.orifice_13,hdvar@dirvalve_10.orifice_13,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+dirvalve_10.orifice_13,areax@dirvalve_10.orifice_13,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+dirvalve_10.orifice_13,hdx@dirvalve_10.orifice_13,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+dirvalve_10.orifice_13,hdarea@dirvalve_10.orifice_13,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+dirvalve_10.orifice_23,qchar@dirvalve_10.orifice_23,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_10.orifice_23,dpchar@dirvalve_10.orifice_23,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+dirvalve_10.orifice_23,cqmax@dirvalve_10.orifice_23,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+dirvalve_10.orifice_23,zetamin@dirvalve_10.orifice_23,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+dirvalve_10.orifice_23,cvmax@dirvalve_10.orifice_23,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+dirvalve_10.orifice_23,kvmax@dirvalve_10.orifice_23,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+dirvalve_10.orifice_23,lamc@dirvalve_10.orifice_23,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_10.orifice_23,rec@dirvalve_10.orifice_23,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+dirvalve_10.orifice_23,ordiammax@dirvalve_10.orifice_23,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+dirvalve_10.orifice_23,amax@dirvalve_10.orifice_23,ame_real_parameter,width at maximum opening,mm,5,5,mm
+dirvalve_10.orifice_23,bmax@dirvalve_10.orifice_23,ame_real_parameter,height at maximum opening,mm,5,5,mm
+dirvalve_10.orifice_23,rhochar@dirvalve_10.orifice_23,ame_real_parameter,working density for pressure drop measurement,kg/m**3,rhochar__SC_1_7,rhochar__SC_1_7,kg/m**3
+dirvalve_10.orifice_23,nuchar@dirvalve_10.orifice_23,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,nuchar__SC_1_7,nuchar__SC_1_7,cSt
+dirvalve_10.orifice_23,sigmin@dirvalve_10.orifice_23,ame_real_parameter,minimum signal value,null,0,0,null
+dirvalve_10.orifice_23,sigmax@dirvalve_10.orifice_23,ame_real_parameter,maximum signal value,null,100,100,null
+dirvalve_10.orifice_23,indexf@dirvalve_10.orifice_23,ame_integer_parameter,index of hydraulic fluid,,indexf__SC_1_7,indexf__SC_1_7,
+dirvalve_10.orifice_23,nbor@dirvalve_10.orifice_23,ame_integer_parameter,number of parallel orifices,,1,1,
+dirvalve_10.orifice_23,method@dirvalve_10.orifice_23,ame_integer_parameter,pressure drop definition method,,1,1,
+dirvalve_10.orifice_23,geom@dirvalve_10.orifice_23,ame_integer_parameter,section type,,1,1,
+dirvalve_10.orifice_23,userfp@dirvalve_10.orifice_23,ame_integer_parameter,fluid properties for pressure drop measurement,,2,2,
+dirvalve_10.orifice_23,hdvar@dirvalve_10.orifice_23,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+dirvalve_10.orifice_23,areax@dirvalve_10.orifice_23,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+dirvalve_10.orifice_23,hdx@dirvalve_10.orifice_23,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+dirvalve_10.orifice_23,hdarea@dirvalve_10.orifice_23,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+dirvalve_11.orifice_14,qchar@dirvalve_11.orifice_14,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_11.orifice_14,dpchar@dirvalve_11.orifice_14,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+dirvalve_11.orifice_14,cqmax@dirvalve_11.orifice_14,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+dirvalve_11.orifice_14,zetamin@dirvalve_11.orifice_14,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+dirvalve_11.orifice_14,cvmax@dirvalve_11.orifice_14,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+dirvalve_11.orifice_14,kvmax@dirvalve_11.orifice_14,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+dirvalve_11.orifice_14,lamc@dirvalve_11.orifice_14,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_11.orifice_14,rec@dirvalve_11.orifice_14,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+dirvalve_11.orifice_14,ordiammax@dirvalve_11.orifice_14,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+dirvalve_11.orifice_14,amax@dirvalve_11.orifice_14,ame_real_parameter,width at maximum opening,mm,5,5,mm
+dirvalve_11.orifice_14,bmax@dirvalve_11.orifice_14,ame_real_parameter,height at maximum opening,mm,5,5,mm
+dirvalve_11.orifice_14,rhochar@dirvalve_11.orifice_14,ame_real_parameter,working density for pressure drop measurement,kg/m**3,rhochar__SC_1_8,rhochar__SC_1_8,kg/m**3
+dirvalve_11.orifice_14,nuchar@dirvalve_11.orifice_14,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,nuchar__SC_1_8,nuchar__SC_1_8,cSt
+dirvalve_11.orifice_14,sigmin@dirvalve_11.orifice_14,ame_real_parameter,minimum signal value,null,0,0,null
+dirvalve_11.orifice_14,sigmax@dirvalve_11.orifice_14,ame_real_parameter,maximum signal value,null,100,100,null
+dirvalve_11.orifice_14,indexf@dirvalve_11.orifice_14,ame_integer_parameter,index of hydraulic fluid,,indexf__SC_1_8,indexf__SC_1_8,
+dirvalve_11.orifice_14,nbor@dirvalve_11.orifice_14,ame_integer_parameter,number of parallel orifices,,1,1,
+dirvalve_11.orifice_14,method@dirvalve_11.orifice_14,ame_integer_parameter,pressure drop definition method,,1,1,
+dirvalve_11.orifice_14,geom@dirvalve_11.orifice_14,ame_integer_parameter,section type,,1,1,
+dirvalve_11.orifice_14,userfp@dirvalve_11.orifice_14,ame_integer_parameter,fluid properties for pressure drop measurement,,2,2,
+dirvalve_11.orifice_14,hdvar@dirvalve_11.orifice_14,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+dirvalve_11.orifice_14,areax@dirvalve_11.orifice_14,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+dirvalve_11.orifice_14,hdx@dirvalve_11.orifice_14,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+dirvalve_11.orifice_14,hdarea@dirvalve_11.orifice_14,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+dirvalve_11.orifice_13,qchar@dirvalve_11.orifice_13,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_11.orifice_13,dpchar@dirvalve_11.orifice_13,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+dirvalve_11.orifice_13,cqmax@dirvalve_11.orifice_13,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+dirvalve_11.orifice_13,zetamin@dirvalve_11.orifice_13,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+dirvalve_11.orifice_13,cvmax@dirvalve_11.orifice_13,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+dirvalve_11.orifice_13,kvmax@dirvalve_11.orifice_13,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+dirvalve_11.orifice_13,lamc@dirvalve_11.orifice_13,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_11.orifice_13,rec@dirvalve_11.orifice_13,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+dirvalve_11.orifice_13,ordiammax@dirvalve_11.orifice_13,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+dirvalve_11.orifice_13,amax@dirvalve_11.orifice_13,ame_real_parameter,width at maximum opening,mm,5,5,mm
+dirvalve_11.orifice_13,bmax@dirvalve_11.orifice_13,ame_real_parameter,height at maximum opening,mm,5,5,mm
+dirvalve_11.orifice_13,rhochar@dirvalve_11.orifice_13,ame_real_parameter,working density for pressure drop measurement,kg/m**3,rhochar__SC_1_8,rhochar__SC_1_8,kg/m**3
+dirvalve_11.orifice_13,nuchar@dirvalve_11.orifice_13,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,nuchar__SC_1_8,nuchar__SC_1_8,cSt
+dirvalve_11.orifice_13,sigmin@dirvalve_11.orifice_13,ame_real_parameter,minimum signal value,null,0,0,null
+dirvalve_11.orifice_13,sigmax@dirvalve_11.orifice_13,ame_real_parameter,maximum signal value,null,100,100,null
+dirvalve_11.orifice_13,indexf@dirvalve_11.orifice_13,ame_integer_parameter,index of hydraulic fluid,,indexf__SC_1_8,indexf__SC_1_8,
+dirvalve_11.orifice_13,nbor@dirvalve_11.orifice_13,ame_integer_parameter,number of parallel orifices,,1,1,
+dirvalve_11.orifice_13,method@dirvalve_11.orifice_13,ame_integer_parameter,pressure drop definition method,,1,1,
+dirvalve_11.orifice_13,geom@dirvalve_11.orifice_13,ame_integer_parameter,section type,,1,1,
+dirvalve_11.orifice_13,userfp@dirvalve_11.orifice_13,ame_integer_parameter,fluid properties for pressure drop measurement,,2,2,
+dirvalve_11.orifice_13,hdvar@dirvalve_11.orifice_13,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+dirvalve_11.orifice_13,areax@dirvalve_11.orifice_13,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+dirvalve_11.orifice_13,hdx@dirvalve_11.orifice_13,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+dirvalve_11.orifice_13,hdarea@dirvalve_11.orifice_13,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+dirvalve_11.orifice_23,qchar@dirvalve_11.orifice_23,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_11.orifice_23,dpchar@dirvalve_11.orifice_23,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+dirvalve_11.orifice_23,cqmax@dirvalve_11.orifice_23,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+dirvalve_11.orifice_23,zetamin@dirvalve_11.orifice_23,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+dirvalve_11.orifice_23,cvmax@dirvalve_11.orifice_23,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+dirvalve_11.orifice_23,kvmax@dirvalve_11.orifice_23,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+dirvalve_11.orifice_23,lamc@dirvalve_11.orifice_23,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_11.orifice_23,rec@dirvalve_11.orifice_23,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+dirvalve_11.orifice_23,ordiammax@dirvalve_11.orifice_23,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+dirvalve_11.orifice_23,amax@dirvalve_11.orifice_23,ame_real_parameter,width at maximum opening,mm,5,5,mm
+dirvalve_11.orifice_23,bmax@dirvalve_11.orifice_23,ame_real_parameter,height at maximum opening,mm,5,5,mm
+dirvalve_11.orifice_23,rhochar@dirvalve_11.orifice_23,ame_real_parameter,working density for pressure drop measurement,kg/m**3,rhochar__SC_1_8,rhochar__SC_1_8,kg/m**3
+dirvalve_11.orifice_23,nuchar@dirvalve_11.orifice_23,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,nuchar__SC_1_8,nuchar__SC_1_8,cSt
+dirvalve_11.orifice_23,sigmin@dirvalve_11.orifice_23,ame_real_parameter,minimum signal value,null,0,0,null
+dirvalve_11.orifice_23,sigmax@dirvalve_11.orifice_23,ame_real_parameter,maximum signal value,null,100,100,null
+dirvalve_11.orifice_23,indexf@dirvalve_11.orifice_23,ame_integer_parameter,index of hydraulic fluid,,indexf__SC_1_8,indexf__SC_1_8,
+dirvalve_11.orifice_23,nbor@dirvalve_11.orifice_23,ame_integer_parameter,number of parallel orifices,,1,1,
+dirvalve_11.orifice_23,method@dirvalve_11.orifice_23,ame_integer_parameter,pressure drop definition method,,1,1,
+dirvalve_11.orifice_23,geom@dirvalve_11.orifice_23,ame_integer_parameter,section type,,1,1,
+dirvalve_11.orifice_23,userfp@dirvalve_11.orifice_23,ame_integer_parameter,fluid properties for pressure drop measurement,,2,2,
+dirvalve_11.orifice_23,hdvar@dirvalve_11.orifice_23,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+dirvalve_11.orifice_23,areax@dirvalve_11.orifice_23,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+dirvalve_11.orifice_23,hdx@dirvalve_11.orifice_23,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+dirvalve_11.orifice_23,hdarea@dirvalve_11.orifice_23,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+dirvalve_11.orifice_24,qchar@dirvalve_11.orifice_24,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_11.orifice_24,dpchar@dirvalve_11.orifice_24,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+dirvalve_11.orifice_24,cqmax@dirvalve_11.orifice_24,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+dirvalve_11.orifice_24,zetamin@dirvalve_11.orifice_24,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+dirvalve_11.orifice_24,cvmax@dirvalve_11.orifice_24,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+dirvalve_11.orifice_24,kvmax@dirvalve_11.orifice_24,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+dirvalve_11.orifice_24,lamc@dirvalve_11.orifice_24,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_11.orifice_24,rec@dirvalve_11.orifice_24,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+dirvalve_11.orifice_24,ordiammax@dirvalve_11.orifice_24,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+dirvalve_11.orifice_24,amax@dirvalve_11.orifice_24,ame_real_parameter,width at maximum opening,mm,5,5,mm
+dirvalve_11.orifice_24,bmax@dirvalve_11.orifice_24,ame_real_parameter,height at maximum opening,mm,5,5,mm
+dirvalve_11.orifice_24,rhochar@dirvalve_11.orifice_24,ame_real_parameter,working density for pressure drop measurement,kg/m**3,rhochar__SC_1_8,rhochar__SC_1_8,kg/m**3
+dirvalve_11.orifice_24,nuchar@dirvalve_11.orifice_24,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,nuchar__SC_1_8,nuchar__SC_1_8,cSt
+dirvalve_11.orifice_24,sigmin@dirvalve_11.orifice_24,ame_real_parameter,minimum signal value,null,0,0,null
+dirvalve_11.orifice_24,sigmax@dirvalve_11.orifice_24,ame_real_parameter,maximum signal value,null,100,100,null
+dirvalve_11.orifice_24,indexf@dirvalve_11.orifice_24,ame_integer_parameter,index of hydraulic fluid,,indexf__SC_1_8,indexf__SC_1_8,
+dirvalve_11.orifice_24,nbor@dirvalve_11.orifice_24,ame_integer_parameter,number of parallel orifices,,1,1,
+dirvalve_11.orifice_24,method@dirvalve_11.orifice_24,ame_integer_parameter,pressure drop definition method,,1,1,
+dirvalve_11.orifice_24,geom@dirvalve_11.orifice_24,ame_integer_parameter,section type,,1,1,
+dirvalve_11.orifice_24,userfp@dirvalve_11.orifice_24,ame_integer_parameter,fluid properties for pressure drop measurement,,2,2,
+dirvalve_11.orifice_24,hdvar@dirvalve_11.orifice_24,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+dirvalve_11.orifice_24,areax@dirvalve_11.orifice_24,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+dirvalve_11.orifice_24,hdx@dirvalve_11.orifice_24,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+dirvalve_11.orifice_24,hdarea@dirvalve_11.orifice_24,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+dirvalve_12.orifice_14,qchar@dirvalve_12.orifice_14,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_12.orifice_14,dpchar@dirvalve_12.orifice_14,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+dirvalve_12.orifice_14,cqmax@dirvalve_12.orifice_14,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+dirvalve_12.orifice_14,zetamin@dirvalve_12.orifice_14,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+dirvalve_12.orifice_14,cvmax@dirvalve_12.orifice_14,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+dirvalve_12.orifice_14,kvmax@dirvalve_12.orifice_14,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+dirvalve_12.orifice_14,lamc@dirvalve_12.orifice_14,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_12.orifice_14,rec@dirvalve_12.orifice_14,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+dirvalve_12.orifice_14,ordiammax@dirvalve_12.orifice_14,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+dirvalve_12.orifice_14,amax@dirvalve_12.orifice_14,ame_real_parameter,width at maximum opening,mm,5,5,mm
+dirvalve_12.orifice_14,bmax@dirvalve_12.orifice_14,ame_real_parameter,height at maximum opening,mm,5,5,mm
+dirvalve_12.orifice_14,rhochar@dirvalve_12.orifice_14,ame_real_parameter,working density for pressure drop measurement,kg/m**3,rhochar__SC_1_9,rhochar__SC_1_9,kg/m**3
+dirvalve_12.orifice_14,nuchar@dirvalve_12.orifice_14,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,nuchar__SC_1_9,nuchar__SC_1_9,cSt
+dirvalve_12.orifice_14,sigmin@dirvalve_12.orifice_14,ame_real_parameter,minimum signal value,null,0,0,null
+dirvalve_12.orifice_14,sigmax@dirvalve_12.orifice_14,ame_real_parameter,maximum signal value,null,100,100,null
+dirvalve_12.orifice_14,indexf@dirvalve_12.orifice_14,ame_integer_parameter,index of hydraulic fluid,,indexf__SC_1_9,indexf__SC_1_9,
+dirvalve_12.orifice_14,nbor@dirvalve_12.orifice_14,ame_integer_parameter,number of parallel orifices,,1,1,
+dirvalve_12.orifice_14,method@dirvalve_12.orifice_14,ame_integer_parameter,pressure drop definition method,,1,1,
+dirvalve_12.orifice_14,geom@dirvalve_12.orifice_14,ame_integer_parameter,section type,,1,1,
+dirvalve_12.orifice_14,userfp@dirvalve_12.orifice_14,ame_integer_parameter,fluid properties for pressure drop measurement,,2,2,
+dirvalve_12.orifice_14,hdvar@dirvalve_12.orifice_14,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+dirvalve_12.orifice_14,areax@dirvalve_12.orifice_14,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+dirvalve_12.orifice_14,hdx@dirvalve_12.orifice_14,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+dirvalve_12.orifice_14,hdarea@dirvalve_12.orifice_14,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+dirvalve_12.orifice_23,qchar@dirvalve_12.orifice_23,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_12.orifice_23,dpchar@dirvalve_12.orifice_23,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+dirvalve_12.orifice_23,cqmax@dirvalve_12.orifice_23,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+dirvalve_12.orifice_23,zetamin@dirvalve_12.orifice_23,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+dirvalve_12.orifice_23,cvmax@dirvalve_12.orifice_23,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+dirvalve_12.orifice_23,kvmax@dirvalve_12.orifice_23,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+dirvalve_12.orifice_23,lamc@dirvalve_12.orifice_23,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_12.orifice_23,rec@dirvalve_12.orifice_23,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+dirvalve_12.orifice_23,ordiammax@dirvalve_12.orifice_23,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+dirvalve_12.orifice_23,amax@dirvalve_12.orifice_23,ame_real_parameter,width at maximum opening,mm,5,5,mm
+dirvalve_12.orifice_23,bmax@dirvalve_12.orifice_23,ame_real_parameter,height at maximum opening,mm,5,5,mm
+dirvalve_12.orifice_23,rhochar@dirvalve_12.orifice_23,ame_real_parameter,working density for pressure drop measurement,kg/m**3,rhochar__SC_1_9,rhochar__SC_1_9,kg/m**3
+dirvalve_12.orifice_23,nuchar@dirvalve_12.orifice_23,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,nuchar__SC_1_9,nuchar__SC_1_9,cSt
+dirvalve_12.orifice_23,sigmin@dirvalve_12.orifice_23,ame_real_parameter,minimum signal value,null,0,0,null
+dirvalve_12.orifice_23,sigmax@dirvalve_12.orifice_23,ame_real_parameter,maximum signal value,null,100,100,null
+dirvalve_12.orifice_23,indexf@dirvalve_12.orifice_23,ame_integer_parameter,index of hydraulic fluid,,indexf__SC_1_9,indexf__SC_1_9,
+dirvalve_12.orifice_23,nbor@dirvalve_12.orifice_23,ame_integer_parameter,number of parallel orifices,,1,1,
+dirvalve_12.orifice_23,method@dirvalve_12.orifice_23,ame_integer_parameter,pressure drop definition method,,1,1,
+dirvalve_12.orifice_23,geom@dirvalve_12.orifice_23,ame_integer_parameter,section type,,1,1,
+dirvalve_12.orifice_23,userfp@dirvalve_12.orifice_23,ame_integer_parameter,fluid properties for pressure drop measurement,,2,2,
+dirvalve_12.orifice_23,hdvar@dirvalve_12.orifice_23,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+dirvalve_12.orifice_23,areax@dirvalve_12.orifice_23,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+dirvalve_12.orifice_23,hdx@dirvalve_12.orifice_23,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+dirvalve_12.orifice_23,hdarea@dirvalve_12.orifice_23,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+dirvalve_13.orifice_13,qchar@dirvalve_13.orifice_13,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_13.orifice_13,dpchar@dirvalve_13.orifice_13,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+dirvalve_13.orifice_13,cqmax@dirvalve_13.orifice_13,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+dirvalve_13.orifice_13,zetamin@dirvalve_13.orifice_13,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+dirvalve_13.orifice_13,cvmax@dirvalve_13.orifice_13,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+dirvalve_13.orifice_13,kvmax@dirvalve_13.orifice_13,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+dirvalve_13.orifice_13,lamc@dirvalve_13.orifice_13,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_13.orifice_13,rec@dirvalve_13.orifice_13,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+dirvalve_13.orifice_13,ordiammax@dirvalve_13.orifice_13,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+dirvalve_13.orifice_13,amax@dirvalve_13.orifice_13,ame_real_parameter,width at maximum opening,mm,5,5,mm
+dirvalve_13.orifice_13,bmax@dirvalve_13.orifice_13,ame_real_parameter,height at maximum opening,mm,5,5,mm
+dirvalve_13.orifice_13,rhochar@dirvalve_13.orifice_13,ame_real_parameter,working density for pressure drop measurement,kg/m**3,rhochar__SC_1_10,rhochar__SC_1_10,kg/m**3
+dirvalve_13.orifice_13,nuchar@dirvalve_13.orifice_13,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,nuchar__SC_1_10,nuchar__SC_1_10,cSt
+dirvalve_13.orifice_13,sigmin@dirvalve_13.orifice_13,ame_real_parameter,minimum signal value,null,0,0,null
+dirvalve_13.orifice_13,sigmax@dirvalve_13.orifice_13,ame_real_parameter,maximum signal value,null,100,100,null
+dirvalve_13.orifice_13,indexf@dirvalve_13.orifice_13,ame_integer_parameter,index of hydraulic fluid,,indexf__SC_1_10,indexf__SC_1_10,
+dirvalve_13.orifice_13,nbor@dirvalve_13.orifice_13,ame_integer_parameter,number of parallel orifices,,1,1,
+dirvalve_13.orifice_13,method@dirvalve_13.orifice_13,ame_integer_parameter,pressure drop definition method,,1,1,
+dirvalve_13.orifice_13,geom@dirvalve_13.orifice_13,ame_integer_parameter,section type,,1,1,
+dirvalve_13.orifice_13,userfp@dirvalve_13.orifice_13,ame_integer_parameter,fluid properties for pressure drop measurement,,2,2,
+dirvalve_13.orifice_13,hdvar@dirvalve_13.orifice_13,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+dirvalve_13.orifice_13,areax@dirvalve_13.orifice_13,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+dirvalve_13.orifice_13,hdx@dirvalve_13.orifice_13,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+dirvalve_13.orifice_13,hdarea@dirvalve_13.orifice_13,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+dirvalve_13.orifice_23,qchar@dirvalve_13.orifice_23,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+dirvalve_13.orifice_23,dpchar@dirvalve_13.orifice_23,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+dirvalve_13.orifice_23,cqmax@dirvalve_13.orifice_23,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+dirvalve_13.orifice_23,zetamin@dirvalve_13.orifice_23,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+dirvalve_13.orifice_23,cvmax@dirvalve_13.orifice_23,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+dirvalve_13.orifice_23,kvmax@dirvalve_13.orifice_23,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+dirvalve_13.orifice_23,lamc@dirvalve_13.orifice_23,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+dirvalve_13.orifice_23,rec@dirvalve_13.orifice_23,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+dirvalve_13.orifice_23,ordiammax@dirvalve_13.orifice_23,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+dirvalve_13.orifice_23,amax@dirvalve_13.orifice_23,ame_real_parameter,width at maximum opening,mm,5,5,mm
+dirvalve_13.orifice_23,bmax@dirvalve_13.orifice_23,ame_real_parameter,height at maximum opening,mm,5,5,mm
+dirvalve_13.orifice_23,rhochar@dirvalve_13.orifice_23,ame_real_parameter,working density for pressure drop measurement,kg/m**3,rhochar__SC_1_10,rhochar__SC_1_10,kg/m**3
+dirvalve_13.orifice_23,nuchar@dirvalve_13.orifice_23,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,nuchar__SC_1_10,nuchar__SC_1_10,cSt
+dirvalve_13.orifice_23,sigmin@dirvalve_13.orifice_23,ame_real_parameter,minimum signal value,null,0,0,null
+dirvalve_13.orifice_23,sigmax@dirvalve_13.orifice_23,ame_real_parameter,maximum signal value,null,100,100,null
+dirvalve_13.orifice_23,indexf@dirvalve_13.orifice_23,ame_integer_parameter,index of hydraulic fluid,,indexf__SC_1_10,indexf__SC_1_10,
+dirvalve_13.orifice_23,nbor@dirvalve_13.orifice_23,ame_integer_parameter,number of parallel orifices,,1,1,
+dirvalve_13.orifice_23,method@dirvalve_13.orifice_23,ame_integer_parameter,pressure drop definition method,,1,1,
+dirvalve_13.orifice_23,geom@dirvalve_13.orifice_23,ame_integer_parameter,section type,,1,1,
+dirvalve_13.orifice_23,userfp@dirvalve_13.orifice_23,ame_integer_parameter,fluid properties for pressure drop measurement,,2,2,
+dirvalve_13.orifice_23,hdvar@dirvalve_13.orifice_23,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+dirvalve_13.orifice_23,areax@dirvalve_13.orifice_23,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+dirvalve_13.orifice_23,hdx@dirvalve_13.orifice_23,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+dirvalve_13.orifice_23,hdarea@dirvalve_13.orifice_23,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+variableorifice,qchar@variableorifice,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+variableorifice,dpchar@variableorifice,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+variableorifice,cqmax@variableorifice,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+variableorifice,zetamin@variableorifice,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+variableorifice,cvmax@variableorifice,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+variableorifice,kvmax@variableorifice,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+variableorifice,lamc@variableorifice,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+variableorifice,rec@variableorifice,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+variableorifice,ordiammax@variableorifice,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+variableorifice,amax@variableorifice,ame_real_parameter,width at maximum opening,mm,5,5,mm
+variableorifice,bmax@variableorifice,ame_real_parameter,height at maximum opening,mm,5,5,mm
+variableorifice,rhochar@variableorifice,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+variableorifice,nuchar@variableorifice,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+variableorifice,sigmin@variableorifice,ame_real_parameter,minimum signal value,null,0,0,null
+variableorifice,sigmax@variableorifice,ame_real_parameter,maximum signal value,null,1,1,null
+variableorifice,indexf@variableorifice,ame_integer_parameter,index of hydraulic fluid,,0,0,
+variableorifice,nbor@variableorifice,ame_integer_parameter,number of parallel orifices,,1,1,
+variableorifice,method@variableorifice,ame_integer_parameter,pressure drop definition method,,2,2,
+variableorifice,geom@variableorifice,ame_integer_parameter,section type,,1,1,
+variableorifice,userfp@variableorifice,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+variableorifice,hdvar@variableorifice,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+variableorifice,areax@variableorifice,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+variableorifice,hdx@variableorifice,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+variableorifice,hdarea@variableorifice,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+variableorifice_1,qchar@variableorifice_1,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+variableorifice_1,dpchar@variableorifice_1,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+variableorifice_1,cqmax@variableorifice_1,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+variableorifice_1,zetamin@variableorifice_1,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+variableorifice_1,cvmax@variableorifice_1,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+variableorifice_1,kvmax@variableorifice_1,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+variableorifice_1,lamc@variableorifice_1,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+variableorifice_1,rec@variableorifice_1,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+variableorifice_1,ordiammax@variableorifice_1,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+variableorifice_1,amax@variableorifice_1,ame_real_parameter,width at maximum opening,mm,5,5,mm
+variableorifice_1,bmax@variableorifice_1,ame_real_parameter,height at maximum opening,mm,5,5,mm
+variableorifice_1,rhochar@variableorifice_1,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+variableorifice_1,nuchar@variableorifice_1,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+variableorifice_1,sigmin@variableorifice_1,ame_real_parameter,minimum signal value,null,0,0,null
+variableorifice_1,sigmax@variableorifice_1,ame_real_parameter,maximum signal value,null,1,1,null
+variableorifice_1,indexf@variableorifice_1,ame_integer_parameter,index of hydraulic fluid,,0,0,
+variableorifice_1,nbor@variableorifice_1,ame_integer_parameter,number of parallel orifices,,1,1,
+variableorifice_1,method@variableorifice_1,ame_integer_parameter,pressure drop definition method,,2,2,
+variableorifice_1,geom@variableorifice_1,ame_integer_parameter,section type,,1,1,
+variableorifice_1,userfp@variableorifice_1,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+variableorifice_1,hdvar@variableorifice_1,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+variableorifice_1,areax@variableorifice_1,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+variableorifice_1,hdx@variableorifice_1,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+variableorifice_1,hdarea@variableorifice_1,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+variableorifice_2,qchar@variableorifice_2,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+variableorifice_2,dpchar@variableorifice_2,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+variableorifice_2,cqmax@variableorifice_2,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+variableorifice_2,zetamin@variableorifice_2,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+variableorifice_2,cvmax@variableorifice_2,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+variableorifice_2,kvmax@variableorifice_2,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+variableorifice_2,lamc@variableorifice_2,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+variableorifice_2,rec@variableorifice_2,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+variableorifice_2,ordiammax@variableorifice_2,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+variableorifice_2,amax@variableorifice_2,ame_real_parameter,width at maximum opening,mm,5,5,mm
+variableorifice_2,bmax@variableorifice_2,ame_real_parameter,height at maximum opening,mm,5,5,mm
+variableorifice_2,rhochar@variableorifice_2,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+variableorifice_2,nuchar@variableorifice_2,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+variableorifice_2,sigmin@variableorifice_2,ame_real_parameter,minimum signal value,null,0,0,null
+variableorifice_2,sigmax@variableorifice_2,ame_real_parameter,maximum signal value,null,1,1,null
+variableorifice_2,indexf@variableorifice_2,ame_integer_parameter,index of hydraulic fluid,,0,0,
+variableorifice_2,nbor@variableorifice_2,ame_integer_parameter,number of parallel orifices,,1,1,
+variableorifice_2,method@variableorifice_2,ame_integer_parameter,pressure drop definition method,,2,2,
+variableorifice_2,geom@variableorifice_2,ame_integer_parameter,section type,,1,1,
+variableorifice_2,userfp@variableorifice_2,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+variableorifice_2,hdvar@variableorifice_2,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+variableorifice_2,areax@variableorifice_2,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+variableorifice_2,hdx@variableorifice_2,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+variableorifice_2,hdarea@variableorifice_2,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+variableorifice_3,qchar@variableorifice_3,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+variableorifice_3,dpchar@variableorifice_3,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+variableorifice_3,cqmax@variableorifice_3,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+variableorifice_3,zetamin@variableorifice_3,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+variableorifice_3,cvmax@variableorifice_3,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+variableorifice_3,kvmax@variableorifice_3,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+variableorifice_3,lamc@variableorifice_3,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+variableorifice_3,rec@variableorifice_3,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+variableorifice_3,ordiammax@variableorifice_3,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+variableorifice_3,amax@variableorifice_3,ame_real_parameter,width at maximum opening,mm,5,5,mm
+variableorifice_3,bmax@variableorifice_3,ame_real_parameter,height at maximum opening,mm,5,5,mm
+variableorifice_3,rhochar@variableorifice_3,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+variableorifice_3,nuchar@variableorifice_3,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+variableorifice_3,sigmin@variableorifice_3,ame_real_parameter,minimum signal value,null,0,0,null
+variableorifice_3,sigmax@variableorifice_3,ame_real_parameter,maximum signal value,null,1,1,null
+variableorifice_3,indexf@variableorifice_3,ame_integer_parameter,index of hydraulic fluid,,0,0,
+variableorifice_3,nbor@variableorifice_3,ame_integer_parameter,number of parallel orifices,,1,1,
+variableorifice_3,method@variableorifice_3,ame_integer_parameter,pressure drop definition method,,2,2,
+variableorifice_3,geom@variableorifice_3,ame_integer_parameter,section type,,1,1,
+variableorifice_3,userfp@variableorifice_3,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+variableorifice_3,hdvar@variableorifice_3,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+variableorifice_3,areax@variableorifice_3,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+variableorifice_3,hdx@variableorifice_3,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+variableorifice_3,hdarea@variableorifice_3,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+variableorifice_4,qchar@variableorifice_4,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+variableorifice_4,dpchar@variableorifice_4,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+variableorifice_4,cqmax@variableorifice_4,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+variableorifice_4,zetamin@variableorifice_4,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+variableorifice_4,cvmax@variableorifice_4,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+variableorifice_4,kvmax@variableorifice_4,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+variableorifice_4,lamc@variableorifice_4,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+variableorifice_4,rec@variableorifice_4,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+variableorifice_4,ordiammax@variableorifice_4,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+variableorifice_4,amax@variableorifice_4,ame_real_parameter,width at maximum opening,mm,5,5,mm
+variableorifice_4,bmax@variableorifice_4,ame_real_parameter,height at maximum opening,mm,5,5,mm
+variableorifice_4,rhochar@variableorifice_4,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+variableorifice_4,nuchar@variableorifice_4,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+variableorifice_4,sigmin@variableorifice_4,ame_real_parameter,minimum signal value,null,0,0,null
+variableorifice_4,sigmax@variableorifice_4,ame_real_parameter,maximum signal value,null,1,1,null
+variableorifice_4,indexf@variableorifice_4,ame_integer_parameter,index of hydraulic fluid,,0,0,
+variableorifice_4,nbor@variableorifice_4,ame_integer_parameter,number of parallel orifices,,1,1,
+variableorifice_4,method@variableorifice_4,ame_integer_parameter,pressure drop definition method,,2,2,
+variableorifice_4,geom@variableorifice_4,ame_integer_parameter,section type,,1,1,
+variableorifice_4,userfp@variableorifice_4,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+variableorifice_4,hdvar@variableorifice_4,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+variableorifice_4,areax@variableorifice_4,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+variableorifice_4,hdx@variableorifice_4,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+variableorifice_4,hdarea@variableorifice_4,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+variableorifice_5,qchar@variableorifice_5,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+variableorifice_5,dpchar@variableorifice_5,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+variableorifice_5,cqmax@variableorifice_5,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+variableorifice_5,zetamin@variableorifice_5,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+variableorifice_5,cvmax@variableorifice_5,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+variableorifice_5,kvmax@variableorifice_5,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+variableorifice_5,lamc@variableorifice_5,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+variableorifice_5,rec@variableorifice_5,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+variableorifice_5,ordiammax@variableorifice_5,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+variableorifice_5,amax@variableorifice_5,ame_real_parameter,width at maximum opening,mm,5,5,mm
+variableorifice_5,bmax@variableorifice_5,ame_real_parameter,height at maximum opening,mm,5,5,mm
+variableorifice_5,rhochar@variableorifice_5,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+variableorifice_5,nuchar@variableorifice_5,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+variableorifice_5,sigmin@variableorifice_5,ame_real_parameter,minimum signal value,null,0,0,null
+variableorifice_5,sigmax@variableorifice_5,ame_real_parameter,maximum signal value,null,1,1,null
+variableorifice_5,indexf@variableorifice_5,ame_integer_parameter,index of hydraulic fluid,,0,0,
+variableorifice_5,nbor@variableorifice_5,ame_integer_parameter,number of parallel orifices,,1,1,
+variableorifice_5,method@variableorifice_5,ame_integer_parameter,pressure drop definition method,,2,2,
+variableorifice_5,geom@variableorifice_5,ame_integer_parameter,section type,,1,1,
+variableorifice_5,userfp@variableorifice_5,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+variableorifice_5,hdvar@variableorifice_5,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+variableorifice_5,areax@variableorifice_5,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+variableorifice_5,hdx@variableorifice_5,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+variableorifice_5,hdarea@variableorifice_5,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+variableorifice_6,qchar@variableorifice_6,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+variableorifice_6,dpchar@variableorifice_6,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+variableorifice_6,cqmax@variableorifice_6,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+variableorifice_6,zetamin@variableorifice_6,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+variableorifice_6,cvmax@variableorifice_6,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+variableorifice_6,kvmax@variableorifice_6,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+variableorifice_6,lamc@variableorifice_6,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+variableorifice_6,rec@variableorifice_6,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+variableorifice_6,ordiammax@variableorifice_6,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+variableorifice_6,amax@variableorifice_6,ame_real_parameter,width at maximum opening,mm,5,5,mm
+variableorifice_6,bmax@variableorifice_6,ame_real_parameter,height at maximum opening,mm,5,5,mm
+variableorifice_6,rhochar@variableorifice_6,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+variableorifice_6,nuchar@variableorifice_6,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+variableorifice_6,sigmin@variableorifice_6,ame_real_parameter,minimum signal value,null,0,0,null
+variableorifice_6,sigmax@variableorifice_6,ame_real_parameter,maximum signal value,null,1,1,null
+variableorifice_6,indexf@variableorifice_6,ame_integer_parameter,index of hydraulic fluid,,0,0,
+variableorifice_6,nbor@variableorifice_6,ame_integer_parameter,number of parallel orifices,,1,1,
+variableorifice_6,method@variableorifice_6,ame_integer_parameter,pressure drop definition method,,2,2,
+variableorifice_6,geom@variableorifice_6,ame_integer_parameter,section type,,1,1,
+variableorifice_6,userfp@variableorifice_6,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+variableorifice_6,hdvar@variableorifice_6,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+variableorifice_6,areax@variableorifice_6,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+variableorifice_6,hdx@variableorifice_6,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+variableorifice_6,hdarea@variableorifice_6,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+variableorifice_7,qchar@variableorifice_7,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+variableorifice_7,dpchar@variableorifice_7,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+variableorifice_7,cqmax@variableorifice_7,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+variableorifice_7,zetamin@variableorifice_7,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+variableorifice_7,cvmax@variableorifice_7,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+variableorifice_7,kvmax@variableorifice_7,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+variableorifice_7,lamc@variableorifice_7,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+variableorifice_7,rec@variableorifice_7,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+variableorifice_7,ordiammax@variableorifice_7,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+variableorifice_7,amax@variableorifice_7,ame_real_parameter,width at maximum opening,mm,5,5,mm
+variableorifice_7,bmax@variableorifice_7,ame_real_parameter,height at maximum opening,mm,5,5,mm
+variableorifice_7,rhochar@variableorifice_7,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+variableorifice_7,nuchar@variableorifice_7,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+variableorifice_7,sigmin@variableorifice_7,ame_real_parameter,minimum signal value,null,0,0,null
+variableorifice_7,sigmax@variableorifice_7,ame_real_parameter,maximum signal value,null,1,1,null
+variableorifice_7,indexf@variableorifice_7,ame_integer_parameter,index of hydraulic fluid,,0,0,
+variableorifice_7,nbor@variableorifice_7,ame_integer_parameter,number of parallel orifices,,1,1,
+variableorifice_7,method@variableorifice_7,ame_integer_parameter,pressure drop definition method,,2,2,
+variableorifice_7,geom@variableorifice_7,ame_integer_parameter,section type,,1,1,
+variableorifice_7,userfp@variableorifice_7,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+variableorifice_7,hdvar@variableorifice_7,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+variableorifice_7,areax@variableorifice_7,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+variableorifice_7,hdx@variableorifice_7,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+variableorifice_7,hdarea@variableorifice_7,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+variableorifice_8,qchar@variableorifice_8,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+variableorifice_8,dpchar@variableorifice_8,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+variableorifice_8,cqmax@variableorifice_8,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+variableorifice_8,zetamin@variableorifice_8,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+variableorifice_8,cvmax@variableorifice_8,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+variableorifice_8,kvmax@variableorifice_8,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+variableorifice_8,lamc@variableorifice_8,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+variableorifice_8,rec@variableorifice_8,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+variableorifice_8,ordiammax@variableorifice_8,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+variableorifice_8,amax@variableorifice_8,ame_real_parameter,width at maximum opening,mm,5,5,mm
+variableorifice_8,bmax@variableorifice_8,ame_real_parameter,height at maximum opening,mm,5,5,mm
+variableorifice_8,rhochar@variableorifice_8,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+variableorifice_8,nuchar@variableorifice_8,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+variableorifice_8,sigmin@variableorifice_8,ame_real_parameter,minimum signal value,null,0,0,null
+variableorifice_8,sigmax@variableorifice_8,ame_real_parameter,maximum signal value,null,1,1,null
+variableorifice_8,indexf@variableorifice_8,ame_integer_parameter,index of hydraulic fluid,,0,0,
+variableorifice_8,nbor@variableorifice_8,ame_integer_parameter,number of parallel orifices,,1,1,
+variableorifice_8,method@variableorifice_8,ame_integer_parameter,pressure drop definition method,,2,2,
+variableorifice_8,geom@variableorifice_8,ame_integer_parameter,section type,,1,1,
+variableorifice_8,userfp@variableorifice_8,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+variableorifice_8,hdvar@variableorifice_8,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+variableorifice_8,areax@variableorifice_8,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+variableorifice_8,hdx@variableorifice_8,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+variableorifice_8,hdarea@variableorifice_8,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+variableorifice_9,qchar@variableorifice_9,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+variableorifice_9,dpchar@variableorifice_9,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+variableorifice_9,cqmax@variableorifice_9,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+variableorifice_9,zetamin@variableorifice_9,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+variableorifice_9,cvmax@variableorifice_9,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+variableorifice_9,kvmax@variableorifice_9,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+variableorifice_9,lamc@variableorifice_9,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+variableorifice_9,rec@variableorifice_9,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+variableorifice_9,ordiammax@variableorifice_9,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+variableorifice_9,amax@variableorifice_9,ame_real_parameter,width at maximum opening,mm,5,5,mm
+variableorifice_9,bmax@variableorifice_9,ame_real_parameter,height at maximum opening,mm,5,5,mm
+variableorifice_9,rhochar@variableorifice_9,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+variableorifice_9,nuchar@variableorifice_9,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+variableorifice_9,sigmin@variableorifice_9,ame_real_parameter,minimum signal value,null,0,0,null
+variableorifice_9,sigmax@variableorifice_9,ame_real_parameter,maximum signal value,null,1,1,null
+variableorifice_9,indexf@variableorifice_9,ame_integer_parameter,index of hydraulic fluid,,0,0,
+variableorifice_9,nbor@variableorifice_9,ame_integer_parameter,number of parallel orifices,,1,1,
+variableorifice_9,method@variableorifice_9,ame_integer_parameter,pressure drop definition method,,2,2,
+variableorifice_9,geom@variableorifice_9,ame_integer_parameter,section type,,1,1,
+variableorifice_9,userfp@variableorifice_9,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+variableorifice_9,hdvar@variableorifice_9,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+variableorifice_9,areax@variableorifice_9,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+variableorifice_9,hdx@variableorifice_9,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+variableorifice_9,hdarea@variableorifice_9,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+variableorifice_10,qchar@variableorifice_10,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+variableorifice_10,dpchar@variableorifice_10,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+variableorifice_10,cqmax@variableorifice_10,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+variableorifice_10,zetamin@variableorifice_10,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+variableorifice_10,cvmax@variableorifice_10,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+variableorifice_10,kvmax@variableorifice_10,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+variableorifice_10,lamc@variableorifice_10,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+variableorifice_10,rec@variableorifice_10,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+variableorifice_10,ordiammax@variableorifice_10,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+variableorifice_10,amax@variableorifice_10,ame_real_parameter,width at maximum opening,mm,5,5,mm
+variableorifice_10,bmax@variableorifice_10,ame_real_parameter,height at maximum opening,mm,5,5,mm
+variableorifice_10,rhochar@variableorifice_10,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+variableorifice_10,nuchar@variableorifice_10,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+variableorifice_10,sigmin@variableorifice_10,ame_real_parameter,minimum signal value,null,0,0,null
+variableorifice_10,sigmax@variableorifice_10,ame_real_parameter,maximum signal value,null,1,1,null
+variableorifice_10,indexf@variableorifice_10,ame_integer_parameter,index of hydraulic fluid,,0,0,
+variableorifice_10,nbor@variableorifice_10,ame_integer_parameter,number of parallel orifices,,1,1,
+variableorifice_10,method@variableorifice_10,ame_integer_parameter,pressure drop definition method,,2,2,
+variableorifice_10,geom@variableorifice_10,ame_integer_parameter,section type,,1,1,
+variableorifice_10,userfp@variableorifice_10,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+variableorifice_10,hdvar@variableorifice_10,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+variableorifice_10,areax@variableorifice_10,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+variableorifice_10,hdx@variableorifice_10,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+variableorifice_10,hdarea@variableorifice_10,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+variableorifice_11,qchar@variableorifice_11,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+variableorifice_11,dpchar@variableorifice_11,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+variableorifice_11,cqmax@variableorifice_11,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+variableorifice_11,zetamin@variableorifice_11,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+variableorifice_11,cvmax@variableorifice_11,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+variableorifice_11,kvmax@variableorifice_11,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+variableorifice_11,lamc@variableorifice_11,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+variableorifice_11,rec@variableorifice_11,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+variableorifice_11,ordiammax@variableorifice_11,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+variableorifice_11,amax@variableorifice_11,ame_real_parameter,width at maximum opening,mm,5,5,mm
+variableorifice_11,bmax@variableorifice_11,ame_real_parameter,height at maximum opening,mm,5,5,mm
+variableorifice_11,rhochar@variableorifice_11,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+variableorifice_11,nuchar@variableorifice_11,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+variableorifice_11,sigmin@variableorifice_11,ame_real_parameter,minimum signal value,null,0,0,null
+variableorifice_11,sigmax@variableorifice_11,ame_real_parameter,maximum signal value,null,1,1,null
+variableorifice_11,indexf@variableorifice_11,ame_integer_parameter,index of hydraulic fluid,,0,0,
+variableorifice_11,nbor@variableorifice_11,ame_integer_parameter,number of parallel orifices,,1,1,
+variableorifice_11,method@variableorifice_11,ame_integer_parameter,pressure drop definition method,,2,2,
+variableorifice_11,geom@variableorifice_11,ame_integer_parameter,section type,,1,1,
+variableorifice_11,userfp@variableorifice_11,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+variableorifice_11,hdvar@variableorifice_11,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+variableorifice_11,areax@variableorifice_11,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+variableorifice_11,hdx@variableorifice_11,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+variableorifice_11,hdarea@variableorifice_11,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+variableorifice_12,qchar@variableorifice_12,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+variableorifice_12,dpchar@variableorifice_12,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+variableorifice_12,cqmax@variableorifice_12,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+variableorifice_12,zetamin@variableorifice_12,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+variableorifice_12,cvmax@variableorifice_12,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+variableorifice_12,kvmax@variableorifice_12,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+variableorifice_12,lamc@variableorifice_12,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+variableorifice_12,rec@variableorifice_12,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+variableorifice_12,ordiammax@variableorifice_12,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+variableorifice_12,amax@variableorifice_12,ame_real_parameter,width at maximum opening,mm,5,5,mm
+variableorifice_12,bmax@variableorifice_12,ame_real_parameter,height at maximum opening,mm,5,5,mm
+variableorifice_12,rhochar@variableorifice_12,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+variableorifice_12,nuchar@variableorifice_12,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+variableorifice_12,sigmin@variableorifice_12,ame_real_parameter,minimum signal value,null,0,0,null
+variableorifice_12,sigmax@variableorifice_12,ame_real_parameter,maximum signal value,null,1,1,null
+variableorifice_12,indexf@variableorifice_12,ame_integer_parameter,index of hydraulic fluid,,0,0,
+variableorifice_12,nbor@variableorifice_12,ame_integer_parameter,number of parallel orifices,,1,1,
+variableorifice_12,method@variableorifice_12,ame_integer_parameter,pressure drop definition method,,2,2,
+variableorifice_12,geom@variableorifice_12,ame_integer_parameter,section type,,1,1,
+variableorifice_12,userfp@variableorifice_12,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+variableorifice_12,hdvar@variableorifice_12,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+variableorifice_12,areax@variableorifice_12,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+variableorifice_12,hdx@variableorifice_12,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+variableorifice_12,hdarea@variableorifice_12,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+variableorifice_13,qchar@variableorifice_13,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+variableorifice_13,dpchar@variableorifice_13,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+variableorifice_13,cqmax@variableorifice_13,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+variableorifice_13,zetamin@variableorifice_13,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+variableorifice_13,cvmax@variableorifice_13,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+variableorifice_13,kvmax@variableorifice_13,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+variableorifice_13,lamc@variableorifice_13,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+variableorifice_13,rec@variableorifice_13,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+variableorifice_13,ordiammax@variableorifice_13,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+variableorifice_13,amax@variableorifice_13,ame_real_parameter,width at maximum opening,mm,5,5,mm
+variableorifice_13,bmax@variableorifice_13,ame_real_parameter,height at maximum opening,mm,5,5,mm
+variableorifice_13,rhochar@variableorifice_13,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+variableorifice_13,nuchar@variableorifice_13,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+variableorifice_13,sigmin@variableorifice_13,ame_real_parameter,minimum signal value,null,0,0,null
+variableorifice_13,sigmax@variableorifice_13,ame_real_parameter,maximum signal value,null,1,1,null
+variableorifice_13,indexf@variableorifice_13,ame_integer_parameter,index of hydraulic fluid,,0,0,
+variableorifice_13,nbor@variableorifice_13,ame_integer_parameter,number of parallel orifices,,1,1,
+variableorifice_13,method@variableorifice_13,ame_integer_parameter,pressure drop definition method,,2,2,
+variableorifice_13,geom@variableorifice_13,ame_integer_parameter,section type,,1,1,
+variableorifice_13,userfp@variableorifice_13,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+variableorifice_13,hdvar@variableorifice_13,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+variableorifice_13,areax@variableorifice_13,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+variableorifice_13,hdx@variableorifice_13,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+variableorifice_13,hdarea@variableorifice_13,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),
+variableorifice_14,qchar@variableorifice_14,ame_real_parameter,characteristic flow rate at maximum opening,L/min,1,1,L/min
+variableorifice_14,dpchar@variableorifice_14,ame_real_parameter,corresponding pressure drop,bar,1,1,bar
+variableorifice_14,cqmax@variableorifice_14,ame_real_parameter,maximum flow coefficient Cq,null,0.7,0.7,null
+variableorifice_14,zetamin@variableorifice_14,ame_real_parameter,minimum singular pressure drop coefficient,null,2,2,null
+variableorifice_14,cvmax@variableorifice_14,ame_real_parameter,maximum flow coefficient Cv,null,0.8,0.8,null
+variableorifice_14,kvmax@variableorifice_14,ame_real_parameter,maximum flow coefficient Kv,null,0.7,0.7,null
+variableorifice_14,lamc@variableorifice_14,ame_real_parameter,critical flow number (laminar/turbulent),null,1000,1000,null
+variableorifice_14,rec@variableorifice_14,ame_real_parameter,critical Reynolds number,null,1000,1000,null
+variableorifice_14,ordiammax@variableorifice_14,ame_real_parameter,diameter at maximum opening,mm,5,5,mm
+variableorifice_14,amax@variableorifice_14,ame_real_parameter,width at maximum opening,mm,5,5,mm
+variableorifice_14,bmax@variableorifice_14,ame_real_parameter,height at maximum opening,mm,5,5,mm
+variableorifice_14,rhochar@variableorifice_14,ame_real_parameter,working density for pressure drop measurement,kg/m**3,850,850,kg/m**3
+variableorifice_14,nuchar@variableorifice_14,ame_real_parameter,working kinematic viscosity for pressure drop measurement,cSt,60,60,cSt
+variableorifice_14,sigmin@variableorifice_14,ame_real_parameter,minimum signal value,null,0,0,null
+variableorifice_14,sigmax@variableorifice_14,ame_real_parameter,maximum signal value,null,1,1,null
+variableorifice_14,indexf@variableorifice_14,ame_integer_parameter,index of hydraulic fluid,,0,0,
+variableorifice_14,nbor@variableorifice_14,ame_integer_parameter,number of parallel orifices,,1,1,
+variableorifice_14,method@variableorifice_14,ame_integer_parameter,pressure drop definition method,,2,2,
+variableorifice_14,geom@variableorifice_14,ame_integer_parameter,section type,,1,1,
+variableorifice_14,userfp@variableorifice_14,ame_integer_parameter,fluid properties for pressure drop measurement,,1,1,
+variableorifice_14,hdvar@variableorifice_14,ame_integer_parameter,variation of hydraulic diameter,,1,1,
+variableorifice_14,areax@variableorifice_14,ame_text_parameter,filename or expression for area[mm**2] = f(x),,20*x,20*x,
+variableorifice_14,hdx@variableorifice_14,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(x),,5*sqrt(x),5*sqrt(x),
+variableorifice_14,hdarea@variableorifice_14,ame_text_parameter,filename or expression for hydraulic diameter[mm] = f(area[mm**2]),,sqrt(4/pi*area),sqrt(4/pi*area),

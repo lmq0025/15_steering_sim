@@ -1,0 +1,37 @@
+﻿alias,data_path,parameter_type,title,unit,raw_value,resolved_value,value_unit
+mass_friction2port,mass@mass_friction2port,ame_real_parameter,mass,kg,1000,1000,kg
+mass_friction2port,coefv@mass_friction2port,ame_real_parameter,coefficient of viscous friction,N/(m/s),0,0,N/(m/s)
+mass_friction2port,wind@mass_friction2port,ame_real_parameter,coefficient of windage,N/(m/s)**2,0,0,N/(m/s)**2
+mass_friction2port,coul@mass_friction2port,ame_real_parameter,Coulomb friction force,N,0,0,N
+mass_friction2port,stict@mass_friction2port,ame_real_parameter,stiction force,N,0,0,N
+mass_friction2port,angle@mass_friction2port,ame_real_parameter,"inclination (+90 port 1 lowest, -90 port 1 highest)",degree,0,0,degree
+mass_friction2port_1,mass@mass_friction2port_1,ame_real_parameter,mass,kg,1000,1000,kg
+mass_friction2port_1,coefv@mass_friction2port_1,ame_real_parameter,coefficient of viscous friction,N/(m/s),0,0,N/(m/s)
+mass_friction2port_1,wind@mass_friction2port_1,ame_real_parameter,coefficient of windage,N/(m/s)**2,0,0,N/(m/s)**2
+mass_friction2port_1,coul@mass_friction2port_1,ame_real_parameter,Coulomb friction force,N,0,0,N
+mass_friction2port_1,stict@mass_friction2port_1,ame_real_parameter,stiction force,N,0,0,N
+mass_friction2port_1,angle@mass_friction2port_1,ame_real_parameter,"inclination (+90 port 1 lowest, -90 port 1 highest)",degree,0,0,degree
+mass_friction2port_2,mass@mass_friction2port_2,ame_real_parameter,mass,kg,1000,1000,kg
+mass_friction2port_2,coefv@mass_friction2port_2,ame_real_parameter,coefficient of viscous friction,N/(m/s),0,0,N/(m/s)
+mass_friction2port_2,wind@mass_friction2port_2,ame_real_parameter,coefficient of windage,N/(m/s)**2,0,0,N/(m/s)**2
+mass_friction2port_2,coul@mass_friction2port_2,ame_real_parameter,Coulomb friction force,N,0,0,N
+mass_friction2port_2,stict@mass_friction2port_2,ame_real_parameter,stiction force,N,0,0,N
+mass_friction2port_2,angle@mass_friction2port_2,ame_real_parameter,"inclination (+90 port 1 lowest, -90 port 1 highest)",degree,0,0,degree
+mass_friction2port_3,mass@mass_friction2port_3,ame_real_parameter,mass,kg,1000,1000,kg
+mass_friction2port_3,coefv@mass_friction2port_3,ame_real_parameter,coefficient of viscous friction,N/(m/s),0,0,N/(m/s)
+mass_friction2port_3,wind@mass_friction2port_3,ame_real_parameter,coefficient of windage,N/(m/s)**2,0,0,N/(m/s)**2
+mass_friction2port_3,coul@mass_friction2port_3,ame_real_parameter,Coulomb friction force,N,0,0,N
+mass_friction2port_3,stict@mass_friction2port_3,ame_real_parameter,stiction force,N,0,0,N
+mass_friction2port_3,angle@mass_friction2port_3,ame_real_parameter,"inclination (+90 port 1 lowest, -90 port 1 highest)",degree,0,0,degree
+mass_friction2port_4,mass@mass_friction2port_4,ame_real_parameter,mass,kg,1000,1000,kg
+mass_friction2port_4,coefv@mass_friction2port_4,ame_real_parameter,coefficient of viscous friction,N/(m/s),0,0,N/(m/s)
+mass_friction2port_4,wind@mass_friction2port_4,ame_real_parameter,coefficient of windage,N/(m/s)**2,0,0,N/(m/s)**2
+mass_friction2port_4,coul@mass_friction2port_4,ame_real_parameter,Coulomb friction force,N,0,0,N
+mass_friction2port_4,stict@mass_friction2port_4,ame_real_parameter,stiction force,N,0,0,N
+mass_friction2port_4,angle@mass_friction2port_4,ame_real_parameter,"inclination (+90 port 1 lowest, -90 port 1 highest)",degree,0,0,degree
+mass_friction2port_5,mass@mass_friction2port_5,ame_real_parameter,mass,kg,1000,1000,kg
+mass_friction2port_5,coefv@mass_friction2port_5,ame_real_parameter,coefficient of viscous friction,N/(m/s),0,0,N/(m/s)
+mass_friction2port_5,wind@mass_friction2port_5,ame_real_parameter,coefficient of windage,N/(m/s)**2,0,0,N/(m/s)**2
+mass_friction2port_5,coul@mass_friction2port_5,ame_real_parameter,Coulomb friction force,N,0,0,N
+mass_friction2port_5,stict@mass_friction2port_5,ame_real_parameter,stiction force,N,0,0,N
+mass_friction2port_5,angle@mass_friction2port_5,ame_real_parameter,"inclination (+90 port 1 lowest, -90 port 1 highest)",degree,0,0,degree

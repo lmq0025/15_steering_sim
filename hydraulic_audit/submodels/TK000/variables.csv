@@ -1,0 +1,6 @@
+﻿alias,data_path,variable_type,basic_type,title,unit,io_type,input_type,usage
+tank01,press@tank01,1,ame_state_variable,tank pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+tank01_1,press@tank01_1,1,ame_state_variable,tank pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+tank01_5,press@tank01_5,1,ame_state_variable,tank pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+tank01_6,press@tank01_6,1,ame_state_variable,tank pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+tank01_7,press@tank01_7,1,ame_state_variable,tank pressure,bar,ame_variable_io_output,ame_variable_input_none,ame_variable_used

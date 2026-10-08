@@ -1,0 +1,176 @@
+{
+  "model_exists": true,
+  "api_names": [
+    "AMEGetRunParameter",
+    "AMEGetSimulationModes",
+    "AMEGetVariableFinalValue",
+    "AMEGetVariableInfos",
+    "AMEGetVariableTypes",
+    "AMEGetVariableValues",
+    "AMEIsLockedVariable",
+    "AMEIsSavedVariable",
+    "AMEIsVariable",
+    "AMELockVariable",
+    "AMERunSimulation",
+    "AMESaveVariable",
+    "AMESetRunParameter"
+  ],
+  "queries": {
+    "start_time_s": "0",
+    "stop_time_s": "5",
+    "interval_s": "0.01",
+    "simulation_mode": "2",
+    "integ_method": "0",
+    "tolerance": "1e-07",
+    "qout@pump01": {
+      "info": [
+        1,
+        "ame_basic_variable",
+        "flow rate at port 2",
+        "L/min",
+        "ame_variable_io_output",
+        "ame_variable_input_none",
+        "ame_variable_used"
+      ],
+      "values_head": [
+        [
+          0.0,
+          13.499999999999975
+        ],
+        [
+          0.010000000000000023,
+          13.499999999999975
+        ],
+        [
+          0.020000000000000046,
+          13.499999999999975
+        ]
+      ]
+    },
+    "pin@pump01": {
+      "info": [
+        1,
+        "ame_basic_variable",
+        "pressure at port 1",
+        "bar",
+        "ame_variable_io_input",
+        "ame_variable_input_none",
+        "ame_variable_used"
+      ],
+      "values_head": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.010000000000000023,
+          0.0
+        ],
+        [
+          0.020000000000000046,
+          0.0
+        ]
+      ]
+    },
+    "pout@pump01": {
+      "info": [
+        1,
+        "ame_basic_variable",
+        "pressure at port 2",
+        "bar",
+        "ame_variable_io_input",
+        "ame_variable_input_none",
+        "ame_variable_used"
+      ],
+      "values_head": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.010000000000000023,
+          10.455926389328013
+        ],
+        [
+          0.020000000000000046,
+          29.224842164542675
+        ]
+      ]
+    },
+    "speed@pump01": {
+      "info": [
+        1,
+        "ame_basic_variable",
+        "shaft speed at port 3",
+        "rev/min",
+        "ame_variable_io_input",
+        "ame_variable_input_none",
+        "ame_variable_used"
+      ],
+      "values_head": [
+        [
+          0.0,
+          1350.0
+        ],
+        [
+          0.010000000000000023,
+          1350.0
+        ],
+        [
+          0.020000000000000046,
+          1350.0
+        ]
+      ]
+    },
+    "torque@pump01": {
+      "info": [
+        1,
+        "ame_basic_variable",
+        "shaft torque at port 3",
+        "Nm",
+        "ame_variable_io_output",
+        "ame_variable_input_none",
+        "ame_variable_used"
+      ],
+      "values_head": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.010000000000000023,
+          1.6641123694665432
+        ],
+        [
+          0.020000000000000046,
+          4.651278091567403
+        ]
+      ]
+    },
+    "press@tank01": {
+      "info": [
+        1,
+        "ame_state_variable",
+        "tank pressure",
+        "bar",
+        "ame_variable_io_output",
+        "ame_variable_input_none",
+        "ame_variable_used"
+      ],
+      "values_head": [
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.010000000000000023,
+          0.0
+        ],
+        [
+          0.020000000000000046,
+          0.0
+        ]
+      ]
+    }
+  }
+}

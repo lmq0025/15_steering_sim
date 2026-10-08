@@ -1,0 +1,11 @@
+﻿check,result
+level1_power_ports_have_junctions,PASS
+pump_ports_not_merged,PASS
+actuator_chambers_not_merged,PASS
+physical_states_registry_nonempty,PASS
+topology_nodes_not_elements,PASS
+signals_not_power_elements,PASS
+supercomponent_internal_not_level1,PASS
+source_name_matches_metadata,PASS
+global_or_expression_parameters_resolved,PASS
+external_functions_registered,PASS

@@ -1,0 +1,1001 @@
+SUBMODEL: PV00022
+SOURCE FILES: 2
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\PV00022.c
+==============================================================================
+...
+     1: /* Submodel PV00022 skeleton created by AME Submodel editing utility
+     2:    lun. 6. juin 17:42:52 2016 */
+     3: 
+     4: 
+     5: 
+     6: #include <math.h>
+     7: #include <stdio.h>
+     8: #include <stdlib.h>
+     9: #include "ameutils.h"
+    10: /* *******************************************************************************
+    11: TITLE : PV00022
+    12: ------------------------------------------------------------------------------
+    13: DESCRIPTION :
+    14: ------------------------------------------------------------------------------
+    15: USAGE :
+    16: ------------------------------------------------------------------------------
+    17: PARAMETER SETTINGS :
+    18: ------------------------------------------------------------------------------
+    19: DATE OF CREATION/AUTHOR :
+    20: ------------------------------------------------------------------------------
+    21: INDEX OF REVISIONS :
+    22: ------------------------------------------------------------------------------
+    23: LIST OF FUNCTIONS USED :
+    24: ------------------------------------------------------------------------------
+    25: SOURCE :
+    26:    Siemens Industry Software SAS
+    27:    7 place des Minimes
+    28:    42300 Roanne - France
+    29:    tel: (33).04.77.23.60.30
+    30:    fax: (33).04.77.23.60.31
+    31:    www.siemens.com/plm
+    32:  
+    33:    Copyright 2015 Siemens Industry Software NV
+    34: ******************************************************************************* */
+    35: 
+    36: #define _SUBMODELNAME_ "PV00022"
+    37: 
+    38: /* >>>>>>>>>>>>Insert Private Code Here. */
+    39: /* integer stores */
+    40: #define DISC_ENDSTP   0
+    41: 
+    42: /* real stores */
+    43: #define CQMAX         0
+    44: #define AREA_MAX      1
+    45: #define DIAM_MAX      2
+    46: /* <<<<<<<<<<<<End of Private Code. */
+    47: 
+    48: 
+    49: /* There are 11 real parameters:
+    50: 
+    51:    maxin   valve rated current                                       [mA -> A]
+    52:    tau     valve time constant                                       [s]
+    53:    wn      valve natural frequency                                   [Hz -> rad/s]
+    54:    zeta    valve damping ratio                                       [null]
+    55:    qchar   characteristic flow rate at maximum opening               [L/min -> m**3/s]
+    56:    dpchar  corresponding pressure drop                               [bar -> Pa]
+    57:    cqmax   maximum flow coefficient                                  [null]
+    58:    orarea  cross sectional area at maximum opening                   [mm**2 -> m**2]
+    59:    lcrit   critical flow number                                      [null]
+    60:    rhochar working density for pressure drop measurement             [kg/m**3]
+    61:    nuchar  working kinematic viscosity for pressure drop measurement [cSt -> m**2/s]
+    62: */
+    63: 
+    64: 
+    65: /* There are 4 integer parameters:
+    66: 
+    67:    indexf   index of hydraulic fluid                      
+    68:    method   pressure drop definition method               
+    69:    userfp   fluid properties for pressure drop measurement
+    70:    spooldyn spool dynamics                                
+    71: */
+    72: 
+    73: void pv00022in_(int *n, double *rp, int *ip, double c[3], int ic[2]
+    74:       , double *x, double *v, double *actRvalve, double *energyRvalve)
+    75: 
+    76: {
+    77:    int loop, error;
+    78: /* >>>>>>>>>>>>Extra Initialization Function Declarations Here. */
+    79: /* <<<<<<<<<<<<End of Extra Initialization declarations. */
+    80:    int x_size, v_size;
+    81:    int indexf, method, userfp, spooldyn;
+    82:    double maxin, tau, wn, zeta, qchar, dpchar, cqmax, orarea, lcrit, 
+    83:       rhochar, nuchar;
+    84: 
+    85:    indexf     = ip[0];
+    86:    method     = ip[1];
+    87:    userfp     = ip[2];
+    88:    spooldyn   = ip[3];
+    89: 
+    90:    maxin      = rp[0];
+    91:    tau        = rp[1];
+    92:    wn         = rp[2];
+    93:    zeta       = rp[3];
+    94:    qchar      = rp[4];
+    95:    dpchar     = rp[5];
+    96:    cqmax      = rp[6];
+    97:    orarea     = rp[7];
+    98:    lcrit      = rp[8];
+    99:    rhochar    = rp[9];
+   100:    nuchar     = rp[10];
+   101:    x_size = (spooldyn>1);
+   102:    v_size = (spooldyn>2);
+   103:    loop = 0;
+   104:    error = 0;
+   105: 
+   106: /*
+   107:    If necessary, check values of the following:
+   108: 
+   109:    rp[0..10]
+   110:    x[]
+   111:    v[]
+   112:    *actRvalve
+   113:    *energyRvalve
+   114: */
+   115: 
+   116: 
+   117: /* >>>>>>>>>>>>Initialization Function Check Statements. */
+   118: 
+   119:    hyd_valid_liquid_(&indexf, &error);
+   120: 
+   121:    if (maxin <= 0.0)
+   122:    {
+   123:       error = 2;
+   124:       amefprintf(stderr, "Valve rated current should be strictly positive.\n");
+   125:       amefprintf(stderr, "Value is %le [mA].\n", maxin);
+   126:    }
+   127: 
+   128:    if (lcrit < 50.0 || lcrit > 50000.0)
+   129:    {
+   130:       error = MAX(error, 1);
+   131:       amefprintf(stderr, "Critical flow number unsuitable.\n");
+   132:       amefprintf(stderr, "Value is %le.\n", lcrit);
+   133:    }
+   134: 
+   135:    if (lcrit <= 0)
+   136:    {
+   137:       amefprintf(stderr, "\nThe critical flow number should be strictly positive (lcrit = %g [null]).\n", lcrit);
+   138:       error = 2;
+   139:    }
+   140: 
+   141:    if (spooldyn == 2)
+   142:    {
+   143:       if (tau <= 0.0)
+   144:       {
+   145:          error = 2;
+   146:          amefprintf(stderr, "\nTime constant should be strictly positive.\n");
+   147:          amefprintf(stderr, "Value is %le [s].\n", tau);
+   148:       }
+   149:    }
+   150:    else if (spooldyn == 3)
+   151:    {
+   152:       if (wn <= 0.0)
+   153:       {
+   154:          error = 2;
+   155:          amefprintf(stderr, "Natural frequency should be strictly positive.\n");
+   156:          amefprintf(stderr, "Value is %le [Hz].\n", wn);
+   157:       }
+   158: 
+   159:       if (zeta < 0.0)
+   160:       {
+   161:          error = 2;
+   162:          amefprintf(stderr, "Damping ratio should be positive\n.");
+   163:          amefprintf(stderr, "Value is %le.\n", zeta);
+   164:       }
+   165:    }
+   166: 
+   167:    if (spooldyn > 1)
+   168:    {
+   169:       if (*x < 0.0 || *x > 1.0)
+   170:       {
+   171:          error = MAX(error, 1);
+   172:          amefprintf(stderr,"Initial value of spool fractional displacement should be in range [0; 1].\n");
+   173:          amefprintf(stderr, "Value is %g.\n", *x);
+   174:          if (*x < 0.0)
+   175:          {
+   176:             *x = 0.0;
+   177:          }
+   178:          else
+   179:          {
+   180:             *x = 1.0;
+   181:          }
+   182:          amefprintf(stderr, "Resetting value to %g.\n", *x);
+   183:       }
+   184:    }
+   185: 
+   186:    if (method == 1)
+   187:    {
+   188:       /* Pressure drop/flow rate pair method selected. */
+   189:       if (qchar <= 0.0)
+   190:       {
+   191:          error = 2;
+   192:          amefprintf(stderr, "Characteristic flow rate at maximum opening should be strictly positive.\n");
+   193:          amefprintf(stderr, "Value is %le [L/min].\n", qchar);
+   194:       }
+   195: 
+   196:       if (dpchar <= 0.0)
+   197:       {
+   198:          error = 2;
+   199:          amefprintf(stderr, "Corresponding pressure drop should be strictly positive.\n");
+   200:          amefprintf(stderr, "Value is %le [bar].\n", dpchar);
+   201:       }
+   202: 
+   203:       if (userfp == 2)
+   204:       {
+   205:          /* Checking working density. */
+   206:          if (rhochar <= 0)
+   207:          {
+   208:             amefprintf(stderr,
+   209:                "The working density for pressure drop measurement should be strictly positive (rhochar = %g [kg/m**3]).\n", rhochar);
+   210:             error = 2;
+   211:          }
+   212: 
+   213:          /* Checking working viscosity. */
+   214:          if (nuchar <= 0)
+   215:          {
+   216:             amefprintf(stderr,
+   217:                "The working viscosity for pressure drop measurement should be strictly positive (nuchar = %g [cSt]).\n", nuchar);
+   218:             error = 2;
+   219:          }
+   220:       }
+   221:    }
+   222:    else
+   223:    {
+   224:       /* Orifice area method selected. */
+   225:       if (orarea < 0.0)
+   226:       {
+   227:          error = 2;
+   228:          amefprintf(stderr, "Equivalent cross sectional area at maximum opening should be positive.\n");
+   229:          amefprintf(stderr, "Value is %le [mm**2].\n", orarea);
+   230:       }
+   231: 
+   232:       if (cqmax <= 0.)
+   233:       {
+   234:          error = 2;
+   235:          amefprintf(stderr, "Maximum flow coefficient should be strictly positive.\n");
+   236:          amefprintf(stderr, "Value is %le.\n", cqmax);
+   237:       }
+   238:       if (cqmax > 1.8)
+   239:       {
+   240:          error = MAX(error, 1);
+   241:          amefprintf(stderr, "\nMaximum flow coefficient value is usually < 1.8.\n");
+   242:          amefprintf(stderr, "Value is %le.\n", cqmax);
+   243:       }
+   244:    }
+   245: 
+   246: 
+   247: /* <<<<<<<<<<<<End of Initialization Check Statements. */
+   248: 
+   249: /*   Integer parameter checking:   */
+   250: 
+   251:    if (indexf < 0 || indexf > 100)
+   252:    {
+   253:       amefprintf(stderr, "\nindex of hydraulic fluid must be in range [0..100].\n");
+   254:       error = 2;
+   255:    }
+   256:    if (method < 1 || method > 2)
+   257:    {
+   258:       amefprintf(stderr, "\npressure drop definition method must be in range [1..2].\n");
+   259:       error = 2;
+   260:    }
+   261:    if (userfp < 1 || userfp > 2)
+   262:    {
+   263:       amefprintf(stderr, "\nfluid properties for pressure drop measurement must be in range [1..2].\n");
+   264:       error = 2;
+   265:    }
+   266:    if (spooldyn < 1 || spooldyn > 3)
+   267:    {
+   268:       amefprintf(stderr, "\nspool dynamics must be in range [1..3].\n");
+   269:       error = 2;
+   270:    }
+   271: 
+   272:    if(error == 1)
+   273:    {
+   274:       amefprintf(stderr, "\nWarning in %s instance %d.\n", _SUBMODELNAME_, *n);
+   275:    }
+   276:    else if(error == 2)
+   277:    {
+   278:       amefprintf(stderr, "\nFatal error in %s instance %d.\n", _SUBMODELNAME_, *n);
+   279:       amefprintf(stderr, "Terminating the program.\n");
+   280:       AmeExit(1);
+   281:    }
+   282: 
+   283: /* Common -> SI units conversions. */
+   284: 
+   285:    rp[0]    *= 1.00000000000000e-003;
+   286:    maxin      = rp[0];
+   287:    rp[2]    *= 6.28318530717959e+000;
+   288:    wn         = rp[2];
+   289:    rp[4]    *= 1.66666666666667e-005;
+   290:    qchar      = rp[4];
+   291:    rp[5]    *= 1.00000000000000e+005;
+   292:    dpchar     = rp[5];
+   293:    rp[7]    *= 1.00000000000000e-006;
+   294:    orarea     = rp[7];
+   295:    rp[10]   *= 1.00000000000000e-006;
+   296:    nuchar     = rp[10];
+   297: 
+   298: 
+   299: /* >>>>>>>>>>>>Initialization Function Executable Statements. */
+   300: 
+   301:    sethdind_(&indexf);
+   302: 
+   303:    if (method == 1)
+   304:    {
+   305:       double zero = 0.0;
+   306:       if (userfp == 1)
+   307:       {
+   308:          rhochar = rhoatp_(&zero);
+   309:          nuchar  = muatp_(&zero) / rhochar;
+   310:       }
+   311: 
+   312:       /* Work out corresponding equivalent area assuming fluid
+   313:          properties at atmospheric pressure. The
+   314:          value of the hydraulic radius will not be used. */
+   315:       c[CQMAX] = CQMAX_DEF;
+   316: 
+   317:       eqarea(&rhochar, &qchar, &dpchar, &c[CQMAX], &nuchar, &lcrit, &c[AREA_MAX], &c[DIAM_MAX]);
+   318:    }
+   319:    else
+   320:    {
+   321:       c[CQMAX]    = cqmax;
+   322:       c[DIAM_MAX] = 2.0 * sqrt(orarea / M_PI);
+   323:       c[AREA_MAX] = orarea;
+   324:    }
+   325: 
+   326: /* <<<<<<<<<<<<End of Initialization Executable Statements. */
+   327: }
+   328: 
+   329: /*  There are 3 ports.
+   330: 
+   331:    Port 1 has 2 variables:
+   332: 
+   333:       1 qa     duplicate of qb     (sign reversed)
+   334:       2 pa     pressure at port P  [bar -> Pa] basic variable input
+   335: 
+   336:    Port 2 has 2 variables:
+   337: 
+   338:       1 qb     flow rate at port A [L/min -> m**3/s] basic variable output
+   339:       2 pb     pressure at port A  [bar -> Pa]       basic variable input
+   340: 
+   341:    Port 3 has 1 variable:
+   342: 
+   343:       1 sigin     input signal [null] basic variable input
+   344: */
+   345: 
+   346: /*  There are 9 internal variables.
+   347: 
+   348:       1 x[]              fractional spool position                 [null]          explicit state (derivative `xdot')
+   349:       2 v[]              fractional spool velocity                 [1/s]           explicit state (derivative `vdot')
+   350:       3 cq               flow coefficient (Cq)                     [null]          basic variable
+   351:       4 lambda           flow number (lambda)                      [null]          basic variable
+   352:       5 flv              mean fluid velocity                       [m/s]           basic variable
+   353:       6 area             cross sectional area                      [mm**2 -> m**2] basic variable
+   354:       7 actRvalve        activity of hydraulic dissipation (valve) [J]             explicit state (derivative `dactRvalve') for activity
+   355:       8 powerRvalve      power of hydraulic dissipation (valve)    [W]             power variable
+   356:       9 energyRvalve     energy of hydraulic dissipation (valve)   [J]             explicit state (derivative `denergyRvalve') for energy
+   357: */
+   358: 
+   359: void pv00022_(int *n, double *pa, double *qb, double *pb
+   360:       , double *sigin, double *x, double *xdot, double *v
+   361:       , double *vdot, double *cq, double *lambda, double *flv
+   362:       , double *area, double *actRvalve, double *dactRvalve
+   363:       , double *powerRvalve, double *energyRvalve
+   364:       , double *denergyRvalve, double *rp, int *ip, double c[3]
+   365:       , int ic[2])
+   366: 
+   367: {
+   368:    int loop;
+   369:    double powRvalve;
+   370: 
+   371: /* >>>>>>>>>>>>Extra Calculation Function Declarations Here. */
+   372:    double xv, hdiam, forcev;
+   373:    static double zero = 0.0, one = 1.0;
+   374: /* <<<<<<<<<<<<End of Extra Calculation declarations. */
+   375:    int x_size, v_size;
+   376:    int indexf, method, userfp, spooldyn;
+   377:    double maxin, tau, wn, zeta, qchar, dpchar, cqmax, orarea, lcrit, 
+   378:       rhochar, nuchar;
+   379: 
+   380:    indexf     = ip[0];
+   381:    method     = ip[1];
+   382:    userfp     = ip[2];
+   383:    spooldyn   = ip[3];
+   384: 
+   385:    maxin      = rp[0];
+   386:    tau        = rp[1];
+   387:    wn         = rp[2];
+   388:    zeta       = rp[3];
+   389:    qchar      = rp[4];
+   390:    dpchar     = rp[5];
+   391:    cqmax      = rp[6];
+   392:    orarea     = rp[7];
+   393:    lcrit      = rp[8];
+   394:    rhochar    = rp[9];
+   395:    nuchar     = rp[10];
+   396:    x_size = (spooldyn>1);
+   397:    v_size = (spooldyn>2);
+   398:    loop = 0;
+   399: 
+   400: /* Common -> SI units conversions. */
+   401: 
+   402:    *pa       *= 1.00000000000000e+005;
+   403:    *pb       *= 1.00000000000000e+005;
+   404: 
+   405: /*
+   406:    Set all submodel outputs below:
+   407: 
+   408:    *qb         = ??;
+   409:    xdot      [] = ??;
+   410:    vdot      [] = ??;
+   411:    *cq         = ??;
+   412:    *lambda     = ??;
+   413:    *flv        = ??;
+   414:    *area       = ??;
+   415: */
+   416: 
+   417: 
+   418: 
+   419: /* >>>>>>>>>>>>Calculation Function Executable Statements. */
+   420: 
+   421:    sethdind_(&indexf);
+   422: 
+   423:    /* Compute normalized current.
+   424:    Input signal is interpreted as [mA]. */
+   425:    forcev = *sigin / (1.0e3*maxin);
+   426: 
+   427:    /* valve opening */
+   428:    if (spooldyn == 1)
+   429:    {
+   430:       xv = dlimit_(&forcev, &zero, &one, &ic[DISC_ENDSTP]);
+   431:    }
+   432:    else if (spooldyn == 2)
+   433:    {
+   434:       double dxvdot;
+   435:       double dacc = 0.0;
+   436: 
+   437:       /* Determine spool displacement using 1st order lag. */
+   438:       fstlag_(&forcev, x, xdot, &tau, &one);
+   439:       endst2_(x, &dxvdot, xdot, &dacc, &zero, &one, &ic[DISC_ENDSTP]);
+   440: 
+   441:       xv = *x;
+   442:    }
+   443:    else if (spooldyn == 3)
+   444:    {
+   445:       /* Determine spool displacement using 2nd order lag. */
+   446:       sndlag_(&forcev, x, xdot, v, vdot, &one, &wn, &zeta);
+   447:       endst2_(x, xdot, v, vdot, &zero, &one, &ic[DISC_ENDSTP]);
+   448: 
+   449:       xv = *x;
+   450:    }
+   451: 
+   452:    if (ic[DISC_ENDSTP] == -1)   /* valve is closed */
+   453:    {
+   454:       *area   = 0.0;
+   455:       *cq     = 0.0;
+   456:       *lambda = 0.0;
+   457:       *flv    = 0.0;
+   458:       *qb     = 0.0;
+   459:    }
+   460:    else
+   461:    {
+   462:       if (xv < 0.0)   xv = 0.0;
+   463: 
+   464:       *area = xv * c[AREA_MAX];
+   465:       hdiam = c[DIAM_MAX] * sqrt(fabs(xv));
+   466: 
+   467:       *qb = orif3f_(pa, pb, area, &hdiam, &cqmax, &lcrit, cq, lambda, flv);
+   468:    }
+   469: 
+   470: /* <<<<<<<<<<<<End of Calculation Executable Statements. */
+   471: 
+   472:    if(actRvalve != NULL || energyRvalve != NULL || ispower_() == 1)
+   473:    {
+   474:       /* Set the following power variables:
+   475: 
+   476:       powRvalve = ??;
+   477:       */
+   478: 
+   479:       /* >>>>>>>>>>>>Energy Common Statements. */
+   480:          double patm = getatp_();
+   481:          powRvalve = *qb * ((patm + *pa) * q0top_(pa) - (patm + *pb) * q0top_(pb));
+   482:       /* <<<<<<<<<<<<End of Energy Common Statements. */
+   483: 
+   484:       if (ispower_() == 1)
+   485:       {
+   486:          *powerRvalve     = powRvalve;
+   487:       }
+   488:       if (energyRvalve != NULL)
+   489:       {
+   490:          *denergyRvalve   = powRvalve;
+   491:       }
+   492:       if (actRvalve != NULL)
+   493:       {
+   494:          /* >>>>>>>>>>>>Optional Activity Computation Statements. */
+   495:          /* <<<<<<<<<<<<End of Optional Activity Computation Statements. */
+   496:          *dactRvalve      = fabs(powRvalve);
+   497:       }
+   498:    }
+   499: 
+   500: /* SI -> Common units conversions. */
+   501: 
+   502:    *pa       /= 1.00000000000000e+005;
+   503:    *qb       /= 1.66666666666667e-005;
+   504:    *pb       /= 1.00000000000000e+005;
+   505:    *area     /= 1.00000000000000e-006;
+   506: }
+   507: 
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\PV00022.spe
+==============================================================================
+...
+     1: <?xml version="1.0" encoding="ISO-8859-1"?>
+     2: <!DOCTYPE SPE>
+     3: <SPE DOC_VERSION="2" AME_VERSION="14.0.0 -  42489-40361 2015">
+     4: 
+     5:  <SUBMODEL>
+     6:   <SUB_TYPE>0</SUB_TYPE>
+     7:   <SUB_ID_MAX>46</SUB_ID_MAX>
+     8:   <DEFAULT_ICON>valve02</DEFAULT_ICON>
+     9:   <SUB_LABEL>2 position 2 port hydraulic control valve</SUB_LABEL>
+    10:   <SUB_UNIT>0</SUB_UNIT>
+    11:   <R_STORES_NUMBER>3</R_STORES_NUMBER>
+    12:   <I_STORES_NUMBER>1</I_STORES_NUMBER>
+    13:   <OUTPUT_TYPE>1</OUTPUT_TYPE>
+    14:   <RPARAMS_LIST>
+    15:    <RPARAM>
+    16:     <SUB_ID>45</SUB_ID>
+    17:     <TITLE>valve rated current</TITLE>
+    18:     <VARNAME>maxin</VARNAME>
+    19:     <VISIBILITY>True</VISIBILITY>
+    20:     <DEF_VALUE>4.00000000000000e+01</DEF_VALUE>
+    21:     <VALUE>4.00000000000000e+01</VALUE>
+    22:     <MIN_VALUE>1.00000000000000e-006</MIN_VALUE>
+    23:     <MAX_VALUE>1.00000000000000e+006</MAX_VALUE>
+    24:     <UNITS>mA</UNITS>
+    25:    </RPARAM>
+    26:    <RPARAM>
+    27:     <SUB_ID>29</SUB_ID>
+    28:     <TITLE>valve time constant</TITLE>
+    29:     <VARNAME>tau</VARNAME>
+    30:     <VISIBILITY>(spooldyn == 2)</VISIBILITY>
+    31:     <DEF_VALUE>5.00000000000000e-02</DEF_VALUE>
+    32:     <VALUE>5.00000000000000e-02</VALUE>
+    33:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+    34:     <MAX_VALUE>1.00000000000000e+001</MAX_VALUE>
+    35:     <UNITS>s</UNITS>
+    36:    </RPARAM>
+    37:    <RPARAM>
+    38:     <SUB_ID>10</SUB_ID>
+    39:     <TITLE>valve natural frequency</TITLE>
+    40:     <VARNAME>wn</VARNAME>
+    41:     <VISIBILITY>(spooldyn == 3)</VISIBILITY>
+    42:     <DEF_VALUE>2.00000000000000e+01</DEF_VALUE>
+    43:     <VALUE>2.00000000000000e+01</VALUE>
+    44:     <MIN_VALUE>5.00000000000000e+000</MIN_VALUE>
+    45:     <MAX_VALUE>1.00000000000000e+003</MAX_VALUE>
+    46:     <UNITS>Hz</UNITS>
+    47:    </RPARAM>
+    48:    <RPARAM>
+    49:     <SUB_ID>11</SUB_ID>
+    50:     <TITLE>valve damping ratio</TITLE>
+    51:     <VARNAME>zeta</VARNAME>
+    52:     <VISIBILITY>(spooldyn == 3)</VISIBILITY>
+    53:     <DEF_VALUE>1.80000000000000e+00</DEF_VALUE>
+    54:     <VALUE>1.80000000000000e+00</VALUE>
+    55:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+    56:     <MAX_VALUE>5.00000000000000e+000</MAX_VALUE>
+    57:     <UNITS>null</UNITS>
+    58:    </RPARAM>
+    59:    <RPARAM>
+    60:     <SUB_ID>12</SUB_ID>
+    61:     <TITLE>characteristic flow rate at maximum opening</TITLE>
+    62:     <VARNAME>qchar</VARNAME>
+    63:     <VISIBILITY>(method == 1)</VISIBILITY>
+    64:     <DEF_VALUE>1.00000000000000e+00</DEF_VALUE>
+    65:     <VALUE>1.00000000000000e+00</VALUE>
+    66:     <MIN_VALUE>1.00000000000000e-002</MIN_VALUE>
+    67:     <MAX_VALUE>1.00000000000000e+003</MAX_VALUE>
+    68:     <UNITS>L/min</UNITS>
+    69:    </RPARAM>
+    70:    <RPARAM>
+    71:     <SUB_ID>13</SUB_ID>
+    72:     <TITLE>corresponding pressure drop </TITLE>
+    73:     <VARNAME>dpchar</VARNAME>
+    74:     <VISIBILITY>(method == 1)</VISIBILITY>
+    75:     <DEF_VALUE>1.00000000000000e+01</DEF_VALUE>
+    76:     <VALUE>1.00000000000000e+01</VALUE>
+    77:     <MIN_VALUE>1.00000000000000e-002</MIN_VALUE>
+    78:     <MAX_VALUE>2.00000000000000e+002</MAX_VALUE>
+    79:     <UNITS>bar</UNITS>
+    80:     <IS_DELTA>1</IS_DELTA>
+    81:    </RPARAM>
+    82:    <RPARAM>
+    83:     <SUB_ID>15</SUB_ID>
+    84:     <TITLE>maximum flow coefficient</TITLE>
+    85:     <VARNAME>cqmax</VARNAME>
+    86:     <VISIBILITY>(method == 2)</VISIBILITY>
+    87:     <DEF_VALUE>7.00000000000000e-01</DEF_VALUE>
+    88:     <VALUE>7.00000000000000e-01</VALUE>
+    89:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+    90:     <MAX_VALUE>1.80000000000000e+000</MAX_VALUE>
+    91:     <UNITS>null</UNITS>
+    92:    </RPARAM>
+    93:    <RPARAM>
+    94:     <SUB_ID>14</SUB_ID>
+    95:     <TITLE>cross sectional area at maximum opening</TITLE>
+    96:     <VARNAME>orarea</VARNAME>
+    97:     <VISIBILITY>(method == 2)</VISIBILITY>
+    98:     <DEF_VALUE>1.00000000000000e+01</DEF_VALUE>
+    99:     <VALUE>1.00000000000000e+01</VALUE>
+   100:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+   101:     <MAX_VALUE>1.00000000000000e+006</MAX_VALUE>
+   102:     <UNITS>mm**2</UNITS>
+   103:    </RPARAM>
+   104:    <RPARAM>
+   105:     <SUB_ID>16</SUB_ID>
+   106:     <TITLE>critical flow number</TITLE>
+   107:     <VARNAME>lcrit</VARNAME>
+   108:     <VISIBILITY>True</VISIBILITY>
+   109:     <DEF_VALUE>1.00000000000000e+03</DEF_VALUE>
+   110:     <VALUE>1.00000000000000e+03</VALUE>
+   111:     <MIN_VALUE>5.00000000000000e+001</MIN_VALUE>
+   112:     <MAX_VALUE>5.00000000000000e+004</MAX_VALUE>
+   113:     <UNITS>null</UNITS>
+   114:    </RPARAM>
+   115:    <RPARAM>
+   116:     <SUB_ID>36</SUB_ID>
+   117:     <TITLE>working density for pressure drop measurement</TITLE>
+   118:     <VARNAME>rhochar</VARNAME>
+   119:     <VISIBILITY>(method==1)&&(userfp == 2)</VISIBILITY>
+   120:     <DEF_VALUE>8.50000000000000e+02</DEF_VALUE>
+   121:     <VALUE>8.50000000000000e+02</VALUE>
+   122:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+   123:     <MAX_VALUE>1.00000000000000e+004</MAX_VALUE>
+   124:     <UNITS>kg/m**3</UNITS>
+   125:    </RPARAM>
+   126:    <RPARAM>
+   127:     <SUB_ID>38</SUB_ID>
+   128:     <TITLE>working kinematic viscosity for pressure drop measurement</TITLE>
+   129:     <VARNAME>nuchar</VARNAME>
+   130:     <VISIBILITY>(method==1)&&(userfp == 2)</VISIBILITY>
+   131:     <DEF_VALUE>6.00000000000000e+01</DEF_VALUE>
+   132:     <VALUE>6.00000000000000e+01</VALUE>
+   133:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+   134:     <MAX_VALUE>1.00000000000000e+005</MAX_VALUE>
+   135:     <UNITS>cSt</UNITS>
+   136:    </RPARAM>
+   137:   </RPARAMS_LIST>
+   138:   <IPARAMS_LIST>
+   139:    <IPARAM>
+   140:     <SUB_ID>18</SUB_ID>
+   141:     <TITLE>index of hydraulic fluid</TITLE>
+   142:     <VARNAME>indexf</VARNAME>
+   143:     <VISIBILITY>True</VISIBILITY>
+   144:     <DEF_VALUE>0</DEF_VALUE>
+   145:     <VALUE>0</VALUE>
+   146:     <MIN_VALUE>0</MIN_VALUE>
+   147:     <MAX_VALUE>100</MAX_VALUE>
+   148:    </IPARAM>
+   149:    <IPARAM>
+   150:     <SUB_ID>17</SUB_ID>
+   151:     <TITLE>pressure drop definition method</TITLE>
+   152:     <VARNAME>method</VARNAME>
+   153:     <VISIBILITY>True</VISIBILITY>
+   154:     <DEF_VALUE>1</DEF_VALUE>
+   155:     <VALUE>1</VALUE>
+   156:     <MIN_VALUE>1</MIN_VALUE>
+   157:     <MAX_VALUE>2</MAX_VALUE>
+   158:     <ENUM_LIST>
+   159:      <ENUM>
+   160:       <ENUM_STRING>pressure drop/flow rate pair</ENUM_STRING>
+   161:      </ENUM>
+   162:      <ENUM>
+   163:       <ENUM_STRING>orifice area/maximum flow coefficient pair</ENUM_STRING>
+   164:      </ENUM>
+   165:     </ENUM_LIST>
+   166:    </IPARAM>
+   167:    <IPARAM>
+   168:     <SUB_ID>33</SUB_ID>
+   169:     <TITLE>fluid properties for pressure drop measurement</TITLE>
+   170:     <VARNAME>userfp</VARNAME>
+   171:     <VISIBILITY>method==1</VISIBILITY>
+   172:     <DEF_VALUE>1</DEF_VALUE>
+   173:     <VALUE>1</VALUE>
+   174:     <MIN_VALUE>1</MIN_VALUE>
+   175:     <MAX_VALUE>2</MAX_VALUE>
+   176:     <ENUM_LIST>
+   177:      <ENUM>
+   178:       <ENUM_STRING>at reference conditions</ENUM_STRING>
+   179:      </ENUM>
+   180:      <ENUM>
+   181:       <ENUM_STRING>at specified density and kinematic viscosity</ENUM_STRING>
+   182:      </ENUM>
+   183:     </ENUM_LIST>
+   184:    </IPARAM>
+   185:    <IPARAM>
+   186:     <SUB_ID>27</SUB_ID>
+   187:     <TITLE>spool dynamics</TITLE>
+   188:     <VARNAME>spooldyn</VARNAME>
+   189:     <VISIBILITY>True</VISIBILITY>
+   190:     <DEF_VALUE>3</DEF_VALUE>
+   191:     <VALUE>3</VALUE>
+   192:     <MIN_VALUE>1</MIN_VALUE>
+   193:     <MAX_VALUE>3</MAX_VALUE>
+   194:     <ENUM_LIST>
+   195:      <ENUM>
+   196:       <ENUM_STRING>no (static)</ENUM_STRING>
+   197:      </ENUM>
+   198:      <ENUM>
+   199:       <ENUM_STRING>1st order</ENUM_STRING>
+   200:      </ENUM>
+   201:      <ENUM>
+   202:       <ENUM_STRING>2nd order</ENUM_STRING>
+   203:      </ENUM>
+   204:     </ENUM_LIST>
+   205:     <RECOMPILE>1</RECOMPILE>
+   206:    </IPARAM>
+   207:   </IPARAMS_LIST>
+   208:   <PARAMS_GROUPS_LIST>
+   209:    <PARAMS_GROUP>
+   210:     <ORIG_TITLE>valve dynamics</ORIG_TITLE>
+   211:     <NAME>valvedyn</NAME>
+   212:     <SUB_ID>31</SUB_ID>
+   213:     <PARAM_GROUP_ELEMENT_LIST>
+   214:      <PARAM_GROUP_ELEMENT>
+   215:       <PARAM_GROUP_ELEMENT_VARNAME>spooldyn</PARAM_GROUP_ELEMENT_VARNAME>
+   216:       <PARAM_GROUP_ELEMENT_DISPLAY>0</PARAM_GROUP_ELEMENT_DISPLAY>
+   217:      </PARAM_GROUP_ELEMENT>
+   218:      <PARAM_GROUP_ELEMENT>
+   219:       <PARAM_GROUP_ELEMENT_VARNAME>x</PARAM_GROUP_ELEMENT_VARNAME>
+   220:       <PARAM_GROUP_ELEMENT_DISPLAY>0</PARAM_GROUP_ELEMENT_DISPLAY>
+   221:      </PARAM_GROUP_ELEMENT>
+   222:      <PARAM_GROUP_ELEMENT>
+   223:       <PARAM_GROUP_ELEMENT_VARNAME>v</PARAM_GROUP_ELEMENT_VARNAME>
+   224:       <PARAM_GROUP_ELEMENT_DISPLAY>0</PARAM_GROUP_ELEMENT_DISPLAY>
+   225:      </PARAM_GROUP_ELEMENT>
+   226:      <PARAM_GROUP_ELEMENT>
+   227:       <PARAM_GROUP_ELEMENT_VARNAME>tau</PARAM_GROUP_ELEMENT_VARNAME>
+   228:       <PARAM_GROUP_ELEMENT_DISPLAY>0</PARAM_GROUP_ELEMENT_DISPLAY>
+   229:      </PARAM_GROUP_ELEMENT>
+   230:      <PARAM_GROUP_ELEMENT>
+   231:       <PARAM_GROUP_ELEMENT_VARNAME>wn</PARAM_GROUP_ELEMENT_VARNAME>
+   232:       <PARAM_GROUP_ELEMENT_DISPLAY>0</PARAM_GROUP_ELEMENT_DISPLAY>
+   233:      </PARAM_GROUP_ELEMENT>
+   234:      <PARAM_GROUP_ELEMENT>
+   235:       <PARAM_GROUP_ELEMENT_VARNAME>zeta</PARAM_GROUP_ELEMENT_VARNAME>
+   236:       <PARAM_GROUP_ELEMENT_DISPLAY>0</PARAM_GROUP_ELEMENT_DISPLAY>
+   237:      </PARAM_GROUP_ELEMENT>
+   238:     </PARAM_GROUP_ELEMENT_LIST>
+   239:     <EDITABLE>0</EDITABLE>
+   240:    </PARAMS_GROUP>
+   241:    <PARAMS_GROUP>
+   242:     <ORIG_TITLE>pressure drop characteristic</ORIG_TITLE>
+   243:     <NAME>presdrop</NAME>
+   244:     <SUB_ID>32</SUB_ID>
+   245:     <PARAM_GROUP_ELEMENT_LIST>
+   246:      <PARAM_GROUP_ELEMENT>
+   247:       <PARAM_GROUP_ELEMENT_VARNAME>method</PARAM_GROUP_ELEMENT_VARNAME>
+   248:       <PARAM_GROUP_ELEMENT_DISPLAY>0</PARAM_GROUP_ELEMENT_DISPLAY>
+   249:      </PARAM_GROUP_ELEMENT>
+   250:      <PARAM_GROUP_ELEMENT>
+   251:       <PARAM_GROUP_ELEMENT_VARNAME>qchar</PARAM_GROUP_ELEMENT_VARNAME>
+   252:       <PARAM_GROUP_ELEMENT_DISPLAY>0</PARAM_GROUP_ELEMENT_DISPLAY>
+   253:      </PARAM_GROUP_ELEMENT>
+   254:      <PARAM_GROUP_ELEMENT>
+   255:       <PARAM_GROUP_ELEMENT_VARNAME>dpchar</PARAM_GROUP_ELEMENT_VARNAME>
+   256:       <PARAM_GROUP_ELEMENT_DISPLAY>0</PARAM_GROUP_ELEMENT_DISPLAY>
+   257:      </PARAM_GROUP_ELEMENT>
+   258:      <PARAM_GROUP_ELEMENT>
+   259:       <PARAM_GROUP_ELEMENT_VARNAME>orarea</PARAM_GROUP_ELEMENT_VARNAME>
+   260:       <PARAM_GROUP_ELEMENT_DISPLAY>0</PARAM_GROUP_ELEMENT_DISPLAY>
+   261:      </PARAM_GROUP_ELEMENT>
+   262:      <PARAM_GROUP_ELEMENT>
+   263:       <PARAM_GROUP_ELEMENT_VARNAME>cqmax</PARAM_GROUP_ELEMENT_VARNAME>
+   264:       <PARAM_GROUP_ELEMENT_DISPLAY>0</PARAM_GROUP_ELEMENT_DISPLAY>
+   265:      </PARAM_GROUP_ELEMENT>
+   266:      <PARAM_GROUP_ELEMENT>
+   267:       <PARAM_GROUP_ELEMENT_VARNAME>lcrit</PARAM_GROUP_ELEMENT_VARNAME>
+   268:       <PARAM_GROUP_ELEMENT_DISPLAY>0</PARAM_GROUP_ELEMENT_DISPLAY>
+   269:      </PARAM_GROUP_ELEMENT>
+   270:      <PARAM_GROUP_ELEMENT>
+   271:       <PARAM_GROUP_ELEMENT_VARNAME>userfp</PARAM_GROUP_ELEMENT_VARNAME>
+   272:       <PARAM_GROUP_ELEMENT_DISPLAY>0</PARAM_GROUP_ELEMENT_DISPLAY>
+   273:      </PARAM_GROUP_ELEMENT>
+   274:      <PARAM_GROUP_ELEMENT>
+   275:       <PARAM_GROUP_ELEMENT_VARNAME>rhochar</PARAM_GROUP_ELEMENT_VARNAME>
+   276:       <PARAM_GROUP_ELEMENT_DISPLAY>0</PARAM_GROUP_ELEMENT_DISPLAY>
+   277:      </PARAM_GROUP_ELEMENT>
+   278:      <PARAM_GROUP_ELEMENT>
+   279:       <PARAM_GROUP_ELEMENT_VARNAME>nuchar</PARAM_GROUP_ELEMENT_VARNAME>
+   280:       <PARAM_GROUP_ELEMENT_DISPLAY>0</PARAM_GROUP_ELEMENT_DISPLAY>
+   281:      </PARAM_GROUP_ELEMENT>
+   282:     </PARAM_GROUP_ELEMENT_LIST>
+   283:     <EDITABLE>0</EDITABLE>
+   284:    </PARAMS_GROUP>
+   285:    <PARAMS_GROUP>
+   286:     <ORIG_TITLE>power, energy, activity</ORIG_TITLE>
+   287:     <NAME>Emanagement</NAME>
+   288:     <SUB_ID>44</SUB_ID>
+   289:     <PARAM_GROUP_ELEMENT_LIST>
+   290:      <PARAM_GROUP_ELEMENT>
+   291:       <PARAM_GROUP_ELEMENT_VARNAME>powerRvalve</PARAM_GROUP_ELEMENT_VARNAME>
+   292:       <PARAM_GROUP_ELEMENT_DISPLAY>1</PARAM_GROUP_ELEMENT_DISPLAY>
+   293:      </PARAM_GROUP_ELEMENT>
+   294:      <PARAM_GROUP_ELEMENT>
+   295:       <PARAM_GROUP_ELEMENT_VARNAME>energyRvalve</PARAM_GROUP_ELEMENT_VARNAME>
+   296:       <PARAM_GROUP_ELEMENT_DISPLAY>2</PARAM_GROUP_ELEMENT_DISPLAY>
+   297:      </PARAM_GROUP_ELEMENT>
+   298:      <PARAM_GROUP_ELEMENT>
+   299:       <PARAM_GROUP_ELEMENT_VARNAME>actRvalve</PARAM_GROUP_ELEMENT_VARNAME>
+   300:       <PARAM_GROUP_ELEMENT_DISPLAY>2</PARAM_GROUP_ELEMENT_DISPLAY>
+   301:      </PARAM_GROUP_ELEMENT>
+   302:     </PARAM_GROUP_ELEMENT_LIST>
+   303:     <EDITABLE>0</EDITABLE>
+   304:    </PARAMS_GROUP>
+   305:   </PARAMS_GROUPS_LIST>
+   306:   <IVARS_LIST>
+   307:    <IVAR>
+   308:     <SUB_ID>6</SUB_ID>
+   309:     <TITLE>fractional spool position</TITLE>
+   310:     <NB_IN_GROUP>(spooldyn>1)</NB_IN_GROUP>
+   311:     <VARNAME>x</VARNAME>
+   312:     <VARNAME2>xdot</VARNAME2>
+   313:     <VISIBILITY>True</VISIBILITY>
+   314:     <TYPE>1</TYPE>
+   315:     <DIMENSION>1</DIMENSION>
+   316:     <UNITS>null</UNITS>
+   317:     <MIN_VALUE>0.00000000000000e+000</MIN_VALUE>
+   318:     <MAX_VALUE>1.00000000000000e+000</MAX_VALUE>
+   319:     <DEF_VALUE>0.000000e+00</DEF_VALUE>
+   320:     <VALUE>0.000000e+00</VALUE>
+   321:    </IVAR>
+   322:    <IVAR>
+   323:     <SUB_ID>7</SUB_ID>
+   324:     <TITLE>fractional spool velocity</TITLE>
+   325:     <NB_IN_GROUP>(spooldyn>2)</NB_IN_GROUP>
+   326:     <VARNAME>v</VARNAME>
+   327:     <VARNAME2>vdot</VARNAME2>
+   328:     <VISIBILITY>True</VISIBILITY>
+   329:     <TYPE>1</TYPE>
+   330:     <DIMENSION>1</DIMENSION>
+   331:     <UNITS>1/s</UNITS>
+   332:     <MIN_VALUE>-1.00000000000000e+003</MIN_VALUE>
+   333:     <MAX_VALUE>1.00000000000000e+003</MAX_VALUE>
+   334:     <DEF_VALUE>0.000000e+00</DEF_VALUE>
+   335:     <VALUE>0.000000e+00</VALUE>
+   336:    </IVAR>
+   337:    <IVAR>
+   338:     <SUB_ID>22</SUB_ID>
+   339:     <TITLE>flow coefficient (Cq)</TITLE>
+   340:     <VARNAME>cq</VARNAME>
+   341:     <VISIBILITY>True</VISIBILITY>
+   342:     <TYPE>0</TYPE>
+   343:     <DIMENSION>1</DIMENSION>
+   344:     <UNITS>null</UNITS>
+   345:    </IVAR>
+   346:    <IVAR>
+   347:     <SUB_ID>23</SUB_ID>
+   348:     <TITLE>flow number (lambda)</TITLE>
+   349:     <VARNAME>lambda</VARNAME>
+   350:     <VISIBILITY>True</VISIBILITY>
+   351:     <TYPE>0</TYPE>
+   352:     <DIMENSION>1</DIMENSION>
+   353:     <UNITS>null</UNITS>
+   354:    </IVAR>
+   355:    <IVAR>
+   356:     <SUB_ID>24</SUB_ID>
+   357:     <TITLE>mean fluid velocity</TITLE>
+   358:     <VARNAME>flv</VARNAME>
+   359:     <VISIBILITY>True</VISIBILITY>
+   360:     <TYPE>0</TYPE>
+   361:     <DIMENSION>1</DIMENSION>
+   362:     <UNITS>m/s</UNITS>
+   363:    </IVAR>
+   364:    <IVAR>
+   365:     <SUB_ID>26</SUB_ID>
+   366:     <TITLE>cross sectional area</TITLE>
+   367:     <VARNAME>area</VARNAME>
+   368:     <VISIBILITY>True</VISIBILITY>
+   369:     <TYPE>0</TYPE>
+   370:     <DIMENSION>1</DIMENSION>
+   371:     <UNITS>mm**2</UNITS>
+   372:    </IVAR>
+   373:    <IVAR>
+   374:     <SUB_ID>41</SUB_ID>
+   375:     <TITLE>activity of hydraulic dissipation (valve)</TITLE>
+   376:     <VARNAME>actRvalve</VARNAME>
+   377:     <VARNAME2>dactRvalve</VARNAME2>
+   378:     <VISIBILITY>True</VISIBILITY>
+   379:     <TYPE>1</TYPE>
+   380:     <DIMENSION>1</DIMENSION>
+   381:     <UNITS>J</UNITS>
+   382:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   383:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   384:     <DEF_VALUE>0</DEF_VALUE>
+   385:     <VALUE>0</VALUE>
+   386:     <PHYS_TYPE>1</PHYS_TYPE>
+   387:     <PHYS_DOMAIN>1</PHYS_DOMAIN>
+   388:     <ACT_SUFFIX>valve</ACT_SUFFIX>
+   389:     <ACT_TYPE>1</ACT_TYPE>
+   390:    </IVAR>
+   391:    <IVAR>
+   392:     <SUB_ID>42</SUB_ID>
+   393:     <TITLE>power of hydraulic dissipation (valve)</TITLE>
+   394:     <VARNAME>powerRvalve</VARNAME>
+   395:     <VISIBILITY>True</VISIBILITY>
+   396:     <TYPE>9</TYPE>
+   397:     <DIMENSION>1</DIMENSION>
+   398:     <UNITS>W</UNITS>
+   399:     <PHYS_TYPE>1</PHYS_TYPE>
+   400:     <PHYS_DOMAIN>1</PHYS_DOMAIN>
+   401:     <ACT_SUFFIX>valve</ACT_SUFFIX>
+   402:     <ACT_TYPE>2</ACT_TYPE>
+   403:    </IVAR>
+   404:    <IVAR>
+   405:     <SUB_ID>43</SUB_ID>
+   406:     <TITLE>energy of hydraulic dissipation (valve)</TITLE>
+   407:     <VARNAME>energyRvalve</VARNAME>
+   408:     <VARNAME2>denergyRvalve</VARNAME2>
+   409:     <VISIBILITY>True</VISIBILITY>
+   410:     <TYPE>1</TYPE>
+   411:     <DIMENSION>1</DIMENSION>
+   412:     <UNITS>J</UNITS>
+   413:     <MIN_VALUE>-1.00000000000000e+030</MIN_VALUE>
+   414:     <MAX_VALUE>1.00000000000000e+030</MAX_VALUE>
+   415:     <DEF_VALUE>0</DEF_VALUE>
+   416:     <VALUE>0</VALUE>
+   417:     <PHYS_TYPE>1</PHYS_TYPE>
+   418:     <PHYS_DOMAIN>1</PHYS_DOMAIN>
+   419:     <ACT_SUFFIX>valve</ACT_SUFFIX>
+   420:     <ACT_TYPE>3</ACT_TYPE>
+   421:    </IVAR>
+   422:   </IVARS_LIST>
+   423:   <EVARS_LIST>
+   424:    <PORT>
+   425:     <EVAR>
+   426:      <SUB_ID>1</SUB_ID>
+   427:      <VARNAME>qa</VARNAME>
+   428:      <VISIBILITY>True</VISIBILITY>
+   429:      <TYPE>4</TYPE>
+   430:      <PRIMARY_PORT>1</PRIMARY_PORT>
+   431:      <PRIMARY_VAR>0</PRIMARY_VAR>
+   432:      <DUP_TYPE>1</DUP_TYPE>
+   433:     </EVAR>
+   434:     <EVAR>
+   435:      <SUB_ID>2</SUB_ID>
+   436:      <TITLE>pressure at port P</TITLE>
+   437:      <VARNAME>pa</VARNAME>
+   438:      <VISIBILITY>True</VISIBILITY>
+   439:      <TYPE>0</TYPE>
+   440:      <DIMENSION>1</DIMENSION>
+   441:      <IO>1</IO>
+   442:      <UNITS>bar</UNITS>
+   443:     </EVAR>
+   444:    </PORT>
+   445:    <PORT>
+   446:     <EVAR>
+   447:      <SUB_ID>3</SUB_ID>
+   448:      <TITLE>flow rate at port A</TITLE>
+   449:      <VARNAME>qb</VARNAME>
+   450:      <VISIBILITY>True</VISIBILITY>
+   451:      <TYPE>0</TYPE>
+   452:      <DIMENSION>1</DIMENSION>
+   453:      <IO>2</IO>
+   454:      <UNITS>L/min</UNITS>
+   455:     </EVAR>
+   456:     <EVAR>
+   457:      <SUB_ID>4</SUB_ID>
+   458:      <TITLE>pressure at port A</TITLE>
+   459:      <VARNAME>pb</VARNAME>
+   460:      <VISIBILITY>True</VISIBILITY>
+   461:      <TYPE>0</TYPE>
+   462:      <DIMENSION>1</DIMENSION>
+   463:      <IO>1</IO>
+   464:      <UNITS>bar</UNITS>
+   465:     </EVAR>
+   466:    </PORT>
+   467:    <PORT>
+   468:     <EVAR>
+   469:      <SUB_ID>5</SUB_ID>
+   470:      <TITLE>input signal</TITLE>
+   471:      <VARNAME>sigin</VARNAME>
+   472:      <VISIBILITY>True</VISIBILITY>
+   473:      <TYPE>0</TYPE>
+   474:      <DIMENSION>1</DIMENSION>
+   475:      <IO>1</IO>
+   476:      <UNITS>null</UNITS>
+   477:     </EVAR>
+   478:    </PORT>
+   479:   </EVARS_LIST>
+   480:   <SUBIDS_RESET>0</SUBIDS_RESET>
+   481:  </SUBMODEL>
+   482: </SPE>

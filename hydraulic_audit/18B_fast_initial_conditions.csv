@@ -1,0 +1,110 @@
+﻿state_index,instance,state,initial_value_si,source,confidence
+0,actuator002,p1,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+1,actuator002,p2,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+2,accumulator,pout,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+3,valve02_1,x,0.0,Amesim parameter/metadata initial displacement or normalized spool position,LEVEL B
+4,valve02_1,v,0.0,source-defined zero initial velocity,LEVEL B
+5,valve02,x,0.0,Amesim parameter/metadata initial displacement or normalized spool position,LEVEL B
+6,valve02,v,0.0,source-defined zero initial velocity,LEVEL B
+7,accumulator_1,pout,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+8,valve02_2,x,0.0,Amesim parameter/metadata initial displacement or normalized spool position,LEVEL B
+9,valve02_2,v,0.0,source-defined zero initial velocity,LEVEL B
+10,mass1port,v,0.0,source-defined zero initial velocity,LEVEL B
+11,mass1port,x,0.0,Amesim parameter/metadata initial displacement or normalized spool position,LEVEL B
+12,valve02_3,x,0.0,Amesim parameter/metadata initial displacement or normalized spool position,LEVEL B
+13,valve02_3,v,0.0,source-defined zero initial velocity,LEVEL B
+14,valve02_4,x,0.0,Amesim parameter/metadata initial displacement or normalized spool position,LEVEL B
+15,valve02_4,v,0.0,source-defined zero initial velocity,LEVEL B
+16,valve02_5,x,0.0,Amesim parameter/metadata initial displacement or normalized spool position,LEVEL B
+17,valve02_5,v,0.0,source-defined zero initial velocity,LEVEL B
+18,springreturnactuator,p1,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+19,springreturnactuator,p2,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+20,springreturnactuator_1,p1,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+21,springreturnactuator_1,p2,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+22,springreturnactuator_2,p1,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+23,springreturnactuator_2,p2,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+24,actuator001_1,p1,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+25,actuator001_1,p2,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+26,actuator001,p1,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+27,actuator001,p2,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+28,actuator001_2,p1,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+29,actuator001_2,p2,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+30,mass_friction2port,v1,0.0,source-defined zero initial velocity,LEVEL B
+31,mass_friction2port,x1,0.0,Amesim parameter/metadata initial displacement or normalized spool position,LEVEL B
+32,mass_friction2port_1,v1,0.0,source-defined zero initial velocity,LEVEL B
+33,mass_friction2port_1,x1,0.0,Amesim parameter/metadata initial displacement or normalized spool position,LEVEL B
+34,mass_friction2port_2,v1,0.0,source-defined zero initial velocity,LEVEL B
+35,mass_friction2port_2,x1,0.0,Amesim parameter/metadata initial displacement or normalized spool position,LEVEL B
+36,mass_friction2port_3,v1,0.0,source-defined zero initial velocity,LEVEL B
+37,mass_friction2port_3,x1,0.0,Amesim parameter/metadata initial displacement or normalized spool position,LEVEL B
+38,mass_friction2port_4,v1,0.0,source-defined zero initial velocity,LEVEL B
+39,mass_friction2port_4,x1,0.0,Amesim parameter/metadata initial displacement or normalized spool position,LEVEL B
+40,mass_friction2port_5,v1,0.0,source-defined zero initial velocity,LEVEL B
+41,mass_friction2port_5,x1,0.0,Amesim parameter/metadata initial displacement or normalized spool position,LEVEL B
+42,hydraulic,p_eq,18807076.136124596,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+43,hydraulic_1,p_eq,18807076.136124596,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+44,hydraulic_101,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+45,hydraulic_103,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+46,hydraulic_11,p_eq,97902.91812022662,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+47,hydraulic_113,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+48,hydraulic_115,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+49,hydraulic_118,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+50,hydraulic_119,p_eq,100030.66533787371,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+51,hydraulic_122,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+52,hydraulic_127,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+53,hydraulic_129,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+54,hydraulic_131,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+55,hydraulic_134,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+56,hydraulic_136,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+57,hydraulic_137,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+58,hydraulic_14,p_eq,100235.11114547771,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+59,hydraulic_142,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+60,hydraulic_143,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+61,hydraulic_147,p_eq,100030.66533787371,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+62,hydraulic_148,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+63,hydraulic_149,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+64,hydraulic_15,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+65,hydraulic_150,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+66,hydraulic_153,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+67,hydraulic_158,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+68,hydraulic_159,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+69,hydraulic_165,p_eq,100420.29136459064,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+70,hydraulic_166,p_eq,100316.49274909523,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+71,hydraulic_180,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+72,hydraulic_181,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+73,hydraulic_23,p_eq_1,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+74,hydraulic_23,p_eq_2,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+75,hydraulic_27,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+76,hydraulic_3,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+77,hydraulic_31,p_eq,7479346.719247302,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+78,hydraulic_32,p_eq,294017.9924113533,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+79,hydraulic_34,p_eq,18807076.136124596,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+80,hydraulic_35,p_eq,18807076.136124596,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+81,hydraulic_38,p_eq,99959.8938722187,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+82,hydraulic_39,p_eq,101023.41675980257,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+83,hydraulic_4,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+84,hydraulic_41,p_eq,100007.1994706036,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+85,hydraulic_56,p_eq,100235.11114547771,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+86,hydraulic_57,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+87,hydraulic_58,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+88,hydraulic_59,p_eq,98405.3992640377,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+89,hydraulic_6,p_eq_1,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+90,hydraulic_6,p_eq_2,494157.00688199274,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+91,hydraulic_61,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+92,hydraulic_62,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+93,hydraulic_63,p_eq,100235.11114547771,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+94,hydraulic_68,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+95,hydraulic_69,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+96,hydraulic_7,p_eq,7480693.574838018,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+97,hydraulic_70,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+98,hydraulic_71,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+99,hydraulic_77,p_eq,100311.69310202615,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+100,hydraulic_79,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+101,hydraulic_80,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+102,hydraulic_81,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+103,hydraulic_84,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+104,hydraulic_89,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+105,hydraulic_9,p_eq,99949.94302131348,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+106,hydraulic_91,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+107,hydraulic_94,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C
+108,hydraulic_95,p_eq,100000.0,engineering default: ambient/reference pressure; refined by steady_init; algebraic pressure projection,LEVEL C

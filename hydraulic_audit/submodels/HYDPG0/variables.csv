@@ -1,0 +1,4 @@
+﻿alias,data_path,variable_type,basic_type,title,unit,io_type,input_type,usage
+pressuregauge,q1@pressuregauge,1,ame_state_variable,flow rate (always zero),L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+pressuregauge,p1@pressuregauge,1,ame_basic_variable,input pressure,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+pressuregauge,p@pressuregauge,1,ame_basic_variable,pressure,bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown

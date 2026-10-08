@@ -1,0 +1,11 @@
+﻿alias,data_path,parameter_type,title,unit,raw_value,resolved_value,value_unit
+accumulator,gaspc@accumulator,ame_real_parameter,gas precharge pressure,bar,90,90,bar
+accumulator,accvol@accumulator,ame_real_parameter,accumulator volume,L,5,5,L
+accumulator,gamma@accumulator,ame_real_parameter,polytropic index,null,1.4,1.4,null
+accumulator,indexf@accumulator,ame_integer_parameter,index of hydraulic fluid,,0,0,
+accumulator,init@accumulator,ame_integer_parameter,isothermal initialization (0) or adiabatic initialization (1),,1,1,
+accumulator_1,gaspc@accumulator_1,ame_real_parameter,gas precharge pressure,bar,90,90,bar
+accumulator_1,accvol@accumulator_1,ame_real_parameter,accumulator volume,L,5,5,L
+accumulator_1,gamma@accumulator_1,ame_real_parameter,polytropic index,null,1.4,1.4,null
+accumulator_1,indexf@accumulator_1,ame_integer_parameter,index of hydraulic fluid,,0,0,
+accumulator_1,init@accumulator_1,ame_integer_parameter,isothermal initialization (0) or adiabatic initialization (1),,1,1,

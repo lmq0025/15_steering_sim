@@ -1,0 +1,327 @@
+SUBMODEL: FX00
+SOURCE FILES: 2
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libsig\submodels\FX00.c
+==============================================================================
+...
+     1: /* Submodel FX00 skeleton created by AME Submodel editing utility
+     2:    Thu Nov 12 14:15:11 2015 */
+     3: 
+     4: 
+     5: 
+     6: #include <math.h>
+     7: #include <stdio.h>
+     8: #include <stdlib.h>
+     9: #include "ameutils.h"
+    10: /* *******************************************************************************
+    11:  
+    12: TITLE : FX00
+    13: ------------------------------------------------------------------------------
+    14: DESCRIPTION :
+    15:  
+    16: 	FX00 applies a user supplied function of one variable (x) to the
+    17: 	input signal on port 2 and the result is the output on port 1.
+    18:  
+    19: 	At the start of the simulation run the prescribed function is
+    20: 	checked. If errors are detected, the simulation run is stopped.
+    21:  
+    22: ------------------------------------------------------------------------------
+    23: USAGE :
+    24: ------------------------------------------------------------------------------
+    25: PARAMETER SETTINGS :
+    26: ------------------------------------------------------------------------------
+    27: DATE OF CREATION/AUTHOR :
+    28: ------------------------------------------------------------------------------
+    29: INDEX OF REVISIONS :
+    30:  
+    31: 	07/05/98 AVJ	Return value from CheckExpression is checked.
+    32: 			If -1 is returned, the program is stopped.
+    33:  
+    34:    02/01/2007 OS  Replace EvaluateExpression by expeval (AME-504683).
+    35:  
+    36: ------------------------------------------------------------------------------
+    37: SOURCE :
+    38:    Siemens Industry Software SAS
+    39:    7 place des Minimes
+    40:    42300 Roanne - France
+    41:    tel: (33).04.77.23.60.30
+    42:    fax: (33).04.77.23.60.31
+    43:    www.siemens.com/plm
+    44:  
+    45:    Copyright 2015 Siemens Industry Software NV
+    46: ******************************************************************************* */
+    47: 
+    48: #define _SUBMODELNAME_ "FX00"
+    49: 
+    50: /* >>>>>>>>>>>>Insert Private Code Here. */
+    51: /* <<<<<<<<<<<<End of Private Code. */
+    52: 
+    53: /* There are 2 integer parameters:
+    54: 
+    55:    outputtype output value          
+    56:    disc       discontinuity handling
+    57: */
+    58: 
+    59: 
+    60: /* There is 1 text parameter:
+    61: 
+    62:    fstr expression in terms of the input x
+    63: */
+    64: 
+    65: void fx00in_(int *n, int ip[2], char *tp[1], int ic[1])
+    66: 
+    67: {
+    68:    int loop, error;
+    69:    static char *fstr_vars[] = {"x"};
+    70: /* >>>>>>>>>>>>Extra Initialization Function Declarations Here. */
+    71:    int dm1;
+    72: /* <<<<<<<<<<<<End of Extra Initialization declarations. */
+    73:    int outputtype, disc;
+    74:    char *fstr;
+    75: 
+    76:    outputtype = ip[0];
+    77:    disc       = ip[1];
+    78: 
+    79:    fstr       = tp[0];
+    80:    loop = 0;
+    81:    error = 0;
+    82: 
+    83: 
+    84: /* >>>>>>>>>>>>Initialization Function Check Statements. */
+    85: 
+    86:    ic[0] = CheckExpression(fstr, 1, fstr_vars);
+    87: 
+    88:    if(ic[0] == -1)
+    89:    {
+    90:       amefprintf(stderr, "Cannot interpret expression '%s'\n", fstr);
+    91:       error = 2;
+    92:    }
+    93:    else 
+    94:    {
+    95:       dm1 = disc - 1;
+    96:       if (exphandledisc_(&ic[0], &dm1) == 0)
+    97:       {
+    98:          error = 2;
+    99:       }
+   100:    }
+   101: /* <<<<<<<<<<<<End of Initialization Check Statements. */
+   102: 
+   103: /*   Integer parameter checking:   */
+   104: 
+   105:    if (outputtype < 1 || outputtype > 2)
+   106:    {
+   107:       amefprintf(stderr, "\noutput value must be in range [1..2].\n");
+   108:       error = 2;
+   109:    }
+   110:    if (disc < 1 || disc > 2)
+   111:    {
+   112:       amefprintf(stderr, "\ndiscontinuity handling must be in range [1..2].\n");
+   113:       error = 2;
+   114:    }
+   115: 
+   116:    if(ameHandleSubmodelError(_SUBMODELNAME_, *n, error))
+   117:    {
+   118:       return;
+   119:    }
+   120: 
+   121: 
+   122: /* >>>>>>>>>>>>Initialization Function Executable Statements. */
+   123: /* <<<<<<<<<<<<End of Initialization Executable Statements. */
+   124: }
+   125: 
+   126: /*  There are 2 ports.
+   127: 
+   128:    Port 1 has 1 variable:
+   129: 
+   130:       1 fofx     function of input x [null] basic variable output
+   131: 
+   132:    Port 2 has 1 variable:
+   133: 
+   134:       1 x     input to f(x) [null] basic variable input
+   135: */
+   136: 
+   137: /*  There are 0 internal variables.
+   138: 
+   139: */
+   140: 
+   141: void fx00_(int *n, double *fofx, double *x, int ip[2], char *tp[1]
+   142:       , int ic[1])
+   143: 
+   144: {
+   145:    int loop;
+   146: /* >>>>>>>>>>>>Extra Calculation Function Declarations Here. */
+   147:    int ok;
+   148: /* <<<<<<<<<<<<End of Extra Calculation declarations. */
+   149:    int outputtype, disc;
+   150:    char *fstr;
+   151: 
+   152:    outputtype = ip[0];
+   153:    disc       = ip[1];
+   154: 
+   155:    fstr       = tp[0];
+   156:    loop = 0;
+   157: 
+   158: /*
+   159:    Set all submodel outputs below:
+   160: 
+   161:    *fofx       = ??;
+   162: */
+   163: 
+   164: 
+   165: 
+   166: /* >>>>>>>>>>>>Calculation Function Executable Statements. */
+   167: 
+   168:    if (outputtype == 1) /* f(x). */
+   169:    {
+   170:       ok = expeval_(&(ic[0]), x, fofx);
+   171:    }
+   172:    else /* df/dx. */
+   173:    {
+   174:       int one;
+   175:       one = 1;
+   176:       ok = expevald_(&(ic[0]), &one, x, fofx);
+   177:    }
+   178: 
+   179:    if (ok == 0)
+   180:    {
+   181:       int error_handling;
+   182: 
+   183:       error_handling  = expgetquieteval_();
+   184: 
+   185:       if (error_handling != 2) /* 2 == ignore error. */
+   186:       {
+   187:          if (outputtype == 1)
+   188:             amefprintf(stderr, "Please check expression '%s'\n", fstr);
+   189:          else
+   190:             amefprintf(stderr, "Please check derivative of expression '%s'\n", fstr);
+   191:       }
+   192: 
+   193:       if (error_handling == 1)
+   194:       {
+   195:          amefprintf(stderr, "\nWarning in %s instance %d.\n", _SUBMODELNAME_, *n);
+   196:       }
+   197:       else if (error_handling == 0)
+   198:       {
+   199:          amefprintf(stderr, "\nFatal error in %s instance %d.\n", _SUBMODELNAME_, *n);
+   200:          amefprintf(stderr, "Terminating the program.\n");
+   201:          AmeExit(1);
+   202:       }
+   203:    }
+   204: 
+   205: /* <<<<<<<<<<<<End of Calculation Executable Statements. */
+   206: }
+   207: 
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libsig\submodels\FX00.spe
+==============================================================================
+...
+     1: <?xml version="1.0" encoding="ISO-8859-1"?>
+     2: <!DOCTYPE SPE>
+     3: <SPE DOC_VERSION="2" AME_VERSION="14.1.0 -  45543-42347 2015">
+     4: 
+     5: <SUBMODEL>
+     6:    <SUB_TYPE>0</SUB_TYPE>
+     7:    <SUB_ID_MAX>7</SUB_ID_MAX>
+     8:    <DEFAULT_ICON>fofx</DEFAULT_ICON>
+     9:    <SUB_LABEL>output a prescribed function of input</SUB_LABEL>
+    10:    <SUB_UNIT>0</SUB_UNIT>
+    11:    <I_STORES_NUMBER>1</I_STORES_NUMBER>
+    12:    <OUTPUT_TYPE>1</OUTPUT_TYPE>
+    13:    <IPARAMS_LIST>
+    14:       <IPARAM>
+    15:          <SUB_ID>5</SUB_ID>
+    16:          <TITLE>output value</TITLE>
+    17:          <VARNAME>outputtype</VARNAME>
+    18:          <VISIBILITY>True</VISIBILITY>
+    19:          <DEF_VALUE>1</DEF_VALUE>
+    20:          <VALUE>1</VALUE>
+    21:          <MIN_VALUE>1</MIN_VALUE>
+    22:          <MAX_VALUE>2</MAX_VALUE>
+    23:          <ENUM_LIST>
+    24:             <ENUM>
+    25:                <ENUM_STRING>f</ENUM_STRING>
+    26:                <ICON_MAP>
+    27:                   <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+    28:                   <ICON_MAP_DATA>
+    29:                      H4sICDqeeFkAC0ZYMDBfRU5VTTFfZi5zdmcAjZDBbsIwDIbPQ+IdLF+AA21TYKKIgLbzDnuDqYOktZYmVZI1ZU+/hCFthx04WbZ/f/bv/XHsFAzCOjKaI8sKBKFP5ky64fjp5XKLx8N0sndD81dWIrzXTrxaI0kJjp70BYHOHF9oEEqZN4bTyQNEunYcW+/7XZ6HELKwyoxt8rIoijxC8UeyGxXpj/+ErKqq/NqNUo5FPyJcbjHQ2bcc11VKWkFN6zmuWMzS7oFEeDZpBgpYV7BiCCZ6kMoEju5kjVLX9TvX16doorfCCTsITIa9GD14W2snje04drW3NM4ZJBoDts42ULIFgjTaL2XdkYpnzZ4s1Wp2qzr6ilj2GA86yH2ekHegyzKi2Tbb3AVPjzjMx8UvPr01xm/JB5pJ2wEAAA==
+    30:                   </ICON_MAP_DATA>
+    31:                </ICON_MAP>
+    32:             </ENUM>
+    33:             <ENUM>
+    34:                <ENUM_STRING>df/dx</ENUM_STRING>
+    35:                <ICON_MAP>
+    36:                   <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+    37:                   <ICON_MAP_DATA>
+    38:                      H4sICDqeeFkAC0ZYMDBfRU5VTTJfZGZfZHguc3ZnAJVRsU7DMBScW6n/8PQYCkPjOG1VUsWtYGbgD1BonMSqY0e2SVK+npdQEAMDePDJ5/Odz86OQ6Ohk84rawTyKEaQ5mQLZSqBb6Fc3ePxsJhnvqt+yhKE19zLZ2dLpaXAoMwFQRUCn1QntbYvHBfzGZC78QLrENo9Y33fR/06sq5iSRzHjEzxU7IftDLn34Q8TVM27ZJUYNwOCJcr9qoItcBNOi5qqao6CFxzWo3ZnZL9ox3PQAybFNYcwVKHUtteoD85q/UUv/dtfqISrZNeuk7iWLiiaZZRrgSqqAUaaySCD86eSXsTT+OLWDUqSKcVAT0P0QMnpFe6jLiNtsQkdLcdMcmVYVNCkEOA4HLjS+sagU0enBpuOYy35sDTKNkC39whlNaEVZk3SlP/5YNTuV5eWa/e5ZhHzQ9FmbHR9O/uye4f7sO3e8aqaaZfJPwAsF7t9EoCAAA=
+    39:                   </ICON_MAP_DATA>
+    40:                </ICON_MAP>
+    41:             </ENUM>
+    42:          </ENUM_LIST>
+    43:       </IPARAM>
+    44:       <IPARAM>
+    45:          <SUB_ID>7</SUB_ID>
+    46:          <TITLE>discontinuity handling</TITLE>
+    47:          <VARNAME>disc</VARNAME>
+    48:          <VISIBILITY>True</VISIBILITY>
+    49:          <DEF_VALUE>2</DEF_VALUE>
+    50:          <VALUE>2</VALUE>
+    51:          <MIN_VALUE>1</MIN_VALUE>
+    52:          <MAX_VALUE>2</MAX_VALUE>
+    53:          <ENUM_LIST>
+    54:             <ENUM>
+    55:                <ENUM_STRING>inactive</ENUM_STRING>
+    56:             </ENUM>
+    57:             <ENUM>
+    58:                <ENUM_STRING>active</ENUM_STRING>
+    59:             </ENUM>
+    60:          </ENUM_LIST>
+    61:       </IPARAM>
+    62:    </IPARAMS_LIST>
+    63:    <TPARAMS_LIST>
+    64:       <TPARAM>
+    65:          <SUB_ID>3</SUB_ID>
+    66:          <TITLE>expression in terms of the input x</TITLE>
+    67:          <VARNAME>fstr</VARNAME>
+    68:          <VISIBILITY>True</VISIBILITY>
+    69:          <DEF_VALUE>x</DEF_VALUE>
+    70:          <VALUE>x</VALUE>
+    71:          <TEXT_TYPE>2</TEXT_TYPE>
+    72:          <TOKEN_LIST>x</TOKEN_LIST>
+    73:       </TPARAM>
+    74:    </TPARAMS_LIST>
+    75:    <EVARS_LIST>
+    76:       <PORT>
+    77:          <EVAR>
+    78:             <SUB_ID>1</SUB_ID>
+    79:             <TITLE>function of input x</TITLE>
+    80:             <VARNAME>fofx</VARNAME>
+    81:             <VISIBILITY>True</VISIBILITY>
+    82:             <TYPE>0</TYPE>
+    83:             <DIMENSION>1</DIMENSION>
+    84:             <IO>2</IO>
+    85:             <UNITS>null</UNITS>
+    86:          </EVAR>
+    87:       </PORT>
+    88:       <PORT>
+    89:          <EVAR>
+    90:             <SUB_ID>2</SUB_ID>
+    91:             <TITLE>input to f(x)</TITLE>
+    92:             <VARNAME>x</VARNAME>
+    93:             <VISIBILITY>True</VISIBILITY>
+    94:             <TYPE>0</TYPE>
+    95:             <DIMENSION>1</DIMENSION>
+    96:             <IO>1</IO>
+    97:             <UNITS>null</UNITS>
+    98:          </EVAR>
+    99:       </PORT>
+   100:    </EVARS_LIST>
+   101:    <ICON_MAP>
+   102:       <ICON_MAP_FORMAT>svgz/base64</ICON_MAP_FORMAT>
+   103:       <ICON_MAP_DATA>
+   104:          H4sICDmeeFkAC0ZYMDAuc3ZnAK2TwW6cMBCGzxsp7zCaHtJKWcAsu4XVOlFzzqFvsCKsYa0YG9kOsH36jp1N0lbJJSoHBo/H8/8fDLvbuVcwCuuk0RxZkiEI3ZiD1B3HJ98uS7y9ubzYubH7syxHeKid+GlNK5Xg6KU+IcgDx3s5CqXMnuHlxQKou3Ycj94P2zSdpimZVomxXZpnWZZSU3wu2c5K6sf3CllVVWncpVKO2TAjnM5xkgd/5FhUYXEUsjt6jitGq6A9SjHdmXAGMigqWDEEQwytMhNH11ijVJTfuqFuCGKwwgk7CgzAHd0WOysaH2TLZB1lWYiErDhqowWC89Y80tkvWbxeEsteemGVpECHslerq/zNaF5iGpTSLurFt9c8Ob/P9052ulYYLRC6+JTkzAidXFNg6+B7zjluIkh+TqVRYTDq9GmVwUjt6RPn1yyH79ehLdBzBYsP6Nj/oys2/+IV1bt0ndGvRgtGTslksU7Ys92QKc+xSkooNkn1tkPD/jeLF7MHb2vtWmN7jn3trZy/MghzxoBGBFj2jcbEaL9s614qGpyrH1bW6uqcdfKXCBg0qTfzLg0dY3/6ISj+BmHFmlCVAwAA
+   105:       </ICON_MAP_DATA>
+   106:    </ICON_MAP>
+   107:    <SUBIDS_RESET>0</SUBIDS_RESET>
+   108: </SUBMODEL>

@@ -1,0 +1,73 @@
+﻿alias,data_path,variable_type,basic_type,title,unit,io_type,input_type,usage
+filter,q1@filter,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+filter,p1@filter,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+filter,q2@filter,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+filter,p2@filter,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+filter,dm1@filter,1,ame_basic_variable,mass flow rate at port 1,kg/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+filter,deltap@filter,1,ame_basic_variable,pressure drop (p2 - p1),bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+filter,actRorif@filter,1,ame_state_variable,activity of hydraulic dissipation (orif),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+filter,powerRorif@filter,1,ame_basic_variable,power of hydraulic dissipation (orif),W,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+filter,energyRorif@filter,1,ame_state_variable,energy of hydraulic dissipation (orif),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+cooler,q1@cooler,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+cooler,p1@cooler,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+cooler,q2@cooler,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+cooler,p2@cooler,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+cooler,dm1@cooler,1,ame_basic_variable,mass flow rate at port 1,kg/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+cooler,deltap@cooler,1,ame_basic_variable,pressure drop (p2 - p1),bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+cooler,actRorif@cooler,1,ame_state_variable,activity of hydraulic dissipation (orif),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+cooler,powerRorif@cooler,1,ame_basic_variable,power of hydraulic dissipation (orif),W,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+cooler,energyRorif@cooler,1,ame_state_variable,energy of hydraulic dissipation (orif),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+filter_1,q1@filter_1,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+filter_1,p1@filter_1,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+filter_1,q2@filter_1,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+filter_1,p2@filter_1,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+filter_1,dm1@filter_1,1,ame_basic_variable,mass flow rate at port 1,kg/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+filter_1,deltap@filter_1,1,ame_basic_variable,pressure drop (p2 - p1),bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+filter_1,actRorif@filter_1,1,ame_state_variable,activity of hydraulic dissipation (orif),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+filter_1,powerRorif@filter_1,1,ame_basic_variable,power of hydraulic dissipation (orif),W,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+filter_1,energyRorif@filter_1,1,ame_state_variable,energy of hydraulic dissipation (orif),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+filter_2,q1@filter_2,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+filter_2,p1@filter_2,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+filter_2,q2@filter_2,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+filter_2,p2@filter_2,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+filter_2,dm1@filter_2,1,ame_basic_variable,mass flow rate at port 1,kg/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+filter_2,deltap@filter_2,1,ame_basic_variable,pressure drop (p2 - p1),bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+filter_2,actRorif@filter_2,1,ame_state_variable,activity of hydraulic dissipation (orif),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+filter_2,powerRorif@filter_2,1,ame_basic_variable,power of hydraulic dissipation (orif),W,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+filter_2,energyRorif@filter_2,1,ame_state_variable,energy of hydraulic dissipation (orif),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+cooler_1,q1@cooler_1,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+cooler_1,p1@cooler_1,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+cooler_1,q2@cooler_1,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+cooler_1,p2@cooler_1,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+cooler_1,dm1@cooler_1,1,ame_basic_variable,mass flow rate at port 1,kg/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+cooler_1,deltap@cooler_1,1,ame_basic_variable,pressure drop (p2 - p1),bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+cooler_1,actRorif@cooler_1,1,ame_state_variable,activity of hydraulic dissipation (orif),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+cooler_1,powerRorif@cooler_1,1,ame_basic_variable,power of hydraulic dissipation (orif),W,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+cooler_1,energyRorif@cooler_1,1,ame_state_variable,energy of hydraulic dissipation (orif),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+filter_3,q1@filter_3,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+filter_3,p1@filter_3,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+filter_3,q2@filter_3,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+filter_3,p2@filter_3,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+filter_3,dm1@filter_3,1,ame_basic_variable,mass flow rate at port 1,kg/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+filter_3,deltap@filter_3,1,ame_basic_variable,pressure drop (p2 - p1),bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+filter_3,actRorif@filter_3,1,ame_state_variable,activity of hydraulic dissipation (orif),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+filter_3,powerRorif@filter_3,1,ame_basic_variable,power of hydraulic dissipation (orif),W,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+filter_3,energyRorif@filter_3,1,ame_state_variable,energy of hydraulic dissipation (orif),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+filter_4,q1@filter_4,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+filter_4,p1@filter_4,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+filter_4,q2@filter_4,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+filter_4,p2@filter_4,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+filter_4,dm1@filter_4,1,ame_basic_variable,mass flow rate at port 1,kg/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+filter_4,deltap@filter_4,1,ame_basic_variable,pressure drop (p2 - p1),bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+filter_4,actRorif@filter_4,1,ame_state_variable,activity of hydraulic dissipation (orif),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+filter_4,powerRorif@filter_4,1,ame_basic_variable,power of hydraulic dissipation (orif),W,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+filter_4,energyRorif@filter_4,1,ame_state_variable,energy of hydraulic dissipation (orif),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+filter_5,q1@filter_5,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+filter_5,p1@filter_5,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+filter_5,q2@filter_5,1,ame_basic_variable,flow rate at port 1,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+filter_5,p2@filter_5,1,ame_basic_variable,pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+filter_5,dm1@filter_5,1,ame_basic_variable,mass flow rate at port 1,kg/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+filter_5,deltap@filter_5,1,ame_basic_variable,pressure drop (p2 - p1),bar,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+filter_5,actRorif@filter_5,1,ame_state_variable,activity of hydraulic dissipation (orif),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+filter_5,powerRorif@filter_5,1,ame_basic_variable,power of hydraulic dissipation (orif),W,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+filter_5,energyRorif@filter_5,1,ame_state_variable,energy of hydraulic dissipation (orif),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown

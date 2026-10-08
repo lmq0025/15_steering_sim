@@ -1,0 +1,62 @@
+{
+  "baseline": {
+    "amesim_max_pump_pressure_pa": 18662269.95419734,
+    "python_max_pump_pressure_pa": 241603581.09234568
+  },
+  "after": {
+    "python_max_pump_pressure_pa": 241180804.41620567,
+    "pressure_ratio_to_amesim": 12.923444200953785
+  },
+  "pressure_reference": {
+    "issue_found": true,
+    "fix_applied": true
+  },
+  "runtime_binding": {
+    "all_match": true
+  },
+  "cv010": {
+    "issue_found": true,
+    "parameter_conversion_issue": true,
+    "law_changed": true
+  },
+  "rv010": {
+    "issue_found": true,
+    "parameter_conversion_issue": true,
+    "law_changed": true
+  },
+  "rv011_hydprv0": {
+    "status": "NOT_PRIMARY",
+    "law_changed": false
+  },
+  "opening": {
+    "presscontrol01_amesim_s": 0.084,
+    "presscontrol01_python_before": "NEVER",
+    "presscontrol01_python_after": "NEVER",
+    "presscontrol01_3_amesim_s": 0.748,
+    "presscontrol01_3_python_before": "NEVER",
+    "presscontrol01_3_python_after": "NEVER"
+  },
+  "comparison": {
+    "before_good": 48,
+    "before_acceptable": 8,
+    "before_poor": 98,
+    "after_good": 63,
+    "after_acceptable": 5,
+    "after_poor": 86
+  },
+  "regression": {
+    "pump_flow_still_good": true,
+    "inputs_unchanged": true,
+    "states_unchanged": true
+  },
+  "algebraic_failures": 0,
+  "fast_states": 109,
+  "ir_v3_hashes": {
+    "17A_bondgraph_elements_v3.csv": "850ce87ede456b6a1490381b6e9170bf7755e5757910830cef8b249941fa28de",
+    "17B_bondgraph_ports_v3.csv": "83255ab8d385c26ad0e27c83eeb6b9e305d99fb9ab656d627cf93257aba83333",
+    "17C_bondgraph_junctions_v3.csv": "fdb6ca015e72802ced0eff1631a74cc9345fe52b1edc5ba3f486625d4c3c8d75",
+    "17D_physical_line_registry.csv": "c66f9fb1a1fcf95819888dfd2245701d07ca1266ba1010e5baa83b3ded7d9912",
+    "17F_BONDGRAPH_IR_FREEZE_V3.md": "a143c9d911ce23b80048a3e8d9cb5ac8e0f74fd7cae9c083204d332ab313f433"
+  },
+  "ready_for_sc1_line_calibration": false
+}

@@ -1,0 +1,52 @@
+﻿alias,data_path,variable_type,basic_type,title,unit,io_type,input_type,usage
+pprv_1,q1@pprv_1,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+pprv_1,p1@pprv_1,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+pprv_1,q2@pprv_1,1,ame_state_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+pprv_1,p2@pprv_1,1,ame_basic_variable,pilot pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+pprv_1,q3@pprv_1,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+pprv_1,p3@pprv_1,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+pprv_1,xv@pprv_1,1,ame_basic_variable,fractional valve opening,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_1,area@pprv_1,1,ame_basic_variable,cross sectional area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_1,highlimit@pprv_1,1,ame_basic_variable,high limit,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_1,lowlimit@pprv_1,1,ame_basic_variable,low limit,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_1,cxv@pprv_1,1,ame_state_variable,computational valve opening,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_1,cxvder@pprv_1,1,ame_state_variable,computational valve opening derivative,null/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_1,cq@pprv_1,1,ame_basic_variable,flow coefficient (Cq),null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_1,lambda@pprv_1,1,ame_basic_variable,flow number (lambda),null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_1,actRvalve@pprv_1,1,ame_state_variable,activity of hydraulic dissipation (valve),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_1,powerRvalve@pprv_1,1,ame_basic_variable,power of hydraulic dissipation (valve),W,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_1,energyRvalve@pprv_1,1,ame_state_variable,energy of hydraulic dissipation (valve),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_2,q1@pprv_2,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+pprv_2,p1@pprv_2,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+pprv_2,q2@pprv_2,1,ame_state_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+pprv_2,p2@pprv_2,1,ame_basic_variable,pilot pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+pprv_2,q3@pprv_2,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+pprv_2,p3@pprv_2,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+pprv_2,xv@pprv_2,1,ame_basic_variable,fractional valve opening,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_2,area@pprv_2,1,ame_basic_variable,cross sectional area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_2,highlimit@pprv_2,1,ame_basic_variable,high limit,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_2,lowlimit@pprv_2,1,ame_basic_variable,low limit,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_2,cxv@pprv_2,1,ame_state_variable,computational valve opening,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_2,cxvder@pprv_2,1,ame_state_variable,computational valve opening derivative,null/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_2,cq@pprv_2,1,ame_basic_variable,flow coefficient (Cq),null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_2,lambda@pprv_2,1,ame_basic_variable,flow number (lambda),null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_2,actRvalve@pprv_2,1,ame_state_variable,activity of hydraulic dissipation (valve),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_2,powerRvalve@pprv_2,1,ame_basic_variable,power of hydraulic dissipation (valve),W,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_2,energyRvalve@pprv_2,1,ame_state_variable,energy of hydraulic dissipation (valve),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_3,q1@pprv_3,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+pprv_3,p1@pprv_3,1,ame_basic_variable,pressure at port 1,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+pprv_3,q2@pprv_3,1,ame_state_variable,flow rate at port 2,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+pprv_3,p2@pprv_3,1,ame_basic_variable,pilot pressure at port 2,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+pprv_3,q3@pprv_3,1,ame_basic_variable,flow rate at port 3,L/min,ame_variable_io_output,ame_variable_input_none,ame_variable_used
+pprv_3,p3@pprv_3,1,ame_basic_variable,pressure at port 3,bar,ame_variable_io_input,ame_variable_input_none,ame_variable_used
+pprv_3,xv@pprv_3,1,ame_basic_variable,fractional valve opening,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_3,area@pprv_3,1,ame_basic_variable,cross sectional area,mm**2,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_3,highlimit@pprv_3,1,ame_basic_variable,high limit,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_3,lowlimit@pprv_3,1,ame_basic_variable,low limit,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_3,cxv@pprv_3,1,ame_state_variable,computational valve opening,null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_3,cxvder@pprv_3,1,ame_state_variable,computational valve opening derivative,null/s,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_3,cq@pprv_3,1,ame_basic_variable,flow coefficient (Cq),null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_3,lambda@pprv_3,1,ame_basic_variable,flow number (lambda),null,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_3,actRvalve@pprv_3,1,ame_state_variable,activity of hydraulic dissipation (valve),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_3,powerRvalve@pprv_3,1,ame_basic_variable,power of hydraulic dissipation (valve),W,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown
+pprv_3,energyRvalve@pprv_3,1,ame_state_variable,energy of hydraulic dissipation (valve),J,ame_variable_io_invalid,ame_variable_input_none,ame_variable_usage_unknown

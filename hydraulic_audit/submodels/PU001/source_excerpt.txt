@@ -1,0 +1,375 @@
+SUBMODEL: PU001
+SOURCE FILES: 2
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\PU001.c
+==============================================================================
+...
+     1: /* Submodel PU001 skeleton created by AME Submodel editing utility
+     2:    jeu. févr. 22 14:31:29 2018 */
+     3: 
+     4: 
+     5: 
+     6: #include <math.h>
+     7: #include <stdio.h>
+     8: #include <stdlib.h>
+     9: #include "ameutils.h"
+    10: /* *******************************************************************************
+    11: TITLE : PU001
+    12: ------------------------------------------------------------------------------
+    13: DESCRIPTION :
+    14: 	
+    15: 	PU001 is a submodel of an ideal hydraulic pump. There are no flow
+    16: 	losses or mechanical losses and the flow rate is determines solely
+    17: 	by the shaft speed, pump displacement and the inlet port pressure 
+    18: 	(normally port 1).
+    19: 	
+    20: 	If there is air release or cavitation at the inlet port, the flow
+    21: 	rate will be reduced.
+    22:  
+    23:         When the pump is rotated backwards, the port that is nominally the
+    24:         outlet (port 2) becomes the inlet. Under these conditions the
+    25:         pressure at port 2 is used in determining the flow rate. To avoid
+    26:         a discontinuity, a smooth switch between the pressures is used. The
+    27:         parameter typical speed of pump (wtyp) is used to determine the
+    28:         speed range over which the transmission is made. The switching between
+    29:         the two pressures is assumed to take place between speeds + and - 
+    30:         wtyp/1000.	
+    31: ------------------------------------------------------------------------------
+    32: USAGE :
+    33:  
+    34: 	This submodel is useful for general simulation of a fixed displacement
+    35: 	hydraulic pump.
+    36: ------------------------------------------------------------------------------
+    37: PARAMETER SETTINGS :
+    38:  
+    39: 	The typical pump speed need not be accurate -- it is just required
+    40: 	to give a rough idea of the speed at which the pump shaft will be
+    41: 	turning. FOR ALMOST ALL APPLICATION THE DEFAULT VALUE IS ACCEPTABLE.
+    42: 	CHANGE THE PARAMETER ONLY IF THE PUMP SPEED IS ABNORMALLY FAST 
+    43: 	(> 5000 REV/MIN) OR ABNORMALLY SLOW (< 100 REV/MIN).
+    44: 
+    45: 	The index of hydraulic fluid parameter refers to a fluid type
+    46: 	defined by an icon put on the sketch.  
+    47: 	
+    48: ------------------------------------------------------------------------------
+    49: DATE OF CREATION/AUTHOR :
+    50:  
+    51: 	F.Galllo/C.W.Richards March 1999
+    52: ------------------------------------------------------------------------------
+    53: INDEX OF REVISIONS :
+    54: 	30/12/1999 : Index of hydraulic fluid management is introduced (STC).
+    55: ------------------------------------------------------------------------------
+    56: LIST OF FUNCTIONS USED :
+    57: 	q0top_()  : flowrate at a specified pressure from flow rate at ref. pressure
+    58: ------------------------------------------------------------------------------
+    59: SOURCE :
+    60:    Siemens Industry Software SAS
+    61:    7 place des Minimes
+    62:    42300 Roanne - France
+    63:    tel: (33).04.77.23.60.30
+    64:    fax: (33).04.77.23.60.31
+    65:    www.siemens.com/plm
+    66: 
+    67:    Copyright 2018 Siemens Industry Software NV
+    68: ******************************************************************************* */
+    69: 
+    70: #define _SUBMODELNAME_ "PU001"
+    71: 
+    72: /* >>>>>>>>>>>>Insert Private Code Here. */
+    73: /* <<<<<<<<<<<<End of Private Code. */
+    74: 
+    75: 
+    76: /* There are 2 real parameters:
+    77: 
+    78:    displ pump displacement  [cc/rev -> m**3/rad]
+    79:    wtyp  typical pump speed [rev/min -> rad/s]
+    80: */
+    81: 
+    82: 
+    83: /* There is 1 integer parameter:
+    84: 
+    85:    indexf index of hydraulic fluid
+    86: */
+    87: 
+    88: void pu001in_(int *n, double rp[2], int ip[1])
+    89: 
+    90: {
+    91:    int loop, error;
+    92: /* >>>>>>>>>>>>Extra Initialization Function Declarations Here. */
+    93: /* <<<<<<<<<<<<End of Extra Initialization declarations. */
+    94:    int indexf;
+    95:    double displ, wtyp;
+    96: 
+    97:    indexf     = ip[0];
+    98: 
+    99:    displ      = rp[0];
+   100:    wtyp       = rp[1];
+   101:    loop = 0;
+   102:    error = 0;
+   103: 
+   104: /*
+   105:    If necessary, check values of the following:
+   106: 
+   107:    rp[0..1]
+   108: */
+   109: 
+   110: 
+   111: /* >>>>>>>>>>>>Initialization Function Check Statements. */
+   112: 
+   113:    hyd_valid_liquid_(&indexf, &error);
+   114: 
+   115:    if(displ <= 0.0)
+   116:    {
+   117:       amefprintf(stderr, "\nPump displacement must be strictly positive.\n");
+   118:       amefprintf(stderr, "Value is %g cc/rev.\n", displ);
+   119:       error = 2;
+   120:    }
+   121:    if(wtyp <= 0.0)
+   122:    {
+   123:       amefprintf(stderr, "\nTypical pump speed must be strictly positive.\n");
+   124:       error = 2;
+   125:    }
+   126: 
+   127: 
+   128: /* <<<<<<<<<<<<End of Initialization Check Statements. */
+   129: 
+   130: /*   Integer parameter checking:   */
+   131: 
+   132:    if (indexf < 0 || indexf > 100)
+   133:    {
+   134:       amefprintf(stderr, "\nindex of hydraulic fluid must be in range [0..100].\n");
+   135:       error = 2;
+   136:    }
+   137: 
+   138:    if(error == 1)
+   139:    {
+   140:       amefprintf(stderr, "\nWarning in %s instance %d.\n", _SUBMODELNAME_, *n);
+   141:    }
+   142:    else if(error == 2)
+   143:    {
+   144:       amefprintf(stderr, "\nFatal error in %s instance %d.\n", _SUBMODELNAME_, *n);
+   145:       amefprintf(stderr, "Terminating the program.\n");
+   146:       AmeExit(1);
+   147:    }
+   148: 
+   149: /* Common -> SI units conversions. */
+   150: 
+   151:    rp[0]    *= 1.59154943091895e-007;
+   152:    displ      = rp[0];
+   153:    rp[1]    *= 1.04719755119660e-001;
+   154:    wtyp       = rp[1];
+   155: 
+   156: 
+   157: /* >>>>>>>>>>>>Initialization Function Executable Statements. */
+   158: /* <<<<<<<<<<<<End of Initialization Executable Statements. */
+   159: }
+   160: 
+   161: /*  There are 3 ports.
+   162: 
+   163:    Port 1 has 2 variables:
+   164: 
+   165:       1 qin     duplicate of qout   (sign reversed)
+   166:       2 pin     pressure at port 1  [bar -> Pa] basic variable input
+   167: 
+   168:    Port 2 has 2 variables:
+   169: 
+   170:       1 qout     flow rate at port 2 [L/min -> m**3/s] basic variable output
+   171:       2 pout     pressure at port 2  [bar -> Pa]       basic variable input
+   172: 
+   173:    Port 3 has 2 variables:
+   174: 
+   175:       1 torque     shaft torque at port 3 [Nm]               basic variable output
+   176:       2 speed      shaft speed at port 3  [rev/min -> rad/s] basic variable input
+   177: */
+   178: 
+   179: /*  There are 0 internal variables.
+   180: 
+   181: */
+   182: 
+   183: void pu001_(int *n, double *pin, double *qout, double *pout
+   184:       , double *torque, double *speed, double rp[2], int ip[1])
+   185: 
+   186: {
+   187:    int loop;
+   188: /* >>>>>>>>>>>>Extra Calculation Function Declarations Here. */
+   189:    double fact;
+   190:    double pup;
+   191:    double qnom;
+   192: /* <<<<<<<<<<<<End of Extra Calculation declarations. */
+   193:    int indexf;
+   194:    double displ, wtyp;
+   195: 
+   196:    indexf     = ip[0];
+   197: 
+   198:    displ      = rp[0];
+   199:    wtyp       = rp[1];
+   200:    loop = 0;
+   201: 
+   202: /* Common -> SI units conversions. */
+   203: 
+   204:    *pin      *= 1.00000000000000e+005;
+   205:    *pout     *= 1.00000000000000e+005;
+   206:    *speed    *= 1.04719755119660e-001;
+   207: 
+   208: /*
+   209:    Set all submodel outputs below:
+   210: 
+   211:    *qout       = ??;
+   212:    *torque     = ??;
+   213: */
+   214: 
+   215: 
+   216: 
+   217: /* >>>>>>>>>>>>Calculation Function Executable Statements. */
+   218: 
+   219:    sethdind_(&indexf);
+   220: 
+   221:    qnom = displ*(*speed);
+   222: 
+   223:    /* Compute factor for a weighted mean of pressures used
+   224:       to correct the flow rate. Note fact is in the range 0 to 1.
+   225:       */
+   226:    fact = (tanh(*speed*1000/wtyp)+1.0)/2;
+   227: 
+   228:    /* Compute pressure to use as input */
+   229:    pup = *pin*fact + *pout*(1.0-fact);
+   230: 
+   231:    /* Nominal flow is at current pressure. Convert to reference pressure. */
+   232:    *qout = qnom/q0top_(&pup);
+   233: 
+   234:    /* compute the torque */
+   235:    *torque = (*pout - *pin)*displ;
+   236: 
+   237: /* <<<<<<<<<<<<End of Calculation Executable Statements. */
+   238: 
+   239: /* SI -> Common units conversions. */
+   240: 
+   241:    *pin      /= 1.00000000000000e+005;
+   242:    *qout     /= 1.66666666666667e-005;
+   243:    *pout     /= 1.00000000000000e+005;
+   244:    *speed    /= 1.04719755119660e-001;
+   245: }
+   246: 
+
+==============================================================================
+FILE: E:\Simcenter\2021.1\Amesim\libhydr\submodels\PU001.spe
+==============================================================================
+...
+     1: <?xml version="1.0" encoding="ISO-8859-1"?>
+     2: <!DOCTYPE SPE>
+     3: <SPE DOC_VERSION="2" AME_VERSION="16.0.0 - 68387-65635 2017">
+     4: 
+     5:  <SUBMODEL>
+     6:   <SUB_TYPE>0</SUB_TYPE>
+     7:   <SUB_ID_MAX>10</SUB_ID_MAX>
+     8:   <DEFAULT_ICON>pump01</DEFAULT_ICON>
+     9:   <SUB_LABEL>ideal fixed displacement hydraulic pump</SUB_LABEL>
+    10:   <SUB_UNIT>0</SUB_UNIT>
+    11:   <OUTPUT_TYPE>1</OUTPUT_TYPE>
+    12:   <RPARAMS_LIST>
+    13:    <RPARAM>
+    14:     <SUB_ID>7</SUB_ID>
+    15:     <TITLE>pump displacement</TITLE>
+    16:     <VARNAME>displ</VARNAME>
+    17:     <VISIBILITY>True</VISIBILITY>
+    18:     <DEF_VALUE>1.00000000000000e+02</DEF_VALUE>
+    19:     <VALUE>1.00000000000000e+02</VALUE>
+    20:     <MIN_VALUE>1.00000000000000e-004</MIN_VALUE>
+    21:     <MAX_VALUE>1.00000000000000e+005</MAX_VALUE>
+    22:     <UNITS>cc/rev</UNITS>
+    23:    </RPARAM>
+    24:    <RPARAM>
+    25:     <SUB_ID>8</SUB_ID>
+    26:     <TITLE>typical pump speed</TITLE>
+    27:     <VARNAME>wtyp</VARNAME>
+    28:     <VISIBILITY>True</VISIBILITY>
+    29:     <DEF_VALUE>1.00000000000000e+03</DEF_VALUE>
+    30:     <VALUE>1.00000000000000e+03</VALUE>
+    31:     <MIN_VALUE>1.00000000000000e+000</MIN_VALUE>
+    32:     <MAX_VALUE>1.00000000000000e+004</MAX_VALUE>
+    33:     <UNITS>rev/min</UNITS>
+    34:    </RPARAM>
+    35:   </RPARAMS_LIST>
+    36:   <IPARAMS_LIST>
+    37:    <IPARAM>
+    38:     <SUB_ID>9</SUB_ID>
+    39:     <TITLE>index of hydraulic fluid</TITLE>
+    40:     <VARNAME>indexf</VARNAME>
+    41:     <VISIBILITY>True</VISIBILITY>
+    42:     <DEF_VALUE>0</DEF_VALUE>
+    43:     <VALUE>0</VALUE>
+    44:     <MIN_VALUE>0</MIN_VALUE>
+    45:     <MAX_VALUE>100</MAX_VALUE>
+    46:    </IPARAM>
+    47:   </IPARAMS_LIST>
+    48:   <EVARS_LIST>
+    49:    <PORT>
+    50:     <EVAR>
+    51:      <SUB_ID>1</SUB_ID>
+    52:      <VARNAME>qin</VARNAME>
+    53:      <VISIBILITY>True</VISIBILITY>
+    54:      <TYPE>4</TYPE>
+    55:      <PRIMARY_PORT>1</PRIMARY_PORT>
+    56:      <PRIMARY_VAR>0</PRIMARY_VAR>
+    57:      <DUP_TYPE>1</DUP_TYPE>
+    58:     </EVAR>
+    59:     <EVAR>
+    60:      <SUB_ID>2</SUB_ID>
+    61:      <TITLE>pressure at port 1</TITLE>
+    62:      <VARNAME>pin</VARNAME>
+    63:      <VISIBILITY>True</VISIBILITY>
+    64:      <TYPE>0</TYPE>
+    65:      <DIMENSION>1</DIMENSION>
+    66:      <IO>1</IO>
+    67:      <UNITS>bar</UNITS>
+    68:     </EVAR>
+    69:    </PORT>
+    70:    <PORT>
+    71:     <EVAR>
+    72:      <SUB_ID>3</SUB_ID>
+    73:      <TITLE>flow rate at port 2</TITLE>
+    74:      <VARNAME>qout</VARNAME>
+    75:      <VISIBILITY>True</VISIBILITY>
+    76:      <TYPE>0</TYPE>
+    77:      <DIMENSION>1</DIMENSION>
+    78:      <IO>2</IO>
+    79:      <UNITS>L/min</UNITS>
+    80:     </EVAR>
+    81:     <EVAR>
+    82:      <SUB_ID>4</SUB_ID>
+    83:      <TITLE>pressure at port 2</TITLE>
+    84:      <VARNAME>pout</VARNAME>
+    85:      <VISIBILITY>True</VISIBILITY>
+    86:      <TYPE>0</TYPE>
+    87:      <DIMENSION>1</DIMENSION>
+    88:      <IO>1</IO>
+    89:      <UNITS>bar</UNITS>
+    90:     </EVAR>
+    91:    </PORT>
+    92:    <PORT>
+    93:     <EVAR>
+    94:      <SUB_ID>10</SUB_ID>
+    95:      <TITLE>shaft torque at port 3</TITLE>
+    96:      <VARNAME>torque</VARNAME>
+    97:      <VISIBILITY>True</VISIBILITY>
+    98:      <TYPE>0</TYPE>
+    99:      <DIMENSION>1</DIMENSION>
+   100:      <IO>2</IO>
+   101:      <UNITS>Nm</UNITS>
+   102:     </EVAR>
+   103:     <EVAR>
+   104:      <SUB_ID>6</SUB_ID>
+   105:      <TITLE>shaft speed at port 3</TITLE>
+   106:      <VARNAME>speed</VARNAME>
+   107:      <VISIBILITY>True</VISIBILITY>
+   108:      <TYPE>0</TYPE>
+   109:      <DIMENSION>1</DIMENSION>
+   110:      <IO>1</IO>
+   111:      <UNITS>rev/min</UNITS>
+   112:     </EVAR>
+   113:    </PORT>
+   114:   </EVARS_LIST>
+   115:   <SUBIDS_RESET>0</SUBIDS_RESET>
+   116:  </SUBMODEL>
+   117: </SPE>
