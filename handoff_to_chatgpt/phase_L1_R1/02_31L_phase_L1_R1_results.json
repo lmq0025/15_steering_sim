@@ -1,0 +1,27 @@
+{
+  "phase": "L1-R1",
+  "channel_topology": "PASS_AFTER_MINIMAL_CORRECTION",
+  "main_equations": "PASS",
+  "time_varying_inputs": "PASS",
+  "amesim_scenarios_successful": 1,
+  "amesim_scenarios_requested": 3,
+  "independent_macro_variables": 8,
+  "within_10_percent": 1,
+  "supply_pressure_validation": "CONDITIONAL",
+  "dynamic_states": 16,
+  "pipe_states": 0,
+  "smallest_tested_dt_s": 0.0001,
+  "accepted_fast_dt_s": 0.0005,
+  "linearization": "CONDITIONAL",
+  "second_order_reduction": "CONDITIONAL",
+  "pytest": "212 passed",
+  "ready_for_L2_macro_calibration": false,
+  "ready_for_mechanical_integration": false,
+  "amesim_audit_unchanged": true,
+  "runtime": {
+    "step_1s_wall_s": 0.37707020016387105,
+    "sine_1s_wall_s": 0.3741775001399219,
+    "dynamic_100s_wall_s": 37.38816830003634,
+    "dynamic_100s_speedup": 2.674642929750126
+  }
+}

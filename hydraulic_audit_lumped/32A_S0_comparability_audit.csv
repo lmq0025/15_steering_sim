@@ -1,0 +1,9 @@
+﻿quantity,amesim_alias,python_alias,source_signal,initial_condition,sign,unit,sensor_location,verified,evidence
+pump flow,qout@pump01 + qout@pump01_1,supply_front.group_pump_flow,measured pump speeds,algebraic,outlet positive,m3/s,PU001 outlets,YES,20B units/sign; PU001 exact transfer; 32 raw speeds
+supply pressure,pout@pump01,supply_front.pump_outlet_pressure,pump/valve balance,0 Pa(g),gauge positive,Pa(g),pump01 outlet V3_HJ_066,CONDITIONAL,Python still co-locates pump outlet and valve manifold; 32C
+chamber pA,p1@actuator002,channel_front.pA,measured valve command and motion,Amesim t=0,direct,Pa(g),HJ021 port 1,YES,17B V3_HJ_009; measured mechanical boundary
+chamber pB,p2@actuator002,channel_front.pB,measured valve command and motion,Amesim t=0,direct,Pa(g),HJ021 port 2,YES,17B V3_HJ_010; measured mechanical boundary
+position,x@actuator002,prescribed actuator002 motion,MEASURED_AMESIM boundary,Amesim t=0,direct,m,mechanical port TMJ_002,BOUNDARY_ONLY,HJ021 x is ame_variable_io_input; not independent prediction
+velocity,v@actuator002,prescribed actuator002 motion,MEASURED_AMESIM boundary,Amesim t=0,direct,m/s,mechanical port TMJ_002,BOUNDARY_ONLY,HJ021 v is ame_variable_io_input; not independent prediction
+hydraulic force,frod@actuator002,channel_front.hydraulic_force,pressures and areas,derived,direct pending rod convention,N,HJ021 rod,YES,source equation and 20B mapping
+valve input,signal_input@dirvalve_6,dirvalve_6 command,measured replay,measured,direct,1,SC_1 signal port,YES,32 raw signal and fractional spool position

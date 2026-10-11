@@ -1,0 +1,11 @@
+﻿scenario,mode,quantity,reference_solver,candidate_solver,rmse,normalized_rmse,normalized_peak_error,normalized_final_error,status
+S2,PRESCRIBED_MOTION,front_supply_pressure,solve_supply_reference,solve_supply_fast,0.0018528956060688622,9.934387561755762e-11,1.3178744334699259e-09,1.5285582100965121e-12,PASS
+S2,PRESCRIBED_MOTION,rear_supply_pressure,solve_supply_reference,solve_supply_fast,0.07651758948762843,4.4976102989607955e-09,2.3040777076603708e-10,0.0,PASS
+S2,PRESCRIBED_MOTION,pA,solve_supply_reference,solve_supply_fast,0.03834853977293309,1.8624447646480042e-08,2.040392246549959e-09,6.784626729837144e-16,PASS
+S2,PRESCRIBED_MOTION,pB,solve_supply_reference,solve_supply_fast,0.05705828247862945,3.485330466941906e-08,2.844430994811178e-16,2.844430994811178e-16,PASS
+S2,PRESCRIBED_MOTION,QA,solve_supply_reference,solve_supply_fast,3.6892112121636045e-12,4.0041486703203626e-08,2.9418935631840955e-16,2.9418935631840955e-16,PASS
+S2,PRESCRIBED_MOTION,QB,solve_supply_reference,solve_supply_fast,4.773808722130237e-12,4.5987292607222634e-08,1.3055488147320534e-16,1.3055488147320534e-16,PASS
+S2,PRESCRIBED_MOTION,hydraulic_force,solve_supply_reference,solve_supply_fast,0.0001740147034190198,2.5632480049468635e-08,8.806933266183163e-09,6.698458331465323e-16,PASS
+S2,PRESCRIBED_MOTION,position,solve_supply_reference,solve_supply_fast,0.0,0.0,0.0,0.0,PASS
+S2,PRESCRIBED_MOTION,velocity,solve_supply_reference,solve_supply_fast,0.0,0.0,0.0,0.0,PASS
+S2,PRESCRIBED_MOTION,all_16_states,solve_supply_reference,solve_supply_fast,0.025956890631062313,1.2567775656890649e-08,2.017750482849093e-07,3.008796439846342e-11,PASS

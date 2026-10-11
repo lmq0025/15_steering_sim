@@ -1,0 +1,4 @@
+﻿operating_point,dominant_poles,wn_rad_s,zeta,gain,physical_parameters,status
+neutral,NOT_APPLICABLE,,,,"beta_e,A_A,A_B,V_A,V_B,m_eq,Cd,A(xv),Ctp,Bp",NOT_APPLICABLE
+small_steering_load,(-4.808760684452375+320.4520518422912j); (-4.808760684452375-320.4520518422912j),320.48813037186704,0.015004489179904105,1.0,"beta_e,A_A,A_B,V_A,V_B,m_eq,Cd,A(xv),Ctp,Bp",PASS
+medium_steering_load,(-0.810999475267621+0.6161165223626877j); (-0.810999475267621-0.6161165223626877j),1.0184889385813911,0.796277155839539,1.0,"beta_e,A_A,A_B,V_A,V_B,m_eq,Cd,A(xv),Ctp,Bp",PASS

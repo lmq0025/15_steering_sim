@@ -1,0 +1,5 @@
+﻿stage,changes,max_chamber_pressure_pa,max_supply_pressure_pa,flow_conservation_residual_m3_s,valve_flow_error,chamber_pressure_error,hydraulic_force_error,wall_time_s,status
+R3-0,R2 one-area valve + wrong HJ020 signs,384662837.8028275,241600000.0,,not mapped,catastrophic,catastrophic,captured baseline,FAIL
+R3-1,independent SC_1 four-port tables only,17436000.0,17778000.0,<2e-18,reduced,wrong HJ020 signs remain,large,36.08,CONDITIONAL_CAPTURED_INTERMEDIATE
+R3-2,spatial nodes + correct HYDPRV0 pilot + source HJ020 signs,1953000.0,18657000.0,<1e-16,orif3f scale pending,substantially reduced,reduced,34.27,PASS_STRUCTURE
+R3-3,return node + auxiliary flow + S0-identified orif3f operating scale,2065352.799071544,18651331.99757499,8.382635331314822e-10,see 33D/33I,see 33I,derived; not independently counted,13.411948599852622,FINAL

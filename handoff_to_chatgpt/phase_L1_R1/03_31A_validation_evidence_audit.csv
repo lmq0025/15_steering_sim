@@ -1,0 +1,11 @@
+﻿original_metric,original_within_10_percent,evidence_class,independent_validation,reason
+pump01.flow,PASS,PARAMETER_TRANSFER,NO,directly transferred parameter/initial condition
+normal_baseline.max_supply_pressure,PASS,CALIBRATION_TARGET,NO,R_eq was identified from this point
+actuator001.initial_position,PASS,INITIAL_CONDITION,NO,directly transferred parameter/initial condition
+pump01.nominal_flow,PASS,PARAMETER_TRANSFER,NO,directly transferred parameter/initial condition
+actuator001_1.initial_position,PASS,INITIAL_CONDITION,NO,directly transferred parameter/initial condition
+pump01_1.nominal_flow,PASS,PARAMETER_TRANSFER,NO,directly transferred parameter/initial condition
+actuator001_2.initial_position,PASS,INITIAL_CONDITION,NO,directly transferred parameter/initial condition
+pump01_2.nominal_flow,PASS,PARAMETER_TRANSFER,NO,directly transferred parameter/initial condition
+actuator002.initial_position,PASS,INITIAL_CONDITION,NO,directly transferred parameter/initial condition
+pump01_3.nominal_flow,PASS,PARAMETER_TRANSFER,NO,directly transferred parameter/initial condition

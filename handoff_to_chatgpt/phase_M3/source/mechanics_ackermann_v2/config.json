@@ -1,0 +1,157 @@
+{
+  "schema_version": "M1.0",
+  "coordinate_system": {
+    "source_length_unit": "mm",
+    "solver_length_unit": "m",
+    "origin": "midpoint of axle-1 wheel centers",
+    "x_positive": "vehicle forward",
+    "y_positive": "vehicle left",
+    "z_positive": "up",
+    "revolute_axis": "+Z"
+  },
+  "geometry": {
+    "source_file": "mechanical_model_input_spec_v1.0.yaml",
+    "source": "CUSTOMER_COORDINATES_TRANSCRIBED_AND_CROSSCHECKED",
+    "icr_reference_axle": 3,
+    "third_axle_locked": true,
+    "third_axle_point20_mm": [
+      -7290.0,
+      -996.0
+    ],
+    "third_axle_actuator_records": "CUSTOMER_HARDWARE_RECORD_PENDING_CONFIRMATION_NOT_ACTIVE",
+    "fit_residual_limit_deg": 0.25,
+    "lookup_step_rad": 0.001,
+    "q_envelopes_rad": {
+      "q_front": [
+        -0.572,
+        0.572
+      ],
+      "q4": [
+        -0.8,
+        0.8
+      ],
+      "q5": [
+        -0.164,
+        0.164
+      ],
+      "q6": [
+        -0.112,
+        0.112
+      ]
+    },
+    "q_envelope_source": "NUMERICALLY_VERIFIED_CONTINUATION_ENVELOPE_NOT_CUSTOMER_MECHANICAL_LIMIT (PHASE M2: expanded by continuous continuation; each step gated on closed-chain residual <=1e-9 m, no branch jump, Jacobian condition number <=1e8. Stop reasons recorded in docs/mechanics/phase_M2_report.md)",
+    "q_envelope_m2_evidence": {
+      "q_front": {
+        "stopped": "UnreachableGeometryError at |q|>0.572 rad",
+        "max_residual_m": 2.9e-13,
+        "max_condition_number": 41.6
+      },
+      "q4": {
+        "stopped": "probe limit 1.0 rad (still solvable)",
+        "max_residual_m": 2.7e-13,
+        "max_condition_number": 16.4,
+        "note": "solvable to the 1.0 rad probe limit, but the representative cylinder stroke turns around at -54.03 deg / +48.47 deg, so the usable (monotone-stroke) envelope is capped at +/-0.80 rad"
+      },
+      "q5": {
+        "stopped": "UnreachableGeometryError at |q|>0.164 rad",
+        "max_residual_m": 1.2e-12,
+        "max_condition_number": 412.0
+      },
+      "q6": {
+        "stopped": "UnreachableGeometryError at |q|>0.112 rad",
+        "max_residual_m": 6.9e-13,
+        "max_condition_number": 290.0
+      }
+    },
+    "q_solvable_envelope_rad": {
+      "q_front": [
+        -0.572,
+        0.572
+      ],
+      "q4": [
+        -1.0,
+        1.0
+      ],
+      "q5": [
+        -0.164,
+        0.164
+      ],
+      "q6": [
+        -0.112,
+        0.112
+      ]
+    }
+  },
+  "ground_load": {
+    "gravity_mps2": 9.81,
+    "cornering_stiffness_per_wheel_N_per_rad": 300000.0,
+    "cornering_stiffness_source": "ASSUMED_ENGINEERING_PARAMETER",
+    "linear_slip_limit_deg": 5.0,
+    "effective_trail_m": 0.06,
+    "effective_trail_source": "ASSUMED_ENGINEERING_PARAMETER",
+    "pivot_effective_radius_m": 0.035,
+    "pivot_effective_radius_source": "ASSUMED_ENGINEERING_PARAMETER",
+    "pivot_transition_speed_kmh": 5.0,
+    "pivot_transition_source": "ASSUMED_ENGINEERING_PARAMETER_INSPIRED_BY_LOW_SPEED_LITERATURE",
+    "pivot_engagement_angle_deg": 1.0,
+    "pivot_engagement_source": "ASSUMED_ENGINEERING_PARAMETER",
+    "stiffness_scenarios_Nm_per_rad": {
+      "low_flexibility": {
+        "q_front": 400000.0,
+        "q4": 300000.0,
+        "q5": 300000.0,
+        "q6": 300000.0
+      },
+      "medium_flexibility": {
+        "q_front": 200000.0,
+        "q4": 150000.0,
+        "q5": 150000.0,
+        "q6": 150000.0
+      },
+      "high_flexibility": {
+        "q_front": 100000.0,
+        "q4": 75000.0,
+        "q5": 75000.0,
+        "q6": 75000.0
+      }
+    },
+    "stiffness_source": "ASSUMED_ENGINEERING_PARAMETER_NOT_CUSTOMER_MEASURED"
+  },
+  "front_cylinder_interface": {
+    "cylinder_id": "front_group_1",
+    "frame_mount": "PENDING_CUSTOMER_COORDINATE",
+    "moving_mount": "PENDING_CUSTOMER_COORDINATE",
+    "stroke_per_q_mm_per_rad": 250.0,
+    "stroke_mapping_source": "ASSUMED_ENGINEERING_PARAMETER_INTERFACE_PLACEHOLDER"
+  },
+  "default_scan": {
+    "speed_kmh": {
+      "start": 0,
+      "stop": 80,
+      "step": 5
+    },
+    "first_axle_outer_angle_deg": {
+      "start": -30,
+      "stop": 30,
+      "step": 1
+    },
+    "friction_coefficients": [
+      0.7,
+      0.75,
+      0.8
+    ],
+    "axle_mass_t": [
+      11.5,
+      11.5,
+      11.5,
+      11.5,
+      11.5,
+      11.5
+    ],
+    "axle_mass_allowed_t": [
+      10.0,
+      13.0
+    ],
+    "default_stiffness_scenario": "medium_flexibility"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "phase": "L1_LUMPED_HYDRAULIC_REBUILD",
+  "legacy_109_state_mainline": "TERMINATED",
+  "lumped_channels": 4,
+  "total_dynamic_states": 16,
+  "pipe_dynamic_states": 0,
+  "parameter_source_counts": {
+    "AMESIM_EXACT": 45,
+    "PHYSICS_DERIVED": 14,
+    "MISSING": 2,
+    "AMESIM_IDENTIFIED": 1
+  },
+  "normal_baseline": {
+    "amesim_max_supply_pressure_pa": 18662269.95419734,
+    "lumped_max_supply_pressure_pa": 18657700.0,
+    "pressure_ratio": 0.9997551233473444,
+    "unexplained_over_100MPa": 0
+  },
+  "step_response": "PASS",
+  "sine_0p1_to_5Hz": "PASS",
+  "macro_validation": {
+    "variables": 10,
+    "within_10_percent": 10,
+    "status": "CONDITIONAL"
+  },
+  "runtime": {
+    "one_second_wall_s": 0.030068699968978763,
+    "hundred_second_wall_s": 2.959062499925494,
+    "one_second_target_pass": true,
+    "hundred_second_target_pass": true
+  },
+  "linearization": "PASS",
+  "dominant_second_order": "PASS",
+  "pytest": "203 passed",
+  "ready_for_L2_macro_calibration": true
+}

@@ -1,0 +1,984 @@
+{
+  "config": "E:\\15_project\\configs\\j0\\j0_config.json",
+  "output_dir": "outputs\\j0",
+  "diagnostic_damping_n_s_per_m": 0.0,
+  "table_quality": {
+    "q_front": {
+      "q_min_rad": -0.55,
+      "q_max_rad": 0.55,
+      "max_link_residual_m": 3.0780933357732465e-13,
+      "max_condition_number": 16.370767245297664,
+      "stroke_min_m": -0.1375,
+      "stroke_max_m": 0.1375,
+      "min_abs_stroke_jacobian_m_per_rad": 0.2499999999999858,
+      "monotone": 1.0
+    },
+    "q4": {
+      "q_min_rad": -0.65,
+      "q_max_rad": 0.65,
+      "max_link_residual_m": 5.639932965095795e-14,
+      "max_condition_number": 16.370767245297664,
+      "stroke_min_m": -0.1717400371920083,
+      "stroke_max_m": 0.10816424756540755,
+      "min_abs_stroke_jacobian_m_per_rad": 0.08913020251299911,
+      "monotone": 1.0
+    },
+    "q5": {
+      "q_min_rad": -0.15,
+      "q_max_rad": 0.15,
+      "max_link_residual_m": 1.6942003355779889e-12,
+      "max_condition_number": 30.029125456366735,
+      "stroke_min_m": -0.03498467079018108,
+      "stroke_max_m": 0.03365401609433327,
+      "min_abs_stroke_jacobian_m_per_rad": 0.21805707328270676,
+      "monotone": 1.0
+    },
+    "q6": {
+      "q_min_rad": -0.1,
+      "q_max_rad": 0.1,
+      "max_link_residual_m": 3.9968028886505635e-15,
+      "max_condition_number": 39.284470910415905,
+      "stroke_min_m": -0.026329887921702766,
+      "stroke_max_m": 0.025686170149722853,
+      "min_abs_stroke_jacobian_m_per_rad": 0.2528154625326404,
+      "monotone": 1.0
+    }
+  },
+  "cases": [
+    {
+      "case_id": "J0-01",
+      "channel_names": [
+        "channel_front",
+        "channel_rear_1",
+        "channel_rear_2",
+        "channel_rear_3"
+      ],
+      "dof_order": [
+        "q_front",
+        "q4",
+        "q5",
+        "q6"
+      ],
+      "target_outer_angle_deg": 0.0,
+      "speed_kmh": 0.0,
+      "duration_s": 2.0,
+      "completed": true,
+      "failure_time_s": null,
+      "failure_reason": null,
+      "diagnostic_damping_n_s_per_m": 0.0,
+      "target_q_ref_rad": {
+        "q_front": 0.0,
+        "q4": -0.0,
+        "q5": 1.9621177448523856e-18,
+        "q6": -5.548055363598136e-20
+      },
+      "target_x_ref_m": {
+        "channel_front": 0.0,
+        "channel_rear_1": 0.0,
+        "channel_rear_2": -4.509177393236982e-19,
+        "channel_rear_3": 0.0
+      },
+      "target_geometry_status": "OK",
+      "target_max_link_residual_m": 0.0,
+      "third_axle_locked_deg": 0.0,
+      "authority": [
+        {
+          "channel": "channel_front",
+          "valve_alias": "dirvalve_6",
+          "actuator_alias": "actuator002",
+          "neutral_command": 1.0,
+          "d_acceleration_over_d_command": 0.000818925207597121,
+          "acceleration_at_plus": 0.0,
+          "acceleration_at_minus": -1.637850415194242e-05,
+          "force_window_n": [
+            0.0,
+            33.241954927645565
+          ],
+          "reachable_x_signs": [
+            -1
+          ],
+          "bidirectional": false,
+          "notes": [
+            "ONE_QUADRANT_INITIAL_AUTHORITY",
+            "NEGLIGIBLE_STATIC_FORCE_AUTHORITY"
+          ]
+        },
+        {
+          "channel": "channel_rear_1",
+          "valve_alias": "dirvalve_1+dirvalve_2",
+          "actuator_alias": "actuator001",
+          "neutral_command": 0.0,
+          "d_acceleration_over_d_command": 0.022157494391106373,
+          "acceleration_at_plus": 0.00019181809937156017,
+          "acceleration_at_minus": -0.00025133178845056724,
+          "force_window_n": [
+            -6039.649315240452,
+            10689.495782807946
+          ],
+          "reachable_x_signs": [
+            1,
+            -1
+          ],
+          "bidirectional": true,
+          "notes": []
+        },
+        {
+          "channel": "channel_rear_2",
+          "valve_alias": "dirvalve_8+dirvalve_9",
+          "actuator_alias": "actuator001_1",
+          "neutral_command": 0.0,
+          "d_acceleration_over_d_command": 0.009474321508229801,
+          "acceleration_at_plus": 8.808563372391684e-05,
+          "acceleration_at_minus": -0.00010140079644067918,
+          "force_window_n": [
+            -6045.074376580445,
+            10694.01360591251
+          ],
+          "reachable_x_signs": [
+            1,
+            -1
+          ],
+          "bidirectional": true,
+          "notes": []
+        },
+        {
+          "channel": "channel_rear_3",
+          "valve_alias": "dirvalve_11+dirvalve_12",
+          "actuator_alias": "actuator001_2",
+          "neutral_command": 0.0,
+          "d_acceleration_over_d_command": 0.005694276623076051,
+          "acceleration_at_plus": 5.8518906962211914e-05,
+          "acceleration_at_minus": -5.53666254993091e-05,
+          "force_window_n": [
+            -6047.365243110525,
+            10695.85982868372
+          ],
+          "reachable_x_signs": [
+            1,
+            -1
+          ],
+          "bidirectional": true,
+          "notes": []
+        }
+      ],
+      "steady_wheel_angle_error_deg": {
+        "axle1_left": 0.0,
+        "axle1_right": 0.0,
+        "axle2_left": 0.0,
+        "axle2_right": 0.0,
+        "axle3_left": 0.0,
+        "axle3_right": 0.0,
+        "axle4_left": 0.0,
+        "axle4_right": 0.0,
+        "axle5_left": 0.0,
+        "axle5_right": 0.0,
+        "axle6_left": 0.0,
+        "axle6_right": 0.0
+      },
+      "max_steady_wheel_angle_error_deg": 0.0,
+      "final_wheel_angle_deg": {
+        "axle1_left": 0.0,
+        "axle1_right": 0.0,
+        "axle2_left": 0.0,
+        "axle2_right": 0.0,
+        "axle3_left": 0.0,
+        "axle3_right": 0.0,
+        "axle4_left": 0.0,
+        "axle4_right": 0.0,
+        "axle5_left": 0.0,
+        "axle5_right": 0.0,
+        "axle6_left": 0.0,
+        "axle6_right": 0.0
+      },
+      "target_wheel_angle_deg": {
+        "axle1_left": 0.0,
+        "axle1_right": 0.0,
+        "axle2_left": 0.0,
+        "axle2_right": 0.0,
+        "axle3_left": 0.0,
+        "axle3_right": 0.0,
+        "axle4_left": 0.0,
+        "axle4_right": 0.0,
+        "axle5_left": 0.0,
+        "axle5_right": 0.0,
+        "axle6_left": 0.0,
+        "axle6_right": 0.0
+      },
+      "steady_stroke_error_m": {
+        "channel_front": 0.0,
+        "channel_rear_1": 0.0,
+        "channel_rear_2": 4.509177393236982e-19,
+        "channel_rear_3": 0.0
+      },
+      "max_stroke_error_m": 4.509177393236982e-19,
+      "peak_hydraulic_force_n": {
+        "channel_front": 0.0,
+        "channel_rear_1": 1072.5500120763131,
+        "channel_rear_2": 1072.5500120763131,
+        "channel_rear_3": 1072.5500120763131
+      },
+      "stroke_range_m": {
+        "channel_front": [
+          0.0,
+          0.0
+        ],
+        "channel_rear_1": [
+          0.0,
+          0.0
+        ],
+        "channel_rear_2": [
+          0.0,
+          0.0
+        ],
+        "channel_rear_3": [
+          0.0,
+          0.0
+        ]
+      },
+      "max_pressure_mpa_g": 1.1664526248902003,
+      "max_abs_velocity_m_s": 0.0,
+      "max_abs_stroke_m": 0.0,
+      "max_link_residual_m": 0.0,
+      "chain_condition_number_max": 16.370767245297664,
+      "third_axle_max_abs_deg": 0.0,
+      "control_saturation_fraction": 0.0,
+      "anti_windup_active_fraction": 0.0,
+      "pump_capacity_warnings": 0,
+      "virtual_work_residual_max_abs": 0.0,
+      "max_adhesion_utilization": 0.0,
+      "max_abs_slip_angle_deg": 0.0,
+      "max_table_vs_exact_wheel_deg": 0.0,
+      "authority_flags": [],
+      "status": "PASS",
+      "status_notes": [],
+      "controller_gains": {
+        "channel_front": [
+          40.0,
+          4.0,
+          0.4
+        ],
+        "channel_rear_1": [
+          40.0,
+          4.0,
+          0.4
+        ],
+        "channel_rear_2": [
+          40.0,
+          4.0,
+          0.4
+        ],
+        "channel_rear_3": [
+          40.0,
+          4.0,
+          0.4
+        ]
+      }
+    },
+    {
+      "case_id": "J0-02",
+      "channel_names": [
+        "channel_front",
+        "channel_rear_1",
+        "channel_rear_2",
+        "channel_rear_3"
+      ],
+      "dof_order": [
+        "q_front",
+        "q4",
+        "q5",
+        "q6"
+      ],
+      "target_outer_angle_deg": 2.0,
+      "speed_kmh": 5.0,
+      "duration_s": 2.0,
+      "completed": false,
+      "failure_time_s": 0.08,
+      "failure_reason": "J0StopCondition: mapping channel_rear_3:MAPPING_OUT_OF_ENVELOPE",
+      "diagnostic_damping_n_s_per_m": 0.0,
+      "target_q_ref_rad": {
+        "q_front": -0.039517258460322245,
+        "q4": 0.011795954336482046,
+        "q5": 0.053204638647638844,
+        "q6": -0.06124587546946073
+      },
+      "target_x_ref_m": {
+        "channel_front": -0.009879314615080561,
+        "channel_rear_1": 0.002685588604312118,
+        "channel_rear_2": -0.012303171658645782,
+        "channel_rear_3": 0.015824932536402218
+      },
+      "target_geometry_status": "OK",
+      "target_max_link_residual_m": 8.881784197001252e-16,
+      "third_axle_locked_deg": 0.0,
+      "authority": [
+        {
+          "channel": "channel_front",
+          "valve_alias": "dirvalve_6",
+          "actuator_alias": "actuator002",
+          "neutral_command": 1.0,
+          "d_acceleration_over_d_command": 0.000818925207597121,
+          "acceleration_at_plus": 0.0,
+          "acceleration_at_minus": -1.637850415194242e-05,
+          "force_window_n": [
+            0.0,
+            33.241954927645565
+          ],
+          "reachable_x_signs": [
+            -1
+          ],
+          "bidirectional": false,
+          "notes": [
+            "ONE_QUADRANT_INITIAL_AUTHORITY",
+            "NEGLIGIBLE_STATIC_FORCE_AUTHORITY"
+          ]
+        },
+        {
+          "channel": "channel_rear_1",
+          "valve_alias": "dirvalve_1+dirvalve_2",
+          "actuator_alias": "actuator001",
+          "neutral_command": 0.0,
+          "d_acceleration_over_d_command": 0.022157494391106373,
+          "acceleration_at_plus": 0.00019181809937156017,
+          "acceleration_at_minus": -0.00025133178845056724,
+          "force_window_n": [
+            -6039.649315240452,
+            10689.495782807946
+          ],
+          "reachable_x_signs": [
+            1,
+            -1
+          ],
+          "bidirectional": true,
+          "notes": []
+        },
+        {
+          "channel": "channel_rear_2",
+          "valve_alias": "dirvalve_8+dirvalve_9",
+          "actuator_alias": "actuator001_1",
+          "neutral_command": 0.0,
+          "d_acceleration_over_d_command": 0.009474321508229801,
+          "acceleration_at_plus": 8.808563372391684e-05,
+          "acceleration_at_minus": -0.00010140079644067918,
+          "force_window_n": [
+            -6045.074376580445,
+            10694.01360591251
+          ],
+          "reachable_x_signs": [
+            1,
+            -1
+          ],
+          "bidirectional": true,
+          "notes": []
+        },
+        {
+          "channel": "channel_rear_3",
+          "valve_alias": "dirvalve_11+dirvalve_12",
+          "actuator_alias": "actuator001_2",
+          "neutral_command": 0.0,
+          "d_acceleration_over_d_command": 0.005694276623076051,
+          "acceleration_at_plus": 5.8518906962211914e-05,
+          "acceleration_at_minus": -5.53666254993091e-05,
+          "force_window_n": [
+            -6047.365243110525,
+            10695.85982868372
+          ],
+          "reachable_x_signs": [
+            1,
+            -1
+          ],
+          "bidirectional": true,
+          "notes": []
+        }
+      ],
+      "steady_wheel_angle_error_deg": {
+        "axle1_left": 2.0192104788973855,
+        "axle1_right": 2.0000043375008847,
+        "axle2_left": 1.3003613966623788,
+        "axle2_right": 1.2879744528036956,
+        "axle3_left": 0.0,
+        "axle3_right": 0.0,
+        "axle4_left": 0.4682413805798884,
+        "axle4_right": 0.4637603076999454,
+        "axle5_left": 1.769798457975428,
+        "axle5_right": 1.754924411082186,
+        "axle6_left": 2.469573456644008,
+        "axle6_right": 2.738466570811803
+      },
+      "max_steady_wheel_angle_error_deg": 2.738466570811803,
+      "final_wheel_angle_deg": {
+        "axle1_left": 3.5279000329098674e-06,
+        "axle1_right": 3.5270495642790674e-06,
+        "axle2_left": 2.5385553852310236e-06,
+        "axle2_right": 2.537634807689288e-06,
+        "axle3_left": 0.0,
+        "axle3_right": 0.0,
+        "axle4_left": -0.004748503840560661,
+        "axle4_right": -0.004745663195608526,
+        "axle5_left": -0.05899831785459465,
+        "axle5_right": 0.001343371635923009,
+        "axle6_left": -3.5541753771313394,
+        "axle6_right": 0.2732453553188865
+      },
+      "target_wheel_angle_deg": {
+        "axle1_left": 2.0192061424421395,
+        "axle1_right": 2.0,
+        "axle2_left": 1.3003582766779347,
+        "axle2_right": 1.287971331687415,
+        "axle3_left": 0.0,
+        "axle3_right": 0.0,
+        "axle4_left": -0.4704125576488225,
+        "axle4_right": -0.46593018592962654,
+        "axle5_left": -1.7704410220214337,
+        "axle5_right": -1.753581039446263,
+        "axle6_left": -2.4889086737117263,
+        "axle6_right": -2.4652212154929165
+      },
+      "steady_stroke_error_m": {
+        "channel_front": 0.009879335941341228,
+        "channel_rear_1": 0.00267309026733258,
+        "channel_rear_2": 0.012231094299598216,
+        "channel_rear_3": 0.015527222662076286
+      },
+      "max_stroke_error_m": 0.015527222662076286,
+      "peak_hydraulic_force_n": {
+        "channel_front": 32.743400081913705,
+        "channel_rear_1": 1198.7262843464014,
+        "channel_rear_2": 370313.524286316,
+        "channel_rear_3": 2137070.662367055
+      },
+      "stroke_range_m": {
+        "channel_front": [
+          -2.590902161904982e-08,
+          2.132626066724408e-08
+        ],
+        "channel_rear_1": [
+          0.0,
+          2.7334666525882717e-05
+        ],
+        "channel_rear_2": [
+          -0.003398786837569214,
+          0.0
+        ],
+        "channel_rear_3": [
+          0.0,
+          0.022034544182022248
+        ]
+      },
+      "max_pressure_mpa_g": 267.1658309586026,
+      "max_abs_velocity_m_s": 6.739069770035624,
+      "max_abs_stroke_m": 0.022034544182022248,
+      "max_link_residual_m": 2.1791457527342573e-12,
+      "chain_condition_number_max": 27.3113945621472,
+      "third_axle_max_abs_deg": 0.0,
+      "control_saturation_fraction": 0.0,
+      "anti_windup_active_fraction": 0.0,
+      "pump_capacity_warnings": 1,
+      "virtual_work_residual_max_abs": 2.2737367544323206e-13,
+      "max_adhesion_utilization": 0.0012601949908519216,
+      "max_abs_slip_angle_deg": 0.010182097284116154,
+      "max_table_vs_exact_wheel_deg": 0.00023115365898496165,
+      "authority_flags": [
+        "channel_front:REFERENCE_NOT_REACHED(ref=-9.879315e-03,range=[-2.590902e-08,2.132626e-08])",
+        "channel_rear_1:REFERENCE_NOT_REACHED(ref=2.685589e-03,range=[0.000000e+00,2.733467e-05])",
+        "channel_rear_2:REFERENCE_NOT_REACHED(ref=-1.230317e-02,range=[-3.398787e-03,0.000000e+00])"
+      ],
+      "status": "FAIL",
+      "status_notes": [
+        "stopped at 0.080 s: J0StopCondition: mapping channel_rear_3:MAPPING_OUT_OF_ENVELOPE"
+      ],
+      "controller_gains": {
+        "channel_front": [
+          40.0,
+          4.0,
+          0.4
+        ],
+        "channel_rear_1": [
+          40.0,
+          4.0,
+          0.4
+        ],
+        "channel_rear_2": [
+          40.0,
+          4.0,
+          0.4
+        ],
+        "channel_rear_3": [
+          40.0,
+          4.0,
+          0.4
+        ]
+      }
+    },
+    {
+      "case_id": "J0-03",
+      "channel_names": [
+        "channel_front",
+        "channel_rear_1",
+        "channel_rear_2",
+        "channel_rear_3"
+      ],
+      "dof_order": [
+        "q_front",
+        "q4",
+        "q5",
+        "q6"
+      ],
+      "target_outer_angle_deg": -2.0,
+      "speed_kmh": 5.0,
+      "duration_s": 2.0,
+      "completed": false,
+      "failure_time_s": 0.082,
+      "failure_reason": "J0StopCondition: mapping channel_rear_2:MAPPING_OUT_OF_ENVELOPE",
+      "diagnostic_damping_n_s_per_m": 0.0,
+      "target_q_ref_rad": {
+        "q_front": 0.03951725846032268,
+        "q4": -0.01179595433648173,
+        "q5": -0.053204638647636124,
+        "q6": 0.061245875469454585
+      },
+      "target_x_ref_m": {
+        "channel_front": 0.00987931461508067,
+        "channel_rear_1": -0.0027079139653803184,
+        "channel_rear_2": 0.012134625828839916,
+        "channel_rear_3": -0.016066870082465372
+      },
+      "target_geometry_status": "OK",
+      "target_max_link_residual_m": 8.881784197001252e-16,
+      "third_axle_locked_deg": 0.0,
+      "authority": [
+        {
+          "channel": "channel_front",
+          "valve_alias": "dirvalve_6",
+          "actuator_alias": "actuator002",
+          "neutral_command": 1.0,
+          "d_acceleration_over_d_command": 0.000818925207597121,
+          "acceleration_at_plus": 0.0,
+          "acceleration_at_minus": -1.637850415194242e-05,
+          "force_window_n": [
+            0.0,
+            33.241954927645565
+          ],
+          "reachable_x_signs": [
+            -1
+          ],
+          "bidirectional": false,
+          "notes": [
+            "ONE_QUADRANT_INITIAL_AUTHORITY",
+            "NEGLIGIBLE_STATIC_FORCE_AUTHORITY"
+          ]
+        },
+        {
+          "channel": "channel_rear_1",
+          "valve_alias": "dirvalve_1+dirvalve_2",
+          "actuator_alias": "actuator001",
+          "neutral_command": 0.0,
+          "d_acceleration_over_d_command": 0.022157494391106373,
+          "acceleration_at_plus": 0.00019181809937156017,
+          "acceleration_at_minus": -0.00025133178845056724,
+          "force_window_n": [
+            -6039.649315240452,
+            10689.495782807946
+          ],
+          "reachable_x_signs": [
+            1,
+            -1
+          ],
+          "bidirectional": true,
+          "notes": []
+        },
+        {
+          "channel": "channel_rear_2",
+          "valve_alias": "dirvalve_8+dirvalve_9",
+          "actuator_alias": "actuator001_1",
+          "neutral_command": 0.0,
+          "d_acceleration_over_d_command": 0.009474321508229801,
+          "acceleration_at_plus": 8.808563372391684e-05,
+          "acceleration_at_minus": -0.00010140079644067918,
+          "force_window_n": [
+            -6045.074376580445,
+            10694.01360591251
+          ],
+          "reachable_x_signs": [
+            1,
+            -1
+          ],
+          "bidirectional": true,
+          "notes": []
+        },
+        {
+          "channel": "channel_rear_3",
+          "valve_alias": "dirvalve_11+dirvalve_12",
+          "actuator_alias": "actuator001_2",
+          "neutral_command": 0.0,
+          "d_acceleration_over_d_command": 0.005694276623076051,
+          "acceleration_at_plus": 5.8518906962211914e-05,
+          "acceleration_at_minus": -5.53666254993091e-05,
+          "force_window_n": [
+            -6047.365243110525,
+            10695.85982868372
+          ],
+          "reachable_x_signs": [
+            1,
+            -1
+          ],
+          "bidirectional": true,
+          "notes": []
+        }
+      ],
+      "steady_wheel_angle_error_deg": {
+        "axle1_left": 2.0000000000000027,
+        "axle1_right": 2.0192061424421257,
+        "axle2_left": 1.2879713316874157,
+        "axle2_right": 1.3003582766779391,
+        "axle3_left": 0.0,
+        "axle3_right": 0.0,
+        "axle4_left": 0.4637834441802632,
+        "axle4_right": 0.46826453090917447,
+        "axle5_left": 4.274472986094864,
+        "axle5_right": 3.7012960057410256,
+        "axle6_left": 2.453305822690111,
+        "axle6_right": 2.476668719484682
+      },
+      "max_steady_wheel_angle_error_deg": 4.274472986094864,
+      "final_wheel_angle_deg": {
+        "axle1_left": 0.0,
+        "axle1_right": 0.0,
+        "axle2_left": 0.0,
+        "axle2_right": 0.0,
+        "axle3_left": 0.0,
+        "axle3_right": 0.0,
+        "axle4_left": 0.003561299654118937,
+        "axle4_right": 0.0035634313662671674,
+        "axle5_left": -2.520891946648602,
+        "axle5_right": 5.471737027762454,
+        "axle6_left": 0.30900630469963936,
+        "axle6_right": 1.125995194651831
+      },
+      "target_wheel_angle_deg": {
+        "axle1_left": -2.0000000000000027,
+        "axle1_right": -2.0192061424421257,
+        "axle2_left": -1.2879713316874157,
+        "axle2_right": -1.3003582766779391,
+        "axle3_left": 0.0,
+        "axle3_right": 0.0,
+        "axle4_left": 0.4659301859296132,
+        "axle4_right": 0.4704125576488119,
+        "axle5_left": 1.753581039446262,
+        "axle5_right": 1.770441022021428,
+        "axle6_left": 2.4652212154929183,
+        "axle6_right": 2.488908673711714
+      },
+      "steady_stroke_error_m": {
+        "channel_front": 0.00987931461508067,
+        "channel_rear_1": 0.0026955402218563217,
+        "channel_rear_2": 0.021205053030193065,
+        "channel_rear_3": 0.015877728589623823
+      },
+      "max_stroke_error_m": 0.021205053030193065,
+      "peak_hydraulic_force_n": {
+        "channel_front": 0.0,
+        "channel_rear_1": 1090.3750503666674,
+        "channel_rear_2": 4512197.534488634,
+        "channel_rear_3": 1003162.5482774453
+      },
+      "stroke_range_m": {
+        "channel_front": [
+          0.0,
+          0.0
+        ],
+        "channel_rear_1": [
+          -2.0527205261419354e-05,
+          0.0
+        ],
+        "channel_rear_2": [
+          0.0,
+          0.03333967885903298
+        ],
+        "channel_rear_3": [
+          -0.011021364405905367,
+          0.0
+        ]
+      },
+      "max_pressure_mpa_g": 597.392605781061,
+      "max_abs_velocity_m_s": 11.9681598383129,
+      "max_abs_stroke_m": 0.03333967885903298,
+      "max_link_residual_m": 1.3109513474773848e-12,
+      "chain_condition_number_max": 28.64612123730974,
+      "third_axle_max_abs_deg": 0.0,
+      "control_saturation_fraction": 0.0,
+      "anti_windup_active_fraction": 0.0,
+      "pump_capacity_warnings": 2,
+      "virtual_work_residual_max_abs": 9.094947017729282e-13,
+      "max_adhesion_utilization": 0.0012601949908519216,
+      "max_abs_slip_angle_deg": 0.010182097284116154,
+      "max_table_vs_exact_wheel_deg": 0.0006230566305260865,
+      "authority_flags": [
+        "channel_front:REFERENCE_NOT_REACHED(ref=9.879315e-03,range=[0.000000e+00,0.000000e+00])",
+        "channel_rear_1:REFERENCE_NOT_REACHED(ref=-2.707914e-03,range=[-2.052721e-05,0.000000e+00])",
+        "channel_rear_3:REFERENCE_NOT_REACHED(ref=-1.606687e-02,range=[-1.102136e-02,0.000000e+00])"
+      ],
+      "status": "FAIL",
+      "status_notes": [
+        "stopped at 0.082 s: J0StopCondition: mapping channel_rear_2:MAPPING_OUT_OF_ENVELOPE"
+      ],
+      "controller_gains": {
+        "channel_front": [
+          40.0,
+          4.0,
+          0.4
+        ],
+        "channel_rear_1": [
+          40.0,
+          4.0,
+          0.4
+        ],
+        "channel_rear_2": [
+          40.0,
+          4.0,
+          0.4
+        ],
+        "channel_rear_3": [
+          40.0,
+          4.0,
+          0.4
+        ]
+      }
+    },
+    {
+      "case_id": "J0-04",
+      "channel_names": [
+        "channel_front",
+        "channel_rear_1",
+        "channel_rear_2",
+        "channel_rear_3"
+      ],
+      "dof_order": [
+        "q_front",
+        "q4",
+        "q5",
+        "q6"
+      ],
+      "target_outer_angle_deg": 5.0,
+      "speed_kmh": 10.0,
+      "duration_s": 2.0,
+      "completed": false,
+      "failure_time_s": 0.075,
+      "failure_reason": "J0StopCondition: mapping channel_rear_3:MAPPING_OUT_OF_ENVELOPE",
+      "diagnostic_damping_n_s_per_m": 0.0,
+      "target_q_ref_rad": {
+        "q_front": -0.09940943819567698,
+        "q4": 0.029768374367713953,
+        "q5": 0.09038968036888861,
+        "q6": -0.09241872255585147
+      },
+      "target_x_ref_m": {
+        "channel_front": -0.024852359548919244,
+        "channel_rear_1": 0.006734042706993943,
+        "channel_rear_2": -0.02098045250672012,
+        "channel_rear_3": 0.023767262012813168
+      },
+      "target_geometry_status": "OK",
+      "target_max_link_residual_m": 8.690825836765725e-13,
+      "third_axle_locked_deg": 0.0,
+      "authority": [
+        {
+          "channel": "channel_front",
+          "valve_alias": "dirvalve_6",
+          "actuator_alias": "actuator002",
+          "neutral_command": 1.0,
+          "d_acceleration_over_d_command": 0.000818925207597121,
+          "acceleration_at_plus": 0.0,
+          "acceleration_at_minus": -1.637850415194242e-05,
+          "force_window_n": [
+            0.0,
+            33.241954927645565
+          ],
+          "reachable_x_signs": [
+            -1
+          ],
+          "bidirectional": false,
+          "notes": [
+            "ONE_QUADRANT_INITIAL_AUTHORITY",
+            "NEGLIGIBLE_STATIC_FORCE_AUTHORITY"
+          ]
+        },
+        {
+          "channel": "channel_rear_1",
+          "valve_alias": "dirvalve_1+dirvalve_2",
+          "actuator_alias": "actuator001",
+          "neutral_command": 0.0,
+          "d_acceleration_over_d_command": 0.022157494391106373,
+          "acceleration_at_plus": 0.00019181809937156017,
+          "acceleration_at_minus": -0.00025133178845056724,
+          "force_window_n": [
+            -6039.649315240452,
+            10689.495782807946
+          ],
+          "reachable_x_signs": [
+            1,
+            -1
+          ],
+          "bidirectional": true,
+          "notes": []
+        },
+        {
+          "channel": "channel_rear_2",
+          "valve_alias": "dirvalve_8+dirvalve_9",
+          "actuator_alias": "actuator001_1",
+          "neutral_command": 0.0,
+          "d_acceleration_over_d_command": 0.009474321508229801,
+          "acceleration_at_plus": 8.808563372391684e-05,
+          "acceleration_at_minus": -0.00010140079644067918,
+          "force_window_n": [
+            -6045.074376580445,
+            10694.01360591251
+          ],
+          "reachable_x_signs": [
+            1,
+            -1
+          ],
+          "bidirectional": true,
+          "notes": []
+        },
+        {
+          "channel": "channel_rear_3",
+          "valve_alias": "dirvalve_11+dirvalve_12",
+          "actuator_alias": "actuator001_2",
+          "neutral_command": 0.0,
+          "d_acceleration_over_d_command": 0.005694276623076051,
+          "acceleration_at_plus": 5.8518906962211914e-05,
+          "acceleration_at_minus": -5.53666254993091e-05,
+          "force_window_n": [
+            -6047.365243110525,
+            10695.85982868372
+          ],
+          "reachable_x_signs": [
+            1,
+            -1
+          ],
+          "bidirectional": true,
+          "notes": []
+        }
+      ],
+      "steady_wheel_angle_error_deg": {
+        "axle1_left": 5.121520987892128,
+        "axle1_right": 5.000001227438322,
+        "axle2_left": 3.302606173187476,
+        "axle2_right": 3.2239303193895172,
+        "axle3_left": 0.0,
+        "axle3_right": 0.0,
+        "axle4_left": 1.1957119737011639,
+        "axle4_right": 1.167174373250117,
+        "axle5_left": 4.490966410193412,
+        "axle5_right": 4.732967619627107,
+        "axle6_left": 6.281682252085286,
+        "axle6_right": 6.133308762086977
+      },
+      "max_steady_wheel_angle_error_deg": 6.281682252085286,
+      "final_wheel_angle_deg": {
+        "axle1_left": 1.1542191509094762e-05,
+        "axle1_right": 1.1539409040284228e-05,
+        "axle2_left": 8.305363570226411e-06,
+        "axle2_right": 8.302351726893954e-06,
+        "axle3_left": 0.0,
+        "axle3_right": 0.0,
+        "axle4_left": -1.222673484583566e-06,
+        "axle4_right": -1.2219420581430046e-06,
+        "axle5_left": -0.661260875180764,
+        "axle5_right": 0.346884891215382,
+        "axle6_left": -2.1799417045270255,
+        "axle6_right": -0.13231582618978258
+      },
+      "target_wheel_angle_deg": {
+        "axle1_left": 5.121519760749705,
+        "axle1_right": 5.000000000000001,
+        "axle2_left": 3.3026052902854155,
+        "axle2_right": 3.223929436167167,
+        "axle3_left": 0.0,
+        "axle3_right": 0.0,
+        "axle4_left": -1.195710489839453,
+        "axle4_right": -1.1671728885002006,
+        "axle5_left": -4.492920066176898,
+        "axle5_right": -4.386082728411726,
+        "axle6_left": -6.305570242745445,
+        "axle6_right": -6.156205134393842
+      },
+      "steady_stroke_error_m": {
+        "channel_front": 0.024852365583885063,
+        "channel_rear_1": 0.006734051259920368,
+        "channel_rear_2": 0.020761308026644595,
+        "channel_rear_3": 0.023401055537885213
+      },
+      "max_stroke_error_m": 0.024852365583885063,
+      "peak_hydraulic_force_n": {
+        "channel_front": 30.283618337067935,
+        "channel_rear_1": 1163.7704936201344,
+        "channel_rear_2": 1675573.7067344594,
+        "channel_rear_3": 1601646.9203268897
+      },
+      "stroke_range_m": {
+        "channel_front": [
+          -5.674967944604838e-08,
+          1.8348837292565586e-08
+        ],
+        "channel_rear_1": [
+          -8.55292642475255e-09,
+          1.2635649454029888e-08
+        ],
+        "channel_rear_2": [
+          -0.013785540677278359,
+          0.0
+        ],
+        "channel_rear_3": [
+          0.0,
+          0.016798697878186553
+        ]
+      },
+      "max_pressure_mpa_g": 201.49423068050524,
+      "max_abs_velocity_m_s": 5.096587940175722,
+      "max_abs_stroke_m": 0.016798697878186553,
+      "max_link_residual_m": 1.5520917884259688e-12,
+      "chain_condition_number_max": 21.369113151219867,
+      "third_axle_max_abs_deg": 0.0,
+      "control_saturation_fraction": 0.0,
+      "anti_windup_active_fraction": 0.0,
+      "pump_capacity_warnings": 0,
+      "virtual_work_residual_max_abs": 2.842170943040401e-14,
+      "max_adhesion_utilization": 0.012720484754353433,
+      "max_abs_slip_angle_deg": 0.10277870822386276,
+      "max_table_vs_exact_wheel_deg": 7.003432228203099e-05,
+      "authority_flags": [
+        "channel_front:REFERENCE_NOT_REACHED(ref=-2.485236e-02,range=[-5.674968e-08,1.834884e-08])",
+        "channel_rear_1:REFERENCE_NOT_REACHED(ref=6.734043e-03,range=[-8.552926e-09,1.263565e-08])",
+        "channel_rear_2:REFERENCE_NOT_REACHED(ref=-2.098045e-02,range=[-1.378554e-02,0.000000e+00])",
+        "channel_rear_3:REFERENCE_NOT_REACHED(ref=2.376726e-02,range=[0.000000e+00,1.679870e-02])"
+      ],
+      "status": "FAIL",
+      "status_notes": [
+        "stopped at 0.075 s: J0StopCondition: mapping channel_rear_3:MAPPING_OUT_OF_ENVELOPE"
+      ],
+      "controller_gains": {
+        "channel_front": [
+          40.0,
+          4.0,
+          0.4
+        ],
+        "channel_rear_1": [
+          40.0,
+          4.0,
+          0.4
+        ],
+        "channel_rear_2": [
+          40.0,
+          4.0,
+          0.4
+        ],
+        "channel_rear_3": [
+          40.0,
+          4.0,
+          0.4
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+﻿valve_alias,branch,reverse_flow_allowed,old_unilateral_max_removed,evidence_level,evidence,status
+dirvalve_1,P-A,YES,YES,SOURCE_SUPPORTED; TOPOLOGY_SUPPORTED,HYDVORF0 is a bidirectional restriction; no check-valve element in SC_1 Level-2,PASS
+dirvalve_1,P-B,YES,YES,SOURCE_SUPPORTED; TOPOLOGY_SUPPORTED,HYDVORF0 is a bidirectional restriction; no check-valve element in SC_1 Level-2,PASS
+dirvalve_1,T-A,YES,YES,SOURCE_SUPPORTED; TOPOLOGY_SUPPORTED,HYDVORF0 is a bidirectional restriction; no check-valve element in SC_1 Level-2,PASS
+dirvalve_1,T-B,YES,YES,SOURCE_SUPPORTED; TOPOLOGY_SUPPORTED,HYDVORF0 is a bidirectional restriction; no check-valve element in SC_1 Level-2,PASS
+dirvalve_2,P-A,YES,YES,SOURCE_SUPPORTED; TOPOLOGY_SUPPORTED,HYDVORF0 is a bidirectional restriction; no check-valve element in SC_1 Level-2,PASS
+dirvalve_2,T-B,YES,YES,SOURCE_SUPPORTED; TOPOLOGY_SUPPORTED,HYDVORF0 is a bidirectional restriction; no check-valve element in SC_1 Level-2,PASS
+dirvalve_6,P-A,YES,YES,SOURCE_SUPPORTED; TOPOLOGY_SUPPORTED,HYDVORF0 is a bidirectional restriction; no check-valve element in SC_1 Level-2,PASS
+dirvalve_6,P-B,YES,YES,SOURCE_SUPPORTED; TOPOLOGY_SUPPORTED,HYDVORF0 is a bidirectional restriction; no check-valve element in SC_1 Level-2,PASS
+dirvalve_6,T-A,YES,YES,SOURCE_SUPPORTED; TOPOLOGY_SUPPORTED,HYDVORF0 is a bidirectional restriction; no check-valve element in SC_1 Level-2,PASS
+dirvalve_6,T-B,YES,YES,SOURCE_SUPPORTED; TOPOLOGY_SUPPORTED,HYDVORF0 is a bidirectional restriction; no check-valve element in SC_1 Level-2,PASS
+dirvalve_8,P-A,YES,YES,SOURCE_SUPPORTED; TOPOLOGY_SUPPORTED,HYDVORF0 is a bidirectional restriction; no check-valve element in SC_1 Level-2,PASS
+dirvalve_8,P-B,YES,YES,SOURCE_SUPPORTED; TOPOLOGY_SUPPORTED,HYDVORF0 is a bidirectional restriction; no check-valve element in SC_1 Level-2,PASS
+dirvalve_8,T-A,YES,YES,SOURCE_SUPPORTED; TOPOLOGY_SUPPORTED,HYDVORF0 is a bidirectional restriction; no check-valve element in SC_1 Level-2,PASS
+dirvalve_8,T-B,YES,YES,SOURCE_SUPPORTED; TOPOLOGY_SUPPORTED,HYDVORF0 is a bidirectional restriction; no check-valve element in SC_1 Level-2,PASS
+dirvalve_9,P-A,YES,YES,SOURCE_SUPPORTED; TOPOLOGY_SUPPORTED,HYDVORF0 is a bidirectional restriction; no check-valve element in SC_1 Level-2,PASS
+dirvalve_9,T-B,YES,YES,SOURCE_SUPPORTED; TOPOLOGY_SUPPORTED,HYDVORF0 is a bidirectional restriction; no check-valve element in SC_1 Level-2,PASS
+dirvalve_11,P-A,YES,YES,SOURCE_SUPPORTED; TOPOLOGY_SUPPORTED,HYDVORF0 is a bidirectional restriction; no check-valve element in SC_1 Level-2,PASS
+dirvalve_11,P-B,YES,YES,SOURCE_SUPPORTED; TOPOLOGY_SUPPORTED,HYDVORF0 is a bidirectional restriction; no check-valve element in SC_1 Level-2,PASS
+dirvalve_11,T-A,YES,YES,SOURCE_SUPPORTED; TOPOLOGY_SUPPORTED,HYDVORF0 is a bidirectional restriction; no check-valve element in SC_1 Level-2,PASS
+dirvalve_11,T-B,YES,YES,SOURCE_SUPPORTED; TOPOLOGY_SUPPORTED,HYDVORF0 is a bidirectional restriction; no check-valve element in SC_1 Level-2,PASS
+dirvalve_12,P-A,YES,YES,SOURCE_SUPPORTED; TOPOLOGY_SUPPORTED,HYDVORF0 is a bidirectional restriction; no check-valve element in SC_1 Level-2,PASS
+dirvalve_12,T-B,YES,YES,SOURCE_SUPPORTED; TOPOLOGY_SUPPORTED,HYDVORF0 is a bidirectional restriction; no check-valve element in SC_1 Level-2,PASS

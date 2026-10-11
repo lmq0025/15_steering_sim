@@ -1,0 +1,7 @@
+﻿check,result,evidence
+state_count_16,PASS,16
+pipe_dynamic_states_0,PASS,0
+per_pump_speed_interface,PASS,unit computation test
+per_valve_command_interface,PASS,unit computation test
+protected_audit_model_unchanged,PASS,7613615723973d66a7122c74956c5161f720a64b243139fe9736cb270303b767
+supply_conservation,PASS,32D

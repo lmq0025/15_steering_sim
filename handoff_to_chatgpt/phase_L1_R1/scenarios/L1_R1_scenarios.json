@@ -1,0 +1,29 @@
+{
+  "S0": {
+    "description": "Amesim native baseline replay for dirvalve_6 / actuator002",
+    "duration_s": 1.0,
+    "command": {"type": "constant", "value": 1.0},
+    "pump_speed_rad_s": 141.3716694115407,
+    "external_load_N": 0.0,
+    "initial_state": "zero gauge chamber pressures, zero position and velocity",
+    "comparison": "COMPARABLE"
+  },
+  "S1": {
+    "description": "Intended matched small step",
+    "duration_s": 1.0,
+    "command": {"type": "step", "initial": 0.0, "final": 0.1, "time_s": 0.05},
+    "pump_speed_rad_s": 141.3716694115407,
+    "external_load_N": 0.0,
+    "initial_state": "zero",
+    "comparison": "NOT_COMPARABLE: Amesim temporary-copy run failed"
+  },
+  "S2": {
+    "description": "Intended matched 1 Hz sine",
+    "duration_s": 1.0,
+    "command": {"type": "sine", "amplitude": 0.1, "frequency_Hz": 1.0, "offset": 0.0},
+    "pump_speed_rad_s": 141.3716694115407,
+    "external_load_N": 0.0,
+    "initial_state": "zero",
+    "comparison": "NOT_COMPARABLE: Amesim temporary-copy run failed"
+  }
+}

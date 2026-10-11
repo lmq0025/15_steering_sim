@@ -1,0 +1,4 @@
+﻿scenario,solver,physical_time_s,dt_s,repeats,wall_time_s,real_time_factor,rhs_calls,algebraic_calls,correction_iterations,fallbacks,network_evaluations,finite,optimization_stage,changes,numerical_regression
+S2_PERIODIC,fast,1.0,0.0005,3,1.2425979999825358,1.2425979999825358,8000,16000,37057,3,53061,True,P4_P6,accepted timestep + final fast solver,PASS
+S2_PERIODIC,fast,10.0,0.0005,3,13.359454900026321,1.3359454900026322,80000,160000,371775,74,531779,True,P4_P6,accepted timestep + final fast solver,PASS
+S2_PERIODIC,fast,100.0,0.0005,1,131.68624349986203,1.3168624349986202,800000,1600000,3718965,794,5318969,True,FINAL_100S,accepted final configuration,PASS

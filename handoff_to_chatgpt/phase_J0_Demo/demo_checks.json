@@ -1,0 +1,588 @@
+{
+  "phase": "J0-DEMO",
+  "customer_limits": {
+    "target_outer_angle_deg": [
+      -30.0,
+      30.0
+    ],
+    "speed_kmh": [
+      0.0,
+      80.0
+    ],
+    "friction_coefficient": [
+      0.7,
+      0.8
+    ],
+    "axle_mass_t": [
+      10.0,
+      13.0
+    ],
+    "duration_s": [
+      0.5,
+      60.0
+    ]
+  },
+  "verified_limits": {
+    "target_outer_angle_deg": [
+      -5.0,
+      5.0
+    ],
+    "speed_kmh": [
+      0.0,
+      10.0
+    ],
+    "friction_coefficient": [
+      0.75,
+      0.75
+    ],
+    "axle_mass_t": [
+      11.5,
+      11.5
+    ],
+    "duration_s": [
+      0.5,
+      60.0
+    ]
+  },
+  "engineering_defaults": {
+    "friction_coefficient": 0.75,
+    "axle_mass_t": 11.5,
+    "duration_s": 5.0,
+    "source": "ASSUMED_ENGINEERING_PARAMETER（M1 默认扫描值），不是实车测量值"
+  },
+  "degradation_interfaces": {
+    "status": "RESERVED",
+    "implemented": false,
+    "parameters": {
+      "pump_volumetric_efficiency": 1.0,
+      "pump_displacement": 1.0,
+      "valve_discharge_coefficient": 1.0,
+      "valve_response_speed": 1.0,
+      "valve_leakage": 1.0,
+      "cylinder_internal_leakage": 1.0,
+      "cylinder_external_leakage": 1.0,
+      "cylinder_friction": 1.0,
+      "cylinder_damping": 1.0,
+      "controller_proportional_gain": 1.0,
+      "controller_integral_gain": 1.0,
+      "controller_derivative_gain": 1.0,
+      "controller_command_limit": 1.0
+    },
+    "interface_map": {
+      "pump_volumetric_efficiency": "hydraulics_lumped.pump.pump_flow —— 容积效率修正泵流量",
+      "pump_displacement": "hydraulics_lumped.parameters.PumpParameters.displacement",
+      "valve_discharge_coefficient": "hydraulics_lumped.valve.characteristic_orifice_flow 的流量系数",
+      "valve_response_speed": "hydraulics_lumped.valve 的 SC_1 阀口开度曲线（响应时间常数）",
+      "valve_leakage": "hydraulics_lumped.valve 四孔口的零位泄漏面积",
+      "cylinder_internal_leakage": "hydraulics_lumped.actuator 的 A/B 腔间泄漏（当前为 0）",
+      "cylinder_external_leakage": "hydraulics_lumped.actuator 的腔外泄漏",
+      "cylinder_friction": "hydraulics_lumped.actuator 的库仑摩擦力",
+      "cylinder_damping": "hydraulics_lumped.actuator 的粘性阻尼系数",
+      "controller_proportional_gain": "control.pid.PIDController.kp（四通道）",
+      "controller_integral_gain": "control.pid.PIDController.ki（四通道）",
+      "controller_derivative_gain": "control.pid.PIDController.kd（四通道）",
+      "controller_command_limit": "j0_coupling.config.ChannelControlConfig.command_limit"
+    },
+    "reserved_modules": [
+      "steering_sim.demo.degradation",
+      "steering_sim.demo.quality_assessment",
+      "steering_sim.demo.prediction"
+    ],
+    "note": "本轮不开发退化预测与质量评估算法。这里只预留参数接口；健康工况下所有因子保持 1.0，不改变任何现有默认值。",
+    "disclaimer": "本平台当前不输出寿命、剩余寿命或质量评分。"
+  },
+  "presets": [
+    {
+      "key": "J0-01",
+      "name": "直行 0° / 0 km/h",
+      "expected_status": "PASS",
+      "scenario": "a+0.0000_v0.0000_mu0.7500_m11.5000-11.5000-11.5000-11.5000-11.5000-11.5000_t5.000",
+      "flags": [
+        "SUPPLY_CAPACITY_NEAR_LIMIT"
+      ],
+      "runnable": true,
+      "mechanism": {
+        "status": "OK",
+        "flags": [],
+        "max_abs_deviation_deg": 0.0,
+        "max_abs_deviation_wheel": "axle1_left",
+        "opposite_sign_wheels": [],
+        "geometry_status": "OK",
+        "axles": [
+          {
+            "axle": 1,
+            "ideal_left_deg": 0.0,
+            "ideal_right_deg": 0.0,
+            "mechanism_left_deg": 0.0,
+            "mechanism_right_deg": 0.0,
+            "deviation_left_deg": 0.0,
+            "deviation_right_deg": 0.0,
+            "left_right_opposite": false
+          },
+          {
+            "axle": 2,
+            "ideal_left_deg": 0.0,
+            "ideal_right_deg": 0.0,
+            "mechanism_left_deg": 0.0,
+            "mechanism_right_deg": 0.0,
+            "deviation_left_deg": 0.0,
+            "deviation_right_deg": 0.0,
+            "left_right_opposite": false
+          },
+          {
+            "axle": 3,
+            "ideal_left_deg": 0.0,
+            "ideal_right_deg": 0.0,
+            "mechanism_left_deg": 0.0,
+            "mechanism_right_deg": 0.0,
+            "deviation_left_deg": 0.0,
+            "deviation_right_deg": 0.0,
+            "left_right_opposite": false
+          },
+          {
+            "axle": 4,
+            "ideal_left_deg": 0.0,
+            "ideal_right_deg": 0.0,
+            "mechanism_left_deg": 0.0,
+            "mechanism_right_deg": 0.0,
+            "deviation_left_deg": 0.0,
+            "deviation_right_deg": 0.0,
+            "left_right_opposite": false
+          },
+          {
+            "axle": 5,
+            "ideal_left_deg": 0.0,
+            "ideal_right_deg": 0.0,
+            "mechanism_left_deg": 0.0,
+            "mechanism_right_deg": 0.0,
+            "deviation_left_deg": 0.0,
+            "deviation_right_deg": 0.0,
+            "left_right_opposite": false
+          },
+          {
+            "axle": 6,
+            "ideal_left_deg": 0.0,
+            "ideal_right_deg": 0.0,
+            "mechanism_left_deg": 0.0,
+            "mechanism_right_deg": 0.0,
+            "deviation_left_deg": 0.0,
+            "deviation_right_deg": 0.0,
+            "left_right_opposite": false
+          }
+        ]
+      },
+      "supply": {
+        "status": "SUPPLY_CAPACITY_NEAR_LIMIT",
+        "flags": [
+          "SUPPLY_CAPACITY_NEAR_LIMIT"
+        ],
+        "groups": {
+          "front": {
+            "label": "前组（一、二桥）",
+            "q_pump_l_per_min": 27.000000000000004,
+            "high_rail_demand_l_per_min": 25.85136047931924,
+            "auxiliary_flow_l_per_min": 0.0,
+            "margin_l_per_min": 1.1486395206807638,
+            "margin_fraction": 0.04254220446965792,
+            "insufficient": false,
+            "near_limit": true
+          },
+          "rear": {
+            "label": "后组（四、五、六桥）",
+            "q_pump_l_per_min": 27.000000000000004,
+            "high_rail_demand_l_per_min": -1.6263032587282567e-15,
+            "auxiliary_flow_l_per_min": 4.47,
+            "margin_l_per_min": 22.530000000000005,
+            "margin_fraction": 0.8344444444444445,
+            "insufficient": false,
+            "near_limit": false
+          }
+        },
+        "messages": [
+          "前组（一、二桥）：供油余量仅 1.15 L/min（4.3%），接近泵供量上限。该组是当前的流量瓶颈支路。"
+        ]
+      },
+      "messages": [
+        "六桥左右轮同向偏转，未检出左右反号。",
+        "前组（一、二桥）：供油余量仅 1.15 L/min（4.3%），接近泵供量上限。该组是当前的流量瓶颈支路。"
+      ]
+    },
+    {
+      "key": "J0-02",
+      "name": "左转 +2° / 5 km/h",
+      "expected_status": "CONDITIONAL",
+      "scenario": "a+2.0000_v5.0000_mu0.7500_m11.5000-11.5000-11.5000-11.5000-11.5000-11.5000_t5.000",
+      "flags": [
+        "PHYSICAL_LINKAGE_LIMIT",
+        "ACKERMANN_GEOMETRY_DEVIATION",
+        "SUPPLY_CAPACITY_NEAR_LIMIT"
+      ],
+      "runnable": true,
+      "mechanism": {
+        "status": "PHYSICAL_LINKAGE_LIMIT",
+        "flags": [
+          "PHYSICAL_LINKAGE_LIMIT",
+          "ACKERMANN_GEOMETRY_DEVIATION"
+        ],
+        "max_abs_deviation_deg": 2.28498969640525,
+        "max_abs_deviation_wheel": "axle6_right",
+        "opposite_sign_wheels": [
+          "axle5_left",
+          "axle5_right"
+        ],
+        "geometry_status": "GEOMETRY_INFEASIBLE:q5:ACKERMANN_TARGET_MISMATCH;q5:LEFT_RIGHT_OPPOSITE;q6:ACKERMANN_TARGET_MISMATCH",
+        "axles": [
+          {
+            "axle": 1,
+            "ideal_left_deg": 2.0192061424421395,
+            "ideal_right_deg": 2.0,
+            "mechanism_left_deg": 2.0192491078260617,
+            "mechanism_right_deg": 2.0000015933514628,
+            "deviation_left_deg": 4.296538392223326e-05,
+            "deviation_right_deg": 1.593351462769732e-06,
+            "left_right_opposite": false
+          },
+          {
+            "axle": 2,
+            "ideal_left_deg": 1.3003582766779347,
+            "ideal_right_deg": 1.287971331687415,
+            "mechanism_left_deg": 1.45609703775663,
+            "mechanism_right_deg": 1.4353825856462972,
+            "deviation_left_deg": 0.15573876107869533,
+            "deviation_right_deg": 0.1474112539588821,
+            "left_right_opposite": false
+          },
+          {
+            "axle": 3,
+            "ideal_left_deg": 0.0,
+            "ideal_right_deg": 0.0,
+            "mechanism_left_deg": 0.0,
+            "mechanism_right_deg": 0.0,
+            "deviation_left_deg": 0.0,
+            "deviation_right_deg": 0.0,
+            "left_right_opposite": false
+          },
+          {
+            "axle": 4,
+            "ideal_left_deg": -0.4704125576488225,
+            "ideal_right_deg": -0.46593018592962654,
+            "mechanism_left_deg": -0.46982773620153606,
+            "mechanism_right_deg": -0.466523125630986,
+            "deviation_left_deg": 0.0005848214472864433,
+            "deviation_right_deg": -0.000592939701359485,
+            "left_right_opposite": false
+          },
+          {
+            "axle": 5,
+            "ideal_left_deg": -1.7704410220214337,
+            "ideal_right_deg": -1.753581039446263,
+            "mechanism_left_deg": -0.5317405008361256,
+            "mechanism_right_deg": 0.2675287248577163,
+            "deviation_left_deg": 1.2387005211853082,
+            "deviation_right_deg": 2.0211097643039793,
+            "left_right_opposite": true
+          },
+          {
+            "axle": 6,
+            "ideal_left_deg": -2.4889086737117263,
+            "ideal_right_deg": -2.4652212154929165,
+            "mechanism_left_deg": -1.9769690420471064,
+            "mechanism_right_deg": -0.18023151908766663,
+            "deviation_left_deg": 0.5119396316646199,
+            "deviation_right_deg": 2.28498969640525,
+            "left_right_opposite": false
+          }
+        ]
+      },
+      "supply": {
+        "status": "SUPPLY_CAPACITY_NEAR_LIMIT",
+        "flags": [
+          "SUPPLY_CAPACITY_NEAR_LIMIT"
+        ],
+        "groups": {
+          "front": {
+            "label": "前组（一、二桥）",
+            "q_pump_l_per_min": 27.000000000000004,
+            "high_rail_demand_l_per_min": 25.85136047931924,
+            "auxiliary_flow_l_per_min": 0.0,
+            "margin_l_per_min": 1.1486395206807638,
+            "margin_fraction": 0.04254220446965792,
+            "insufficient": false,
+            "near_limit": true
+          },
+          "rear": {
+            "label": "后组（四、五、六桥）",
+            "q_pump_l_per_min": 27.000000000000004,
+            "high_rail_demand_l_per_min": -1.6263032587282567e-15,
+            "auxiliary_flow_l_per_min": 4.47,
+            "margin_l_per_min": 22.530000000000005,
+            "margin_fraction": 0.8344444444444445,
+            "insufficient": false,
+            "near_limit": false
+          }
+        },
+        "messages": [
+          "前组（一、二桥）：供油余量仅 1.15 L/min（4.3%），接近泵供量上限。该组是当前的流量瓶颈支路。"
+        ]
+      },
+      "messages": [
+        "同桥左右轮的可达角范围本身是单向的，机构无法使两轮同向（甲方硬点的几何硬约束）。",
+        "同一转向桥左右轮朝相反方向偏转：5桥。这是 M1 刚体闭链在甲方硬点下的真实解，不是角度映射或符号换算错误；但它违反低速共同瞬时中心下的同向要求，不能作为理想阿克曼结果使用。",
+        "机构可达角与理想阿克曼角最大偏差 2.285°（axle6_right），属于 M1 机构拓扑固有属性。",
+        "前组（一、二桥）：供油余量仅 1.15 L/min（4.3%），接近泵供量上限。该组是当前的流量瓶颈支路。"
+      ]
+    },
+    {
+      "key": "J0-03",
+      "name": "右转 −2° / 5 km/h",
+      "expected_status": "CONDITIONAL",
+      "scenario": "a-2.0000_v5.0000_mu0.7500_m11.5000-11.5000-11.5000-11.5000-11.5000-11.5000_t5.000",
+      "flags": [
+        "PHYSICAL_LINKAGE_LIMIT",
+        "ACKERMANN_GEOMETRY_DEVIATION",
+        "SUPPLY_CAPACITY_NEAR_LIMIT"
+      ],
+      "runnable": true,
+      "mechanism": {
+        "status": "PHYSICAL_LINKAGE_LIMIT",
+        "flags": [
+          "PHYSICAL_LINKAGE_LIMIT",
+          "ACKERMANN_GEOMETRY_DEVIATION"
+        ],
+        "max_abs_deviation_deg": 2.2849896964048115,
+        "max_abs_deviation_wheel": "axle6_left",
+        "opposite_sign_wheels": [
+          "axle5_left",
+          "axle5_right"
+        ],
+        "geometry_status": "GEOMETRY_INFEASIBLE:q5:ACKERMANN_TARGET_MISMATCH;q5:LEFT_RIGHT_OPPOSITE;q6:ACKERMANN_TARGET_MISMATCH",
+        "axles": [
+          {
+            "axle": 1,
+            "ideal_left_deg": -2.0000000000000027,
+            "ideal_right_deg": -2.0192061424421257,
+            "mechanism_left_deg": -2.000001593351502,
+            "mechanism_right_deg": -2.019249107826084,
+            "deviation_left_deg": -1.5933514991850473e-06,
+            "deviation_right_deg": -4.2965383958204484e-05,
+            "left_right_opposite": false
+          },
+          {
+            "axle": 2,
+            "ideal_left_deg": -1.2879713316874157,
+            "ideal_right_deg": -1.3003582766779391,
+            "mechanism_left_deg": -1.4353825856462301,
+            "mechanism_right_deg": -1.4560970377566496,
+            "deviation_left_deg": -0.14741125395881438,
+            "deviation_right_deg": -0.15573876107871043,
+            "left_right_opposite": false
+          },
+          {
+            "axle": 3,
+            "ideal_left_deg": 0.0,
+            "ideal_right_deg": 0.0,
+            "mechanism_left_deg": 0.0,
+            "mechanism_right_deg": 0.0,
+            "deviation_left_deg": 0.0,
+            "deviation_right_deg": 0.0,
+            "left_right_opposite": false
+          },
+          {
+            "axle": 4,
+            "ideal_left_deg": 0.4659301859296132,
+            "ideal_right_deg": 0.4704125576488119,
+            "mechanism_left_deg": 0.4665231256309404,
+            "mechanism_right_deg": 0.46982773620148915,
+            "deviation_left_deg": 0.0005929397013271775,
+            "deviation_right_deg": -0.0005848214473227475,
+            "left_right_opposite": false
+          },
+          {
+            "axle": 5,
+            "ideal_left_deg": 1.753581039446262,
+            "ideal_right_deg": 1.770441022021428,
+            "mechanism_left_deg": -0.26752872485770834,
+            "mechanism_right_deg": 0.5317405008383351,
+            "deviation_left_deg": -2.0211097643039704,
+            "deviation_right_deg": -1.2387005211830928,
+            "left_right_opposite": true
+          },
+          {
+            "axle": 6,
+            "ideal_left_deg": 2.4652212154929183,
+            "ideal_right_deg": 2.488908673711714,
+            "mechanism_left_deg": 0.18023151908810672,
+            "mechanism_right_deg": 1.97696904204617,
+            "deviation_left_deg": -2.2849896964048115,
+            "deviation_right_deg": -0.5119396316655438,
+            "left_right_opposite": false
+          }
+        ]
+      },
+      "supply": {
+        "status": "SUPPLY_CAPACITY_NEAR_LIMIT",
+        "flags": [
+          "SUPPLY_CAPACITY_NEAR_LIMIT"
+        ],
+        "groups": {
+          "front": {
+            "label": "前组（一、二桥）",
+            "q_pump_l_per_min": 27.000000000000004,
+            "high_rail_demand_l_per_min": 25.85136047931924,
+            "auxiliary_flow_l_per_min": 0.0,
+            "margin_l_per_min": 1.1486395206807638,
+            "margin_fraction": 0.04254220446965792,
+            "insufficient": false,
+            "near_limit": true
+          },
+          "rear": {
+            "label": "后组（四、五、六桥）",
+            "q_pump_l_per_min": 27.000000000000004,
+            "high_rail_demand_l_per_min": -1.6263032587282567e-15,
+            "auxiliary_flow_l_per_min": 4.47,
+            "margin_l_per_min": 22.530000000000005,
+            "margin_fraction": 0.8344444444444445,
+            "insufficient": false,
+            "near_limit": false
+          }
+        },
+        "messages": [
+          "前组（一、二桥）：供油余量仅 1.15 L/min（4.3%），接近泵供量上限。该组是当前的流量瓶颈支路。"
+        ]
+      },
+      "messages": [
+        "同桥左右轮的可达角范围本身是单向的，机构无法使两轮同向（甲方硬点的几何硬约束）。",
+        "同一转向桥左右轮朝相反方向偏转：5桥。这是 M1 刚体闭链在甲方硬点下的真实解，不是角度映射或符号换算错误；但它违反低速共同瞬时中心下的同向要求，不能作为理想阿克曼结果使用。",
+        "机构可达角与理想阿克曼角最大偏差 2.285°（axle6_left），属于 M1 机构拓扑固有属性。",
+        "前组（一、二桥）：供油余量仅 1.15 L/min（4.3%），接近泵供量上限。该组是当前的流量瓶颈支路。"
+      ]
+    },
+    {
+      "key": "J0-04",
+      "name": "左转 +5° / 10 km/h",
+      "expected_status": "PASS",
+      "scenario": "a+5.0000_v10.0000_mu0.7500_m11.5000-11.5000-11.5000-11.5000-11.5000-11.5000_t5.000",
+      "flags": [
+        "PHYSICAL_LINKAGE_LIMIT",
+        "ACKERMANN_GEOMETRY_DEVIATION",
+        "SUPPLY_CAPACITY_NEAR_LIMIT"
+      ],
+      "runnable": true,
+      "mechanism": {
+        "status": "PHYSICAL_LINKAGE_LIMIT",
+        "flags": [
+          "PHYSICAL_LINKAGE_LIMIT",
+          "ACKERMANN_GEOMETRY_DEVIATION"
+        ],
+        "max_abs_deviation_deg": 6.627186619025748,
+        "max_abs_deviation_wheel": "axle6_right",
+        "opposite_sign_wheels": [
+          "axle5_left",
+          "axle5_right",
+          "axle6_left",
+          "axle6_right"
+        ],
+        "geometry_status": "GEOMETRY_INFEASIBLE:q_front:ACKERMANN_TARGET_MISMATCH;q5:ACKERMANN_TARGET_MISMATCH;q5:LEFT_RIGHT_OPPOSITE;q6:ACKERMANN_TARGET_MISMATCH;q6:LEFT_RIGHT_OPPOSITE",
+        "axles": [
+          {
+            "axle": 1,
+            "ideal_left_deg": 5.121519760749705,
+            "ideal_right_deg": 5.000000000000001,
+            "mechanism_left_deg": 5.125414877202888,
+            "mechanism_right_deg": 5.0000023461689915,
+            "deviation_left_deg": 0.0038951164531830784,
+            "deviation_right_deg": 2.3461689906412175e-06,
+            "left_right_opposite": false
+          },
+          {
+            "axle": 2,
+            "ideal_left_deg": 3.3026052902854155,
+            "ideal_right_deg": 3.223929436167167,
+            "mechanism_left_deg": 3.7044360555873976,
+            "mechanism_right_deg": 3.5735267198186365,
+            "deviation_left_deg": 0.40183076530198214,
+            "deviation_right_deg": 0.3495972836514696,
+            "left_right_opposite": false
+          },
+          {
+            "axle": 3,
+            "ideal_left_deg": 0.0,
+            "ideal_right_deg": 0.0,
+            "mechanism_left_deg": 0.0,
+            "mechanism_right_deg": 0.0,
+            "deviation_left_deg": 0.0,
+            "deviation_right_deg": 0.0,
+            "left_right_opposite": false
+          },
+          {
+            "axle": 4,
+            "ideal_left_deg": -1.195710489839453,
+            "ideal_right_deg": -1.1671728885002006,
+            "mechanism_left_deg": -1.192029694033122,
+            "mechanism_right_deg": -1.1709866745066588,
+            "deviation_left_deg": 0.003680795806330961,
+            "deviation_right_deg": -0.0038137860064582085,
+            "left_right_opposite": false
+          },
+          {
+            "axle": 5,
+            "ideal_left_deg": -4.492920066176898,
+            "ideal_right_deg": -4.386082728411726,
+            "mechanism_left_deg": -1.549343389098713,
+            "mechanism_right_deg": 0.8698635741417534,
+            "deviation_left_deg": 2.9435766770781857,
+            "deviation_right_deg": 5.255946302553479,
+            "left_right_opposite": true
+          },
+          {
+            "axle": 6,
+            "ideal_left_deg": -6.305570242745445,
+            "ideal_right_deg": -6.156205134393842,
+            "mechanism_left_deg": -4.164340078441738,
+            "mechanism_right_deg": 0.4709814846319063,
+            "deviation_left_deg": 2.1412301643037077,
+            "deviation_right_deg": 6.627186619025748,
+            "left_right_opposite": true
+          }
+        ]
+      },
+      "supply": {
+        "status": "SUPPLY_CAPACITY_NEAR_LIMIT",
+        "flags": [
+          "SUPPLY_CAPACITY_NEAR_LIMIT"
+        ],
+        "groups": {
+          "front": {
+            "label": "前组（一、二桥）",
+            "q_pump_l_per_min": 27.000000000000004,
+            "high_rail_demand_l_per_min": 25.85136047931924,
+            "auxiliary_flow_l_per_min": 0.0,
+            "margin_l_per_min": 1.1486395206807638,
+            "margin_fraction": 0.04254220446965792,
+            "insufficient": false,
+            "near_limit": true
+          },
+          "rear": {
+            "label": "后组（四、五、六桥）",
+            "q_pump_l_per_min": 27.000000000000004,
+            "high_rail_demand_l_per_min": -1.6263032587282567e-15,
+            "auxiliary_flow_l_per_min": 4.47,
+            "margin_l_per_min": 22.530000000000005,
+            "margin_fraction": 0.8344444444444445,
+            "insufficient": false,
+            "near_limit": false
+          }
+        },
+        "messages": [
+          "前组（一、二桥）：供油余量仅 1.15 L/min（4.3%），接近泵供量上限。该组是当前的流量瓶颈支路。"
+        ]
+      },
+      "messages": [
+        "同桥左右轮的可达角范围本身是单向的，机构无法使两轮同向（甲方硬点的几何硬约束）。",
+        "同一转向桥左右轮朝相反方向偏转：5桥、6桥。这是 M1 刚体闭链在甲方硬点下的真实解，不是角度映射或符号换算错误；但它违反低速共同瞬时中心下的同向要求，不能作为理想阿克曼结果使用。",
+        "机构可达角与理想阿克曼角最大偏差 6.627°（axle6_right），属于 M1 机构拓扑固有属性。",
+        "前组（一、二桥）：供油余量仅 1.15 L/min（4.3%），接近泵供量上限。该组是当前的流量瓶颈支路。"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "phase": "L1-Fast",
+  "supply_mode": "regulated_constant_pressure",
+  "physics_scope": "quasi-steady prepressurized engineering boundary",
+  "dynamic_states": 16,
+  "pipe_dynamic_states": 0,
+  "inner_newton_solver": "DISABLED",
+  "fixed_dt_s": 0.0005,
+  "requested_2ms_assessment": {
+    "accepted": false,
+    "reason": "autonomous step is unstable/inaccurate; prescribed step pressure error exceeds 1%",
+    "prescribed_step_errors": {
+      "pressure_peak_relative": 0.0,
+      "pressure_final_relative": 0.02581237076122203,
+      "position_final_normalized": 3.127506266785109e-19,
+      "velocity_final_normalized": 0.0
+    },
+    "prescribed_sine_errors": {
+      "pressure_peak_relative": 0.0,
+      "pressure_final_relative": 0.025890925331490372,
+      "position_final_normalized": 1.954691416740693e-20,
+      "velocity_final_normalized": 3.3195916034610575e-17
+    }
+  },
+  "numerical_consistency": {
+    "pass": true,
+    "accepted_dt_vs_0p25ms": {
+      "pressure_peak_relative": 0.0,
+      "pressure_final_relative": 0.003965248004241506,
+      "position_final_normalized": 7.487736903615454e-05,
+      "velocity_final_normalized": 0.004551356848367757
+    },
+    "accepted_sine_dt_vs_0p25ms": {
+      "pressure_peak_relative": 0.0,
+      "pressure_final_relative": 0.00287270112591954,
+      "position_final_normalized": 1.4639824256630815e-19,
+      "velocity_final_normalized": 3.038004123504251e-17
+    }
+  },
+  "tests": {
+    "steady": true,
+    "step": true,
+    "sine": true
+  },
+  "pressure_range_pa_g": {
+    "minimum": 819610.2817872588,
+    "maximum": 830386.352847014
+  },
+  "unexplained_over_100mpa": false,
+  "pump_capacity_check": "PASS",
+  "benchmarks": [
+    {
+      "physical_time_s": 1.0,
+      "dt_s": 0.0005,
+      "wall_time_s": 0.6840198999270797,
+      "all_wall_times_s": [
+        0.6836462998762727,
+        0.7000442000571638,
+        0.6840198999270797
+      ],
+      "real_time_factor": 0.6840198999270797,
+      "steps": 2000,
+      "rhs_calls": 8000,
+      "finite": true,
+      "measurement": "ACTUAL"
+    },
+    {
+      "physical_time_s": 10.0,
+      "dt_s": 0.0005,
+      "wall_time_s": 6.972515500150621,
+      "all_wall_times_s": [
+        6.972515500150621,
+        7.026873999973759,
+        6.942844299832359
+      ],
+      "real_time_factor": 0.6972515500150621,
+      "steps": 20000,
+      "rhs_calls": 80000,
+      "finite": true,
+      "measurement": "ACTUAL"
+    },
+    {
+      "physical_time_s": 100.0,
+      "dt_s": 0.0005,
+      "wall_time_s": 68.79494789987803,
+      "all_wall_times_s": [
+        68.79494789987803
+      ],
+      "real_time_factor": 0.6879494789987802,
+      "steps": 200000,
+      "rhs_calls": 800000,
+      "finite": true,
+      "measurement": "ACTUAL"
+    }
+  ],
+  "hydraulic_io_interface": "READY",
+  "independent_amesim_macro_accuracy": "NOT_VERIFIED",
+  "autonomous_scope": "short-step direction only; sustained dynamics requires real mechanical load coupling",
+  "fast_engineering_candidate": true,
+  "ready_for_mechanical_handoff": true,
+  "pytest": "230 passed in 111.47s",
+  "speedup_vs_l1_r3_100s": 6.66559273159679,
+  "handoff_zip_verified": true,
+  "protected_model_hashes": {
+    "qh1_1.ame": "7613615723973d66a7122c74956c5161f720a64b243139fe9736cb270303b767",
+    "qh1_1_MCP_AUDIT.ame": "7613615723973d66a7122c74956c5161f720a64b243139fe9736cb270303b767"
+  }
+}

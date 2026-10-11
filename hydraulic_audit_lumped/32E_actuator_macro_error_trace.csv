@@ -1,0 +1,22 @@
+﻿scenario,channel,trace_stage,first_divergence,finding,evidence_type
+S0,all applicable,command,no input mismatch,actual SC_1 signal replayed by alias,DERIVED
+S0,all applicable,valve_opening,mapping approximation,static saturation represented; Amesim fractional spool measured,DERIVED
+S0,all applicable,valve_port_flow,first sampled deviation above metric tolerance,see 32G metrics; macro surrogate differs,DERIVED
+S0,all applicable,pA/pB,first sampled deviation above metric tolerance,see 32G metrics; macro surrogate differs,DERIVED
+S0,all applicable,hydraulic_force,first sampled deviation above metric tolerance,see 32G metrics; macro surrogate differs,DERIVED
+S0,all applicable,velocity,t=0 boundary definition,Amesim mechanical input replayed; not an independent hydraulic prediction,DERIVED
+S0,all applicable,position,t=0 boundary definition,Amesim mechanical input replayed; not an independent hydraulic prediction,DERIVED
+S1,all applicable,command,no input mismatch,actual SC_1 signal replayed by alias,DERIVED
+S1,all applicable,valve_opening,mapping approximation,static saturation represented; Amesim fractional spool measured,DERIVED
+S1,all applicable,valve_port_flow,first sampled deviation above metric tolerance,see 32G metrics; macro surrogate differs,DERIVED
+S1,all applicable,pA/pB,first sampled deviation above metric tolerance,see 32G metrics; macro surrogate differs,DERIVED
+S1,all applicable,hydraulic_force,first sampled deviation above metric tolerance,see 32G metrics; macro surrogate differs,DERIVED
+S1,all applicable,velocity,t=0 boundary definition,Amesim mechanical input replayed; not an independent hydraulic prediction,DERIVED
+S1,all applicable,position,t=0 boundary definition,Amesim mechanical input replayed; not an independent hydraulic prediction,DERIVED
+S2,all applicable,command,no input mismatch,actual SC_1 signal replayed by alias,DERIVED
+S2,all applicable,valve_opening,mapping approximation,static saturation represented; Amesim fractional spool measured,DERIVED
+S2,all applicable,valve_port_flow,first sampled deviation above metric tolerance,see 32G metrics; macro surrogate differs,DERIVED
+S2,all applicable,pA/pB,first sampled deviation above metric tolerance,see 32G metrics; macro surrogate differs,DERIVED
+S2,all applicable,hydraulic_force,first sampled deviation above metric tolerance,see 32G metrics; macro surrogate differs,DERIVED
+S2,all applicable,velocity,t=0 boundary definition,Amesim mechanical input replayed; not an independent hydraulic prediction,DERIVED
+S2,all applicable,position,t=0 boundary definition,Amesim mechanical input replayed; not an independent hydraulic prediction,DERIVED

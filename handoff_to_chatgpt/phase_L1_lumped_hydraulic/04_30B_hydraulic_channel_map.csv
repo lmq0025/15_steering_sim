@@ -1,0 +1,5 @@
+﻿channel,pump/source,main_valve,actuator,controlled_output,shared_supply,can_be_aggregated,reason
+channel_1,pump01,dirvalve_1,actuator001,actuator001.x/v/Fhyd,no; four Amesim PU001 sources are independent,no,distinct pump and controlled main-cylinder output; topology/metadata verified
+channel_2,pump01_1,dirvalve_6,actuator001_1,actuator001_1.x/v/Fhyd,no; four Amesim PU001 sources are independent,no,distinct pump and controlled main-cylinder output; topology/metadata verified
+channel_3,pump01_2,dirvalve_8,actuator001_2,actuator001_2.x/v/Fhyd,no; four Amesim PU001 sources are independent,no,distinct pump and controlled main-cylinder output; topology/metadata verified
+channel_4,pump01_3,dirvalve_11,actuator002,actuator002.x/v/Fhyd,no; four Amesim PU001 sources are independent,no,distinct pump and controlled main-cylinder output; topology/metadata verified

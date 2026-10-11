@@ -1,0 +1,8 @@
+﻿supply_group,pump_aliases,valve_alias,actuator_alias,command_interface,P_T_A_B_mapping,supply_junction,work_junctions,implementation,status,evidence_type
+supply_front,pump01;pump01_1,dirvalve_6,actuator002,0/1,3->B;4->A,V3_HJ_034,V3_HJ_010;V3_HJ_036,independent branch; algebraic flow sum,PASS,DERIVED_FROM_IR_V3
+supply_rear,pump01_2;pump01_3,dirvalve_1,actuator001,0/1,3->A;4->B,V3_HJ_015,V3_HJ_017;V3_HJ_018,independent branch; algebraic flow sum,PASS,DERIVED_FROM_IR_V3
+supply_rear,pump01_2;pump01_3,dirvalve_2,actuator001,independent,3->B;4->A,V3_HJ_029,V3_HJ_018;V3_HJ_017,independent branch; algebraic flow sum,PASS,DERIVED_FROM_IR_V3
+supply_rear,pump01_2;pump01_3,dirvalve_8,actuator001_1,0/1,3->A;4->B,V3_HJ_037,V3_HJ_039;V3_HJ_040,independent branch; algebraic flow sum,PASS,DERIVED_FROM_IR_V3
+supply_rear,pump01_2;pump01_3,dirvalve_9,actuator001_1,independent,3->B;4->A,V3_HJ_037,V3_HJ_040;V3_HJ_039,independent branch; algebraic flow sum,PASS,DERIVED_FROM_IR_V3
+supply_rear,pump01_2;pump01_3,dirvalve_11,actuator001_2,0/1,3->A;4->B,V3_HJ_021,V3_HJ_023;V3_HJ_024,independent branch; algebraic flow sum,PASS,DERIVED_FROM_IR_V3
+supply_rear,pump01_2;pump01_3,dirvalve_12,actuator001_2,independent,3->B;4->A,V3_HJ_021,V3_HJ_024;V3_HJ_023,independent branch; algebraic flow sum,PASS,DERIVED_FROM_IR_V3

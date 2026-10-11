@@ -1,0 +1,191 @@
+{
+  "schema_version": "J0.1",
+  "phase": "J0",
+  "description": "PHASE J0：15 所电液转向系统控制—液压—机械首次联合调试。",
+  "evidence_tags": {
+    "VERIFIED_CODE": "可直接从当前正式源码确认",
+    "CUSTOMER_GEOMETRY": "来自冻结的甲方坐标文件，经 mm->m 一次转换",
+    "ASSUMED": "为打通接口所需、但缺少甲方或跨模块证据的工程假设",
+    "UNVERIFIED": "证据不足，不能安全使用"
+  },
+  "models": {
+    "hydraulic": "src/steering_sim/hydraulics_lumped L1-FAST V1（LumpedHydraulicSystem.fast_engineering，4 通道 / 16 状态）",
+    "mechanical": "mechanics_ackermann_v2 M1（PhaseM1Model，4 自由度 q_front/q4/q5/q6，12 轮，7 个物理缸几何接口）",
+    "control": "复用 src/steering_sim/control/pid.py 的 PIDController，逐通道实例化"
+  },
+  "hydraulic": {
+    "dt_hydraulic_s": 0.0005,
+    "integration": "显式 RK4，每个 stage 用该 stage 状态重新计算机械负载",
+    "pump_speed_mode": "channel_nominal_speed",
+    "initial_pressure_mode": "group_regulated_return_rail_pressure",
+    "initial_position_m": 0.0,
+    "initial_velocity_m_s": 0.0,
+    "redundant_valve_commands": {
+      "dirvalve_2": 0.0,
+      "dirvalve_9": 0.0,
+      "dirvalve_12": 0.0
+    },
+    "redundant_valve_note": "ASSUMED 显式取 0。冗余管道 SC_1 在 regulated_constant_pressure 边界下不起作用（F3），本轮沿用 J0 结论，未实现冗余切换。",
+    "load_model": {
+      "neutralize_initial_bias": true,
+      "neutralize_initial_bias_source": "ASSUMED_ENGINEERING_INITIALIZATION_DEVICE",
+      "neutralize_initial_bias_note": "L1-Fast 的健康工作点把 external_load 设为 A_a*p - A_b*p，使预建压状态机械残差为 0。J0 全程保持同一常量偏置，使 t=0 成为真正的平衡点，避免把预充液瞬态误判为 J0 响应。这是初始化装置，不是实测道路载荷。",
+      "road_load_ramp_s": 0.1,
+      "road_load_ramp_note": "在该时段内把道路负载从纯 L1-Fast 工作点载荷平滑过渡进来，不注入净力阶跃。"
+    }
+  },
+  "control": {
+    "dt_control_s": 0.01,
+    "reference_signal": "等效作动组的代表行程 x_ref（不是轮角，也不是把目标角复制四份）",
+    "reference_ramp_s": 0.2,
+    "channels": [
+      {
+        "index": 0,
+        "channel": "channel_front",
+        "valve_alias": "dirvalve_6",
+        "actuator_alias": "actuator002",
+        "dof": "q_front",
+        "cylinder_group": "front_group_1",
+        "kp": 150.0,
+        "ki": 60.0,
+        "kd": 0.0,
+        "command_limit": 1.0,
+        "command_min": -1.0,
+        "command_max": 1.0,
+        "neutral_command": 0.0,
+        "command_polarity": 1.0,
+        "mapping_status": "ASSUMED",
+        "authority_status": "TWO_QUADRANT_MEASURED_AFTER_J0R1_F2_FIX",
+        "notes": "x_front = 0.25*q_front 是 ASSUMED_ENGINEERING_PARAMETER_INTERFACE_PLACEHOLDER（缺甲方前缸硬点）。J0-R1 修复后前阀为普通对称四通：中立命令 0.0，窗口 [-1, +1]，实测静态力窗口 ±6208 N，双向可达。原「中立 +1.0、窗口 [0,1]」已被实测否定，不再使用。"
+      },
+      {
+        "index": 1,
+        "channel": "channel_rear_1",
+        "valve_alias": "dirvalve_1",
+        "actuator_alias": "actuator001",
+        "dof": "q4",
+        "cylinder_group": "axle4_A+axle4_B",
+        "kp": 150.0,
+        "ki": 60.0,
+        "kd": 0.0,
+        "command_limit": 1.0,
+        "command_min": -1.0,
+        "command_max": 1.0,
+        "neutral_command": 0.0,
+        "command_polarity": -1.0,
+        "mapping_status": "ASSUMED",
+        "authority_status": "TWO_QUADRANT_MEASURED",
+        "notes": "channel_rear_1 -> q4 为 ASSUMED 跨模块映射。x 取 A 缸相对长度 L_A(q4)-L_A(0)，A 缸作代表坐标为 ASSUMED。J0-R1 力方向修正后命令极性变为 -1（实测 d(velocity)/d(command) < 0）。"
+      },
+      {
+        "index": 2,
+        "channel": "channel_rear_2",
+        "valve_alias": "dirvalve_8",
+        "actuator_alias": "actuator001_1",
+        "dof": "q5",
+        "cylinder_group": "axle5_A+axle5_B",
+        "kp": 150.0,
+        "ki": 60.0,
+        "kd": 0.0,
+        "command_limit": 1.0,
+        "command_min": -1.0,
+        "command_max": 1.0,
+        "neutral_command": 0.0,
+        "command_polarity": -1.0,
+        "mapping_status": "ASSUMED",
+        "authority_status": "TWO_QUADRANT_MEASURED",
+        "notes": "channel_rear_2 -> q5 为 ASSUMED 跨模块映射。x 取 L_A(q5)-L_A(0)。J0-R1 后命令极性 -1。"
+      },
+      {
+        "index": 3,
+        "channel": "channel_rear_3",
+        "valve_alias": "dirvalve_11",
+        "actuator_alias": "actuator001_2",
+        "dof": "q6",
+        "cylinder_group": "axle6_A+axle6_B",
+        "kp": 150.0,
+        "ki": 60.0,
+        "kd": 0.0,
+        "command_limit": 1.0,
+        "command_min": -1.0,
+        "command_max": 1.0,
+        "neutral_command": 0.0,
+        "command_polarity": -1.0,
+        "mapping_status": "ASSUMED",
+        "authority_status": "TWO_QUADRANT_MEASURED",
+        "notes": "channel_rear_3 -> q6 为 ASSUMED 跨模块映射。x 取 L_A(q6)-L_A(0)。J0-R1 后命令极性 -1。"
+      }
+    ],
+    "pid_note": "J0-R1：按任务书第 8 节从最小 P/PI 起步并只做必要调整。kd 保持 0（未滤波微分项在 10 ms 采样下不提供有效阻尼相位）；kp/ki 取能把行程误差压到毫米级的量级，未做最优整定。"
+  },
+  "mapping": {
+    "channel_order": [
+      "channel_front",
+      "channel_rear_1",
+      "channel_rear_2",
+      "channel_rear_3"
+    ],
+    "front_stroke_per_q_m_per_rad": 0.25,
+    "front_stroke_source": "ASSUMED_ENGINEERING_PARAMETER_INTERFACE_PLACEHOLDER (mechanics_ackermann_v2/config.json front_cylinder_interface)",
+    "rear_representative_cylinder": "A",
+    "rear_representative_source": "ASSUMED；甲方硬点与 A/B 长度为 CUSTOMER_GEOMETRY，选 A 缸作单一等效通道坐标属于工程假设",
+    "table_step_rad": 0.001,
+    "singular_jacobian_threshold_m_per_rad": 0.0001,
+    "monotonic_tolerance_m_per_rad": 0.0,
+    "q_envelope_source": "NUMERICALLY_VERIFIED_CONTINUATION_ENVELOPE_NOT_CUSTOMER_MECHANICAL_LIMIT（数值连续解范围，不是甲方机械限位）"
+  },
+  "load": {
+    "friction_coefficient": 0.75,
+    "friction_coefficient_source": "ASSUMED_ENGINEERING_PARAMETER (M1 default scan value)",
+    "axle_mass_t": [
+      11.5,
+      11.5,
+      11.5,
+      11.5,
+      11.5,
+      11.5
+    ],
+    "axle_mass_source": "ASSUMED_ENGINEERING_PARAMETER (M1 default scan value)",
+    "curvature_source": "取指令工况的理想阿克曼 ICR；即认为整车跟随指令路径，轮角偏差体现为轮胎侧偏",
+    "moment_model": "在液压实际产生的 q 上重新求值 M1 solve_loaded_case 的道路力矩公式；刻意不施加 M1 的静态柔度修正 loaded_q = q - Q/K"
+  },
+  "cases": [
+    {
+      "id": "J0-01",
+      "target_outer_angle_deg": 0.0,
+      "speed_kmh": 0.0,
+      "duration_s": 5.0
+    },
+    {
+      "id": "J0-02",
+      "target_outer_angle_deg": 2.0,
+      "speed_kmh": 5.0,
+      "duration_s": 5.0
+    },
+    {
+      "id": "J0-03",
+      "target_outer_angle_deg": -2.0,
+      "speed_kmh": 5.0,
+      "duration_s": 5.0
+    },
+    {
+      "id": "J0-04",
+      "target_outer_angle_deg": 5.0,
+      "speed_kmh": 10.0,
+      "duration_s": 5.0
+    }
+  ],
+  "output": {
+    "sample_stride_hydraulic_steps": 4,
+    "csv_float_format": "%.12g"
+  },
+  "acceptance": {
+    "steady_wheel_angle_error_deg_pass": 0.25,
+    "steady_wheel_angle_error_deg_conditional": 1.0,
+    "link_residual_limit_m": 1e-09,
+    "third_axle_abs_limit_deg": 1e-09,
+    "mapping_jacobian_abs_min_m_per_rad": 0.0001,
+    "mechanism_ackermann_error_note_deg": 0.5,
+    "note": "steady_wheel_angle_error 的参照是 M1 在 q_ref 上真实可达的刚性闭链角（theoretical_angle_deg），不是理想阿克曼角；后者与可达角之差作为 mechanism_ackermann_error_deg 单独报告。"
+  }
+}

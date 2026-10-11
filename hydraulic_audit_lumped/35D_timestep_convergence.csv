@@ -1,0 +1,91 @@
+﻿scenario,dt_s,quantity,reference_dt_s,rmse,normalized_rmse,normalized_peak_error,normalized_final_error,wall_time_s,within_1_percent,status
+S1,0.00025,front_supply_pressure,0.00025,0.0,0.0,0.0,0.0,2.4107097000814974,True,PASS
+S1,0.00025,rear_supply_pressure,0.00025,0.0,0.0,0.0,0.0,2.4107097000814974,True,PASS
+S1,0.00025,pA,0.00025,0.0,0.0,0.0,0.0,2.4107097000814974,True,PASS
+S1,0.00025,pB,0.00025,0.0,0.0,0.0,0.0,2.4107097000814974,True,PASS
+S1,0.00025,QA,0.00025,0.0,0.0,0.0,0.0,2.4107097000814974,True,PASS
+S1,0.00025,QB,0.00025,0.0,0.0,0.0,0.0,2.4107097000814974,True,PASS
+S1,0.00025,hydraulic_force,0.00025,0.0,0.0,0.0,0.0,2.4107097000814974,True,PASS
+S1,0.00025,position,0.00025,0.0,0.0,0.0,0.0,2.4107097000814974,True,PASS
+S1,0.00025,velocity,0.00025,0.0,0.0,0.0,0.0,2.4107097000814974,True,PASS
+S1,0.0005,front_supply_pressure,0.00025,14183.434523256845,0.0007601175214997747,0.0004392653460810755,0.0007629333447132092,1.1725545001681894,True,PASS
+S1,0.0005,rear_supply_pressure,0.00025,207.82319511607923,1.2215087372921006e-05,4.1405215683961137e-05,2.5486543837997043e-08,1.1725545001681894,True,PASS
+S1,0.0005,pA,0.00025,610.3080889526166,0.00029620715971210725,0.0006632585813774086,1.2326032749764644e-07,1.1725545001681894,True,PASS
+S1,0.0005,pB,0.00025,125.57948142700648,8.501643458381701e-05,1.6343373139259663e-07,1.6343373139259663e-07,1.1725545001681894,True,PASS
+S1,0.0005,QA,0.00025,2.6098887377154124e-07,0.0032438527347945774,1.4506248667214158e-08,1.4506248667214158e-08,1.1725545001681894,True,PASS
+S1,0.0005,QB,0.00025,2.302185183359944e-07,0.002407196156450386,9.370163803143399e-08,9.370163803143399e-08,1.1725545001681894,True,PASS
+S1,0.0005,hydraulic_force,0.00025,3.3123124750883415,0.0004751619560852852,0.0017271558711623102,5.4026245352960024e-08,1.1725545001681894,True,PASS
+S1,0.0005,position,0.00025,0.0,0.0,0.0,0.0,1.1725545001681894,True,PASS
+S1,0.0005,velocity,0.00025,0.0,0.0,0.0,0.0,1.1725545001681894,True,PASS
+S1,0.001,front_supply_pressure,0.00025,737893.9076234127,0.03954515299328923,0.009544609337314575,0.03983178043548956,0.5597796000074595,False,FAIL
+S1,0.001,rear_supply_pressure,0.00025,1436.376360188348,8.442494943983004e-05,0.0003947400050446267,2.87403612681981e-08,0.5597796000074595,True,PASS
+S1,0.001,pA,0.00025,4271.368898599719,0.002073067803686088,0.008273872616988871,2.2149863010378308e-07,0.5597796000074595,True,PASS
+S1,0.001,pB,0.00025,483.6523786925828,0.0003274292929639598,3.0456492706643507e-07,3.0456492706643507e-07,0.5597796000074595,True,PASS
+S1,0.001,QA,0.00025,1.1243420479334552e-06,0.013974542187672266,9.384525173138524e-10,9.384525173138524e-10,0.5597796000074595,False,FAIL
+S1,0.001,QB,0.00025,7.714529405524335e-07,0.008066416927720364,1.7867082412980913e-08,1.7867082412980913e-08,0.5597796000074595,True,PASS
+S1,0.001,hydraulic_force,0.00025,21.819377563738502,0.0031300604039396548,0.01769012023346996,8.855905006315532e-08,0.5597796000074595,False,FAIL
+S1,0.001,position,0.00025,0.0,0.0,0.0,0.0,0.5597796000074595,True,PASS
+S1,0.001,velocity,0.00025,0.0,0.0,0.0,0.0,0.5597796000074595,True,PASS
+S1,0.002,front_supply_pressure,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=78764.5054, residual_hi=5250058.79"
+S1,0.002,rear_supply_pressure,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=78764.5054, residual_hi=5250058.79"
+S1,0.002,pA,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=78764.5054, residual_hi=5250058.79"
+S1,0.002,pB,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=78764.5054, residual_hi=5250058.79"
+S1,0.002,QA,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=78764.5054, residual_hi=5250058.79"
+S1,0.002,QB,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=78764.5054, residual_hi=5250058.79"
+S1,0.002,hydraulic_force,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=78764.5054, residual_hi=5250058.79"
+S1,0.002,position,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=78764.5054, residual_hi=5250058.79"
+S1,0.002,velocity,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=78764.5054, residual_hi=5250058.79"
+S1,0.005,front_supply_pressure,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=2267111.83, residual_hi=7395677.06"
+S1,0.005,rear_supply_pressure,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=2267111.83, residual_hi=7395677.06"
+S1,0.005,pA,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=2267111.83, residual_hi=7395677.06"
+S1,0.005,pB,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=2267111.83, residual_hi=7395677.06"
+S1,0.005,QA,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=2267111.83, residual_hi=7395677.06"
+S1,0.005,QB,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=2267111.83, residual_hi=7395677.06"
+S1,0.005,hydraulic_force,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=2267111.83, residual_hi=7395677.06"
+S1,0.005,position,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=2267111.83, residual_hi=7395677.06"
+S1,0.005,velocity,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=2267111.83, residual_hi=7395677.06"
+S2,0.00025,front_supply_pressure,0.00025,0.0,0.0,0.0,0.0,2.456696999957785,True,PASS
+S2,0.00025,rear_supply_pressure,0.00025,0.0,0.0,0.0,0.0,2.456696999957785,True,PASS
+S2,0.00025,pA,0.00025,0.0,0.0,0.0,0.0,2.456696999957785,True,PASS
+S2,0.00025,pB,0.00025,0.0,0.0,0.0,0.0,2.456696999957785,True,PASS
+S2,0.00025,QA,0.00025,0.0,0.0,0.0,0.0,2.456696999957785,True,PASS
+S2,0.00025,QB,0.00025,0.0,0.0,0.0,0.0,2.456696999957785,True,PASS
+S2,0.00025,hydraulic_force,0.00025,0.0,0.0,0.0,0.0,2.456696999957785,True,PASS
+S2,0.00025,position,0.00025,0.0,0.0,0.0,0.0,2.456696999957785,True,PASS
+S2,0.00025,velocity,0.00025,0.0,0.0,0.0,0.0,2.456696999957785,True,PASS
+S2,0.0005,front_supply_pressure,0.00025,14183.436820031468,0.0007601176535573381,0.0004392535517800357,0.0007629362034632634,1.1672358999494463,True,PASS
+S2,0.0005,rear_supply_pressure,0.00025,207.77003729733184,1.2211962950739975e-05,4.1405215683961137e-05,4.014120665577697e-08,1.1672358999494463,True,PASS
+S2,0.0005,pA,0.00025,610.152417244619,0.00029613160594621724,0.0006632585813774086,1.514529914975214e-06,1.1672358999494463,True,PASS
+S2,0.0005,pB,0.00025,123.8669350135546,7.566247525572885e-05,2.6367280567897853e-07,2.6367280567897853e-07,1.1672358999494463,True,PASS
+S2,0.0005,QA,0.00025,2.60986200476691e-07,0.0028326551509001816,1.180180671325983e-06,1.180180671325983e-06,1.1672358999494463,True,PASS
+S2,0.0005,QB,0.00025,2.3021636100546343e-07,0.0022177307568843454,4.4639315329902007e-07,4.4639315329902007e-07,1.1672358999494463,True,PASS
+S2,0.0005,hydraulic_force,0.00025,3.3088656060948036,0.00048653235553997525,0.0017703281335285494,2.5290558891648716e-06,1.1672358999494463,True,PASS
+S2,0.0005,position,0.00025,0.0,0.0,0.0,0.0,1.1672358999494463,True,PASS
+S2,0.0005,velocity,0.00025,0.0,0.0,0.0,0.0,1.1672358999494463,True,PASS
+S2,0.001,front_supply_pressure,0.00025,737893.9037001996,0.03954515375242195,0.009544585057907787,0.03983178370123467,0.5405138998758048,False,FAIL
+S2,0.001,rear_supply_pressure,0.00025,1436.3678481744096,8.442444913478027e-05,0.0003947400050446267,3.8702503221615017e-08,0.5405138998758048,True,PASS
+S2,0.001,pA,0.00025,4271.377518508287,0.002073071987275787,0.008273872616988871,1.458583457462915e-06,0.5405138998758048,True,PASS
+S2,0.001,pB,0.00025,483.1618390175319,0.0002951330045033894,3.377927084484812e-07,3.377927084484812e-07,0.5405138998758048,True,PASS
+S2,0.001,QA,0.00025,1.1243415125700083e-06,0.012203219063441554,1.1821970177884381e-06,1.1821970177884381e-06,0.5405138998758048,False,FAIL
+S2,0.001,QB,0.00025,7.714522464494576e-07,0.00743158899283393,4.852605823208211e-07,4.852605823208211e-07,0.5405138998758048,True,PASS
+S2,0.001,hydraulic_force,0.00025,21.818965489484533,0.0032082392997439214,0.018132305287385058,2.5103232334964844e-06,0.5405138998758048,False,FAIL
+S2,0.001,position,0.00025,0.0,0.0,0.0,0.0,0.5405138998758048,True,PASS
+S2,0.001,velocity,0.00025,0.0,0.0,0.0,0.0,0.5405138998758048,True,PASS
+S2,0.002,front_supply_pressure,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=78764.5054, residual_hi=5250058.79"
+S2,0.002,rear_supply_pressure,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=78764.5054, residual_hi=5250058.79"
+S2,0.002,pA,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=78764.5054, residual_hi=5250058.79"
+S2,0.002,pB,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=78764.5054, residual_hi=5250058.79"
+S2,0.002,QA,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=78764.5054, residual_hi=5250058.79"
+S2,0.002,QB,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=78764.5054, residual_hi=5250058.79"
+S2,0.002,hydraulic_force,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=78764.5054, residual_hi=5250058.79"
+S2,0.002,position,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=78764.5054, residual_hi=5250058.79"
+S2,0.002,velocity,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=78764.5054, residual_hi=5250058.79"
+S2,0.005,front_supply_pressure,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=2267111.83, residual_hi=7395677.06"
+S2,0.005,rear_supply_pressure,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=2267111.83, residual_hi=7395677.06"
+S2,0.005,pA,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=2267111.83, residual_hi=7395677.06"
+S2,0.005,pB,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=2267111.83, residual_hi=7395677.06"
+S2,0.005,QA,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=2267111.83, residual_hi=7395677.06"
+S2,0.005,QB,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=2267111.83, residual_hi=7395677.06"
+S2,0.005,hydraulic_force,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=2267111.83, residual_hi=7395677.06"
+S2,0.005,position,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=2267111.83, residual_hi=7395677.06"
+S2,0.005,velocity,0.00025,,,,,,False,"FAIL_SOLVER: SupplyConvergenceError: could not bracket SC_1 return node: residual_lo=2267111.83, residual_hi=7395677.06"

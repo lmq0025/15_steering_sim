@@ -1,0 +1,63 @@
+﻿parameter,symbol,physical_meaning,value_si,unit,source_alias,source_submodel,source_parameter,source_type,confidence,used_in_equation
+fluid_density,rho,hydraulic fluid density,883.0,kg/m^3,elementaryhydraulicprops,TFFD04,fpd,AMESIM_EXACT,high,orifice flow
+fluid_bulk_modulus,beta_e,effective liquid bulk modulus baseline,1700000000.0,Pa,elementaryhydraulicprops,TFFD04,fpbm,AMESIM_EXACT,high,chamber continuity
+kinematic_viscosity_40C,nu,kinematic viscosity at 40 degC,5.647e-05,m^2/s,elementaryhydraulicprops,TFFD04,nu1,AMESIM_EXACT,high,steady line resistance evidence
+pump_displacement,D_p,fixed pump displacement per radian,1.5915494309189535e-06,m^3/rad,pump01,PU001,displ,PHYSICS_DERIVED,high,Qp=Dp*omega*eta_v
+pump_nominal_speed,omega_nom,nominal pump angular speed,141.3716694115407,rad/s,pump01,PU001,wtyp,PHYSICS_DERIVED,high,pump input
+pump_nominal_flow,Qp_nom,nominal ideal pump flow,0.00022500000000000002,m^3/s,pump01,PU001,"displ,wtyp",PHYSICS_DERIVED,high,supply balance
+pump_volumetric_efficiency,eta_v,healthy ideal pump efficiency,1.0,1,pump01,PU001,no flow losses,AMESIM_EXACT,high,pump flow
+pump_internal_leakage,C_leak_p,healthy ideal pump internal leakage,0.0,m^3/(s Pa),pump01,PU001,no flow losses,AMESIM_EXACT,high,future degradation interface
+valve_discharge_coefficient,Cd,main SC_1 maximum flow coefficient,0.7,1,dirvalve_1.orifice_13,HYDVORF0,cqmax,AMESIM_EXACT,high,orifice law
+valve_area_gradient,w,SC_1 area per fractional command,2e-05,m^2,dirvalve_1.orifice_13,HYDVORF0,areax=20*x mm^2,PHYSICS_DERIVED,high,A(xv)
+valve_maximum_area,Amax,SC_1 maximum opening,2e-05,m^2,dirvalve_1.orifice_13,HYDVORF0,areax,PHYSICS_DERIVED,high,opening saturation
+valve_time_constant,tau_v,optional spool dynamic time constant; inactive because spooldyn=1 static,,s,dirvalve_1,SC_1,"spooldyn,tau",AMESIM_EXACT,high,future degradation interface only
+tank_pressure,p_T,tank gauge pressure,0.0,Pa(g),tank01,TK000,default tank boundary,AMESIM_EXACT,high,tank effort source
+relief_cracking_pressure,p_relief,main relief cracking pressure,16000000.0,Pa(g),presscontrol01,RV010,pcrack,AMESIM_EXACT,high,relief law
+relief_conductance,G_r,relief pressure-flow gradient,8.333333333333334e-08,m^3/(s Pa),presscontrol01,RV010,grad,PHYSICS_DERIVED,high,"Qr=Gr max(dp-pcrack,0)"
+main_path_resistance,R_eq,equivalent pump-to-relief steady path resistance,11800000000.0,Pa s/m^3,20E baseline,network,pump peak minus pcrack at Qp,AMESIM_IDENTIFIED,medium,algebraic path loss
+channel_1.area_A,A_A,actuator001 area A,0.005,m^2,actuator001,HJ020,diamp,PHYSICS_DERIVED,high,actuator continuity/mechanics
+channel_1.area_B,A_B,actuator001 area B,0.0037,m^2,actuator001,HJ020,"diamp,diamr",PHYSICS_DERIVED,high,actuator continuity/mechanics
+channel_1.dead_volume_A,V_A_dead,actuator001 dead volume A,5e-05,m^3,actuator001,HJ020,dead1,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_1.dead_volume_B,V_B_dead,actuator001 dead volume B,5e-05,m^3,actuator001,HJ020,dead2,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_1.stroke,L,actuator001 stroke,0.13,m,actuator001,HJ020,stroke,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_1.initial_position,x0,actuator001 initial position,0.0,m,actuator001,HJ020,xact0,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_1.cross_port_leakage,Ctp,actuator001 cross port leakage,0.0,m^3/(s Pa),actuator001,HJ020,leak,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_1.moving_mass,m_eq,actuator001 moving mass,1000.0,kg,mass_friction2port,HJ020,mass,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_1.local_viscous_damping,Bp,actuator001 local viscous damping,0.0,N s/m,actuator001,HJ020,visc/coefv,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_1.endstop_stiffness,K_end,actuator001 endstop stiffness,100000000.0,N/m,actuator001,HJ020,k,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_1.endstop_damping,B_end,actuator001 endstop damping,100000.0,N s/m,actuator001,HJ020,cdamp,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_2.area_A,A_A,actuator001_1 area A,0.005,m^2,actuator001_1,HJ020,diamp,PHYSICS_DERIVED,high,actuator continuity/mechanics
+channel_2.area_B,A_B,actuator001_1 area B,0.0037,m^2,actuator001_1,HJ020,"diamp,diamr",PHYSICS_DERIVED,high,actuator continuity/mechanics
+channel_2.dead_volume_A,V_A_dead,actuator001_1 dead volume A,5e-05,m^3,actuator001_1,HJ020,dead1,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_2.dead_volume_B,V_B_dead,actuator001_1 dead volume B,5e-05,m^3,actuator001_1,HJ020,dead2,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_2.stroke,L,actuator001_1 stroke,0.195,m,actuator001_1,HJ020,stroke,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_2.initial_position,x0,actuator001_1 initial position,0.0,m,actuator001_1,HJ020,xact0,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_2.cross_port_leakage,Ctp,actuator001_1 cross port leakage,0.0,m^3/(s Pa),actuator001_1,HJ020,leak,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_2.moving_mass,m_eq,actuator001_1 moving mass,1000.0,kg,mass_friction2port,HJ020,mass,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_2.local_viscous_damping,Bp,actuator001_1 local viscous damping,0.0,N s/m,actuator001_1,HJ020,visc/coefv,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_2.endstop_stiffness,K_end,actuator001_1 endstop stiffness,100000000.0,N/m,actuator001_1,HJ020,k,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_2.endstop_damping,B_end,actuator001_1 endstop damping,100000.0,N s/m,actuator001_1,HJ020,cdamp,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_3.area_A,A_A,actuator001_2 area A,0.005,m^2,actuator001_2,HJ020,diamp,PHYSICS_DERIVED,high,actuator continuity/mechanics
+channel_3.area_B,A_B,actuator001_2 area B,0.0037,m^2,actuator001_2,HJ020,"diamp,diamr",PHYSICS_DERIVED,high,actuator continuity/mechanics
+channel_3.dead_volume_A,V_A_dead,actuator001_2 dead volume A,5e-05,m^3,actuator001_2,HJ020,dead1,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_3.dead_volume_B,V_B_dead,actuator001_2 dead volume B,5e-05,m^3,actuator001_2,HJ020,dead2,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_3.stroke,L,actuator001_2 stroke,0.265,m,actuator001_2,HJ020,stroke,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_3.initial_position,x0,actuator001_2 initial position,0.0,m,actuator001_2,HJ020,xact0,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_3.cross_port_leakage,Ctp,actuator001_2 cross port leakage,0.0,m^3/(s Pa),actuator001_2,HJ020,leak,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_3.moving_mass,m_eq,actuator001_2 moving mass,1000.0,kg,mass_friction2port,HJ020,mass,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_3.local_viscous_damping,Bp,actuator001_2 local viscous damping,0.0,N s/m,actuator001_2,HJ020,visc/coefv,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_3.endstop_stiffness,K_end,actuator001_2 endstop stiffness,100000000.0,N/m,actuator001_2,HJ020,k,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_3.endstop_damping,B_end,actuator001_2 endstop damping,100000.0,N s/m,actuator001_2,HJ020,cdamp,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_4.area_A,A_A,actuator002 area A,0.0003777765165941727,m^2,actuator002,HJ021,diamp,PHYSICS_DERIVED,high,actuator continuity/mechanics
+channel_4.area_B,A_B,actuator002 area B,0.0003777765165941727,m^2,actuator002,HJ021,"diamp,diamr",PHYSICS_DERIVED,high,actuator continuity/mechanics
+channel_4.dead_volume_A,V_A_dead,actuator002 dead volume A,5e-05,m^3,actuator002,HJ021,dead1,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_4.dead_volume_B,V_B_dead,actuator002 dead volume B,5e-05,m^3,actuator002,HJ021,dead2,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_4.stroke,L,actuator002 stroke,0.3,m,actuator002,HJ021,stroke,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_4.initial_position,x0,actuator002 initial position,0.0,m,actuator002,HJ021,xact0,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_4.cross_port_leakage,Ctp,actuator002 cross port leakage,8.333333333333334e-11,m^3/(s Pa),actuator002,HJ021,leak,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_4.moving_mass,m_eq,actuator002 moving mass,1000.0,kg,mass1port,HJ021,mass,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_4.local_viscous_damping,Bp,actuator002 local viscous damping,0.0,N s/m,actuator002,HJ021,visc/coefv,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_4.endstop_stiffness,K_end,actuator002 endstop stiffness,100000000.0,N/m,actuator002,HJ021,k,AMESIM_EXACT,high,actuator continuity/mechanics
+channel_4.endstop_damping,B_end,actuator002 endstop damping,100000.0,N s/m,actuator002,HJ021,cdamp,AMESIM_EXACT,high,actuator continuity/mechanics
+pump_friction_torque,T_fric,future pump friction degradation input,,N m,pump01,PU001,no mechanical losses,MISSING,high,"reserved, inactive"
+valve_zero_leakage,C_v0,future valve internal leakage degradation input,,m^3/(s Pa),SC_1,HYDVORF0,not identified,MISSING,low,"reserved, inactive"

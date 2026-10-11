@@ -1,0 +1,631 @@
+{
+  "phase": "J0-R1",
+  "scope": "修复 F1（力/容积符号不一致）与 F2（前桥无有效静态驱动力），恢复电液机械联合仿真",
+  "artificial_diagnostic_damping_used": false,
+  "f1_force_volume_consistency": {
+    "status": "PASS",
+    "force_definition": "F_hyd = A_b*p_b - A_a*p_a",
+    "plant_characterisation": {
+      "channel_front": {
+        "d_force_d_velocity_n_s_per_m": -10898.741254911623,
+        "d_force_d_displacement_n_per_m": -1031.0743653962452,
+        "force_offset_n": 6.366462912410498e-11,
+        "flags": []
+      },
+      "channel_rear_1": {
+        "d_force_d_velocity_n_s_per_m": -44650.45424485182,
+        "d_force_d_displacement_n_per_m": -134600.697139626,
+        "force_offset_n": -1072.5400994455777,
+        "flags": []
+      },
+      "channel_rear_2": {
+        "d_force_d_velocity_n_s_per_m": -28186.92531694891,
+        "d_force_d_displacement_n_per_m": -50143.63481873477,
+        "force_offset_n": -1072.5407963073194,
+        "flags": []
+      },
+      "channel_rear_3": {
+        "d_force_d_velocity_n_s_per_m": -18699.603006254078,
+        "d_force_d_displacement_n_per_m": -18598.334843959965,
+        "force_offset_n": -1072.5436775013186,
+        "flags": []
+      }
+    }
+  },
+  "f2_front_bidirectional_actuation": {
+    "status": "PASS",
+    "fix": "前阀工作口换位（IR V3 证据）+ 删除 A 腔硬置零特判 + 撤回 actuator002 人工内泄漏",
+    "authority": {
+      "channel": "channel_front",
+      "valve_alias": "dirvalve_6",
+      "actuator_alias": "actuator002",
+      "neutral_command": 0.0,
+      "command_window": [
+        -1.0,
+        1.0
+      ],
+      "command_polarity": 1,
+      "d_velocity_over_d_command": 0.10194845992018281,
+      "velocity_at_plus_delta_m_s": 0.001019484599201828,
+      "velocity_at_minus_delta_m_s": -0.001019484599201828,
+      "force_window_n": [
+        -6200.004229737571,
+        6200.004229737571
+      ],
+      "reachable_x_signs": [
+        1,
+        -1
+      ],
+      "bidirectional": true,
+      "notes": []
+    },
+    "required_front_load_n": 6200.0,
+    "note": "6.2 kN 来自 M1 工程假设道路负载，不是实车测量值"
+  },
+  "f3_redundant_valves": "DEFERRED",
+  "cases": [
+    {
+      "case_id": "J0-01",
+      "target_outer_angle_deg": 0.0,
+      "speed_kmh": 0.0,
+      "duration_s": 5.0,
+      "status": "PASS",
+      "completed": true,
+      "failure_reason": null,
+      "target_x_ref_mm": {
+        "channel_front": 0.0,
+        "channel_rear_1": 0.0,
+        "channel_rear_2": -4.509177393236982e-16,
+        "channel_rear_3": 0.0
+      },
+      "final_stroke_mm": {
+        "channel_front": 0.0,
+        "channel_rear_1": 0.0,
+        "channel_rear_2": 0.0,
+        "channel_rear_3": 0.0
+      },
+      "final_stroke_error_mm": {
+        "channel_front": 0.0,
+        "channel_rear_1": 0.0,
+        "channel_rear_2": 4.509177393236982e-16,
+        "channel_rear_3": 0.0
+      },
+      "stroke_range_mm": {
+        "channel_front": [
+          0.0,
+          0.0
+        ],
+        "channel_rear_1": [
+          0.0,
+          0.0
+        ],
+        "channel_rear_2": [
+          0.0,
+          0.0
+        ],
+        "channel_rear_3": [
+          0.0,
+          0.0
+        ]
+      },
+      "steady_stroke_error_mm": {
+        "channel_front": 0.0,
+        "channel_rear_1": 0.0,
+        "channel_rear_2": 4.509177393236982e-16,
+        "channel_rear_3": 0.0
+      },
+      "stroke_tracking_fraction": [],
+      "steady_wheel_angle_error_vs_mechanism_deg": {
+        "axle1_left": 0.0,
+        "axle1_right": 0.0,
+        "axle2_left": 0.0,
+        "axle2_right": 0.0,
+        "axle3_left": 0.0,
+        "axle3_right": 0.0,
+        "axle4_left": 0.0,
+        "axle4_right": 0.0,
+        "axle5_left": 0.0,
+        "axle5_right": 0.0,
+        "axle6_left": 0.0,
+        "axle6_right": 0.0
+      },
+      "max_steady_wheel_angle_error_vs_mechanism_deg": 0.0,
+      "max_steady_wheel_angle_error_vs_ideal_deg": 0.0,
+      "max_mechanism_ackermann_error_deg": 0.0,
+      "final_wheel_angle_deg": {
+        "axle1_left": 0.0,
+        "axle1_right": 0.0,
+        "axle2_left": 0.0,
+        "axle2_right": 0.0,
+        "axle3_left": 0.0,
+        "axle3_right": 0.0,
+        "axle4_left": 0.0,
+        "axle4_right": 0.0,
+        "axle5_left": 0.0,
+        "axle5_right": 0.0,
+        "axle6_left": 0.0,
+        "axle6_right": 0.0
+      },
+      "target_mechanism_wheel_angle_deg": {
+        "axle1_left": 0.0,
+        "axle1_right": 0.0,
+        "axle2_left": 0.0,
+        "axle2_right": 0.0,
+        "axle3_left": 0.0,
+        "axle3_right": 0.0,
+        "axle4_left": 0.0,
+        "axle4_right": 0.0,
+        "axle5_left": 0.0,
+        "axle5_right": 0.0,
+        "axle6_left": 0.0,
+        "axle6_right": 0.0
+      },
+      "max_pressure_mpa_g": 9.394126846271716,
+      "max_abs_velocity_m_s": 0.0,
+      "max_abs_stroke_mm": 0.0,
+      "max_link_residual_m": 0.0,
+      "third_axle_max_abs_deg": 0.0,
+      "virtual_work_residual_max_abs": 0.0,
+      "control_saturation_fraction": 0.0,
+      "anti_windup_active_fraction": 0.0,
+      "pump_capacity_warnings": 0,
+      "diagnostic_damping_n_s_per_m": 0.0,
+      "road_load_scale": 1.0,
+      "status_notes": []
+    },
+    {
+      "case_id": "J0-02",
+      "target_outer_angle_deg": 2.0,
+      "speed_kmh": 5.0,
+      "duration_s": 5.0,
+      "status": "CONDITIONAL",
+      "completed": true,
+      "failure_reason": null,
+      "target_x_ref_mm": {
+        "channel_front": -9.879314615080562,
+        "channel_rear_1": 2.685588604312118,
+        "channel_rear_2": -12.303171658645782,
+        "channel_rear_3": 15.824932536402217
+      },
+      "final_stroke_mm": {
+        "channel_front": -8.7774336491081,
+        "channel_rear_1": 2.307730565981815,
+        "channel_rear_2": -12.249370414825798,
+        "channel_rear_3": 15.499441096418062
+      },
+      "final_stroke_error_mm": {
+        "channel_front": 1.1018809659724613,
+        "channel_rear_1": -0.37785803833030335,
+        "channel_rear_2": 0.05380124381998419,
+        "channel_rear_3": -0.3254914399841557
+      },
+      "stroke_range_mm": {
+        "channel_front": [
+          -8.77952956193926,
+          0.0
+        ],
+        "channel_rear_1": [
+          0.0,
+          2.307730565981815
+        ],
+        "channel_rear_2": [
+          -12.249370414825798,
+          0.0
+        ],
+        "channel_rear_3": [
+          0.0,
+          15.499441096418062
+        ]
+      },
+      "steady_stroke_error_mm": {
+        "channel_front": 1.5146632634199224,
+        "channel_rear_1": 0.514874620056666,
+        "channel_rear_2": 0.0799624440728109,
+        "channel_rear_3": 0.4813529383799996
+      },
+      "stroke_tracking_fraction": [
+        "channel_front 89%",
+        "channel_rear_1 86%",
+        "channel_rear_2 100%",
+        "channel_rear_3 98%"
+      ],
+      "steady_wheel_angle_error_vs_mechanism_deg": {
+        "axle1_left": 0.3109714497283975,
+        "axle1_right": 0.3055035522729508,
+        "axle2_left": 0.22462352635843863,
+        "axle2_right": 0.21876304848502137,
+        "axle3_left": 0.0,
+        "axle3_right": 0.0,
+        "axle4_left": 0.09063144867778028,
+        "axle4_right": 0.08948830031186289,
+        "axle5_left": 0.006506977012190718,
+        "axle5_right": 0.003986714293612359,
+        "axle6_left": 0.09551586641710808,
+        "axle6_right": 0.020743340289472834
+      },
+      "max_steady_wheel_angle_error_vs_mechanism_deg": 0.3109714497283975,
+      "max_steady_wheel_angle_error_vs_ideal_deg": 2.270723206543286,
+      "max_mechanism_ackermann_error_deg": 2.28498969640525,
+      "final_wheel_angle_deg": {
+        "axle1_left": 1.7929715980358791,
+        "axle1_right": 1.7777945564476056,
+        "axle2_left": 1.292638069637477,
+        "axle2_right": 1.2762845089305574,
+        "axle3_left": 0.0,
+        "axle3_right": 0.0,
+        "axle4_left": -0.4032861136012341,
+        "axle4_right": -0.4008461651515819,
+        "axle5_left": -0.5273470104089915,
+        "axle5_right": 0.26483667384207665,
+        "axle6_left": -1.911997003083349,
+        "axle6_right": -0.19449800894963057
+      },
+      "target_mechanism_wheel_angle_deg": {
+        "axle1_left": 2.0192491078260617,
+        "axle1_right": 2.0000015933514628,
+        "axle2_left": 1.45609703775663,
+        "axle2_right": 1.4353825856462972,
+        "axle3_left": 0.0,
+        "axle3_right": 0.0,
+        "axle4_left": -0.46982773620153606,
+        "axle4_right": -0.466523125630986,
+        "axle5_left": -0.5317405008361256,
+        "axle5_right": 0.2675287248577163,
+        "axle6_left": -1.9769690420471064,
+        "axle6_right": -0.18023151908766663
+      },
+      "max_pressure_mpa_g": 17.42984026620084,
+      "max_abs_velocity_m_s": 0.0538202254913303,
+      "max_abs_stroke_mm": 15.499441096418062,
+      "max_link_residual_m": 1.6124879209655774e-12,
+      "third_axle_max_abs_deg": 0.0,
+      "virtual_work_residual_max_abs": 2.842170943040401e-14,
+      "control_saturation_fraction": 0.0,
+      "anti_windup_active_fraction": 0.0,
+      "pump_capacity_warnings": 0,
+      "diagnostic_damping_n_s_per_m": 0.0,
+      "road_load_scale": 1.0,
+      "status_notes": [
+        "稳态跟踪误差 0.311° 超出 PASS 允许带",
+        "注：M1 机构自身的阿克曼偏差达 2.285°（理想角 vs 可达角），属于机械拓扑固有属性，不计入 J0 跟踪判定"
+      ]
+    },
+    {
+      "case_id": "J0-03",
+      "target_outer_angle_deg": -2.0,
+      "speed_kmh": 5.0,
+      "duration_s": 5.0,
+      "status": "CONDITIONAL",
+      "completed": true,
+      "failure_reason": null,
+      "target_x_ref_mm": {
+        "channel_front": 9.87931461508067,
+        "channel_rear_1": -2.7079139653803184,
+        "channel_rear_2": 12.134625828839916,
+        "channel_rear_3": -16.06687008246537
+      },
+      "final_stroke_mm": {
+        "channel_front": 8.777433649110277,
+        "channel_rear_1": -2.396135398793782,
+        "channel_rear_2": 12.040896593191247,
+        "channel_rear_3": -15.820674530708335
+      },
+      "final_stroke_error_mm": {
+        "channel_front": -1.1018809659703934,
+        "channel_rear_1": 0.31177856658653635,
+        "channel_rear_2": -0.09372923564866971,
+        "channel_rear_3": 0.24619555175703703
+      },
+      "stroke_range_mm": {
+        "channel_front": [
+          0.0,
+          8.779529561940999
+        ],
+        "channel_rear_1": [
+          -2.396135398793782,
+          0.0
+        ],
+        "channel_rear_2": [
+          0.0,
+          12.040896593191247
+        ],
+        "channel_rear_3": [
+          -15.820674530708335,
+          0.0
+        ]
+      },
+      "steady_stroke_error_mm": {
+        "channel_front": 1.514663263418696,
+        "channel_rear_1": 0.4342106263002994,
+        "channel_rear_2": 0.13666646169840752,
+        "channel_rear_3": 0.37167667333006316
+      },
+      "stroke_tracking_fraction": [
+        "channel_front 89%",
+        "channel_rear_1 88%",
+        "channel_rear_2 99%",
+        "channel_rear_3 98%"
+      ],
+      "steady_wheel_angle_error_vs_mechanism_deg": {
+        "axle1_left": 0.3055035522727174,
+        "axle1_right": 0.31097144972814883,
+        "axle2_left": 0.2187630484847154,
+        "axle2_right": 0.22462352635825855,
+        "axle3_left": 0.0,
+        "axle3_right": 0.0,
+        "axle4_left": 0.07432870438237915,
+        "axle4_right": 0.07529851569757212,
+        "axle5_left": 0.006980766056706,
+        "axle5_right": 0.01139464807446322,
+        "axle6_left": 0.01572910888633519,
+        "axle6_right": 0.07186952465032803
+      },
+      "max_steady_wheel_angle_error_vs_mechanism_deg": 0.31097144972814883,
+      "max_steady_wheel_angle_error_vs_ideal_deg": 2.274487404657026,
+      "max_mechanism_ackermann_error_deg": 2.2849896964048115,
+      "final_wheel_angle_deg": {
+        "axle1_left": -1.7777945564480464,
+        "axle1_right": -1.7929715980363226,
+        "axle2_left": -1.2762845089308383,
+        "axle2_right": -1.29263806963779,
+        "axle3_left": 0.0,
+        "axle3_right": 0.0,
+        "axle4_left": 0.41316662518662234,
+        "axle4_right": 0.4157623689198195,
+        "axle5_left": -0.2627314789472039,
+        "axle5_right": 0.5239103630235775,
+        "axle6_left": 0.19073381083589244,
+        "axle6_right": 1.9292322287158583
+      },
+      "target_mechanism_wheel_angle_deg": {
+        "axle1_left": -2.000001593351502,
+        "axle1_right": -2.019249107826084,
+        "axle2_left": -1.4353825856462301,
+        "axle2_right": -1.4560970377566496,
+        "axle3_left": 0.0,
+        "axle3_right": 0.0,
+        "axle4_left": 0.4665231256309404,
+        "axle4_right": 0.46982773620148915,
+        "axle5_left": -0.26752872485770834,
+        "axle5_right": 0.5317405008383351,
+        "axle6_left": 0.18023151908810672,
+        "axle6_right": 1.97696904204617
+      },
+      "max_pressure_mpa_g": 17.429840266200312,
+      "max_abs_velocity_m_s": 0.053820225491330996,
+      "max_abs_stroke_mm": 15.820674530708335,
+      "max_link_residual_m": 1.6209256159527285e-12,
+      "third_axle_max_abs_deg": 0.0,
+      "virtual_work_residual_max_abs": 2.842170943040401e-14,
+      "control_saturation_fraction": 0.0,
+      "anti_windup_active_fraction": 0.0,
+      "pump_capacity_warnings": 0,
+      "diagnostic_damping_n_s_per_m": 0.0,
+      "road_load_scale": 1.0,
+      "status_notes": [
+        "稳态跟踪误差 0.311° 超出 PASS 允许带",
+        "注：M1 机构自身的阿克曼偏差达 2.285°（理想角 vs 可达角），属于机械拓扑固有属性，不计入 J0 跟踪判定"
+      ]
+    },
+    {
+      "case_id": "J0-04",
+      "target_outer_angle_deg": 5.0,
+      "speed_kmh": 10.0,
+      "duration_s": 5.0,
+      "status": "PASS",
+      "completed": true,
+      "failure_reason": null,
+      "target_x_ref_mm": {
+        "channel_front": -24.852359548919246,
+        "channel_rear_1": 6.734042706993943,
+        "channel_rear_2": -20.98045250672012,
+        "channel_rear_3": 23.76726201281317
+      },
+      "final_stroke_mm": {
+        "channel_front": -24.754326162016124,
+        "channel_rear_1": 6.7024378907444975,
+        "channel_rear_2": -21.006393432556656,
+        "channel_rear_3": 23.646098602451623
+      },
+      "final_stroke_error_mm": {
+        "channel_front": 0.0980333869031215,
+        "channel_rear_1": -0.03160481624944582,
+        "channel_rear_2": -0.025940925836534512,
+        "channel_rear_3": -0.12116341036154388
+      },
+      "stroke_range_mm": {
+        "channel_front": [
+          -29.622660751152992,
+          0.0
+        ],
+        "channel_rear_1": [
+          -4.551580857861248e-06,
+          6.7024378907444975
+        ],
+        "channel_rear_2": [
+          -21.03019714472792,
+          0.0
+        ],
+        "channel_rear_3": [
+          0.0,
+          23.646098602451623
+        ]
+      },
+      "steady_stroke_error_mm": {
+        "channel_front": 0.15336828563641478,
+        "channel_rear_1": 0.0492666759960448,
+        "channel_rear_2": 0.03985832074695009,
+        "channel_rear_3": 0.18185854844370714
+      },
+      "stroke_tracking_fraction": [
+        "channel_front 100%",
+        "channel_rear_1 100%",
+        "channel_rear_2 100%",
+        "channel_rear_3 99%"
+      ],
+      "steady_wheel_angle_error_vs_mechanism_deg": {
+        "axle1_left": 0.0321466308867171,
+        "axle1_right": 0.0305533416679431,
+        "axle2_left": 0.023289903181694438,
+        "axle2_right": 0.02168384592952366,
+        "axle3_left": 0.0,
+        "axle3_right": 0.0,
+        "axle4_left": 0.008888177898636496,
+        "axle4_right": 0.008584075576493655,
+        "axle5_left": 0.006393152113559175,
+        "axle5_right": 0.0035668375681046083,
+        "axle6_left": 0.06922598424117954,
+        "axle6_right": 0.02239691017945944
+      },
+      "max_steady_wheel_angle_error_vs_mechanism_deg": 0.06922598424117954,
+      "max_steady_wheel_angle_error_vs_ideal_deg": 6.612183765768283,
+      "max_mechanism_ackermann_error_deg": 6.627186619025748,
+      "final_wheel_angle_deg": {
+        "axle1_left": 5.104864910375895,
+        "axle1_right": 4.9804733943414154,
+        "axle2_left": 3.6895478224563214,
+        "axle2_right": 3.5596673638953504,
+        "axle3_left": 0.0,
+        "axle3_right": 0.0,
+        "axle4_left": -1.186328645068236,
+        "axle4_right": -1.1654791947393475,
+        "axle5_left": -1.5535298542856713,
+        "axle5_right": 0.8721952731293241,
+        "axle6_left": -4.117940809955392,
+        "axle6_right": 0.4559786313744415
+      },
+      "target_mechanism_wheel_angle_deg": {
+        "axle1_left": 5.125414877202888,
+        "axle1_right": 5.0000023461689915,
+        "axle2_left": 3.7044360555873976,
+        "axle2_right": 3.5735267198186365,
+        "axle3_left": 0.0,
+        "axle3_right": 0.0,
+        "axle4_left": -1.192029694033122,
+        "axle4_right": -1.1709866745066588,
+        "axle5_left": -1.549343389098713,
+        "axle5_right": 0.8698635741417534,
+        "axle6_left": -4.164340078441738,
+        "axle6_right": 0.4709814846319063
+      },
+      "max_pressure_mpa_g": 16.975713528769234,
+      "max_abs_velocity_m_s": 0.29895670689677467,
+      "max_abs_stroke_mm": 29.622660751152992,
+      "max_link_residual_m": 1.9393375794152234e-12,
+      "third_axle_max_abs_deg": 0.0,
+      "virtual_work_residual_max_abs": 2.842170943040401e-14,
+      "control_saturation_fraction": 0.0,
+      "anti_windup_active_fraction": 0.0,
+      "pump_capacity_warnings": 0,
+      "diagnostic_damping_n_s_per_m": 0.0,
+      "road_load_scale": 1.0,
+      "status_notes": [
+        "注：M1 机构自身的阿克曼偏差达 6.627°（理想角 vs 可达角），属于机械拓扑固有属性，不计入 J0 跟踪判定"
+      ]
+    }
+  ],
+  "test3_no_road_load": {
+    "J0-01": {
+      "status": "PASS",
+      "completed": true,
+      "road_load_scale": 0.0,
+      "stroke_tracking_fraction": [],
+      "final_wheel_angle_deg": {
+        "axle1_left": 0.0,
+        "axle1_right": 0.0,
+        "axle2_left": 0.0,
+        "axle2_right": 0.0,
+        "axle3_left": 0.0,
+        "axle3_right": 0.0,
+        "axle4_left": 0.0,
+        "axle4_right": 0.0,
+        "axle5_left": 0.0,
+        "axle5_right": 0.0,
+        "axle6_left": 0.0,
+        "axle6_right": 0.0
+      }
+    },
+    "J0-02": {
+      "status": "PASS",
+      "completed": true,
+      "road_load_scale": 0.0,
+      "stroke_tracking_fraction": [
+        "channel_front 100%",
+        "channel_rear_1 111%",
+        "channel_rear_2 105%",
+        "channel_rear_3 105%"
+      ],
+      "final_wheel_angle_deg": {
+        "axle1_left": 2.0203597604748493,
+        "axle1_right": 2.001087950953789,
+        "axle2_left": 1.4568999083072391,
+        "axle2_right": 1.4361595351612375,
+        "axle3_left": 0.0,
+        "axle3_right": 0.0,
+        "axle4_left": -0.5211055256743712,
+        "axle4_right": -0.5170416419652496,
+        "axle5_left": -0.5869731743615332,
+        "axle5_right": 0.3013838850631831,
+        "axle6_left": -2.1328724501327585,
+        "axle6_right": -0.14382735681139602
+      }
+    },
+    "J0-03": {
+      "status": "PASS",
+      "completed": true,
+      "road_load_scale": 0.0,
+      "stroke_tracking_fraction": [
+        "channel_front 100%",
+        "channel_rear_1 110%",
+        "channel_rear_2 106%",
+        "channel_rear_3 104%"
+      ],
+      "final_wheel_angle_deg": {
+        "axle1_left": -2.0010879509538153,
+        "axle1_right": -2.0203597604748698,
+        "axle2_left": -1.43615953516125,
+        "axle2_right": -1.4568999083072662,
+        "axle3_left": 0.0,
+        "axle3_right": 0.0,
+        "axle4_left": 0.5124768053610109,
+        "axle4_right": 0.5164681398525807,
+        "axle5_left": -0.30638606060670176,
+        "axle5_right": 0.5951348233117145,
+        "axle6_left": 0.1488417495630555,
+        "axle6_right": 2.112081179489106
+      }
+    },
+    "J0-04": {
+      "status": "CONDITIONAL",
+      "completed": true,
+      "road_load_scale": 0.0,
+      "stroke_tracking_fraction": [
+        "channel_front 100%",
+        "channel_rear_1 109%",
+        "channel_rear_2 103%",
+        "channel_rear_3 103%"
+      ],
+      "final_wheel_angle_deg": {
+        "axle1_left": 5.141012685990196,
+        "axle1_right": 5.014819062467652,
+        "axle2_left": 3.715736476508739,
+        "axle2_right": 3.584040832331133,
+        "axle3_left": 0.0,
+        "axle3_right": 0.0,
+        "axle4_left": -1.3068908616542092,
+        "axle4_right": -1.2816350957855036,
+        "axle5_left": -1.660525895086267,
+        "axle5_right": 0.9316775304724726,
+        "axle6_left": -4.43764462288375,
+        "axle6_right": 0.5586617630338692
+      }
+    }
+  },
+  "pytest_passed": null,
+  "final_status": {
+    "STRAIGHT_0_DEG": "PASS",
+    "LEFT_PLUS_2_DEG": "CONDITIONAL",
+    "RIGHT_MINUS_2_DEG": "CONDITIONAL",
+    "LEFT_PLUS_5_DEG": "PASS"
+  }
+}

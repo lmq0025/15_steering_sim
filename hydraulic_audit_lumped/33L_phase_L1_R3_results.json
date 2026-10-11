@@ -1,0 +1,61 @@
+{
+  "phase": "L1-R3",
+  "fast_channels": 4,
+  "dynamic_states": 16,
+  "pipe_dynamic_states": 0,
+  "sc1_area_table_transfer": "PASS",
+  "sc1_port_flow_validation": "CONDITIONAL",
+  "supply_algebraic_mapping": "PASS",
+  "all_node_flow_balances": "PASS",
+  "amesim": {
+    "S0": true,
+    "S1": true,
+    "S2": true
+  },
+  "python_max_chamber_pressure_before_pa": 384662837.8028275,
+  "python_max_chamber_pressure_after_pa": 2065352.799071544,
+  "amesim_comparable_max_pressure_pa": 1672168.3710107943,
+  "independent_comparable_variables": 54,
+  "within_10_percent": 10,
+  "pump_flow_regression": "PASS",
+  "dynamic_regression": "CONDITIONAL",
+  "runtime": {
+    "S0": {
+      "success": true,
+      "wall_time_s": 4.430890100076795,
+      "max_chamber_pressure_pa": 2065352.799071544,
+      "min_chamber_pressure_pa": 0.0
+    },
+    "S1": {
+      "success": true,
+      "wall_time_s": 4.468589799944311,
+      "max_chamber_pressure_pa": 2065352.799071544,
+      "min_chamber_pressure_pa": 0.0
+    },
+    "S2": {
+      "success": true,
+      "wall_time_s": 4.5124686998315156,
+      "max_chamber_pressure_pa": 2065352.799071544,
+      "min_chamber_pressure_pa": 0.0
+    }
+  },
+  "benchmark_100s": {
+    "scenario": "S2_PERIODIC",
+    "physical_time_s": 100.0,
+    "dt_s": 0.0005,
+    "wall_time_s": 458.5629571999889,
+    "measurement": "ACTUAL",
+    "status": "PASS",
+    "final_time_s": 100.0,
+    "max_chamber_pressure_pa": 2073870.256911198,
+    "min_chamber_pressure_pa": 0.0
+  },
+  "pytest": "222 passed",
+  "ready_for_L2_targeted_calibration": false,
+  "ready_for_mechanical_integration": false,
+  "protected_models": {
+    "qh1_1.ame": "7613615723973d66a7122c74956c5161f720a64b243139fe9736cb270303b767",
+    "qh1_1_MCP_AUDIT.ame": "7613615723973d66a7122c74956c5161f720a64b243139fe9736cb270303b767",
+    "unchanged_in_r3_extractions": true
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "schema_version": "J0.1",
+  "phase": "J0",
+  "description": "PHASE J0 first control-hydraulic-mechanical joint commissioning of the 15-institute electro-hydraulic steering system.",
+  "evidence_tags": {
+    "VERIFIED_CODE": "readable directly from the current official source",
+    "CUSTOMER_GEOMETRY": "from the frozen CUSTOMER coordinate file after mm->m conversion",
+    "ASSUMED": "engineering assumption required to close an interface but lacking CUSTOMER or cross-module evidence",
+    "UNVERIFIED": "not safe to use without further evidence"
+  },
+  "models": {
+    "hydraulic": "src/steering_sim/hydraulics_lumped L1-FAST V1 (LumpedHydraulicSystem.fast_engineering, 4 channels, 16 states)",
+    "mechanical": "mechanics_ackermann_v2 M1 (PhaseM1Model, 4 dof q_front/q4/q5/q6, 12 wheels, 7 physical cylinder interfaces)",
+    "control": "src/steering_sim/control/pid.py PIDController reused per channel"
+  },
+  "hydraulic": {
+    "dt_hydraulic_s": 0.0005,
+    "integration": "explicit RK4 with stage-consistent mechanical load",
+    "pump_speed_mode": "channel_nominal_speed",
+    "initial_pressure_mode": "group_regulated_return_rail_pressure",
+    "initial_position_m": 0.0,
+    "initial_velocity_m_s": 0.0,
+    "redundant_valve_commands": {
+      "dirvalve_2": 0.0,
+      "dirvalve_9": 0.0,
+      "dirvalve_12": 0.0
+    },
+    "redundant_valve_note": "ASSUMED explicit zero. In the L1-Fast regulated_constant_pressure boundary both SC_1 rails of the redundant wrappers sit on the same regulated rail, so their four-port flows are identically zero at any command; the command is still written explicitly rather than left to an implicit default.",
+    "load_model": {
+      "neutralize_initial_bias": true,
+      "neutralize_initial_bias_source": "ASSUMED_ENGINEERING_INITIALIZATION_DEVICE",
+      "neutralize_initial_bias_note": "The L1-Fast healthy working point sets external_load = A_a*p - A_b*p so that the pre-charged state has a zero mechanical residual. J0 holds that same constant offset for the whole run so that t=0 is a genuine equilibrium and the J0 response is not confused with the pre-charge transient. It is an initialization device, not a measured road load.",
+      "road_load_ramp_s": 0.10,
+      "road_load_ramp_note": "The road load is faded in over this interval from the pure L1-Fast working-point load so that no step in net force is injected."
+    }
+  },
+  "control": {
+    "dt_control_s": 0.010,
+    "reference_signal": "representative hydraulic stroke of the equivalent actuation group (x_ref), not a wheel angle and not the target angle copied four times",
+    "reference_ramp_s": 0.20,
+    "channels": [
+      {
+        "index": 0,
+        "channel": "channel_front",
+        "valve_alias": "dirvalve_6",
+        "actuator_alias": "actuator002",
+        "dof": "q_front",
+        "cylinder_group": "front_group_1",
+        "kp": 40.0,
+        "ki": 4.0,
+        "kd": 0.4,
+        "command_limit": 1.0,
+        "command_min": 0.0,
+        "command_max": 1.0,
+        "neutral_command": 1.0,
+        "command_polarity": 1.0,
+        "mapping_status": "ASSUMED",
+        "authority_status": "ONE_QUADRANT_NEGATIVE_X_MEASURED",
+        "notes": "x_front = 0.25*q_front is ASSUMED_ENGINEERING_PARAMETER_INTERFACE_PLACEHOLDER (no CUSTOMER front hardpoints). Measured authority: dirvalve_6 gives zero SC_1 flow only at command +1.0; every command below +1.0 drives x negative, so the reachable set is x<=0."
+      },
+      {
+        "index": 1,
+        "channel": "channel_rear_1",
+        "valve_alias": "dirvalve_1",
+        "actuator_alias": "actuator001",
+        "dof": "q4",
+        "cylinder_group": "axle4_A+axle4_B",
+        "kp": 40.0,
+        "ki": 4.0,
+        "kd": 0.4,
+        "command_limit": 1.0,
+        "command_min": -1.0,
+        "command_max": 1.0,
+        "neutral_command": 0.0,
+        "command_polarity": 1.0,
+        "mapping_status": "ASSUMED",
+        "authority_status": "TWO_QUADRANT_MEASURED",
+        "notes": "channel_rear_1 -> q4 is an ASSUMED cross-module mapping. x is the A-cylinder relative length L_A(q4)-L_A(0), an ASSUMED representative coordinate."
+      },
+      {
+        "index": 2,
+        "channel": "channel_rear_2",
+        "valve_alias": "dirvalve_8",
+        "actuator_alias": "actuator001_1",
+        "dof": "q5",
+        "cylinder_group": "axle5_A+axle5_B",
+        "kp": 40.0,
+        "ki": 4.0,
+        "kd": 0.4,
+        "command_limit": 1.0,
+        "command_min": -1.0,
+        "command_max": 1.0,
+        "neutral_command": 0.0,
+        "command_polarity": 1.0,
+        "mapping_status": "ASSUMED",
+        "authority_status": "TWO_QUADRANT_MEASURED",
+        "notes": "channel_rear_2 -> q5 is an ASSUMED cross-module mapping. x is L_A(q5)-L_A(0)."
+      },
+      {
+        "index": 3,
+        "channel": "channel_rear_3",
+        "valve_alias": "dirvalve_11",
+        "actuator_alias": "actuator001_2",
+        "dof": "q6",
+        "cylinder_group": "axle6_A+axle6_B",
+        "kp": 40.0,
+        "ki": 4.0,
+        "kd": 0.4,
+        "command_limit": 1.0,
+        "command_min": -1.0,
+        "command_max": 1.0,
+        "neutral_command": 0.0,
+        "command_polarity": 1.0,
+        "mapping_status": "ASSUMED",
+        "authority_status": "TWO_QUADRANT_MEASURED",
+        "notes": "channel_rear_3 -> q6 is an ASSUMED cross-module mapping. x is L_A(q6)-L_A(0)."
+      }
+    ]
+  },
+  "mapping": {
+    "channel_order": ["channel_front", "channel_rear_1", "channel_rear_2", "channel_rear_3"],
+    "front_stroke_per_q_m_per_rad": 0.25,
+    "front_stroke_source": "ASSUMED_ENGINEERING_PARAMETER_INTERFACE_PLACEHOLDER (mechanics_ackermann_v2/config.json front_cylinder_interface)",
+    "rear_representative_cylinder": "A",
+    "rear_representative_source": "ASSUMED; CUSTOMER hardpoints and A/B lengths are CUSTOMER_GEOMETRY, the choice of A as the single equivalent channel coordinate is not",
+    "table_step_rad": 0.001,
+    "singular_jacobian_threshold_m_per_rad": 0.0001,
+    "monotonic_tolerance_m_per_rad": 0.0,
+    "q_envelope_source": "NUMERICALLY_VERIFIED_CONTINUATION_ENVELOPE_NOT_CUSTOMER_MECHANICAL_LIMIT"
+  },
+  "load": {
+    "friction_coefficient": 0.75,
+    "friction_coefficient_source": "ASSUMED_ENGINEERING_PARAMETER (M1 default scan value)",
+    "axle_mass_t": [11.5, 11.5, 11.5, 11.5, 11.5, 11.5],
+    "axle_mass_source": "ASSUMED_ENGINEERING_PARAMETER (M1 default scan value)",
+    "curvature_source": "target ideal Ackermann ICR of the commanded manoeuvre; the vehicle is treated as following the commanded path so that the wheel-angle error appears as tire slip",
+    "moment_model": "M1 solve_loaded_case road-moment formulas re-evaluated on the ACTUAL q; the M1 static compliance correction loaded_q = q - Q/K is deliberately NOT applied"
+  },
+  "cases": [
+    {"id": "J0-01", "target_outer_angle_deg": 0.0, "speed_kmh": 0.0, "duration_s": 2.0},
+    {"id": "J0-02", "target_outer_angle_deg": 2.0, "speed_kmh": 5.0, "duration_s": 2.0},
+    {"id": "J0-03", "target_outer_angle_deg": -2.0, "speed_kmh": 5.0, "duration_s": 2.0},
+    {"id": "J0-04", "target_outer_angle_deg": 5.0, "speed_kmh": 10.0, "duration_s": 2.0}
+  ],
+  "output": {
+    "sample_stride_hydraulic_steps": 4,
+    "csv_float_format": "%.12g"
+  },
+  "acceptance": {
+    "steady_wheel_angle_error_deg_pass": 0.25,
+    "steady_wheel_angle_error_deg_conditional": 1.0,
+    "link_residual_limit_m": 1.0e-9,
+    "third_axle_abs_limit_deg": 1.0e-9,
+    "mapping_jacobian_abs_min_m_per_rad": 0.0001
+  }
+}

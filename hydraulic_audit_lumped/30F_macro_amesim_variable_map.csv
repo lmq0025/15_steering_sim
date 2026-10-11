@@ -1,0 +1,29 @@
+﻿channel,physical_quantity,amesim_variable,lumped_output,si_unit,comparison_scope
+channel_1,pump flow,qout@pump01,channel_1.pump_flow,m^3/s,macro
+channel_1,supply pressure,pout@pump01,channel_1.supply_pressure,Pa(g),macro
+channel_1,chamber A pressure,p1@actuator001,channel_1.pA,Pa(g),macro
+channel_1,chamber B pressure,p2@actuator001,channel_1.pB,Pa(g),macro
+channel_1,position,x@actuator001,channel_1.position,m,macro
+channel_1,velocity,v@actuator001,channel_1.velocity,m/s,macro
+channel_1,hydraulic force,frod@actuator001,channel_1.hydraulic_force,N,macro
+channel_2,pump flow,qout@pump01_1,channel_2.pump_flow,m^3/s,macro
+channel_2,supply pressure,pout@pump01_1,channel_2.supply_pressure,Pa(g),macro
+channel_2,chamber A pressure,p1@actuator001_1,channel_2.pA,Pa(g),macro
+channel_2,chamber B pressure,p2@actuator001_1,channel_2.pB,Pa(g),macro
+channel_2,position,x@actuator001_1,channel_2.position,m,macro
+channel_2,velocity,v@actuator001_1,channel_2.velocity,m/s,macro
+channel_2,hydraulic force,frod@actuator001_1,channel_2.hydraulic_force,N,macro
+channel_3,pump flow,qout@pump01_2,channel_3.pump_flow,m^3/s,macro
+channel_3,supply pressure,pout@pump01_2,channel_3.supply_pressure,Pa(g),macro
+channel_3,chamber A pressure,p1@actuator001_2,channel_3.pA,Pa(g),macro
+channel_3,chamber B pressure,p2@actuator001_2,channel_3.pB,Pa(g),macro
+channel_3,position,x@actuator001_2,channel_3.position,m,macro
+channel_3,velocity,v@actuator001_2,channel_3.velocity,m/s,macro
+channel_3,hydraulic force,frod@actuator001_2,channel_3.hydraulic_force,N,macro
+channel_4,pump flow,qout@pump01_3,channel_4.pump_flow,m^3/s,macro
+channel_4,supply pressure,pout@pump01_3,channel_4.supply_pressure,Pa(g),macro
+channel_4,chamber A pressure,p1@actuator002,channel_4.pA,Pa(g),macro
+channel_4,chamber B pressure,p2@actuator002,channel_4.pB,Pa(g),macro
+channel_4,position,x@actuator002,channel_4.position,m,macro
+channel_4,velocity,v@actuator002,channel_4.velocity,m/s,macro
+channel_4,hydraulic force,frod@actuator002,channel_4.hydraulic_force,N,macro

@@ -1,0 +1,8 @@
+﻿scenario,physical_time_s,dt_s,wall_time_s,realtime_speedup,numerical_error_bound,status
+neutral,1,0.0005,0.3517658000346273,2.842800522113183,<=1% for 1 s S1/S2 convergence,PASS
+neutral,10,0.0005,3.450889900093898,2.8978032593065057,<=1% for 1 s S1/S2 convergence,PASS
+neutral,100,0.0005,34.63528120005503,2.8872293376916804,<=1% for 1 s S1/S2 convergence,PASS
+step,1,0.0005,0.37707020016387105,2.652026067202897,<=1% for 1 s S1/S2 convergence,PASS
+sine,1,0.0005,0.3741775001399219,2.672528411318304,<=1% for 1 s S1/S2 convergence,PASS
+sine,10,0.0005,3.7528474000282586,2.6646433851599456,<=1% for 1 s S1/S2 convergence,PASS
+sine,100,0.0005,37.38816830003634,2.674642929750126,<=1% for 1 s S1/S2 convergence,PASS

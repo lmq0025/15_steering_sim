@@ -1,0 +1,9 @@
+﻿supply_group,node,amesim_evidence,python_variable,role,status
+front,pump_outlet,pout@pump01; V3_HJ_066/068,pump_outlet_pressure,sensor node,PASS
+front,valve_high_T,p_T@dirvalve_6; V3_HJ_035,valve_high_rail_pressure,upstream SC_1 rail,PASS
+front,relief_high,p2@presscontrol01,manifold_pressure,RV010 inlet,PASS
+front,return_low_P,p1@presscontrol01=p_P@dirvalve_6,valve_return_rail_pressure,RV010 outlet/SC_1 P,PASS
+rear,pump_outlet,pout@pump01_2; V3_HJ_108/110,pump_outlet_pressure,sensor node,PASS
+rear,relief_and_pprv_inlet,p2@presscontrol01_3=p1@pprv_1/2/3,manifold_pressure,RV010 inlet and HYDPRV0 upstream,PASS
+rear,regulated_T_rails,p3@pprv_1/2/3=p_T@primary SC_1,valve_high_rail_pressure,load-sensing downstream rail,PASS
+rear,return_low_P,p1@presscontrol01_3=p_P@primary SC_1,valve_return_rail_pressure,RV010 outlet/SC_1 P,PASS

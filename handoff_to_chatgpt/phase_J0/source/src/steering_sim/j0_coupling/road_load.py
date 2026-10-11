@@ -1,0 +1,183 @@
+"""Road load on the ACTUAL mechanism configuration, and its hydraulic equivalent.
+
+This module reuses the M1 ``solve_loaded_case`` road-moment formulas on the
+mechanism coordinates that the hydraulic strokes actually produce.  It
+deliberately does **not** call ``CaseInput``/``solve_loaded_case`` itself:
+
+* ``solve_loaded_case`` starts from a *target* geometry and then applies the M1
+  static compliance correction ``q_loaded = q - Q/K``.  In J0 the actuator
+  position already determines ``q``, and the road load must be fed back exactly
+  once, so that correction is forbidden here.
+* J0 needs the road load at every RK4 stage, where only the cheap table-based
+  angles and Jacobians are available.
+
+Sign contract (see ``04_INTERFACES_AND_RISKS.md`` section 5):
+
+    x = phi(q),  J = dx/dq
+    Q_road = sum_i M_i * d(delta_i)/dq          [N*m/rad]
+    F_load = Q_road / J                         [N]
+
+``F_load > 0`` resists positive ``x`` in the L1-Fast actuator equation
+``m*xddot = F_hyd - F_load - ...``.  The polarity is therefore fixed by the
+mapping and is verified by the virtual-work identity ``F_load*xdot = Q_road*qdot``
+rather than by any tuned scale factor.
+"""
+from __future__ import annotations
+
+from dataclasses import dataclass
+import math
+from typing import Mapping
+
+import numpy as np
+
+from .geometry import DOF_WHEELS, WHEEL_ORDER, J0GeometryAdapter, J0MappingError
+
+REAR_AXLES = (4, 5, 6)
+
+
+@dataclass(frozen=True, slots=True)
+class RoadLoad:
+    """Road load on one mechanism configuration."""
+
+    generalized_road_moment_nm: Mapping[str, float]
+    hydraulic_load_force_n: Mapping[str, float]
+    stroke_jacobian_m_per_rad: Mapping[str, float]
+    road_moment_nm: Mapping[str, float]
+    tire_slip_angle_deg: Mapping[str, float]
+    lateral_force_demand_n: Mapping[str, float]
+    lateral_force_available_n: Mapping[str, float]
+    normal_load_n: Mapping[str, float]
+    lateral_acceleration_mps2: float
+    adhesion_utilization: float
+    max_abs_slip_angle_deg: float
+    flags: tuple[str, ...]
+
+    @property
+    def status(self) -> str:
+        return "OK" if not self.flags else "|".join(self.flags)
+
+
+def _axle_x_and_cg(adapter: J0GeometryAdapter, masses_kg: np.ndarray) -> tuple[np.ndarray, float]:
+    centers = adapter.model.centers
+    axle_x = np.array([
+        0.5 * (centers[f"axle{a}_left"][0] + centers[f"axle{a}_right"][0])
+        for a in range(1, 7)
+    ])
+    total = float(np.sum(masses_kg))
+    if total <= 0.0:
+        return axle_x, float(np.mean(axle_x))
+    return axle_x, float(np.dot(masses_kg, axle_x) / total)
+
+
+def _allocate_lateral_force(adapter: J0GeometryAdapter, total_force: float,
+                            masses_kg: np.ndarray) -> np.ndarray:
+    """Axle lateral-force split satisfying total force and yaw-moment balance."""
+    total_mass = float(np.sum(masses_kg))
+    if total_mass <= 0.0 or abs(total_force) <= 1.0e-15:
+        return np.zeros(6)
+    axle_x, x_cg = _axle_x_and_cg(adapter, masses_kg)
+    matrix = np.vstack([np.ones(6), axle_x - x_cg])
+    weights = np.diag(np.maximum(masses_kg, 1.0e-12))
+    rhs = np.array([total_force, 0.0])
+    return weights @ matrix.T @ np.linalg.pinv(matrix @ weights @ matrix.T) @ rhs
+
+
+def road_load(adapter: J0GeometryAdapter, q_values: Mapping[str, float], *,
+              speed_kmh: float, friction_coefficient: float,
+              axle_mass_t: tuple[float, ...], curvature_1pm: float,
+              singular_threshold_m_per_rad: float) -> RoadLoad:
+    """Evaluate the M1 road load on ``q_values`` and convert it to load forces."""
+    cfg = adapter.model.config["ground_load"]
+    gravity = float(cfg["gravity_mps2"])
+    masses = 1000.0 * np.asarray(axle_mass_t, dtype=float)
+    total_mass = float(np.sum(masses))
+    speed_mps = float(speed_kmh) / 3.6
+    ay = speed_mps ** 2 * float(curvature_1pm)
+    axle_demand = _allocate_lateral_force(adapter, total_mass * ay, masses)
+
+    c_alpha = float(cfg["cornering_stiffness_per_wheel_N_per_rad"])
+    trail = float(cfg["effective_trail_m"])
+    pivot_radius = float(cfg["pivot_effective_radius_m"])
+    transition = max(float(cfg["pivot_transition_speed_kmh"]), 1.0e-12)
+    engagement_angle = math.radians(float(cfg["pivot_engagement_angle_deg"]))
+    pivot_weight = math.exp(-((float(speed_kmh) / transition) ** 2))
+
+    angles_deg = adapter.wheel_angles_deg(q_values)
+    jacobian = adapter.wheel_angle_jacobian(q_values)
+
+    normal_load: dict[str, float] = {}
+    demand: dict[str, float] = {}
+    available: dict[str, float] = {}
+    slip: dict[str, float] = {}
+    moments: dict[str, float] = {}
+    for index, axle in enumerate(range(1, 7)):
+        for side in ("left", "right"):
+            wheel = f"axle{axle}_{side}"
+            normal_load[wheel] = masses[index] * gravity / 2.0
+            demand[wheel] = float(axle_demand[index] / 2.0)
+            limit = float(friction_coefficient) * normal_load[wheel]
+            available[wheel] = float(np.clip(demand[wheel], -limit, limit))
+            slip[wheel] = math.degrees(-demand[wheel] / c_alpha)
+            delta = math.radians(angles_deg[wheel])
+            engagement = math.tanh(abs(delta) / max(engagement_angle, 1.0e-12))
+            pivot_magnitude = float(friction_coefficient) * normal_load[wheel] * pivot_radius * engagement
+            running_magnitude = abs(available[wheel]) * trail
+            magnitude = pivot_weight * pivot_magnitude + (1.0 - pivot_weight) * running_magnitude
+            moments[wheel] = math.copysign(magnitude, delta) if abs(delta) > 1.0e-14 else 0.0
+
+    generalized: dict[str, float] = {}
+    load_force: dict[str, float] = {}
+    stroke_jacobian: dict[str, float] = {}
+    flags: list[str] = []
+    for dof, wheels in DOF_WHEELS.items():
+        generalized[dof] = float(sum(
+            moments[wheel] * jacobian[dof][wheel] for wheel in wheels))
+        jac = adapter.stroke_jacobian(dof, float(q_values[dof]))
+        stroke_jacobian[dof] = jac
+        if not math.isfinite(jac) or abs(jac) < float(singular_threshold_m_per_rad):
+            flags.append(f"{dof}:LOAD_CONVERSION_SINGULAR")
+            load_force[dof] = math.nan
+            continue
+        load_force[dof] = generalized[dof] / jac
+
+    utilization = (
+        abs(ay) / (float(friction_coefficient) * gravity)
+        if float(friction_coefficient) > 0.0 else (math.inf if abs(ay) > 0.0 else 0.0))
+    max_slip = max(map(abs, slip.values()), default=0.0)
+    if utilization > 1.0:
+        flags.append("ADHESION_INFEASIBLE")
+    if max_slip > float(cfg["linear_slip_limit_deg"]):
+        flags.append("OUTSIDE_LINEAR_TIRE_RANGE")
+
+    return RoadLoad(
+        generalized_road_moment_nm=generalized,
+        hydraulic_load_force_n=load_force,
+        stroke_jacobian_m_per_rad=stroke_jacobian,
+        road_moment_nm=moments,
+        tire_slip_angle_deg=slip,
+        lateral_force_demand_n=demand,
+        lateral_force_available_n=available,
+        normal_load_n=normal_load,
+        lateral_acceleration_mps2=ay,
+        adhesion_utilization=utilization,
+        max_abs_slip_angle_deg=max_slip,
+        flags=tuple(flags),
+    )
+
+
+def virtual_work_residual(road: RoadLoad, q_dot_rad_s: Mapping[str, float]
+                          ) -> dict[str, float]:
+    """``F_load*xdot - Q_road*qdot`` per group; zero if the sign contract holds."""
+    residual: dict[str, float] = {}
+    for dof, jac in road.stroke_jacobian_m_per_rad.items():
+        q_dot = float(q_dot_rad_s.get(dof, 0.0))
+        x_dot = jac * q_dot
+        residual[dof] = road.hydraulic_load_force_n[dof] * x_dot - \
+            road.generalized_road_moment_nm[dof] * q_dot
+    return residual
+
+
+def require_finite(road: RoadLoad) -> None:
+    for dof, value in road.hydraulic_load_force_n.items():
+        if not math.isfinite(value):
+            raise J0MappingError(f"{dof}: non-finite hydraulic load force")

@@ -1,0 +1,7 @@
+﻿supply_group,measurement,junction,path_element,python_representation,parameter,status
+front,pump01 outlet,V3_HJ_066,HL012 hydraulic,pump_outlet_pressure,R_eq not spatially resolved,CONDITIONAL
+front,pump inlet/tank/filter port,V3_HJ_044,TK000 + filter_1,tank pressure 0 Pa(g),exact effort boundary,PASS
+front,valve inlet manifold,V3_HJ_034,filter_1/HL0000/cooler/HL0000 path,co-located with pump outlet,R_eq=1.18e10 identified,STRUCTURE_LIMITATION
+front,relief inlet,V3_HJ_034,RV010 presscontrol01,shared algebraic node,16 MPa + conductance,PASS_AT_LUMPED_LEVEL
+rear,pump01_2 outlet,V3_HJ_108,HL012 hydraulic_34,pump_outlet_pressure,R_eq not spatially resolved,CONDITIONAL
+rear,valve manifolds,V3_HJ_015;V3_HJ_029;V3_HJ_037;V3_HJ_021,filter_3/cooler_1/physical lines,one shared algebraic manifold,R_eq=1.18e10 identified,STRUCTURE_LIMITATION

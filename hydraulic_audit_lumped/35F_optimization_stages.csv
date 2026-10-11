@@ -1,0 +1,9 @@
+﻿scenario,solver,physical_time_s,dt_s,repeats,wall_time_s,real_time_factor,rhs_calls,algebraic_calls,correction_iterations,fallbacks,network_evaluations,finite,optimization_stage,changes,numerical_regression
+S2_PERIODIC,reference,1.0,0.0005,1,4.7228142998646945,4.7228142998646945,8000,0,0,0,0,True,P0,original retained R3 solver,REFERENCE
+S2_PERIODIC,reference,10.0,0.0005,1,47.11557300016284,4.711557300016284,80000,0,0,0,0,True,P0,original retained R3 solver,REFERENCE
+S2_PERIODIC,fast_scalar,1.0,0.0005,1,1.9929275000467896,1.9929275000467896,8000,16000,46938,2,62942,True,P1_P2,compiled SC1 evaluator + scalar predictor/corrector,PASS
+S2_PERIODIC,fast_scalar,10.0,0.0005,1,20.396659899968654,2.039665989996865,80000,160000,470865,47,630869,True,P1_P2,compiled SC1 evaluator + scalar predictor/corrector,PASS
+S2_PERIODIC,fast,1.0,0.0005,1,1.229131800122559,1.229131800122559,8000,16000,37057,3,53061,True,P3,analytic joint rail solve + compiled topology,PASS
+S2_PERIODIC,fast,10.0,0.0005,1,12.211579499999061,1.2211579499999061,80000,160000,371775,74,531779,True,P3,analytic joint rail solve + compiled topology,PASS
+S2_PERIODIC,fast,1.0,0.0005,3,1.2425979999825358,1.2425979999825358,8000,16000,37057,3,53061,True,P4_P6,accepted timestep + final fast solver,PASS
+S2_PERIODIC,fast,10.0,0.0005,3,13.359454900026321,1.3359454900026322,80000,160000,371775,74,531779,True,P4_P6,accepted timestep + final fast solver,PASS

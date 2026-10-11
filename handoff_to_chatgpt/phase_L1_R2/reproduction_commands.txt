@@ -1,0 +1,5 @@
+cd E:\15_project
+& "E:\ProgramData\condaData\envs_dirs\steering_sim\python.exe" -c "import sys; print(sys.executable)"
+& "E:\Simcenter\2021.1\Amesim\win64\AMEPython.exe" .\scripts\hydraulics\run_phase_l1_r2_amesim.py --output .\hydraulic_audit_lumped\32_amesim_paired_raw.json
+& "E:\ProgramData\condaData\envs_dirs\steering_sim\python.exe" .\scripts\hydraulics\run_phase_l1_r2_validation.py
+& "E:\ProgramData\condaData\envs_dirs\steering_sim\python.exe" -m pytest -q

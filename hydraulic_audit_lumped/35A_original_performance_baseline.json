@@ -1,0 +1,88 @@
+{
+  "phase": "L1-S1",
+  "scenario": "S2_PERIODIC",
+  "solver": "original R3 RK4",
+  "dt_s": 0.0005,
+  "dynamic_states": 16,
+  "pipe_dynamic_states": 0,
+  "physics_equations_changed": false,
+  "runs": {
+    "1s": {
+      "physical_time_s": 1.0,
+      "wall_time_s": 11.530160899972543,
+      "real_time_factor": 11.530160899972543,
+      "steps": 2000,
+      "rhs_calls": 8000,
+      "final_time_s": 1.0,
+      "max_chamber_pressure_pa": 2065352.799071544,
+      "min_chamber_pressure_pa": 0.0,
+      "final_state": [
+        1177075.4138639942,
+        1146813.049006702,
+        -2.729941011916144e-05,
+        -1.2029507653209027e-05,
+        1266829.7279872478,
+        1603985.7772345676,
+        -0.016050639400203317,
+        -0.018339582576994775,
+        1249939.7944779566,
+        1611632.8508537484,
+        -0.015911260873770594,
+        -0.018339466246202796,
+        1238196.173536273,
+        1613996.2470429789,
+        -0.016008943781267573,
+        -0.01832438684727881
+      ],
+      "finite": true
+    },
+    "10s": {
+      "physical_time_s": 10.0,
+      "wall_time_s": 115.06438310001977,
+      "real_time_factor": 11.506438310001977,
+      "steps": 20000,
+      "rhs_calls": 80000,
+      "final_time_s": 10.0,
+      "max_chamber_pressure_pa": 2073870.256910903,
+      "min_chamber_pressure_pa": 0.0,
+      "final_state": [
+        1177075.4138640016,
+        1146813.0490066737,
+        -0.00027299410119161285,
+        -0.00012029507653212242,
+        1266829.7279872939,
+        1603985.7772345233,
+        -0.16050639400203304,
+        -0.18339582576994795,
+        1249939.7944779883,
+        1611632.850853717,
+        -0.15911260873770566,
+        -0.18339466246202732,
+        1238196.1735362974,
+        1613996.2470429551,
+        -0.1600894378126748,
+        -0.18324386847278734
+      ],
+      "finite": true
+    },
+    "100s_frozen": {
+      "scenario": "S2_PERIODIC",
+      "physical_time_s": 100.0,
+      "dt_s": 0.0005,
+      "wall_time_s": 458.5629571999889,
+      "measurement": "ACTUAL",
+      "status": "PASS",
+      "final_time_s": 100.0,
+      "max_chamber_pressure_pa": 2073870.256911198,
+      "min_chamber_pressure_pa": 0.0
+    }
+  },
+  "environment": {
+    "python": "E:\\ProgramData\\condaData\\envs_dirs\\steering_sim\\python.exe",
+    "numpy": "2.4.6"
+  },
+  "protected_model_hashes": {
+    "qh1_1.ame": "7613615723973d66a7122c74956c5161f720a64b243139fe9736cb270303b767",
+    "qh1_1_MCP_AUDIT.ame": "7613615723973d66a7122c74956c5161f720a64b243139fe9736cb270303b767"
+  }
+}

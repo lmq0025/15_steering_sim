@@ -1,0 +1,7 @@
+﻿scenario,supply_group,method,converged,iterations,absolute_residual_m3_s,relative_residual,search_bound_is_output_clamp,silent_failure,status
+S0,supply_front,analytic special case or brentq bracket,YES,0,-1.0842021724855044e-19,2.4093381610788987e-16,NO,NO,PASS
+S0,supply_rear,analytic special case or brentq bracket,YES,7,0.0,0.0,NO,NO,PASS
+S1,supply_front,analytic special case or brentq bracket,YES,0,-1.0842021724855044e-19,2.4093381610788987e-16,NO,NO,PASS
+S1,supply_rear,analytic special case or brentq bracket,YES,7,0.0,0.0,NO,NO,PASS
+S2,supply_front,analytic special case or brentq bracket,YES,0,-1.0842021724855044e-19,2.4093381610788987e-16,NO,NO,PASS
+S2,supply_rear,analytic special case or brentq bracket,YES,7,0.0,0.0,NO,NO,PASS

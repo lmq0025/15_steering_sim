@@ -1,0 +1,7 @@
+﻿group,path,model,value_si,unit,source,source_type,validation
+front,pump outlet -> relief high,linear R,6624000000.0,Pa s/m3,S0 sensor difference / per-pump flow,AMESIM_IDENTIFIED,S1/S2
+front,relief low -> tank return,linear R,2592000000.0,Pa s/m3,S0 p1@RV / measured return flow,AMESIM_IDENTIFIED,S1/S2
+front,relief high -> SC_1 T rail,linear R,1000000000.0,Pa s/m3,S0 spatial pressure difference,AMESIM_IDENTIFIED,S1/S2
+rear,pump outlet -> relief/pprv inlet,linear R,4633000000.0,Pa s/m3,S0 sensor difference / per-pump flow,AMESIM_IDENTIFIED,S1/S2
+rear,relief low -> tank return,linear R,2192000000.0,Pa s/m3,S0 low pressure / total verified return flow,AMESIM_IDENTIFIED,S1/S2
+rear,verified auxiliary controls,constant healthy baseline flow,7.45e-05,m3/s,S0 pump-pprv-relief balance; stable in S1/S2,AMESIM_IDENTIFIED,S1/S2

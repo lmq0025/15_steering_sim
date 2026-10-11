@@ -1,0 +1,80 @@
+{
+  "phase": "L1-R2",
+  "s0_comparability": "CONDITIONAL",
+  "pump_input_mapping": "PASS",
+  "valve_branch_mapping": "PASS",
+  "supply_pressure_mapping": "CONDITIONAL",
+  "supply_flow_conservation": "PASS",
+  "amesim": {
+    "S0": true,
+    "S1": true,
+    "S2": true
+  },
+  "python_scenarios": {
+    "S0": {
+      "success": true,
+      "wall_time_s": 56.06740970001556
+    },
+    "S1": {
+      "success": true,
+      "wall_time_s": 56.02293880004436
+    },
+    "S2": {
+      "success": true,
+      "wall_time_s": 33.26188250002451
+    }
+  },
+  "independent_dynamic_variables": 44,
+  "within_10_percent": 0,
+  "dynamic_states": 16,
+  "pipe_states": 0,
+  "benchmarks": [
+    {
+      "scenario": "STEP",
+      "physical_time_s": "1.0",
+      "dt_s": "0.0005",
+      "wall_time_s": "1.2338956000749022",
+      "realtime_factor": "1.2338956000749022",
+      "speedup": "0.8104413371271412",
+      "prescribed_motion_boundary": "YES",
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "scenario": "SINE",
+      "physical_time_s": "1.0",
+      "dt_s": "0.0005",
+      "wall_time_s": "1.2399488999508321",
+      "realtime_factor": "1.2399488999508321",
+      "speedup": "0.8064848479156304",
+      "prescribed_motion_boundary": "YES",
+      "status": "PASS",
+      "error": ""
+    },
+    {
+      "scenario": "SINE",
+      "physical_time_s": "100.0",
+      "dt_s": "0.0005",
+      "wall_time_s": "131.49951340002008",
+      "realtime_factor": "1.3149951340002008",
+      "speedup": "0.7604590877519151",
+      "prescribed_motion_boundary": "YES",
+      "status": "PASS",
+      "error": ""
+    }
+  ],
+  "pytest": "216 passed in 296.90s",
+  "ready_for_L2_macro_calibration": false,
+  "ready_for_mechanical_integration": false,
+  "protected_model_hash": "7613615723973d66a7122c74956c5161f720a64b243139fe9736cb270303b767",
+  "evidence_note": "position/velocity are measured mechanical boundaries, not independent predictions",
+  "final_acceptance": {
+    "S0_comparability": "FAIL",
+    "pump_input_mapping": "PASS",
+    "valve_branch_mapping": "PASS",
+    "supply_pressure_mapping": "FAIL",
+    "supply_flow_conservation": "PASS",
+    "ready_for_L2_macro_calibration": false,
+    "ready_for_mechanical_integration": false
+  }
+}
