@@ -189,15 +189,17 @@
     "note": "steady_wheel_angle_error 的参照是 M1 在 q_ref 上真实可达的刚性闭链角（theoretical_angle_deg），不是理想阿克曼角；后者与可达角之差作为 mechanism_ackermann_error_deg 单独报告。"
   },
   "mechanical": {
-    "mode": "REDESIGNED_ACKERMANN",
-    "mode_source": "PHASE M3 默认使用优化设计机构；AS_BUILT_REFERENCE 为甲方原始机构对照",
-    "as_built_model": "mechanics_ackermann_v2",
-    "as_built_config": "mechanics_ackermann_v2/config.json",
-    "redesigned_model": "mechanics_ackermann_redesigned",
-    "redesigned_config": "mechanics_ackermann_redesigned/config.json",
-    "redesigned_design_parameters": "mechanics_ackermann_redesigned/design_parameters.json",
-    "tag": "ENGINEERING_REDESIGN_PROPOSAL",
-    "disclaimer": "该机构为基于甲方硬点与工程假设提出的优化设计方案，尚未通过实车验证。",
+    "mode": "ENGINEERING_STEERING_MODEL",
+    "mode_source": "PHASE J1：只保留一个面向工程演示的正式模型；历史机构仅供回归测试",
+    "engineering_model": "src/steering_sim/engineering",
+    "engineering_config": "configs/j1/engineering_config.json",
+    "engineering_design": "configs/j1/engineering_mechanism.json",
+    "hydraulic_design": "configs/j1/hydraulic_design.json",
+    "legacy_models": [
+      "mechanics_ackermann_v2",
+      "mechanics_ackermann_redesigned"
+    ],
+    "tag": "ENGINEERING_STEERING_MODEL",
     "customer_hardpoints_unchanged": true
   }
 }

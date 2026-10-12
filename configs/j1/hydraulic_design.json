@@ -1,0 +1,84 @@
+{
+  "schema_version": "J1.0",
+  "tag": "ENGINEERING_DESIGN_ASSUMPTION",
+  "design_case": {
+    "speed_kmh": 10.0,
+    "friction": 0.8,
+    "axle_mass_t": 11.5
+  },
+  "design_pressure_pa": 17600000.0,
+  "return_pressure_pa": 500000.0,
+  "safety_factor": 1.25,
+  "gear_efficiency": 0.9,
+  "max_cylinder_speed_mps": 0.15,
+  "method": "虚功 F_required = M_required/(ds/dδ)：M_required 由最不利正常工作工况（低速大转角）的道路负载给出，ds/dδ 由优化后的机械传动给出。有效面积按设计压力差反算；行程按 ±30° 目标下的实际机构行程乘安全系数。",
+  "groups": {
+    "channel_front": {
+      "dof": "q_front",
+      "required_force_n": 8477.9,
+      "required_force_no_margin_n": 6782.3,
+      "design_pressure_pa": 17600000.0,
+      "required_effective_area_m2": 0.00049578,
+      "recommended_bore_mm": 25.12,
+      "required_half_stroke_mm": 190.24,
+      "required_flow_l_per_min": 4.46
+    },
+    "channel_rear_1": {
+      "dof": "q4",
+      "required_force_n": 7417.7,
+      "required_force_no_margin_n": 5934.2,
+      "design_pressure_pa": 17600000.0,
+      "required_effective_area_m2": 0.00043378,
+      "recommended_bore_mm": 23.5,
+      "required_half_stroke_mm": 24.82,
+      "required_flow_l_per_min": 3.9
+    },
+    "channel_rear_2": {
+      "dof": "q5",
+      "required_force_n": 14583.2,
+      "required_force_no_margin_n": 11666.6,
+      "design_pressure_pa": 17600000.0,
+      "required_effective_area_m2": 0.00085282,
+      "recommended_bore_mm": 32.95,
+      "required_half_stroke_mm": 75.87,
+      "required_flow_l_per_min": 7.68
+    },
+    "channel_rear_3": {
+      "dof": "q6",
+      "required_force_n": 5588.0,
+      "required_force_no_margin_n": 4470.4,
+      "design_pressure_pa": 17600000.0,
+      "required_effective_area_m2": 0.00032678,
+      "recommended_bore_mm": 20.4,
+      "required_half_stroke_mm": 153.86,
+      "required_flow_l_per_min": 2.94
+    }
+  },
+  "notes": "ENGINEERING_DESIGN_ASSUMPTION：这些是**工程选型建议值**，不是甲方设备实测参数。旧 Amesim/L1-Fast 参数在 configs/j1/hydraulic_design.json 的legacy_parameters 中原样存档。设计压力沿用 L1-Fast 的供压量级，没有靠无限提高压力解决问题。",
+  "legacy_parameters": {
+    "channel_front": {
+      "area_a_m2": 0.0003777765165941727,
+      "area_b_m2": 0.0003777765165941727,
+      "stroke_m": 0.3,
+      "pump_displacement_m3_per_rad": 1.5915494309189535e-06
+    },
+    "channel_rear_1": {
+      "area_a_m2": 0.005,
+      "area_b_m2": 0.0037,
+      "stroke_m": 0.13,
+      "pump_displacement_m3_per_rad": 1.5915494309189535e-06
+    },
+    "channel_rear_2": {
+      "area_a_m2": 0.005,
+      "area_b_m2": 0.0037,
+      "stroke_m": 0.195,
+      "pump_displacement_m3_per_rad": 1.5915494309189535e-06
+    },
+    "channel_rear_3": {
+      "area_a_m2": 0.005,
+      "area_b_m2": 0.0037,
+      "stroke_m": 0.265,
+      "pump_displacement_m3_per_rad": 1.5915494309189535e-06
+    }
+  }
+}

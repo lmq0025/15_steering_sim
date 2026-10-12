@@ -25,9 +25,9 @@ from typing import Any, Callable, Mapping
 import numpy as np
 
 from steering_sim.j0_coupling.config import J0Config, load_j0_config
-from steering_sim.j0_coupling.mechanism import (AS_BUILT_REFERENCE, MODE_LABELS,
-                                                REDESIGNED_ACKERMANN,
-                                                REDESIGN_DISCLAIMER,
+from steering_sim.j0_coupling.mechanism import (AS_BUILT_REFERENCE,
+                                                ENGINEERING_STEERING_MODEL,
+                                                MODE_LABELS, REDESIGNED_ACKERMANN,
                                                 build_mechanism_model,
                                                 normalise_mode)
 from steering_sim.j0_coupling.reporting import (configure_chinese_font,
@@ -44,6 +44,9 @@ DEFAULT_CONFIG = ROOT / "configs" / "j0" / "j0_config.json"
 DEFAULT_SPEC = ROOT / "mechanical_model_input_spec_v1.0.yaml"
 DEFAULT_MECH_CONFIG = ROOT / "mechanics_ackermann_v2" / "config.json"
 DEFAULT_REDESIGN_CONFIG = ROOT / "mechanics_ackermann_redesigned" / "config.json"
+#: PHASE J1：唯一正式机械模型。
+DEFAULT_ENGINEERING_CONFIG = ROOT / "configs" / "j1" / "engineering_config.json"
+DEFAULT_ENGINEERING_DESIGN = ROOT / "configs" / "j1" / "engineering_mechanism.json"
 DEFAULT_OUTPUT = ROOT / "outputs" / "j0_demo"
 PRESET_CACHE_VERSION = "M3-1"
 
@@ -102,6 +105,8 @@ class DemoService:
                  spec_path: Path | str = DEFAULT_SPEC,
                  mech_config_path: Path | str = DEFAULT_MECH_CONFIG,
                  redesign_config_path: Path | str = DEFAULT_REDESIGN_CONFIG,
+                 engineering_config_path: Path | str = DEFAULT_ENGINEERING_CONFIG,
+                 engineering_design_path: Path | str = DEFAULT_ENGINEERING_DESIGN,
                  output_dir: Path | str = DEFAULT_OUTPUT,
                  probe_authority: bool = False,
                  mechanical_mode: str | None = None) -> None:
@@ -110,6 +115,8 @@ class DemoService:
         self.spec_path = Path(spec_path)
         self.mech_config_path = Path(mech_config_path)
         self.redesign_config_path = Path(redesign_config_path)
+        self.engineering_config_path = Path(engineering_config_path)
+        self.engineering_design_path = Path(engineering_design_path)
         self.output_dir = Path(output_dir)
         self.output_dir.mkdir(parents=True, exist_ok=True)
         self.mechanical_mode = normalise_mode(
@@ -128,7 +135,11 @@ class DemoService:
         try:
             model = build_mechanism_model(
                 self.mechanical_mode, self.spec_path, self.mech_config_path,
-                self.redesign_config_path)
+                self.redesign_config_path,
+                design_path=(self.engineering_design_path
+                             if self.mechanical_mode == ENGINEERING_STEERING_MODEL
+                             else None),
+                engineering_config_path=self.engineering_config_path)
         except Exception as exc:  # pragma: no cover - 环境损坏时的中文提示
             raise DemoServiceError(
                 f"无法加载机械模型（{self.mechanical_mode}）：{exc}") from exc
@@ -350,10 +361,13 @@ def build_text_report(result: DemoResult, git_head: str) -> str:
     lines.append(f"- 结果来源：**{result.provenance_label}**（{result.provenance_note}）")
     lines.append(f"- 机械机构模式：**{MODE_LABELS.get(result.mechanical_mode, result.mechanical_mode)}**"
                  f"（`{result.mechanical_mode}`）")
-    if result.mechanical_mode == REDESIGNED_ACKERMANN:
-        lines.append(f"- 模型来源标记：`ENGINEERING_REDESIGN_PROPOSAL`；{REDESIGN_DISCLAIMER}")
+    if result.mechanical_mode == ENGINEERING_STEERING_MODEL:
+        lines.append("- 模型来源标记：`ENGINEERING_STEERING_MODEL`"
+                     "（甲方原始硬点不变；中间传动机构为 ENGINEERING_DESIGN_ASSUMPTION）")
+    elif result.mechanical_mode == REDESIGNED_ACKERMANN:
+        lines.append("- 模型来源标记：`ENGINEERING_REDESIGN_PROPOSAL`（M3 历史方案）")
     else:
-        lines.append("- 模型来源标记：`CUSTOMER_AS_BUILT_LINKAGE`（甲方原始硬点与原始杆件拓扑）")
+        lines.append("- 模型来源标记：`CUSTOMER_AS_BUILT_LINKAGE`（历史对照）")
     lines.append(f"- 工况：{scenario.describe()}")
     lines.append(f"- 代码版本：`{git_head}`")
     lines.append(f"- 判定：**{result.status}**")

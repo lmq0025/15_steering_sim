@@ -15,14 +15,21 @@ from steering_sim.j0_coupling.diagnostics import (characterise_plant,
 from steering_sim.j0_coupling.road_load import road_load, virtual_work_residual
 
 
-def _road(adapter, j0_config, q_values, *, speed_kmh, target_deg):
+def _road(adapter, j0_config, q_values, *, speed_kmh, target_deg,
+          use_actual_curvature: bool = True):
+    """默认走 PHASE J1 的新行为（用实际车轮转角反推的曲率）。
+
+    与 M1 参照做公式对照时传 ``use_actual_curvature=False``，因为 M1 的
+    ``solve_loaded_case`` 用的是目标曲率。
+    """
     curvature = adapter.curvature_1pm(target_deg)
     return road_load(adapter, q_values, speed_kmh=speed_kmh,
                      friction_coefficient=float(j0_config.load["friction_coefficient"]),
                      axle_mass_t=tuple(j0_config.load["axle_mass_t"]),
                      curvature_1pm=curvature,
                      singular_threshold_m_per_rad=float(
-                         j0_config.mapping["singular_jacobian_threshold_m_per_rad"]))
+                         j0_config.mapping["singular_jacobian_threshold_m_per_rad"]),
+                     use_actual_curvature=use_actual_curvature)
 
 
 # --------------------------------------------------------------- item 7: valve
@@ -152,7 +159,9 @@ def test_road_load_matches_m1_generalised_moment_on_the_same_q(adapter, j0_confi
 
     target = 2.0
     geometry = adapter.target(target)
-    road = _road(adapter, j0_config, geometry.q_rad, speed_kmh=5.0, target_deg=target)
+    # 与 M1 对照时必须关掉"实际曲率"（M1 用目标曲率），否则比较的不是同一件事。
+    road = _road(adapter, j0_config, geometry.q_rad, speed_kmh=5.0, target_deg=target,
+                 use_actual_curvature=False)
     case = CaseInput(5.0, target, 0.75, tuple(j0_config.load["axle_mass_t"]))
     loaded = m1_model.solve_loaded_case(case, geometry)
     for dof in ("q_front", "q4", "q5", "q6"):
@@ -163,6 +172,25 @@ def test_road_load_matches_m1_generalised_moment_on_the_same_q(adapter, j0_confi
             abs(reference), 1.0) < 1.0e-3, dof
     # And the compliance path really is absent from J0.
     assert not hasattr(road, "loaded_q_rad")
+
+
+def test_road_load_uses_the_actual_curvature_by_default(adapter, j0_config):
+    """PHASE J1 §二：默认必须用**实际车轮转角**反推的曲率，不能拿目标当实际。"""
+    target = 2.0
+    geometry = adapter.target(target)
+    road = _road(adapter, j0_config, geometry.q_rad, speed_kmh=5.0, target_deg=target)
+    assert road.curvature_source == "ACTUAL_WHEEL_ANGLES"
+    assert road.icr_x_m is not None and road.icr_y_m is not None
+    # 实际曲率与目标曲率不是同一个量（车轮还没转到目标时两者必然不同）。
+    assert abs(road.curvature_1pm_used - adapter.curvature_1pm(target)) > 0.0
+    # 并且道路负载确实按实际曲率算的侧向加速度。
+    assert road.lateral_acceleration_mps2 == pytest.approx(
+        (5.0 / 3.6) ** 2 * road.curvature_1pm_used)
+    # 目标曲率仍然单独保留，供附着可行性评价使用。
+    forced = _road(adapter, j0_config, geometry.q_rad, speed_kmh=5.0,
+                   target_deg=target, use_actual_curvature=False)
+    assert forced.curvature_source == "TARGET"
+    assert forced.curvature_1pm_used == pytest.approx(adapter.curvature_1pm(target))
 
 
 def test_compliance_correction_is_not_applied_in_the_runner(runner):

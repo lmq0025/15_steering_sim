@@ -107,6 +107,13 @@ class J0Runner:
         self.road_ramp_s = float(config.hydraulic["load_model"]["road_load_ramp_s"])
         self.ref_ramp_s = float(config.control["reference_ramp_s"])
         self.redundant = dict(config.hydraulic["redundant_valve_commands"])
+        #: PHASE J1：道路负载默认用**实际车轮转角**反推的曲率，不再把目标轨迹
+        #: 当成车辆已经实现的运动。
+        self.use_actual_curvature = True
+        #: 当前工况的控制器与限幅值，供 _row 读取真实饱和诊断。
+        self._controllers: list = []
+        self._limits = np.zeros(4)
+        self._curvature_target = 0.0
 
     # ------------------------------------------------------------------ target
     def target(self, case: J0CaseConfig) -> dict[str, Any]:
@@ -143,9 +150,16 @@ class J0Runner:
         road = road_load(self.geometry, q_values, speed_kmh=speed_kmh,
                          friction_coefficient=self.mu, axle_mass_t=self.axle_mass_t,
                          curvature_1pm=curvature_1pm,
-                         singular_threshold_m_per_rad=self.singular_threshold)
-        if road.flags:
-            raise J0StopCondition("road load " + "|".join(road.flags))
+                         singular_threshold_m_per_rad=self.singular_threshold,
+                         use_actual_curvature=self.use_actual_curvature)
+        # PHASE J1：附着不足（ADHESION_INFEASIBLE / OUTSIDE_LINEAR_TIRE_RANGE）
+        # 是**物理风险**，只记录、不中断积分 —— 任务书第八节明确要求"不能因为
+        # 一个超附着工况而停止所有工况计算"。真正不可继续的只有数值问题：
+        # 负载换算奇异（LOAD_CONVERSION_SINGULAR）或非有限值。
+        self._curvature_target = float(curvature_1pm)
+        fatal = [flag for flag in road.flags if flag.endswith("LOAD_CONVERSION_SINGULAR")]
+        if fatal:
+            raise J0StopCondition("road load " + "|".join(fatal))
         fraction = _ramp(t, self.road_ramp_s)
         loads: list[float] = []
         for index, item in enumerate(self.config.channels):
@@ -175,6 +189,14 @@ class J0Runner:
         row["adhesion_utilization"] = road.adhesion_utilization
         row["max_abs_slip_angle_deg"] = road.max_abs_slip_angle_deg
         row["road_load_status"] = 1.0 if not road.flags else 0.0
+        # PHASE J1：曲率来源与附着量，供审计"有没有拿目标当实际"。
+        row["curvature_target_1pm"] = self._curvature_target
+        row["curvature_actual_1pm"] = road.curvature_1pm_used
+        row["curvature_source_is_actual"] = 1.0 if road.curvature_source ==             "ACTUAL_WHEEL_ANGLES" else 0.0
+        row["icr_line_residual_m"] = road.icr_line_residual_m
+        row["lateral_force_demand_total_n"] = road.lateral_force_demand_total_n
+        row["lateral_force_available_total_n"] = road.lateral_force_available_total_n
+        row["adhesion_infeasible"] = 1.0 if "ADHESION_INFEASIBLE" in road.flags else 0.0
         for position, item in enumerate(self.config.channels):
             dof = DOF_BY_CHANNEL[item.channel]
             tag = item.channel
@@ -188,6 +210,21 @@ class J0Runner:
             row[f"{tag}_pB_mpa_g"] = float(state[4 * position + 1]) / 1.0e6
             row[f"{tag}_valve_command"] = float(commands[position])
             row[f"{tag}_pid_raw_output"] = float(raw_pid[position])
+            controller = self._controllers[position] if self._controllers else None
+            diagnostics = getattr(controller, "diagnostics", None)
+            if diagnostics is not None:
+                row[f"{tag}_pid_unclipped_request"] = float(
+                    diagnostics.unclipped_request[0])
+                row[f"{tag}_pid_at_limit"] = float(bool(diagnostics.at_limit[0]))
+                row[f"{tag}_pid_anti_windup"] = float(
+                    bool(diagnostics.anti_windup_active[0]))
+                row[f"{tag}_pid_margin"] = float(diagnostics.margin[0])
+            else:
+                row[f"{tag}_pid_unclipped_request"] = float(raw_pid[position])
+                row[f"{tag}_pid_at_limit"] = 0.0
+                row[f"{tag}_pid_anti_windup"] = 0.0
+                row[f"{tag}_pid_margin"] = float(
+                    self._limits[position] - abs(raw_pid[position]))
             row[f"{tag}_flow_a_m3_s"] = float(outputs.channels[position].flow_a_m3_s)
             row[f"{tag}_flow_b_m3_s"] = float(outputs.channels[position].flow_b_m3_s)
             row[f"{tag}_hydraulic_force_n"] = float(outputs.channels[position].hydraulic_force_n)
@@ -267,6 +304,8 @@ class J0Runner:
         for controller in controllers:
             controller.reset()
         limits = np.array([item.command_limit for item in self.config.channels])
+        self._controllers = list(controllers)
+        self._limits = limits
         state = self.state0.copy()
         commands = [float(value) for value in self.neutral_commands]
         raw_pid = np.zeros(4)
@@ -275,6 +314,8 @@ class J0Runner:
         saturated = 0
         anti_windup = 0
         control_updates = 0
+        pid_limit_flags = [0] * len(self.config.channels)
+        last_request = [0.0] * len(self.config.channels)
         failure_time: float | None = None
         failure_reason: str | None = None
         completed = True
@@ -301,9 +342,19 @@ class J0Runner:
                         raw_pid[position] = float(command.values[0])
                     commands = [item.command_from_pid(raw_pid[position])
                                 for position, item in enumerate(self.config.channels)]
-                    over = np.abs(raw_pid) > limits + 1.0e-12
-                    saturated += int(np.any(over))
-                    anti_windup += int(np.any(over & (np.sign(errors) == np.sign(raw_pid))))
+                    # PHASE J1：用控制器自己给出的诊断，而不是把限幅后的命令
+                    # 再与 limit 比较（那样永远是 0%）。
+                    for position, controller in enumerate(controllers):
+                        diagnostics = getattr(controller, "diagnostics", None)
+                        if diagnostics is None:
+                            continue
+                        if bool(diagnostics.at_limit[0]):
+                            saturated += 1
+                            pid_limit_flags[position] += 1
+                        if bool(diagnostics.anti_windup_active[0]):
+                            anti_windup += 1
+                        last_request[position] = float(
+                            diagnostics.unclipped_request[0])
                     control_updates += 1
 
                 dx0, outputs, q_values, road, loads = self._stage(
@@ -449,10 +500,49 @@ class J0Runner:
             float(np.nanmax(samples["chain_condition_number"]))
             if "chain_condition_number" in samples else math.nan)
         summary["third_axle_max_abs_deg"] = float(np.max(samples["third_axle_max_abs_deg"]))
-        summary["control_saturation_fraction"] = (
-            float(saturated) / float(control_updates) if control_updates else math.nan)
-        summary["anti_windup_active_fraction"] = (
-            float(anti_windup) / float(control_updates) if control_updates else math.nan)
+        # PHASE J1：饱和统计必须来自控制器自己的诊断（未限幅请求 vs 限幅命令）。
+        # saturated 是"通道×控制周期"计数，所以要除以 (周期数 × 通道数)，
+        # 否则会出现 >100% 的无意义数字。
+        denominator = float(control_updates) * float(len(self.config.channels)) or 1.0
+        summary["control_saturation_fraction"] = float(saturated) / denominator
+        summary["anti_windup_active_fraction"] = float(anti_windup) / denominator
+        at_limit_sample = {}
+        request_sample = {}
+        for tag in CHANNEL_ORDER:
+            column = samples.get(f"{tag}_pid_at_limit")
+            at_limit_sample[tag] = (float(np.mean(column)) if column is not None
+                                    else math.nan)
+            request = samples.get(f"{tag}_pid_unclipped_request")
+            request_sample[tag] = (float(np.max(np.abs(request)))
+                                   if request is not None else math.nan)
+        #: 逐通道"采样点里有多少比例阀命令贴到限幅" —— 这是任务书要求的
+        #: valve_at_limit，与 overall 的 control_saturation_fraction 一致。
+        summary["valve_at_limit_sample_fraction"] = at_limit_sample
+        summary["max_unclipped_pid_request"] = request_sample
+        summary["max_abs_valve_command"] = {
+            tag: float(np.max(np.abs(samples[f"{tag}_valve_command"])))
+            for tag in CHANNEL_ORDER}
+        curvature_actual = samples.get("curvature_actual_1pm")
+        curvature_target = samples.get("curvature_target_1pm")
+        summary["curvature_actual_1pm_max"] = (float(np.nanmax(np.abs(curvature_actual)))
+                                               if curvature_actual is not None else math.nan)
+        summary["curvature_target_1pm"] = (float(np.nanmax(np.abs(curvature_target)))
+                                           if curvature_target is not None else math.nan)
+        source = samples.get("curvature_source_is_actual")
+        summary["uses_actual_curvature"] = bool(source is not None and np.all(source > 0.5))
+        summary["max_adhesion_utilization_recorded"] = float(
+            np.nanmax(samples["adhesion_utilization"])) if "adhesion_utilization" in samples else math.nan
+        # PHASE J1 §八：**目标路径**的可行性必须单独给出 —— 附着需求按目标轨迹算，
+        # 而上面的 adhesion_utilization 按**实际**车轮转角算。两者分开，
+        # 才能区分"车辆没跟上目标所以没有大侧向需求"与"目标本身不可行"。
+        speed_mps = float(case.speed_kmh) / 3.6
+        target_ay = speed_mps ** 2 * abs(self._curvature_target)
+        summary["target_path_lateral_acceleration_mps2"] = target_ay
+        summary["target_path_adhesion_ratio"] = (
+            target_ay / (self.mu * 9.80665) if self.mu > 0 else math.inf)
+        summary["adhesion_infeasible_fraction"] = (
+            float(np.mean(samples["adhesion_infeasible"]))
+            if "adhesion_infeasible" in samples else 0.0)
         summary["pump_capacity_warnings"] = int(
             np.sum(samples["pump_capacity_insufficient_front"])
             + np.sum(samples["pump_capacity_insufficient_rear"]))
@@ -528,6 +618,21 @@ class J0Runner:
             if authority_notes:
                 status = "FAIL"
                 notes.append("命令行程不可达：" + "，".join(authority_notes))
+        # PHASE J1：三个结论必须分开报，不能混成一个 PASS/FAIL。
+        #   NUMERICAL_COMPLETED  —— 数值积分是否跑完（与物理是否可行无关）
+        #   TRACKING_PASS        —— 是否跟上了机构目标行程
+        #   VEHICLE_DYNAMIC_INFEASIBLE —— 目标路径是否超出附着能力
+        tracking_error = summary["max_steady_wheel_angle_error_vs_mechanism_deg"]
+        summary["NUMERICAL_COMPLETED"] = bool(completed)
+        summary["TRACKING_PASS"] = bool(
+            completed and tracking_error <= acceptance["steady_wheel_angle_error_deg_pass"])
+        summary["VEHICLE_DYNAMIC_INFEASIBLE"] = bool(
+            summary["max_adhesion_utilization_recorded"] > 1.0)
+        if summary["VEHICLE_DYNAMIC_INFEASIBLE"] and status == "PASS":
+            status = "CONDITIONAL"
+            notes.append(
+                "目标路径超出轮胎附着能力（附着比 > 1），数值照常完成，"
+                "但该工况在物理上不可行，不能标记为跟踪成功。")
         summary["status"] = status
         summary["status_notes"] = notes
         return summary

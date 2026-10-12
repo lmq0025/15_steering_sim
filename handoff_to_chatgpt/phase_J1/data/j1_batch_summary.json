@@ -1,0 +1,12 @@
+{
+  "cases": 3111,
+  "structurally_complete": 3111,
+  "solver_errors": 0,
+  "status_counts": {
+    "ACKERMANN_TARGET_MISMATCH": 2090,
+    "OK": 51,
+    "VEHICLE_DYNAMIC_INFEASIBLE": 970
+  },
+  "elapsed_s": 10.4,
+  "mode": "FAST_BATCH_ESTIMATE"
+}

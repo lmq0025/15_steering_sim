@@ -20,14 +20,19 @@ from __future__ import annotations
 
 from pathlib import Path
 
+#: PHASE J1：唯一正式机械模型。演示界面不再提供模式切换。
+ENGINEERING_STEERING_MODEL = "ENGINEERING_STEERING_MODEL"
+#: 历史机构，只供回归测试与对照脚本使用，**不再出现在界面或正式批量计算里**。
 AS_BUILT_REFERENCE = "AS_BUILT_REFERENCE"
 REDESIGNED_ACKERMANN = "REDESIGNED_ACKERMANN"
-MODES = (AS_BUILT_REFERENCE, REDESIGNED_ACKERMANN)
+MODES = (ENGINEERING_STEERING_MODEL, AS_BUILT_REFERENCE, REDESIGNED_ACKERMANN)
+LEGACY_MODES = (AS_BUILT_REFERENCE, REDESIGNED_ACKERMANN)
 
 #: 界面与报告使用的模式说明（中文）。
 MODE_LABELS = {
-    AS_BUILT_REFERENCE: "原始机构复现（甲方原始硬点，对照用）",
-    REDESIGNED_ACKERMANN: "优化设计机构（ENGINEERING_REDESIGN_PROPOSAL）",
+    ENGINEERING_STEERING_MODEL: "工程转向模型（正式）",
+    AS_BUILT_REFERENCE: "甲方原始机构（历史对照，仅供测试）",
+    REDESIGNED_ACKERMANN: "M3 中间摇臂方案（历史对照，仅供测试）",
 }
 
 REDESIGN_DISCLAIMER = (
@@ -41,7 +46,7 @@ class UnknownMechanicalMode(ValueError):
 
 
 def normalise_mode(value: str | None) -> str:
-    mode = str(value or REDESIGNED_ACKERMANN).strip().upper()
+    mode = str(value or ENGINEERING_STEERING_MODEL).strip().upper()
     if mode not in MODES:
         raise UnknownMechanicalMode(
             f"未知的机械模式 {value!r}；可用：{', '.join(MODES)}")
@@ -51,9 +56,15 @@ def normalise_mode(value: str | None) -> str:
 def build_mechanism_model(mode: str, spec_path: str | Path,
                           mech_config_path: str | Path | None = None,
                           redesign_config_path: str | Path | None = None,
-                          design_path: str | Path | None = None):
+                          design_path: str | Path | None = None,
+                          engineering_config_path: str | Path | None = None):
     """按模式构造机构模型。"""
     selected = normalise_mode(mode)
+    if selected == ENGINEERING_STEERING_MODEL:
+        from steering_sim.engineering.model import EngineeringSteeringModel
+        if engineering_config_path is None:
+            raise ValueError("ENGINEERING_STEERING_MODEL 需要 configs/j1/engineering_config.json")
+        return EngineeringSteeringModel(spec_path, engineering_config_path, design_path)
     if selected == AS_BUILT_REFERENCE:
         from mechanics_ackermann_v2.model import PhaseM1Model
         if mech_config_path is None:

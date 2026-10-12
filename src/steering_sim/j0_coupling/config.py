@@ -92,7 +92,7 @@ class J0Config:
     acceptance: dict[str, Any]
     output: dict[str, Any]
     #: PHASE M3：``AS_BUILT_REFERENCE`` 或 ``REDESIGNED_ACKERMANN``。
-    mechanical_mode: str = "REDESIGNED_ACKERMANN"
+    mechanical_mode: str = "ENGINEERING_STEERING_MODEL"
 
     @property
     def substeps_per_control(self) -> int:
@@ -159,9 +159,10 @@ def load_j0_config(path: str | Path) -> J0Config:
         raise ValueError("at least one J0 case is required")
 
     mechanical = raw.get("mechanical", {})
-    mode = str(mechanical.get("mode", "REDESIGNED_ACKERMANN"))
-    if mode not in ("AS_BUILT_REFERENCE", "REDESIGNED_ACKERMANN"):
-        raise ValueError(f"unknown mechanical mode {mode!r}")
+    mode = str(mechanical.get("mode", "ENGINEERING_STEERING_MODEL"))
+    from .mechanism import MODES
+    if mode not in MODES:
+        raise ValueError(f"unknown mechanical mode {mode!r}; available: {MODES}")
 
     return J0Config(
         path=source, raw=raw, dt_hydraulic_s=dt_h, dt_control_s=dt_c,

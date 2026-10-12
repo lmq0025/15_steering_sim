@@ -14,9 +14,6 @@ from tkinter import filedialog, font as tkfont, messagebox, ttk
 from pathlib import Path
 from typing import Any
 
-from steering_sim.j0_coupling.mechanism import (AS_BUILT_REFERENCE, MODE_LABELS,
-                                                REDESIGNED_ACKERMANN,
-                                                REDESIGN_DISCLAIMER)
 
 from . import degradation
 from .assessment import PreflightAssessment
@@ -176,41 +173,6 @@ class DemoApp:
         self._load_preset(DEFAULT_PRESET_KEY)
         self._refresh_assessment()
 
-    # -------------------------------------------------------- 机械模式
-    def _refresh_mode_note(self) -> None:
-        if not hasattr(self, "mode_note"):
-            return
-        mode = self.mode_var.get()
-        if mode == REDESIGNED_ACKERMANN:
-            text = (f"模型来源：ENGINEERING_REDESIGN_PROPOSAL\n{REDESIGN_DISCLAIMER}")
-        else:
-            text = ("模型来源：CUSTOMER_AS_BUILT_LINKAGE\n"
-                    "甲方原始硬点与原始杆件拓扑。五、六桥四杆机构接近死点，"
-                    "同桥左右轮无法同向，界面会如实显示该几何警告。")
-        self.mode_note.configure(text=text)
-
-    def _on_mode_changed(self) -> None:
-        mode = self.mode_var.get()
-        if mode == self.service.mechanical_mode:
-            return
-        self.service.set_mode(mode)
-        # 换模式后旧结果属于另一套机构，必须整体作废，不能混显示。
-        self.result = None
-        self.last_success = None
-        self._clear_result_panes()
-        self._refresh_mode_note()
-        self.provenance_label.configure(
-            text=f"机械模式已切换为 {MODE_LABELS[mode]}；请重新运行仿真",
-            foreground="#8a6d00")
-        self._refresh_assessment()
-        self.status.set("机械机构模式已切换，请重新运行仿真（两种模式的缓存分开保存）。")
-
-    def _clear_result_panes(self) -> None:
-        for pane in self.panes.values():
-            if isinstance(pane, ImagePane):
-                pane.show(())
-        self._fill_wheel_table(None)
-
     # ------------------------------------------------------------ 外观
     def _build_fonts(self) -> None:
         family = _pick_font(self.root)
@@ -268,17 +230,13 @@ class DemoApp:
         panel.bind("<Configure>",
                    lambda event: canvas.configure(scrollregion=canvas.bbox("all")))
 
-        ttk.Label(panel, text="机械机构模式", font=self.font_bold).pack(anchor="w")
-        self.mode_var = tk.StringVar(value=self.service.mechanical_mode)
-        for mode in (REDESIGNED_ACKERMANN, AS_BUILT_REFERENCE):
-            ttk.Radiobutton(panel, text=MODE_LABELS[mode], value=mode,
-                            variable=self.mode_var,
-                            command=self._on_mode_changed).pack(anchor="w")
-        self.mode_note = ttk.Label(panel, text="", wraplength=310,
-                                   font=self.font_small, foreground="#8a6d00",
-                                   justify="left")
-        self.mode_note.pack(anchor="w", pady=(2, 6))
-        self._refresh_mode_note()
+        ttk.Label(panel, text="正式机械模型", font=self.font_bold).pack(anchor="w")
+        ttk.Label(panel,
+                  text="ENGINEERING_STEERING_MODEL —— 唯一正式工程转向模型。"
+                       "甲方原始硬点（主销、车轮中心、摆臂枢轴、液压缸安装点）"
+                       "保持不变；中间传动机构为 ENGINEERING_DESIGN_ASSUMPTION 工程假设。",
+                  wraplength=310, font=self.font_small, foreground="#555555",
+                  justify="left").pack(anchor="w", pady=(2, 6))
 
         ttk.Label(panel, text="工况输入", font=self.font_bold).pack(anchor="w", pady=(6, 0))
         ttk.Label(panel, text="选择预设工况", font=self.font_small).pack(anchor="w", pady=(8, 2))

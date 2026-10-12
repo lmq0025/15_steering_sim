@@ -15,11 +15,22 @@ SHORT = DemoScenario(5.0, 5.0, duration_s=0.6)
 BIG = DemoScenario(20.0, 5.0, duration_s=0.6)
 
 
-def test_redesigned_service_is_labelled_as_a_design_proposal(redesigned_service):
+def test_the_default_service_uses_the_single_engineering_model():
+    """PHASE J1 §九：界面只保留一套正式模型，默认必须是 ENGINEERING_STEERING_MODEL。"""
+    from pathlib import Path
+    from steering_sim.demo.service import DemoService
+    from steering_sim.j0_coupling.mechanism import ENGINEERING_STEERING_MODEL
+    output = Path(__file__).parents[2] / "outputs" / "_demo_test_tmp" / "default_mode"
+    service = DemoService(output_dir=output)
+    assert service.mechanical_mode == ENGINEERING_STEERING_MODEL
+    assert "工程转向模型" in service.mode_label
+
+
+def test_the_legacy_models_are_still_constructible_for_regression(redesigned_service):
+    """历史机构不再是正式分支，但仍可构造，供回归与对照使用。"""
     assert redesigned_service.mechanical_mode == "REDESIGNED_ACKERMANN"
-    assert redesigned_service.is_redesign
-    assert "ENGINEERING_REDESIGN_PROPOSAL" in redesigned_service.mode_label or \
-        "优化设计机构" in redesigned_service.mode_label
+    assert "历史对照" in redesigned_service.mode_label
+
 
 
 def test_as_built_service_keeps_the_customer_linkage(demo_service):
@@ -53,7 +64,8 @@ def test_unknown_mode_is_rejected():
     from steering_sim.j0_coupling.mechanism import UnknownMechanicalMode, normalise_mode
     with pytest.raises(UnknownMechanicalMode):
         normalise_mode("SOMETHING_ELSE")
-    assert normalise_mode(None) in ("AS_BUILT_REFERENCE", "REDESIGNED_ACKERMANN")
+    # 缺省（未指定）一律落到唯一正式模型。
+    assert normalise_mode(None) == "ENGINEERING_STEERING_MODEL"
 
 
 @pytest.mark.slow
@@ -113,9 +125,11 @@ def test_redesigned_mode_accepts_a_large_target_that_the_old_model_refused(
 
 def test_mode_disclaimer_text_is_present():
     from steering_sim.j0_coupling.mechanism import (AS_BUILT_REFERENCE,
+                                                    ENGINEERING_STEERING_MODEL,
                                                     MODE_LABELS,
                                                     REDESIGNED_ACKERMANN,
                                                     REDESIGN_DISCLAIMER)
     assert "尚未通过实车验证" in REDESIGN_DISCLAIMER
-    assert "ENGINEERING_REDESIGN_PROPOSAL" in MODE_LABELS[REDESIGNED_ACKERMANN]
-    assert "原始" in MODE_LABELS[AS_BUILT_REFERENCE]
+    assert "工程转向模型" in MODE_LABELS[ENGINEERING_STEERING_MODEL]
+    assert "历史对照" in MODE_LABELS[REDESIGNED_ACKERMANN]
+    assert "历史对照" in MODE_LABELS[AS_BUILT_REFERENCE]

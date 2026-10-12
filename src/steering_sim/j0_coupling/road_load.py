@@ -51,6 +51,14 @@ class RoadLoad:
     adhesion_utilization: float
     max_abs_slip_angle_deg: float
     flags: tuple[str, ...]
+    #: PHASE J1：本次道路负载用的曲率来源与数值，便于审计"是否拿目标当实际"。
+    curvature_1pm_used: float = 0.0
+    curvature_source: str = "TARGET"
+    icr_x_m: float | None = None
+    icr_y_m: float | None = None
+    icr_line_residual_m: float = 0.0
+    lateral_force_demand_total_n: float = 0.0
+    lateral_force_available_total_n: float = 0.0
 
     @property
     def status(self) -> str:
@@ -82,17 +90,95 @@ def _allocate_lateral_force(adapter: J0GeometryAdapter, total_force: float,
     return weights @ matrix.T @ np.linalg.pinv(matrix @ weights @ matrix.T) @ rhs
 
 
+def actual_curvature_1pm(angles_deg: Mapping[str, float],
+                         centers: Mapping[str, tuple[float, float]]
+                         ) -> tuple[float, float | None, float | None, float]:
+    """由**当前实际车轮转角**反推低速多轴运动学等效曲率。
+
+    刚性体绕 ICR 转动时，任一点的速度垂直于该点到 ICR 的连线，所以 **ICR 位于
+    过车轮中心、方向为轮轴方向 ``(−sin δ, cos δ)`` 的那条直线上**（即所有轮轴
+    延长线的交点）。写成"点到直线距离"的形式，法线就是纯滚动方向
+    ``d_i = (cos δ_i, sin δ_i)``：
+
+        d_i · (X − p_i) = 0
+        (Σ d_i d_iᵀ) X = Σ d_i (d_i · p_i)
+
+    返回 ``(curvature_1pm, x_icr, y_icr, rms_residual)``。直行（所有方向线平行）
+    时矩阵奇异，曲率取 0。
+
+    **为什么不能直接用目标曲率**：目标曲率是驾驶员希望走的轨迹；把它当成车辆
+    当前已经实现的运动，就等于在车轮还接近 0° 时就施加 30° 轨迹的完整道路负载。
+    """
+    import numpy as np
+
+    matrix = np.zeros((2, 2))
+    rhs = np.zeros(2)
+    for wheel, angle in angles_deg.items():
+        if wheel not in centers:
+            continue
+        delta = math.radians(float(angle))
+        # 法线 = 纯滚动方向；ICR 在轮轴延长线上。
+        normal = np.array([math.cos(delta), math.sin(delta)])
+        point = np.asarray(centers[wheel], dtype=float)
+        matrix += np.outer(normal, normal)
+        rhs += normal * float(normal @ point)
+    # 车轮角都很小（接近直行）时，12 条方向线几乎平行，法方程接近奇异，
+    # 最小二乘交点会飞到无穷远 —— 那不是"转得很急"，而是"基本没转"。
+    # 用矩阵的条件数做判据，病态时按直行处理（曲率 0），绝不返回虚假的大曲率。
+    try:
+        singular_values = np.linalg.svd(matrix, compute_uv=False)
+    except np.linalg.LinAlgError:      # pragma: no cover
+        return 0.0, None, None, 0.0
+    if singular_values[0] <= 1.0e-12 or \
+            singular_values[-1] / singular_values[0] < 1.0e-4:
+        return 0.0, None, None, 0.0
+    try:
+        icr = np.linalg.solve(matrix, rhs)
+    except np.linalg.LinAlgError:
+        return 0.0, None, None, 0.0
+    residual = 0.0
+    for wheel, angle in angles_deg.items():
+        if wheel not in centers:
+            continue
+        delta = math.radians(float(angle))
+        normal = np.array([math.cos(delta), math.sin(delta)])
+        point = np.asarray(centers[wheel], dtype=float)
+        residual = max(residual, abs(float(normal @ (icr - point))))
+    radius = float(math.hypot(icr[0], icr[1]))
+    if radius <= 1.0e-9:
+        return 0.0, float(icr[0]), float(icr[1]), residual
+    curvature = math.copysign(1.0 / radius, icr[1]) if abs(icr[1]) > 1.0e-9 else 0.0
+    return curvature, float(icr[0]), float(icr[1]), residual
+
+
 def road_load(adapter: J0GeometryAdapter, q_values: Mapping[str, float], *,
               speed_kmh: float, friction_coefficient: float,
               axle_mass_t: tuple[float, ...], curvature_1pm: float,
-              singular_threshold_m_per_rad: float) -> RoadLoad:
-    """Evaluate the M1 road load on ``q_values`` and convert it to load forces."""
+              singular_threshold_m_per_rad: float,
+              use_actual_curvature: bool = True,
+              target_curvature_1pm: float | None = None) -> RoadLoad:
+    """在 ``q_values`` 上评估道路负载并折算成液压缸负载力。
+
+    ``curvature_1pm`` 是**目标**曲率（用于工况要求与附着可行性评价）。
+    PHASE J1 起侧向加速度改用**实际**曲率 —— 由当前实际车轮转角反推的共同瞬时
+    转向中心给出 —— 这样"车轮还接近 0° 时不会凭空施加 30° 轨迹的完整道路负载"。
+    实际曲率不可用时退回目标曲率，并置 ``CURVATURE_FALLBACK_TARGET`` 标志。
+    """
     cfg = adapter.model.config["ground_load"]
     gravity = float(cfg["gravity_mps2"])
     masses = 1000.0 * np.asarray(axle_mass_t, dtype=float)
     total_mass = float(np.sum(masses))
     speed_mps = float(speed_kmh) / 3.6
-    ay = speed_mps ** 2 * float(curvature_1pm)
+    angles = adapter.wheel_angles_deg(q_values)
+    actual_curvature = float(curvature_1pm)
+    curvature_source = "TARGET"
+    icr_x = icr_y = None
+    icr_residual = 0.0
+    if use_actual_curvature:
+        actual_curvature, icr_x, icr_y, icr_residual = actual_curvature_1pm(
+            angles, adapter.model.centers)
+        curvature_source = "ACTUAL_WHEEL_ANGLES"
+    ay = speed_mps ** 2 * actual_curvature
     axle_demand = _allocate_lateral_force(adapter, total_mass * ay, masses)
 
     c_alpha = float(cfg["cornering_stiffness_per_wheel_N_per_rad"])
@@ -102,7 +188,7 @@ def road_load(adapter: J0GeometryAdapter, q_values: Mapping[str, float], *,
     engagement_angle = math.radians(float(cfg["pivot_engagement_angle_deg"]))
     pivot_weight = math.exp(-((float(speed_kmh) / transition) ** 2))
 
-    angles_deg = adapter.wheel_angles_deg(q_values)
+    angles_deg = angles
     jacobian = adapter.wheel_angle_jacobian(q_values)
 
     normal_load: dict[str, float] = {}
@@ -148,6 +234,8 @@ def road_load(adapter: J0GeometryAdapter, q_values: Mapping[str, float], *,
         flags.append("ADHESION_INFEASIBLE")
     if max_slip > float(cfg["linear_slip_limit_deg"]):
         flags.append("OUTSIDE_LINEAR_TIRE_RANGE")
+    # 附着不足是**物理风险**，不是程序错误：不得中断积分，只记录。
+    # 真正的数值问题（LOAD_CONVERSION_SINGULAR）才由调用方判为停止条件。
 
     return RoadLoad(
         generalized_road_moment_nm=generalized,
@@ -162,6 +250,12 @@ def road_load(adapter: J0GeometryAdapter, q_values: Mapping[str, float], *,
         adhesion_utilization=utilization,
         max_abs_slip_angle_deg=max_slip,
         flags=tuple(flags),
+        curvature_1pm_used=actual_curvature,
+        curvature_source=curvature_source,
+        icr_x_m=icr_x, icr_y_m=icr_y,
+        icr_line_residual_m=icr_residual,
+        lateral_force_demand_total_n=total_mass * ay,
+        lateral_force_available_total_n=float(sum(available.values())),
     )
 
 
