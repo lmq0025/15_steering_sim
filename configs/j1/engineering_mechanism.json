@@ -10,7 +10,8 @@
   "provenance": {
     "source": "mechanical_model_input_spec_v1.0.yaml",
     "icr_reference_axle": "3",
-    "third_axle_locked": "true"
+    "third_axle_locked": "true",
+    "front_follower_retune": "scripts/j1r2/retune_front_follower.py --scale 1.39；标定判据 = axles 1–2 对理想阿克曼角的最大偏差最小"
   },
   "groups": {
     "front": {
@@ -59,8 +60,8 @@
         },
         "axle2_left": {
           "arm_tip": [
-            -2.8052205167883315,
-            0.9503915670806004
+            -2.889157,
+            0.932604
           ],
           "swing_pickup": [
             0.0,
@@ -73,8 +74,8 @@
         },
         "axle2_right": {
           "arm_tip": [
-            -2.8052205167883315,
-            -0.9503915670806004
+            -2.889157,
+            -0.932604
           ],
           "swing_pickup": [
             0.0,
@@ -98,7 +99,8 @@
       ],
       "notes": [
         "驱动连杆长 1.0412 m，摆臂拾取点传动角 89.6°",
-        "尺寸 arm=0.22 offset=0.03 link=0.64 radius=0.16"
+        "尺寸 arm=0.22 offset=0.03 link=0.64 radius=0.16",
+        "ENGINEERING_DESIGN_ASSUMPTION：二桥转向臂有效半径按实测标定放大 1.39×（axle2_left 0.2200→3.0359 m，axle2_right 0.2200→3.0359 m），把前组随动传动比降到与理想阿克伦曼匹配；甲方坐标未改。"
       ]
     },
     "axle4": {

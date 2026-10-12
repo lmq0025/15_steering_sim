@@ -25,6 +25,9 @@ from steering_sim.mechanics import reference_geometry_from_file  # noqa: E402
 SPEC = ROOT / "mechanical_model_input_spec_v1.0.yaml"
 DESIGN = ROOT / "configs" / "j1" / "engineering_mechanism.json"
 TARGET_DEG = 35.0
+#: 甲方任务书的**最大工作目标角**。包络至少要覆盖它并留余量；±35° 只是设计
+#: 目标（留出制造与控制超调空间），机构不一定能给出 5% 以上的额外余量。
+REQUIRED_DEG = 30.0
 
 
 def _representative(mechanism, reference, key: str, axle: int, q: float) -> float:
@@ -117,19 +120,41 @@ def main() -> int:
                     lo = mid
             return hi
 
-        q_pos_raw = swing_for(math.radians(TARGET_DEG), 1.0)
-        q_neg_raw = swing_for(math.radians(TARGET_DEG), -1.0)
-        # 包络必须**对称且取两侧需求的较大者**：转向机构本身左右镜像，但"驱动侧
-        # 车轮转到 ±35°"所需的正负摆臂角并不相等（齿条端—转向臂端的几何不对称），
-        # 取较小者会把另一侧砍到够不着 —— 实测过六桥因此在 −30° 处饱和。
-        q_pos = max(q_pos_raw, q_neg_raw) * 1.02
-        # J0 的行程反解要求代表行程**严格单调**。代表行程按构造是奇函数，
-        # 所以单调区间必然对称：只在 q ≥ 0 上找折返点再镜像。
+        # J0 的行程反解要求代表行程**严格单调**，所以包络 = 机构**单调可达区间**
+        # 再乘安全系数（不是"刚好够 ±35° 车轮角"）。
+        #
+        # PHASE J1-R2 修正：旧版把包络取成"覆盖该桥轮角 ±35° 所需区间 ×1.02"，
+        # 结果六桥在 −30° 目标上算出来的 q6 正好**落在包络端点上**：行程反解一有
+        # 任何超调就报 MAPPING_OUT_OF_ENVELOPE，−30° 工况整段失败（实测三例）。
+        # 现在改为按机构自身能力取包络，工作点回到内部，同时也让六桥对大转角的
+        # 阿克曼拟合有更多余量。
+        # 包络的需求侧按**甲方最大工作角 ±30°** 算（±35° 只是设计目标，
+        # 拿它定包络会把缸和泵白白放大十几个百分点）。
+        q_pos_raw = swing_for(math.radians(REQUIRED_DEG), 1.0)
+        q_neg_raw = swing_for(math.radians(REQUIRED_DEG), -1.0)
+        # 包络**对称**（取两侧可达的较小者），保证机构左右镜像行为一致；
+        # 两侧可达极限由连续延拓实测给出。
+        reach_pos = abs(limits[1.0][0])
+        reach_neg = abs(limits[-1.0][0])
+        # 包络取"机构单调可达区间"与"设计需求 ×1.25 余量"的较小者再乘 0.97：
+        # 下界必须够得着（旧版按需求 ×1.02 硬裁，六桥在 −30° 上正好落在端点，
+        # 一有超调就整段失败），上界不必把缸撑到机构极限（那会白白放大行程与
+        # 流量需求）。1.25 是覆盖设计目标角 + 控制超调 + 制造公差的工程余量。
+        # 上界用**机构自身的单调可达极限**，不再按需求再收一次：收得比可达极限
+        # 还紧会让 −30° 这种贴边工作点重新落到端点上（实测六桥镜像残差 0.86°）。
+        # 缸行程按机构包络取，而**流量按 ±30° 的真实行程算**，所以包络变宽
+        # 并不会把泵选大。
+        q_pos = min(reach_pos, reach_neg,
+                    max(q_pos_raw, q_neg_raw) * 1.60) * 0.97
+        required = max(swing_for(math.radians(REQUIRED_DEG), 1.0),
+                       swing_for(math.radians(REQUIRED_DEG), -1.0))
+        assert q_pos >= required * 1.02, (
+            f"{key}: 单调可达区间不足以覆盖 ±{REQUIRED_DEG:.0f}° 车轮角需求"
+            f"（可达 {math.degrees(q_pos):.2f}° < 需求 "
+            f"{math.degrees(required * 1.02):.2f}°）")
         monotone_limit = q_pos
         note = "代表行程在包络内严格单调"
-        if key == "front":
-            representative = None            # 前组为占位接口 x = 0.25 q，恒单调
-        elif not first_half_monotone(mechanism, key, axle, q_pos):
+        if key != "front" and not first_half_monotone(mechanism, key, axle, q_pos):
             monotone_limit = _monotone_upper(mechanism, key, axle, q_pos)
             note = (f"代表行程在 q={math.degrees(monotone_limit):.2f}° 处折返，"
                     f"包络对称收于此")

@@ -1,0 +1,19 @@
+{
+  "angles": 61,
+  "direction_ok": 61,
+  "same_sign_ok": 61,
+  "third_axle_locked": 61,
+  "mirror_ok": 30,
+  "max_step_jump_deg": 1.4504,
+  "max_ackermann_rms_deg": 1.8255,
+  "max_outer_follow_error_deg": 0.0001,
+  "q_monotone": {
+    "q_front": true,
+    "q4": true,
+    "q5": true,
+    "q6": true
+  },
+  "max_wheel_angle_deg": 38.446,
+  "problems": [],
+  "mirror_problems": []
+}

@@ -118,18 +118,30 @@ class _ProgressDialog:
         self.window.transient(master)
         self.window.resizable(False, False)
         self.window.protocol("WM_DELETE_WINDOW", lambda: None)
-        frame = ttk.Frame(self.window, padding=16)
-        frame.pack(fill="both", expand=True)
+        self.frame = ttk.Frame(self.window, padding=16)
+        self.frame.pack(fill="both", expand=True)
+        frame = self.frame
         self.message = tk.StringVar(value="正在运行仿真…")
         ttk.Label(frame, textvariable=self.message, width=46).pack(anchor="w")
         self.bar = ttk.Progressbar(frame, mode="determinate", maximum=100.0,
                                    length=360)
         self.bar.pack(pady=(8, 0))
+        #: 批量计算用的取消按钮（动态积分不可取消，那时不显示）。
+        self.cancel_button: ttk.Button | None = None
         self.window.update_idletasks()
         try:
             self.window.grab_set()          # 运行期间禁止操作主窗口，避免重入
         except tk.TclError:
             pass
+
+    def set_cancel(self, command: Any) -> None:
+        """加一个取消按钮（仅批量准稳态计算支持取消）。"""
+        if self.cancel_button is not None:
+            return
+        self.cancel_button = ttk.Button(self.frame, text="取消批量计算",
+                                        command=command)
+        self.cancel_button.pack(pady=(10, 0))
+        self._pump()
 
     def set_message(self, message: str) -> None:
         self.message.set(message)
@@ -168,6 +180,11 @@ class DemoApp:
         self.last_success: DemoResult | None = None
         self.panes: dict[str, ImagePane] = {}
         self._busy = False
+        #: 批量工况（界面导入 → 准稳态计算 → 导出）。``_batch`` 是懒加载的
+        #: 批量上下文，与动态仿真的被控对象共用同一套机构与液压参数。
+        self.batch_cases: list[DemoScenario] = []
+        self.batch_path: Path | None = None
+        self._batch = None
         self._build_fonts()
         self._build_layout()
         self._load_preset(DEFAULT_PRESET_KEY)
@@ -285,6 +302,21 @@ class DemoApp:
                    command=self._on_export_report).pack(fill="x", pady=2)
 
         ttk.Separator(panel).pack(fill="x", pady=6)
+        ttk.Label(panel, text="批量工况（CSV / XLSX）", font=self.font_bold).pack(anchor="w")
+        ttk.Button(panel, text="导出工况模板…",
+                   command=self._on_export_template).pack(fill="x", pady=2)
+        ttk.Button(panel, text="导入工况表…",
+                   command=self._on_import_cases).pack(fill="x", pady=2)
+        self.batch_button = ttk.Button(panel, text="批量计算并导出…",
+                                       command=self._on_run_batch)
+        self.batch_button.pack(fill="x", pady=2)
+        ttk.Label(panel,
+                  text="批量采用 FAST_BATCH_ESTIMATE（准稳态作动能力预测，不做时间积分，"
+                       "逐行标注）；单个工况仍用「运行仿真」做完整动态积分。",
+                  wraplength=310, font=self.font_small, foreground="#666666",
+                  justify="left").pack(anchor="w", pady=(2, 0))
+
+        ttk.Separator(panel).pack(fill="x", pady=6)
         ttk.Label(panel, text="性能退化与质量评估（待开发）", font=self.font_bold).pack(anchor="w")
         info = degradation.describe_interfaces()
         ttk.Label(panel, text=info["disclaimer"] + "\n" + info["note"],
@@ -307,29 +339,50 @@ class DemoApp:
     def _build_result_panel(self, parent: ttk.Frame) -> None:
         right = ttk.Frame(parent)
         right.grid(row=0, column=1, sticky="nsew")
-        right.rowconfigure(3, weight=1)
+        right.rowconfigure(4, weight=1)
         right.columnconfigure(0, weight=1)
 
+        # PHASE J1-R2 §八：**一个红色 FAIL 不能代表所有状态**。这里把三件事分开
+        # 显示，任何一件都不允许冒充另外两件：
+        #   1) 计算是否成功（数值积分是否跑完）
+        #   2) 液压跟踪是否达标（实际轮角是否跟上机构目标）
+        #   3) 目标轨迹是否满足物理约束（a_y 是否超出轮胎附着）
+        lights = ttk.Frame(right)
+        lights.grid(row=0, column=0, sticky="ew", pady=(0, 4))
+        self.lights: dict[str, tk.Label] = {}
+        for index, (key, caption) in enumerate((
+                ("compute", "① 计算状态"),
+                ("tracking", "② 液压跟踪"),
+                ("feasibility", "③ 目标轨迹物理可行性"))):
+            box = tk.Label(lights, text=f"{caption}：—", font=self.font_bold,
+                           anchor="w", padx=10, pady=5,
+                           background="#eeeeee", foreground="#333333",
+                           relief="flat", borderwidth=0)
+            box.grid(row=0, column=index, sticky="ew", padx=(0, 6))
+            lights.columnconfigure(index, weight=1)
+            self.lights[key] = box
+
         self.verdict = ttk.Label(right, text="—", font=self.font_bold)
-        self.verdict.grid(row=0, column=0, sticky="w")
+        self.verdict.grid(row=1, column=0, sticky="w")
         # 结果来源横幅：绝不允许把旧工况的图当成新工况的输出。
         self.result_banner = tk.StringVar(value="尚未产生任何结果。")
         self.banner_label = tk.Label(right, textvariable=self.result_banner,
                                      font=self.font_bold, anchor="w",
                                      background="#eeeeee", foreground="#333333",
                                      padx=8, pady=4)
-        self.banner_label.grid(row=1, column=0, sticky="ew", pady=(2, 4))
+        self.banner_label.grid(row=2, column=0, sticky="ew", pady=(2, 4))
         self.assessment_text = tk.Text(right, height=7, wrap="word",
                                        font=self.font_small, background="#fbfbfb",
                                        relief="flat", highlightthickness=0)
-        self.assessment_text.grid(row=2, column=0, sticky="ew", pady=(0, 6))
+        self.assessment_text.grid(row=3, column=0, sticky="ew", pady=(0, 6))
         self.assessment_text.tag_configure("warn", foreground="#8a6d00")
         self.assessment_text.tag_configure("block", foreground="#b00020")
         self.assessment_text.tag_configure("ok", foreground="#1b5e20")
         self.assessment_text.configure(state="disabled")
 
         notebook = ttk.Notebook(right)
-        notebook.grid(row=3, column=0, sticky="nsew")
+        notebook.grid(row=4, column=0, sticky="nsew")
+        self.notebook = notebook
         for title, names in TAB_LAYOUT:
             if title == WHEEL_TABLE:
                 self.panes[title] = self._build_wheel_table(notebook)
@@ -350,7 +403,7 @@ class DemoApp:
         columns = ("axle", "side", "ideal", "mechanism", "actual", "loaded",
                    "ackermann", "state")
         headings = ("车桥", "左/右轮", "理想阿克曼角", "机构理论角",
-                    "液压实际角", "受载偏差", "阿克曼偏差", "状态")
+                    "液压实际角", "跟踪偏差", "阿克曼偏差", "跟踪状态")
         widths = (60, 70, 120, 110, 110, 100, 110, 150)
         tree = ttk.Treeview(frame, columns=columns, show="headings", height=14)
         for column, heading, width in zip(columns, headings, widths):
@@ -370,6 +423,68 @@ class DemoApp:
             justify="left")
         self.wheel_note.grid(row=2, column=0, columnspan=2, sticky="w", pady=(6, 0))
         return frame
+
+    #: 三态指示灯的配色（背景，前景）。
+    LIGHT_STYLE = {
+        "ok": ("#e6f4ea", "#1b5e20"),
+        "warn": ("#fff6e0", "#8a6d00"),
+        "bad": ("#fde8e6", "#b00020"),
+        "idle": ("#eeeeee", "#333333"),
+    }
+
+    def _set_light(self, key: str, text: str, style: str) -> None:
+        box = getattr(self, "lights", {}).get(key)
+        if box is None:
+            return
+        background, foreground = self.LIGHT_STYLE.get(style, self.LIGHT_STYLE["idle"])
+        box.configure(text=text, background=background, foreground=foreground)
+
+    def _clear_lights(self) -> None:
+        for key, caption in (("compute", "① 计算状态"),
+                             ("tracking", "② 液压跟踪"),
+                             ("feasibility", "③ 目标轨迹物理可行性")):
+            self._set_light(key, f"{caption}：—", "idle")
+
+    def _update_lights(self, summary: dict | None) -> None:
+        """按三个独立结论刷新指示灯，互不冒充。"""
+        if not summary:
+            self._clear_lights()
+            return
+        completed = bool(summary.get("NUMERICAL_COMPLETED"))
+        if completed:
+            self._set_light("compute", "① 计算状态：计算完成", "ok")
+        else:
+            self._set_light("compute", "① 计算状态：计算未完成/求解失败", "bad")
+
+        steady = summary.get("steady_max_tracking_error_vs_command_deg")
+        peak = summary.get("max_tracking_error_vs_command_deg")
+        if not completed:
+            self._set_light("tracking", "② 液压跟踪：无法判定（未完成计算）", "idle")
+        elif summary.get("TRACKING_PASS") and summary.get("TRANSIENT_TRACKING_PASS"):
+            self._set_light("tracking",
+                            f"② 液压跟踪：达标（稳态 {steady:.3f}°，"
+                            f"峰值 {peak:.3f}°）", "ok")
+        elif summary.get("TRACKING_PASS"):
+            self._set_light("tracking",
+                            f"② 液压跟踪：稳态达标但过渡段超差"
+                            f"（峰值 {peak:.3f}°）", "warn")
+        else:
+            steady_text = "—" if steady is None else f"{steady:.3f}°"
+            self._set_light("tracking", f"② 液压跟踪：超差（稳态 {steady_text}）", "bad")
+
+        ratio = summary.get("target_path_adhesion_ratio")
+        if ratio is None:
+            self._set_light("feasibility", "③ 目标轨迹物理可行性：—", "idle")
+        elif ratio > 1.0:
+            self._set_light("feasibility",
+                            f"③ 目标轨迹物理可行性：不可行（附着比 {ratio:.2f} > 1，"
+                            f"目标路径超出轮胎附着）", "bad")
+        elif ratio > 0.85:
+            self._set_light("feasibility",
+                            f"③ 目标轨迹物理可行性：接近附着极限（{ratio:.2f}）", "warn")
+        else:
+            self._set_light("feasibility",
+                            f"③ 目标轨迹物理可行性：可行（附着比 {ratio:.2f}）", "ok")
 
     def _fill_wheel_table(self, result: DemoResult) -> None:
         from .plots import wheel_table_rows
@@ -395,8 +510,9 @@ class DemoApp:
             "各列含义：理想阿克曼角 = 共同瞬时转向中心几何解；"
             "机构理论角 = 真实闭链（无载）在目标机构坐标上的解；"
             "液压实际角 = J0 闭环中由真实缸位移反求的角。",
-            "「受载偏差」为静态柔度修正后的估计值，不是液压驱动角，两者不得叠加；"
-            "「阿克曼偏差」= 机构理论角 − 理想阿克曼角，属机械拓扑固有量。",
+            "「跟踪偏差」= 液压实际角 − 机构理论角，是控制—液压闭环真正要负责的量；"
+            "「阿克曼偏差」= 机构理论角 − 理想阿克曼角，属机械拓扑固有量，"
+            "液压闭环不负责消除。",
         ]
         if result.scenario.target_outer_angle_deg != 0:
             notes.append("三桥恒为锁止 0°，不参与转向。")
@@ -585,12 +701,21 @@ class DemoApp:
                 pane.show(tuple(path for path in result.figures
                                 if path.name in wanted))
         self._fill_wheel_table(result)
+        self._update_lights(result.summary)
         missing = [name for _title, group in TAB_LAYOUT for name in group
                    if name not in names]
         if missing:
             self.status.set("提示：缺少图像 " + "、".join(missing))
-        color = {"PASS": "#1b5e20", "CONDITIONAL": "#8a6d00"}.get(result.status, "#b00020")
-        self.verdict.configure(text=f"工况判定：{result.status}", foreground=color)
+        if not result.summary.get("NUMERICAL_COMPLETED", True):
+            verdict, color = "计算未完成", "#b00020"
+        elif result.summary.get("VEHICLE_DYNAMIC_INFEASIBLE"):
+            verdict, color = "计算完成／跟踪达标／目标轨迹物理不可行", "#8a6d00"
+        elif result.summary.get("TRACKING_PASS"):
+            verdict, color = "计算完成／跟踪达标／目标轨迹物理可行", "#1b5e20"
+        else:
+            verdict, color = "计算完成／跟踪超差", "#b00020"
+        self.verdict.configure(text=f"综合判定：{verdict}"
+                                    f"（内部状态 {result.status}）", foreground=color)
         self.result_banner.set(
             f"当前显示：本次运行结果 —— {self._scenario_label(result.scenario)}"
             f"（{result.provenance_label}）")
@@ -627,7 +752,10 @@ class DemoApp:
 
         绝不能把上一次成功工况的图当成当前工况的输出。
         """
-        self.verdict.configure(text="不可运行（动态仿真未执行）", foreground="#b00020")
+        self.verdict.configure(text="综合判定：动态仿真未执行（不是程序运行失败）",
+                               foreground="#8a6d00")
+        self._clear_lights()
+        self._set_light("compute", "① 计算状态：未执行动态仿真", "warn")
         entries: list[tuple[str, str]] = [
             ("block", f"当前输入工况：{self._scenario_label(scenario)}"),
             ("block", "动态仿真：未执行"),
@@ -666,7 +794,129 @@ class DemoApp:
 
     def _fail(self, exc: Exception) -> None:
         self.status.set("运行失败。")
+        self._clear_lights()
+        self._set_light("compute", "① 计算状态：程序异常，计算失败", "bad")
         messagebox.showerror(WINDOW_TITLE, f"运行失败：\n{exc}")
+
+    # -------------------------------------------------------- 批量工况
+    def _batch_context(self):
+        """批量用的被控对象上下文（懒加载，只建一次）。"""
+        if getattr(self, "_batch", None) is None:
+            from .batch import build_context
+            self._batch = build_context(adapter=self.service.runner.geometry)
+        return self._batch
+
+    def _on_export_template(self) -> None:
+        target = filedialog.asksaveasfilename(
+            title="导出工况模板", defaultextension=".csv",
+            initialfile="工况模板.csv",
+            filetypes=[("CSV 文件", "*.csv"), ("Excel 工作簿", "*.xlsx")])
+        if not target:
+            return
+        try:
+            from .batch import write_template
+            path = write_template(target)
+        except Exception as exc:
+            messagebox.showerror(WINDOW_TITLE, f"模板导出失败：{exc}")
+            return
+        self.status.set(f"已导出工况模板：{path}")
+
+    def _on_import_cases(self) -> None:
+        target = filedialog.askopenfilename(
+            title="导入工况表", filetypes=[("CSV 文件", "*.csv"),
+                                          ("Excel 工作簿", "*.xlsx"),
+                                          ("全部文件", "*.*")])
+        if not target:
+            return
+        try:
+            from .batch import read_cases
+            self.batch_cases = read_cases(target)
+            self.batch_path = Path(target)
+        except Exception as exc:
+            messagebox.showerror(WINDOW_TITLE, f"工况表导入失败：\n{exc}")
+            return
+        lines = [f"已导入工况表：{self.batch_path.name}",
+                 f"共 {len(self.batch_cases)} 个工况。"]
+        for scenario in self.batch_cases[:5]:
+            lines.append(f"  · {self._scenario_label(scenario)}")
+        if len(self.batch_cases) > 5:
+            lines.append(f"  · …其余 {len(self.batch_cases) - 5} 个")
+        lines.append("点「批量计算并导出…」开始计算（可取消）。")
+        self._write_assessment("", [("ok", line) for line in lines])
+        self.status.set(f"已导入 {len(self.batch_cases)} 个工况：{self.batch_path}")
+
+    def _on_run_batch(self) -> None:
+        scenarios = getattr(self, "batch_cases", None)
+        if not scenarios:
+            messagebox.showinfo(WINDOW_TITLE,
+                                "还没有导入工况表。\n请先点「导入工况表…」，"
+                                "或先用「导出工况模板…」生成一份模板。")
+            return
+        target = filedialog.asksaveasfilename(
+            title="批量结果导出", defaultextension=".xlsx",
+            initialfile="批量工况结果.xlsx",
+            filetypes=[("Excel 工作簿", "*.xlsx"), ("CSV 文件", "*.csv")])
+        if not target:
+            return
+        if self._busy:
+            return
+        self._busy = True
+        self.run_button.configure(state="disabled")
+        self.batch_button.configure(state="disabled")
+        dialog = _ProgressDialog(self.root, WINDOW_TITLE)
+        dialog.set_message(f"正在做准稳态能力预测（{len(scenarios)} 个工况）…")
+        cancel = {"value": False}
+
+        def request_stop() -> None:
+            cancel["value"] = True
+            dialog.set_message("正在取消…（本批剩余工况将被跳过）")
+
+        dialog.set_cancel(request_stop)
+        try:
+            from .batch import run_batch, write_csv, write_xlsx
+            context = self._batch_context()
+            rows = run_batch(context, scenarios,
+                             on_progress=dialog.set_fraction,
+                             should_stop=lambda: cancel["value"])
+            suffix = Path(target).suffix.lower()
+            if suffix in (".xlsx", ".xlsm"):
+                written = write_xlsx(rows, target) or write_csv(
+                    rows, Path(target).with_suffix(".csv"))
+            else:
+                written = write_csv(rows, target)
+        except Exception as exc:
+            dialog.close()
+            self._busy = False
+            self.run_button.configure(state="normal")
+            self.batch_button.configure(state="normal")
+            messagebox.showerror(WINDOW_TITLE, f"批量计算失败：{exc}")
+            return
+        dialog.close()
+        self._busy = False
+        self.run_button.configure(state="normal")
+        self.batch_button.configure(state="normal")
+
+        status_counts: dict[str, int] = {}
+        for row in rows:
+            key = str(row.get("综合状态"))
+            status_counts[key] = status_counts.get(key, 0) + 1
+        cancelled = cancel["value"] and len(rows) < len(scenarios)
+        lines = [f"批量计算完成：{len(rows)} / {len(scenarios)} 个工况"
+                 + ("（已取消）" if cancelled else ""),
+                 f"结果已导出：{written}",
+                 "计算方式：FAST_BATCH_ESTIMATE（准稳态，不做时间积分）",
+                 "综合状态统计："]
+        for key, count in sorted(status_counts.items(), key=lambda kv: -kv[1]):
+            lines.append(f"  · {key}：{count}")
+        lines.append("FAST_BATCH_ESTIMATE 只给出准稳态能力预测；"
+                     "需要真实四通道动态时间序列时，对单个工况用「运行仿真」。")
+        self._write_assessment("", [("ok", line) for line in lines])
+        self.status.set(f"批量完成 {len(rows)} 个工况，已导出 {written}")
+
+    def _clear_result_panes(self) -> None:
+        for pane in self.panes.values():
+            if isinstance(pane, ImagePane):
+                pane.clear()
 
     # ------------------------------------------------------------ 导出
     def _on_export_csv(self) -> None:

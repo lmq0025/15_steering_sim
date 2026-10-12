@@ -1,0 +1,21 @@
+{
+  "cases": 3111,
+  "structurally_complete": 3111,
+  "solver_errors": 0,
+  "rows_missing_actuator_prediction": 0,
+  "status_counts": {
+    "ACKERMANN_TARGET_MISMATCH": 1580,
+    "OK": 561,
+    "VEHICLE_DYNAMIC_INFEASIBLE": 970
+  },
+  "capability_ok_by_channel": {
+    "作动能力_channel_front": 3111,
+    "作动能力_channel_rear_1": 3111,
+    "作动能力_channel_rear_2": 3111,
+    "作动能力_channel_rear_3": 3111
+  },
+  "elapsed_s": 26.3,
+  "mode": "FAST_BATCH_ESTIMATE",
+  "hydraulic_model": "ENGINEERING_HYDRAULIC_V1",
+  "path_steps": 24
+}

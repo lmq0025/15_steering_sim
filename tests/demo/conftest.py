@@ -31,7 +31,10 @@ def demo_service():
     output = ROOT / "outputs" / "_demo_test_tmp" / "service"
     if output.exists():
         shutil.rmtree(output, ignore_errors=True)
-    return DemoService(output_dir=output, mechanical_mode="AS_BUILT_REFERENCE")
+    # PHASE J1-R2：这两个夹具锁的是**历史模型**的真实行为（M2/M3 的缺陷对照），
+    # 因此显式退回 L1-Fast 液压；正式模型的测试见 engineering_service。
+    return DemoService(output_dir=output, mechanical_mode="AS_BUILT_REFERENCE",
+                       hydraulic_model="L1_FAST")
 
 
 @pytest.fixture(scope="session")
@@ -41,7 +44,18 @@ def redesigned_service():
     output = ROOT / "outputs" / "_demo_test_tmp" / "service_redesigned"
     if output.exists():
         shutil.rmtree(output, ignore_errors=True)
-    return DemoService(output_dir=output, mechanical_mode="REDESIGNED_ACKERMANN")
+    return DemoService(output_dir=output, mechanical_mode="REDESIGNED_ACKERMANN",
+                       hydraulic_model="L1_FAST")
+
+
+@pytest.fixture(scope="session")
+def engineering_service():
+    """PHASE J1-R2 唯一正式组合：ENGINEERING_STEERING_MODEL + ENGINEERING_HYDRAULIC_V1。"""
+    from steering_sim.demo.service import DemoService
+    output = ROOT / "outputs" / "_demo_test_tmp" / "service_engineering"
+    if output.exists():
+        shutil.rmtree(output, ignore_errors=True)
+    return DemoService(output_dir=output)
 
 
 @pytest.fixture(scope="session")

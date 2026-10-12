@@ -14,6 +14,9 @@
     "control": "复用 src/steering_sim/control/pid.py 的 PIDController，逐通道实例化"
   },
   "hydraulic": {
+    "model": "ENGINEERING_HYDRAULIC_V1",
+    "model_note": "PHASE J1-R2 起正式液压模型改为轻量化工程电液伺服模型 src/steering_sim/hydraulics_engineering（4 通道 × (pA,pB,x,v,阀芯) + 两条共用供油轨）。参数见 configs/j1r2/engineering_hydraulics.json。旧 L1-Fast 只在显式指定 L1_FAST 时构造，用于历史对照与回归测试。",
+    "engineering_parameters": "../j1r2/engineering_hydraulics.json",
     "dt_hydraulic_s": 0.0005,
     "integration": "显式 RK4，每个 stage 用该 stage 状态重新计算机械负载",
     "pump_speed_mode": "channel_nominal_speed",
@@ -38,6 +41,10 @@
     "dt_control_s": 0.01,
     "reference_signal": "等效作动组的代表行程 x_ref（不是轮角，也不是把目标角复制四份）",
     "reference_ramp_s": 0.2,
+    "reference_rate_deg_per_s": 12.0,
+    "reference_minimum_time_s": 0.4,
+    "reference_note": "PHASE J1-R2：指令斜坡时间 = max(最短时间, |目标角|/额定速率)，S 曲线（两端速度为零）。速率 12 °/s 是重型车辆低速转向的工程量级，也是流量/泵选型的输入；不是为了让跟踪指标好看而放慢的。",
+    "feedforward_note": "PHASE J1-R2：控制器 = 速度前馈 + PI。前馈增益取 1/Kv（Kv 为阀在设计压差下的速度增益，来自 engineering_hydraulics.json），PID 只补偿扰动与模型误差。",
     "channels": [
       {
         "index": 0,

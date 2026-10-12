@@ -1,0 +1,125 @@
+{
+  "schema_version": "J1.0",
+  "tag": "ENGINEERING_STEERING_MODEL",
+  "coordinate_system": {
+    "source_length_unit": "mm",
+    "solver_length_unit": "m",
+    "origin": "midpoint of axle-1 wheel centers",
+    "x_positive": "vehicle forward",
+    "y_positive": "vehicle left",
+    "z_positive": "up",
+    "revolute_axis": "+Z"
+  },
+  "geometry": {
+    "source_file": "mechanical_model_input_spec_v1.0.yaml",
+    "source": "CUSTOMER_COORDINATES_TRANSCRIBED_AND_CROSSCHECKED_UNCHANGED",
+    "customer_hardpoints_changed": false,
+    "icr_reference_axle": 3,
+    "third_axle_locked": true,
+    "third_axle_point20_mm": [
+      -7290.0,
+      -996.0
+    ],
+    "mechanism_design": "configs/j1/engineering_mechanism.json",
+    "fit_residual_limit_deg": 0.25,
+    "q_envelopes_rad": {
+      "q_front": [
+        -0.78723,
+        0.78723
+      ],
+      "q4": [
+        -0.36399,
+        0.36399
+      ],
+      "q5": [
+        -0.30473,
+        0.30473
+      ],
+      "q6": [
+        -0.52482,
+        0.52482
+      ]
+    },
+    "q_envelope_source": "J1 连续延拓实测：从零位外扩到机构不可解，再收缩到覆盖该桥轮角 ±35° 所需的区间并留 2% 余量。不是甲方机械限位。",
+    "q_envelope_j1_evidence": {
+      "q_front": {
+        "reachable_plus_deg": 46.5,
+        "reachable_minus_deg": -54.5,
+        "stop_reason_plus": "MechanismError: 连杆长度不可达（cos=1.000620）；该构型超出机构可达范围",
+        "stop_reason_minus": "MechanismError: 连杆长度不可达（cos=1.001142）；该构型超出机构可达范围",
+        "envelope_plus_deg": 45.105,
+        "envelope_minus_deg": -45.105,
+        "monotone_stroke_note": "代表行程在包络内严格单调"
+      },
+      "q4": {
+        "reachable_plus_deg": 21.5,
+        "reachable_minus_deg": -23.5,
+        "stop_reason_plus": "MechanismError: 连杆长度不可达（cos=1.010163）；该构型超出机构可达范围",
+        "stop_reason_minus": "MechanismError: 连杆长度不可达（cos=1.005815）；该构型超出机构可达范围",
+        "envelope_plus_deg": 20.855,
+        "envelope_minus_deg": -20.855,
+        "monotone_stroke_note": "代表行程在包络内严格单调"
+      },
+      "q5": {
+        "reachable_plus_deg": 25.5,
+        "reachable_minus_deg": -18.0,
+        "stop_reason_plus": "MechanismError: 连杆长度不可达（cos=1.005500）；该构型超出机构可达范围",
+        "stop_reason_minus": "MechanismError: 连杆长度不可达（cos=1.008965）；该构型超出机构可达范围",
+        "envelope_plus_deg": 17.46,
+        "envelope_minus_deg": -17.46,
+        "monotone_stroke_note": "代表行程在包络内严格单调"
+      },
+      "q6": {
+        "reachable_plus_deg": 31.0,
+        "reachable_minus_deg": -36.0,
+        "stop_reason_plus": "MechanismError: 连杆长度不可达（cos=1.003510）；该构型超出机构可达范围",
+        "stop_reason_minus": "MechanismError: 连杆长度不可达（cos=1.001939）；该构型超出机构可达范围",
+        "envelope_plus_deg": 30.07,
+        "envelope_minus_deg": -30.07,
+        "monotone_stroke_note": "代表行程在包络内严格单调"
+      }
+    }
+  },
+  "ground_load": {
+    "gravity_mps2": 9.81,
+    "cornering_stiffness_per_wheel_N_per_rad": 300000.0,
+    "cornering_stiffness_source": "ASSUMED_ENGINEERING_PARAMETER",
+    "linear_slip_limit_deg": 5.0,
+    "effective_trail_m": 0.06,
+    "effective_trail_source": "ASSUMED_ENGINEERING_PARAMETER",
+    "pivot_effective_radius_m": 0.035,
+    "pivot_effective_radius_source": "ASSUMED_ENGINEERING_PARAMETER",
+    "pivot_transition_speed_kmh": 5.0,
+    "pivot_transition_source": "ASSUMED_ENGINEERING_PARAMETER_INSPIRED_BY_LOW_SPEED_LITERATURE",
+    "pivot_engagement_angle_deg": 1.0,
+    "pivot_engagement_source": "ASSUMED_ENGINEERING_PARAMETER",
+    "stiffness_scenarios_Nm_per_rad": {
+      "low_flexibility": {
+        "q_front": 400000.0,
+        "q4": 300000.0,
+        "q5": 300000.0,
+        "q6": 300000.0
+      },
+      "medium_flexibility": {
+        "q_front": 200000.0,
+        "q4": 150000.0,
+        "q5": 150000.0,
+        "q6": 150000.0
+      },
+      "high_flexibility": {
+        "q_front": 100000.0,
+        "q4": 75000.0,
+        "q5": 75000.0,
+        "q6": 75000.0
+      }
+    },
+    "stiffness_source": "ASSUMED_ENGINEERING_PARAMETER_NOT_CUSTOMER_MEASURED"
+  },
+  "front_cylinder_interface": {
+    "cylinder_id": "front_group_1",
+    "frame_mount": "PENDING_CUSTOMER_COORDINATE",
+    "moving_mount": "PENDING_CUSTOMER_COORDINATE",
+    "stroke_per_q_mm_per_rad": 250.0,
+    "stroke_mapping_source": "ASSUMED_ENGINEERING_PARAMETER_INTERFACE_PLACEHOLDER"
+  }
+}

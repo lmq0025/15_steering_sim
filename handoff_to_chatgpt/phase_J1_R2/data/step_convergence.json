@@ -1,0 +1,91 @@
+{
+  "case": {
+    "target_deg": 10.0,
+    "speed_kmh": 5.0,
+    "duration_s": 2.0
+  },
+  "records": [
+    {
+      "dt_ms": 2.0,
+      "completed": true,
+      "final_stroke_mm": {
+        "channel_front": 45.40701,
+        "channel_rear_1": 5.628836,
+        "channel_rear_2": 15.664202,
+        "channel_rear_3": -44.543605
+      },
+      "steady_max_error_deg": 2.8382891331446558e-05,
+      "max_error_deg": 0.12806794567527824,
+      "max_pressure_mpa_g": 12.554115407973283,
+      "max_abs_velocity_m_s": 0.08052423384193472,
+      "final_stroke_delta_vs_finest_mm": {
+        "channel_front": 0.0,
+        "channel_rear_1": 0.0,
+        "channel_rear_2": 0.0,
+        "channel_rear_3": 1e-06
+      }
+    },
+    {
+      "dt_ms": 1.0,
+      "completed": true,
+      "final_stroke_mm": {
+        "channel_front": 45.40701,
+        "channel_rear_1": 5.628836,
+        "channel_rear_2": 15.664202,
+        "channel_rear_3": -44.543606
+      },
+      "steady_max_error_deg": 2.8823621011753175e-05,
+      "max_error_deg": 0.12811672186566092,
+      "max_pressure_mpa_g": 12.558159748831661,
+      "max_abs_velocity_m_s": 0.08053817754077157,
+      "final_stroke_delta_vs_finest_mm": {
+        "channel_front": 0.0,
+        "channel_rear_1": 0.0,
+        "channel_rear_2": 0.0,
+        "channel_rear_3": 0.0
+      }
+    },
+    {
+      "dt_ms": 0.5,
+      "completed": true,
+      "final_stroke_mm": {
+        "channel_front": 45.40701,
+        "channel_rear_1": 5.628836,
+        "channel_rear_2": 15.664202,
+        "channel_rear_3": -44.543606
+      },
+      "steady_max_error_deg": 2.8823330559646365e-05,
+      "max_error_deg": 0.12811584696405376,
+      "max_pressure_mpa_g": 12.558290282677184,
+      "max_abs_velocity_m_s": 0.08053814950624667,
+      "final_stroke_delta_vs_finest_mm": {
+        "channel_front": 0.0,
+        "channel_rear_1": 0.0,
+        "channel_rear_2": 0.0,
+        "channel_rear_3": 0.0
+      }
+    },
+    {
+      "dt_ms": 0.25,
+      "completed": true,
+      "final_stroke_mm": {
+        "channel_front": 45.40701,
+        "channel_rear_1": 5.628836,
+        "channel_rear_2": 15.664202,
+        "channel_rear_3": -44.543606
+      },
+      "steady_max_error_deg": 2.8823141246192563e-05,
+      "max_error_deg": 0.1281263962881649,
+      "max_pressure_mpa_g": 12.55887820499305,
+      "max_abs_velocity_m_s": 0.08053949750133164,
+      "final_stroke_delta_vs_finest_mm": {
+        "channel_front": 0.0,
+        "channel_rear_1": 0.0,
+        "channel_rear_2": 0.0,
+        "channel_rear_3": 0.0
+      }
+    }
+  ],
+  "converged_dt_ms": 0.5,
+  "note": "以最细步长（0.25 ms）为基准，0.5 ms 的末值行程差应在 0.01 mm 量级；2.0 ms 已明显偏差。"
+}

@@ -71,6 +71,11 @@ class J0CaseConfig:
     target_outer_angle_deg: float
     speed_kmh: float
     duration_s: float
+    #: PHASE J1-R2：指令斜坡时间（s）。``None`` 时用配置里的默认值。
+    #: 一桥外侧轮按额定速率走到目标角所需的时间，是流量与跟踪性能的直接决定量。
+    reference_time_s: float | None = None
+    #: 指令到位后保持的时长（s），末段稳态指标取自这一段。
+    hold_time_s: float | None = None
 
     @property
     def speed_m_s(self) -> float:
@@ -93,6 +98,12 @@ class J0Config:
     output: dict[str, Any]
     #: PHASE M3：``AS_BUILT_REFERENCE`` 或 ``REDESIGNED_ACKERMANN``。
     mechanical_mode: str = "ENGINEERING_STEERING_MODEL"
+    #: PHASE J1-R2：``ENGINEERING_HYDRAULIC_V1``（正式）或 ``L1_FAST``（历史）。
+    hydraulic_model: str = "ENGINEERING_HYDRAULIC_V1"
+    #: 工程液压参数文件；``None`` 时按仓库默认路径解析。
+    engineering_parameters_path: Path | None = None
+    #: 正式（工程）液压参数 —— 只有 ``ENGINEERING_HYDRAULIC_V1`` 构建时才填。
+    engineering_parameters: Any = None
 
     @property
     def substeps_per_control(self) -> int:
@@ -154,9 +165,24 @@ def load_j0_config(path: str | Path) -> J0Config:
         target_outer_angle_deg=float(item["target_outer_angle_deg"]),
         speed_kmh=float(item["speed_kmh"]),
         duration_s=float(item["duration_s"]),
+        reference_time_s=(None if item.get("reference_time_s") is None
+                          else float(item["reference_time_s"])),
+        hold_time_s=(None if item.get("hold_time_s") is None
+                     else float(item["hold_time_s"])),
     ) for item in raw["cases"])
     if not cases:
         raise ValueError("at least one J0 case is required")
+
+    # PHASE J1-R2：正式液压模型 = 轻量化工程电液伺服模型。
+    hydraulic_model = str(hydraulic.get("model", "ENGINEERING_HYDRAULIC_V1")).upper()
+    parameters_path = hydraulic.get("engineering_parameters")
+    parameters_path = (None if parameters_path in (None, "")
+                       else (source.parent / str(parameters_path)).resolve()
+                       if not Path(str(parameters_path)).is_absolute()
+                       else Path(str(parameters_path)))
+    if hydraulic_model == "ENGINEERING_HYDRAULIC_V1" and parameters_path is None:
+        parameters_path = (source.parents[1] / "j1r2"
+                           / "engineering_hydraulics.json").resolve()
 
     mechanical = raw.get("mechanical", {})
     mode = str(mechanical.get("mode", "ENGINEERING_STEERING_MODEL"))
@@ -170,4 +196,6 @@ def load_j0_config(path: str | Path) -> J0Config:
         mapping=raw["mapping"], load=raw["load"], hydraulic=hydraulic,
         acceptance=raw["acceptance"], output=raw["output"],
         mechanical_mode=mode,
+        hydraulic_model=hydraulic_model,
+        engineering_parameters_path=parameters_path,
     )

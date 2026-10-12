@@ -47,7 +47,15 @@ class PIDController(Controller):
         self._previous_error: np.ndarray | None = None
         self.diagnostics: PIDDiagnostics | None = None
 
-    def step(self, measurement: Measurement, reference: Reference, dt: float) -> Command:
+    def step(self, measurement: Measurement, reference: Reference, dt: float, *,
+             feedforward: float | None = None) -> Command:
+        """一个控制周期。
+
+        ``feedforward``（PHASE J1-R2）是**前馈命令**，直接叠加到 PID 输出上：
+        参考轨迹是已知的，把它对应的稳态命令前馈出去，PID 只需要补偿扰动与
+        模型误差，跟踪滞后和超调都会显著减小。反馈量一律按未限幅的 ``raw``
+        记录，所以饱和统计不受前馈影响。
+        """
         if dt <= 0.0:
             raise ValueError("dt must be positive")
         error = np.asarray(reference.values, dtype=float) - np.asarray(measurement.values, dtype=float)
@@ -60,6 +68,8 @@ class PIDController(Controller):
         )
         candidate_integral = self._integral + error * dt
         raw = self.kp * error + self.ki * candidate_integral + self.kd * derivative
+        if feedforward is not None:
+            raw = raw + float(feedforward)
         command = np.clip(raw, -self.limit, self.limit)
         at_limit = np.abs(raw) > self.limit + 1.0e-12
         # Conditional integration: do not wind up further into saturation.

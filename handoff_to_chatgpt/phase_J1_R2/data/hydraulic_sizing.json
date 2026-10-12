@@ -1,0 +1,191 @@
+{
+  "schema_version": "J1R2.0",
+  "provenance": {
+    "method": "虚功 F = M/(ds/dδ) + 流量法 + 折算惯量",
+    "design_case": "(0.0, 5.0, 10.0, 20.0) km/h × ±30° × μ=0.8 × 11.5 t/轴，取双向峰值",
+    "safety_factor": "1.3",
+    "gear_efficiency": "0.9",
+    "flow_margin": "1.25",
+    "velocity_margin": "1.55"
+  },
+  "groups": {
+    "channel_front": {
+      "dof": "q_front",
+      "supply": "front",
+      "required_force_n": 21562.144356672958,
+      "design_force_n": 31145.319626305383,
+      "force_at_relief_n": 63903.52886575168,
+      "static_margin": 2.963690800352846,
+      "design_load_pressure_pa": 14699999.999999998,
+      "required_area_m2": 0.002118729226279278,
+      "bore_mm": 63.0,
+      "area_m2": 0.0031172453105244723,
+      "half_stroke_m": 0.1968075,
+      "stroke_m": 0.393615,
+      "stroke_offset_m": 0.0,
+      "stroke_at_30_deg_m": 0.15219418006699612,
+      "operating_margin_at_30_mm": {
+        "minus": 44.613,
+        "plus": 55.418
+      },
+      "travel_at_30_deg_m": {
+        "minus": -0.15219418006699612,
+        "plus": 0.14138957166261443
+      },
+      "peak_velocity_m_s": 0.09131650804019767,
+      "peak_flow_l_per_min": 17.079357387706587,
+      "valve_area_m2": 8.26607749897381e-06,
+      "valve_delta_p_pa": 3150000.000000001,
+      "velocity_per_command_m_s": 0.14154058746230638,
+      "equivalent_mass_kg": 440.4597564644775,
+      "natural_frequency_hz": 26.26907114308473,
+      "viscous_damping_n_s_per_m": 4361.963927774607,
+      "coulomb_friction_n": 622.9063925261077,
+      "peak_case": "目标角 +30°, 车速 0 km/h, μ=0.8",
+      "peak_force_by_speed_n": {
+        "0": 21562.144356672958,
+        "5": 8425.288465166346,
+        "10": 3457.5610737864513,
+        "20": 12479.110379127646
+      }
+    },
+    "channel_rear_1": {
+      "dof": "q4",
+      "supply": "rear",
+      "required_force_n": 24732.83685880992,
+      "design_force_n": 35725.208796058774,
+      "force_at_relief_n": 63903.52886575168,
+      "static_margin": 2.583752491901835,
+      "design_load_pressure_pa": 14699999.999999998,
+      "required_area_m2": 0.0024302863126570598,
+      "bore_mm": 63.0,
+      "area_m2": 0.0031172453105244723,
+      "half_stroke_m": 0.08168352821609015,
+      "stroke_m": 0.1633670564321803,
+      "stroke_offset_m": -0.002154241445077365,
+      "stroke_at_30_deg_m": 0.019852477447353228,
+      "operating_margin_at_30_mm": {
+        "minus": 63.985,
+        "plus": 60.306
+      },
+      "travel_at_30_deg_m": {
+        "minus": -0.019852477447353228,
+        "plus": 0.019223000186865645
+      },
+      "peak_velocity_m_s": 0.011911486468411937,
+      "peak_flow_l_per_min": 2.2278615201019694,
+      "valve_area_m2": 1.0782417373267067e-06,
+      "valve_delta_p_pa": 3150000.000000001,
+      "velocity_per_command_m_s": 0.0184628040260385,
+      "equivalent_mass_kg": 1106.2398861864824,
+      "natural_frequency_hz": 25.729227997152236,
+      "viscous_damping_n_s_per_m": 10730.18444729103,
+      "coulomb_friction_n": 714.5041759211755,
+      "peak_case": "目标角 +30°, 车速 0 km/h, μ=0.8",
+      "peak_force_by_speed_n": {
+        "0": 24732.83685880992,
+        "5": 9664.219057373994,
+        "10": 3965.992468299385,
+        "20": 14314.153048017375
+      }
+    },
+    "channel_rear_2": {
+      "dof": "q5",
+      "supply": "rear",
+      "required_force_n": 48624.139704100555,
+      "design_force_n": 70234.86846147857,
+      "force_at_relief_n": 103044.23903774521,
+      "static_margin": 2.11919922213154,
+      "design_load_pressure_pa": 14699999.999999998,
+      "required_area_m2": 0.0047778822082638495,
+      "bore_mm": 80.0,
+      "area_m2": 0.005026548245743669,
+      "half_stroke_m": 0.06965161580816781,
+      "stroke_m": 0.13930323161633562,
+      "stroke_offset_m": -0.007029501982270481,
+      "stroke_at_30_deg_m": 0.0606931807359237,
+      "operating_margin_at_30_mm": {
+        "minus": 15.988,
+        "plus": 19.425
+      },
+      "travel_at_30_deg_m": {
+        "minus": -0.0606931807359237,
+        "plus": 0.04319730850953121
+      },
+      "peak_velocity_m_s": 0.03641590844155422,
+      "peak_flow_l_per_min": 10.982779241643385,
+      "valve_area_m2": 5.315451998849212e-06,
+      "valve_delta_p_pa": 3150000.000000001,
+      "velocity_per_command_m_s": 0.056444658084409044,
+      "equivalent_mass_kg": 1789.8351843146474,
+      "natural_frequency_hz": 27.81608310729989,
+      "viscous_damping_n_s_per_m": 18768.956817075792,
+      "coulomb_friction_n": 1404.6973692295714,
+      "peak_case": "目标角 +30°, 车速 0 km/h, μ=0.8",
+      "peak_force_by_speed_n": {
+        "0": 48624.139704100555,
+        "5": 18999.613238875838,
+        "10": 7797.041421588621,
+        "20": 28141.264450342507
+      }
+    },
+    "channel_rear_3": {
+      "dof": "q6",
+      "supply": "rear",
+      "required_force_n": 27557.496850328585,
+      "design_force_n": 39805.2732282524,
+      "force_at_relief_n": 63903.52886575168,
+      "static_margin": 2.3189163084305937,
+      "design_load_pressure_pa": 14699999.999999998,
+      "required_area_m2": 0.0027078417162076465,
+      "bore_mm": 63.0,
+      "area_m2": 0.0031172453105244723,
+      "half_stroke_m": 0.13395960828312925,
+      "stroke_m": 0.2679192165662585,
+      "stroke_offset_m": -0.020567327153628412,
+      "stroke_at_30_deg_m": 0.12890963950856987,
+      "operating_margin_at_30_mm": {
+        "minus": 263.535,
+        "plus": 242.302
+      },
+      "travel_at_30_deg_m": {
+        "minus": 0.10900829823611356,
+        "plus": -0.12890963950856987
+      },
+      "peak_velocity_m_s": 0.07734578370514192,
+      "peak_flow_l_per_min": 14.466346892621626,
+      "valve_area_m2": 7.001431132738098e-06,
+      "valve_delta_p_pa": 3150000.000000001,
+      "velocity_per_command_m_s": 0.11988596474296997,
+      "equivalent_mass_kg": 501.1772326995074,
+      "natural_frequency_hz": 29.84943085821444,
+      "viscous_damping_n_s_per_m": 5639.732526511894,
+      "coulomb_friction_n": 796.105464565048,
+      "peak_case": "目标角 +30°, 车速 0 km/h, μ=0.8",
+      "peak_force_by_speed_n": {
+        "0": 27557.496850328585,
+        "5": 10767.939241167234,
+        "10": 4418.935650581596,
+        "20": 15948.9260102874
+      }
+    }
+  },
+  "supplies": {
+    "front": {
+      "simultaneous_peak_flow_l_per_min": 17.079357387706587,
+      "pump_flow_l_per_min": 21.349196734633235,
+      "relief_pressure_mpa": 21.0
+    },
+    "rear": {
+      "simultaneous_peak_flow_l_per_min": 27.67698765436698,
+      "pump_flow_l_per_min": 34.596234567958724,
+      "relief_pressure_mpa": 21.0
+    }
+  },
+  "reference": {
+    "ramp_time_s": 2.5,
+    "stroke_m": 0.18,
+    "average_velocity_m_s": 0.072,
+    "peak_velocity_m_s": 0.10799999999999998
+  }
+}

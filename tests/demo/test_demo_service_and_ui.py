@@ -233,9 +233,11 @@ def test_chinese_ui_builds_and_lists_four_presets(demo_service):
         app = DemoApp(root, demo_service)
         root.update()
         labels = [label for label in app.preset_by_label if label != CUSTOM_LABEL]
-        assert len(labels) == 4
-        assert app.preset_var.get().startswith("J0-01")
-        assert app.entries["target_outer_angle_deg"].get() == "0.00"
+        assert len(labels) == 7
+        assert app.preset_var.get().startswith("R2-")
+        # 默认预设是 R2-05（+30°/10 km/h）—— 最大目标角的完整动态工况。
+        default = app.preset_by_label[app.preset_var.get()]
+        assert app.entries["target_outer_angle_deg"].get() ==             f"{default.scenario.target_outer_angle_deg:.2f}"
         assert app.entries["friction_coefficient"].get() == "0.75"
         assert len(app.load_vars) == 6
         assert set(app.panes) == {"机械转向结果", "液压结果", "控制结果",
@@ -314,8 +316,14 @@ def test_chinese_ui_records_a_live_run_and_shows_all_figures(demo_service, silen
     root = _tk_root()
     try:
         app = DemoApp(root, demo_service)
-        app.entries["duration_s"].set("0.6")
         app.preset_var.set("自定义工况")
+        # 这个夹具跑的是**历史机构 AS_BUILT_REFERENCE + L1-Fast**，它只能做到
+        # ±5° 量级；R2 的默认预设是 ±30°，对它来说会被正确拒绝。
+        # 本测试要验的是"实时运行会记录结果并画出全部图"，因此显式给一个
+        # 该机构真正能跑的工况。
+        app.entries["target_outer_angle_deg"].set("2")
+        app.entries["speed_kmh"].set("5")
+        app.entries["duration_s"].set("2.0")
         _run_job(root, app, "run")
         assert app.result is not None
         assert app.result.provenance == "LIVE_RUN"
@@ -386,8 +394,10 @@ def test_chinese_ui_marks_stale_results_after_a_refused_case(demo_service, silen
         previous = app.result.scenario.target_outer_angle_deg
         assert "本次运行结果" in app.result_banner.get()
 
-        app.entries["target_outer_angle_deg"].set("30")
-        app.entries["speed_kmh"].set("80")
+        # PHASE J1-R2：+30°/80 km/h 现在**可以**完成计算（只是目标轨迹物理不可行），
+        # 所以这里改用真正超出任务书范围的输入来检验"拒绝运行"路径。
+        app.entries["target_outer_angle_deg"].set("45")
+        app.entries["speed_kmh"].set("5")
         _run_job(root, app, "run")
         text = app.assessment_text.get("1.0", "end")
         assert "动态仿真：未执行" in text
@@ -395,13 +405,13 @@ def test_chinese_ui_marks_stale_results_after_a_refused_case(demo_service, silen
         banner = app.result_banner.get()
         assert "上一次成功运行结果" in banner
         assert "未执行动态仿真" in banner
-        assert "+30.0" in banner or "30.0" in banner
         # 旧结果被保留下来供对照，但必须带标记，且 result 未被替换成新工况。
         assert app.last_success is not None
         assert app.last_success.scenario.target_outer_angle_deg == previous
         assert app.result is not None
         assert app.result.scenario.target_outer_angle_deg == previous
-        assert "不可运行" in app.verdict.cget("text")
+        assert "未执行" in app.verdict.cget("text")
+        assert "未执行" in app.lights["compute"].cget("text")
     finally:
         app.close()
 
@@ -414,8 +424,8 @@ def test_chinese_ui_clears_the_banner_on_a_later_success(demo_service, silent_di
         app = DemoApp(root, demo_service)
         app.preset_var.set("自定义工况")
         app.entries["duration_s"].set("0.6")
-        app.entries["target_outer_angle_deg"].set("30")
-        app.entries["speed_kmh"].set("80")
+        app.entries["target_outer_angle_deg"].set("45")
+        app.entries["speed_kmh"].set("5")
         _run_job(root, app, "run")
         assert "未执行动态仿真" in app.result_banner.get()
         app.entries["target_outer_angle_deg"].set("0")

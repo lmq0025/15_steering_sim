@@ -30,18 +30,23 @@ CUSTOMER_LIMITS: Mapping[str, tuple[float, float]] = {
     "duration_s": (0.5, 60.0),
 }
 
-# 已完成动态联调并有 J0-R1 证据的范围。超出即外推。
+# 已完成动态联调并有证据的范围。超出即外推。
+# PHASE J1-R2：换用工程电液伺服模型并重新整定控制后，已完成真实动态积分的范围
+# 扩展到一桥外侧轮 ±30°、车速 0~10 km/h（含连续指令与反向回零）；40~80 km/h
+# 的中高速工况也有积分结果，但属于"计算完成、目标轨迹需另行评价物理可行性"。
 VERIFIED_LIMITS: Mapping[str, tuple[float, float]] = {
-    "target_outer_angle_deg": (-5.0, 5.0),
+    "target_outer_angle_deg": (-30.0, 30.0),
     "speed_kmh": (0.0, 10.0),
-    "friction_coefficient": (0.75, 0.75),
-    "axle_mass_t": (11.5, 11.5),
+    "friction_coefficient": (0.70, 0.80),
+    "axle_mass_t": (10.0, 13.0),
     "duration_s": (0.5, 60.0),
 }
 
 VERIFIED_RANGE_SOURCE = (
-    "PHASE_J0_R1 四工况（0°/0 km/h、±2°/5 km/h、+5°/10 km/h），摩擦系数 0.75、"
-    "每桥轴荷 11.5 t。这是当前唯一有控制—液压—机械闭环证据的范围。"
+    "PHASE_J1_R2：ENGINEERING_HYDRAULIC_V1 工程电液伺服模型的真实四通道动态积分"
+    "（0°、±2°、±5°、±10°、±20°、±30°，0/5/10 km/h，μ=0.75/轴荷 11.5 t），"
+    "另含 40/60/80 km/h 中高速工况与连续两段指令。"
+    "40 km/h 以上属于外推：可以计算，但目标轨迹的物理可行性必须单独评价。"
 )
 
 ENGINEERING_DEFAULTS = {
@@ -170,25 +175,50 @@ class Preset:
     note: str = ""
 
 
+#: PHASE J1-R2 的指令斜坡参数，与 configs/j0/j0_config.json 保持一致。
+REFERENCE_RATE_DEG_PER_S = 12.0
+REFERENCE_MINIMUM_TIME_S = 0.40
+
+
+def reference_time_s(angle_deg: float) -> float:
+    """该目标角的指令斜坡时间（秒）。"""
+    return max(REFERENCE_MINIMUM_TIME_S,
+               abs(float(angle_deg)) / REFERENCE_RATE_DEG_PER_S)
+
+
+def recommended_duration_s(angle_deg: float) -> float:
+    """推荐仿真时长 = 斜坡时间 + 保持时间（末段稳态指标取自保持段）。"""
+    ramp = reference_time_s(angle_deg)
+    return round(ramp + max(0.9, 0.5 * ramp), 2)
+
+
 def preset_scenarios() -> tuple[Preset, ...]:
-    """四个默认预设，与 PHASE J0-R1 已交付的四工况完全一致。"""
-    defaults = dict(friction_coefficient=ENGINEERING_DEFAULTS["friction_coefficient"],
-                    axle_mass_t=(ENGINEERING_DEFAULTS["axle_mass_t"],) * AXLE_COUNT,
-                    duration_s=5.0)
+    """PHASE J1-R2 的默认预设：覆盖直行、正负小角、大转角与高速不可行工况。"""
+    loads = (ENGINEERING_DEFAULTS["axle_mass_t"],) * AXLE_COUNT
+
+    def scenario(angle: float, speed: float, key: str, mu: float = 0.75):
+        return DemoScenario(angle, speed, friction_coefficient=mu,
+                            axle_mass_t=loads,
+                            duration_s=recommended_duration_s(angle), case_id=key)
+
     return (
-        Preset("J0-01", "直行 0° / 0 km/h",
-               DemoScenario(0.0, 0.0, case_id="J0-01", **defaults),
-               "PASS", "全零工况，检验静平衡与三桥锁止"),
-        Preset("J0-02", "左转 +2° / 5 km/h",
-               DemoScenario(2.0, 5.0, case_id="J0-02", **defaults),
-               "CONDITIONAL", "前通道残差 0.311°，为当前已知跟踪极限"),
-        Preset("J0-03", "右转 −2° / 5 km/h",
-               DemoScenario(-2.0, 5.0, case_id="J0-03", **defaults),
-               "CONDITIONAL", "与 J0-02 左右镜像"),
-        Preset("J0-04", "左转 +5° / 10 km/h",
-               DemoScenario(5.0, 10.0, case_id="J0-04", **defaults),
-               "PASS", "最大已验证转角与车速"),
+        Preset("R2-01", "直行 0° / 0 km/h", scenario(0.0, 0.0, "R2-01"),
+               "PASS", "全零工况：检验静平衡、三桥锁止与零位无抖动"),
+        Preset("R2-02", "左转 +2° / 5 km/h", scenario(2.0, 5.0, "R2-02"),
+               "PASS", "小转角低速：检验四通道是否真实作动"),
+        Preset("R2-03", "右转 −2° / 5 km/h", scenario(-2.0, 5.0, "R2-03"),
+               "PASS", "与 R2-02 左右镜像"),
+        Preset("R2-04", "左转 +10° / 5 km/h", scenario(10.0, 5.0, "R2-04"),
+               "PASS", "中等转角：检验稳态误差与末段振荡"),
+        Preset("R2-05", "左转 +30° / 10 km/h", scenario(30.0, 10.0, "R2-05"),
+               "PASS", "最大目标转角：检验全程行程与液压力能力"),
+        Preset("R2-06", "右转 −30° / 10 km/h", scenario(-30.0, 10.0, "R2-06"),
+               "PASS", "与 R2-05 左右镜像"),
+        Preset("R2-07", "高速 +30° / 80 km/h", scenario(30.0, 80.0, "R2-07"),
+               "CONDITIONAL",
+               "极限工况：计算会完成、跟踪达标，但目标路径超出附着能力，"
+               "必须显示为「轨迹物理不可行」"),
     )
 
 
-DEFAULT_PRESET_KEY = "J0-01"
+DEFAULT_PRESET_KEY = "R2-05"

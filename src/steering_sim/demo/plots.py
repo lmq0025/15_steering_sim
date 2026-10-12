@@ -398,14 +398,13 @@ def plot_case_and_supply(samples: Mapping[str, np.ndarray],
 
 # ------------------------------------------------- 7 十二轮角度数值表
 WHEEL_TABLE_HEADER = ("车桥", "左/右轮", "理想阿克曼角", "机构理论角",
-                      "液压实际角", "受载偏差", "阿克曼偏差", "状态")
+                      "液压实际角", "跟踪偏差", "阿克曼偏差", "跟踪状态")
 
 
 def wheel_table_rows(result) -> tuple[tuple[str, ...], ...]:
     """十二轮角度数值表的行（界面与图像共用同一份数据）。"""
     samples = result.samples
     summary = result.summary
-    loaded = summary.get("loaded_estimate_wheel_angle_deg") or {}
     rows = []
     for axle in range(1, 7):
         for side, label in (("left", "左"), ("right", "右")):
@@ -413,9 +412,11 @@ def wheel_table_rows(result) -> tuple[tuple[str, ...], ...]:
             ideal = float(summary["target_wheel_angle_deg"][wheel])
             mechanism = float(summary["target_mechanism_wheel_angle_deg"][wheel])
             actual = float(np.asarray(samples[f"wheel_{wheel}_actual_deg"])[-1])
-            loaded_value = loaded.get(wheel)
-            loaded_text = "—" if loaded_value is None else f"{float(loaded_value):+.2f}"
+            # PHASE J1-R2：这一列是**跟踪偏差** = 液压实际角 − 机构理论角，
+            # 也就是控制—液压闭环真正负责的量。（旧的「受载偏差」是 M1 静态
+            # 柔度估计，J0 起已经禁止与液压驱动角混用，不再占这一列。）
             deviation = actual - mechanism
+            loaded_text = f"{deviation:+.2f}"
             ackermann = mechanism - ideal
             if axle == 3:
                 state = "锁止 0°"

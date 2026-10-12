@@ -16,7 +16,8 @@ import pytest
 from steering_sim.demo.assessment import (NEAR_LIMIT_MARGIN_FRACTION,
                                           assess_mechanism, assess_supply,
                                           check_run_consistency)
-from steering_sim.demo.scenario import (CUSTOMER_LIMITS, ENGINEERING_DEFAULTS,
+from steering_sim.demo.scenario import (reference_time_s, recommended_duration_s,  # noqa: F401
+    CUSTOMER_LIMITS, ENGINEERING_DEFAULTS,
                                         VERIFIED_LIMITS, DemoScenario,
                                         preset_scenarios)
 
@@ -34,16 +35,29 @@ def test_customer_range_is_wider_than_the_verified_range():
         assert c_low <= low and high <= c_high, field
 
 
-def test_the_four_presets_match_the_delivered_j0r1_cases():
+def test_the_presets_cover_the_j1r2_acceptance_envelope():
+    """PHASE J1-R2：预设覆盖直行、正负小角、中等角、±30° 最大角与高速极限工况。"""
     presets = preset_scenarios()
-    assert [p.key for p in presets] == ["J0-01", "J0-02", "J0-03", "J0-04"]
-    assert [(p.scenario.target_outer_angle_deg, p.scenario.speed_kmh)
-            for p in presets] == [(0.0, 0.0), (2.0, 5.0), (-2.0, 5.0), (5.0, 10.0)]
-    assert [p.expected_status for p in presets] == ["PASS", "CONDITIONAL",
-                                                    "CONDITIONAL", "PASS"]
+    assert [p.key for p in presets] == [f"R2-0{i}" for i in range(1, 8)]
+    angles = [p.scenario.target_outer_angle_deg for p in presets]
+    assert angles == [0.0, 2.0, -2.0, 10.0, 30.0, -30.0, 30.0]
+    speeds = [p.scenario.speed_kmh for p in presets]
+    assert speeds[-1] == 80.0
     for preset in presets:
         assert preset.scenario.friction_coefficient == 0.75
         assert preset.scenario.axle_mass_t == (11.5,) * 6
+        # 时长必须覆盖指令斜坡 + 保持段，否则末段稳态指标没有采样点。
+        ramp = reference_time_s(preset.scenario.target_outer_angle_deg)
+        assert preset.scenario.duration_s > ramp + 0.85
+    # 高速大角度的预设必须显式声明它是"计算完成但目标轨迹不可行"。
+    assert "附着" in presets[-1].note
+
+
+def test_reference_time_follows_the_rated_steering_rate():
+    assert reference_time_s(0.0) == pytest.approx(0.4)
+    assert reference_time_s(2.0) == pytest.approx(0.4)
+    assert reference_time_s(30.0) == pytest.approx(30.0 / 12.0)
+    assert recommended_duration_s(30.0) > reference_time_s(30.0)
 
 
 def test_signature_round_trips_through_the_cache_parser():

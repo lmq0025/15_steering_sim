@@ -24,31 +24,31 @@
     "fit_residual_limit_deg": 0.25,
     "q_envelopes_rad": {
       "q_front": [
-        -0.68425,
-        0.68425
+        -0.78723,
+        0.78723
       ],
       "q4": [
-        -0.34031,
-        0.34031
+        -0.36399,
+        0.36399
       ],
       "q5": [
-        -0.30431,
-        0.30431
+        -0.30473,
+        0.30473
       ],
       "q6": [
-        -0.47081,
-        0.47081
+        -0.52482,
+        0.52482
       ]
     },
     "q_envelope_source": "J1 连续延拓实测：从零位外扩到机构不可解，再收缩到覆盖该桥轮角 ±35° 所需的区间并留 2% 余量。不是甲方机械限位。",
     "q_envelope_j1_evidence": {
       "q_front": {
-        "reachable_plus_deg": 41.0,
-        "reachable_minus_deg": -46.0,
-        "stop_reason_plus": "MechanismError: 连杆长度不可达（cos=1.003290）；该构型超出机构可达范围",
-        "stop_reason_minus": "MechanismError: 连杆长度不可达（cos=1.003182）；该构型超出机构可达范围",
-        "envelope_plus_deg": 39.205,
-        "envelope_minus_deg": -39.205,
+        "reachable_plus_deg": 46.5,
+        "reachable_minus_deg": -54.5,
+        "stop_reason_plus": "MechanismError: 连杆长度不可达（cos=1.000620）；该构型超出机构可达范围",
+        "stop_reason_minus": "MechanismError: 连杆长度不可达（cos=1.001142）；该构型超出机构可达范围",
+        "envelope_plus_deg": 45.105,
+        "envelope_minus_deg": -45.105,
         "monotone_stroke_note": "代表行程在包络内严格单调"
       },
       "q4": {
@@ -56,8 +56,8 @@
         "reachable_minus_deg": -23.5,
         "stop_reason_plus": "MechanismError: 连杆长度不可达（cos=1.010163）；该构型超出机构可达范围",
         "stop_reason_minus": "MechanismError: 连杆长度不可达（cos=1.005815）；该构型超出机构可达范围",
-        "envelope_plus_deg": 19.498,
-        "envelope_minus_deg": -19.498,
+        "envelope_plus_deg": 20.855,
+        "envelope_minus_deg": -20.855,
         "monotone_stroke_note": "代表行程在包络内严格单调"
       },
       "q5": {
@@ -65,8 +65,8 @@
         "reachable_minus_deg": -18.0,
         "stop_reason_plus": "MechanismError: 连杆长度不可达（cos=1.005500）；该构型超出机构可达范围",
         "stop_reason_minus": "MechanismError: 连杆长度不可达（cos=1.008965）；该构型超出机构可达范围",
-        "envelope_plus_deg": 17.436,
-        "envelope_minus_deg": -17.436,
+        "envelope_plus_deg": 17.46,
+        "envelope_minus_deg": -17.46,
         "monotone_stroke_note": "代表行程在包络内严格单调"
       },
       "q6": {
@@ -74,8 +74,8 @@
         "reachable_minus_deg": -36.0,
         "stop_reason_plus": "MechanismError: 连杆长度不可达（cos=1.003510）；该构型超出机构可达范围",
         "stop_reason_minus": "MechanismError: 连杆长度不可达（cos=1.001939）；该构型超出机构可达范围",
-        "envelope_plus_deg": 26.975,
-        "envelope_minus_deg": -26.975,
+        "envelope_plus_deg": 30.07,
+        "envelope_minus_deg": -30.07,
         "monotone_stroke_note": "代表行程在包络内严格单调"
       }
     }

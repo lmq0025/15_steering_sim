@@ -254,9 +254,20 @@ class EngineeringSteeringModel:
         rows.sort(key=lambda item: item[0])
         if len(rows) < 8:
             raise ModelError(f"{dof}: 机构连续延拓表不足")
+        # 零位行必须**插到排序后的正确位置**，不能简单前置：前置会让 q 数组
+        # 变成 ``[0, q_min, ..., q_max]`` 这种非单调序列，于是
+        #   1) ``np.gradient``／``np.interp`` 全部读错；
+        #   2) 目标角为 0° 时最优点正好落在下标 0，被 ``boundary`` 判据当成
+        #      "撞上包络边界" —— 这就是 PHASE J1 里"0° 直行被误判为超出机构
+        #      包络"的根因。
         zero = {f"axle{a}_{s}": 0.0 for a in build.axles for s in ("left", "right")}
-        rows = [(0.0, zero)] + rows
+        insert_at = 0
+        while insert_at < len(rows) and rows[insert_at][0] < 0.0:
+            insert_at += 1
+        rows.insert(insert_at, (0.0, zero))
         q_array = np.array([r[0] for r in rows], dtype=float)
+        if np.any(np.diff(q_array) <= 0.0):
+            raise ModelError(f"{dof}: 机构延拓表的 q 网格不是严格递增")
         angles = {f"axle{a}_{s}": np.array([r[1][f"axle{a}_{s}"] for r in rows], dtype=float)
                   for a in build.axles for s in ("left", "right")}
         self._table_cache[dof] = (q_array, angles)

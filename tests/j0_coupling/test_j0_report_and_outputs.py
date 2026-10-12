@@ -84,7 +84,9 @@ def test_recorded_outcome_of_every_configured_case(runner, j0_config):
         outcomes[case.id] = result
     assert outcomes["J0-01"].completed
     assert outcomes["J0-01"].summary["status"] == "PASS"
-    assert outcomes["J0-01"].summary["max_abs_stroke_m"] == 0.0
+    # PHASE J1-R2：零位工况的行程残差是 RK4 的浮点残差（实测 7.6e-19 m），
+    # 对它做"逐位等于 0"的断言不是物理要求。改为亚皮米量级的工程判据。
+    assert outcomes["J0-01"].summary["max_abs_stroke_m"] < 1.0e-12
     for case_id in ("J0-02", "J0-03", "J0-04"):
         result = outcomes[case_id]
         assert result.completed, f"{case_id}: {result.failure_reason}"

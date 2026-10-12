@@ -86,9 +86,10 @@ def assess_mechanism(target: Mapping[str, Any], model) -> MechanismAssessment:
     走的是同一段代码，差异全部来自模型自身返回的 ``geometry_class``。
     """
     mode = str(getattr(model, "tag", "AS_BUILT_REFERENCE"))
-    label = ("优化设计机构（ENGINEERING_REDESIGN_PROPOSAL）"
-             if mode == "ENGINEERING_REDESIGN_PROPOSAL"
-             else "甲方原始机构（AS_BUILT_REFERENCE）")
+    label = {
+        "ENGINEERING_STEERING_MODEL": "工程转向模型 ENGINEERING_STEERING_MODEL（唯一正式模型）",
+        "ENGINEERING_REDESIGN_PROPOSAL": "优化设计机构（ENGINEERING_REDESIGN_PROPOSAL）",
+    }.get(mode, "甲方原始机构（AS_BUILT_REFERENCE，历史对照）")
     ideal = target["ideal_deg"]
     mechanism = target["mechanism_deg"]
     geometry = target["geometry"]
@@ -231,11 +232,16 @@ class SupplyAssessment:
 
 def assess_supply(hydraulic, commands: Sequence[float], state: np.ndarray
                   ) -> SupplyAssessment:
-    """在给定液压状态上核算高压轨取流量与泵供量。
+    """核算高压轨取流量与泵供量。
 
-    直接调用被控对象自己的 ``evaluate``，因此读到的就是仿真内部使用的同一
-    份余量核算，不做第二套流量公式。
+    PHASE J1-R2：正式液压模型换成工程电液伺服模型后，供油检查改为按**所有
+    通道同时按设计峰值速度动作**核算（这才是选型要覆盖的最不利流量工况），
+    泵流量直接取选型参数；L1-Fast 的历史路径原样保留。
     """
+    parameters = getattr(hydraulic, "parameters", None)
+    if parameters is not None and hasattr(parameters, "supplies"):
+        return _assess_supply_engineering(hydraulic)
+
     from steering_sim.hydraulics_lumped import HydraulicInput, evaluate_hydraulic
 
     speeds = tuple(channel.pump.nominal_speed for channel in hydraulic.channels)
@@ -283,6 +289,48 @@ def assess_supply(hydraulic, commands: Sequence[float], state: np.ndarray
     status = _grade(flags)
     return SupplyAssessment(status=status, flags=tuple(flags), groups=tuple(groups),
                             messages=tuple(messages))
+
+
+def _assess_supply_engineering(hydraulic) -> SupplyAssessment:
+    """工程液压模型的供油检查：按同一条供油轨上**所有通道同时**按设计峰值
+    速度动作核算 —— 这正是选型时用过的流量口径，两者一致才谈得上"能力检查"。
+    """
+    parameters = hydraulic.parameters
+    degradation = parameters.degradation
+    labels = {"front": "前组（一、二桥）", "rear": "后组（四、五、六桥）"}
+    groups: list[SupplyGroup] = []
+    flags: list[str] = []
+    messages: list[str] = []
+    for name in parameters.supply_names:
+        pump = parameters.supplies[name]
+        q_pump = pump.ideal_flow_m3_s * degradation.pump_volumetric_efficiency
+        demand = 0.0
+        for channel in parameters.channels:
+            if channel.supply != name:
+                continue
+            demand += (channel.cylinder.area_a_m2
+                       * channel.reference_peak_velocity_m_s)
+        margin = q_pump - demand
+        groups.append(SupplyGroup(
+            name=name, label=labels.get(name, name), q_pump_m3_s=q_pump,
+            high_rail_demand_m3_s=demand, auxiliary_flow_m3_s=0.0,
+            margin_m3_s=margin, insufficient=demand > q_pump))
+        if demand > q_pump:
+            flags.append("SUPPLY_CAPACITY_OUT_OF_RANGE")
+            messages.append(
+                f"{labels.get(name, name)}：四通道同时按设计速度动作需 "
+                f"{demand * 60000:.2f} L/min，泵供量 {q_pump * 60000:.2f} L/min，"
+                f"出现供油不足。")
+        elif q_pump > 0.0 and margin / q_pump < NEAR_LIMIT_MARGIN_FRACTION:
+            flags.append("SUPPLY_CAPACITY_NEAR_LIMIT")
+            messages.append(
+                f"{labels.get(name, name)}：同时动作时供油余量仅 "
+                f"{margin * 60000:.2f} L/min（{margin / q_pump * 100:.1f}%）。")
+    if not flags:
+        messages.append("各供油组余量充足（按四通道同时按设计速度动作核算）。")
+    return SupplyAssessment(status=_grade(tuple(dict.fromkeys(flags))),
+                            flags=tuple(dict.fromkeys(flags)),
+                            groups=tuple(groups), messages=tuple(messages))
 
 
 # =============================================================== 综合判定

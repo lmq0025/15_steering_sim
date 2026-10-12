@@ -109,8 +109,13 @@ class DemoService:
                  engineering_design_path: Path | str = DEFAULT_ENGINEERING_DESIGN,
                  output_dir: Path | str = DEFAULT_OUTPUT,
                  probe_authority: bool = False,
-                 mechanical_mode: str | None = None) -> None:
+                 mechanical_mode: str | None = None,
+                 hydraulic_model: str | None = None) -> None:
         self.config: J0Config = load_j0_config(config_path)
+        # PHASE J1-R2：缺省用正式工程液压模型；历史对照测试可显式退回 L1-Fast。
+        if hydraulic_model is not None:
+            self.config = replace(self.config,
+                                  hydraulic_model=str(hydraulic_model).upper())
         self.config_path = Path(config_path)
         self.spec_path = Path(spec_path)
         self.mech_config_path = Path(mech_config_path)

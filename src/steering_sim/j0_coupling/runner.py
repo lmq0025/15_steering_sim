@@ -24,8 +24,13 @@ import numpy as np
 
 from steering_sim.control.base import Measurement, Reference
 from steering_sim.control.pid import PIDController
+from steering_sim.hydraulics_engineering import (EngineeringHydraulicSystem,
+                                                 evaluate_hydraulic_engineering,
+                                                 load_parameters,
+                                                 probe_engineering_authority)
 from steering_sim.hydraulics_lumped import (HydraulicInput, LumpedHydraulicSystem,
                                             evaluate_hydraulic)
+from steering_sim.hydraulics_lumped.interface import evaluate_hydraulic as _l1_evaluate
 
 from .authority import authority_as_dict, probe_channel_authority, working_point
 from .config import CHANNEL_ORDER, DOF_BY_CHANNEL, J0CaseConfig, J0Config
@@ -63,6 +68,24 @@ def _ramp(value: float, duration: float) -> float:
     return float(fraction * fraction * (3.0 - 2.0 * fraction))
 
 
+def reference_position(t: float, ramp_s: float) -> float:
+    """指令位置（归一化，0→1）。S 曲线：两端速度为零，中间不冲。"""
+    if ramp_s <= 0.0:
+        return 1.0
+    fraction = min(max(t / ramp_s, 0.0), 1.0)
+    return float(fraction * fraction * (3.0 - 2.0 * fraction))
+
+
+def reference_velocity(t: float, ramp_s: float) -> float:
+    """指令速度（1/s，即归一化位置对时间的导数）—— 供速度前馈使用。"""
+    if ramp_s <= 0.0:
+        return 0.0
+    fraction = t / ramp_s
+    if fraction <= 0.0 or fraction >= 1.0:
+        return 0.0
+    return float(6.0 * fraction * (1.0 - fraction) / ramp_s)
+
+
 @dataclass
 class _Recorder:
     fields: dict[str, list[float]] = field(default_factory=dict)
@@ -84,17 +107,36 @@ class J0Runner:
         self.config = config
         # PHASE M3：机械模式由调用方显式给出时优先，否则取 J0 配置中的默认值。
         self.mechanical_mode = str(mechanical_mode or config.mechanical_mode)
-        self.hydraulic = LumpedHydraulicSystem.fast_engineering()
         self.geometry = J0GeometryAdapter(geometry_model, config,
                                           mechanical_mode=self.mechanical_mode)
         self.neutral_commands = tuple(item.neutral_command for item in config.channels)
-        self.state0, bias = working_point(self.hydraulic, self.neutral_commands)
-        self.speeds = tuple(channel.pump.nominal_speed for channel in self.hydraulic.channels)
-        self.authorities = (probe_channel_authority(
-            self.hydraulic, neutral_commands=self.neutral_commands,
-            command_windows=tuple((item.command_min, item.command_max)
-                                  for item in config.channels))
-            if probe_authority else ())
+        # PHASE J1-R2：正式液压 = 轻量化工程电液伺服模型；L1-Fast 只在显式
+        # 指定 ``L1_FAST`` 时构造，用于历史对照与回归测试。
+        self.hydraulic_model = str(config.hydraulic_model).upper()
+        if self.hydraulic_model == "ENGINEERING_HYDRAULIC_V1":
+            self.engineering_parameters = load_parameters(
+                config.engineering_parameters_path)
+            self.hydraulic = EngineeringHydraulicSystem(self.engineering_parameters)
+            self.state0, bias = self.hydraulic.working_point()
+            self.speeds = self.hydraulic.pump_speeds_rad_s
+            self._evaluate = evaluate_hydraulic_engineering
+            #: 每通道状态个数：工程模型是 (pA, pB, x, v, 阀芯) = 5，L1-Fast 是 4。
+            self.state_stride = 5
+            self.authorities = (probe_engineering_authority(self.hydraulic)
+                                if probe_authority else ())
+        else:
+            self.engineering_parameters = None
+            self.hydraulic = LumpedHydraulicSystem.fast_engineering()
+            self.state0, bias = working_point(self.hydraulic, self.neutral_commands)
+            self.speeds = tuple(channel.pump.nominal_speed
+                                for channel in self.hydraulic.channels)
+            self._evaluate = _l1_evaluate
+            self.state_stride = 4
+            self.authorities = (probe_channel_authority(
+                self.hydraulic, neutral_commands=self.neutral_commands,
+                command_windows=tuple((item.command_min, item.command_max)
+                                      for item in config.channels))
+                if probe_authority else ())
         self.mu = float(config.load["friction_coefficient"])
         self.axle_mass_t = tuple(float(value) for value in config.load["axle_mass_t"])
         self.singular_threshold = float(config.mapping["singular_jacobian_threshold_m_per_rad"])
@@ -106,14 +148,86 @@ class J0Runner:
             "neutralize_initial_bias"] else (0.0,) * 4
         self.road_ramp_s = float(config.hydraulic["load_model"]["road_load_ramp_s"])
         self.ref_ramp_s = float(config.control["reference_ramp_s"])
+        #: PHASE J1-R2：额定转向速率与最短斜坡时间，用于按目标角算指令斜坡。
+        self.reference_rate_deg_per_s = float(
+            config.control.get("reference_rate_deg_per_s", 12.0))
+        self.reference_minimum_time_s = float(
+            config.control.get("reference_minimum_time_s", 0.40))
         self.redundant = dict(config.hydraulic["redundant_valve_commands"])
+        #: 默认前馈增益 = 1/速度增益（按通道从工程参数读出）。
+        self.feedforward_gain = {item.channel: 0.0 for item in config.channels}
+        if self.engineering_parameters is not None:
+            for item in self.engineering_parameters.channels:
+                velocity = float(item.valve.velocity_per_unit_command_m_s)
+                self.feedforward_gain[item.name] = (1.0 / velocity) if velocity > 0 else 0.0
+        #: 前馈总开关（整定时可关闭，用于对比"有没有前馈"的差别）。
+        self.use_feedforward = True
         #: PHASE J1：道路负载默认用**实际车轮转角**反推的曲率，不再把目标轨迹
         #: 当成车辆已经实现的运动。
         self.use_actual_curvature = True
+        #: 作动能力/极性记录（两种液压模型的记录结构统一成 dict）。
+        self.authority_records = [
+            (item.to_dict() if hasattr(item, "to_dict") else authority_as_dict(item))
+            for item in self.authorities]
         #: 当前工况的控制器与限幅值，供 _row 读取真实饱和诊断。
         self._controllers: list = []
         self._limits = np.zeros(4)
         self._curvature_target = 0.0
+        #: 逐通道"缸走到机构包络端点"的 RK4 级计数（每工况清零）。
+        self._envelope_limit_samples: dict[str, int] = {}
+
+    # -------------------------------------------------------------- 控制接口
+    def reference_time(self, case: J0CaseConfig) -> float:
+        """该工况的指令斜坡时间：按额定转向速率算，且不小于最短斜坡时间。
+
+        速率是**流量与泵选型的输入**，所以它必须由配置显式给出，不能在每次
+        运行时临时改。目标角为 0 时斜坡时间为最短值（指令恒为 0，无影响）。
+        """
+        if case.reference_time_s is not None:
+            return float(case.reference_time_s)
+        angle = abs(float(case.target_outer_angle_deg))
+        return max(self.reference_minimum_time_s,
+                   angle / max(self.reference_rate_deg_per_s, 1.0e-9))
+
+    def channel_gains(self, name: str, override=None) -> tuple[float, float, float]:
+        """通道增益。工程液压模型下取 ``engineering_hydraulics.json`` 里的值 ——
+        增益与执行器参数必须来自同一份集中配置，不能一半在 J0 里一半在别处。"""
+        if override is not None:
+            return override
+        if self.engineering_parameters is not None:
+            item = self.engineering_parameters.channel(name)
+            return (item.kp, item.ki, item.kd)
+        item = self.config.channel(name)
+        return (item.kp, item.ki, item.kd)
+
+    def _stroke_travel(self, channel: str) -> tuple[float, float]:
+        """通道的物理行程 ``(半行程, 中位偏置)``（m）。
+
+        工程模型的机构行程区间一般不对称，缸中位带偏置；L1-Fast 的等效行程
+        对称居中，偏置为 0。
+        """
+        if self.engineering_parameters is not None:
+            cylinder = self.engineering_parameters.channel(channel).cylinder
+            return float(cylinder.half_stroke_m), float(cylinder.stroke_offset_m)
+        dof = DOF_BY_CHANNEL[channel]
+        table = self.geometry.tables[dof]
+        return max(abs(table.stroke(table.q_min)),
+                   abs(table.stroke(table.q_max))), 0.0
+
+    def channel_limit(self, name: str) -> float:
+        if self.engineering_parameters is not None:
+            return float(self.engineering_parameters.channel(name).command_limit)
+        return float(self.config.channel(name).command_limit)
+
+    def command_from_pid(self, position: int, pid_output: float) -> float:
+        item = self.config.channels[position]
+        if self.engineering_parameters is None:
+            return item.command_from_pid(pid_output)
+        # 工程液压模型的极性是**实测**的（probe_engineering_authority），
+        # 不是从旧配置里抄的。
+        polarity = float(self.engineering_parameters.channel(item.channel).polarity)
+        limit = self.channel_limit(item.channel)
+        return float(np.clip(polarity * pid_output, -limit, limit))
 
     # ------------------------------------------------------------------ target
     def target(self, case: J0CaseConfig) -> dict[str, Any]:
@@ -141,12 +255,19 @@ class J0Runner:
     def _stage(self, t: float, state: np.ndarray, commands: list[float],
                curvature_1pm: float, speed_kmh: float, damping: float,
                road_load_scale: float = 1.0):
-        x_by_channel = {item.channel: float(state[4 * index + 2])
+        x_by_channel = {item.channel: float(state[self.state_stride * index + 2])
                         for index, item in enumerate(self.config.channels)}
         q_values, status = self.geometry.q_from_strokes(x_by_channel)
-        bad = [f"{name}:{item.label}" for name, item in status.items() if not item.ok]
-        if bad:
-            raise J0StopCondition("mapping " + ";".join(bad))
+        # PHASE J1-R2：``MAPPING_AT_ENVELOPE_LIMIT`` 表示缸走到了机构包络端点，
+        # 这是**真实物理事件**（机械限位），不是求解失败 —— 逐点记数并如实报告。
+        # 其余任何标志（不可解、奇异、非单调）仍然是停止条件。
+        for name, item in status.items():
+            if item.flags == ("MAPPING_AT_ENVELOPE_LIMIT",):
+                self._envelope_limit_samples[name] = (
+                    self._envelope_limit_samples.get(name, 0) + 1)
+                continue
+            if not item.ok:
+                raise J0StopCondition(f"mapping {name}:{item.label}")
         road = road_load(self.geometry, q_values, speed_kmh=speed_kmh,
                          friction_coefficient=self.mu, axle_mass_t=self.axle_mass_t,
                          curvature_1pm=curvature_1pm,
@@ -168,11 +289,11 @@ class J0Runner:
                 raise J0StopCondition(f"{item.dof}: non-finite road load force")
             value = self.initial_bias[index] + fraction * road_load_scale * road_force
             if damping:
-                value += damping * float(state[4 * index + 3])
+                value += damping * float(state[self.state_stride * index + 3])
             loads.append(value)
         inputs = HydraulicInput(tuple(commands), self.speeds, tuple(loads),
                                 redundant_valve_commands=self.redundant)
-        dx, outputs = evaluate_hydraulic(self.hydraulic, t, state, inputs)
+        dx, outputs = self._evaluate(self.hydraulic, t, state, inputs)
         if not np.all(np.isfinite(dx)):
             raise J0StopCondition("non-finite hydraulic derivative")
         return dx, outputs, q_values, road, tuple(loads)
@@ -204,10 +325,10 @@ class J0Runner:
             row[f"{tag}_q_actual_rad"] = q_values[dof]
             row[f"{tag}_x_ref_m"] = x_ref[tag]
             row[f"{tag}_x_ref_eff_m"] = ref_eff[position]
-            row[f"{tag}_x_m"] = float(state[4 * position + 2])
-            row[f"{tag}_v_m_s"] = float(state[4 * position + 3])
-            row[f"{tag}_pA_mpa_g"] = float(state[4 * position]) / 1.0e6
-            row[f"{tag}_pB_mpa_g"] = float(state[4 * position + 1]) / 1.0e6
+            row[f"{tag}_x_m"] = float(state[self.state_stride * position + 2])
+            row[f"{tag}_v_m_s"] = float(state[self.state_stride * position + 3])
+            row[f"{tag}_pA_mpa_g"] = float(state[self.state_stride * position]) / 1.0e6
+            row[f"{tag}_pB_mpa_g"] = float(state[self.state_stride * position + 1]) / 1.0e6
             row[f"{tag}_valve_command"] = float(commands[position])
             row[f"{tag}_pid_raw_output"] = float(raw_pid[position])
             controller = self._controllers[position] if self._controllers else None
@@ -231,11 +352,20 @@ class J0Runner:
             row[f"{tag}_load_force_n"] = float(loads[position])
             row[f"{tag}_dx_dq_m_per_rad"] = road.stroke_jacobian_m_per_rad[dof]
             row[f"{tag}_Q_road_nm"] = road.generalized_road_moment_nm[dof]
-            q_dot = float(state[4 * position + 3]) / road.stroke_jacobian_m_per_rad[dof]
+            q_dot = float(state[self.state_stride * position + 3]) / road.stroke_jacobian_m_per_rad[dof]
             row[f"{tag}_virtual_work_residual_nm_per_s"] = (
-                road.hydraulic_load_force_n[dof] * float(state[4 * position + 3])
+                road.hydraulic_load_force_n[dof] * float(state[self.state_stride * position + 3])
                 - road.generalized_road_moment_nm[dof] * q_dot)
         angles_table = self.geometry.wheel_angles_deg(q_values)
+        # PHASE J1-R2：**瞬时指令角** —— 由当前指令行程 x_ref_eff 经同一套机械映射
+        # 反推。跟踪误差在过渡段只能对着它算；对着最终目标角算会在 t=0 得到一个
+        # 30° 的假误差（指令还没走呢）。
+        q_command, _ = self.geometry.q_from_strokes(
+            {item.channel: float(ref_eff[position])
+             for position, item in enumerate(self.config.channels)})
+        angles_command = self.geometry.wheel_angles_deg(q_command)
+        for wheel in WHEELS:
+            row[f"wheel_{wheel}_command_deg"] = angles_command[wheel]
         for wheel in WHEELS:
             row[f"wheel_{wheel}_actual_deg"] = angles_table[wheel]
             row[f"wheel_{wheel}_target_deg"] = target["ideal_deg"][wheel]
@@ -283,7 +413,8 @@ class J0Runner:
                  diagnostic_damping_n_s_per_m: float = 0.0,
                  gains: Mapping[str, tuple[float, float, float]] | None = None,
                  road_load_scale: float = 1.0,
-                 on_progress: "Callable[[float], None] | None" = None
+                 on_progress: "Callable[[float], None] | None" = None,
+                 profile: "Callable[[float], tuple[float, float]] | None" = None
                  ) -> J0CaseResult:
         """运行一个 J0 工况。
 
@@ -293,20 +424,29 @@ class J0Runner:
 
         ``on_progress`` 是可选的进度回调，接收 0~1 的完成比例，约每 1% 调用一次。
         回调只用于界面显示，抛出的异常会被忽略，绝不影响积分结果。
+
+        ``profile``（PHASE J1-R2）可选地覆盖指令轨迹，返回
+        ``(归一化位置, 归一化速率)``。用于"连续两个转向指令 / 反向回零"这类
+        多段工况；缺省是单段 S 曲线。**被控对象与控制律都不因此改变。**
         """
         target = self.target(case)
         q_ref, x_ref = target["q_ref"], target["x_ref"]
         curvature = target["curvature_1pm"]
+        ramp_s = self.reference_time(case)
         controllers = []
         for item in self.config.channels:
-            kp, ki, kd = (gains or {}).get(item.channel, (item.kp, item.ki, item.kd))
-            controllers.append(PIDController(kp, ki, kd, limit=item.command_limit))
+            kp, ki, kd = self.channel_gains(item.channel,
+                                            (gains or {}).get(item.channel))
+            controllers.append(PIDController(kp, ki, kd,
+                                             limit=self.channel_limit(item.channel)))
         for controller in controllers:
             controller.reset()
-        limits = np.array([item.command_limit for item in self.config.channels])
+        limits = np.array([self.channel_limit(item.channel)
+                           for item in self.config.channels])
         self._controllers = list(controllers)
         self._limits = limits
         state = self.state0.copy()
+        self._envelope_limit_samples = {}
         commands = [float(value) for value in self.neutral_commands]
         raw_pid = np.zeros(4)
         recorder = _Recorder()
@@ -330,18 +470,29 @@ class J0Runner:
                         on_progress(min(1.0, step / max(steps, 1)))
                     except Exception:      # 进度回调绝不干扰积分
                         on_progress = None
-                ref_eff = np.array([_ramp(t, self.ref_ramp_s) * x_ref[item.channel]
+                if profile is None:
+                    fraction = reference_position(t, ramp_s)
+                    rate = reference_velocity(t, ramp_s) if self.use_feedforward else 0.0
+                else:
+                    fraction, rate = profile(t)
+                    if not self.use_feedforward:
+                        rate = 0.0
+                ref_eff = np.array([fraction * x_ref[item.channel]
                                     for item in self.config.channels])
                 if step % self.substeps == 0:
-                    errors = ref_eff - np.array([state[4 * i + 2] for i in range(4)])
                     raw_pid = np.empty(4)
                     for position, controller in enumerate(controllers):
+                        item = self.config.channels[position]
+                        feedforward = (self.feedforward_gain[item.channel] * rate
+                                       * x_ref[item.channel])
                         command = controller.step(
-                            Measurement(np.array([state[4 * position + 2]])),
-                            Reference(np.array([ref_eff[position]])), self.dt_c)
+                            Measurement(np.array(
+                                [state[self.state_stride * position + 2]])),
+                            Reference(np.array([ref_eff[position]])), self.dt_c,
+                            feedforward=feedforward)
                         raw_pid[position] = float(command.values[0])
-                    commands = [item.command_from_pid(raw_pid[position])
-                                for position, item in enumerate(self.config.channels)]
+                    commands = [self.command_from_pid(position, raw_pid[position])
+                                for position in range(len(self.config.channels))]
                     # PHASE J1：用控制器自己给出的诊断，而不是把限幅后的命令
                     # 再与 limit 比较（那样永远是 0%）。
                     for position, controller in enumerate(controllers):
@@ -390,8 +541,13 @@ class J0Runner:
                                   diagnostic_damping_n_s_per_m)
         summary["road_load_scale"] = road_load_scale
         summary["controller_gains"] = {
-            item.channel: list((gains or {}).get(item.channel, (item.kp, item.ki, item.kd)))
+            item.channel: list(self.channel_gains(item.channel,
+                                                  (gains or {}).get(item.channel)))
             for item in self.config.channels}
+        summary["envelope_limit_samples"] = dict(self._envelope_limit_samples)
+        summary["feedforward_gain"] = dict(self.feedforward_gain)
+        summary["use_feedforward"] = bool(self.use_feedforward)
+        summary["reference_time_s"] = ramp_s
         return J0CaseResult(case=case, samples=samples, summary=summary,
                             completed=completed, failure_time_s=failure_time,
                             failure_reason=failure_reason,
@@ -420,7 +576,8 @@ class J0Runner:
             "target_geometry_status": geometry.geometry_status,
             "target_max_link_residual_m": float(geometry.max_link_length_error_m),
             "third_axle_locked_deg": 0.0,
-            "authority": [authority_as_dict(a) for a in self.authorities],
+            "authority": self.authority_records,
+            "hydraulic_model": self.hydraulic_model,
         }
         if "time_s" not in samples or len(samples["time_s"]) == 0:
             summary["status"] = "FAIL"
@@ -443,6 +600,84 @@ class J0Runner:
         error_vs_ideal = {wheel: float(np.max(np.abs(
             samples[f"wheel_{wheel}_actual_deg"][tail]
             - samples[f"wheel_{wheel}_target_deg"][tail]))) for wheel in WHEELS}
+        # ---- PHASE J1-R2：过渡段与稳态段的跟踪误差（对**瞬时指令角**）与振荡指标
+        error_vs_command = {wheel: np.abs(
+            samples[f"wheel_{wheel}_actual_deg"]
+            - samples[f"wheel_{wheel}_command_deg"]) for wheel in WHEELS}
+        command_stack = np.concatenate([error_vs_command[wheel] for wheel in WHEELS])
+        tail_stack = np.concatenate([error_vs_command[wheel][tail] for wheel in WHEELS])
+        summary["max_tracking_error_vs_command_deg"] = float(np.max(command_stack))
+        summary["rms_tracking_error_vs_command_deg"] = float(
+            np.sqrt(np.mean(command_stack ** 2)))
+        summary["steady_max_tracking_error_vs_command_deg"] = float(np.max(tail_stack))
+        summary["steady_rms_tracking_error_vs_command_deg"] = float(
+            np.sqrt(np.mean(tail_stack ** 2)))
+        summary["final_wheel_angle_error_vs_command_deg"] = {
+            wheel: float(samples[f"wheel_{wheel}_actual_deg"][-1]
+                         - samples[f"wheel_{wheel}_command_deg"][-1])
+            for wheel in WHEELS}
+        # 稳定时间：末次进入 ±0.5° 带的时刻（以该工况内的最差轮为准）。
+        band = 0.5
+        worst = np.max(np.vstack([error_vs_command[wheel] for wheel in WHEELS]), axis=0)
+        inside = worst <= band
+        settling = float(time[-1])
+        for index in range(len(inside) - 1, -1, -1):
+            if not inside[index]:
+                settling = float(time[min(index + 1, len(time) - 1)])
+                break
+        else:
+            settling = float(time[0])
+        summary["settling_time_to_0p5deg_s"] = settling
+        # 振荡/颤振指标（末段）：速度 RMS、阀命令 RMS 与换向率、腔压纹波。
+        tail_velocity = {tag: float(np.sqrt(np.mean(samples[f"{tag}_v_m_s"][tail] ** 2)))
+                         for tag in CHANNEL_ORDER}
+        tail_command = {tag: float(np.sqrt(np.mean(
+            samples[f"{tag}_valve_command"][tail] ** 2))) for tag in CHANNEL_ORDER}
+        tail_ripple = {tag: float(np.max(np.std(np.vstack([
+            samples[f"{tag}_pA_mpa_g"][tail], samples[f"{tag}_pB_mpa_g"][tail]]), axis=1)))
+            for tag in CHANNEL_ORDER}
+        # 换向率只统计**有幅值**的换向（|u| > 0.01）。否则中位附近量级 1e-5 的
+        # 数值抖动会被算成"高频颤振"，把干净的稳态误报成振荡。
+        reversals = {}
+        for tag in CHANNEL_ORDER:
+            column = samples[f"{tag}_valve_command"][tail]
+            active = np.where(np.abs(column) > 0.01, np.sign(column), 0.0)
+            compressed = active[active != 0.0]
+            changes = (int(np.sum(np.abs(np.diff(np.sign(compressed))) > 0))
+                       if compressed.size > 1 else 0)
+            span = float(time[-1] - time[tail.start]) or 1.0
+            reversals[tag] = changes / span
+        summary["tail_velocity_rms_m_s"] = tail_velocity
+        summary["tail_valve_command_rms"] = tail_command
+        summary["tail_pressure_ripple_mpa"] = tail_ripple
+        summary["tail_valve_reversal_rate_per_s"] = reversals
+        summary["max_tail_velocity_rms_m_s"] = max(tail_velocity.values())
+        summary["max_tail_valve_reversal_rate_per_s"] = max(reversals.values())
+        summary["max_tail_pressure_ripple_mpa"] = max(tail_ripple.values())
+        utilisation = {}
+        for tag in CHANNEL_ORDER:
+            half, offset = self._stroke_travel(tag)
+            utilisation[tag] = (
+                float(np.max(np.abs(samples[f"{tag}_x_m"] - offset))) / half
+                if half > 0.0 else math.nan)
+        summary["stroke_utilisation_max"] = max(utilisation.values())
+        summary["stroke_utilisation_by_channel"] = utilisation
+        summary["supply_pressure_min_mpa_g"] = float(min(
+            float(np.min(samples["supply_pressure_front_mpa_g"])),
+            float(np.min(samples["supply_pressure_rear_mpa_g"]))))
+        margins = [samples.get("pump_capacity_margin_front_m3_s"),
+                   samples.get("pump_capacity_margin_rear_m3_s")]
+        if self.engineering_parameters is not None:
+            flows = [self.engineering_parameters.supplies[name].ideal_flow_m3_s
+                     for name in self.engineering_parameters.supply_names]
+            # 需求比 = 1 − 最小余量/泵流量（余量最小 ⇒ 需求最大）。
+            ratios = [1.0 - float(np.min(column)) / flow
+                      for column, flow in zip(margins, flows)
+                      if column is not None and flow > 0.0]
+            summary["max_pump_demand_ratio"] = max(ratios) if ratios else math.nan
+        else:
+            summary["max_pump_demand_ratio"] = math.nan
+
         summary["steady_wheel_angle_error_vs_mechanism_deg"] = error_vs_mechanism
         summary["steady_wheel_angle_error_vs_ideal_deg"] = error_vs_ideal
         summary["max_steady_wheel_angle_error_vs_mechanism_deg"] = max(error_vs_mechanism.values())
@@ -622,10 +857,18 @@ class J0Runner:
         #   NUMERICAL_COMPLETED  —— 数值积分是否跑完（与物理是否可行无关）
         #   TRACKING_PASS        —— 是否跟上了机构目标行程
         #   VEHICLE_DYNAMIC_INFEASIBLE —— 目标路径是否超出附着能力
-        tracking_error = summary["max_steady_wheel_angle_error_vs_mechanism_deg"]
+        # 跟踪判定**只**用"实际角 − 瞬时指令角"。单段轨迹下它与"实际角 −
+        # 最终机构角"等价；但对**多段轨迹**（例如 0→+10°→−10°→0，末段回到 0）
+        # 后者是没有定义的 —— 末段实际角已经回到 0，再拿它去比"最终目标 10°"
+        # 会凭空得出十几度的假误差。所以判据只取瞬时指令角那一条；
+        # `max_steady_wheel_angle_error_vs_mechanism_deg` 仍然逐工况如实报告。
+        tracking_error = summary["steady_max_tracking_error_vs_command_deg"]
         summary["NUMERICAL_COMPLETED"] = bool(completed)
         summary["TRACKING_PASS"] = bool(
             completed and tracking_error <= acceptance["steady_wheel_angle_error_deg_pass"])
+        summary["TRANSIENT_TRACKING_PASS"] = bool(
+            completed and summary["max_tracking_error_vs_command_deg"]
+            <= acceptance["steady_wheel_angle_error_deg_conditional"])
         summary["VEHICLE_DYNAMIC_INFEASIBLE"] = bool(
             summary["max_adhesion_utilization_recorded"] > 1.0)
         if summary["VEHICLE_DYNAMIC_INFEASIBLE"] and status == "PASS":

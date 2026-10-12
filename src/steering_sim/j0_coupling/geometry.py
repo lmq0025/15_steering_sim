@@ -146,6 +146,10 @@ class J0GeometryAdapter:
         self.mechanical_mode = str(mechanical_mode or getattr(
             model, "tag", "AS_BUILT_REFERENCE"))
         self._step = float(config.mapping["table_step_rad"])
+        #: 行程反解在机构包络端点处允许的数值容差（m）。只用于把"缸正好走到
+        #: 机构包络的端点"与"机构不可解"区分开；超出该容差仍然显式失败。
+        self._envelope_tolerance_m = float(
+            config.mapping.get("envelope_tolerance_m", 2.0e-3))
         self._front_stroke_per_q = float(config.mapping["front_stroke_per_q_m_per_rad"])
         self._representative_side = str(config.mapping["rear_representative_cylinder"])
         if self._representative_side != "A":
@@ -250,9 +254,19 @@ class J0GeometryAdapter:
                 x, min(table.stroke_repr), max(table.stroke_repr)))), \
                 MappingStatus(False, ("MAPPING_NON_MONOTONIC",))
         low, high = sorted((table.stroke(table.q_min), table.stroke(table.q_max)))
-        if x < low or x > high:
+        if x < low - self._envelope_tolerance_m or \
+                x > high + self._envelope_tolerance_m:
             bounded = float(np.clip(x, low, high))
             return table.q_from_stroke(bounded), MappingStatus(False, ("MAPPING_OUT_OF_ENVELOPE",))
+        if x < low or x > high:
+            # PHASE J1-R2：**碰到机械行程端点**与"机构不可解"是两件不同的事。
+            # 前者是真实物理事件（缸走到头了），后者才是求解失败。这里只在
+            # 极小的数值容差内（默认 2 mm）把坐标夹到端点，并返回一个**独立且
+            # 会被逐点记录**的标志，绝不静默 —— 调用方把它计入
+            # envelope_limit_samples，并在结果里如实报出。
+            bounded = float(np.clip(x, low, high))
+            return table.q_from_stroke(bounded), MappingStatus(
+                False, ("MAPPING_AT_ENVELOPE_LIMIT",))
         q_value = table.q_from_stroke(x)
         jacobian = table.stroke_jacobian(q_value)
         threshold = float(self.config.mapping["singular_jacobian_threshold_m_per_rad"])
