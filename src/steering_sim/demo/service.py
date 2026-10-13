@@ -188,7 +188,15 @@ class DemoService:
     def run(self, scenario: DemoScenario, *,
             progress: Callable[[str], None] | None = None,
             on_fraction: Callable[[float], None] | None = None,
-            export: bool = True) -> DemoResult:
+            export: bool = True,
+            profile: Callable[[float], tuple[float, float]] | None = None,
+            reference_start_outer_angle_deg: float = 0.0,
+            initial_state: np.ndarray | None = None,
+            should_stop: Callable[[], bool] | None = None,
+            reference_time_s: float | None = None,
+            output_suffix: str = "",
+            generate_figures: bool = True,
+            allow_extended_duration: bool = False) -> DemoResult:
         """真实积分一个工况；这是唯一的计算入口。
 
         ``on_fraction`` 接收 0~1 的积分完成比例，供界面进度条使用；
@@ -196,21 +204,29 @@ class DemoService:
         """
         report = progress or (lambda _message: None)
         preflight = self.assess(scenario)
-        if not preflight.runnable:
+        duration_only = (preflight.blockers and
+                         all("仿真时长" in item for item in preflight.blockers))
+        if not preflight.runnable and not (allow_extended_duration and duration_only):
             raise DemoServiceError("工况不满足运行条件：\n" + "\n".join(preflight.blockers))
 
-        report("正在积分液压—机械闭环（10 ms 控制 / 0.5 ms 液压）…")
+        report(f"正在积分液压—机械闭环（{self.runner.dt_c * 1000:g} ms 控制 / "
+               f"{self.runner.dt_h * 1000:g} ms 液压）…")
         from steering_sim.j0_coupling.config import J0CaseConfig
         case = J0CaseConfig(id=scenario.case_id,
                             target_outer_angle_deg=scenario.target_outer_angle_deg,
                             speed_kmh=scenario.speed_kmh,
-                            duration_s=scenario.duration_s)
+                            duration_s=scenario.duration_s,
+                            reference_time_s=reference_time_s)
         started = time.perf_counter()
-        raw: J0CaseResult = self.runner.run_case(case, on_progress=on_fraction)
+        raw: J0CaseResult = self.runner.run_case(
+            case, on_progress=on_fraction, profile=profile,
+            reference_start_outer_angle_deg=reference_start_outer_angle_deg,
+            initial_state=initial_state, should_stop=should_stop)
         wall = time.perf_counter() - started
 
         report("正在导出时间序列…")
-        out_dir = self.output_dir / scenario.signature()
+        safe_suffix = "".join(ch for ch in output_suffix if ch.isalnum() or ch in "_-")
+        out_dir = self.output_dir / (scenario.signature() + (f"_{safe_suffix}" if safe_suffix else ""))
         csv_path = write_samples_csv(raw, out_dir / "timeseries.csv")
 
         result = DemoResult(
@@ -223,7 +239,7 @@ class DemoService:
 
         report("正在生成演示图像…")
         result.figures = (plots.plot_all(result, self.centers, out_dir)
-                          if raw.samples else ())
+                          if raw.samples and generate_figures else ())
         result.consistency = check_run_consistency(
             raw.samples, raw.summary, [p.name for p in result.figures],
             str(csv_path), scenario)
@@ -231,6 +247,8 @@ class DemoService:
         result.summary["consistency_flags"] = list(result.consistency.flags)
         result.summary["scenario_signature"] = scenario.signature()
         result.summary["provenance"] = "LIVE_RUN"
+        result.summary["extended_ramp_duration"] = bool(
+            allow_extended_duration and scenario.duration_s > 60.0)
         write_summary_json(result.summary, out_dir / "summary.json")
         if export:
             result.report_path = self.write_report(result)

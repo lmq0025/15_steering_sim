@@ -89,6 +89,10 @@ class ChannelOutput:
     #: 有符号流入量（正 = 流入该腔）
     flow_a_m3_s: float
     flow_b_m3_s: float
+    #: 阀芯/阀套磨损形成的 P→T 内泄漏（计入供油轨需求）。
+    valve_leakage_flow_m3_s: float
+    #: 液压缸 A→B 有符号内泄漏（两腔连续方程中一减一加）。
+    cylinder_leakage_flow_m3_s: float
     #: 从供油轨取用的流量（正 = 从泵取油）
     supply_flow_m3_s: float
     valve_command: float
@@ -108,6 +112,8 @@ class EngineeringOutput:
     pump_capacity_margin_m3_s: tuple[float, ...]
     demand_flow_m3_s: tuple[float, ...]
     pump_flow_m3_s: tuple[float, ...]
+    pump_input_power_w: tuple[float, ...]
+    pump_mechanical_loss_w: tuple[float, ...]
 
 
 class EngineeringHydraulicSystem:
@@ -156,17 +162,46 @@ class EngineeringHydraulicSystem:
         degradation = parameters.degradation
         pump = parameters.supplies[name]
         setpoint = pump.relief_pressure_pa * degradation.supply_pressure_scale
-        flow = pump.ideal_flow_m3_s * degradation.pump_volumetric_efficiency
-        if flow <= 0.0:
-            return setpoint
-        gain = (RELIEF_DISCHARGE_COEFFICIENT * pump.relief_area_m2
-                * math.sqrt(2.0 / parameters.fluid_density_kg_m3))
-        epsilon = parameters.orifice_pressure_regularisation_pa
-        # K⁴·w² − Q⁴·w − Q⁴·ε² = 0
-        a = gain ** 4
-        q4 = flow ** 4
-        w = (q4 + math.sqrt(q4 * q4 + 4.0 * a * q4 * epsilon * epsilon)) / (2.0 * a)
-        return setpoint + math.sqrt(max(0.0, w))
+        # 泵内泄漏依赖压力，不能再用“恒定泵流量”的闭式解。对严格单调的
+        # ``Qpump(p)-Qrelief(p)`` 做二分，健康模型同样得到原闭式解的数值结果。
+        def balance(pressure: float) -> float:
+            pump_flow = self.available_pump_flow(name, pressure)
+            relief_flow = max(0.0, _soft_orifice(
+                pressure - setpoint, pump.relief_area_m2,
+                parameters.fluid_density_kg_m3,
+                RELIEF_DISCHARGE_COEFFICIENT,
+                parameters.orifice_pressure_regularisation_pa))
+            return pump_flow - relief_flow
+
+        low = 0.0
+        high = max(setpoint * 2.0, pump.relief_pressure_pa + 5.0e6)
+        while balance(high) > 0.0 and high < 1.0e9:
+            high *= 2.0
+        if balance(low) <= 0.0:
+            return low
+        for _ in range(80):
+            mid = 0.5 * (low + high)
+            if balance(mid) > 0.0:
+                low = mid
+            else:
+                high = mid
+        return 0.5 * (low + high)
+
+    def available_pump_flow(self, name: str, pressure_pa_g: float) -> float:
+        """指定供油轨在给定压力下的可用泵流量（含该轨独立退化）。"""
+        pump = self.parameters.supplies[name]
+        wear = self.parameters.degradation.pump(name)
+        flow = pump.ideal_flow_m3_s * wear.volumetric_efficiency
+        flow -= wear.internal_leakage_m3_s_per_pa * max(0.0, pressure_pa_g)
+        # Mechanical loss is deliberately kept separate from volumetric loss.
+        # It limits hydraulic power only when a D3 drive-power limit is enabled;
+        # it never subtracts a second leakage flow.
+        if wear.rated_drive_power_w > 0.0 and pressure_pa_g > 0.0:
+            power_limited_flow = (wear.rated_drive_power_w
+                                  * wear.mechanical_efficiency
+                                  / pressure_pa_g)
+            flow = min(flow, power_limited_flow)
+        return max(0.0, flow)
 
     #: 兼容 J0 集成层的命名（L1-Fast 里叫 ``working_point``）。
     def working_point(self) -> tuple[np.ndarray, tuple[float, float, float, float]]:
@@ -216,6 +251,8 @@ class EngineeringHydraulicSystem:
             base = CHANNEL_STATE_SIZE * index
             cylinder = channel.cylinder
             valve = channel.valve
+            valve_wear = degradation.valve(channel.name)
+            cylinder_wear = degradation.cylinder(channel.name)
             p_a = float(state[base])
             p_b = float(state[base + 1])
             x = float(state[base + 2])
@@ -231,13 +268,13 @@ class EngineeringHydraulicSystem:
             if deadband > 0.0:
                 magnitude = max(0.0, abs(raw) - deadband) / max(1.0e-9, 1.0 - deadband)
                 raw = math.copysign(magnitude, raw) if raw != 0.0 else 0.0
-            tau = max(1.0e-4, valve.lag_time_s * degradation.valve_lag_scale)
+            tau = max(1.0e-4, valve.lag_time_s * valve_wear.lag_scale)
             derivative[base + 4] = (raw - u_f) / tau
             u = float(np.clip(u_f, -1.0, 1.0))
             u_pos = max(u, 0.0)
             u_neg = max(-u, 0.0)
 
-            area = valve.maximum_area_m2 * degradation.valve_flow_coefficient_scale
+            area = valve.maximum_area_m2 * valve_wear.flow_coefficient_scale
             coefficient = valve.discharge_coefficient
             # --- 四通阀：u > 0 时 P→A、B→T；u < 0 时 P→B、A→T
             flow_a_in = (
@@ -255,8 +292,13 @@ class EngineeringHydraulicSystem:
                               coefficient, regularisation)
                 + _soft_orifice(supply_pressure - p_b, area * u_neg, density,
                                 coefficient, regularisation))
+            # 阀芯/阀套污染磨损的最小守恒支路：高压 P 口直接泄到 T 口。
+            # 该流量从供油轨扣除，进入油箱（油箱为定压边界，无动态状态）。
+            valve_leak = max(
+                0.0, valve_wear.internal_leakage_m3_s_per_pa
+                * (supply_pressure - tank))
             # --- 缸内泄漏（退化接口；新件为 0）
-            leak = degradation.cylinder_internal_leakage_m3_s_per_pa * (p_a - p_b)
+            leak = cylinder_wear.internal_leakage_m3_s_per_pa * (p_a - p_b)
             flow_a_in -= leak
             flow_b_in += leak
 
@@ -278,7 +320,7 @@ class EngineeringHydraulicSystem:
 
             # --- 活塞动力学
             hydraulic_force = p_a * cylinder.area_a_m2 - p_b * cylinder.area_b_m2
-            friction = degradation.cylinder_friction_scale * (
+            friction = cylinder_wear.friction_scale * (
                 cylinder.coulomb_friction_n * math.tanh(v / FRICTION_VELOCITY_EPS_M_S)
                 + cylinder.viscous_damping_n_s_per_m * v)
             over = abs(xc) - cylinder.half_stroke_m
@@ -291,12 +333,14 @@ class EngineeringHydraulicSystem:
                                     - end_stop) / cylinder.mass_kg
             derivative[base + 2] = v
 
-            demand[channel.supply] += supply_flow
+            demand[channel.supply] += supply_flow + valve_leak
             outputs.append(ChannelOutput(
                 name=channel.name, position_m=x, velocity_m_s=v,
                 hydraulic_force_n=hydraulic_force,
                 pressure_a_pa_g=p_a, pressure_b_pa_g=p_b,
                 flow_a_m3_s=flow_a_in, flow_b_m3_s=flow_b_in,
+                valve_leakage_flow_m3_s=valve_leak,
+                cylinder_leakage_flow_m3_s=leak,
                 supply_flow_m3_s=supply_flow,
                 valve_command=u, load_force_n=loads[index],
                 friction_force_n=friction, end_stop_force_n=end_stop,
@@ -308,15 +352,14 @@ class EngineeringHydraulicSystem:
         insufficient: list[bool] = []
         margins: list[float] = []
         pump_flows: list[float] = []
+        pump_input_powers: list[float] = []
+        pump_mechanical_losses: list[float] = []
         demands: list[float] = []
         for name in self.supply_names:
             pump = parameters.supplies[name]
             offset = self._supply_index[name]
             pressure = float(state[offset])
-            pump_flow = pump.ideal_flow_m3_s * \
-                degradation.pump_volumetric_efficiency
-            pump_flow -= degradation.pump_internal_leakage_m3_s_per_pa * pressure
-            pump_flow = max(0.0, pump_flow)
+            pump_flow = self.available_pump_flow(name, pressure)
             relief_set = pump.relief_pressure_pa * degradation.supply_pressure_scale
             relief_flow = max(0.0, _soft_orifice(
                 pressure - relief_set, pump.relief_area_m2, density,
@@ -325,6 +368,11 @@ class EngineeringHydraulicSystem:
                 pump_flow - relief_flow - demand[name])
             pressures.append(pressure)
             pump_flows.append(pump_flow)
+            wear = degradation.pump(name)
+            hydraulic_power = max(0.0, pressure) * pump_flow
+            input_power = hydraulic_power / wear.mechanical_efficiency
+            pump_input_powers.append(input_power)
+            pump_mechanical_losses.append(max(0.0, input_power - hydraulic_power))
             demands.append(demand[name])
             margins.append(pump_flow - demand[name])
             insufficient.append(demand[name] > pump_flow)
@@ -338,7 +386,9 @@ class EngineeringHydraulicSystem:
             pump_capacity_insufficient=tuple(insufficient),
             pump_capacity_margin_m3_s=tuple(margins),
             demand_flow_m3_s=tuple(demands),
-            pump_flow_m3_s=tuple(pump_flow_s for pump_flow_s in pump_flows))
+            pump_flow_m3_s=tuple(pump_flow_s for pump_flow_s in pump_flows),
+            pump_input_power_w=tuple(pump_input_powers),
+            pump_mechanical_loss_w=tuple(pump_mechanical_losses))
 
 
 def evaluate_hydraulic_engineering(system: EngineeringHydraulicSystem, t: float,

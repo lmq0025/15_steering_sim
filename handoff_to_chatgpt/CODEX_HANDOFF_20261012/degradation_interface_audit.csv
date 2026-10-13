@@ -1,0 +1,19 @@
+﻿parameter,part,unit,defined_in,applied_in,source_anchor,source_line,scope,wired_into_dynamics
+pump_volumetric_efficiency,泵,-,src/steering_sim/hydraulics_engineering/parameters.py,_supply_equilibrium_pressure,pump.ideal_flow_m3_s * degradation.pump_volumetric_efficiency,159,GLOBAL,YES
+pump_volumetric_efficiency,泵,-,src/steering_sim/hydraulics_engineering/parameters.py,EngineeringHydraulicSystem.evaluate,pump_flow = pump.ideal_flow_m3_s *,316,GLOBAL,YES
+pump_internal_leakage_m3_s_per_pa,泵,m3/s/Pa,src/steering_sim/hydraulics_engineering/parameters.py,EngineeringHydraulicSystem.evaluate,pump_flow -= degradation.pump_internal_leakage_m3_s_per_pa * pressure,318,GLOBAL,YES
+supply_pressure_scale,泵/供油轨,-,src/steering_sim/hydraulics_engineering/parameters.py,EngineeringHydraulicSystem.evaluate,degradation.supply_pressure_scale,158,GLOBAL,YES
+valve_flow_coefficient_scale,阀,-,src/steering_sim/hydraulics_engineering/parameters.py,EngineeringHydraulicSystem.evaluate,valve.maximum_area_m2 * degradation.valve_flow_coefficient_scale,240,GLOBAL(乘子) x PER_CHANNEL(阀参数),YES
+valve_lag_scale,阀,-,src/steering_sim/hydraulics_engineering/parameters.py,EngineeringHydraulicSystem.evaluate,valve.lag_time_s * degradation.valve_lag_scale,234,GLOBAL(乘子) x PER_CHANNEL(阀参数),YES
+cylinder_internal_leakage_m3_s_per_pa,缸,m3/s/Pa,src/steering_sim/hydraulics_engineering/parameters.py,EngineeringHydraulicSystem.evaluate,degradation.cylinder_internal_leakage_m3_s_per_pa * (p_a - p_b),259,GLOBAL(乘子) x PER_CHANNEL(缸参数),YES
+cylinder_friction_scale,缸,-,src/steering_sim/hydraulics_engineering/parameters.py,EngineeringHydraulicSystem.evaluate,degradation.cylinder_friction_scale * (,281,GLOBAL(乘子) x PER_CHANNEL(缸参数),YES
+ValveParameters.deadband,阀,-,src/steering_sim/hydraulics_engineering/parameters.py,ValveParameters,(per channel field),,PER_CHANNEL,YES
+ValveParameters.lag_time_s,阀,s,src/steering_sim/hydraulics_engineering/parameters.py,ValveParameters,(per channel field),,PER_CHANNEL,YES
+ValveParameters.discharge_coefficient,阀,-,src/steering_sim/hydraulics_engineering/parameters.py,ValveParameters,(per channel field),,PER_CHANNEL,YES
+CylinderParameters.coulomb_friction_n,缸,N,src/steering_sim/hydraulics_engineering/parameters.py,CylinderParameters,(per channel field),,PER_CHANNEL,YES
+CylinderParameters.viscous_damping_n_s_per_m,缸,N*s/m,src/steering_sim/hydraulics_engineering/parameters.py,CylinderParameters,(per channel field),,PER_CHANNEL,YES
+CylinderParameters.area_a_m2 / area_b_m2,缸,m2,src/steering_sim/hydraulics_engineering/parameters.py,CylinderParameters,(per channel field),,PER_CHANNEL,YES
+PumpParameters.displacement_m3_per_rad,泵,m3/rad,src/steering_sim/hydraulics_engineering/parameters.py,PumpParameters,(per supply rail field),,PER_SUPPLY_RAIL,YES
+PumpParameters.relief_pressure_pa,泵/溢流阀,Pa,src/steering_sim/hydraulics_engineering/parameters.py,PumpParameters,(per supply rail field),,PER_SUPPLY_RAIL,YES
+PumpParameters.relief_area_m2,溢流阀,m2,src/steering_sim/hydraulics_engineering/parameters.py,PumpParameters,(per supply rail field),,PER_SUPPLY_RAIL,YES
+PumpParameters.nominal_speed_rad_s,泵,rad/s,src/steering_sim/hydraulics_engineering/parameters.py,PumpParameters,"(per supply rail field, constant - NOT a state)",,PER_SUPPLY_RAIL,YES(常量)

@@ -1,0 +1,3284 @@
+{
+  "source_of_truth": {
+    "mechanical": "ENGINEERING_STEERING_MODEL",
+    "hydraulic": "ENGINEERING_HYDRAULIC_V1",
+    "report": "docs/integration/phase_J1_R2_report.md",
+    "package": "handoff_to_chatgpt/phase_J1_R2.zip"
+  },
+  "gate1_geometry": {
+    "angles": 61,
+    "direction_ok": 61,
+    "same_sign_ok": 61,
+    "third_axle_locked": 61,
+    "mirror_ok": 30,
+    "max_step_jump_deg": 1.4504,
+    "max_ackermann_rms_deg": 1.8255,
+    "max_outer_follow_error_deg": 0.0001,
+    "q_monotone": {
+      "q_front": true,
+      "q4": true,
+      "q5": true,
+      "q6": true
+    },
+    "max_wheel_angle_deg": 38.446,
+    "problems": [],
+    "mirror_problems": []
+  },
+  "hydraulic_sizing": {
+    "schema_version": "J1R2.0",
+    "provenance": {
+      "method": "虚功 F = M/(ds/dδ) + 流量法 + 折算惯量",
+      "design_case": "(0.0, 5.0, 10.0, 20.0) km/h × ±30° × μ=0.8 × 11.5 t/轴，取双向峰值",
+      "safety_factor": "1.3",
+      "gear_efficiency": "0.9",
+      "flow_margin": "1.25",
+      "velocity_margin": "1.55"
+    },
+    "groups": {
+      "channel_front": {
+        "dof": "q_front",
+        "supply": "front",
+        "required_force_n": 21562.144356672958,
+        "design_force_n": 31145.319626305383,
+        "force_at_relief_n": 63903.52886575168,
+        "static_margin": 2.963690800352846,
+        "design_load_pressure_pa": 14699999.999999998,
+        "required_area_m2": 0.002118729226279278,
+        "bore_mm": 63.0,
+        "area_m2": 0.0031172453105244723,
+        "half_stroke_m": 0.1968075,
+        "stroke_m": 0.393615,
+        "stroke_offset_m": 0.0,
+        "stroke_at_30_deg_m": 0.15219418006699612,
+        "operating_margin_at_30_mm": {
+          "minus": 44.613,
+          "plus": 55.418
+        },
+        "travel_at_30_deg_m": {
+          "minus": -0.15219418006699612,
+          "plus": 0.14138957166261443
+        },
+        "peak_velocity_m_s": 0.09131650804019767,
+        "peak_flow_l_per_min": 17.079357387706587,
+        "valve_area_m2": 8.26607749897381e-06,
+        "valve_delta_p_pa": 3150000.000000001,
+        "velocity_per_command_m_s": 0.14154058746230638,
+        "equivalent_mass_kg": 440.4597564644775,
+        "natural_frequency_hz": 26.26907114308473,
+        "viscous_damping_n_s_per_m": 4361.963927774607,
+        "coulomb_friction_n": 622.9063925261077,
+        "peak_case": "目标角 +30°, 车速 0 km/h, μ=0.8",
+        "peak_force_by_speed_n": {
+          "0": 21562.144356672958,
+          "5": 8425.288465166346,
+          "10": 3457.5610737864513,
+          "20": 12479.110379127646
+        }
+      },
+      "channel_rear_1": {
+        "dof": "q4",
+        "supply": "rear",
+        "required_force_n": 24732.83685880992,
+        "design_force_n": 35725.208796058774,
+        "force_at_relief_n": 63903.52886575168,
+        "static_margin": 2.583752491901835,
+        "design_load_pressure_pa": 14699999.999999998,
+        "required_area_m2": 0.0024302863126570598,
+        "bore_mm": 63.0,
+        "area_m2": 0.0031172453105244723,
+        "half_stroke_m": 0.08168352821609015,
+        "stroke_m": 0.1633670564321803,
+        "stroke_offset_m": -0.002154241445077365,
+        "stroke_at_30_deg_m": 0.019852477447353228,
+        "operating_margin_at_30_mm": {
+          "minus": 63.985,
+          "plus": 60.306
+        },
+        "travel_at_30_deg_m": {
+          "minus": -0.019852477447353228,
+          "plus": 0.019223000186865645
+        },
+        "peak_velocity_m_s": 0.011911486468411937,
+        "peak_flow_l_per_min": 2.2278615201019694,
+        "valve_area_m2": 1.0782417373267067e-06,
+        "valve_delta_p_pa": 3150000.000000001,
+        "velocity_per_command_m_s": 0.0184628040260385,
+        "equivalent_mass_kg": 1106.2398861864824,
+        "natural_frequency_hz": 25.729227997152236,
+        "viscous_damping_n_s_per_m": 10730.18444729103,
+        "coulomb_friction_n": 714.5041759211755,
+        "peak_case": "目标角 +30°, 车速 0 km/h, μ=0.8",
+        "peak_force_by_speed_n": {
+          "0": 24732.83685880992,
+          "5": 9664.219057373994,
+          "10": 3965.992468299385,
+          "20": 14314.153048017375
+        }
+      },
+      "channel_rear_2": {
+        "dof": "q5",
+        "supply": "rear",
+        "required_force_n": 48624.139704100555,
+        "design_force_n": 70234.86846147857,
+        "force_at_relief_n": 103044.23903774521,
+        "static_margin": 2.11919922213154,
+        "design_load_pressure_pa": 14699999.999999998,
+        "required_area_m2": 0.0047778822082638495,
+        "bore_mm": 80.0,
+        "area_m2": 0.005026548245743669,
+        "half_stroke_m": 0.06965161580816781,
+        "stroke_m": 0.13930323161633562,
+        "stroke_offset_m": -0.007029501982270481,
+        "stroke_at_30_deg_m": 0.0606931807359237,
+        "operating_margin_at_30_mm": {
+          "minus": 15.988,
+          "plus": 19.425
+        },
+        "travel_at_30_deg_m": {
+          "minus": -0.0606931807359237,
+          "plus": 0.04319730850953121
+        },
+        "peak_velocity_m_s": 0.03641590844155422,
+        "peak_flow_l_per_min": 10.982779241643385,
+        "valve_area_m2": 5.315451998849212e-06,
+        "valve_delta_p_pa": 3150000.000000001,
+        "velocity_per_command_m_s": 0.056444658084409044,
+        "equivalent_mass_kg": 1789.8351843146474,
+        "natural_frequency_hz": 27.81608310729989,
+        "viscous_damping_n_s_per_m": 18768.956817075792,
+        "coulomb_friction_n": 1404.6973692295714,
+        "peak_case": "目标角 +30°, 车速 0 km/h, μ=0.8",
+        "peak_force_by_speed_n": {
+          "0": 48624.139704100555,
+          "5": 18999.613238875838,
+          "10": 7797.041421588621,
+          "20": 28141.264450342507
+        }
+      },
+      "channel_rear_3": {
+        "dof": "q6",
+        "supply": "rear",
+        "required_force_n": 27557.496850328585,
+        "design_force_n": 39805.2732282524,
+        "force_at_relief_n": 63903.52886575168,
+        "static_margin": 2.3189163084305937,
+        "design_load_pressure_pa": 14699999.999999998,
+        "required_area_m2": 0.0027078417162076465,
+        "bore_mm": 63.0,
+        "area_m2": 0.0031172453105244723,
+        "half_stroke_m": 0.13395960828312925,
+        "stroke_m": 0.2679192165662585,
+        "stroke_offset_m": -0.020567327153628412,
+        "stroke_at_30_deg_m": 0.12890963950856987,
+        "operating_margin_at_30_mm": {
+          "minus": 263.535,
+          "plus": 242.302
+        },
+        "travel_at_30_deg_m": {
+          "minus": 0.10900829823611356,
+          "plus": -0.12890963950856987
+        },
+        "peak_velocity_m_s": 0.07734578370514192,
+        "peak_flow_l_per_min": 14.466346892621626,
+        "valve_area_m2": 7.001431132738098e-06,
+        "valve_delta_p_pa": 3150000.000000001,
+        "velocity_per_command_m_s": 0.11988596474296997,
+        "equivalent_mass_kg": 501.1772326995074,
+        "natural_frequency_hz": 29.84943085821444,
+        "viscous_damping_n_s_per_m": 5639.732526511894,
+        "coulomb_friction_n": 796.105464565048,
+        "peak_case": "目标角 +30°, 车速 0 km/h, μ=0.8",
+        "peak_force_by_speed_n": {
+          "0": 27557.496850328585,
+          "5": 10767.939241167234,
+          "10": 4418.935650581596,
+          "20": 15948.9260102874
+        }
+      }
+    },
+    "supplies": {
+      "front": {
+        "simultaneous_peak_flow_l_per_min": 17.079357387706587,
+        "pump_flow_l_per_min": 21.349196734633235,
+        "relief_pressure_mpa": 21.0
+      },
+      "rear": {
+        "simultaneous_peak_flow_l_per_min": 27.67698765436698,
+        "pump_flow_l_per_min": 34.596234567958724,
+        "relief_pressure_mpa": 21.0
+      }
+    },
+    "reference": {
+      "ramp_time_s": 2.5,
+      "stroke_m": 0.18,
+      "average_velocity_m_s": 0.072,
+      "peak_velocity_m_s": 0.10799999999999998
+    }
+  },
+  "batch": {
+    "cases": 3111,
+    "structurally_complete": 3111,
+    "solver_errors": 0,
+    "rows_missing_actuator_prediction": 0,
+    "status_counts": {
+      "ACKERMANN_TARGET_MISMATCH": 1580,
+      "OK": 561,
+      "VEHICLE_DYNAMIC_INFEASIBLE": 970
+    },
+    "capability_ok_by_channel": {
+      "作动能力_channel_front": 3111,
+      "作动能力_channel_rear_1": 3111,
+      "作动能力_channel_rear_2": 3111,
+      "作动能力_channel_rear_3": 3111
+    },
+    "elapsed_s": 26.3,
+    "mode": "FAST_BATCH_ESTIMATE",
+    "hydraulic_model": "ENGINEERING_HYDRAULIC_V1",
+    "path_steps": 24
+  },
+  "dynamic": {
+    "cases": 18,
+    "numerical_completed": 18,
+    "steady_tracking_pass": 18,
+    "transient_tracking_pass": 18,
+    "vehicle_dynamic_infeasible": 3,
+    "worst_steady_error_deg": 0.0010197666781947222,
+    "worst_transient_error_deg": 0.22013165048474903,
+    "max_control_saturation_fraction": 0.0,
+    "records": [
+      {
+        "case": "低速5_+0deg",
+        "target_deg": 0.0,
+        "speed_kmh": 5.0,
+        "duration_s": 1.3,
+        "wall_s": 3.36,
+        "note": "低速代表工况",
+        "reference_time_s": 0.4,
+        "NUMERICAL_COMPLETED": true,
+        "TRACKING_PASS": true,
+        "TRANSIENT_TRACKING_PASS": true,
+        "VEHICLE_DYNAMIC_INFEASIBLE": false,
+        "status": "PASS",
+        "failure_reason": null,
+        "max_tracking_error_vs_command_deg": 1.2296677582016908e-06,
+        "rms_tracking_error_vs_command_deg": 2.1392329143070672e-07,
+        "steady_max_tracking_error_vs_command_deg": 6.108631558914164e-09,
+        "steady_rms_tracking_error_vs_command_deg": 1.4285532862373857e-09,
+        "max_tracking_error_vs_mechanism_deg": 1.5902320737854717e-08,
+        "settling_time_to_0p5deg_s": 0.0,
+        "control_saturation_fraction": 0.0,
+        "anti_windup_active_fraction": 0.0,
+        "valve_at_limit_sample_fraction": {
+          "channel_front": 0.0,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0
+        },
+        "max_unclipped_pid_request": {
+          "channel_front": 1.0005133538981057e-06,
+          "channel_rear_1": 2.627164569254843e-06,
+          "channel_rear_2": 2.2274072359282233e-06,
+          "channel_rear_3": 1.1887345768630887e-06
+        },
+        "max_tail_velocity_rms_m_s": 5.01874049862196e-10,
+        "max_tail_valve_reversal_rate_per_s": 0.0,
+        "max_tail_pressure_ripple_mpa": 1.0496645128177324e-07,
+        "tail_velocity_rms_m_s": {
+          "channel_front": 5.01874049862196e-10,
+          "channel_rear_1": 2.277813459968651e-13,
+          "channel_rear_2": 8.365565975749948e-13,
+          "channel_rear_3": 1.387919142471807e-10
+        },
+        "tail_pressure_ripple_mpa": {
+          "channel_front": 1.0496645128177324e-07,
+          "channel_rear_1": 5.410094476706771e-11,
+          "channel_rear_2": 2.125251058714126e-10,
+          "channel_rear_3": 3.936085355237157e-08
+        },
+        "steady_stroke_error_mm": {
+          "channel_front": 0.0,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0
+        },
+        "stroke_target_mm": {
+          "channel_front": -0.0,
+          "channel_rear_1": -0.0,
+          "channel_rear_2": -0.0,
+          "channel_rear_3": 0.0
+        },
+        "stroke_final_mm": {
+          "channel_front": -0.0,
+          "channel_rear_1": -0.0,
+          "channel_rear_2": -0.0,
+          "channel_rear_3": 0.0
+        },
+        "stroke_utilisation_max": 0.15353186819345743,
+        "max_pressure_mpa_g": 2.000417514748688,
+        "min_supply_pressure_mpa_g": 21.977154734142857,
+        "max_pump_demand_ratio": 5.211451957531921e-06,
+        "peak_hydraulic_force_n": {
+          "channel_front": 0.2,
+          "channel_rear_1": 0.1,
+          "channel_rear_2": 0.5,
+          "channel_rear_3": 0.2
+        },
+        "max_abs_velocity_m_s": 2.0563237487906205e-07,
+        "max_link_residual_m": 6.106226635438361e-16,
+        "third_axle_max_abs_deg": 0.0,
+        "max_adhesion_utilization": 0.0,
+        "target_path_adhesion_ratio": 0.0,
+        "curvature_actual_1pm_max": 0.0,
+        "curvature_target_1pm": 0.0,
+        "uses_actual_curvature": true,
+        "controller_gains": {
+          "channel_front": [
+            176.6278,
+            2207.8473,
+            0.0
+          ],
+          "channel_rear_1": [
+            1354.0738,
+            16925.923,
+            0.0
+          ],
+          "channel_rear_2": [
+            442.9117,
+            5536.3964,
+            0.0
+          ],
+          "channel_rear_3": [
+            208.5315,
+            2606.6437,
+            0.0
+          ]
+        },
+        "feedforward_gain": {
+          "channel_front": 7.0650906804388836,
+          "channel_rear_1": 54.16237881167741,
+          "channel_rear_2": 17.71636105943839,
+          "channel_rear_3": 8.341257527984919
+        },
+        "authority": [],
+        "non_finite": false,
+        "wheel_actual_deg": {
+          "axle1_left": -0.0,
+          "axle1_right": -0.0,
+          "axle2_left": -0.0,
+          "axle2_right": -0.0,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": 0.0,
+          "axle4_right": 0.0,
+          "axle5_left": 0.0,
+          "axle5_right": 0.0,
+          "axle6_left": 0.0,
+          "axle6_right": 0.0
+        },
+        "wheel_mechanism_deg": {
+          "axle1_left": -0.0,
+          "axle1_right": -0.0,
+          "axle2_left": -0.0,
+          "axle2_right": -0.0,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": 0.0,
+          "axle4_right": 0.0,
+          "axle5_left": 0.0,
+          "axle5_right": 0.0,
+          "axle6_left": 0.0,
+          "axle6_right": 0.0
+        },
+        "wheel_ideal_deg": {
+          "axle1_left": 0.0,
+          "axle1_right": 0.0,
+          "axle2_left": 0.0,
+          "axle2_right": 0.0,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": 0.0,
+          "axle4_right": 0.0,
+          "axle5_left": 0.0,
+          "axle5_right": 0.0,
+          "axle6_left": 0.0,
+          "axle6_right": 0.0
+        },
+        "wheel_direction_ok": true,
+        "failure_class": ""
+      },
+      {
+        "case": "低速5_+2deg",
+        "target_deg": 2.0,
+        "speed_kmh": 5.0,
+        "duration_s": 1.3,
+        "wall_s": 4.17,
+        "note": "低速代表工况",
+        "reference_time_s": 0.4,
+        "NUMERICAL_COMPLETED": true,
+        "TRACKING_PASS": true,
+        "TRANSIENT_TRACKING_PASS": true,
+        "VEHICLE_DYNAMIC_INFEASIBLE": false,
+        "status": "PASS",
+        "failure_reason": null,
+        "max_tracking_error_vs_command_deg": 0.09321754753112232,
+        "rms_tracking_error_vs_command_deg": 0.020108934771438,
+        "steady_max_tracking_error_vs_command_deg": 4.5518473030359274e-05,
+        "steady_rms_tracking_error_vs_command_deg": 1.2381424884351542e-05,
+        "max_tracking_error_vs_mechanism_deg": 4.6140025547369845e-05,
+        "settling_time_to_0p5deg_s": 0.0,
+        "control_saturation_fraction": 0.0,
+        "anti_windup_active_fraction": 0.0,
+        "valve_at_limit_sample_fraction": {
+          "channel_front": 0.0,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0
+        },
+        "max_unclipped_pid_request": {
+          "channel_front": 0.13941006993064664,
+          "channel_rear_1": 0.1346028120426921,
+          "channel_rear_2": 0.1229033167309106,
+          "channel_rear_3": 0.1470359083553509
+        },
+        "max_tail_velocity_rms_m_s": 4.840506872946837e-06,
+        "max_tail_valve_reversal_rate_per_s": 0.0,
+        "max_tail_pressure_ripple_mpa": 0.0005348972310969984,
+        "tail_velocity_rms_m_s": {
+          "channel_front": 4.840506872946837e-06,
+          "channel_rear_1": 1.1187789916136763e-08,
+          "channel_rear_2": 4.424820145401393e-08,
+          "channel_rear_3": 1.182718594975423e-06
+        },
+        "tail_pressure_ripple_mpa": {
+          "channel_front": 0.0005348972310969984,
+          "channel_rear_1": 1.9139296372835454e-06,
+          "channel_rear_2": 6.4094560693836144e-06,
+          "channel_rear_3": 0.00016801914507565832
+        },
+        "steady_stroke_error_mm": {
+          "channel_front": 0.0002,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0001
+        },
+        "stroke_target_mm": {
+          "channel_front": 9.01,
+          "channel_rear_1": 1.1,
+          "channel_rear_2": 3.22,
+          "channel_rear_3": -8.68
+        },
+        "stroke_final_mm": {
+          "channel_front": 9.01,
+          "channel_rear_1": 1.1,
+          "channel_rear_2": 3.22,
+          "channel_rear_3": -8.68
+        },
+        "stroke_utilisation_max": 0.15353147779739396,
+        "max_pressure_mpa_g": 11.757849041143077,
+        "min_supply_pressure_mpa_g": 21.415811008286067,
+        "max_pump_demand_ratio": 0.35795734541206936,
+        "peak_hydraulic_force_n": {
+          "channel_front": 7685.6,
+          "channel_rear_1": 4051.0,
+          "channel_rear_2": 11487.6,
+          "channel_rear_3": 6472.4
+        },
+        "max_abs_velocity_m_s": 0.0338778907880618,
+        "max_link_residual_m": 7.216449660063518e-16,
+        "third_axle_max_abs_deg": 0.0,
+        "max_adhesion_utilization": 0.0012770356902208524,
+        "target_path_adhesion_ratio": 0.0012606254796752561,
+        "curvature_actual_1pm_max": 0.004870777583070679,
+        "curvature_target_1pm": 0.004806545000068058,
+        "uses_actual_curvature": true,
+        "controller_gains": {
+          "channel_front": [
+            176.6278,
+            2207.8473,
+            0.0
+          ],
+          "channel_rear_1": [
+            1354.0738,
+            16925.923,
+            0.0
+          ],
+          "channel_rear_2": [
+            442.9117,
+            5536.3964,
+            0.0
+          ],
+          "channel_rear_3": [
+            208.5315,
+            2606.6437,
+            0.0
+          ]
+        },
+        "feedforward_gain": {
+          "channel_front": 7.0650906804388836,
+          "channel_rear_1": 54.16237881167741,
+          "channel_rear_2": 17.71636105943839,
+          "channel_rear_3": 8.341257527984919
+        },
+        "authority": [],
+        "non_finite": false,
+        "wheel_actual_deg": {
+          "axle1_left": 2.0134,
+          "axle1_right": 2.0,
+          "axle2_left": 1.429,
+          "axle2_right": 1.4239,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": -0.4685,
+          "axle4_right": -0.4678,
+          "axle5_left": -1.7598,
+          "axle5_right": -1.7642,
+          "axle6_left": -2.4731,
+          "axle6_right": -2.4809
+        },
+        "wheel_mechanism_deg": {
+          "axle1_left": 2.0134,
+          "axle1_right": 2.0,
+          "axle2_left": 1.429,
+          "axle2_right": 1.4239,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": -0.4685,
+          "axle4_right": -0.4678,
+          "axle5_left": -1.7598,
+          "axle5_right": -1.7642,
+          "axle6_left": -2.4731,
+          "axle6_right": -2.4809
+        },
+        "wheel_ideal_deg": {
+          "axle1_left": 2.0192,
+          "axle1_right": 2.0,
+          "axle2_left": 1.3004,
+          "axle2_right": 1.288,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": -0.4704,
+          "axle4_right": -0.4659,
+          "axle5_left": -1.7704,
+          "axle5_right": -1.7536,
+          "axle6_left": -2.4889,
+          "axle6_right": -2.4652
+        },
+        "wheel_direction_ok": true,
+        "failure_class": ""
+      },
+      {
+        "case": "低速5_-2deg",
+        "target_deg": -2.0,
+        "speed_kmh": 5.0,
+        "duration_s": 1.3,
+        "wall_s": 4.18,
+        "note": "低速代表工况",
+        "reference_time_s": 0.4,
+        "NUMERICAL_COMPLETED": true,
+        "TRACKING_PASS": true,
+        "TRANSIENT_TRACKING_PASS": true,
+        "VEHICLE_DYNAMIC_INFEASIBLE": false,
+        "status": "PASS",
+        "failure_reason": null,
+        "max_tracking_error_vs_command_deg": 0.09297670711160322,
+        "rms_tracking_error_vs_command_deg": 0.02001948801841261,
+        "steady_max_tracking_error_vs_command_deg": 4.5092923588008205e-05,
+        "steady_rms_tracking_error_vs_command_deg": 1.216621317490079e-05,
+        "max_tracking_error_vs_mechanism_deg": 4.544818396334804e-05,
+        "settling_time_to_0p5deg_s": 0.0,
+        "control_saturation_fraction": 0.0,
+        "anti_windup_active_fraction": 0.0,
+        "valve_at_limit_sample_fraction": {
+          "channel_front": 0.0,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0
+        },
+        "max_unclipped_pid_request": {
+          "channel_front": 0.13983972428064045,
+          "channel_rear_1": 0.13271088366663614,
+          "channel_rear_2": 0.12137142352622138,
+          "channel_rear_3": 0.15107836356042284
+        },
+        "max_tail_velocity_rms_m_s": 4.840886554569331e-06,
+        "max_tail_valve_reversal_rate_per_s": 0.0,
+        "max_tail_pressure_ripple_mpa": 0.0005348149699589906,
+        "tail_velocity_rms_m_s": {
+          "channel_front": 4.840886554569331e-06,
+          "channel_rear_1": 1.1642102658405002e-08,
+          "channel_rear_2": 4.846346174248295e-08,
+          "channel_rear_3": 9.994518644723968e-07
+        },
+        "tail_pressure_ripple_mpa": {
+          "channel_front": 0.0005348149699589906,
+          "channel_rear_1": 1.9968243764747433e-06,
+          "channel_rear_2": 6.3197129160092035e-06,
+          "channel_rear_3": 0.0001444163806023557
+        },
+        "steady_stroke_error_mm": {
+          "channel_front": 0.0002,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0
+        },
+        "stroke_target_mm": {
+          "channel_front": -9.05,
+          "channel_rear_1": -1.1,
+          "channel_rear_2": -3.29,
+          "channel_rear_3": 8.58
+        },
+        "stroke_final_mm": {
+          "channel_front": -9.05,
+          "channel_rear_1": -1.1,
+          "channel_rear_2": -3.29,
+          "channel_rear_3": 8.58
+        },
+        "stroke_utilisation_max": 0.21759343515670954,
+        "max_pressure_mpa_g": 11.784196532684783,
+        "min_supply_pressure_mpa_g": 21.414568797115717,
+        "max_pump_demand_ratio": 0.3589705297945228,
+        "peak_hydraulic_force_n": {
+          "channel_front": 7637.8,
+          "channel_rear_1": 4037.7,
+          "channel_rear_2": 11130.2,
+          "channel_rear_3": 6577.2
+        },
+        "max_abs_velocity_m_s": 0.03399781537114001,
+        "max_link_residual_m": 6.106226635438361e-16,
+        "third_axle_max_abs_deg": 0.0,
+        "max_adhesion_utilization": 0.001277044737215122,
+        "target_path_adhesion_ratio": 0.0012606254796752561,
+        "curvature_actual_1pm_max": 0.004870812089464839,
+        "curvature_target_1pm": 0.004806545000068058,
+        "uses_actual_curvature": true,
+        "controller_gains": {
+          "channel_front": [
+            176.6278,
+            2207.8473,
+            0.0
+          ],
+          "channel_rear_1": [
+            1354.0738,
+            16925.923,
+            0.0
+          ],
+          "channel_rear_2": [
+            442.9117,
+            5536.3964,
+            0.0
+          ],
+          "channel_rear_3": [
+            208.5315,
+            2606.6437,
+            0.0
+          ]
+        },
+        "feedforward_gain": {
+          "channel_front": 7.0650906804388836,
+          "channel_rear_1": 54.16237881167741,
+          "channel_rear_2": 17.71636105943839,
+          "channel_rear_3": 8.341257527984919
+        },
+        "authority": [],
+        "non_finite": false,
+        "wheel_actual_deg": {
+          "axle1_left": -2.0,
+          "axle1_right": -2.0134,
+          "axle2_left": -1.4239,
+          "axle2_right": -1.429,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": 0.4679,
+          "axle4_right": 0.4685,
+          "axle5_left": 1.7642,
+          "axle5_right": 1.7598,
+          "axle6_left": 2.4809,
+          "axle6_right": 2.4731
+        },
+        "wheel_mechanism_deg": {
+          "axle1_left": -2.0,
+          "axle1_right": -2.0134,
+          "axle2_left": -1.4239,
+          "axle2_right": -1.429,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": 0.4679,
+          "axle4_right": 0.4685,
+          "axle5_left": 1.7642,
+          "axle5_right": 1.7598,
+          "axle6_left": 2.481,
+          "axle6_right": 2.4731
+        },
+        "wheel_ideal_deg": {
+          "axle1_left": -2.0,
+          "axle1_right": -2.0192,
+          "axle2_left": -1.288,
+          "axle2_right": -1.3004,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": 0.4659,
+          "axle4_right": 0.4704,
+          "axle5_left": 1.7536,
+          "axle5_right": 1.7704,
+          "axle6_left": 2.4652,
+          "axle6_right": 2.4889
+        },
+        "wheel_direction_ok": true,
+        "failure_class": ""
+      },
+      {
+        "case": "低速5_+5deg",
+        "target_deg": 5.0,
+        "speed_kmh": 5.0,
+        "duration_s": 1.317,
+        "wall_s": 4.26,
+        "note": "低速代表工况",
+        "reference_time_s": 0.4166666666666667,
+        "NUMERICAL_COMPLETED": true,
+        "TRACKING_PASS": true,
+        "TRANSIENT_TRACKING_PASS": true,
+        "VEHICLE_DYNAMIC_INFEASIBLE": false,
+        "status": "PASS",
+        "failure_reason": null,
+        "max_tracking_error_vs_command_deg": 0.21577098622242463,
+        "rms_tracking_error_vs_command_deg": 0.047254546534888635,
+        "steady_max_tracking_error_vs_command_deg": 8.254472515911715e-05,
+        "steady_rms_tracking_error_vs_command_deg": 2.0199949806514483e-05,
+        "max_tracking_error_vs_mechanism_deg": 8.05777021684051e-05,
+        "settling_time_to_0p5deg_s": 0.0,
+        "control_saturation_fraction": 0.0,
+        "anti_windup_active_fraction": 0.0,
+        "valve_at_limit_sample_fraction": {
+          "channel_front": 0.0,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0
+        },
+        "max_unclipped_pid_request": {
+          "channel_front": 0.3261988437752924,
+          "channel_rear_1": 0.3229946358129898,
+          "channel_rear_2": 0.2877288201488988,
+          "channel_rear_3": 0.36601030029841597
+        },
+        "max_tail_velocity_rms_m_s": 5.331911326004883e-06,
+        "max_tail_valve_reversal_rate_per_s": 0.0,
+        "max_tail_pressure_ripple_mpa": 0.0005639849658310295,
+        "tail_velocity_rms_m_s": {
+          "channel_front": 5.331911326004883e-06,
+          "channel_rear_1": 3.236478837278551e-08,
+          "channel_rear_2": 1.0736090287560777e-07,
+          "channel_rear_3": 2.3150781292490313e-06
+        },
+        "tail_pressure_ripple_mpa": {
+          "channel_front": 0.0005639849658310295,
+          "channel_rear_1": 4.177057334774596e-06,
+          "channel_rear_2": 1.4433648771406388e-05,
+          "channel_rear_3": 0.0003010399848576201
+        },
+        "steady_stroke_error_mm": {
+          "channel_front": 0.0004,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0002
+        },
+        "stroke_target_mm": {
+          "channel_front": 22.59,
+          "channel_rear_1": 2.77,
+          "channel_rear_2": 7.96,
+          "channel_rear_3": -21.98
+        },
+        "stroke_final_mm": {
+          "channel_front": 22.59,
+          "channel_rear_1": 2.77,
+          "channel_rear_2": 7.96,
+          "channel_rear_3": -21.98
+        },
+        "stroke_utilisation_max": 0.21527222781760955,
+        "max_pressure_mpa_g": 12.323214445426387,
+        "min_supply_pressure_mpa_g": 21.103957161674256,
+        "max_pump_demand_ratio": 0.7352543526507007,
+        "peak_hydraulic_force_n": {
+          "channel_front": 8509.0,
+          "channel_rear_1": 7471.4,
+          "channel_rear_2": 13120.1,
+          "channel_rear_3": 6728.4
+        },
+        "max_abs_velocity_m_s": 0.07857230723598212,
+        "max_link_residual_m": 6.106226635438361e-16,
+        "third_axle_max_abs_deg": 0.0,
+        "max_adhesion_utilization": 0.0032079227582259106,
+        "target_path_adhesion_ratio": 0.0031812075336686628,
+        "curvature_actual_1pm_max": 0.012235428013986676,
+        "curvature_target_1pm": 0.012129389268788138,
+        "uses_actual_curvature": true,
+        "controller_gains": {
+          "channel_front": [
+            176.6278,
+            2207.8473,
+            0.0
+          ],
+          "channel_rear_1": [
+            1354.0738,
+            16925.923,
+            0.0
+          ],
+          "channel_rear_2": [
+            442.9117,
+            5536.3964,
+            0.0
+          ],
+          "channel_rear_3": [
+            208.5315,
+            2606.6437,
+            0.0
+          ]
+        },
+        "feedforward_gain": {
+          "channel_front": 7.0650906804388836,
+          "channel_rear_1": 54.16237881167741,
+          "channel_rear_2": 17.71636105943839,
+          "channel_rear_3": 8.341257527984919
+        },
+        "authority": [],
+        "non_finite": false,
+        "wheel_actual_deg": {
+          "axle1_left": 5.0853,
+          "axle1_right": 5.0,
+          "axle2_left": 3.5986,
+          "axle2_right": 3.5661,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": -1.1835,
+          "axle4_right": -1.1794,
+          "axle5_left": -4.4253,
+          "axle5_right": -4.4528,
+          "axle6_left": -6.2059,
+          "axle6_right": -6.2543
+        },
+        "wheel_mechanism_deg": {
+          "axle1_left": 5.0853,
+          "axle1_right": 5.0,
+          "axle2_left": 3.5986,
+          "axle2_right": 3.5661,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": -1.1835,
+          "axle4_right": -1.1794,
+          "axle5_left": -4.4253,
+          "axle5_right": -4.4528,
+          "axle6_left": -6.2059,
+          "axle6_right": -6.2543
+        },
+        "wheel_ideal_deg": {
+          "axle1_left": 5.1215,
+          "axle1_right": 5.0,
+          "axle2_left": 3.3026,
+          "axle2_right": 3.2239,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": -1.1957,
+          "axle4_right": -1.1672,
+          "axle5_left": -4.4929,
+          "axle5_right": -4.3861,
+          "axle6_left": -6.3056,
+          "axle6_right": -6.1562
+        },
+        "wheel_direction_ok": true,
+        "failure_class": ""
+      },
+      {
+        "case": "低速5_-5deg",
+        "target_deg": -5.0,
+        "speed_kmh": 5.0,
+        "duration_s": 1.317,
+        "wall_s": 4.29,
+        "note": "低速代表工况",
+        "reference_time_s": 0.4166666666666667,
+        "NUMERICAL_COMPLETED": true,
+        "TRACKING_PASS": true,
+        "TRANSIENT_TRACKING_PASS": true,
+        "VEHICLE_DYNAMIC_INFEASIBLE": false,
+        "status": "PASS",
+        "failure_reason": null,
+        "max_tracking_error_vs_command_deg": 0.22013165048474903,
+        "rms_tracking_error_vs_command_deg": 0.04731358889231941,
+        "steady_max_tracking_error_vs_command_deg": 8.083952440518516e-05,
+        "steady_rms_tracking_error_vs_command_deg": 1.9259387024240015e-05,
+        "max_tracking_error_vs_mechanism_deg": 8.04560012115374e-05,
+        "settling_time_to_0p5deg_s": 0.0,
+        "control_saturation_fraction": 0.0,
+        "anti_windup_active_fraction": 0.0,
+        "valve_at_limit_sample_fraction": {
+          "channel_front": 0.0,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0
+        },
+        "max_unclipped_pid_request": {
+          "channel_front": 0.3289645453415066,
+          "channel_rear_1": 0.32100410900768045,
+          "channel_rear_2": 0.3003705836989719,
+          "channel_rear_3": 0.356749559736917
+        },
+        "max_tail_velocity_rms_m_s": 5.328984846194922e-06,
+        "max_tail_valve_reversal_rate_per_s": 0.0,
+        "max_tail_pressure_ripple_mpa": 0.0005642810970153699,
+        "tail_velocity_rms_m_s": {
+          "channel_front": 5.328984846194922e-06,
+          "channel_rear_1": 3.3536205409643383e-08,
+          "channel_rear_2": 1.2168433326608212e-07,
+          "channel_rear_3": 1.6036137324542365e-06
+        },
+        "tail_pressure_ripple_mpa": {
+          "channel_front": 0.0005642810970153699,
+          "channel_rear_1": 4.241353090299247e-06,
+          "channel_rear_2": 1.4577508525813738e-05,
+          "channel_rear_3": 0.00025131869182684835
+        },
+        "steady_stroke_error_mm": {
+          "channel_front": 0.0004,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0001
+        },
+        "stroke_target_mm": {
+          "channel_front": -22.8,
+          "channel_rear_1": -2.78,
+          "channel_rear_2": -8.41,
+          "channel_rear_3": 21.34
+        },
+        "stroke_final_mm": {
+          "channel_front": -22.8,
+          "channel_rear_1": -2.78,
+          "channel_rear_2": -8.41,
+          "channel_rear_3": 21.34
+        },
+        "stroke_utilisation_max": 0.3128265486397687,
+        "max_pressure_mpa_g": 12.28552128172896,
+        "min_supply_pressure_mpa_g": 21.101257282369357,
+        "max_pump_demand_ratio": 0.7352280960342217,
+        "peak_hydraulic_force_n": {
+          "channel_front": 8383.5,
+          "channel_rear_1": 7417.5,
+          "channel_rear_2": 12053.3,
+          "channel_rear_3": 7014.8
+        },
+        "max_abs_velocity_m_s": 0.07929128703410109,
+        "max_link_residual_m": 6.106226635438361e-16,
+        "third_axle_max_abs_deg": 0.0,
+        "max_adhesion_utilization": 0.0032079322097324577,
+        "target_path_adhesion_ratio": 0.0031812075336686628,
+        "curvature_actual_1pm_max": 0.01223546406324244,
+        "curvature_target_1pm": 0.012129389268788138,
+        "uses_actual_curvature": true,
+        "controller_gains": {
+          "channel_front": [
+            176.6278,
+            2207.8473,
+            0.0
+          ],
+          "channel_rear_1": [
+            1354.0738,
+            16925.923,
+            0.0
+          ],
+          "channel_rear_2": [
+            442.9117,
+            5536.3964,
+            0.0
+          ],
+          "channel_rear_3": [
+            208.5315,
+            2606.6437,
+            0.0
+          ]
+        },
+        "feedforward_gain": {
+          "channel_front": 7.0650906804388836,
+          "channel_rear_1": 54.16237881167741,
+          "channel_rear_2": 17.71636105943839,
+          "channel_rear_3": 8.341257527984919
+        },
+        "authority": [],
+        "non_finite": false,
+        "wheel_actual_deg": {
+          "axle1_left": -5.0,
+          "axle1_right": -5.0853,
+          "axle2_left": -3.5661,
+          "axle2_right": -3.5986,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": 1.1794,
+          "axle4_right": 1.1835,
+          "axle5_left": 4.4528,
+          "axle5_right": 4.4254,
+          "axle6_left": 6.2544,
+          "axle6_right": 6.2059
+        },
+        "wheel_mechanism_deg": {
+          "axle1_left": -5.0,
+          "axle1_right": -5.0853,
+          "axle2_left": -3.5661,
+          "axle2_right": -3.5986,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": 1.1795,
+          "axle4_right": 1.1835,
+          "axle5_left": 4.4528,
+          "axle5_right": 4.4254,
+          "axle6_left": 6.2544,
+          "axle6_right": 6.2059
+        },
+        "wheel_ideal_deg": {
+          "axle1_left": -5.0,
+          "axle1_right": -5.1215,
+          "axle2_left": -3.2239,
+          "axle2_right": -3.3026,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": 1.1672,
+          "axle4_right": 1.1957,
+          "axle5_left": 4.3861,
+          "axle5_right": 4.4929,
+          "axle6_left": 6.1562,
+          "axle6_right": 6.3056
+        },
+        "wheel_direction_ok": true,
+        "failure_class": ""
+      },
+      {
+        "case": "低速5_+10deg",
+        "target_deg": 10.0,
+        "speed_kmh": 5.0,
+        "duration_s": 1.733,
+        "wall_s": 5.55,
+        "note": "低速代表工况",
+        "reference_time_s": 0.8333333333333334,
+        "NUMERICAL_COMPLETED": true,
+        "TRACKING_PASS": true,
+        "TRANSIENT_TRACKING_PASS": true,
+        "VEHICLE_DYNAMIC_INFEASIBLE": false,
+        "status": "PASS",
+        "failure_reason": null,
+        "max_tracking_error_vs_command_deg": 0.12811584696405376,
+        "rms_tracking_error_vs_command_deg": 0.03362217813599367,
+        "steady_max_tracking_error_vs_command_deg": 7.941327974414492e-05,
+        "steady_rms_tracking_error_vs_command_deg": 2.0069558462013223e-05,
+        "max_tracking_error_vs_mechanism_deg": 7.80562544164809e-05,
+        "settling_time_to_0p5deg_s": 0.0,
+        "control_saturation_fraction": 0.0,
+        "anti_windup_active_fraction": 0.0,
+        "valve_at_limit_sample_fraction": {
+          "channel_front": 0.0,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0
+        },
+        "max_unclipped_pid_request": {
+          "channel_front": 0.3371414247963338,
+          "channel_rear_1": 0.3274319771786456,
+          "channel_rear_2": 0.2902653485607576,
+          "channel_rear_3": 0.3836905447393522
+        },
+        "max_tail_velocity_rms_m_s": 5.999337310268798e-06,
+        "max_tail_valve_reversal_rate_per_s": 0.0,
+        "max_tail_pressure_ripple_mpa": 0.0006930390444918511,
+        "tail_velocity_rms_m_s": {
+          "channel_front": 5.999337310268798e-06,
+          "channel_rear_1": 8.637160497516178e-08,
+          "channel_rear_2": 1.9587825534950726e-07,
+          "channel_rear_3": 2.141429756736271e-06
+        },
+        "tail_pressure_ripple_mpa": {
+          "channel_front": 0.0006930390444918511,
+          "channel_rear_1": 1.0677125062458566e-05,
+          "channel_rear_2": 2.9927753478704434e-05,
+          "channel_rear_3": 0.00030978089476373907
+        },
+        "steady_stroke_error_mm": {
+          "channel_front": 0.0003,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0002
+        },
+        "stroke_target_mm": {
+          "channel_front": 45.41,
+          "channel_rear_1": 5.63,
+          "channel_rear_2": 15.66,
+          "channel_rear_3": -44.54
+        },
+        "stroke_final_mm": {
+          "channel_front": 45.41,
+          "channel_rear_1": 5.63,
+          "channel_rear_2": 15.66,
+          "channel_rear_3": -44.54
+        },
+        "stroke_utilisation_max": 0.32582502940446967,
+        "max_pressure_mpa_g": 12.558290282677184,
+        "min_supply_pressure_mpa_g": 21.111562166959313,
+        "max_pump_demand_ratio": 0.7310938647724099,
+        "peak_hydraulic_force_n": {
+          "channel_front": 8523.8,
+          "channel_rear_1": 8899.5,
+          "channel_rear_2": 13639.7,
+          "channel_rear_3": 6825.6
+        },
+        "max_abs_velocity_m_s": 0.08053814950624667,
+        "max_link_residual_m": 6.106226635438361e-16,
+        "third_axle_max_abs_deg": 0.0,
+        "max_adhesion_utilization": 0.006450353923580835,
+        "target_path_adhesion_ratio": 0.00649103748012442,
+        "curvature_actual_1pm_max": 0.024602475509839523,
+        "curvature_target_1pm": 0.024749193355494883,
+        "uses_actual_curvature": true,
+        "controller_gains": {
+          "channel_front": [
+            176.6278,
+            2207.8473,
+            0.0
+          ],
+          "channel_rear_1": [
+            1354.0738,
+            16925.923,
+            0.0
+          ],
+          "channel_rear_2": [
+            442.9117,
+            5536.3964,
+            0.0
+          ],
+          "channel_rear_3": [
+            208.5315,
+            2606.6437,
+            0.0
+          ]
+        },
+        "feedforward_gain": {
+          "channel_front": 7.0650906804388836,
+          "channel_rear_1": 54.16237881167741,
+          "channel_rear_2": 17.71636105943839,
+          "channel_rear_3": 8.341257527984919
+        },
+        "authority": [],
+        "non_finite": false,
+        "wheel_actual_deg": {
+          "axle1_left": 10.3553,
+          "axle1_right": 10.0,
+          "axle2_left": 7.2808,
+          "axle2_right": 7.147,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": -2.4195,
+          "axle4_right": -2.4025,
+          "axle5_left": -8.9478,
+          "axle5_right": -9.0574,
+          "axle6_left": -12.4712,
+          "axle6_right": -12.648
+        },
+        "wheel_mechanism_deg": {
+          "axle1_left": 10.3553,
+          "axle1_right": 10.0,
+          "axle2_left": 7.2808,
+          "axle2_right": 7.147,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": -2.4195,
+          "axle4_right": -2.4025,
+          "axle5_left": -8.9478,
+          "axle5_right": -9.0574,
+          "axle6_left": -12.4712,
+          "axle6_right": -12.648
+        },
+        "wheel_ideal_deg": {
+          "axle1_left": 10.494,
+          "axle1_right": 10.0,
+          "axle2_left": 6.801,
+          "axle2_right": 6.4767,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": -2.47,
+          "axle4_right": -2.3513,
+          "axle5_left": -9.2242,
+          "axle5_right": -8.7875,
+          "axle6_left": -12.8642,
+          "axle6_right": -12.2644
+        },
+        "wheel_direction_ok": true,
+        "failure_class": ""
+      },
+      {
+        "case": "低速5_-10deg",
+        "target_deg": -10.0,
+        "speed_kmh": 5.0,
+        "duration_s": 1.733,
+        "wall_s": 5.67,
+        "note": "低速代表工况",
+        "reference_time_s": 0.8333333333333334,
+        "NUMERICAL_COMPLETED": true,
+        "TRACKING_PASS": true,
+        "TRANSIENT_TRACKING_PASS": true,
+        "VEHICLE_DYNAMIC_INFEASIBLE": false,
+        "status": "PASS",
+        "failure_reason": null,
+        "max_tracking_error_vs_command_deg": 0.13505575014865734,
+        "rms_tracking_error_vs_command_deg": 0.03369899824462283,
+        "steady_max_tracking_error_vs_command_deg": 7.602928970840139e-05,
+        "steady_rms_tracking_error_vs_command_deg": 1.8556836461064723e-05,
+        "max_tracking_error_vs_mechanism_deg": 7.564761545353349e-05,
+        "settling_time_to_0p5deg_s": 0.0,
+        "control_saturation_fraction": 0.0,
+        "anti_windup_active_fraction": 0.0,
+        "valve_at_limit_sample_fraction": {
+          "channel_front": 0.0,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0
+        },
+        "max_unclipped_pid_request": {
+          "channel_front": 0.3432394582451911,
+          "channel_rear_1": 0.3286224079684011,
+          "channel_rear_2": 0.3215574715222248,
+          "channel_rear_3": 0.36262156113897964
+        },
+        "max_tail_velocity_rms_m_s": 5.93510154484572e-06,
+        "max_tail_valve_reversal_rate_per_s": 0.0,
+        "max_tail_pressure_ripple_mpa": 0.000687821206998396,
+        "tail_velocity_rms_m_s": {
+          "channel_front": 5.93510154484572e-06,
+          "channel_rear_1": 9.013421892858303e-08,
+          "channel_rear_2": 2.3329029859480664e-07,
+          "channel_rear_3": 1.0388418371333303e-06
+        },
+        "tail_pressure_ripple_mpa": {
+          "channel_front": 0.000687821206998396,
+          "channel_rear_1": 1.0808366259189678e-05,
+          "channel_rear_2": 3.219133233424906e-05,
+          "channel_rear_3": 0.00017160004441569107
+        },
+        "steady_stroke_error_mm": {
+          "channel_front": 0.0003,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0002
+        },
+        "stroke_target_mm": {
+          "channel_front": -46.29,
+          "channel_rear_1": -5.68,
+          "channel_rear_2": -17.47,
+          "channel_rear_3": 41.99
+        },
+        "stroke_final_mm": {
+          "channel_front": -46.29,
+          "channel_rear_1": -5.68,
+          "channel_rear_2": -17.47,
+          "channel_rear_3": 41.99
+        },
+        "stroke_utilisation_max": 0.46700836848981414,
+        "max_pressure_mpa_g": 12.431535124318403,
+        "min_supply_pressure_mpa_g": 21.104684582242974,
+        "max_pump_demand_ratio": 0.7341521112197644,
+        "peak_hydraulic_force_n": {
+          "channel_front": 8251.9,
+          "channel_rear_1": 8754.1,
+          "channel_rear_2": 12006.2,
+          "channel_rear_3": 7449.6
+        },
+        "max_abs_velocity_m_s": 0.08209652983493367,
+        "max_link_residual_m": 6.106226635438361e-16,
+        "third_axle_max_abs_deg": 0.0,
+        "max_adhesion_utilization": 0.006450363793100345,
+        "target_path_adhesion_ratio": 0.00649103748012442,
+        "curvature_actual_1pm_max": 0.024602513153450235,
+        "curvature_target_1pm": 0.024749193355494883,
+        "uses_actual_curvature": true,
+        "controller_gains": {
+          "channel_front": [
+            176.6278,
+            2207.8473,
+            0.0
+          ],
+          "channel_rear_1": [
+            1354.0738,
+            16925.923,
+            0.0
+          ],
+          "channel_rear_2": [
+            442.9117,
+            5536.3964,
+            0.0
+          ],
+          "channel_rear_3": [
+            208.5315,
+            2606.6437,
+            0.0
+          ]
+        },
+        "feedforward_gain": {
+          "channel_front": 7.0650906804388836,
+          "channel_rear_1": 54.16237881167741,
+          "channel_rear_2": 17.71636105943839,
+          "channel_rear_3": 8.341257527984919
+        },
+        "authority": [],
+        "non_finite": false,
+        "wheel_actual_deg": {
+          "axle1_left": -10.0,
+          "axle1_right": -10.3554,
+          "axle2_left": -7.147,
+          "axle2_right": -7.2808,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": 2.4025,
+          "axle4_right": 2.4195,
+          "axle5_left": 9.0574,
+          "axle5_right": 8.9479,
+          "axle6_left": 12.648,
+          "axle6_right": 12.4712
+        },
+        "wheel_mechanism_deg": {
+          "axle1_left": -10.0,
+          "axle1_right": -10.3554,
+          "axle2_left": -7.147,
+          "axle2_right": -7.2808,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": 2.4026,
+          "axle4_right": 2.4195,
+          "axle5_left": 9.0574,
+          "axle5_right": 8.9479,
+          "axle6_left": 12.648,
+          "axle6_right": 12.4712
+        },
+        "wheel_ideal_deg": {
+          "axle1_left": -10.0,
+          "axle1_right": -10.494,
+          "axle2_left": -6.4767,
+          "axle2_right": -6.801,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": 2.3513,
+          "axle4_right": 2.47,
+          "axle5_left": 8.7875,
+          "axle5_right": 9.2242,
+          "axle6_left": 12.2644,
+          "axle6_right": 12.8642
+        },
+        "wheel_direction_ok": true,
+        "failure_class": ""
+      },
+      {
+        "case": "低速5_+20deg",
+        "target_deg": 20.0,
+        "speed_kmh": 5.0,
+        "duration_s": 2.567,
+        "wall_s": 8.38,
+        "note": "低速代表工况",
+        "reference_time_s": 1.6666666666666667,
+        "NUMERICAL_COMPLETED": true,
+        "TRACKING_PASS": true,
+        "TRANSIENT_TRACKING_PASS": true,
+        "VEHICLE_DYNAMIC_INFEASIBLE": false,
+        "status": "PASS",
+        "failure_reason": null,
+        "max_tracking_error_vs_command_deg": 0.07167570725895445,
+        "rms_tracking_error_vs_command_deg": 0.02130870968950383,
+        "steady_max_tracking_error_vs_command_deg": 0.0003366468081651419,
+        "steady_rms_tracking_error_vs_command_deg": 5.790771010339392e-05,
+        "max_tracking_error_vs_mechanism_deg": 0.000324983541801771,
+        "settling_time_to_0p5deg_s": 0.0,
+        "control_saturation_fraction": 0.0,
+        "anti_windup_active_fraction": 0.0,
+        "valve_at_limit_sample_fraction": {
+          "channel_front": 0.0,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0
+        },
+        "max_unclipped_pid_request": {
+          "channel_front": 0.3463293416079774,
+          "channel_rear_1": 0.34382495976532435,
+          "channel_rear_2": 0.2838430811493293,
+          "channel_rear_3": 0.388054595556506
+        },
+        "max_tail_velocity_rms_m_s": 6.681742358743292e-06,
+        "max_tail_valve_reversal_rate_per_s": 0.0,
+        "max_tail_pressure_ripple_mpa": 0.0008812537106834499,
+        "tail_velocity_rms_m_s": {
+          "channel_front": 6.681742358743292e-06,
+          "channel_rear_1": 3.8397653580065393e-07,
+          "channel_rear_2": 1.0612425179576604e-06,
+          "channel_rear_3": 4.751257359094699e-06
+        },
+        "tail_pressure_ripple_mpa": {
+          "channel_front": 0.0008812537106834499,
+          "channel_rear_1": 5.048302231627736e-05,
+          "channel_rear_2": 0.00019357800253217474,
+          "channel_rear_3": 0.000776636594364683
+        },
+        "steady_stroke_error_mm": {
+          "channel_front": 0.0011,
+          "channel_rear_1": 0.0001,
+          "channel_rear_2": 0.0003,
+          "channel_rear_3": 0.0011
+        },
+        "stroke_target_mm": {
+          "channel_front": 92.12,
+          "channel_rear_1": 11.85,
+          "channel_rear_2": 30.15,
+          "channel_rear_3": -89.06
+        },
+        "stroke_final_mm": {
+          "channel_front": 92.12,
+          "channel_rear_1": 11.85,
+          "channel_rear_2": 30.15,
+          "channel_rear_3": -89.06
+        },
+        "stroke_utilisation_max": 0.5338326045054195,
+        "max_pressure_mpa_g": 12.893660991531865,
+        "min_supply_pressure_mpa_g": 21.103293627857834,
+        "max_pump_demand_ratio": 0.7264183048386565,
+        "peak_hydraulic_force_n": {
+          "channel_front": 8469.8,
+          "channel_rear_1": 9357.9,
+          "channel_rear_2": 15547.9,
+          "channel_rear_3": 6946.5
+        },
+        "max_abs_velocity_m_s": 0.08260335268886142,
+        "max_link_residual_m": 6.106226635438361e-16,
+        "third_axle_max_abs_deg": 0.0,
+        "max_adhesion_utilization": 0.012917307386300102,
+        "target_path_adhesion_ratio": 0.013759227592767176,
+        "curvature_actual_1pm_max": 0.049268263786694036,
+        "curvature_target_1pm": 0.052461534101190865,
+        "uses_actual_curvature": true,
+        "controller_gains": {
+          "channel_front": [
+            176.6278,
+            2207.8473,
+            0.0
+          ],
+          "channel_rear_1": [
+            1354.0738,
+            16925.923,
+            0.0
+          ],
+          "channel_rear_2": [
+            442.9117,
+            5536.3964,
+            0.0
+          ],
+          "channel_rear_3": [
+            208.5315,
+            2606.6437,
+            0.0
+          ]
+        },
+        "feedforward_gain": {
+          "channel_front": 7.0650906804388836,
+          "channel_rear_1": 54.16237881167741,
+          "channel_rear_2": 17.71636105943839,
+          "channel_rear_3": 8.341257527984919
+        },
+        "authority": [],
+        "non_finite": false,
+        "wheel_actual_deg": {
+          "axle1_left": 21.6339,
+          "axle1_right": 20.0,
+          "axle2_left": 14.8951,
+          "axle2_right": 14.3095,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": -5.152,
+          "axle4_right": -5.0752,
+          "axle5_left": -18.3833,
+          "axle5_right": -18.784,
+          "axle6_left": -25.1509,
+          "axle6_right": -25.5124
+        },
+        "wheel_mechanism_deg": {
+          "axle1_left": 21.6339,
+          "axle1_right": 20.0,
+          "axle2_left": 14.8951,
+          "axle2_right": 14.3095,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": -5.152,
+          "axle4_right": -5.0752,
+          "axle5_left": -18.3833,
+          "axle5_right": -18.784,
+          "axle6_left": -25.1509,
+          "axle6_right": -25.5124
+        },
+        "wheel_ideal_deg": {
+          "axle1_left": 22.0017,
+          "axle1_right": 20.0,
+          "axle2_left": 14.583,
+          "axle2_right": 13.1879,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": -5.3758,
+          "axle4_right": -4.8446,
+          "axle5_left": -19.5074,
+          "axle5_right": -17.6969,
+          "axle6_left": -26.4818,
+          "axle6_right": -24.1662
+        },
+        "wheel_direction_ok": true,
+        "failure_class": ""
+      },
+      {
+        "case": "低速5_-20deg",
+        "target_deg": -20.0,
+        "speed_kmh": 5.0,
+        "duration_s": 2.567,
+        "wall_s": 8.41,
+        "note": "低速代表工况",
+        "reference_time_s": 1.6666666666666667,
+        "NUMERICAL_COMPLETED": true,
+        "TRACKING_PASS": true,
+        "TRANSIENT_TRACKING_PASS": true,
+        "VEHICLE_DYNAMIC_INFEASIBLE": false,
+        "status": "PASS",
+        "failure_reason": null,
+        "max_tracking_error_vs_command_deg": 0.08032791456211896,
+        "rms_tracking_error_vs_command_deg": 0.021414944664245032,
+        "steady_max_tracking_error_vs_command_deg": 0.00031523789457565954,
+        "steady_rms_tracking_error_vs_command_deg": 5.260043838372623e-05,
+        "max_tracking_error_vs_mechanism_deg": 0.0003142311768371542,
+        "settling_time_to_0p5deg_s": 0.0,
+        "control_saturation_fraction": 0.0,
+        "anti_windup_active_fraction": 0.0,
+        "valve_at_limit_sample_fraction": {
+          "channel_front": 0.0,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0
+        },
+        "max_unclipped_pid_request": {
+          "channel_front": 0.36023844997039245,
+          "channel_rear_1": 0.34987076614079016,
+          "channel_rear_2": 0.3501606105325514,
+          "channel_rear_3": 0.34756797902803627
+        },
+        "max_tail_velocity_rms_m_s": 6.374948430715364e-06,
+        "max_tail_valve_reversal_rate_per_s": 0.0,
+        "max_tail_pressure_ripple_mpa": 0.0008454682695675516,
+        "tail_velocity_rms_m_s": {
+          "channel_front": 6.374948430715364e-06,
+          "channel_rear_1": 4.0111703307903195e-07,
+          "channel_rear_2": 1.44776533480502e-06,
+          "channel_rear_3": 3.4098285753853817e-06
+        },
+        "tail_pressure_ripple_mpa": {
+          "channel_front": 0.0008454682695675516,
+          "channel_rear_1": 5.140737318357768e-05,
+          "channel_rear_2": 0.0002513136885481446,
+          "channel_rear_3": 0.0006138103670471131
+        },
+        "steady_stroke_error_mm": {
+          "channel_front": 0.0011,
+          "channel_rear_1": 0.0001,
+          "channel_rear_2": 0.0004,
+          "channel_rear_3": 0.0008
+        },
+        "stroke_target_mm": {
+          "channel_front": -96.05,
+          "channel_rear_1": -12.09,
+          "channel_rear_2": -37.68,
+          "channel_rear_3": 79.29
+        },
+        "stroke_final_mm": {
+          "channel_front": -96.05,
+          "channel_rear_1": -12.09,
+          "channel_rear_2": -37.68,
+          "channel_rear_3": 79.29
+        },
+        "stroke_utilisation_max": 0.7454049522408224,
+        "max_pressure_mpa_g": 12.733621245307251,
+        "min_supply_pressure_mpa_g": 21.088521089195904,
+        "max_pump_demand_ratio": 0.7543271389869008,
+        "peak_hydraulic_force_n": {
+          "channel_front": 8206.7,
+          "channel_rear_1": 9053.2,
+          "channel_rear_2": 11929.9,
+          "channel_rear_3": 8440.3
+        },
+        "max_abs_velocity_m_s": 0.0861263492762397,
+        "max_link_residual_m": 6.661338147750939e-16,
+        "third_axle_max_abs_deg": 0.0,
+        "max_adhesion_utilization": 0.012917321038645183,
+        "target_path_adhesion_ratio": 0.013759227592767176,
+        "curvature_actual_1pm_max": 0.04926831585848568,
+        "curvature_target_1pm": 0.052461534101190865,
+        "uses_actual_curvature": true,
+        "controller_gains": {
+          "channel_front": [
+            176.6278,
+            2207.8473,
+            0.0
+          ],
+          "channel_rear_1": [
+            1354.0738,
+            16925.923,
+            0.0
+          ],
+          "channel_rear_2": [
+            442.9117,
+            5536.3964,
+            0.0
+          ],
+          "channel_rear_3": [
+            208.5315,
+            2606.6437,
+            0.0
+          ]
+        },
+        "feedforward_gain": {
+          "channel_front": 7.0650906804388836,
+          "channel_rear_1": 54.16237881167741,
+          "channel_rear_2": 17.71636105943839,
+          "channel_rear_3": 8.341257527984919
+        },
+        "authority": [],
+        "non_finite": false,
+        "wheel_actual_deg": {
+          "axle1_left": -20.0,
+          "axle1_right": -21.6339,
+          "axle2_left": -14.3095,
+          "axle2_right": -14.8952,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": 5.0752,
+          "axle4_right": 5.152,
+          "axle5_left": 18.784,
+          "axle5_right": 18.3833,
+          "axle6_left": 25.5124,
+          "axle6_right": 25.151
+        },
+        "wheel_mechanism_deg": {
+          "axle1_left": -20.0,
+          "axle1_right": -21.6339,
+          "axle2_left": -14.3095,
+          "axle2_right": -14.8952,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": 5.0752,
+          "axle4_right": 5.152,
+          "axle5_left": 18.784,
+          "axle5_right": 18.3833,
+          "axle6_left": 25.5124,
+          "axle6_right": 25.151
+        },
+        "wheel_ideal_deg": {
+          "axle1_left": -20.0,
+          "axle1_right": -22.0017,
+          "axle2_left": -13.1879,
+          "axle2_right": -14.583,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": 4.8446,
+          "axle4_right": 5.3758,
+          "axle5_left": 17.6969,
+          "axle5_right": 19.5074,
+          "axle6_left": 24.1662,
+          "axle6_right": 26.4818
+        },
+        "wheel_direction_ok": true,
+        "failure_class": ""
+      },
+      {
+        "case": "低速5_+30deg",
+        "target_deg": 30.0,
+        "speed_kmh": 5.0,
+        "duration_s": 3.75,
+        "wall_s": 12.15,
+        "note": "低速代表工况",
+        "reference_time_s": 2.5,
+        "NUMERICAL_COMPLETED": true,
+        "TRACKING_PASS": true,
+        "TRANSIENT_TRACKING_PASS": true,
+        "VEHICLE_DYNAMIC_INFEASIBLE": false,
+        "status": "PASS",
+        "failure_reason": null,
+        "max_tracking_error_vs_command_deg": 0.06283579255283911,
+        "rms_tracking_error_vs_command_deg": 0.015366851135260998,
+        "steady_max_tracking_error_vs_command_deg": 4.296224445710095e-05,
+        "steady_rms_tracking_error_vs_command_deg": 5.365235918218475e-06,
+        "max_tracking_error_vs_mechanism_deg": 6.207564322835424e-05,
+        "settling_time_to_0p5deg_s": 0.0,
+        "control_saturation_fraction": 0.0,
+        "anti_windup_active_fraction": 0.0,
+        "valve_at_limit_sample_fraction": {
+          "channel_front": 0.0,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0
+        },
+        "max_unclipped_pid_request": {
+          "channel_front": 0.3554931930011325,
+          "channel_rear_1": 0.37204871436176995,
+          "channel_rear_2": 0.2728802628463793,
+          "channel_rear_3": 0.3753871798269581
+        },
+        "max_tail_velocity_rms_m_s": 5.113264556505625e-07,
+        "max_tail_valve_reversal_rate_per_s": 0.0,
+        "max_tail_pressure_ripple_mpa": 7.644751861235884e-05,
+        "tail_velocity_rms_m_s": {
+          "channel_front": 5.113264556505625e-07,
+          "channel_rear_1": 3.948479149152574e-08,
+          "channel_rear_2": 8.736876415520698e-08,
+          "channel_rear_3": 3.6949941581710983e-07
+        },
+        "tail_pressure_ripple_mpa": {
+          "channel_front": 7.644751861235884e-05,
+          "channel_rear_1": 5.588749211930189e-06,
+          "channel_rear_2": 1.807403347499528e-05,
+          "channel_rear_3": 7.10796843080516e-05
+        },
+        "steady_stroke_error_mm": {
+          "channel_front": 0.0001,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0001
+        },
+        "stroke_target_mm": {
+          "channel_front": 141.39,
+          "channel_rear_1": 19.22,
+          "channel_rear_2": 43.2,
+          "channel_rear_3": -128.91
+        },
+        "stroke_final_mm": {
+          "channel_front": 141.39,
+          "channel_rear_1": 19.22,
+          "channel_rear_2": 43.2,
+          "channel_rear_3": -128.91
+        },
+        "stroke_utilisation_max": 0.808771602667281,
+        "max_pressure_mpa_g": 13.312494451838926,
+        "min_supply_pressure_mpa_g": 21.094279851606142,
+        "max_pump_demand_ratio": 0.7420652101611044,
+        "peak_hydraulic_force_n": {
+          "channel_front": 8598.4,
+          "channel_rear_1": 9725.5,
+          "channel_rear_2": 19066.8,
+          "channel_rear_3": 7974.5
+        },
+        "max_abs_velocity_m_s": 0.08469563678895736,
+        "max_link_residual_m": 7.216449660063518e-16,
+        "third_axle_max_abs_deg": 0.0,
+        "max_adhesion_utilization": 0.019190976071410425,
+        "target_path_adhesion_ratio": 0.022514665963326526,
+        "curvature_actual_1pm_max": 0.0731968391812965,
+        "curvature_target_1pm": 0.08584449295924677,
+        "uses_actual_curvature": true,
+        "controller_gains": {
+          "channel_front": [
+            176.6278,
+            2207.8473,
+            0.0
+          ],
+          "channel_rear_1": [
+            1354.0738,
+            16925.923,
+            0.0
+          ],
+          "channel_rear_2": [
+            442.9117,
+            5536.3964,
+            0.0
+          ],
+          "channel_rear_3": [
+            208.5315,
+            2606.6437,
+            0.0
+          ]
+        },
+        "feedforward_gain": {
+          "channel_front": 7.0650906804388836,
+          "channel_rear_1": 54.16237881167741,
+          "channel_rear_2": 17.71636105943839,
+          "channel_rear_3": 8.341257527984919
+        },
+        "authority": [],
+        "non_finite": false,
+        "wheel_actual_deg": {
+          "axle1_left": 34.7227,
+          "axle1_right": 30.0,
+          "axle2_left": 22.9193,
+          "axle2_right": 21.4114,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": -8.4814,
+          "axle4_right": -8.2728,
+          "axle5_left": -28.5991,
+          "axle5_right": -29.2373,
+          "axle6_left": -38.4459,
+          "axle6_right": -37.6218
+        },
+        "wheel_mechanism_deg": {
+          "axle1_left": 34.7227,
+          "axle1_right": 30.0,
+          "axle2_left": 22.9193,
+          "axle2_right": 21.4114,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": -8.4814,
+          "axle4_right": -8.2728,
+          "axle5_left": -28.5991,
+          "axle5_right": -29.2373,
+          "axle6_left": -38.4459,
+          "axle6_right": -37.6218
+        },
+        "wheel_ideal_deg": {
+          "axle1_left": 34.4186,
+          "axle1_right": 30.0,
+          "axle2_left": 23.8067,
+          "axle2_right": 20.3896,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": -9.0668,
+          "axle4_right": -7.657,
+          "axle5_left": -30.9962,
+          "axle5_right": -26.8453,
+          "axle6_left": -40.1923,
+          "axle6_right": -35.4412
+        },
+        "wheel_direction_ok": true,
+        "failure_class": ""
+      },
+      {
+        "case": "低速5_-30deg",
+        "target_deg": -30.0,
+        "speed_kmh": 5.0,
+        "duration_s": 3.75,
+        "wall_s": 12.16,
+        "note": "低速代表工况",
+        "reference_time_s": 2.5,
+        "NUMERICAL_COMPLETED": true,
+        "TRACKING_PASS": true,
+        "TRANSIENT_TRACKING_PASS": true,
+        "VEHICLE_DYNAMIC_INFEASIBLE": false,
+        "status": "PASS",
+        "failure_reason": null,
+        "max_tracking_error_vs_command_deg": 0.07411839395125241,
+        "rms_tracking_error_vs_command_deg": 0.015533071835305558,
+        "steady_max_tracking_error_vs_command_deg": 3.839835915897538e-05,
+        "steady_rms_tracking_error_vs_command_deg": 4.533391109630048e-06,
+        "max_tracking_error_vs_mechanism_deg": 3.0911369087505136e-05,
+        "settling_time_to_0p5deg_s": 0.0,
+        "control_saturation_fraction": 0.0,
+        "anti_windup_active_fraction": 0.0,
+        "valve_at_limit_sample_fraction": {
+          "channel_front": 0.0,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0
+        },
+        "max_unclipped_pid_request": {
+          "channel_front": 0.38123614800333777,
+          "channel_rear_1": 0.3835166087237422,
+          "channel_rear_2": 0.37619572585194083,
+          "channel_rear_3": 0.3203342572821932
+        },
+        "max_tail_velocity_rms_m_s": 4.250135124813184e-07,
+        "max_tail_valve_reversal_rate_per_s": 0.0,
+        "max_tail_pressure_ripple_mpa": 6.28442538650121e-05,
+        "tail_velocity_rms_m_s": {
+          "channel_front": 4.250135124813184e-07,
+          "channel_rear_1": 4.064533955150161e-08,
+          "channel_rear_2": 1.4345005004766855e-07,
+          "channel_rear_3": 2.2844314118767784e-07
+        },
+        "tail_pressure_ripple_mpa": {
+          "channel_front": 6.28442538650121e-05,
+          "channel_rear_1": 5.656686460805619e-06,
+          "channel_rear_2": 3.0399787047040718e-05,
+          "channel_rear_3": 4.6951658713138585e-05
+        },
+        "steady_stroke_error_mm": {
+          "channel_front": 0.0001,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0001
+        },
+        "stroke_target_mm": {
+          "channel_front": -152.19,
+          "channel_rear_1": -19.85,
+          "channel_rear_2": -60.69,
+          "channel_rear_3": 109.01
+        },
+        "stroke_final_mm": {
+          "channel_front": -152.19,
+          "channel_rear_1": -19.85,
+          "channel_rear_2": -60.69,
+          "channel_rear_3": 109.01
+        },
+        "stroke_utilisation_max": 0.9672721847695593,
+        "max_pressure_mpa_g": 13.180325172659389,
+        "min_supply_pressure_mpa_g": 21.069314388448483,
+        "max_pump_demand_ratio": 0.7984648093266384,
+        "peak_hydraulic_force_n": {
+          "channel_front": 8185.9,
+          "channel_rear_1": 9186.3,
+          "channel_rear_2": 11866.1,
+          "channel_rear_3": 10860.7
+        },
+        "max_abs_velocity_m_s": 0.09116780931539409,
+        "max_link_residual_m": 6.106226635438361e-16,
+        "third_axle_max_abs_deg": 0.0,
+        "max_adhesion_utilization": 0.019191009945001194,
+        "target_path_adhesion_ratio": 0.022514665963326526,
+        "curvature_actual_1pm_max": 0.07319696837950752,
+        "curvature_target_1pm": 0.08584449295924677,
+        "uses_actual_curvature": true,
+        "controller_gains": {
+          "channel_front": [
+            176.6278,
+            2207.8473,
+            0.0
+          ],
+          "channel_rear_1": [
+            1354.0738,
+            16925.923,
+            0.0
+          ],
+          "channel_rear_2": [
+            442.9117,
+            5536.3964,
+            0.0
+          ],
+          "channel_rear_3": [
+            208.5315,
+            2606.6437,
+            0.0
+          ]
+        },
+        "feedforward_gain": {
+          "channel_front": 7.0650906804388836,
+          "channel_rear_1": 54.16237881167741,
+          "channel_rear_2": 17.71636105943839,
+          "channel_rear_3": 8.341257527984919
+        },
+        "authority": [],
+        "non_finite": false,
+        "wheel_actual_deg": {
+          "axle1_left": -30.0,
+          "axle1_right": -34.7227,
+          "axle2_left": -21.4114,
+          "axle2_right": -22.9193,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": 8.2728,
+          "axle4_right": 8.4814,
+          "axle5_left": 29.2374,
+          "axle5_right": 28.5992,
+          "axle6_left": 37.6219,
+          "axle6_right": 38.446
+        },
+        "wheel_mechanism_deg": {
+          "axle1_left": -30.0,
+          "axle1_right": -34.7227,
+          "axle2_left": -21.4114,
+          "axle2_right": -22.9193,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": 8.2728,
+          "axle4_right": 8.4814,
+          "axle5_left": 29.2374,
+          "axle5_right": 28.5992,
+          "axle6_left": 37.6219,
+          "axle6_right": 38.446
+        },
+        "wheel_ideal_deg": {
+          "axle1_left": -30.0,
+          "axle1_right": -34.4186,
+          "axle2_left": -20.3896,
+          "axle2_right": -23.8067,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": 7.657,
+          "axle4_right": 9.0668,
+          "axle5_left": 26.8453,
+          "axle5_right": 30.9962,
+          "axle6_left": 35.4412,
+          "axle6_right": 40.1923
+        },
+        "wheel_direction_ok": true,
+        "failure_class": ""
+      },
+      {
+        "case": "静止0_+30deg",
+        "target_deg": 30.0,
+        "speed_kmh": 0.0,
+        "duration_s": 3.75,
+        "wall_s": 11.77,
+        "note": "原地转向（干转）",
+        "reference_time_s": 2.5,
+        "NUMERICAL_COMPLETED": true,
+        "TRACKING_PASS": true,
+        "TRANSIENT_TRACKING_PASS": true,
+        "VEHICLE_DYNAMIC_INFEASIBLE": false,
+        "status": "PASS",
+        "failure_reason": null,
+        "max_tracking_error_vs_command_deg": 0.05598159943723857,
+        "rms_tracking_error_vs_command_deg": 0.012714659938168336,
+        "steady_max_tracking_error_vs_command_deg": 2.7952139227238604e-05,
+        "steady_rms_tracking_error_vs_command_deg": 3.246090362865237e-06,
+        "max_tracking_error_vs_mechanism_deg": 6.207583875550426e-05,
+        "settling_time_to_0p5deg_s": 0.0,
+        "control_saturation_fraction": 0.0,
+        "anti_windup_active_fraction": 0.0,
+        "valve_at_limit_sample_fraction": {
+          "channel_front": 0.0,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0
+        },
+        "max_unclipped_pid_request": {
+          "channel_front": 0.4033861980150806,
+          "channel_rear_1": 0.43062347292984116,
+          "channel_rear_2": 0.3128027651531537,
+          "channel_rear_3": 0.40938894253745123
+        },
+        "max_tail_velocity_rms_m_s": 6.471032182646586e-07,
+        "max_tail_valve_reversal_rate_per_s": 0.0,
+        "max_tail_pressure_ripple_mpa": 9.976698982505134e-05,
+        "tail_velocity_rms_m_s": {
+          "channel_front": 6.471032182646586e-07,
+          "channel_rear_1": 3.525183486278079e-08,
+          "channel_rear_2": 3.169489989581088e-08,
+          "channel_rear_3": 2.3098237645628692e-07
+        },
+        "tail_pressure_ripple_mpa": {
+          "channel_front": 9.976698982505134e-05,
+          "channel_rear_1": 4.8912366893054344e-06,
+          "channel_rear_2": 6.558413733415801e-06,
+          "channel_rear_3": 4.431725262424128e-05
+        },
+        "steady_stroke_error_mm": {
+          "channel_front": 0.0001,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0001
+        },
+        "stroke_target_mm": {
+          "channel_front": 141.39,
+          "channel_rear_1": 19.22,
+          "channel_rear_2": 43.2,
+          "channel_rear_3": -128.91
+        },
+        "stroke_final_mm": {
+          "channel_front": 141.39,
+          "channel_rear_1": 19.22,
+          "channel_rear_2": 43.2,
+          "channel_rear_3": -128.91
+        },
+        "stroke_utilisation_max": 0.8087716026710192,
+        "max_pressure_mpa_g": 16.116986162602675,
+        "min_supply_pressure_mpa_g": 21.094189891250696,
+        "max_pump_demand_ratio": 0.7422549800057141,
+        "peak_hydraulic_force_n": {
+          "channel_front": 20949.3,
+          "channel_rear_1": 23891.0,
+          "channel_rear_2": 46871.8,
+          "channel_rear_3": 19005.1
+        },
+        "max_abs_velocity_m_s": 0.08472525143926098,
+        "max_link_residual_m": 6.661338147750939e-16,
+        "third_axle_max_abs_deg": 0.0,
+        "max_adhesion_utilization": 0.0,
+        "target_path_adhesion_ratio": 0.0,
+        "curvature_actual_1pm_max": 0.07319683969943613,
+        "curvature_target_1pm": 0.08584449295924677,
+        "uses_actual_curvature": true,
+        "controller_gains": {
+          "channel_front": [
+            176.6278,
+            2207.8473,
+            0.0
+          ],
+          "channel_rear_1": [
+            1354.0738,
+            16925.923,
+            0.0
+          ],
+          "channel_rear_2": [
+            442.9117,
+            5536.3964,
+            0.0
+          ],
+          "channel_rear_3": [
+            208.5315,
+            2606.6437,
+            0.0
+          ]
+        },
+        "feedforward_gain": {
+          "channel_front": 7.0650906804388836,
+          "channel_rear_1": 54.16237881167741,
+          "channel_rear_2": 17.71636105943839,
+          "channel_rear_3": 8.341257527984919
+        },
+        "authority": [],
+        "non_finite": false,
+        "wheel_actual_deg": {
+          "axle1_left": 34.7227,
+          "axle1_right": 30.0,
+          "axle2_left": 22.9193,
+          "axle2_right": 21.4114,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": -8.4814,
+          "axle4_right": -8.2728,
+          "axle5_left": -28.5991,
+          "axle5_right": -29.2373,
+          "axle6_left": -38.4459,
+          "axle6_right": -37.6218
+        },
+        "wheel_mechanism_deg": {
+          "axle1_left": 34.7227,
+          "axle1_right": 30.0,
+          "axle2_left": 22.9193,
+          "axle2_right": 21.4114,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": -8.4814,
+          "axle4_right": -8.2728,
+          "axle5_left": -28.5991,
+          "axle5_right": -29.2373,
+          "axle6_left": -38.4459,
+          "axle6_right": -37.6218
+        },
+        "wheel_ideal_deg": {
+          "axle1_left": 34.4186,
+          "axle1_right": 30.0,
+          "axle2_left": 23.8067,
+          "axle2_right": 20.3896,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": -9.0668,
+          "axle4_right": -7.657,
+          "axle5_left": -30.9962,
+          "axle5_right": -26.8453,
+          "axle6_left": -40.1923,
+          "axle6_right": -35.4412
+        },
+        "wheel_direction_ok": true,
+        "failure_class": ""
+      },
+      {
+        "case": "静止0_-30deg",
+        "target_deg": -30.0,
+        "speed_kmh": 0.0,
+        "duration_s": 3.75,
+        "wall_s": 11.22,
+        "note": "原地转向（干转）",
+        "reference_time_s": 2.5,
+        "NUMERICAL_COMPLETED": true,
+        "TRACKING_PASS": true,
+        "TRANSIENT_TRACKING_PASS": true,
+        "VEHICLE_DYNAMIC_INFEASIBLE": false,
+        "status": "PASS",
+        "failure_reason": null,
+        "max_tracking_error_vs_command_deg": 0.06003118329235946,
+        "rms_tracking_error_vs_command_deg": 0.012963206386666532,
+        "steady_max_tracking_error_vs_command_deg": 1.600306814708574e-05,
+        "steady_rms_tracking_error_vs_command_deg": 2.5240889975069428e-06,
+        "max_tracking_error_vs_mechanism_deg": 2.277277233275754e-05,
+        "settling_time_to_0p5deg_s": 0.0,
+        "control_saturation_fraction": 0.0,
+        "anti_windup_active_fraction": 0.0,
+        "valve_at_limit_sample_fraction": {
+          "channel_front": 0.0,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0
+        },
+        "max_unclipped_pid_request": {
+          "channel_front": 0.42802662710477335,
+          "channel_rear_1": 0.4410077977158837,
+          "channel_rear_2": 0.41095491867164236,
+          "channel_rear_3": 0.35613834857602483
+        },
+        "max_tail_velocity_rms_m_s": 2.83365598901752e-07,
+        "max_tail_valve_reversal_rate_per_s": 0.0,
+        "max_tail_pressure_ripple_mpa": 4.410224577892497e-05,
+        "tail_velocity_rms_m_s": {
+          "channel_front": 2.83365598901752e-07,
+          "channel_rear_1": 3.950297715984653e-08,
+          "channel_rear_2": 1.0540232045396318e-07,
+          "channel_rear_3": 9.859519382336195e-08
+        },
+        "tail_pressure_ripple_mpa": {
+          "channel_front": 4.410224577892497e-05,
+          "channel_rear_1": 5.32176134304128e-06,
+          "channel_rear_2": 2.2463888311261224e-05,
+          "channel_rear_3": 2.0222555139551702e-05
+        },
+        "steady_stroke_error_mm": {
+          "channel_front": 0.0001,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0
+        },
+        "stroke_target_mm": {
+          "channel_front": -152.19,
+          "channel_rear_1": -19.85,
+          "channel_rear_2": -60.69,
+          "channel_rear_3": 109.01
+        },
+        "stroke_final_mm": {
+          "channel_front": -152.19,
+          "channel_rear_1": -19.85,
+          "channel_rear_2": -60.69,
+          "channel_rear_3": 109.01
+        },
+        "stroke_utilisation_max": 0.9672721847726042,
+        "max_pressure_mpa_g": 15.71870429061509,
+        "min_supply_pressure_mpa_g": 21.069436544489548,
+        "max_pump_demand_ratio": 0.7981879037109192,
+        "peak_hydraulic_force_n": {
+          "channel_front": 20379.8,
+          "channel_rear_1": 22610.2,
+          "channel_rear_2": 28815.2,
+          "channel_rear_3": 26576.7
+        },
+        "max_abs_velocity_m_s": 0.09119905341184013,
+        "max_link_residual_m": 6.661338147750939e-16,
+        "third_axle_max_abs_deg": 0.0,
+        "max_adhesion_utilization": 0.0,
+        "target_path_adhesion_ratio": 0.0,
+        "curvature_actual_1pm_max": 0.07319696840523503,
+        "curvature_target_1pm": 0.08584449295924677,
+        "uses_actual_curvature": true,
+        "controller_gains": {
+          "channel_front": [
+            176.6278,
+            2207.8473,
+            0.0
+          ],
+          "channel_rear_1": [
+            1354.0738,
+            16925.923,
+            0.0
+          ],
+          "channel_rear_2": [
+            442.9117,
+            5536.3964,
+            0.0
+          ],
+          "channel_rear_3": [
+            208.5315,
+            2606.6437,
+            0.0
+          ]
+        },
+        "feedforward_gain": {
+          "channel_front": 7.0650906804388836,
+          "channel_rear_1": 54.16237881167741,
+          "channel_rear_2": 17.71636105943839,
+          "channel_rear_3": 8.341257527984919
+        },
+        "authority": [],
+        "non_finite": false,
+        "wheel_actual_deg": {
+          "axle1_left": -30.0,
+          "axle1_right": -34.7227,
+          "axle2_left": -21.4114,
+          "axle2_right": -22.9193,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": 8.2728,
+          "axle4_right": 8.4814,
+          "axle5_left": 29.2374,
+          "axle5_right": 28.5992,
+          "axle6_left": 37.6219,
+          "axle6_right": 38.446
+        },
+        "wheel_mechanism_deg": {
+          "axle1_left": -30.0,
+          "axle1_right": -34.7227,
+          "axle2_left": -21.4114,
+          "axle2_right": -22.9193,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": 8.2728,
+          "axle4_right": 8.4814,
+          "axle5_left": 29.2374,
+          "axle5_right": 28.5992,
+          "axle6_left": 37.6219,
+          "axle6_right": 38.446
+        },
+        "wheel_ideal_deg": {
+          "axle1_left": -30.0,
+          "axle1_right": -34.4186,
+          "axle2_left": -20.3896,
+          "axle2_right": -23.8067,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": 7.657,
+          "axle4_right": 9.0668,
+          "axle5_left": 26.8453,
+          "axle5_right": 30.9962,
+          "axle6_left": 35.4412,
+          "axle6_right": 40.1923
+        },
+        "wheel_direction_ok": true,
+        "failure_class": ""
+      },
+      {
+        "case": "中速40_+20deg",
+        "target_deg": 20.0,
+        "speed_kmh": 40.0,
+        "duration_s": 2.567,
+        "wall_s": 8.42,
+        "note": "中速中等转角",
+        "reference_time_s": 1.6666666666666667,
+        "NUMERICAL_COMPLETED": true,
+        "TRACKING_PASS": true,
+        "TRANSIENT_TRACKING_PASS": true,
+        "VEHICLE_DYNAMIC_INFEASIBLE": false,
+        "status": "PASS",
+        "failure_reason": null,
+        "max_tracking_error_vs_command_deg": 0.06849084608149392,
+        "rms_tracking_error_vs_command_deg": 0.01922758301474943,
+        "steady_max_tracking_error_vs_command_deg": 0.00026051370135604657,
+        "steady_rms_tracking_error_vs_command_deg": 4.7807541601628405e-05,
+        "max_tracking_error_vs_mechanism_deg": 0.0002586462731208883,
+        "settling_time_to_0p5deg_s": 0.0,
+        "control_saturation_fraction": 0.0,
+        "anti_windup_active_fraction": 0.0,
+        "valve_at_limit_sample_fraction": {
+          "channel_front": 0.0,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0
+        },
+        "max_unclipped_pid_request": {
+          "channel_front": 0.3780737215246118,
+          "channel_rear_1": 0.39242988027447534,
+          "channel_rear_2": 0.31114066448771216,
+          "channel_rear_3": 0.4103246884310751
+        },
+        "max_tail_velocity_rms_m_s": 1.4042480271773154e-05,
+        "max_tail_valve_reversal_rate_per_s": 0.0,
+        "max_tail_pressure_ripple_mpa": 0.0018809532707330598,
+        "tail_velocity_rms_m_s": {
+          "channel_front": 1.4042480271773154e-05,
+          "channel_rear_1": 2.487131285527105e-07,
+          "channel_rear_2": 3.1359044548612297e-07,
+          "channel_rear_3": 3.5270933215143827e-06
+        },
+        "tail_pressure_ripple_mpa": {
+          "channel_front": 0.0018809532707330598,
+          "channel_rear_1": 3.364029801269482e-05,
+          "channel_rear_2": 5.059874143411382e-05,
+          "channel_rear_3": 0.0006042661875989831
+        },
+        "steady_stroke_error_mm": {
+          "channel_front": 0.001,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0001,
+          "channel_rear_3": 0.0007
+        },
+        "stroke_target_mm": {
+          "channel_front": 92.12,
+          "channel_rear_1": 11.85,
+          "channel_rear_2": 30.15,
+          "channel_rear_3": -89.06
+        },
+        "stroke_final_mm": {
+          "channel_front": 92.12,
+          "channel_rear_1": 11.85,
+          "channel_rear_2": 30.15,
+          "channel_rear_3": -89.06
+        },
+        "stroke_utilisation_max": 0.5338326123659098,
+        "max_pressure_mpa_g": 16.699716663656076,
+        "min_supply_pressure_mpa_g": 21.098067294451177,
+        "max_pump_demand_ratio": 0.7364082315933461,
+        "peak_hydraulic_force_n": {
+          "channel_front": 28989.8,
+          "channel_rear_1": 32526.3,
+          "channel_rear_2": 53755.1,
+          "channel_rear_3": 22706.0
+        },
+        "max_abs_velocity_m_s": 0.08257578866702932,
+        "max_link_residual_m": 6.106226635438361e-16,
+        "third_axle_max_abs_deg": 0.0,
+        "max_adhesion_utilization": 0.8267093362578902,
+        "target_path_adhesion_ratio": 0.8805905659370993,
+        "curvature_actual_1pm_max": 0.049268362926291165,
+        "curvature_target_1pm": 0.052461534101190865,
+        "uses_actual_curvature": true,
+        "controller_gains": {
+          "channel_front": [
+            176.6278,
+            2207.8473,
+            0.0
+          ],
+          "channel_rear_1": [
+            1354.0738,
+            16925.923,
+            0.0
+          ],
+          "channel_rear_2": [
+            442.9117,
+            5536.3964,
+            0.0
+          ],
+          "channel_rear_3": [
+            208.5315,
+            2606.6437,
+            0.0
+          ]
+        },
+        "feedforward_gain": {
+          "channel_front": 7.0650906804388836,
+          "channel_rear_1": 54.16237881167741,
+          "channel_rear_2": 17.71636105943839,
+          "channel_rear_3": 8.341257527984919
+        },
+        "authority": [],
+        "non_finite": false,
+        "wheel_actual_deg": {
+          "axle1_left": 21.6339,
+          "axle1_right": 20.0,
+          "axle2_left": 14.8951,
+          "axle2_right": 14.3095,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": -5.152,
+          "axle4_right": -5.0752,
+          "axle5_left": -18.3833,
+          "axle5_right": -18.784,
+          "axle6_left": -25.1509,
+          "axle6_right": -25.5124
+        },
+        "wheel_mechanism_deg": {
+          "axle1_left": 21.6339,
+          "axle1_right": 20.0,
+          "axle2_left": 14.8951,
+          "axle2_right": 14.3095,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": -5.152,
+          "axle4_right": -5.0752,
+          "axle5_left": -18.3833,
+          "axle5_right": -18.784,
+          "axle6_left": -25.1509,
+          "axle6_right": -25.5124
+        },
+        "wheel_ideal_deg": {
+          "axle1_left": 22.0017,
+          "axle1_right": 20.0,
+          "axle2_left": 14.583,
+          "axle2_right": 13.1879,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": -5.3758,
+          "axle4_right": -4.8446,
+          "axle5_left": -19.5074,
+          "axle5_right": -17.6969,
+          "axle6_left": -26.4818,
+          "axle6_right": -24.1662
+        },
+        "wheel_direction_ok": true,
+        "failure_class": ""
+      },
+      {
+        "case": "高速60_+20deg",
+        "target_deg": 20.0,
+        "speed_kmh": 60.0,
+        "duration_s": 2.567,
+        "wall_s": 8.58,
+        "note": "高速中等转角",
+        "reference_time_s": 1.6666666666666667,
+        "NUMERICAL_COMPLETED": true,
+        "TRACKING_PASS": true,
+        "TRANSIENT_TRACKING_PASS": true,
+        "VEHICLE_DYNAMIC_INFEASIBLE": true,
+        "status": "CONDITIONAL",
+        "failure_reason": null,
+        "max_tracking_error_vs_command_deg": 0.07214136167131291,
+        "rms_tracking_error_vs_command_deg": 0.01655633977173937,
+        "steady_max_tracking_error_vs_command_deg": 0.0002739454206270864,
+        "steady_rms_tracking_error_vs_command_deg": 5.0712676899730276e-05,
+        "max_tracking_error_vs_mechanism_deg": 0.0002720779923919281,
+        "settling_time_to_0p5deg_s": 0.0,
+        "control_saturation_fraction": 0.0,
+        "anti_windup_active_fraction": 0.0,
+        "valve_at_limit_sample_fraction": {
+          "channel_front": 0.0,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0
+        },
+        "max_unclipped_pid_request": {
+          "channel_front": 0.4937441958343836,
+          "channel_rear_1": 0.5594466052623813,
+          "channel_rear_2": 0.4049269965501051,
+          "channel_rear_3": 0.48387347522055013
+        },
+        "max_tail_velocity_rms_m_s": 1.74602523279933e-05,
+        "max_tail_valve_reversal_rate_per_s": 0.0,
+        "max_tail_pressure_ripple_mpa": 0.002330890317899433,
+        "tail_velocity_rms_m_s": {
+          "channel_front": 1.74602523279933e-05,
+          "channel_rear_1": 1.954677165467855e-07,
+          "channel_rear_2": 9.785273960762716e-08,
+          "channel_rear_3": 3.958456212706901e-06
+        },
+        "tail_pressure_ripple_mpa": {
+          "channel_front": 0.002330890317899433,
+          "channel_rear_1": 2.5806001089977307e-05,
+          "channel_rear_2": 1.8420772809857954e-05,
+          "channel_rear_3": 0.0006948102649711388
+        },
+        "steady_stroke_error_mm": {
+          "channel_front": 0.0011,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0006
+        },
+        "stroke_target_mm": {
+          "channel_front": 92.12,
+          "channel_rear_1": 11.85,
+          "channel_rear_2": 30.15,
+          "channel_rear_3": -89.06
+        },
+        "stroke_final_mm": {
+          "channel_front": 92.12,
+          "channel_rear_1": 11.85,
+          "channel_rear_2": 30.15,
+          "channel_rear_3": -89.06
+        },
+        "stroke_utilisation_max": 0.5338326057633086,
+        "max_pressure_mpa_g": 17.9102354659397,
+        "min_supply_pressure_mpa_g": 21.0920634494798,
+        "max_pump_demand_ratio": 0.7477637301370867,
+        "peak_hydraulic_force_n": {
+          "channel_front": 35360.9,
+          "channel_rear_1": 39485.3,
+          "channel_rear_2": 64958.2,
+          "channel_rear_3": 27294.5
+        },
+        "max_abs_velocity_m_s": 0.08678976568486527,
+        "max_link_residual_m": 6.661338147750939e-16,
+        "third_axle_max_abs_deg": 0.0,
+        "max_adhesion_utilization": 1.8601036497662329,
+        "target_path_adhesion_ratio": 1.9813287733584741,
+        "curvature_actual_1pm_max": 0.0492685653713582,
+        "curvature_target_1pm": 0.052461534101190865,
+        "uses_actual_curvature": true,
+        "controller_gains": {
+          "channel_front": [
+            176.6278,
+            2207.8473,
+            0.0
+          ],
+          "channel_rear_1": [
+            1354.0738,
+            16925.923,
+            0.0
+          ],
+          "channel_rear_2": [
+            442.9117,
+            5536.3964,
+            0.0
+          ],
+          "channel_rear_3": [
+            208.5315,
+            2606.6437,
+            0.0
+          ]
+        },
+        "feedforward_gain": {
+          "channel_front": 7.0650906804388836,
+          "channel_rear_1": 54.16237881167741,
+          "channel_rear_2": 17.71636105943839,
+          "channel_rear_3": 8.341257527984919
+        },
+        "authority": [],
+        "non_finite": false,
+        "wheel_actual_deg": {
+          "axle1_left": 21.6339,
+          "axle1_right": 20.0,
+          "axle2_left": 14.8951,
+          "axle2_right": 14.3095,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": -5.152,
+          "axle4_right": -5.0752,
+          "axle5_left": -18.3833,
+          "axle5_right": -18.784,
+          "axle6_left": -25.1509,
+          "axle6_right": -25.5124
+        },
+        "wheel_mechanism_deg": {
+          "axle1_left": 21.6339,
+          "axle1_right": 20.0,
+          "axle2_left": 14.8951,
+          "axle2_right": 14.3095,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": -5.152,
+          "axle4_right": -5.0752,
+          "axle5_left": -18.3833,
+          "axle5_right": -18.784,
+          "axle6_left": -25.1509,
+          "axle6_right": -25.5124
+        },
+        "wheel_ideal_deg": {
+          "axle1_left": 22.0017,
+          "axle1_right": 20.0,
+          "axle2_left": 14.583,
+          "axle2_right": 13.1879,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": -5.3758,
+          "axle4_right": -4.8446,
+          "axle5_left": -19.5074,
+          "axle5_right": -17.6969,
+          "axle6_left": -26.4818,
+          "axle6_right": -24.1662
+        },
+        "wheel_direction_ok": true,
+        "failure_class": "目标路径超出附着能力（a_y > μg）：数值已完成，物理上不可行，不代表实际车辆能完成该路径；转向机构本身已跟上指令"
+      },
+      {
+        "case": "高速80_+30deg",
+        "target_deg": 30.0,
+        "speed_kmh": 80.0,
+        "duration_s": 3.75,
+        "wall_s": 12.43,
+        "note": "极限工况（附着不可行）",
+        "reference_time_s": 2.5,
+        "NUMERICAL_COMPLETED": true,
+        "TRACKING_PASS": true,
+        "TRANSIENT_TRACKING_PASS": true,
+        "VEHICLE_DYNAMIC_INFEASIBLE": true,
+        "status": "CONDITIONAL",
+        "failure_reason": null,
+        "max_tracking_error_vs_command_deg": 0.05452460143718696,
+        "rms_tracking_error_vs_command_deg": 0.010286299407061054,
+        "steady_max_tracking_error_vs_command_deg": 5.803519111680089e-05,
+        "steady_rms_tracking_error_vs_command_deg": 4.031139031942704e-06,
+        "max_tracking_error_vs_mechanism_deg": 6.207602162788817e-05,
+        "settling_time_to_0p5deg_s": 0.0,
+        "control_saturation_fraction": 0.0,
+        "anti_windup_active_fraction": 0.0,
+        "valve_at_limit_sample_fraction": {
+          "channel_front": 0.0,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0
+        },
+        "max_unclipped_pid_request": {
+          "channel_front": 0.4930311973755994,
+          "channel_rear_1": 0.551820750589329,
+          "channel_rear_2": 0.39363975525391226,
+          "channel_rear_3": 0.46287533873657466
+        },
+        "max_tail_velocity_rms_m_s": 1.4710589312806635e-06,
+        "max_tail_valve_reversal_rate_per_s": 0.0,
+        "max_tail_pressure_ripple_mpa": 0.00022239657609445133,
+        "tail_velocity_rms_m_s": {
+          "channel_front": 1.4710589312806635e-06,
+          "channel_rear_1": 1.3515155684874791e-08,
+          "channel_rear_2": 2.3357875588788162e-08,
+          "channel_rear_3": 6.948045388427488e-08
+        },
+        "tail_pressure_ripple_mpa": {
+          "channel_front": 0.00022239657609445133,
+          "channel_rear_1": 1.9091309596816373e-06,
+          "channel_rear_2": 4.02834428620956e-06,
+          "channel_rear_3": 1.3118719351589462e-05
+        },
+        "steady_stroke_error_mm": {
+          "channel_front": 0.0002,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0
+        },
+        "stroke_target_mm": {
+          "channel_front": 141.39,
+          "channel_rear_1": 19.22,
+          "channel_rear_2": 43.2,
+          "channel_rear_3": -128.91
+        },
+        "stroke_final_mm": {
+          "channel_front": 141.39,
+          "channel_rear_1": 19.22,
+          "channel_rear_2": 43.2,
+          "channel_rear_3": -128.91
+        },
+        "stroke_utilisation_max": 0.8087716026745156,
+        "max_pressure_mpa_g": 19.46605654441368,
+        "min_supply_pressure_mpa_g": 21.093931089455612,
+        "max_pump_demand_ratio": 0.7427959595391249,
+        "peak_hydraulic_force_n": {
+          "channel_front": 35317.7,
+          "channel_rear_1": 40438.4,
+          "channel_rear_2": 79425.5,
+          "channel_rear_3": 31909.3
+        },
+        "max_abs_velocity_m_s": 0.0847821315040153,
+        "max_link_residual_m": 6.106226635438361e-16,
+        "third_axle_max_abs_deg": 0.0,
+        "max_adhesion_utilization": 4.912893448936929,
+        "target_path_adhesion_ratio": 5.763754486611591,
+        "curvature_actual_1pm_max": 0.07319689243987075,
+        "curvature_target_1pm": 0.08584449295924677,
+        "uses_actual_curvature": true,
+        "controller_gains": {
+          "channel_front": [
+            176.6278,
+            2207.8473,
+            0.0
+          ],
+          "channel_rear_1": [
+            1354.0738,
+            16925.923,
+            0.0
+          ],
+          "channel_rear_2": [
+            442.9117,
+            5536.3964,
+            0.0
+          ],
+          "channel_rear_3": [
+            208.5315,
+            2606.6437,
+            0.0
+          ]
+        },
+        "feedforward_gain": {
+          "channel_front": 7.0650906804388836,
+          "channel_rear_1": 54.16237881167741,
+          "channel_rear_2": 17.71636105943839,
+          "channel_rear_3": 8.341257527984919
+        },
+        "authority": [],
+        "non_finite": false,
+        "wheel_actual_deg": {
+          "axle1_left": 34.7227,
+          "axle1_right": 30.0,
+          "axle2_left": 22.9193,
+          "axle2_right": 21.4114,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": -8.4814,
+          "axle4_right": -8.2728,
+          "axle5_left": -28.5991,
+          "axle5_right": -29.2373,
+          "axle6_left": -38.4459,
+          "axle6_right": -37.6218
+        },
+        "wheel_mechanism_deg": {
+          "axle1_left": 34.7227,
+          "axle1_right": 30.0,
+          "axle2_left": 22.9193,
+          "axle2_right": 21.4114,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": -8.4814,
+          "axle4_right": -8.2728,
+          "axle5_left": -28.5991,
+          "axle5_right": -29.2373,
+          "axle6_left": -38.4459,
+          "axle6_right": -37.6218
+        },
+        "wheel_ideal_deg": {
+          "axle1_left": 34.4186,
+          "axle1_right": 30.0,
+          "axle2_left": 23.8067,
+          "axle2_right": 20.3896,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": -9.0668,
+          "axle4_right": -7.657,
+          "axle5_left": -30.9962,
+          "axle5_right": -26.8453,
+          "axle6_left": -40.1923,
+          "axle6_right": -35.4412
+        },
+        "wheel_direction_ok": true,
+        "failure_class": "目标路径超出附着能力（a_y > μg）：数值已完成，物理上不可行，不代表实际车辆能完成该路径；转向机构本身已跟上指令"
+      },
+      {
+        "case": "高速80_-30deg",
+        "target_deg": -30.0,
+        "speed_kmh": 80.0,
+        "duration_s": 3.75,
+        "wall_s": 11.97,
+        "note": "极限工况（附着不可行）",
+        "reference_time_s": 2.5,
+        "NUMERICAL_COMPLETED": true,
+        "TRACKING_PASS": true,
+        "TRANSIENT_TRACKING_PASS": true,
+        "VEHICLE_DYNAMIC_INFEASIBLE": true,
+        "status": "CONDITIONAL",
+        "failure_reason": null,
+        "max_tracking_error_vs_command_deg": 0.05497169652857581,
+        "rms_tracking_error_vs_command_deg": 0.010537815411623953,
+        "steady_max_tracking_error_vs_command_deg": 1.1032351608264435e-05,
+        "steady_rms_tracking_error_vs_command_deg": 1.281706498947791e-06,
+        "max_tracking_error_vs_mechanism_deg": 2.4704213018367227e-05,
+        "settling_time_to_0p5deg_s": 0.0,
+        "control_saturation_fraction": 0.0,
+        "anti_windup_active_fraction": 0.0,
+        "valve_at_limit_sample_fraction": {
+          "channel_front": 0.0,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0
+        },
+        "max_unclipped_pid_request": {
+          "channel_front": 0.5119176809795668,
+          "channel_rear_1": 0.5565458498374507,
+          "channel_rear_2": 0.4662796181468796,
+          "channel_rear_3": 0.4182830140042478
+        },
+        "max_tail_velocity_rms_m_s": 5.038397556543024e-07,
+        "max_tail_valve_reversal_rate_per_s": 0.0,
+        "max_tail_pressure_ripple_mpa": 7.93573713703747e-05,
+        "tail_velocity_rms_m_s": {
+          "channel_front": 5.038397556543024e-07,
+          "channel_rear_1": 1.5600619936331382e-08,
+          "channel_rear_2": 6.058022726536561e-08,
+          "channel_rear_3": 1.2466938757381293e-08
+        },
+        "tail_pressure_ripple_mpa": {
+          "channel_front": 7.93573713703747e-05,
+          "channel_rear_1": 2.21057285937889e-06,
+          "channel_rear_2": 1.3008507118330388e-05,
+          "channel_rear_3": 2.3753662132740866e-06
+        },
+        "steady_stroke_error_mm": {
+          "channel_front": 0.0,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0
+        },
+        "stroke_target_mm": {
+          "channel_front": -152.19,
+          "channel_rear_1": -19.85,
+          "channel_rear_2": -60.69,
+          "channel_rear_3": 109.01
+        },
+        "stroke_final_mm": {
+          "channel_front": -152.19,
+          "channel_rear_1": -19.85,
+          "channel_rear_2": -60.69,
+          "channel_rear_3": 109.01
+        },
+        "stroke_utilisation_max": 0.9672752602793977,
+        "max_pressure_mpa_g": 18.748833403265238,
+        "min_supply_pressure_mpa_g": 21.069445627330445,
+        "max_pump_demand_ratio": 0.7982018054506207,
+        "peak_hydraulic_force_n": {
+          "channel_front": 34494.1,
+          "channel_rear_1": 38762.6,
+          "channel_rear_2": 47239.0,
+          "channel_rear_3": 45040.7
+        },
+        "max_abs_velocity_m_s": 0.09125730187781153,
+        "max_link_residual_m": 6.661338147750939e-16,
+        "third_axle_max_abs_deg": 0.0,
+        "max_adhesion_utilization": 4.912898731463635,
+        "target_path_adhesion_ratio": 5.763754486611591,
+        "curvature_actual_1pm_max": 0.07319697114390598,
+        "curvature_target_1pm": 0.08584449295924677,
+        "uses_actual_curvature": true,
+        "controller_gains": {
+          "channel_front": [
+            176.6278,
+            2207.8473,
+            0.0
+          ],
+          "channel_rear_1": [
+            1354.0738,
+            16925.923,
+            0.0
+          ],
+          "channel_rear_2": [
+            442.9117,
+            5536.3964,
+            0.0
+          ],
+          "channel_rear_3": [
+            208.5315,
+            2606.6437,
+            0.0
+          ]
+        },
+        "feedforward_gain": {
+          "channel_front": 7.0650906804388836,
+          "channel_rear_1": 54.16237881167741,
+          "channel_rear_2": 17.71636105943839,
+          "channel_rear_3": 8.341257527984919
+        },
+        "authority": [],
+        "non_finite": false,
+        "wheel_actual_deg": {
+          "axle1_left": -30.0,
+          "axle1_right": -34.7227,
+          "axle2_left": -21.4114,
+          "axle2_right": -22.9193,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": 8.2728,
+          "axle4_right": 8.4814,
+          "axle5_left": 29.2374,
+          "axle5_right": 28.5992,
+          "axle6_left": 37.6219,
+          "axle6_right": 38.446
+        },
+        "wheel_mechanism_deg": {
+          "axle1_left": -30.0,
+          "axle1_right": -34.7227,
+          "axle2_left": -21.4114,
+          "axle2_right": -22.9193,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": 8.2728,
+          "axle4_right": 8.4814,
+          "axle5_left": 29.2374,
+          "axle5_right": 28.5992,
+          "axle6_left": 37.6219,
+          "axle6_right": 38.446
+        },
+        "wheel_ideal_deg": {
+          "axle1_left": -30.0,
+          "axle1_right": -34.4186,
+          "axle2_left": -20.3896,
+          "axle2_right": -23.8067,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": 7.657,
+          "axle4_right": 9.0668,
+          "axle5_left": 26.8453,
+          "axle5_right": 30.9962,
+          "axle6_left": 35.4412,
+          "axle6_right": 40.1923
+        },
+        "wheel_direction_ok": true,
+        "failure_class": "目标路径超出附着能力（a_y > μg）：数值已完成，物理上不可行，不代表实际车辆能完成该路径；转向机构本身已跟上指令"
+      },
+      {
+        "case": "连续指令_+10_-10_0",
+        "target_deg": 10.0,
+        "speed_kmh": 10.0,
+        "duration_s": 6.4,
+        "wall_s": 18.91,
+        "note": "10 km/h：0→+10°→−10°→0，三段连续指令与反向回零",
+        "reference_time_s": 0.8333333333333334,
+        "NUMERICAL_COMPLETED": true,
+        "TRACKING_PASS": true,
+        "TRANSIENT_TRACKING_PASS": true,
+        "VEHICLE_DYNAMIC_INFEASIBLE": false,
+        "status": "FAIL",
+        "failure_reason": null,
+        "max_tracking_error_vs_command_deg": 0.17875885330293606,
+        "rms_tracking_error_vs_command_deg": 0.03389882987757671,
+        "steady_max_tracking_error_vs_command_deg": 0.0010197666781947222,
+        "steady_rms_tracking_error_vs_command_deg": 0.00010405299729604316,
+        "max_tracking_error_vs_mechanism_deg": 12.649044092370904,
+        "settling_time_to_0p5deg_s": 0.0,
+        "control_saturation_fraction": 0.0,
+        "anti_windup_active_fraction": 0.0,
+        "valve_at_limit_sample_fraction": {
+          "channel_front": 0.0,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0
+        },
+        "max_unclipped_pid_request": {
+          "channel_front": 0.6106954116636013,
+          "channel_rear_1": 0.7145483279374998,
+          "channel_rear_2": 0.6466472550937595,
+          "channel_rear_3": 0.8623915956028961
+        },
+        "max_tail_velocity_rms_m_s": 1.4533424663503103e-05,
+        "max_tail_valve_reversal_rate_per_s": 0.0,
+        "max_tail_pressure_ripple_mpa": 0.0014529131928495888,
+        "tail_velocity_rms_m_s": {
+          "channel_front": 1.4533424663503103e-05,
+          "channel_rear_1": 1.6222833438864909e-06,
+          "channel_rear_2": 3.3904052688157336e-06,
+          "channel_rear_3": 9.765049622449593e-06
+        },
+        "tail_pressure_ripple_mpa": {
+          "channel_front": 0.0014529131928495888,
+          "channel_rear_1": 0.0001995500029537246,
+          "channel_rear_2": 0.0005300569448897301,
+          "channel_rear_3": 0.001234120422552999
+        },
+        "steady_stroke_error_mm": {
+          "channel_front": 45.4107,
+          "channel_rear_1": 5.6294,
+          "channel_rear_2": 15.6656,
+          "channel_rear_3": 44.5472
+        },
+        "stroke_target_mm": {
+          "channel_front": 45.41,
+          "channel_rear_1": 5.63,
+          "channel_rear_2": 15.66,
+          "channel_rear_3": -44.54
+        },
+        "stroke_final_mm": {
+          "channel_front": -0.0,
+          "channel_rear_1": -0.0,
+          "channel_rear_2": -0.0,
+          "channel_rear_3": 0.0
+        },
+        "stroke_utilisation_max": 0.4860469782344506,
+        "max_pressure_mpa_g": 11.720002572117352,
+        "min_supply_pressure_mpa_g": 8.923741229856526,
+        "max_pump_demand_ratio": 1.1483072481142012,
+        "peak_hydraulic_force_n": {
+          "channel_front": 2370.3,
+          "channel_rear_1": 2052.9,
+          "channel_rear_2": 3564.3,
+          "channel_rear_3": 2274.0
+        },
+        "max_abs_velocity_m_s": 0.1342157127467734,
+        "max_link_residual_m": 6.661338147750939e-16,
+        "third_axle_max_abs_deg": 0.0,
+        "max_adhesion_utilization": 0.025834513362503184,
+        "target_path_adhesion_ratio": 0.02596414992049768,
+        "curvature_actual_1pm_max": 0.024634035195574385,
+        "curvature_target_1pm": 0.024749193355494883,
+        "uses_actual_curvature": true,
+        "controller_gains": {
+          "channel_front": [
+            176.6278,
+            2207.8473,
+            0.0
+          ],
+          "channel_rear_1": [
+            1354.0738,
+            16925.923,
+            0.0
+          ],
+          "channel_rear_2": [
+            442.9117,
+            5536.3964,
+            0.0
+          ],
+          "channel_rear_3": [
+            208.5315,
+            2606.6437,
+            0.0
+          ]
+        },
+        "feedforward_gain": {
+          "channel_front": 7.0650906804388836,
+          "channel_rear_1": 54.16237881167741,
+          "channel_rear_2": 17.71636105943839,
+          "channel_rear_3": 8.341257527984919
+        },
+        "authority": [],
+        "non_finite": false,
+        "wheel_actual_deg": {
+          "axle1_left": -0.0,
+          "axle1_right": -0.0,
+          "axle2_left": -0.0,
+          "axle2_right": -0.0,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": 0.0,
+          "axle4_right": 0.0,
+          "axle5_left": 0.0,
+          "axle5_right": 0.0,
+          "axle6_left": 0.0,
+          "axle6_right": 0.0
+        },
+        "wheel_mechanism_deg": {
+          "axle1_left": 10.3553,
+          "axle1_right": 10.0,
+          "axle2_left": 7.2808,
+          "axle2_right": 7.147,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": -2.4195,
+          "axle4_right": -2.4025,
+          "axle5_left": -8.9478,
+          "axle5_right": -9.0574,
+          "axle6_left": -12.4712,
+          "axle6_right": -12.648
+        },
+        "wheel_ideal_deg": {
+          "axle1_left": 10.494,
+          "axle1_right": 10.0,
+          "axle2_left": 6.801,
+          "axle2_right": 6.4767,
+          "axle3_left": 0.0,
+          "axle3_right": 0.0,
+          "axle4_left": -2.47,
+          "axle4_right": -2.3513,
+          "axle5_left": -9.2242,
+          "axle5_right": -8.7875,
+          "axle6_left": -12.8642,
+          "axle6_right": -12.2644
+        },
+        "wheel_direction_ok": true,
+        "failure_class": ""
+      }
+    ]
+  },
+  "step_convergence": {
+    "case": {
+      "target_deg": 10.0,
+      "speed_kmh": 5.0,
+      "duration_s": 2.0
+    },
+    "records": [
+      {
+        "dt_ms": 2.0,
+        "completed": true,
+        "final_stroke_mm": {
+          "channel_front": 45.40701,
+          "channel_rear_1": 5.628836,
+          "channel_rear_2": 15.664202,
+          "channel_rear_3": -44.543605
+        },
+        "steady_max_error_deg": 2.8382891331446558e-05,
+        "max_error_deg": 0.12806794567527824,
+        "max_pressure_mpa_g": 12.554115407973283,
+        "max_abs_velocity_m_s": 0.08052423384193472,
+        "final_stroke_delta_vs_finest_mm": {
+          "channel_front": 0.0,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 1e-06
+        }
+      },
+      {
+        "dt_ms": 1.0,
+        "completed": true,
+        "final_stroke_mm": {
+          "channel_front": 45.40701,
+          "channel_rear_1": 5.628836,
+          "channel_rear_2": 15.664202,
+          "channel_rear_3": -44.543606
+        },
+        "steady_max_error_deg": 2.8823621011753175e-05,
+        "max_error_deg": 0.12811672186566092,
+        "max_pressure_mpa_g": 12.558159748831661,
+        "max_abs_velocity_m_s": 0.08053817754077157,
+        "final_stroke_delta_vs_finest_mm": {
+          "channel_front": 0.0,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0
+        }
+      },
+      {
+        "dt_ms": 0.5,
+        "completed": true,
+        "final_stroke_mm": {
+          "channel_front": 45.40701,
+          "channel_rear_1": 5.628836,
+          "channel_rear_2": 15.664202,
+          "channel_rear_3": -44.543606
+        },
+        "steady_max_error_deg": 2.8823330559646365e-05,
+        "max_error_deg": 0.12811584696405376,
+        "max_pressure_mpa_g": 12.558290282677184,
+        "max_abs_velocity_m_s": 0.08053814950624667,
+        "final_stroke_delta_vs_finest_mm": {
+          "channel_front": 0.0,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0
+        }
+      },
+      {
+        "dt_ms": 0.25,
+        "completed": true,
+        "final_stroke_mm": {
+          "channel_front": 45.40701,
+          "channel_rear_1": 5.628836,
+          "channel_rear_2": 15.664202,
+          "channel_rear_3": -44.543606
+        },
+        "steady_max_error_deg": 2.8823141246192563e-05,
+        "max_error_deg": 0.1281263962881649,
+        "max_pressure_mpa_g": 12.55887820499305,
+        "max_abs_velocity_m_s": 0.08053949750133164,
+        "final_stroke_delta_vs_finest_mm": {
+          "channel_front": 0.0,
+          "channel_rear_1": 0.0,
+          "channel_rear_2": 0.0,
+          "channel_rear_3": 0.0
+        }
+      }
+    ],
+    "converged_dt_ms": 0.5,
+    "note": "以最细步长（0.25 ms）为基准，0.5 ms 的末值行程差应在 0.01 mm 量级；2.0 ms 已明显偏差。"
+  },
+  "status_block": {
+    "model": {
+      "mechanical": "ENGINEERING_STEERING_MODEL",
+      "hydraulic": "ENGINEERING_HYDRAULIC_V1",
+      "hydraulic_state_size": 22,
+      "customer_hardpoints_changed": false,
+      "customer_parameters_preserved": true
+    },
+    "zero_degree_case": {
+      "computed": true,
+      "note": "0° 直行不再被误判为超出机构包络（J1 缺陷已修复）"
+    },
+    "steering_direction": {
+      "gate1_direction_ok": 61,
+      "gate1_angles": 61,
+      "mirror_ok": 30,
+      "third_axle_locked": 61,
+      "max_step_jump_deg": 1.4504,
+      "max_ackermann_rms_deg": 1.8255,
+      "max_outer_follow_error_deg": 0.0001,
+      "pass": true
+    },
+    "hydraulic_capability": {
+      "min_static_force_margin": 2.11919922213154,
+      "min_stroke_margin_mm_at_30deg": 15.988,
+      "pump_demand_ratio_max": 1.1483072481142012,
+      "force_ok": true,
+      "stroke_ok": true,
+      "flow_ok": true,
+      "supply_margin_fraction": 0.2,
+      "dynamic_peak_demand_ratio": 1.1483072481142012,
+      "highest_chamber_pressure_mpa": 19.46605654441368,
+      "relief_pressure_mpa": 21.0
+    },
+    "dynamic_tracking": {
+      "cases": 18,
+      "numerical_completed": 18,
+      "steady_tracking_pass": 18,
+      "transient_tracking_pass": 18,
+      "vehicle_dynamic_infeasible": 3,
+      "worst_steady_error_deg": 0.0010197666781947222,
+      "worst_transient_error_deg": 0.22013165048474903
+    },
+    "stability": {
+      "max_control_saturation_fraction": 0.0,
+      "max_tail_velocity_rms_m_s": 1.74602523279933e-05,
+      "step_convergence_ok": true
+    },
+    "batch": {
+      "cases": 3111,
+      "structurally_complete": 3111,
+      "solver_errors": 0,
+      "status_counts": {
+        "ACKERMANN_TARGET_MISMATCH": 1580,
+        "OK": 561,
+        "VEHICLE_DYNAMIC_INFEASIBLE": 970
+      },
+      "mode": "FAST_BATCH_ESTIMATE"
+    },
+    "tests_passed": 576,
+    "handoff_zip": "E:\\15_project\\handoff_to_chatgpt\\phase_J1_R2.zip"
+  }
+}

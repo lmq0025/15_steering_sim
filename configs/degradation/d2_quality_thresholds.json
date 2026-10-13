@@ -1,0 +1,45 @@
+{
+  "schema_version": "D2.0",
+  "model_version": "D2_QUALITY_ASSESSMENT_V1",
+  "assumption_tag": "ENGINEERING_DESIGN_ASSUMPTION",
+  "calibration_status": "PENDING_CLIENT_CONFIRMATION",
+  "integration": {
+    "dt_hydraulic_s": 0.0033333333333333335,
+    "dt_control_s": 0.01,
+    "worker_count": 4
+  },
+  "quality_thresholds": {
+    "max_tracking_error_deg": {"healthy": 0.35, "subhealthy": 0.70, "degraded": 1.50, "direction": "max"},
+    "rms_tracking_error_deg": {"healthy": 0.12, "subhealthy": 0.30, "degraded": 0.75, "direction": "max"},
+    "settling_delay_s": {"healthy": 0.35, "subhealthy": 0.75, "degraded": 1.50, "direction": "max"},
+    "steady_tracking_error_deg": {"healthy": 0.08, "subhealthy": 0.25, "degraded": 0.80, "direction": "max"},
+    "cylinder_displacement_error_mm": {"healthy": 3.00, "subhealthy": 5.00, "degraded": 10.00, "direction": "max"},
+    "pump_demand_ratio": {"healthy": 0.85, "subhealthy": 1.00, "degraded": 1.20, "direction": "max"},
+    "minimum_pump_flow_margin_lpm": {"healthy": 3.00, "subhealthy": 0.00, "degraded": -10.00, "direction": "min"},
+    "minimum_supply_pressure_margin_mpa": {"healthy": 1.50, "subhealthy": 0.25, "degraded": -1.00, "direction": "min"},
+    "valve_saturation_fraction": {"healthy": 0.02, "subhealthy": 0.15, "degraded": 0.50, "direction": "max"},
+    "peak_pressure_utilization": {"healthy": 0.90, "subhealthy": 1.00, "degraded": 1.10, "direction": "max"},
+    "actuator_force_utilization": {"healthy": 0.85, "subhealthy": 1.00, "degraded": 1.15, "direction": "max"},
+    "tail_pressure_ripple_mpa": {"healthy": 0.15, "subhealthy": 0.30, "degraded": 1.00, "direction": "max"}
+  },
+  "component_damage_thresholds": {
+    "healthy": 0.15,
+    "subhealthy": 0.40,
+    "degraded": 0.70
+  },
+  "sensitivity_damage_levels": {
+    "healthy": 0.0,
+    "light": 0.20,
+    "medium": 0.55,
+    "heavy": 0.90
+  },
+  "sensitivity_physical_limits": {
+    "cylinder_internal_leakage_m3_s_per_pa": 2.0e-11,
+    "source": "ENGINEERING_DESIGN_ASSUMPTION; D2 specified-fault envelope only, not the D1 natural-aging mapping"
+  },
+  "notes": [
+    "所有质量阈值与指定退化程度均为工程设计假设，不是甲方实测验收限值。",
+    "整车等级由真实22状态动态仿真的功能和性能指标决定；部件损伤等级仅单独报告。",
+    "目标轨迹附着不可行仅作为工况风险标志，不作为液压退化降级原因。"
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "schema_version": "D1.0",
+  "model_version": "D1_DETERMINISTIC_MEAN_V1",
+  "assumption_tag": "ENGINEERING_DESIGN_ASSUMPTION",
+  "calibration_status": "PENDING_CLIENT_CALIBRATION",
+  "refresh_damage_interval": 0.02,
+  "pump": {
+    "mechanism": "齿轮副/端面等效磨损导致压差内泄漏；不使用柱塞泵机理",
+    "rate_per_equivalent_hour": 2.0e-5,
+    "reference_pressure_pa": 21000000.0,
+    "reference_speed_rad_s": 157.08,
+    "reference_temperature_c": 40.0,
+    "temperature_coefficient_per_c": 0.015,
+    "pressure_exponent": 1.35,
+    "idle_exposure_weight": 0.20,
+    "demand_flow_weight": 1.50,
+    "minimum_active_pressure_fraction": 0.15,
+    "state_factor_alpha": 0.35,
+    "maximum_damage": 1.0,
+    "maximum_internal_leakage_m3_s_per_pa": 1.0e-11,
+    "minimum_volumetric_efficiency": 0.45,
+    "flow_loss_representation": "INTERNAL_LEAKAGE_ONLY",
+    "units": {"rate_per_equivalent_hour": "1/h", "pressure": "Pa", "speed": "rad/s"},
+    "source": "ENGINEERING_DESIGN_ASSUMPTION；D2 加入按轨需求流量、负载压差和退化后可用流量反馈；待齿轮泵耐久/污染试验标定"
+  },
+  "valve": {
+    "mechanism": "污染磨损造成阀芯/阀套 P-T 内泄漏增加",
+    "rate_per_equivalent_exposure": 8.0e-5,
+    "reference_pressure_pa": 14000000.0,
+    "reference_throughput_m3": 0.001,
+    "pressure_exponent": 1.2,
+    "cycle_equivalent_exposure": 0.15,
+    "state_factor_alpha": 0.25,
+    "maximum_damage": 1.0,
+    "maximum_internal_leakage_m3_s_per_pa": 5.0e-12,
+    "response_time_degradation": "RESERVED_D2_OR_D3",
+    "units": {"throughput": "m3", "pressure": "Pa", "cycle": "count"},
+    "source": "ENGINEERING_DESIGN_ASSUMPTION；待阀污染耐久试验标定"
+  },
+  "cylinder": {
+    "mechanism": "密封滑动磨损导致 A-B 腔间内泄漏增加",
+    "rate_per_equivalent_exposure": 1.0e-4,
+    "reference_pressure_pa": 14700000.0,
+    "reference_sliding_distance_m": 0.1,
+    "pressure_exponent": 1.3,
+    "minimum_load_factor": 0.1,
+    "state_factor_alpha": 0.30,
+    "maximum_damage": 1.0,
+    "maximum_internal_leakage_m3_s_per_pa": 5.0e-12,
+    "friction_degradation": "RESERVED_D2_OR_D3",
+    "units": {"sliding_distance": "m", "pressure": "Pa", "load_level": "-"},
+    "source": "ENGINEERING_DESIGN_ASSUMPTION；参考薛子良泄漏机理与故障仿真趋势，不照搬多级缸尺寸或阈值；待本项目缸试验标定"
+  },
+  "notes": [
+    "所有系数均非甲方试验标定值，输出只能用于工程趋势和接口验证。",
+    "第一版为确定性平均模型；Gamma 随机增量、雨流计数和 RUL Monte Carlo 留到 D3。",
+    "状态更新使用解析积分，保证等价载荷切分前后累计结果一致。"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "model_version": "D4_R1_RESPONSE_ANALYSIS_V1",
+  "assumption_class": "ENGINEERING_DESIGN_ASSUMPTION",
+  "calibration_status": "PENDING_CLIENT_CONFIRMATION",
+  "wheel_angle_tolerance_deg": 0.10,
+  "cylinder_position_tolerance_m": 0.00020,
+  "wheel_speed_threshold_deg_s": 0.02,
+  "piston_speed_threshold_m_s": 0.0010,
+  "settled_observation_s": 2.0,
+  "maximum_hold_observation_s": 10.0,
+  "slow_ramp_hydraulic_step_s": 0.002,
+  "source": "D4-R1 engineering assumptions; J1-R2 TRACKING_PASS thresholds are unchanged"
+}

@@ -1,0 +1,3257 @@
+{
+  "note": "本文件由 scripts/handoff/build_handoff_pack.py 用 ast 从活代码提取，不是手抄。行号仅供定位，接口以签名与名称为准。",
+  "modules": {
+    "mechanical_model": {
+      "path": "src/steering_sim/engineering/model.py",
+      "module_functions": [
+        "def load_config(path) -> dict[str, Any]",
+        "def cylinder_stroke_m(reference, axle, side, swing_rad) -> float",
+        "def representative_stroke_m(reference, axle, q_rad, angles=…) -> float",
+        "def companion_stroke_m(reference, axle, q_rad) -> float"
+      ],
+      "constants": {
+        "REAR_AXLES": "(4, 5, 6)",
+        "REAR_CYLINDER_SIDE": "{'A': 'right', 'B': 'left'}"
+      },
+      "classes": {
+        "ModelError": {
+          "bases": [
+            "RuntimeError"
+          ],
+          "methods": [],
+          "properties": [],
+          "attributes": []
+        },
+        "EngineeringState": {
+          "bases": [],
+          "methods": [],
+          "properties": [],
+          "attributes": [
+            {
+              "name": "q_rad",
+              "type": "Mapping[str, float]"
+            },
+            {
+              "name": "wheel_angles_rad",
+              "type": "Mapping[str, float]"
+            },
+            {
+              "name": "wheel_angles_deg",
+              "type": "Mapping[str, float]"
+            },
+            {
+              "name": "cylinder_stroke_m",
+              "type": "Mapping[str, float]"
+            },
+            {
+              "name": "representative_stroke_m",
+              "type": "Mapping[str, float]"
+            },
+            {
+              "name": "max_residual_m",
+              "type": "float"
+            },
+            {
+              "name": "condition_number",
+              "type": "float"
+            },
+            {
+              "name": "singular",
+              "type": "bool"
+            },
+            {
+              "name": "third_axle_max_abs_deg",
+              "type": "float"
+            },
+            {
+              "name": "min_toggle_margin_deg",
+              "type": "float"
+            }
+          ]
+        },
+        "EngineeringSteeringModel": {
+          "bases": [],
+          "methods": [
+            "def __init__(self, geometry_path, config_path, design_path=…) -> None",
+            "def mechanism_state(self, q_values) -> EngineeringState",
+            "def reset(self) -> None",
+            "def ideal_ackermann(self, target_outer_angle_deg) -> tuple",
+            "def curvature_1pm(self, target_outer_angle_deg) -> float",
+            "def solve_geometry(self, target_outer_angle_deg)",
+            "def solve_loaded_case(self, case, geometry=…)"
+          ],
+          "properties": [
+            "q_envelopes"
+          ],
+          "attributes": []
+        }
+      }
+    },
+    "mechanical_mechanism": {
+      "path": "src/steering_sim/engineering/mechanism.py",
+      "module_functions": [
+        "def load_design(path) -> EngineeringDesign",
+        "def save_design(design, path) -> Path"
+      ],
+      "constants": {
+        "WHEEL_ORDER": "tuple((f'axle{axle}_{side}' for axle in range(1, 7) for side in ('left', 'right')))",
+        "LEGACY_SIDE": "{'left': 'POS_Y', 'right': 'NEG_Y'}",
+        "REAR_AXLES": "(4, 5, 6)",
+        "GROUPS": "('front', 'axle4', 'axle5', 'axle6')",
+        "DOF_OF_GROUP": "{'front': 'q_front', 'axle4': 'q4', 'axle5': 'q5', 'axle6': 'q6'}",
+        "GROUP_OF_AXLE": "{1: 'front', 2: 'front', 3: 'front', 4: 'axle4', 5: 'axle5', 6: 'axle6'}",
+        "DOF_ORDER": "('q_front', 'q4', 'q5', 'q6')",
+        "FRONT_CYLINDER": "'front_group_1'",
+        "TAG": "'ENGINEERING_STEERING_MODEL'",
+        "ASSUMPTION_TAG": "'ENGINEERING_DESIGN_ASSUMPTION'"
+      },
+      "classes": {
+        "MechanismError": {
+          "bases": [
+            "RuntimeError"
+          ],
+          "methods": [],
+          "properties": [],
+          "attributes": []
+        },
+        "SideDesign": {
+          "bases": [],
+          "methods": [
+            "def to_dict(self) -> dict"
+          ],
+          "properties": [],
+          "attributes": [
+            {
+              "name": "arm_tip",
+              "type": "tuple[float, float]"
+            },
+            {
+              "name": "swing_pickup",
+              "type": "tuple[float, float]"
+            },
+            {
+              "name": "rack_end",
+              "type": "tuple[float, float]"
+            }
+          ]
+        },
+        "GroupDesign": {
+          "bases": [],
+          "methods": [
+            "def to_dict(self) -> dict"
+          ],
+          "properties": [],
+          "attributes": [
+            {
+              "name": "key",
+              "type": "str"
+            },
+            {
+              "name": "axles",
+              "type": "tuple[int, ...]"
+            },
+            {
+              "name": "driven_axle",
+              "type": "int"
+            },
+            {
+              "name": "rack_drive_point",
+              "type": "tuple[float, float]"
+            },
+            {
+              "name": "racks",
+              "type": "Mapping[int, float]"
+            },
+            {
+              "name": "sides",
+              "type": "Mapping[str, SideDesign]"
+            },
+            {
+              "name": "relay",
+              "type": "tuple[tuple[float, float], tuple[float, float]] | None"
+            },
+            {
+              "name": "notes",
+              "type": "tuple[str, ...]"
+            }
+          ]
+        },
+        "EngineeringDesign": {
+          "bases": [],
+          "methods": [
+            "def to_dict(self) -> dict"
+          ],
+          "properties": [],
+          "attributes": [
+            {
+              "name": "schema_version",
+              "type": "str"
+            },
+            {
+              "name": "tag",
+              "type": "str"
+            },
+            {
+              "name": "groups",
+              "type": "Mapping[str, GroupDesign]"
+            },
+            {
+              "name": "assumptions",
+              "type": "tuple[str, ...]"
+            },
+            {
+              "name": "provenance",
+              "type": "Mapping[str, str]"
+            }
+          ]
+        },
+        "GroupState": {
+          "bases": [],
+          "methods": [],
+          "properties": [],
+          "attributes": [
+            {
+              "name": "key",
+              "type": "str"
+            },
+            {
+              "name": "swing_angle_rad",
+              "type": "float"
+            },
+            {
+              "name": "rack_slide_m",
+              "type": "Mapping[int, float]"
+            },
+            {
+              "name": "wheel_angles_rad",
+              "type": "Mapping[str, float]"
+            },
+            {
+              "name": "residual_m",
+              "type": "float"
+            }
+          ]
+        },
+        "EngineeringMechanism": {
+          "bases": [],
+          "methods": [
+            "def __init__(self, reference, design) -> None",
+            "def solve_swing(self, key, swing_angle_rad) -> GroupState",
+            "def solve_continuous(self, key, q_rad, step_rad=…) -> GroupState",
+            "def solve(self, q_values) -> dict[str, GroupState]",
+            "def reset(self) -> None",
+            "def rack_jacobian(self, key, swing_angle_rad, delta=…) -> dict[int, float]",
+            "def reset_group(self, key, swing_angle_rad) -> None"
+          ],
+          "properties": [],
+          "attributes": []
+        }
+      }
+    },
+    "hydraulic_parameters": {
+      "path": "src/steering_sim/hydraulics_engineering/parameters.py",
+      "module_functions": [
+        "def parameters_from_dict(raw) -> EngineeringHydraulicParameters",
+        "def load_parameters(path) -> EngineeringHydraulicParameters",
+        "def save_parameters(parameters, path) -> Path",
+        "def with_degradation(parameters, **updates) -> EngineeringHydraulicParameters",
+        "def design_load_pressure(parameters, supply, fraction=…) -> float",
+        "def orifice_flow_gain(parameters, valve, delta_p_pa) -> float"
+      ],
+      "constants": {
+        "TAG": "'ENGINEERING_HYDRAULIC_V1'",
+        "ASSUMPTION_TAG": "'ENGINEERING_DESIGN_ASSUMPTION'",
+        "SUPPLY_ORDER": "('front', 'rear')"
+      },
+      "classes": {
+        "ParameterError": {
+          "bases": [
+            "ValueError"
+          ],
+          "methods": [],
+          "properties": [],
+          "attributes": []
+        },
+        "CylinderParameters": {
+          "bases": [],
+          "methods": [
+            "def __post_init__(self) -> None"
+          ],
+          "properties": [
+            "half_stroke_m",
+            "stroke_min_m",
+            "stroke_max_m",
+            "symmetric"
+          ],
+          "attributes": [
+            {
+              "name": "area_a_m2",
+              "type": "float"
+            },
+            {
+              "name": "area_b_m2",
+              "type": "float"
+            },
+            {
+              "name": "stroke_m",
+              "type": "float"
+            },
+            {
+              "name": "dead_volume_m3",
+              "type": "float"
+            },
+            {
+              "name": "bore_mm",
+              "type": "float"
+            },
+            {
+              "name": "mass_kg",
+              "type": "float"
+            },
+            {
+              "name": "viscous_damping_n_s_per_m",
+              "type": "float"
+            },
+            {
+              "name": "coulomb_friction_n",
+              "type": "float"
+            },
+            {
+              "name": "end_stop_stiffness_n_per_m",
+              "type": "float"
+            },
+            {
+              "name": "end_stop_damping_n_s_per_m",
+              "type": "float"
+            },
+            {
+              "name": "mass_source",
+              "type": "str"
+            },
+            {
+              "name": "stroke_offset_m",
+              "type": "float"
+            }
+          ]
+        },
+        "ValveParameters": {
+          "bases": [],
+          "methods": [
+            "def __post_init__(self) -> None"
+          ],
+          "properties": [],
+          "attributes": [
+            {
+              "name": "maximum_area_m2",
+              "type": "float"
+            },
+            {
+              "name": "discharge_coefficient",
+              "type": "float"
+            },
+            {
+              "name": "lag_time_s",
+              "type": "float"
+            },
+            {
+              "name": "deadband",
+              "type": "float"
+            },
+            {
+              "name": "velocity_per_unit_command_m_s",
+              "type": "float"
+            }
+          ]
+        },
+        "PumpParameters": {
+          "bases": [],
+          "methods": [
+            "def __post_init__(self) -> None"
+          ],
+          "properties": [
+            "ideal_flow_m3_s"
+          ],
+          "attributes": [
+            {
+              "name": "displacement_m3_per_rad",
+              "type": "float"
+            },
+            {
+              "name": "nominal_speed_rad_s",
+              "type": "float"
+            },
+            {
+              "name": "relief_pressure_pa",
+              "type": "float"
+            },
+            {
+              "name": "plenum_volume_m3",
+              "type": "float"
+            },
+            {
+              "name": "bulk_modulus_pa",
+              "type": "float"
+            },
+            {
+              "name": "relief_area_m2",
+              "type": "float"
+            }
+          ]
+        },
+        "DegradationParameters": {
+          "bases": [],
+          "methods": [
+            "def to_dict(self) -> dict[str, float]"
+          ],
+          "properties": [
+            "is_new_unit"
+          ],
+          "attributes": [
+            {
+              "name": "pump_volumetric_efficiency",
+              "type": "float"
+            },
+            {
+              "name": "pump_internal_leakage_m3_s_per_pa",
+              "type": "float"
+            },
+            {
+              "name": "valve_flow_coefficient_scale",
+              "type": "float"
+            },
+            {
+              "name": "valve_lag_scale",
+              "type": "float"
+            },
+            {
+              "name": "cylinder_internal_leakage_m3_s_per_pa",
+              "type": "float"
+            },
+            {
+              "name": "cylinder_friction_scale",
+              "type": "float"
+            },
+            {
+              "name": "supply_pressure_scale",
+              "type": "float"
+            }
+          ]
+        },
+        "ChannelParameters": {
+          "bases": [],
+          "methods": [
+            "def __post_init__(self) -> None"
+          ],
+          "properties": [],
+          "attributes": [
+            {
+              "name": "name",
+              "type": "str"
+            },
+            {
+              "name": "dof",
+              "type": "str"
+            },
+            {
+              "name": "cylinder",
+              "type": "CylinderParameters"
+            },
+            {
+              "name": "valve",
+              "type": "ValveParameters"
+            },
+            {
+              "name": "supply",
+              "type": "str"
+            },
+            {
+              "name": "polarity",
+              "type": "float"
+            },
+            {
+              "name": "kp",
+              "type": "float"
+            },
+            {
+              "name": "ki",
+              "type": "float"
+            },
+            {
+              "name": "kd",
+              "type": "float"
+            },
+            {
+              "name": "kff",
+              "type": "float"
+            },
+            {
+              "name": "command_limit",
+              "type": "float"
+            },
+            {
+              "name": "reference_peak_velocity_m_s",
+              "type": "float"
+            },
+            {
+              "name": "notes",
+              "type": "str"
+            }
+          ]
+        },
+        "EngineeringHydraulicParameters": {
+          "bases": [],
+          "methods": [
+            "def __post_init__(self) -> None",
+            "def channel(self, name) -> ChannelParameters",
+            "def to_dict(self) -> dict[str, Any]"
+          ],
+          "properties": [
+            "supply_names",
+            "channel_names"
+          ],
+          "attributes": [
+            {
+              "name": "schema_version",
+              "type": "str"
+            },
+            {
+              "name": "tag",
+              "type": "str"
+            },
+            {
+              "name": "fluid_bulk_modulus_pa",
+              "type": "float"
+            },
+            {
+              "name": "fluid_density_kg_m3",
+              "type": "float"
+            },
+            {
+              "name": "tank_pressure_pa",
+              "type": "float"
+            },
+            {
+              "name": "precharge_pressure_pa",
+              "type": "float"
+            },
+            {
+              "name": "orifice_pressure_regularisation_pa",
+              "type": "float"
+            },
+            {
+              "name": "supplies",
+              "type": "Mapping[str, PumpParameters]"
+            },
+            {
+              "name": "channels",
+              "type": "tuple[ChannelParameters, ...]"
+            },
+            {
+              "name": "degradation",
+              "type": "DegradationParameters"
+            },
+            {
+              "name": "assumptions",
+              "type": "tuple[str, ...]"
+            },
+            {
+              "name": "provenance",
+              "type": "Mapping[str, str]"
+            },
+            {
+              "name": "notes",
+              "type": "str"
+            }
+          ]
+        }
+      }
+    },
+    "hydraulic_model": {
+      "path": "src/steering_sim/hydraulics_engineering/model.py",
+      "module_functions": [
+        "def state_layout(parameters) -> dict[str, int]",
+        "def evaluate_hydraulic_engineering(system, t, state, inputs) -> tuple[np.ndarray, EngineeringOutput]",
+        "def build_system(path) -> EngineeringHydraulicSystem"
+      ],
+      "constants": {
+        "CHANNEL_STATE_SIZE": "5",
+        "FRICTION_VELOCITY_EPS_M_S": "0.001",
+        "RELIEF_DISCHARGE_COEFFICIENT": "0.62"
+      },
+      "classes": {
+        "EngineeringHydraulicError": {
+          "bases": [
+            "RuntimeError"
+          ],
+          "methods": [],
+          "properties": [],
+          "attributes": []
+        },
+        "ChannelOutput": {
+          "bases": [],
+          "methods": [],
+          "properties": [],
+          "attributes": [
+            {
+              "name": "name",
+              "type": "str"
+            },
+            {
+              "name": "position_m",
+              "type": "float"
+            },
+            {
+              "name": "velocity_m_s",
+              "type": "float"
+            },
+            {
+              "name": "hydraulic_force_n",
+              "type": "float"
+            },
+            {
+              "name": "pressure_a_pa_g",
+              "type": "float"
+            },
+            {
+              "name": "pressure_b_pa_g",
+              "type": "float"
+            },
+            {
+              "name": "flow_a_m3_s",
+              "type": "float"
+            },
+            {
+              "name": "flow_b_m3_s",
+              "type": "float"
+            },
+            {
+              "name": "supply_flow_m3_s",
+              "type": "float"
+            },
+            {
+              "name": "valve_command",
+              "type": "float"
+            },
+            {
+              "name": "load_force_n",
+              "type": "float"
+            },
+            {
+              "name": "friction_force_n",
+              "type": "float"
+            },
+            {
+              "name": "end_stop_force_n",
+              "type": "float"
+            },
+            {
+              "name": "stroke_utilisation",
+              "type": "float"
+            },
+            {
+              "name": "at_stroke_limit",
+              "type": "bool"
+            }
+          ]
+        },
+        "EngineeringOutput": {
+          "bases": [],
+          "methods": [],
+          "properties": [],
+          "attributes": [
+            {
+              "name": "channels",
+              "type": "tuple[ChannelOutput, ...]"
+            },
+            {
+              "name": "supply_pressures_pa_g",
+              "type": "tuple[float, ...]"
+            },
+            {
+              "name": "pump_capacity_insufficient",
+              "type": "tuple[bool, ...]"
+            },
+            {
+              "name": "pump_capacity_margin_m3_s",
+              "type": "tuple[float, ...]"
+            },
+            {
+              "name": "demand_flow_m3_s",
+              "type": "tuple[float, ...]"
+            },
+            {
+              "name": "pump_flow_m3_s",
+              "type": "tuple[float, ...]"
+            }
+          ]
+        },
+        "EngineeringHydraulicSystem": {
+          "bases": [],
+          "methods": [
+            "def __init__(self, parameters) -> None",
+            "def neutral_state(self) -> np.ndarray",
+            "def working_point(self) -> tuple[np.ndarray, tuple[float, float, float, float]]",
+            "def evaluate(self, t, state, inputs) -> tuple[np.ndarray, EngineeringOutput]"
+          ],
+          "properties": [
+            "pump_speeds_rad_s"
+          ],
+          "attributes": []
+        }
+      }
+    },
+    "hydraulic_authority": {
+      "path": "src/steering_sim/hydraulics_engineering/authority.py",
+      "module_functions": [
+        "def probe_engineering_authority(system, *, force_samples=…, polarity_duration_s=…, settle_duration_s=…) -> tuple[EngineeringAuthority, ...]",
+        "def assert_engineering_authority(authorities, expected, required_force_n=…) -> None"
+      ],
+      "constants": {
+        "POLARITY_DELTA": "0.05",
+        "POLARITY_DURATION_S": "0.02",
+        "FORCE_SETTLE_S": "0.3",
+        "PROBE_STEP_S": "0.00025"
+      },
+      "classes": {
+        "EngineeringAuthority": {
+          "bases": [],
+          "methods": [
+            "def to_dict(self) -> dict[str, Any]"
+          ],
+          "properties": [
+            "command_polarity",
+            "bidirectional",
+            "balanced_force_window"
+          ],
+          "attributes": [
+            {
+              "name": "index",
+              "type": "int"
+            },
+            {
+              "name": "channel",
+              "type": "str"
+            },
+            {
+              "name": "neutral_command",
+              "type": "float"
+            },
+            {
+              "name": "command_window",
+              "type": "tuple[float, float]"
+            },
+            {
+              "name": "velocity_at_plus_delta_m_s",
+              "type": "float"
+            },
+            {
+              "name": "velocity_at_minus_delta_m_s",
+              "type": "float"
+            },
+            {
+              "name": "d_velocity_over_d_command",
+              "type": "float"
+            },
+            {
+              "name": "force_window_n",
+              "type": "tuple[float, float]"
+            },
+            {
+              "name": "reachable_x_signs",
+              "type": "tuple[int, ...]"
+            },
+            {
+              "name": "notes",
+              "type": "tuple[str, ...]"
+            }
+          ]
+        },
+        "_Inputs": {
+          "bases": [],
+          "methods": [
+            "def __init__(self, commands, loads) -> None"
+          ],
+          "properties": [],
+          "attributes": []
+        }
+      }
+    },
+    "j0_config": {
+      "path": "src/steering_sim/j0_coupling/config.py",
+      "module_functions": [
+        "def load_j0_config(path) -> J0Config"
+      ],
+      "constants": {
+        "CHANNEL_ORDER": "('channel_front', 'channel_rear_1', 'channel_rear_2', 'channel_rear_3')",
+        "DOF_BY_CHANNEL": "{'channel_front': 'q_front', 'channel_rear_1': 'q4', 'channel_rear_2': 'q5', 'channel_rear_3': 'q6'}"
+      },
+      "classes": {
+        "ChannelControlConfig": {
+          "bases": [],
+          "methods": [
+            "def __post_init__(self) -> None",
+            "def command_from_pid(self, pid_output) -> float"
+          ],
+          "properties": [],
+          "attributes": [
+            {
+              "name": "index",
+              "type": "int"
+            },
+            {
+              "name": "channel",
+              "type": "str"
+            },
+            {
+              "name": "valve_alias",
+              "type": "str"
+            },
+            {
+              "name": "actuator_alias",
+              "type": "str"
+            },
+            {
+              "name": "dof",
+              "type": "str"
+            },
+            {
+              "name": "cylinder_group",
+              "type": "str"
+            },
+            {
+              "name": "kp",
+              "type": "float"
+            },
+            {
+              "name": "ki",
+              "type": "float"
+            },
+            {
+              "name": "kd",
+              "type": "float"
+            },
+            {
+              "name": "command_limit",
+              "type": "float"
+            },
+            {
+              "name": "command_min",
+              "type": "float"
+            },
+            {
+              "name": "command_max",
+              "type": "float"
+            },
+            {
+              "name": "neutral_command",
+              "type": "float"
+            },
+            {
+              "name": "command_polarity",
+              "type": "float"
+            },
+            {
+              "name": "mapping_status",
+              "type": "str"
+            },
+            {
+              "name": "authority_status",
+              "type": "str"
+            },
+            {
+              "name": "notes",
+              "type": "str"
+            }
+          ]
+        },
+        "J0CaseConfig": {
+          "bases": [],
+          "methods": [],
+          "properties": [
+            "speed_m_s"
+          ],
+          "attributes": [
+            {
+              "name": "id",
+              "type": "str"
+            },
+            {
+              "name": "target_outer_angle_deg",
+              "type": "float"
+            },
+            {
+              "name": "speed_kmh",
+              "type": "float"
+            },
+            {
+              "name": "duration_s",
+              "type": "float"
+            },
+            {
+              "name": "reference_time_s",
+              "type": "float | None"
+            },
+            {
+              "name": "hold_time_s",
+              "type": "float | None"
+            }
+          ]
+        },
+        "J0Config": {
+          "bases": [],
+          "methods": [
+            "def channel(self, name) -> ChannelControlConfig"
+          ],
+          "properties": [
+            "substeps_per_control",
+            "sample_stride"
+          ],
+          "attributes": [
+            {
+              "name": "path",
+              "type": "Path"
+            },
+            {
+              "name": "raw",
+              "type": "dict[str, Any]"
+            },
+            {
+              "name": "dt_hydraulic_s",
+              "type": "float"
+            },
+            {
+              "name": "dt_control_s",
+              "type": "float"
+            },
+            {
+              "name": "channels",
+              "type": "tuple[ChannelControlConfig, ...]"
+            },
+            {
+              "name": "cases",
+              "type": "tuple[J0CaseConfig, ...]"
+            },
+            {
+              "name": "control",
+              "type": "dict[str, Any]"
+            },
+            {
+              "name": "mapping",
+              "type": "dict[str, Any]"
+            },
+            {
+              "name": "load",
+              "type": "dict[str, Any]"
+            },
+            {
+              "name": "hydraulic",
+              "type": "dict[str, Any]"
+            },
+            {
+              "name": "acceptance",
+              "type": "dict[str, Any]"
+            },
+            {
+              "name": "output",
+              "type": "dict[str, Any]"
+            },
+            {
+              "name": "mechanical_mode",
+              "type": "str"
+            },
+            {
+              "name": "hydraulic_model",
+              "type": "str"
+            },
+            {
+              "name": "engineering_parameters_path",
+              "type": "Path | None"
+            },
+            {
+              "name": "engineering_parameters",
+              "type": "Any"
+            }
+          ]
+        }
+      }
+    },
+    "j0_geometry": {
+      "path": "src/steering_sim/j0_coupling/geometry.py",
+      "module_functions": [],
+      "constants": {
+        "DOF_ORDER": "('q_front', 'q4', 'q5', 'q6')",
+        "DOF_WHEELS": "{'q_front': ('axle1_left', 'axle1_right', 'axle2_left', 'axle2_right'), 'q4': ('axle4_left', 'axle4_right'), 'q5': ('axle5_left', 'axle5_right'), 'q6': ('axle6_left', 'axle6_right')}",
+        "WHEEL_ORDER": "tuple((f'axle{a}_{s}' for a in range(1, 7) for s in ('left', 'right')))",
+        "REAR_AXLES": "(4, 5, 6)",
+        "FRONT_CYLINDER": "'front_group_1'"
+      },
+      "classes": {
+        "J0MappingError": {
+          "bases": [
+            "RuntimeError"
+          ],
+          "methods": [],
+          "properties": [],
+          "attributes": []
+        },
+        "MappingStatus": {
+          "bases": [],
+          "methods": [],
+          "properties": [
+            "label"
+          ],
+          "attributes": [
+            {
+              "name": "ok",
+              "type": "bool"
+            },
+            {
+              "name": "flags",
+              "type": "tuple[str, ...]"
+            }
+          ]
+        },
+        "ExactLinkage": {
+          "bases": [],
+          "methods": [],
+          "properties": [],
+          "attributes": [
+            {
+              "name": "q_rad",
+              "type": "Mapping[str, float]"
+            },
+            {
+              "name": "wheel_angle_rad",
+              "type": "Mapping[str, float]"
+            },
+            {
+              "name": "wheel_angle_deg",
+              "type": "Mapping[str, float]"
+            },
+            {
+              "name": "cylinder_stroke_m",
+              "type": "Mapping[str, float]"
+            },
+            {
+              "name": "max_link_residual_m",
+              "type": "float"
+            },
+            {
+              "name": "condition_number",
+              "type": "float"
+            },
+            {
+              "name": "singular",
+              "type": "bool"
+            },
+            {
+              "name": "third_axle_max_abs_deg",
+              "type": "float"
+            }
+          ]
+        },
+        "_DofTable": {
+          "bases": [],
+          "methods": [
+            "def __init__(self, dof, q, angles, stroke_repr, length_a, length_b, residual, condition) -> None",
+            "def angle(self, wheel, q_value) -> float",
+            "def angle_jacobian(self, wheel, q_value) -> float",
+            "def stroke(self, q_value) -> float",
+            "def stroke_jacobian(self, q_value) -> float",
+            "def q_from_stroke(self, x) -> float"
+          ],
+          "properties": [
+            "q_min",
+            "q_max"
+          ],
+          "attributes": []
+        },
+        "J0GeometryAdapter": {
+          "bases": [],
+          "methods": [
+            "def __init__(self, model, config, mechanical_mode=…) -> None",
+            "def target(self, target_outer_angle_deg)",
+            "def curvature_1pm(self, target_outer_angle_deg) -> float",
+            "def representative_stroke(self, dof, q_value) -> float",
+            "def stroke_jacobian(self, dof, q_value) -> float",
+            "def q_from_stroke(self, dof, x) -> tuple[float, MappingStatus]",
+            "def q_from_strokes(self, x_by_channel) -> tuple[dict[str, float], dict[str, MappingStatus]]",
+            "def wheel_angles_deg(self, q_values) -> dict[str, float]",
+            "def wheel_angle_jacobian(self, q_values) -> dict[str, dict[str, float]]",
+            "def companion_stroke(self, dof, q_value) -> float",
+            "def seven_cylinder_strokes(self, q_values) -> dict[str, float]",
+            "def exact_linkage(self, q_values) -> ExactLinkage",
+            "def table_quality(self) -> dict[str, dict[str, float]]"
+          ],
+          "properties": [
+            "q_zero"
+          ],
+          "attributes": []
+        }
+      }
+    },
+    "j0_road_load": {
+      "path": "src/steering_sim/j0_coupling/road_load.py",
+      "module_functions": [
+        "def actual_curvature_1pm(angles_deg, centers) -> tuple[float, float | None, float | None, float]",
+        "def road_load(adapter, q_values, *, speed_kmh, friction_coefficient, axle_mass_t, curvature_1pm, singular_threshold_m_per_rad, use_actual_curvature=…, target_curvature_1pm=…) -> RoadLoad",
+        "def virtual_work_residual(road, q_dot_rad_s) -> dict[str, float]",
+        "def require_finite(road) -> None"
+      ],
+      "constants": {
+        "REAR_AXLES": "(4, 5, 6)"
+      },
+      "classes": {
+        "RoadLoad": {
+          "bases": [],
+          "methods": [],
+          "properties": [
+            "status"
+          ],
+          "attributes": [
+            {
+              "name": "generalized_road_moment_nm",
+              "type": "Mapping[str, float]"
+            },
+            {
+              "name": "hydraulic_load_force_n",
+              "type": "Mapping[str, float]"
+            },
+            {
+              "name": "stroke_jacobian_m_per_rad",
+              "type": "Mapping[str, float]"
+            },
+            {
+              "name": "road_moment_nm",
+              "type": "Mapping[str, float]"
+            },
+            {
+              "name": "tire_slip_angle_deg",
+              "type": "Mapping[str, float]"
+            },
+            {
+              "name": "lateral_force_demand_n",
+              "type": "Mapping[str, float]"
+            },
+            {
+              "name": "lateral_force_available_n",
+              "type": "Mapping[str, float]"
+            },
+            {
+              "name": "normal_load_n",
+              "type": "Mapping[str, float]"
+            },
+            {
+              "name": "lateral_acceleration_mps2",
+              "type": "float"
+            },
+            {
+              "name": "adhesion_utilization",
+              "type": "float"
+            },
+            {
+              "name": "max_abs_slip_angle_deg",
+              "type": "float"
+            },
+            {
+              "name": "flags",
+              "type": "tuple[str, ...]"
+            },
+            {
+              "name": "curvature_1pm_used",
+              "type": "float"
+            },
+            {
+              "name": "curvature_source",
+              "type": "str"
+            },
+            {
+              "name": "icr_x_m",
+              "type": "float | None"
+            },
+            {
+              "name": "icr_y_m",
+              "type": "float | None"
+            },
+            {
+              "name": "icr_line_residual_m",
+              "type": "float"
+            },
+            {
+              "name": "lateral_force_demand_total_n",
+              "type": "float"
+            },
+            {
+              "name": "lateral_force_available_total_n",
+              "type": "float"
+            }
+          ]
+        }
+      }
+    },
+    "j0_runner": {
+      "path": "src/steering_sim/j0_coupling/runner.py",
+      "module_functions": [
+        "def reference_position(t, ramp_s) -> float",
+        "def reference_velocity(t, ramp_s) -> float"
+      ],
+      "constants": {
+        "WHEELS": "tuple((f'axle{a}_{s}' for a in range(1, 7) for s in ('left', 'right')))",
+        "THIRD_AXLE_WHEELS": "('axle3_left', 'axle3_right')"
+      },
+      "classes": {
+        "J0StopCondition": {
+          "bases": [
+            "RuntimeError"
+          ],
+          "methods": [],
+          "properties": [],
+          "attributes": []
+        },
+        "J0CaseResult": {
+          "bases": [],
+          "methods": [],
+          "properties": [
+            "case_id"
+          ],
+          "attributes": [
+            {
+              "name": "case",
+              "type": "J0CaseConfig"
+            },
+            {
+              "name": "samples",
+              "type": "dict[str, np.ndarray]"
+            },
+            {
+              "name": "summary",
+              "type": "dict[str, Any]"
+            },
+            {
+              "name": "completed",
+              "type": "bool"
+            },
+            {
+              "name": "failure_time_s",
+              "type": "float | None"
+            },
+            {
+              "name": "failure_reason",
+              "type": "str | None"
+            },
+            {
+              "name": "diagnostic_damping_n_s_per_m",
+              "type": "float"
+            }
+          ]
+        },
+        "_Recorder": {
+          "bases": [],
+          "methods": [
+            "def add(self, row) -> None",
+            "def arrays(self) -> dict[str, np.ndarray]"
+          ],
+          "properties": [],
+          "attributes": [
+            {
+              "name": "fields",
+              "type": "dict[str, list[float]]"
+            }
+          ]
+        },
+        "J0Runner": {
+          "bases": [],
+          "methods": [
+            "def __init__(self, config, geometry_model, *, probe_authority=…, mechanical_mode=…) -> None",
+            "def reference_time(self, case) -> float",
+            "def channel_gains(self, name, override=…) -> tuple[float, float, float]",
+            "def channel_limit(self, name) -> float",
+            "def command_from_pid(self, position, pid_output) -> float",
+            "def target(self, case) -> dict[str, Any]",
+            "def run_case(self, case, *, diagnostic_damping_n_s_per_m=…, gains=…, road_load_scale=…, on_progress=…, profile=…) -> J0CaseResult"
+          ],
+          "properties": [],
+          "attributes": []
+        }
+      }
+    },
+    "j0_mechanism_factory": {
+      "path": "src/steering_sim/j0_coupling/mechanism.py",
+      "module_functions": [
+        "def normalise_mode(value) -> str",
+        "def build_mechanism_model(mode, spec_path, mech_config_path=…, redesign_config_path=…, design_path=…, engineering_config_path=…)"
+      ],
+      "constants": {
+        "ENGINEERING_STEERING_MODEL": "'ENGINEERING_STEERING_MODEL'",
+        "AS_BUILT_REFERENCE": "'AS_BUILT_REFERENCE'",
+        "REDESIGNED_ACKERMANN": "'REDESIGNED_ACKERMANN'",
+        "MODES": "(ENGINEERING_STEERING_MODEL, AS_BUILT_REFERENCE, REDESIGNED_ACKERMANN)",
+        "LEGACY_MODES": "(AS_BUILT_REFERENCE, REDESIGNED_ACKERMANN)",
+        "MODE_LABELS": "{ENGINEERING_STEERING_MODEL: '工程转向模型（正式）', AS_BUILT_REFERENCE: '甲方原始机构（历史对照，仅供测试）', REDESIGNED_ACKERMANN: 'M3 中间摇臂方案（历史对照，仅供测试）'}",
+        "REDESIGN_DISCLAIMER": "'该机构为基于甲方硬点与工程假设提出的优化设计方案，尚未通过实车验证。图中「优化机构」角度是设计计算值，不是甲方原始结构的实测或复现结果。'"
+      },
+      "classes": {
+        "UnknownMechanicalMode": {
+          "bases": [
+            "ValueError"
+          ],
+          "methods": [],
+          "properties": [],
+          "attributes": []
+        }
+      }
+    },
+    "control_pid": {
+      "path": "src/steering_sim/control/pid.py",
+      "module_functions": [],
+      "constants": {},
+      "classes": {
+        "PIDDiagnostics": {
+          "bases": [],
+          "methods": [],
+          "properties": [],
+          "attributes": [
+            {
+              "name": "unclipped_request",
+              "type": "NDArray[np.float64]"
+            },
+            {
+              "name": "clipped_command",
+              "type": "NDArray[np.float64]"
+            },
+            {
+              "name": "at_limit",
+              "type": "NDArray[np.bool_]"
+            },
+            {
+              "name": "anti_windup_active",
+              "type": "NDArray[np.bool_]"
+            },
+            {
+              "name": "margin",
+              "type": "NDArray[np.float64]"
+            }
+          ]
+        },
+        "PIDController": {
+          "bases": [
+            "Controller"
+          ],
+          "methods": [
+            "def __init__(self, kp, ki=…, kd=…, limit=…)",
+            "def reset(self) -> None",
+            "def step(self, measurement, reference, dt, *, feedforward=…) -> Command"
+          ],
+          "properties": [],
+          "attributes": []
+        }
+      }
+    },
+    "control_base": {
+      "path": "src/steering_sim/control/base.py",
+      "module_functions": [],
+      "constants": {},
+      "classes": {
+        "Measurement": {
+          "bases": [],
+          "methods": [],
+          "properties": [],
+          "attributes": [
+            {
+              "name": "values",
+              "type": "FloatArray"
+            },
+            {
+              "name": "names",
+              "type": "tuple[str, ...]"
+            },
+            {
+              "name": "metadata",
+              "type": "Mapping[str, float]"
+            }
+          ]
+        },
+        "Reference": {
+          "bases": [],
+          "methods": [],
+          "properties": [],
+          "attributes": [
+            {
+              "name": "values",
+              "type": "FloatArray"
+            },
+            {
+              "name": "names",
+              "type": "tuple[str, ...]"
+            }
+          ]
+        },
+        "Command": {
+          "bases": [],
+          "methods": [],
+          "properties": [],
+          "attributes": [
+            {
+              "name": "values",
+              "type": "FloatArray"
+            }
+          ]
+        },
+        "Controller": {
+          "bases": [
+            "ABC"
+          ],
+          "methods": [
+            "def reset(self) -> None",
+            "def step(self, measurement, reference, dt) -> Command"
+          ],
+          "properties": [],
+          "attributes": []
+        }
+      }
+    },
+    "demo_service": {
+      "path": "src/steering_sim/demo/service.py",
+      "module_functions": [
+        "def build_text_report(result, git_head) -> str"
+      ],
+      "constants": {
+        "ROOT": "Path(__file__).resolve().parents[3]",
+        "DEFAULT_CONFIG": "ROOT / 'configs' / 'j0' / 'j0_config.json'",
+        "DEFAULT_SPEC": "ROOT / 'mechanical_model_input_spec_v1.0.yaml'",
+        "DEFAULT_MECH_CONFIG": "ROOT / 'mechanics_ackermann_v2' / 'config.json'",
+        "DEFAULT_REDESIGN_CONFIG": "ROOT / 'mechanics_ackermann_redesigned' / 'config.json'",
+        "DEFAULT_ENGINEERING_CONFIG": "ROOT / 'configs' / 'j1' / 'engineering_config.json'",
+        "DEFAULT_ENGINEERING_DESIGN": "ROOT / 'configs' / 'j1' / 'engineering_mechanism.json'",
+        "DEFAULT_OUTPUT": "ROOT / 'outputs' / 'j0_demo'",
+        "PRESET_CACHE_VERSION": "'M3-1'"
+      },
+      "classes": {
+        "DemoServiceError": {
+          "bases": [
+            "RuntimeError"
+          ],
+          "methods": [],
+          "properties": [],
+          "attributes": []
+        },
+        "DemoResult": {
+          "bases": [],
+          "methods": [
+            "def headline(self) -> str"
+          ],
+          "properties": [
+            "mechanical_mode",
+            "status",
+            "provenance_label"
+          ],
+          "attributes": [
+            {
+              "name": "scenario",
+              "type": "DemoScenario"
+            },
+            {
+              "name": "preflight",
+              "type": "PreflightAssessment"
+            },
+            {
+              "name": "samples",
+              "type": "dict[str, np.ndarray]"
+            },
+            {
+              "name": "summary",
+              "type": "dict[str, Any]"
+            },
+            {
+              "name": "consistency",
+              "type": "ConsistencyReport"
+            },
+            {
+              "name": "figures",
+              "type": "tuple[Path, ...]"
+            },
+            {
+              "name": "csv_path",
+              "type": "Path"
+            },
+            {
+              "name": "report_path",
+              "type": "Path | None"
+            },
+            {
+              "name": "provenance",
+              "type": "str"
+            },
+            {
+              "name": "provenance_note",
+              "type": "str"
+            },
+            {
+              "name": "completed",
+              "type": "bool"
+            },
+            {
+              "name": "failure_reason",
+              "type": "str | None"
+            },
+            {
+              "name": "duration_wall_s",
+              "type": "float"
+            }
+          ]
+        },
+        "DemoService": {
+          "bases": [],
+          "methods": [
+            "def __init__(self, config_path=…, spec_path=…, mech_config_path=…, redesign_config_path=…, engineering_config_path=…, engineering_design_path=…, output_dir=…, probe_authority=…, mechanical_mode=…, hydraulic_model=…) -> None",
+            "def set_mode(self, mode) -> None",
+            "def assess(self, scenario) -> PreflightAssessment",
+            "def run(self, scenario, *, progress=…, on_fraction=…, export=…) -> DemoResult",
+            "def cache_paths(self, key) -> tuple[Path, Path]",
+            "def cache_exists(self, key) -> bool",
+            "def store_preset(self, key, result) -> None",
+            "def replay_preset(self, key) -> DemoResult",
+            "def build_preset_cache(self, *, progress=…, force=…) -> dict[str, DemoResult]",
+            "def export_csv(self, result, target) -> Path",
+            "def write_report(self, result) -> Path"
+          ],
+          "properties": [
+            "mode_label",
+            "is_redesign"
+          ],
+          "attributes": []
+        }
+      }
+    },
+    "demo_scenario": {
+      "path": "src/steering_sim/demo/scenario.py",
+      "module_functions": [
+        "def check_ranges(scenario) -> tuple[RangeCheck, ...]",
+        "def reference_time_s(angle_deg) -> float",
+        "def recommended_duration_s(angle_deg) -> float",
+        "def preset_scenarios() -> tuple[Preset, ...]"
+      ],
+      "constants": {
+        "AXLE_COUNT": "6",
+        "CUSTOMER_LIMITS": "Mapping[str, tuple[float, float]]",
+        "VERIFIED_LIMITS": "Mapping[str, tuple[float, float]]",
+        "VERIFIED_RANGE_SOURCE": "'PHASE_J1_R2：ENGINEERING_HYDRAULIC_V1 工程电液伺服模型的真实四通道动态积分（0°、±2°、±5°、±10°、±20°、±30°，0/5/10 km/h，μ=0.75/轴荷 11.5 t），另含 40/60/80 km/h 中高速工况与连续两段指令。40 km/h 以上属于外推：可以计算，但目标轨迹的物理可行性必须单独评价。'",
+        "ENGINEERING_DEFAULTS": "{'friction_coefficient': 0.75, 'axle_mass_t': 11.5, 'duration_s': 5.0, 'source': 'ASSUMED_ENGINEERING_PARAMETER（M1 默认扫描值），不是实车测量值'}",
+        "LABELS": "{'target_outer_angle_deg': ('一桥外侧目标转角', '°'), 'speed_kmh': ('车速', 'km/h'), 'friction_coefficient': ('地面摩擦系数', '—'), 'axle_mass_t': ('每桥轴荷', 't'), 'duration_s': ('仿真时长', 's')}",
+        "REFERENCE_RATE_DEG_PER_S": "12.0",
+        "REFERENCE_MINIMUM_TIME_S": "0.4",
+        "DEFAULT_PRESET_KEY": "'R2-05'"
+      },
+      "classes": {
+        "DemoScenario": {
+          "bases": [],
+          "methods": [
+            "def __post_init__(self) -> None",
+            "def signature(self) -> str",
+            "def describe(self) -> str",
+            "def with_angle(self, angle_deg) -> 'DemoScenario'"
+          ],
+          "properties": [
+            "total_mass_t"
+          ],
+          "attributes": [
+            {
+              "name": "target_outer_angle_deg",
+              "type": "float"
+            },
+            {
+              "name": "speed_kmh",
+              "type": "float"
+            },
+            {
+              "name": "friction_coefficient",
+              "type": "float"
+            },
+            {
+              "name": "axle_mass_t",
+              "type": "tuple[float, ...]"
+            },
+            {
+              "name": "duration_s",
+              "type": "float"
+            },
+            {
+              "name": "case_id",
+              "type": "str"
+            }
+          ]
+        },
+        "RangeCheck": {
+          "bases": [],
+          "methods": [
+            "def message(self) -> str"
+          ],
+          "properties": [
+            "outside_customer",
+            "outside_verified"
+          ],
+          "attributes": [
+            {
+              "name": "field",
+              "type": "str"
+            },
+            {
+              "name": "label",
+              "type": "str"
+            },
+            {
+              "name": "value",
+              "type": "float"
+            },
+            {
+              "name": "unit",
+              "type": "str"
+            },
+            {
+              "name": "customer_range",
+              "type": "tuple[float, float]"
+            },
+            {
+              "name": "verified_range",
+              "type": "tuple[float, float]"
+            }
+          ]
+        },
+        "Preset": {
+          "bases": [],
+          "methods": [],
+          "properties": [],
+          "attributes": [
+            {
+              "name": "key",
+              "type": "str"
+            },
+            {
+              "name": "name",
+              "type": "str"
+            },
+            {
+              "name": "scenario",
+              "type": "DemoScenario"
+            },
+            {
+              "name": "expected_status",
+              "type": "str"
+            },
+            {
+              "name": "note",
+              "type": "str"
+            }
+          ]
+        }
+      }
+    },
+    "demo_batch": {
+      "path": "src/steering_sim/demo/batch.py",
+      "module_functions": [
+        "def build_context(adapter=…, parameters_path=…) -> BatchContext",
+        "def estimate_case(context, scenario, axle_mass_t=…) -> dict[str, Any]",
+        "def run_batch(context, scenarios, *, on_progress=…, should_stop=…) -> list[dict[str, Any]]",
+        "def columns_of(rows) -> list[str]",
+        "def write_csv(rows, path) -> Path",
+        "def write_xlsx(rows, path) -> Path | None",
+        "def read_cases(path) -> list[DemoScenario]",
+        "def template_rows(count=…) -> list[dict[str, Any]]",
+        "def write_template(path) -> Path"
+      ],
+      "constants": {
+        "ROOT": "Path(__file__).resolve().parents[3]",
+        "DEFAULT_ENGINEERING_CONFIG": "ROOT / 'configs' / 'j1' / 'engineering_config.json'",
+        "DEFAULT_ENGINEERING_DESIGN": "ROOT / 'configs' / 'j1' / 'engineering_mechanism.json'",
+        "DEFAULT_HYDRAULIC_PARAMETERS": "ROOT / 'configs' / 'j1r2' / 'engineering_hydraulics.json'",
+        "PATH_STEPS": "24",
+        "DOF_OF_CHANNEL": "{'channel_front': 'q_front', 'channel_rear_1': 'q4', 'channel_rear_2': 'q5', 'channel_rear_3': 'q6'}",
+        "CHANNEL_OF_DOF": "{value: key for key, value in DOF_OF_CHANNEL.items()}",
+        "REQUIRED_COLUMNS": "('target_outer_angle_deg', 'speed_kmh')",
+        "OPTIONAL_COLUMNS": "('friction_coefficient', 'duration_s', 'case_id', *(f'axle_mass_{index + 1}_t' for index in range(AXLE_COUNT)))"
+      },
+      "classes": {
+        "BatchContext": {
+          "bases": [],
+          "methods": [],
+          "properties": [
+            "channel_names"
+          ],
+          "attributes": [
+            {
+              "name": "model",
+              "type": "Any"
+            },
+            {
+              "name": "adapter",
+              "type": "Any"
+            },
+            {
+              "name": "parameters",
+              "type": "Any"
+            },
+            {
+              "name": "availability_n",
+              "type": "Mapping[str, float]"
+            },
+            {
+              "name": "half_stroke_mm",
+              "type": "Mapping[str, float]"
+            },
+            {
+              "name": "centers",
+              "type": "Mapping[str, tuple[float, float]]"
+            },
+            {
+              "name": "singular_threshold",
+              "type": "float"
+            }
+          ]
+        }
+      }
+    },
+    "demo_assessment": {
+      "path": "src/steering_sim/demo/assessment.py",
+      "module_functions": [
+        "def assess_mechanism(target, model) -> MechanismAssessment",
+        "def assess_supply(hydraulic, commands, state) -> SupplyAssessment",
+        "def assess_preflight(scenario, runner) -> PreflightAssessment",
+        "def check_run_consistency(samples, summary, figures, csv_path, scenario) -> ConsistencyReport"
+      ],
+      "constants": {
+        "WHEEL_ORDER": "tuple((f'axle{axle}_{side}' for axle in range(1, 7) for side in ('left', 'right')))",
+        "AXLE_OF_WHEEL": "{wheel: int(wheel[4]) for wheel in WHEEL_ORDER}",
+        "SIDE_OF_WHEEL": "{wheel: wheel.split('_', 1)[1] for wheel in WHEEL_ORDER}",
+        "SIGN_TOLERANCE_DEG": "0.0001",
+        "NEAR_LIMIT_MARGIN_FRACTION": "0.1"
+      },
+      "classes": {
+        "AxleMechanism": {
+          "bases": [],
+          "methods": [],
+          "properties": [
+            "max_abs_deviation_deg"
+          ],
+          "attributes": [
+            {
+              "name": "axle",
+              "type": "int"
+            },
+            {
+              "name": "ideal_left_deg",
+              "type": "float"
+            },
+            {
+              "name": "ideal_right_deg",
+              "type": "float"
+            },
+            {
+              "name": "mechanism_left_deg",
+              "type": "float"
+            },
+            {
+              "name": "mechanism_right_deg",
+              "type": "float"
+            },
+            {
+              "name": "deviation_left_deg",
+              "type": "float"
+            },
+            {
+              "name": "deviation_right_deg",
+              "type": "float"
+            },
+            {
+              "name": "left_right_opposite",
+              "type": "bool"
+            },
+            {
+              "name": "q_rad",
+              "type": "float"
+            },
+            {
+              "name": "q_boundary_limited",
+              "type": "bool"
+            }
+          ]
+        },
+        "MechanismAssessment": {
+          "bases": [],
+          "methods": [],
+          "properties": [
+            "has_ackermann_deviation"
+          ],
+          "attributes": [
+            {
+              "name": "status",
+              "type": "str"
+            },
+            {
+              "name": "flags",
+              "type": "tuple[str, ...]"
+            },
+            {
+              "name": "axles",
+              "type": "tuple[AxleMechanism, ...]"
+            },
+            {
+              "name": "max_abs_deviation_deg",
+              "type": "float"
+            },
+            {
+              "name": "max_abs_deviation_wheel",
+              "type": "str"
+            },
+            {
+              "name": "opposite_sign_wheels",
+              "type": "tuple[str, ...]"
+            },
+            {
+              "name": "geometry_status",
+              "type": "str"
+            },
+            {
+              "name": "geometry_reachable",
+              "type": "bool"
+            },
+            {
+              "name": "messages",
+              "type": "tuple[str, ...]"
+            }
+          ]
+        },
+        "SupplyGroup": {
+          "bases": [],
+          "methods": [
+            "def to_dict(self) -> dict[str, float | str | bool]"
+          ],
+          "properties": [
+            "margin_fraction",
+            "near_limit"
+          ],
+          "attributes": [
+            {
+              "name": "name",
+              "type": "str"
+            },
+            {
+              "name": "label",
+              "type": "str"
+            },
+            {
+              "name": "q_pump_m3_s",
+              "type": "float"
+            },
+            {
+              "name": "high_rail_demand_m3_s",
+              "type": "float"
+            },
+            {
+              "name": "auxiliary_flow_m3_s",
+              "type": "float"
+            },
+            {
+              "name": "margin_m3_s",
+              "type": "float"
+            },
+            {
+              "name": "insufficient",
+              "type": "bool"
+            }
+          ]
+        },
+        "SupplyAssessment": {
+          "bases": [],
+          "methods": [
+            "def to_dict(self) -> dict[str, Any]"
+          ],
+          "properties": [],
+          "attributes": [
+            {
+              "name": "status",
+              "type": "str"
+            },
+            {
+              "name": "flags",
+              "type": "tuple[str, ...]"
+            },
+            {
+              "name": "groups",
+              "type": "tuple[SupplyGroup, ...]"
+            },
+            {
+              "name": "messages",
+              "type": "tuple[str, ...]"
+            }
+          ]
+        },
+        "PreflightAssessment": {
+          "bases": [],
+          "methods": [],
+          "properties": [
+            "runnable",
+            "exact_preset"
+          ],
+          "attributes": [
+            {
+              "name": "scenario",
+              "type": "DemoScenario"
+            },
+            {
+              "name": "ranges",
+              "type": "tuple[RangeCheck, ...]"
+            },
+            {
+              "name": "mechanism",
+              "type": "MechanismAssessment"
+            },
+            {
+              "name": "supply",
+              "type": "SupplyAssessment"
+            },
+            {
+              "name": "flags",
+              "type": "tuple[str, ...]"
+            },
+            {
+              "name": "blockers",
+              "type": "tuple[str, ...]"
+            },
+            {
+              "name": "warnings",
+              "type": "tuple[str, ...]"
+            },
+            {
+              "name": "summary_lines",
+              "type": "tuple[str, ...]"
+            }
+          ]
+        },
+        "ConsistencyReport": {
+          "bases": [],
+          "methods": [],
+          "properties": [],
+          "attributes": [
+            {
+              "name": "ok",
+              "type": "bool"
+            },
+            {
+              "name": "flags",
+              "type": "tuple[str, ...]"
+            },
+            {
+              "name": "messages",
+              "type": "tuple[str, ...]"
+            },
+            {
+              "name": "metrics",
+              "type": "dict[str, float]"
+            }
+          ]
+        }
+      }
+    },
+    "demo_plots": {
+      "path": "src/steering_sim/demo/plots.py",
+      "module_functions": [
+        "def plot_plan_view(samples, summary, scenario, centers, out_dir) -> Path",
+        "def plot_wheel_angles(samples, summary, scenario, out_dir) -> Path",
+        "def plot_strokes(samples, summary, scenario, out_dir) -> Path",
+        "def plot_hydraulics(samples, summary, scenario, out_dir) -> Path",
+        "def plot_control(samples, summary, scenario, out_dir) -> Path",
+        "def plot_case_and_supply(samples, summary, scenario, assessment, out_dir) -> Path",
+        "def wheel_table_rows(result) -> tuple[tuple[str, ...], ...]",
+        "def plot_wheel_table(result, out_dir) -> Path",
+        "def plot_all(result, centers, out_dir) -> tuple[Path, ...]"
+      ],
+      "constants": {
+        "WHEELS": "tuple((f'axle{axle}_{side}' for axle in range(1, 7) for side in ('left', 'right')))",
+        "CHANNELS": "('channel_front', 'channel_rear_1', 'channel_rear_2', 'channel_rear_3')",
+        "CHANNEL_LABEL": "{'channel_front': '前组(一、二桥)', 'channel_rear_1': '四桥', 'channel_rear_2': '五桥', 'channel_rear_3': '六桥'}",
+        "CHANNEL_COLOR": "{'channel_front': '#1f77b4', 'channel_rear_1': '#d62728', 'channel_rear_2': '#2ca02c', 'channel_rear_3': '#9467bd'}",
+        "ACTUAL_COLOR": "'#111111'",
+        "MECHANISM_COLOR": "'#1f77b4'",
+        "IDEAL_COLOR": "'#ff7f0e'",
+        "ACTUAL_STYLE": "dict(linewidth=1.6)",
+        "MECHANISM_STYLE": "dict(linestyle='--', linewidth=1.1, alpha=0.85)",
+        "IDEAL_STYLE": "dict(linestyle=':', linewidth=1.1, alpha=0.8)",
+        "DPI": "140",
+        "MODE_BANNER": "{'REDESIGNED_ACKERMANN': '机械模式：优化设计机构 REDESIGNED_ACKERMANN —— ENGINEERING_REDESIGN_PROPOSAL（甲方原始硬点不变，中间摇臂与转向梯形为工程新设计，尚未实车验证）', 'AS_BUILT_REFERENCE': '机械模式：原始机构复现 AS_BUILT_REFERENCE —— CUSTOMER_AS_BUILT_LINKAGE（甲方原始硬点与原始杆件拓扑）'}",
+        "WHEEL_TABLE_HEADER": "('车桥', '左/右轮', '理想阿克曼角', '机构理论角', '液压实际角', '跟踪偏差', '阿克曼偏差', '跟踪状态')"
+      },
+      "classes": {}
+    },
+    "demo_ui": {
+      "path": "src/steering_sim/demo/ui.py",
+      "module_functions": [
+        "def main(argv=…) -> int"
+      ],
+      "constants": {
+        "WINDOW_TITLE": "'电液转向系统联合仿真平台'",
+        "CUSTOM_LABEL": "'自定义工况'",
+        "CHINESE_FONT_CANDIDATES": "('Microsoft YaHei UI', 'Microsoft YaHei', 'SimHei', 'SimSun', 'DengXian')",
+        "WHEEL_TABLE": "'十二轮角度数值表'",
+        "TAB_LAYOUT": "(('机械转向结果', ('fig1_plan_view.png', 'fig2_wheel_angles.png')), ('液压结果', ('fig3_strokes.png', 'fig4_hydraulics.png')), ('控制结果', ('fig5_control.png',)), ('工况与限制', ('fig6_case_and_supply.png',)), (WHEEL_TABLE, ('fig7_wheel_table.png',)))"
+      },
+      "classes": {
+        "ImagePane": {
+          "bases": [
+            "ttk.Frame"
+          ],
+          "methods": [
+            "def __init__(self, master, **kwargs) -> None",
+            "def release(self) -> None",
+            "def show(self, paths) -> None"
+          ],
+          "properties": [],
+          "attributes": []
+        },
+        "_ProgressDialog": {
+          "bases": [],
+          "methods": [
+            "def __init__(self, master, title) -> None",
+            "def set_cancel(self, command) -> None",
+            "def set_message(self, message) -> None",
+            "def set_fraction(self, fraction) -> None",
+            "def close(self) -> None"
+          ],
+          "properties": [],
+          "attributes": []
+        },
+        "DemoApp": {
+          "bases": [],
+          "methods": [
+            "def __init__(self, root, service) -> None",
+            "def close(self) -> None"
+          ],
+          "properties": [],
+          "attributes": []
+        }
+      }
+    },
+    "demo_degradation_placeholder": {
+      "path": "src/steering_sim/demo/degradation.py",
+      "module_functions": [
+        "def describe_interfaces() -> dict[str, Any]",
+        "def predict_life(*_args, **_kwargs) -> Any",
+        "def assess_quality(*_args, **_kwargs) -> Any"
+      ],
+      "constants": {
+        "INTERFACE_MAP": "Mapping[str, str]",
+        "RESERVED_MODULES": "('steering_sim.demo.degradation', 'steering_sim.demo.quality_assessment', 'steering_sim.demo.prediction')"
+      },
+      "classes": {
+        "DegradationNotImplementedError": {
+          "bases": [
+            "NotImplementedError"
+          ],
+          "methods": [],
+          "properties": [],
+          "attributes": []
+        },
+        "DegradationParameters": {
+          "bases": [],
+          "methods": [
+            "def __post_init__(self) -> None",
+            "def scaled(self, **factors) -> 'DegradationParameters'"
+          ],
+          "properties": [
+            "is_healthy"
+          ],
+          "attributes": [
+            {
+              "name": "pump_volumetric_efficiency",
+              "type": "float"
+            },
+            {
+              "name": "pump_displacement",
+              "type": "float"
+            },
+            {
+              "name": "valve_discharge_coefficient",
+              "type": "float"
+            },
+            {
+              "name": "valve_response_speed",
+              "type": "float"
+            },
+            {
+              "name": "valve_leakage",
+              "type": "float"
+            },
+            {
+              "name": "cylinder_internal_leakage",
+              "type": "float"
+            },
+            {
+              "name": "cylinder_external_leakage",
+              "type": "float"
+            },
+            {
+              "name": "cylinder_friction",
+              "type": "float"
+            },
+            {
+              "name": "cylinder_damping",
+              "type": "float"
+            },
+            {
+              "name": "controller_proportional_gain",
+              "type": "float"
+            },
+            {
+              "name": "controller_integral_gain",
+              "type": "float"
+            },
+            {
+              "name": "controller_derivative_gain",
+              "type": "float"
+            },
+            {
+              "name": "controller_command_limit",
+              "type": "float"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "configs": {
+    "j0_control": {
+      "path": "configs/j0/j0_config.json",
+      "raw": {
+        "schema_version": "J0.1",
+        "phase": "J0",
+        "description": "PHASE J0：15 所电液转向系统控制—液压—机械首次联合调试。",
+        "evidence_tags": {
+          "VERIFIED_CODE": "可直接从当前正式源码确认",
+          "CUSTOMER_GEOMETRY": "来自冻结的甲方坐标文件，经 mm->m 一次转换",
+          "ASSUMED": "为打通接口所需、但缺少甲方或跨模块证据的工程假设",
+          "UNVERIFIED": "证据不足，不能安全使用"
+        },
+        "models": {
+          "hydraulic": "src/steering_sim/hydraulics_lumped L1-FAST V1（LumpedHydraulicSystem.fast_engineering，4 通道 / 16 状态）",
+          "mechanical": "mechanics_ackermann_v2 M1（PhaseM1Model，4 自由度 q_front/q4/q5/q6，12 轮，7 个物理缸几何接口）",
+          "control": "复用 src/steering_sim/control/pid.py 的 PIDController，逐通道实例化"
+        },
+        "hydraulic": {
+          "model": "ENGINEERING_HYDRAULIC_V1",
+          "model_note": "PHASE J1-R2 起正式液压模型改为轻量化工程电液伺服模型 src/steering_sim/hydraulics_engineering（4 通道 × (pA,pB,x,v,阀芯) + 两条共用供油轨）。参数见 configs/j1r2/engineering_hydraulics.json。旧 L1-Fast 只在显式指定 L1_FAST 时构造，用于历史对照与回归测试。",
+          "engineering_parameters": "../j1r2/engineering_hydraulics.json",
+          "dt_hydraulic_s": 0.0005,
+          "integration": "显式 RK4，每个 stage 用该 stage 状态重新计算机械负载",
+          "pump_speed_mode": "channel_nominal_speed",
+          "initial_pressure_mode": "group_regulated_return_rail_pressure",
+          "initial_position_m": 0.0,
+          "initial_velocity_m_s": 0.0,
+          "redundant_valve_commands": {
+            "dirvalve_2": 0.0,
+            "dirvalve_9": 0.0,
+            "dirvalve_12": 0.0
+          },
+          "redundant_valve_note": "ASSUMED 显式取 0。冗余管道 SC_1 在 regulated_constant_pressure 边界下不起作用（F3），本轮沿用 J0 结论，未实现冗余切换。",
+          "load_model": {
+            "neutralize_initial_bias": true,
+            "neutralize_initial_bias_source": "ASSUMED_ENGINEERING_INITIALIZATION_DEVICE",
+            "neutralize_initial_bias_note": "L1-Fast 的健康工作点把 external_load 设为 A_a*p - A_b*p，使预建压状态机械残差为 0。J0 全程保持同一常量偏置，使 t=0 成为真正的平衡点，避免把预充液瞬态误判为 J0 响应。这是初始化装置，不是实测道路载荷。",
+            "road_load_ramp_s": 0.1,
+            "road_load_ramp_note": "在该时段内把道路负载从纯 L1-Fast 工作点载荷平滑过渡进来，不注入净力阶跃。"
+          }
+        },
+        "control": {
+          "dt_control_s": 0.01,
+          "reference_signal": "等效作动组的代表行程 x_ref（不是轮角，也不是把目标角复制四份）",
+          "reference_ramp_s": 0.2,
+          "reference_rate_deg_per_s": 12.0,
+          "reference_minimum_time_s": 0.4,
+          "reference_note": "PHASE J1-R2：指令斜坡时间 = max(最短时间, |目标角|/额定速率)，S 曲线（两端速度为零）。速率 12 °/s 是重型车辆低速转向的工程量级，也是流量/泵选型的输入；不是为了让跟踪指标好看而放慢的。",
+          "feedforward_note": "PHASE J1-R2：控制器 = 速度前馈 + PI。前馈增益取 1/Kv（Kv 为阀在设计压差下的速度增益，来自 engineering_hydraulics.json），PID 只补偿扰动与模型误差。",
+          "channels": [
+            {
+              "index": 0,
+              "channel": "channel_front",
+              "valve_alias": "dirvalve_6",
+              "actuator_alias": "actuator002",
+              "dof": "q_front",
+              "cylinder_group": "front_group_1",
+              "kp": 150.0,
+              "ki": 60.0,
+              "kd": 0.0,
+              "command_limit": 1.0,
+              "command_min": -1.0,
+              "command_max": 1.0,
+              "neutral_command": 0.0,
+              "command_polarity": 1.0,
+              "mapping_status": "ASSUMED",
+              "authority_status": "TWO_QUADRANT_MEASURED_AFTER_J0R1_F2_FIX",
+              "notes": "x_front = 0.25*q_front 是 ASSUMED_ENGINEERING_PARAMETER_INTERFACE_PLACEHOLDER（缺甲方前缸硬点）。J0-R1 修复后前阀为普通对称四通：中立命令 0.0，窗口 [-1, +1]，实测静态力窗口 ±6208 N，双向可达。原「中立 +1.0、窗口 [0,1]」已被实测否定，不再使用。"
+            },
+            {
+              "index": 1,
+              "channel": "channel_rear_1",
+              "valve_alias": "dirvalve_1",
+              "actuator_alias": "actuator001",
+              "dof": "q4",
+              "cylinder_group": "axle4_A+axle4_B",
+              "kp": 150.0,
+              "ki": 60.0,
+              "kd": 0.0,
+              "command_limit": 1.0,
+              "command_min": -1.0,
+              "command_max": 1.0,
+              "neutral_command": 0.0,
+              "command_polarity": -1.0,
+              "mapping_status": "ASSUMED",
+              "authority_status": "TWO_QUADRANT_MEASURED",
+              "notes": "channel_rear_1 -> q4 为 ASSUMED 跨模块映射。x 取 A 缸相对长度 L_A(q4)-L_A(0)，A 缸作代表坐标为 ASSUMED。J0-R1 力方向修正后命令极性变为 -1（实测 d(velocity)/d(command) < 0）。"
+            },
+            {
+              "index": 2,
+              "channel": "channel_rear_2",
+              "valve_alias": "dirvalve_8",
+              "actuator_alias": "actuator001_1",
+              "dof": "q5",
+              "cylinder_group": "axle5_A+axle5_B",
+              "kp": 150.0,
+              "ki": 60.0,
+              "kd": 0.0,
+              "command_limit": 1.0,
+              "command_min": -1.0,
+              "command_max": 1.0,
+              "neutral_command": 0.0,
+              "command_polarity": -1.0,
+              "mapping_status": "ASSUMED",
+              "authority_status": "TWO_QUADRANT_MEASURED",
+              "notes": "channel_rear_2 -> q5 为 ASSUMED 跨模块映射。x 取 L_A(q5)-L_A(0)。J0-R1 后命令极性 -1。"
+            },
+            {
+              "index": 3,
+              "channel": "channel_rear_3",
+              "valve_alias": "dirvalve_11",
+              "actuator_alias": "actuator001_2",
+              "dof": "q6",
+              "cylinder_group": "axle6_A+axle6_B",
+              "kp": 150.0,
+              "ki": 60.0,
+              "kd": 0.0,
+              "command_limit": 1.0,
+              "command_min": -1.0,
+              "command_max": 1.0,
+              "neutral_command": 0.0,
+              "command_polarity": -1.0,
+              "mapping_status": "ASSUMED",
+              "authority_status": "TWO_QUADRANT_MEASURED",
+              "notes": "channel_rear_3 -> q6 为 ASSUMED 跨模块映射。x 取 L_A(q6)-L_A(0)。J0-R1 后命令极性 -1。"
+            }
+          ],
+          "pid_note": "J0-R1：按任务书第 8 节从最小 P/PI 起步并只做必要调整。kd 保持 0（未滤波微分项在 10 ms 采样下不提供有效阻尼相位）；kp/ki 取能把行程误差压到毫米级的量级，未做最优整定。"
+        },
+        "mapping": {
+          "channel_order": [
+            "channel_front",
+            "channel_rear_1",
+            "channel_rear_2",
+            "channel_rear_3"
+          ],
+          "front_stroke_per_q_m_per_rad": 0.25,
+          "front_stroke_source": "ASSUMED_ENGINEERING_PARAMETER_INTERFACE_PLACEHOLDER (mechanics_ackermann_v2/config.json front_cylinder_interface)",
+          "rear_representative_cylinder": "A",
+          "rear_representative_source": "ASSUMED；甲方硬点与 A/B 长度为 CUSTOMER_GEOMETRY，选 A 缸作单一等效通道坐标属于工程假设",
+          "table_step_rad": 0.001,
+          "singular_jacobian_threshold_m_per_rad": 0.0001,
+          "monotonic_tolerance_m_per_rad": 0.0,
+          "q_envelope_source": "NUMERICALLY_VERIFIED_CONTINUATION_ENVELOPE_NOT_CUSTOMER_MECHANICAL_LIMIT（数值连续解范围，不是甲方机械限位）"
+        },
+        "load": {
+          "friction_coefficient": 0.75,
+          "friction_coefficient_source": "ASSUMED_ENGINEERING_PARAMETER (M1 default scan value)",
+          "axle_mass_t": [
+            11.5,
+            11.5,
+            11.5,
+            11.5,
+            11.5,
+            11.5
+          ],
+          "axle_mass_source": "ASSUMED_ENGINEERING_PARAMETER (M1 default scan value)",
+          "curvature_source": "取指令工况的理想阿克曼 ICR；即认为整车跟随指令路径，轮角偏差体现为轮胎侧偏",
+          "moment_model": "在液压实际产生的 q 上重新求值 M1 solve_loaded_case 的道路力矩公式；刻意不施加 M1 的静态柔度修正 loaded_q = q - Q/K"
+        },
+        "cases": [
+          {
+            "id": "J0-01",
+            "target_outer_angle_deg": 0.0,
+            "speed_kmh": 0.0,
+            "duration_s": 5.0
+          },
+          {
+            "id": "J0-02",
+            "target_outer_angle_deg": 2.0,
+            "speed_kmh": 5.0,
+            "duration_s": 5.0
+          },
+          {
+            "id": "J0-03",
+            "target_outer_angle_deg": -2.0,
+            "speed_kmh": 5.0,
+            "duration_s": 5.0
+          },
+          {
+            "id": "J0-04",
+            "target_outer_angle_deg": 5.0,
+            "speed_kmh": 10.0,
+            "duration_s": 5.0
+          }
+        ],
+        "output": {
+          "sample_stride_hydraulic_steps": 4,
+          "csv_float_format": "%.12g"
+        },
+        "acceptance": {
+          "steady_wheel_angle_error_deg_pass": 0.25,
+          "steady_wheel_angle_error_deg_conditional": 1.0,
+          "link_residual_limit_m": 1e-09,
+          "third_axle_abs_limit_deg": 1e-09,
+          "mapping_jacobian_abs_min_m_per_rad": 0.0001,
+          "mechanism_ackermann_error_note_deg": 0.5,
+          "note": "steady_wheel_angle_error 的参照是 M1 在 q_ref 上真实可达的刚性闭链角（theoretical_angle_deg），不是理想阿克曼角；后者与可达角之差作为 mechanism_ackermann_error_deg 单独报告。"
+        },
+        "mechanical": {
+          "mode": "ENGINEERING_STEERING_MODEL",
+          "mode_source": "PHASE J1：只保留一个面向工程演示的正式模型；历史机构仅供回归测试",
+          "engineering_model": "src/steering_sim/engineering",
+          "engineering_config": "configs/j1/engineering_config.json",
+          "engineering_design": "configs/j1/engineering_mechanism.json",
+          "hydraulic_design": "configs/j1/hydraulic_design.json",
+          "legacy_models": [
+            "mechanics_ackermann_v2",
+            "mechanics_ackermann_redesigned"
+          ],
+          "tag": "ENGINEERING_STEERING_MODEL",
+          "customer_hardpoints_unchanged": true
+        }
+      }
+    },
+    "mechanical_engineering": {
+      "path": "configs/j1/engineering_config.json",
+      "raw": {
+        "schema_version": "J1.0",
+        "tag": "ENGINEERING_STEERING_MODEL",
+        "coordinate_system": {
+          "source_length_unit": "mm",
+          "solver_length_unit": "m",
+          "origin": "midpoint of axle-1 wheel centers",
+          "x_positive": "vehicle forward",
+          "y_positive": "vehicle left",
+          "z_positive": "up",
+          "revolute_axis": "+Z"
+        },
+        "geometry": {
+          "source_file": "mechanical_model_input_spec_v1.0.yaml",
+          "source": "CUSTOMER_COORDINATES_TRANSCRIBED_AND_CROSSCHECKED_UNCHANGED",
+          "customer_hardpoints_changed": false,
+          "icr_reference_axle": 3,
+          "third_axle_locked": true,
+          "third_axle_point20_mm": [
+            -7290.0,
+            -996.0
+          ],
+          "mechanism_design": "configs/j1/engineering_mechanism.json",
+          "fit_residual_limit_deg": 0.25,
+          "q_envelopes_rad": {
+            "q_front": [
+              -0.78723,
+              0.78723
+            ],
+            "q4": [
+              -0.36399,
+              0.36399
+            ],
+            "q5": [
+              -0.30473,
+              0.30473
+            ],
+            "q6": [
+              -0.52482,
+              0.52482
+            ]
+          },
+          "q_envelope_source": "J1 连续延拓实测：从零位外扩到机构不可解，再收缩到覆盖该桥轮角 ±35° 所需的区间并留 2% 余量。不是甲方机械限位。",
+          "q_envelope_j1_evidence": {
+            "q_front": {
+              "reachable_plus_deg": 46.5,
+              "reachable_minus_deg": -54.5,
+              "stop_reason_plus": "MechanismError: 连杆长度不可达（cos=1.000620）；该构型超出机构可达范围",
+              "stop_reason_minus": "MechanismError: 连杆长度不可达（cos=1.001142）；该构型超出机构可达范围",
+              "envelope_plus_deg": 45.105,
+              "envelope_minus_deg": -45.105,
+              "monotone_stroke_note": "代表行程在包络内严格单调"
+            },
+            "q4": {
+              "reachable_plus_deg": 21.5,
+              "reachable_minus_deg": -23.5,
+              "stop_reason_plus": "MechanismError: 连杆长度不可达（cos=1.010163）；该构型超出机构可达范围",
+              "stop_reason_minus": "MechanismError: 连杆长度不可达（cos=1.005815）；该构型超出机构可达范围",
+              "envelope_plus_deg": 20.855,
+              "envelope_minus_deg": -20.855,
+              "monotone_stroke_note": "代表行程在包络内严格单调"
+            },
+            "q5": {
+              "reachable_plus_deg": 25.5,
+              "reachable_minus_deg": -18.0,
+              "stop_reason_plus": "MechanismError: 连杆长度不可达（cos=1.005500）；该构型超出机构可达范围",
+              "stop_reason_minus": "MechanismError: 连杆长度不可达（cos=1.008965）；该构型超出机构可达范围",
+              "envelope_plus_deg": 17.46,
+              "envelope_minus_deg": -17.46,
+              "monotone_stroke_note": "代表行程在包络内严格单调"
+            },
+            "q6": {
+              "reachable_plus_deg": 31.0,
+              "reachable_minus_deg": -36.0,
+              "stop_reason_plus": "MechanismError: 连杆长度不可达（cos=1.003510）；该构型超出机构可达范围",
+              "stop_reason_minus": "MechanismError: 连杆长度不可达（cos=1.001939）；该构型超出机构可达范围",
+              "envelope_plus_deg": 30.07,
+              "envelope_minus_deg": -30.07,
+              "monotone_stroke_note": "代表行程在包络内严格单调"
+            }
+          }
+        },
+        "ground_load": {
+          "gravity_mps2": 9.81,
+          "cornering_stiffness_per_wheel_N_per_rad": 300000.0,
+          "cornering_stiffness_source": "ASSUMED_ENGINEERING_PARAMETER",
+          "linear_slip_limit_deg": 5.0,
+          "effective_trail_m": 0.06,
+          "effective_trail_source": "ASSUMED_ENGINEERING_PARAMETER",
+          "pivot_effective_radius_m": 0.035,
+          "pivot_effective_radius_source": "ASSUMED_ENGINEERING_PARAMETER",
+          "pivot_transition_speed_kmh": 5.0,
+          "pivot_transition_source": "ASSUMED_ENGINEERING_PARAMETER_INSPIRED_BY_LOW_SPEED_LITERATURE",
+          "pivot_engagement_angle_deg": 1.0,
+          "pivot_engagement_source": "ASSUMED_ENGINEERING_PARAMETER",
+          "stiffness_scenarios_Nm_per_rad": {
+            "low_flexibility": {
+              "q_front": 400000.0,
+              "q4": 300000.0,
+              "q5": 300000.0,
+              "q6": 300000.0
+            },
+            "medium_flexibility": {
+              "q_front": 200000.0,
+              "q4": 150000.0,
+              "q5": 150000.0,
+              "q6": 150000.0
+            },
+            "high_flexibility": {
+              "q_front": 100000.0,
+              "q4": 75000.0,
+              "q5": 75000.0,
+              "q6": 75000.0
+            }
+          },
+          "stiffness_source": "ASSUMED_ENGINEERING_PARAMETER_NOT_CUSTOMER_MEASURED"
+        },
+        "front_cylinder_interface": {
+          "cylinder_id": "front_group_1",
+          "frame_mount": "PENDING_CUSTOMER_COORDINATE",
+          "moving_mount": "PENDING_CUSTOMER_COORDINATE",
+          "stroke_per_q_mm_per_rad": 250.0,
+          "stroke_mapping_source": "ASSUMED_ENGINEERING_PARAMETER_INTERFACE_PLACEHOLDER"
+        }
+      }
+    },
+    "mechanical_design": {
+      "path": "configs/j1/engineering_mechanism.json",
+      "raw": {
+        "schema_version": "J1.0",
+        "tag": "ENGINEERING_STEERING_MODEL",
+        "assumptions": [
+          "ENGINEERING_DESIGN_ASSUMPTION: 转向臂长度 / 齿条后移量 / 边拉杆长度 / 摆臂拾取半径 逐组取值见各组 notes（甲方未提供这些尺寸）",
+          "CUSTOMER_GEOMETRY: 转向节主销（车轮中心）、摆臂枢轴、液压缸机架点与活塞杆安装点全部沿用甲方原值，未做任何修改。",
+          "机械传动原理：液压缸 → 甲方摆臂 → 驱动连杆 → 齿条（沿 y 平动）→ 两根边拉杆 → 左右转向节；左右转向臂指向共同瞬时转向中心，阿克曼差动由转向梯形本身产生，不是显示层做差。",
+          "前组：一桥齿条由摆臂驱动，二桥齿条由中间拉杆与一桥齿条 1:1 耦合（一桥主动、二桥随动）。"
+        ],
+        "provenance": {
+          "source": "mechanical_model_input_spec_v1.0.yaml",
+          "icr_reference_axle": "3",
+          "third_axle_locked": "true",
+          "front_follower_retune": "scripts/j1r2/retune_front_follower.py --scale 1.39；标定判据 = axles 1–2 对理想阿克曼角的最大偏差最小"
+        },
+        "groups": {
+          "front": {
+            "key": "front",
+            "axles": [
+              1,
+              2
+            ],
+            "driven_axle": 1,
+            "rack_drive_point": [
+              -0.2379844536547911,
+              0.32599193202102705
+            ],
+            "racks": {
+              "1": -0.2379844536547911,
+              "2": -2.8352205167883313
+            },
+            "sides": {
+              "axle1_left": {
+                "arm_tip": [
+                  -0.2079844536547911,
+                  0.9652884203580114
+                ],
+                "swing_pickup": [
+                  0.0,
+                  0.0
+                ],
+                "rack_end": [
+                  -0.2379844536547911,
+                  0.32599193202102705
+                ]
+              },
+              "axle1_right": {
+                "arm_tip": [
+                  -0.2079844536547911,
+                  -0.9652884203580114
+                ],
+                "swing_pickup": [
+                  -0.9125671108990365,
+                  -0.4671539824501537
+                ],
+                "rack_end": [
+                  -0.2379844536547911,
+                  -0.32599193202102705
+                ]
+              },
+              "axle2_left": {
+                "arm_tip": [
+                  -2.889157,
+                  0.932604
+                ],
+                "swing_pickup": [
+                  0.0,
+                  0.0
+                ],
+                "rack_end": [
+                  -2.8352205167883313,
+                  0.31109507874361597
+                ]
+              },
+              "axle2_right": {
+                "arm_tip": [
+                  -2.889157,
+                  -0.932604
+                ],
+                "swing_pickup": [
+                  0.0,
+                  0.0
+                ],
+                "rack_end": [
+                  -2.8352205167883313,
+                  -0.31109507874361597
+                ]
+              }
+            },
+            "relay": [
+              [
+                -0.2379844536547911,
+                0.32599193202102705
+              ],
+              [
+                -2.8352205167883313,
+                0.31109507874361597
+              ]
+            ],
+            "notes": [
+              "驱动连杆长 1.0412 m，摆臂拾取点传动角 89.6°",
+              "尺寸 arm=0.22 offset=0.03 link=0.64 radius=0.16",
+              "ENGINEERING_DESIGN_ASSUMPTION：二桥转向臂有效半径按实测标定放大 1.39×（axle2_left 0.2200→3.0359 m，axle2_right 0.2200→3.0359 m），把前组随动传动比降到与理想阿克伦曼匹配；甲方坐标未改。"
+            ]
+          },
+          "axle4": {
+            "key": "axle4",
+            "axles": [
+              4
+            ],
+            "driven_axle": 4,
+            "rack_drive_point": [
+              -9.000179574888215,
+              0.5854549717572981
+            ],
+            "racks": {
+              "4": -9.000179574888215
+            },
+            "sides": {
+              "axle4_left": {
+                "arm_tip": [
+                  -8.800179574888215,
+                  0.8847875626992133
+                ],
+                "swing_pickup": [
+                  0.0,
+                  0.0
+                ],
+                "rack_end": [
+                  -9.000179574888215,
+                  0.5854549717572981
+                ]
+              },
+              "axle4_right": {
+                "arm_tip": [
+                  -8.800179574888215,
+                  -0.8847875626992133
+                ],
+                "swing_pickup": [
+                  -9.91518873610837,
+                  -0.34370932145312094
+                ],
+                "rack_end": [
+                  -9.000179574888215,
+                  -0.5854549717572981
+                ]
+              }
+            },
+            "relay": null,
+            "notes": [
+              "驱动连杆长 1.3041 m，摆臂拾取点传动角 89.4°",
+              "尺寸 arm=0.22 offset=0.2 link=0.36 radius=0.32"
+            ]
+          },
+          "axle5": {
+            "key": "axle5",
+            "axles": [
+              5
+            ],
+            "driven_axle": 5,
+            "rack_drive_point": [
+              -13.474043944740655,
+              0.4789588373553746
+            ],
+            "racks": {
+              "5": -13.474043944740655
+            },
+            "sides": {
+              "axle5_left": {
+                "arm_tip": [
+                  -13.354043944740656,
+                  0.9437168389002646
+                ],
+                "swing_pickup": [
+                  0.0,
+                  0.0
+                ],
+                "rack_end": [
+                  -13.474043944740655,
+                  0.4789588373553746
+                ]
+              },
+              "axle5_right": {
+                "arm_tip": [
+                  -13.354043944740656,
+                  -0.9437168389002646
+                ],
+                "swing_pickup": [
+                  -11.844844274215744,
+                  -0.2776654535543678
+                ],
+                "rack_end": [
+                  -13.474043944740655,
+                  -0.4789588373553746
+                ]
+              }
+            },
+            "relay": null,
+            "notes": [
+              "驱动连杆长 1.7963 m，摆臂拾取点传动角 89.1°",
+              "尺寸 arm=0.34 offset=0.12 link=0.48 radius=0.32"
+            ]
+          },
+          "axle6": {
+            "key": "axle6",
+            "axles": [
+              6
+            ],
+            "driven_axle": 6,
+            "rack_drive_point": [
+              -16.022063078052046,
+              0.605472775644235
+            ],
+            "racks": {
+              "6": -16.022063078052046
+            },
+            "sides": {
+              "axle6_left": {
+                "arm_tip": [
+                  -15.952063078052046,
+                  0.9586016473044264
+                ],
+                "swing_pickup": [
+                  0.0,
+                  0.0
+                ],
+                "rack_end": [
+                  -16.022063078052046,
+                  0.605472775644235
+                ]
+              },
+              "axle6_right": {
+                "arm_tip": [
+                  -15.952063078052046,
+                  -0.9586016473044264
+                ],
+                "swing_pickup": [
+                  -13.832180623415969,
+                  -0.7735315430775423
+                ],
+                "rack_end": [
+                  -16.022063078052046,
+                  -0.605472775644235
+                ]
+              }
+            },
+            "relay": null,
+            "notes": [
+              "驱动连杆长 2.5879 m，摆臂拾取点传动角 89.8°",
+              "尺寸 arm=0.34 offset=0.07 link=0.36 radius=0.24"
+            ]
+          }
+        }
+      }
+    },
+    "hydraulic_engineering": {
+      "path": "configs/j1r2/engineering_hydraulics.json",
+      "raw": {
+        "schema_version": "J1R2.0",
+        "tag": "ENGINEERING_HYDRAULIC_V1",
+        "fluid_bulk_modulus_pa": 1000000000.0,
+        "fluid_density_kg_m3": 850.0,
+        "tank_pressure_pa": 500000.0,
+        "precharge_pressure_pa": 2000000.0,
+        "orifice_pressure_regularisation_pa": 100000.0,
+        "supplies": {
+          "front": {
+            "displacement_m3_per_rad": 2.2652148305145185e-06,
+            "nominal_speed_rad_s": 157.08,
+            "relief_pressure_pa": 21000000.0,
+            "plenum_volume_m3": 0.002,
+            "bulk_modulus_pa": 1000000000.0,
+            "relief_area_m2": 1.2e-05
+          },
+          "rear": {
+            "displacement_m3_per_rad": 3.6707659120574145e-06,
+            "nominal_speed_rad_s": 157.08,
+            "relief_pressure_pa": 21000000.0,
+            "plenum_volume_m3": 0.002,
+            "bulk_modulus_pa": 1000000000.0,
+            "relief_area_m2": 1.2e-05
+          }
+        },
+        "channels": [
+          {
+            "name": "channel_front",
+            "dof": "q_front",
+            "supply": "front",
+            "polarity": 1.0,
+            "kp": 176.6278,
+            "ki": 2207.8473,
+            "kd": 0.0,
+            "kff": 7.065111,
+            "command_limit": 1.0,
+            "reference_peak_velocity_m_s": 0.091317,
+            "cylinder": {
+              "area_a_m2": 0.0031172453105244723,
+              "area_b_m2": 0.0031172453105244723,
+              "bore_mm": 63.0,
+              "stroke_m": 0.393615,
+              "stroke_offset_m": 0.0,
+              "dead_volume_m3": 0.00019631912206433442,
+              "mass_kg": 440.46,
+              "viscous_damping_n_s_per_m": 4361.96,
+              "coulomb_friction_n": 622.91,
+              "end_stop_stiffness_n_per_m": 179989289.9,
+              "end_stop_damping_n_s_per_m": 218098.2,
+              "mass_source": "ENGINEERING_DESIGN_ASSUMPTION：J_轴=40 kg·m²（2 根转向轴）经 (dδ/dx)² 折算，dδ/dx=3.3184 rad/m"
+            },
+            "valve": {
+              "maximum_area_m2": 8.26607749897381e-06,
+              "discharge_coefficient": 0.62,
+              "lag_time_s": 0.002,
+              "deadband": 0.0,
+              "velocity_per_unit_command_m_s": 0.141541
+            },
+            "notes": "ENGINEERING_DESIGN_ASSUMPTION：对称双出杆缸（双腔有效面积相等），保证左右转向力与速度对称。需求缸力 21562 N 来自最不利工况（目标角 +30°, 车速 0 km/h, μ=0.8）；安全系数 1.3、机械效率 0.9；设计负载压力 14.7 MPa。"
+          },
+          {
+            "name": "channel_rear_1",
+            "dof": "q4",
+            "supply": "rear",
+            "polarity": 1.0,
+            "kp": 1354.0738,
+            "ki": 16925.923,
+            "kd": 0.0,
+            "kff": 54.162954,
+            "command_limit": 1.0,
+            "reference_peak_velocity_m_s": 0.011911,
+            "cylinder": {
+              "area_a_m2": 0.0031172453105244723,
+              "area_b_m2": 0.0031172453105244723,
+              "bore_mm": 63.0,
+              "stroke_m": 0.163367,
+              "stroke_offset_m": -0.002154,
+              "dead_volume_m3": 8.148083048918414e-05,
+              "mass_kg": 1106.24,
+              "viscous_damping_n_s_per_m": 10730.18,
+              "coulomb_friction_n": 714.5,
+              "end_stop_stiffness_n_per_m": 433664447.9,
+              "end_stop_damping_n_s_per_m": 536509.2,
+              "mass_source": "ENGINEERING_DESIGN_ASSUMPTION：J_轴=20 kg·m²（1 根转向轴）经 (dδ/dx)² 折算，dδ/dx=7.4372 rad/m"
+            },
+            "valve": {
+              "maximum_area_m2": 1.0782417373267067e-06,
+              "discharge_coefficient": 0.62,
+              "lag_time_s": 0.002,
+              "deadband": 0.0,
+              "velocity_per_unit_command_m_s": 0.018463
+            },
+            "notes": "ENGINEERING_DESIGN_ASSUMPTION：对称双出杆缸（双腔有效面积相等），保证左右转向力与速度对称。需求缸力 24733 N 来自最不利工况（目标角 +30°, 车速 0 km/h, μ=0.8）；安全系数 1.3、机械效率 0.9；设计负载压力 14.7 MPa。"
+          },
+          {
+            "name": "channel_rear_2",
+            "dof": "q5",
+            "supply": "rear",
+            "polarity": 1.0,
+            "kp": 442.9117,
+            "ki": 5536.3964,
+            "kd": 0.0,
+            "kff": 17.716468,
+            "command_limit": 1.0,
+            "reference_peak_velocity_m_s": 0.036416,
+            "cylinder": {
+              "area_a_m2": 0.005026548245743669,
+              "area_b_m2": 0.005026548245743669,
+              "bore_mm": 80.0,
+              "stroke_m": 0.139303,
+              "stroke_offset_m": -0.00703,
+              "dead_volume_m3": 0.00011203430632120254,
+              "mass_kg": 1789.84,
+              "viscous_damping_n_s_per_m": 18768.96,
+              "coulomb_friction_n": 1404.7,
+              "end_stop_stiffness_n_per_m": 820079559.8,
+              "end_stop_damping_n_s_per_m": 938447.8,
+              "mass_source": "ENGINEERING_DESIGN_ASSUMPTION：J_轴=20 kg·m²（1 根转向轴）经 (dδ/dx)² 折算，dδ/dx=9.4600 rad/m"
+            },
+            "valve": {
+              "maximum_area_m2": 5.315451998849212e-06,
+              "discharge_coefficient": 0.62,
+              "lag_time_s": 0.002,
+              "deadband": 0.0,
+              "velocity_per_unit_command_m_s": 0.056445
+            },
+            "notes": "ENGINEERING_DESIGN_ASSUMPTION：对称双出杆缸（双腔有效面积相等），保证左右转向力与速度对称。需求缸力 48624 N 来自最不利工况（目标角 +30°, 车速 0 km/h, μ=0.8）；安全系数 1.3、机械效率 0.9；设计负载压力 14.7 MPa。"
+          },
+          {
+            "name": "channel_rear_3",
+            "dof": "q6",
+            "supply": "rear",
+            "polarity": 1.0,
+            "kp": 208.5315,
+            "ki": 2606.6437,
+            "kd": 0.0,
+            "kff": 8.34126,
+            "command_limit": 1.0,
+            "reference_peak_velocity_m_s": 0.077346,
+            "cylinder": {
+              "area_a_m2": 0.0031172453105244723,
+              "area_b_m2": 0.0031172453105244723,
+              "bore_mm": 63.0,
+              "stroke_m": 0.267919,
+              "stroke_offset_m": -0.020567,
+              "dead_volume_m3": 0.00013362718743048957,
+              "mass_kg": 501.18,
+              "viscous_damping_n_s_per_m": 5639.73,
+              "coulomb_friction_n": 796.11,
+              "end_stop_stiffness_n_per_m": 264432261.5,
+              "end_stop_damping_n_s_per_m": 281986.6,
+              "mass_source": "ENGINEERING_DESIGN_ASSUMPTION：J_轴=20 kg·m²（1 根转向轴）经 (dδ/dx)² 折算，dδ/dx=5.0059 rad/m"
+            },
+            "valve": {
+              "maximum_area_m2": 7.001431132738098e-06,
+              "discharge_coefficient": 0.62,
+              "lag_time_s": 0.002,
+              "deadband": 0.0,
+              "velocity_per_unit_command_m_s": 0.119886
+            },
+            "notes": "ENGINEERING_DESIGN_ASSUMPTION：对称双出杆缸（双腔有效面积相等），保证左右转向力与速度对称。需求缸力 27557 N 来自最不利工况（目标角 +30°, 车速 0 km/h, μ=0.8）；安全系数 1.3、机械效率 0.9；设计负载压力 14.7 MPa。"
+          }
+        ],
+        "degradation": {
+          "pump_volumetric_efficiency": 1.0,
+          "pump_internal_leakage_m3_s_per_pa": 0.0,
+          "valve_flow_coefficient_scale": 1.0,
+          "valve_lag_scale": 1.0,
+          "cylinder_internal_leakage_m3_s_per_pa": 0.0,
+          "cylinder_friction_scale": 1.0,
+          "supply_pressure_scale": 1.0
+        },
+        "reference": {
+          "rate_deg_per_s": 12.0,
+          "minimum_time_s": 0.4,
+          "note": "一桥外侧轮目标角的指令斜坡速率与最短斜坡时间。"
+        },
+        "assumptions": [
+          "ENGINEERING_DESIGN_ASSUMPTION：本文件所有液压参数（缸径、面积、行程、容积、阻尼、摩擦、阀口面积、泵排量、供压、控制器增益）都是 J1-R2 的工程选型值，不是甲方设备实测参数，也不继承旧 Amesim/L1-Fast 数值。",
+          "ENGINEERING_DESIGN_ASSUMPTION：每个等效作动通道用一只**对称双出杆缸**代表，保证左右转向的力与速度对称；这等价于甲方对置单杆缸对的工程等效。",
+          "ENGINEERING_DESIGN_ASSUMPTION：折算质量由转向轴绕主销转动惯量 20 kg·m²/轴经 (dδ/dx)² 得到。"
+        ],
+        "provenance": {
+          "method": "虚功 F = M/(ds/dδ) + 流量法 + 折算惯量",
+          "design_case": "(0.0, 5.0, 10.0, 20.0) km/h × ±30° × μ=0.8 × 11.5 t/轴，取双向峰值",
+          "safety_factor": "1.3",
+          "gear_efficiency": "0.9",
+          "flow_margin": "1.25",
+          "velocity_margin": "1.55"
+        },
+        "notes": "PHASE J1-R2 唯一正式液压模型 ``ENGINEERING_HYDRAULIC_V1`` 的参数。旧 L1-Fast 参数作为历史证据保留在 configs/j1/hydraulic_design.json。"
+      }
+    }
+  },
+  "hydraulic_state_layout": {
+    "channel_state_size": 5,
+    "channel_state_fields": [
+      "pA",
+      "pB",
+      "x",
+      "v",
+      "u_valve_spool"
+    ],
+    "state_size": 22,
+    "offsets": {
+      "channel_front": 0,
+      "channel_rear_1": 5,
+      "channel_rear_2": 10,
+      "channel_rear_3": 15,
+      "supply_front": 20,
+      "supply_rear": 21
+    },
+    "supply_order": [
+      "front",
+      "rear"
+    ],
+    "channels_on_supply": {
+      "front": [
+        "channel_front"
+      ],
+      "rear": [
+        "channel_rear_1",
+        "channel_rear_2",
+        "channel_rear_3"
+      ]
+    }
+  },
+  "mechanical_mapping": {
+    "dof_order": [
+      "q_front",
+      "q4",
+      "q5",
+      "q6"
+    ],
+    "channel_order": [
+      "channel_front",
+      "channel_rear_1",
+      "channel_rear_2",
+      "channel_rear_3"
+    ],
+    "channel_to_dof": {
+      "channel_front": "q_front",
+      "channel_rear_1": "q4",
+      "channel_rear_2": "q5",
+      "channel_rear_3": "q6"
+    },
+    "group_to_axles": {
+      "front": [
+        1,
+        2
+      ],
+      "axle4": [
+        4
+      ],
+      "axle5": [
+        5
+      ],
+      "axle6": [
+        6
+      ]
+    },
+    "rear_axles_steer_opposite": [
+      4,
+      5,
+      6
+    ],
+    "third_axle_locked": true,
+    "q_envelopes_rad": {
+      "q_front": [
+        -0.78723,
+        0.78723
+      ],
+      "q4": [
+        -0.36399,
+        0.36399
+      ],
+      "q5": [
+        -0.30473,
+        0.30473
+      ],
+      "q6": [
+        -0.52482,
+        0.52482
+      ]
+    },
+    "front_stroke_per_q_m_per_rad": 0.25
+  },
+  "hydraulic_capability_baseline": {
+    "availability_n": {
+      "channel_front": 63903.52886575168,
+      "channel_rear_1": 63903.52886575168,
+      "channel_rear_2": 103044.23903774521,
+      "channel_rear_3": 63903.52886575168
+    },
+    "half_stroke_mm": {
+      "channel_front": 196.8075,
+      "channel_rear_1": 81.68350000000001,
+      "channel_rear_2": 69.6515,
+      "channel_rear_3": 133.95950000000002
+    }
+  },
+  "timeseries_columns": [
+    "time_s",
+    "target_outer_angle_deg",
+    "speed_kmh",
+    "lateral_acceleration_mps2",
+    "adhesion_utilization",
+    "max_abs_slip_angle_deg",
+    "road_load_status",
+    "curvature_target_1pm",
+    "curvature_actual_1pm",
+    "curvature_source_is_actual",
+    "icr_line_residual_m",
+    "lateral_force_demand_total_n",
+    "lateral_force_available_total_n",
+    "adhesion_infeasible",
+    "channel_front_q_ref_rad",
+    "channel_front_q_actual_rad",
+    "channel_front_x_ref_m",
+    "channel_front_x_ref_eff_m",
+    "channel_front_x_m",
+    "channel_front_v_m_s",
+    "channel_front_pA_mpa_g",
+    "channel_front_pB_mpa_g",
+    "channel_front_valve_command",
+    "channel_front_pid_raw_output",
+    "channel_front_pid_unclipped_request",
+    "channel_front_pid_at_limit",
+    "channel_front_pid_anti_windup",
+    "channel_front_pid_margin",
+    "channel_front_flow_a_m3_s",
+    "channel_front_flow_b_m3_s",
+    "channel_front_hydraulic_force_n",
+    "channel_front_load_force_n",
+    "channel_front_dx_dq_m_per_rad",
+    "channel_front_Q_road_nm",
+    "channel_front_virtual_work_residual_nm_per_s",
+    "channel_rear_1_q_ref_rad",
+    "channel_rear_1_q_actual_rad",
+    "channel_rear_1_x_ref_m",
+    "channel_rear_1_x_ref_eff_m",
+    "channel_rear_1_x_m",
+    "channel_rear_1_v_m_s",
+    "channel_rear_1_pA_mpa_g",
+    "channel_rear_1_pB_mpa_g",
+    "channel_rear_1_valve_command",
+    "channel_rear_1_pid_raw_output",
+    "channel_rear_1_pid_unclipped_request",
+    "channel_rear_1_pid_at_limit",
+    "channel_rear_1_pid_anti_windup",
+    "channel_rear_1_pid_margin",
+    "channel_rear_1_flow_a_m3_s",
+    "channel_rear_1_flow_b_m3_s",
+    "channel_rear_1_hydraulic_force_n",
+    "channel_rear_1_load_force_n",
+    "channel_rear_1_dx_dq_m_per_rad",
+    "channel_rear_1_Q_road_nm",
+    "channel_rear_1_virtual_work_residual_nm_per_s",
+    "channel_rear_2_q_ref_rad",
+    "channel_rear_2_q_actual_rad",
+    "channel_rear_2_x_ref_m",
+    "channel_rear_2_x_ref_eff_m",
+    "channel_rear_2_x_m",
+    "channel_rear_2_v_m_s",
+    "channel_rear_2_pA_mpa_g",
+    "channel_rear_2_pB_mpa_g",
+    "channel_rear_2_valve_command",
+    "channel_rear_2_pid_raw_output",
+    "channel_rear_2_pid_unclipped_request",
+    "channel_rear_2_pid_at_limit",
+    "channel_rear_2_pid_anti_windup",
+    "channel_rear_2_pid_margin",
+    "channel_rear_2_flow_a_m3_s",
+    "channel_rear_2_flow_b_m3_s",
+    "channel_rear_2_hydraulic_force_n",
+    "channel_rear_2_load_force_n",
+    "channel_rear_2_dx_dq_m_per_rad",
+    "channel_rear_2_Q_road_nm",
+    "channel_rear_2_virtual_work_residual_nm_per_s",
+    "channel_rear_3_q_ref_rad",
+    "channel_rear_3_q_actual_rad",
+    "channel_rear_3_x_ref_m",
+    "channel_rear_3_x_ref_eff_m",
+    "channel_rear_3_x_m",
+    "channel_rear_3_v_m_s",
+    "channel_rear_3_pA_mpa_g",
+    "channel_rear_3_pB_mpa_g",
+    "channel_rear_3_valve_command",
+    "channel_rear_3_pid_raw_output",
+    "channel_rear_3_pid_unclipped_request",
+    "channel_rear_3_pid_at_limit",
+    "channel_rear_3_pid_anti_windup",
+    "channel_rear_3_pid_margin",
+    "channel_rear_3_flow_a_m3_s",
+    "channel_rear_3_flow_b_m3_s",
+    "channel_rear_3_hydraulic_force_n",
+    "channel_rear_3_load_force_n",
+    "channel_rear_3_dx_dq_m_per_rad",
+    "channel_rear_3_Q_road_nm",
+    "channel_rear_3_virtual_work_residual_nm_per_s",
+    "wheel_axle1_left_command_deg",
+    "wheel_axle1_right_command_deg",
+    "wheel_axle2_left_command_deg",
+    "wheel_axle2_right_command_deg",
+    "wheel_axle3_left_command_deg",
+    "wheel_axle3_right_command_deg",
+    "wheel_axle4_left_command_deg",
+    "wheel_axle4_right_command_deg",
+    "wheel_axle5_left_command_deg",
+    "wheel_axle5_right_command_deg",
+    "wheel_axle6_left_command_deg",
+    "wheel_axle6_right_command_deg",
+    "wheel_axle1_left_actual_deg",
+    "wheel_axle1_left_target_deg",
+    "wheel_axle1_left_target_mechanism_deg",
+    "wheel_axle1_left_tire_slip_deg",
+    "wheel_axle1_left_fy_demand_n",
+    "wheel_axle1_left_fy_available_n",
+    "wheel_axle1_left_fz_n",
+    "wheel_axle1_right_actual_deg",
+    "wheel_axle1_right_target_deg",
+    "wheel_axle1_right_target_mechanism_deg",
+    "wheel_axle1_right_tire_slip_deg",
+    "wheel_axle1_right_fy_demand_n",
+    "wheel_axle1_right_fy_available_n",
+    "wheel_axle1_right_fz_n",
+    "wheel_axle2_left_actual_deg",
+    "wheel_axle2_left_target_deg",
+    "wheel_axle2_left_target_mechanism_deg",
+    "wheel_axle2_left_tire_slip_deg",
+    "wheel_axle2_left_fy_demand_n",
+    "wheel_axle2_left_fy_available_n",
+    "wheel_axle2_left_fz_n",
+    "wheel_axle2_right_actual_deg",
+    "wheel_axle2_right_target_deg",
+    "wheel_axle2_right_target_mechanism_deg",
+    "wheel_axle2_right_tire_slip_deg",
+    "wheel_axle2_right_fy_demand_n",
+    "wheel_axle2_right_fy_available_n",
+    "wheel_axle2_right_fz_n",
+    "wheel_axle3_left_actual_deg",
+    "wheel_axle3_left_target_deg",
+    "wheel_axle3_left_target_mechanism_deg",
+    "wheel_axle3_left_tire_slip_deg",
+    "wheel_axle3_left_fy_demand_n",
+    "wheel_axle3_left_fy_available_n",
+    "wheel_axle3_left_fz_n",
+    "wheel_axle3_right_actual_deg",
+    "wheel_axle3_right_target_deg",
+    "wheel_axle3_right_target_mechanism_deg",
+    "wheel_axle3_right_tire_slip_deg",
+    "wheel_axle3_right_fy_demand_n",
+    "wheel_axle3_right_fy_available_n",
+    "wheel_axle3_right_fz_n",
+    "wheel_axle4_left_actual_deg",
+    "wheel_axle4_left_target_deg",
+    "wheel_axle4_left_target_mechanism_deg",
+    "wheel_axle4_left_tire_slip_deg",
+    "wheel_axle4_left_fy_demand_n",
+    "wheel_axle4_left_fy_available_n",
+    "wheel_axle4_left_fz_n",
+    "wheel_axle4_right_actual_deg",
+    "wheel_axle4_right_target_deg",
+    "wheel_axle4_right_target_mechanism_deg",
+    "wheel_axle4_right_tire_slip_deg",
+    "wheel_axle4_right_fy_demand_n",
+    "wheel_axle4_right_fy_available_n",
+    "wheel_axle4_right_fz_n",
+    "wheel_axle5_left_actual_deg",
+    "wheel_axle5_left_target_deg",
+    "wheel_axle5_left_target_mechanism_deg",
+    "wheel_axle5_left_tire_slip_deg",
+    "wheel_axle5_left_fy_demand_n",
+    "wheel_axle5_left_fy_available_n",
+    "wheel_axle5_left_fz_n",
+    "wheel_axle5_right_actual_deg",
+    "wheel_axle5_right_target_deg",
+    "wheel_axle5_right_target_mechanism_deg",
+    "wheel_axle5_right_tire_slip_deg",
+    "wheel_axle5_right_fy_demand_n",
+    "wheel_axle5_right_fy_available_n",
+    "wheel_axle5_right_fz_n",
+    "wheel_axle6_left_actual_deg",
+    "wheel_axle6_left_target_deg",
+    "wheel_axle6_left_target_mechanism_deg",
+    "wheel_axle6_left_tire_slip_deg",
+    "wheel_axle6_left_fy_demand_n",
+    "wheel_axle6_left_fy_available_n",
+    "wheel_axle6_left_fz_n",
+    "wheel_axle6_right_actual_deg",
+    "wheel_axle6_right_target_deg",
+    "wheel_axle6_right_target_mechanism_deg",
+    "wheel_axle6_right_tire_slip_deg",
+    "wheel_axle6_right_fy_demand_n",
+    "wheel_axle6_right_fy_available_n",
+    "wheel_axle6_right_fz_n",
+    "cylinder_axle4_A_stroke_m",
+    "cylinder_axle4_B_stroke_m",
+    "cylinder_axle5_A_stroke_m",
+    "cylinder_axle5_B_stroke_m",
+    "cylinder_axle6_A_stroke_m",
+    "cylinder_axle6_B_stroke_m",
+    "cylinder_front_group_1_stroke_m",
+    "third_axle_max_abs_deg",
+    "supply_pressure_front_mpa_g",
+    "supply_pressure_rear_mpa_g",
+    "pump_capacity_insufficient_front",
+    "pump_capacity_insufficient_rear",
+    "pump_capacity_margin_front_m3_s",
+    "pump_capacity_margin_rear_m3_s",
+    "max_link_residual_m",
+    "chain_condition_number",
+    "exact_linkage_error",
+    "wheel_axle1_left_exact_deg",
+    "wheel_axle1_right_exact_deg",
+    "wheel_axle2_left_exact_deg",
+    "wheel_axle2_right_exact_deg",
+    "wheel_axle3_left_exact_deg",
+    "wheel_axle3_right_exact_deg",
+    "wheel_axle4_left_exact_deg",
+    "wheel_axle4_right_exact_deg",
+    "wheel_axle5_left_exact_deg",
+    "wheel_axle5_right_exact_deg",
+    "wheel_axle6_left_exact_deg",
+    "wheel_axle6_right_exact_deg",
+    "cylinder_front_group_1_exact_stroke_m",
+    "cylinder_axle4_A_exact_stroke_m",
+    "cylinder_axle4_B_exact_stroke_m",
+    "cylinder_axle5_A_exact_stroke_m",
+    "cylinder_axle5_B_exact_stroke_m",
+    "cylinder_axle6_A_exact_stroke_m",
+    "cylinder_axle6_B_exact_stroke_m"
+  ]
+}

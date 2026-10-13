@@ -1,0 +1,6 @@
+# Install only into E:\ProgramData\condaData\envs_dirs\steering_sim
+PySide6==6.10.0
+pyqtgraph==0.13.7
+pandas==3.0.5
+openpyxl==3.1.5
+matplotlib==3.11.2

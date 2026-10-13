@@ -186,3 +186,17 @@ def test_run_is_repeatable(j0_config, m1_model):
     second = runner.run_case(case)
     for key in ("channel_front_x_m", "channel_rear_1_x_m", "time_s"):
         assert np.array_equal(first.samples[key], second.samples[key])
+
+
+def test_long_run_cancellation_stops_at_a_control_boundary(runner, j0_config):
+    checks = {"count": 0}
+
+    def should_stop():
+        checks["count"] += 1
+        return checks["count"] >= 3
+
+    case = _short_case(j0_config.cases[0], duration=0.2)
+    result = runner.run_case(case, should_stop=should_stop)
+    assert not result.completed
+    assert "cancelled by user" in (result.failure_reason or "")
+    assert result.failure_time_s == pytest.approx(0.02)

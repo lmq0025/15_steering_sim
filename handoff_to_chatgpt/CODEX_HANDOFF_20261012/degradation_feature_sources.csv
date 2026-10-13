@@ -1,0 +1,23 @@
+﻿部件,退化驱动特征,现有来源（列名/接口）,备注
+泵,供油压力,supply_pressure_front_mpa_g / supply_pressure_rear_mpa_g,逐采样点
+泵,理论流量,EngineeringOutput.pump_flow_m3_s（未写入 CSV）,逐采样点
+泵,取用流量,EngineeringOutput.demand_flow_m3_s（未写入 CSV）,逐采样点
+泵,流量余量,pump_capacity_margin_front_m3_s / _rear_m3_s,逐采样点
+泵,供油不足标志,pump_capacity_insufficient_front / _rear,逐采样点
+泵,泵压差,需用 supply_pressures_pa_g[j] − tank_pressure_pa 现算,派生
+泵,泵转速,PumpParameters.nominal_speed_rad_s（常量，非状态）,**缺口**
+阀,阀命令（阀芯位置）,<channel>_valve_command,逐采样点
+阀,未限幅请求,<channel>_pid_unclipped_request,逐采样点
+阀,贴限幅标志,<channel>_pid_at_limit,逐采样点
+阀,流量,<channel>_flow_a_m3_s / <channel>_flow_b_m3_s,逐采样点
+缸,位移,<channel>_x_m,逐采样点
+缸,速度,<channel>_v_m_s,逐采样点
+缸,两腔压力,<channel>_pA_mpa_g / <channel>_pB_mpa_g,逐采样点
+缸,液压力,<channel>_hydraulic_force_n,逐采样点
+缸,负载力,<channel>_load_force_n,逐采样点
+缸,泄漏流量,未单独输出（已并入 flow_a/flow_b）,**缺口**
+缸,累计行程/累计流量,未累计（需在调用方对时间序列积分）,**缺口**
+系统,目标/实际行程,<channel>_x_ref_eff_m / <channel>_x_m,逐采样点
+系统,机构坐标,<channel>_q_ref_rad / <channel>_q_actual_rad,逐采样点
+系统,道路力矩,<channel>_Q_road_nm,逐采样点
+系统,十二轮角,wheel_<wheel>_actual_deg / _command_deg / _target_mechanism_deg,逐采样点

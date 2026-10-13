@@ -296,20 +296,26 @@ def _assess_supply_engineering(hydraulic) -> SupplyAssessment:
     速度动作核算 —— 这正是选型时用过的流量口径，两者一致才谈得上"能力检查"。
     """
     parameters = hydraulic.parameters
-    degradation = parameters.degradation
     labels = {"front": "前组（一、二桥）", "rear": "后组（四、五、六桥）"}
     groups: list[SupplyGroup] = []
     flags: list[str] = []
     messages: list[str] = []
     for name in parameters.supply_names:
         pump = parameters.supplies[name]
-        q_pump = pump.ideal_flow_m3_s * degradation.pump_volumetric_efficiency
+        # 每条供油轨按自己的健康状态核算，并在平衡压力处计入泵内泄漏。
+        equilibrium_pressure = hydraulic._supply_equilibrium_pressure(name)
+        q_pump = hydraulic.available_pump_flow(name, equilibrium_pressure)
         demand = 0.0
         for channel in parameters.channels:
             if channel.supply != name:
                 continue
             demand += (channel.cylinder.area_a_m2
                        * channel.reference_peak_velocity_m_s)
+        valve_leak = sum(
+            parameters.degradation.valve(channel.name).internal_leakage_m3_s_per_pa
+            * max(0.0, equilibrium_pressure - parameters.tank_pressure_pa)
+            for channel in parameters.channels if channel.supply == name)
+        demand += valve_leak
         margin = q_pump - demand
         groups.append(SupplyGroup(
             name=name, label=labels.get(name, name), q_pump_m3_s=q_pump,

@@ -1,0 +1,112 @@
+{
+  "schema_version": "D3.0",
+  "model_version": "D3_RUL_MULTIMODE_V1",
+  "assumption_tag": "ENGINEERING_DESIGN_ASSUMPTION",
+  "calibration_status": "PENDING_CLIENT_CALIBRATION",
+  "mission": {
+    "maximum_cycles": 240,
+    "maximum_service_years": 20.0,
+    "maximum_damage": 1.0,
+    "refresh_damage_interval": 0.05,
+    "system_failure_grade": "DANGEROUS",
+    "maximum_dynamic_checkpoints": 6,
+    "quality_case_ids": ["STD_L10", "STD_L30"]
+  },
+  "modes": {
+    "pump": {
+      "leakage_wear": {
+        "mechanism": "gear-pair/end-face wear increases pressure-driven internal leakage",
+        "rate": 2.0e-5,
+        "rate_source": "D1 pump rate",
+        "exposure_unit": "equivalent operating hour",
+        "state_factor_alpha": 0.35,
+        "maximum_damage": 1.0,
+        "failure_damage": 0.85,
+        "maximum_internal_leakage_m3_s_per_pa": 1.0e-11,
+        "failure_parameter_limit": 8.5e-12,
+        "gamma_scale_damage": 0.00012,
+        "drivers": ["supply pressure", "pump speed", "running time", "contamination", "temperature"]
+      },
+      "mechanical_loss": {
+        "mechanism": "gear/bearing mechanical friction increases shaft loss and lowers mechanical efficiency",
+        "rate": 1.25e-5,
+        "exposure_unit": "equivalent shaft-load hour",
+        "state_factor_alpha": 0.28,
+        "maximum_damage": 1.0,
+        "failure_damage": 0.90,
+        "minimum_mechanical_efficiency": 0.55,
+        "efficiency_loss_at_maximum_damage": 0.42,
+        "healthy_power_margin_ratio": 1.20,
+        "failure_parameter_limit": 0.62,
+        "gamma_scale_damage": 0.00010,
+        "drivers": ["working pressure", "pump speed", "running time", "temperature", "contamination"]
+      }
+    },
+    "valve": {
+      "leakage_wear": {
+        "mechanism": "spool/sleeve contamination wear increases P-T internal leakage",
+        "rate": 8.0e-5,
+        "exposure_unit": "equivalent pressure-flow-cycle exposure",
+        "state_factor_alpha": 0.25,
+        "maximum_damage": 1.0,
+        "failure_damage": 0.85,
+        "maximum_internal_leakage_m3_s_per_pa": 5.0e-12,
+        "failure_parameter_limit": 4.25e-12,
+        "gamma_scale_damage": 0.00020,
+        "drivers": ["valve pressure difference", "throughput", "action count", "contamination"]
+      },
+      "response_lag": {
+        "mechanism": "contamination and spool friction increase first-order spool response time",
+        "rate": 5.0e-5,
+        "exposure_unit": "equivalent spool-travel cycle",
+        "state_factor_alpha": 0.20,
+        "maximum_damage": 1.0,
+        "failure_damage": 0.90,
+        "maximum_lag_scale": 5.0,
+        "failure_parameter_limit": 4.6,
+        "gamma_scale_damage": 0.00018,
+        "drivers": ["action count", "cumulative spool travel", "pressure-flow load", "contamination"]
+      }
+    },
+    "cylinder": {
+      "leakage_wear": {
+        "mechanism": "seal sliding wear increases A-B chamber leakage",
+        "rate": 1.0e-4,
+        "exposure_unit": "equivalent loaded sliding exposure",
+        "state_factor_alpha": 0.30,
+        "maximum_damage": 1.0,
+        "failure_damage": 0.85,
+        "maximum_internal_leakage_m3_s_per_pa": 5.0e-12,
+        "failure_parameter_limit": 4.25e-12,
+        "gamma_scale_damage": 0.00022,
+        "drivers": ["chamber pressure difference", "absolute sliding distance", "load level", "contamination"]
+      },
+      "friction_growth": {
+        "mechanism": "seal/guide wear and load reversals increase Coulomb and viscous resistance",
+        "rate": 6.0e-5,
+        "exposure_unit": "equivalent sliding-plus-reversal exposure",
+        "state_factor_alpha": 0.25,
+        "maximum_damage": 1.0,
+        "failure_damage": 0.90,
+        "maximum_friction_scale": 3.0,
+        "failure_parameter_limit": 2.8,
+        "rainflow_reference_range_n": 100000.0,
+        "rainflow_exponent": 2.0,
+        "rainflow_weight": 0.10,
+        "gamma_scale_damage": 0.00020,
+        "drivers": ["absolute sliding distance", "load", "pressure difference", "rainflow force reversals"]
+      }
+    }
+  },
+  "stochastic": {
+    "sample_count": 128,
+    "random_seed": 20261013,
+    "right_censoring": true,
+    "interpretation": "Gamma process engineering assumption; not a measured life distribution"
+  },
+  "notes": [
+    "All rates, hard limits, stochastic dispersions and lifetime scales await client calibration.",
+    "D2 component health boundaries are not used as D3 scrap limits.",
+    "Pump mechanical efficiency affects shaft power and an explicit drive-power constraint, never a second volumetric-flow subtraction."
+  ]
+}

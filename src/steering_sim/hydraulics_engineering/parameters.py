@@ -150,6 +150,83 @@ class PumpParameters:
 
 
 @dataclass(frozen=True, slots=True)
+class PumpDegradationParameters:
+    """单条供油轨的退化参数。
+
+    D1 的齿轮泵磨损以 ``internal_leakage_m3_s_per_pa`` 作为唯一流量损失作用量；
+    ``volumetric_efficiency`` 可供历史/外部标定路径使用。预测器不会同时用两者描述
+    同一份磨损，避免重复扣除流量。
+    """
+
+    volumetric_efficiency: float = 1.0
+    internal_leakage_m3_s_per_pa: float = 0.0
+    # D3 second mode.  Mechanical efficiency changes shaft power/torque, not
+    # displacement flow.  A zero limit disables the optional prime-mover
+    # constraint and therefore preserves the J1-R2/D1/D2 healthy baseline.
+    mechanical_efficiency: float = 1.0
+    rated_drive_power_w: float = 0.0
+
+    def __post_init__(self) -> None:
+        if not 0.0 < self.volumetric_efficiency <= 1.0:
+            raise ParameterError("泵容积效率必须在 (0, 1]")
+        if self.internal_leakage_m3_s_per_pa < 0.0:
+            raise ParameterError("泵内泄漏系数不得为负")
+        if not 0.0 < self.mechanical_efficiency <= 1.0:
+            raise ParameterError("泵机械效率必须在 (0, 1]")
+        if self.rated_drive_power_w < 0.0:
+            raise ParameterError("泵驱动功率上限不得为负")
+
+    def to_dict(self) -> dict[str, float]:
+        return {"volumetric_efficiency": self.volumetric_efficiency,
+                "internal_leakage_m3_s_per_pa":
+                    self.internal_leakage_m3_s_per_pa,
+                "mechanical_efficiency": self.mechanical_efficiency,
+                "rated_drive_power_w": self.rated_drive_power_w}
+
+
+@dataclass(frozen=True, slots=True)
+class ValveDegradationParameters:
+    """单个等效作动通道的转向阀退化参数。"""
+
+    internal_leakage_m3_s_per_pa: float = 0.0
+    flow_coefficient_scale: float = 1.0
+    lag_scale: float = 1.0
+
+    def __post_init__(self) -> None:
+        if self.internal_leakage_m3_s_per_pa < 0.0:
+            raise ParameterError("阀内泄漏系数不得为负")
+        if not 0.0 < self.flow_coefficient_scale <= 2.0:
+            raise ParameterError("阀流量系数缩放必须在 (0, 2]")
+        if self.lag_scale < 1.0:
+            raise ParameterError("阀响应时间缩放不得小于 1")
+
+    def to_dict(self) -> dict[str, float]:
+        return {"internal_leakage_m3_s_per_pa":
+                    self.internal_leakage_m3_s_per_pa,
+                "flow_coefficient_scale": self.flow_coefficient_scale,
+                "lag_scale": self.lag_scale}
+
+
+@dataclass(frozen=True, slots=True)
+class CylinderDegradationParameters:
+    """单个等效对称缸的退化参数。"""
+
+    internal_leakage_m3_s_per_pa: float = 0.0
+    friction_scale: float = 1.0
+
+    def __post_init__(self) -> None:
+        if self.internal_leakage_m3_s_per_pa < 0.0:
+            raise ParameterError("缸内泄漏系数不得为负")
+        if self.friction_scale < 1.0:
+            raise ParameterError("缸摩擦缩放不得小于 1")
+
+    def to_dict(self) -> dict[str, float]:
+        return {"internal_leakage_m3_s_per_pa":
+                    self.internal_leakage_m3_s_per_pa,
+                "friction_scale": self.friction_scale}
+
+
+@dataclass(frozen=True, slots=True)
 class DegradationParameters:
     """退化接口（统一入口，本轮全部为新件取值）。
 
@@ -171,6 +248,57 @@ class DegradationParameters:
     cylinder_friction_scale: float = 1.0
     #: 供油压力上限缩放（泵磨损后压力上不去）。1.0 = 新件。
     supply_pressure_scale: float = 1.0
+    #: D1 部件级正式入口。空映射表示健康；上面的 7 个字段仅保留历史兼容。
+    pumps: Mapping[str, PumpDegradationParameters] = field(default_factory=dict)
+    valves: Mapping[str, ValveDegradationParameters] = field(default_factory=dict)
+    cylinders: Mapping[str, CylinderDegradationParameters] = field(default_factory=dict)
+    # 旧 demo GUI 的只读兼容字段。它们不再连接 L1-Fast，且仅允许健康值 1.0；
+    # 正式退化必须使用上面的工程物理字段或 pumps/valves/cylinders 映射。
+    valve_discharge_coefficient: float = 1.0
+    cylinder_internal_leakage: float = 1.0
+    cylinder_friction: float = 1.0
+    cylinder_damping: float = 1.0
+    controller_proportional_gain: float = 1.0
+
+    def __post_init__(self) -> None:
+        if not 0.0 < self.pump_volumetric_efficiency <= 1.0:
+            raise ParameterError("全局泵容积效率必须在 (0, 1]")
+        if self.pump_internal_leakage_m3_s_per_pa < 0.0:
+            raise ParameterError("全局泵内泄漏不得为负")
+        if self.cylinder_internal_leakage_m3_s_per_pa < 0.0:
+            raise ParameterError("全局缸内泄漏不得为负")
+        legacy = (self.valve_discharge_coefficient,
+                  self.cylinder_internal_leakage, self.cylinder_friction,
+                  self.cylinder_damping, self.controller_proportional_gain)
+        if any(value != 1.0 for value in legacy):
+            raise ParameterError("旧 demo 乘性占位字段只允许健康值 1.0；请使用正式工程退化参数")
+
+    def pump(self, name: str) -> PumpDegradationParameters:
+        local = self.pumps.get(name, PumpDegradationParameters())
+        return PumpDegradationParameters(
+            volumetric_efficiency=(self.pump_volumetric_efficiency
+                                   * local.volumetric_efficiency),
+            internal_leakage_m3_s_per_pa=(
+                self.pump_internal_leakage_m3_s_per_pa
+                + local.internal_leakage_m3_s_per_pa),
+            mechanical_efficiency=local.mechanical_efficiency,
+            rated_drive_power_w=local.rated_drive_power_w)
+
+    def valve(self, name: str) -> ValveDegradationParameters:
+        local = self.valves.get(name, ValveDegradationParameters())
+        return ValveDegradationParameters(
+            internal_leakage_m3_s_per_pa=local.internal_leakage_m3_s_per_pa,
+            flow_coefficient_scale=(self.valve_flow_coefficient_scale
+                                    * local.flow_coefficient_scale),
+            lag_scale=self.valve_lag_scale * local.lag_scale)
+
+    def cylinder(self, name: str) -> CylinderDegradationParameters:
+        local = self.cylinders.get(name, CylinderDegradationParameters())
+        return CylinderDegradationParameters(
+            internal_leakage_m3_s_per_pa=(
+                self.cylinder_internal_leakage_m3_s_per_pa
+                + local.internal_leakage_m3_s_per_pa),
+            friction_scale=self.cylinder_friction_scale * local.friction_scale)
 
     @property
     def is_new_unit(self) -> bool:
@@ -180,10 +308,16 @@ class DegradationParameters:
                 and self.valve_lag_scale == 1.0
                 and self.cylinder_internal_leakage_m3_s_per_pa == 0.0
                 and self.cylinder_friction_scale == 1.0
-                and self.supply_pressure_scale == 1.0)
+                and self.supply_pressure_scale == 1.0
+                and not self.pumps and not self.valves and not self.cylinders)
+
+    @property
+    def is_healthy(self) -> bool:
+        """旧 GUI/测试名称；与正式 ``is_new_unit`` 完全等价。"""
+        return self.is_new_unit
 
     def to_dict(self) -> dict[str, float]:
-        return {
+        result: dict[str, Any] = {
             "pump_volumetric_efficiency": self.pump_volumetric_efficiency,
             "pump_internal_leakage_m3_s_per_pa": self.pump_internal_leakage_m3_s_per_pa,
             "valve_flow_coefficient_scale": self.valve_flow_coefficient_scale,
@@ -192,6 +326,16 @@ class DegradationParameters:
             "cylinder_friction_scale": self.cylinder_friction_scale,
             "supply_pressure_scale": self.supply_pressure_scale,
         }
+        if self.pumps:
+            result["pumps"] = {name: item.to_dict()
+                               for name, item in self.pumps.items()}
+        if self.valves:
+            result["valves"] = {name: item.to_dict()
+                                for name, item in self.valves.items()}
+        if self.cylinders:
+            result["cylinders"] = {name: item.to_dict()
+                                   for name, item in self.cylinders.items()}
+        return result
 
 
 @dataclass(frozen=True, slots=True)
@@ -254,6 +398,14 @@ class EngineeringHydraulicParameters:
                 raise ParameterError(f"通道引用了未定义的供油轨 {supply!r}")
         if self.fluid_bulk_modulus_pa <= 0.0 or self.fluid_density_kg_m3 <= 0.0:
             raise ParameterError("油液参数必须为正")
+        unknown_pumps = set(self.degradation.pumps) - set(self.supplies)
+        unknown_channels = ((set(self.degradation.valves)
+                             | set(self.degradation.cylinders))
+                            - set(self.channel_names))
+        if unknown_pumps or unknown_channels:
+            raise ParameterError(
+                f"部件级退化引用未知实例：pumps={sorted(unknown_pumps)}, "
+                f"channels={sorted(unknown_channels)}")
 
     @property
     def supply_names(self) -> tuple[str, ...]:
@@ -366,7 +518,18 @@ def _degradation(raw: Mapping[str, Any] | None) -> DegradationParameters:
     unknown = set(raw) - known
     if unknown:
         raise ParameterError(f"未知的退化参数：{sorted(unknown)}")
-    return DegradationParameters(**{key: float(value) for key, value in raw.items()})
+    pumps = {name: PumpDegradationParameters(**{
+        key: float(value) for key, value in dict(item).items()})
+        for name, item in dict(raw.pop("pumps", {})).items()}
+    valves = {name: ValveDegradationParameters(**{
+        key: float(value) for key, value in dict(item).items()})
+        for name, item in dict(raw.pop("valves", {})).items()}
+    cylinders = {name: CylinderDegradationParameters(**{
+        key: float(value) for key, value in dict(item).items()})
+        for name, item in dict(raw.pop("cylinders", {})).items()}
+    return DegradationParameters(
+        **{key: float(value) for key, value in raw.items()},
+        pumps=pumps, valves=valves, cylinders=cylinders)
 
 
 def parameters_from_dict(raw: Mapping[str, Any]) -> EngineeringHydraulicParameters:
@@ -411,9 +574,25 @@ def save_parameters(parameters: EngineeringHydraulicParameters, path: str | Path
 
 
 def with_degradation(parameters: EngineeringHydraulicParameters,
-                     **updates: float) -> EngineeringHydraulicParameters:
+                     **updates: Any) -> EngineeringHydraulicParameters:
     """返回一份只改了退化参数的副本（供以后的退化/寿命模块使用）。"""
     return replace(parameters, degradation=replace(parameters.degradation, **updates))
+
+
+def with_component_degradation(
+        parameters: EngineeringHydraulicParameters, *,
+        pumps: Mapping[str, PumpDegradationParameters] | None = None,
+        valves: Mapping[str, ValveDegradationParameters] | None = None,
+        cylinders: Mapping[str, CylinderDegradationParameters] | None = None,
+        ) -> EngineeringHydraulicParameters:
+    """以内存副本注入独立部件退化；健康参数对象和 JSON 文件均不修改。"""
+    degradation = replace(
+        parameters.degradation,
+        pumps=dict(parameters.degradation.pumps if pumps is None else pumps),
+        valves=dict(parameters.degradation.valves if valves is None else valves),
+        cylinders=dict(parameters.degradation.cylinders
+                       if cylinders is None else cylinders))
+    return replace(parameters, degradation=degradation)
 
 
 def design_load_pressure(parameters: EngineeringHydraulicParameters,

@@ -16,7 +16,7 @@ into a wheel-angle output.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 import math
 from typing import Any, Callable, Mapping
 
@@ -54,6 +54,7 @@ class J0CaseResult:
     failure_time_s: float | None = None
     failure_reason: str | None = None
     diagnostic_damping_n_s_per_m: float = 0.0
+    final_state: np.ndarray | None = None
 
     @property
     def case_id(self) -> str:
@@ -114,8 +115,10 @@ class J0Runner:
         # 指定 ``L1_FAST`` 时构造，用于历史对照与回归测试。
         self.hydraulic_model = str(config.hydraulic_model).upper()
         if self.hydraulic_model == "ENGINEERING_HYDRAULIC_V1":
-            self.engineering_parameters = load_parameters(
-                config.engineering_parameters_path)
+            # D1：长周期预测直接传内存参数副本，避免每段写临时 JSON。
+            self.engineering_parameters = (config.engineering_parameters
+                if config.engineering_parameters is not None
+                else load_parameters(config.engineering_parameters_path))
             self.hydraulic = EngineeringHydraulicSystem(self.engineering_parameters)
             self.state0, bias = self.hydraulic.working_point()
             self.speeds = self.hydraulic.pump_speeds_rad_s
@@ -414,7 +417,10 @@ class J0Runner:
                  gains: Mapping[str, tuple[float, float, float]] | None = None,
                  road_load_scale: float = 1.0,
                  on_progress: "Callable[[float], None] | None" = None,
-                 profile: "Callable[[float], tuple[float, float]] | None" = None
+                 profile: "Callable[[float], tuple[float, float]] | None" = None,
+                 reference_start_outer_angle_deg: float = 0.0,
+                 initial_state: np.ndarray | None = None,
+                 should_stop: "Callable[[], bool] | None" = None,
                  ) -> J0CaseResult:
         """运行一个 J0 工况。
 
@@ -431,6 +437,11 @@ class J0Runner:
         """
         target = self.target(case)
         q_ref, x_ref = target["q_ref"], target["x_ref"]
+        start_case = replace(case, target_outer_angle_deg=float(
+            reference_start_outer_angle_deg))
+        start_target = self.target(start_case)
+        x_start = start_target["x_ref"]
+        x_delta = {name: x_ref[name] - x_start[name] for name in x_ref}
         curvature = target["curvature_1pm"]
         ramp_s = self.reference_time(case)
         controllers = []
@@ -445,7 +456,10 @@ class J0Runner:
                            for item in self.config.channels])
         self._controllers = list(controllers)
         self._limits = limits
-        state = self.state0.copy()
+        state = (self.state0.copy() if initial_state is None
+                 else np.asarray(initial_state, dtype=float).copy())
+        if state.shape != self.state0.shape:
+            raise ValueError(f"initial_state shape {state.shape} != {self.state0.shape}")
         self._envelope_limit_samples = {}
         commands = [float(value) for value in self.neutral_commands]
         raw_pid = np.zeros(4)
@@ -465,6 +479,9 @@ class J0Runner:
         try:
             for step in range(steps + 1):
                 t = step * self.dt_h
+                if (should_stop is not None and step % self.substeps == 0
+                        and should_stop()):
+                    raise J0StopCondition("cancelled by user at a control-step boundary")
                 if on_progress is not None and step % progress_every == 0:
                     try:
                         on_progress(min(1.0, step / max(steps, 1)))
@@ -477,14 +494,14 @@ class J0Runner:
                     fraction, rate = profile(t)
                     if not self.use_feedforward:
                         rate = 0.0
-                ref_eff = np.array([fraction * x_ref[item.channel]
+                ref_eff = np.array([x_start[item.channel] + fraction * x_delta[item.channel]
                                     for item in self.config.channels])
                 if step % self.substeps == 0:
                     raw_pid = np.empty(4)
                     for position, controller in enumerate(controllers):
                         item = self.config.channels[position]
                         feedforward = (self.feedforward_gain[item.channel] * rate
-                                       * x_ref[item.channel])
+                                       * x_delta[item.channel])
                         command = controller.step(
                             Measurement(np.array(
                                 [state[self.state_stride * position + 2]])),
@@ -548,10 +565,12 @@ class J0Runner:
         summary["feedforward_gain"] = dict(self.feedforward_gain)
         summary["use_feedforward"] = bool(self.use_feedforward)
         summary["reference_time_s"] = ramp_s
+        summary["reference_start_outer_angle_deg"] = float(reference_start_outer_angle_deg)
         return J0CaseResult(case=case, samples=samples, summary=summary,
                             completed=completed, failure_time_s=failure_time,
                             failure_reason=failure_reason,
-                            diagnostic_damping_n_s_per_m=diagnostic_damping_n_s_per_m)
+                            diagnostic_damping_n_s_per_m=diagnostic_damping_n_s_per_m,
+                            final_state=state.copy())
 
     # ----------------------------------------------------------------- summary
     def _summarise(self, case, samples, target, x_ref, saturated, anti_windup,

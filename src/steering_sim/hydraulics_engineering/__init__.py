@@ -18,18 +18,22 @@ from __future__ import annotations
 from .authority import (EngineeringAuthority, probe_engineering_authority)
 from .model import (EngineeringHydraulicSystem, EngineeringHydraulicError,
                     evaluate_hydraulic_engineering, state_layout)
-from .parameters import (ASSUMPTION_TAG, TAG, ChannelParameters, CylinderParameters,
+from .parameters import (ASSUMPTION_TAG, TAG, ChannelParameters,
+                         CylinderDegradationParameters, CylinderParameters,
                          DegradationParameters, EngineeringHydraulicParameters,
-                         ParameterError, PumpParameters, ValveParameters,
+                         ParameterError, PumpDegradationParameters, PumpParameters,
+                         ValveDegradationParameters, ValveParameters,
                          load_parameters, parameters_from_dict, save_parameters,
-                         with_degradation)
+                         with_component_degradation, with_degradation)
 
 __all__ = [
-    "ASSUMPTION_TAG", "TAG", "ChannelParameters", "CylinderParameters",
+    "ASSUMPTION_TAG", "TAG", "ChannelParameters",
+    "CylinderDegradationParameters", "CylinderParameters",
     "DegradationParameters", "EngineeringAuthority",
     "EngineeringHydraulicError", "EngineeringHydraulicParameters",
-    "EngineeringHydraulicSystem", "ParameterError", "PumpParameters",
-    "ValveParameters", "evaluate_hydraulic_engineering", "load_parameters",
+    "EngineeringHydraulicSystem", "ParameterError", "PumpDegradationParameters",
+    "PumpParameters", "ValveDegradationParameters", "ValveParameters",
+    "evaluate_hydraulic_engineering", "load_parameters",
     "parameters_from_dict", "probe_engineering_authority", "save_parameters",
-    "state_layout", "with_degradation",
+    "state_layout", "with_component_degradation", "with_degradation",
 ]

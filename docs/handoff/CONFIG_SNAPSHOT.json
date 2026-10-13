@@ -1,0 +1,795 @@
+{
+  "note": "四份正式配置的**原文快照**，取自生成本文件时的仓库状态。以仓库里的文件为准，这里只是便于交接对照。",
+  "files": {
+    "j0_control": {
+      "schema_version": "J0.1",
+      "phase": "J0",
+      "description": "PHASE J0：15 所电液转向系统控制—液压—机械首次联合调试。",
+      "evidence_tags": {
+        "VERIFIED_CODE": "可直接从当前正式源码确认",
+        "CUSTOMER_GEOMETRY": "来自冻结的甲方坐标文件，经 mm->m 一次转换",
+        "ASSUMED": "为打通接口所需、但缺少甲方或跨模块证据的工程假设",
+        "UNVERIFIED": "证据不足，不能安全使用"
+      },
+      "models": {
+        "hydraulic": "src/steering_sim/hydraulics_lumped L1-FAST V1（LumpedHydraulicSystem.fast_engineering，4 通道 / 16 状态）",
+        "mechanical": "mechanics_ackermann_v2 M1（PhaseM1Model，4 自由度 q_front/q4/q5/q6，12 轮，7 个物理缸几何接口）",
+        "control": "复用 src/steering_sim/control/pid.py 的 PIDController，逐通道实例化"
+      },
+      "hydraulic": {
+        "model": "ENGINEERING_HYDRAULIC_V1",
+        "model_note": "PHASE J1-R2 起正式液压模型改为轻量化工程电液伺服模型 src/steering_sim/hydraulics_engineering（4 通道 × (pA,pB,x,v,阀芯) + 两条共用供油轨）。参数见 configs/j1r2/engineering_hydraulics.json。旧 L1-Fast 只在显式指定 L1_FAST 时构造，用于历史对照与回归测试。",
+        "engineering_parameters": "../j1r2/engineering_hydraulics.json",
+        "dt_hydraulic_s": 0.0005,
+        "integration": "显式 RK4，每个 stage 用该 stage 状态重新计算机械负载",
+        "pump_speed_mode": "channel_nominal_speed",
+        "initial_pressure_mode": "group_regulated_return_rail_pressure",
+        "initial_position_m": 0.0,
+        "initial_velocity_m_s": 0.0,
+        "redundant_valve_commands": {
+          "dirvalve_2": 0.0,
+          "dirvalve_9": 0.0,
+          "dirvalve_12": 0.0
+        },
+        "redundant_valve_note": "ASSUMED 显式取 0。冗余管道 SC_1 在 regulated_constant_pressure 边界下不起作用（F3），本轮沿用 J0 结论，未实现冗余切换。",
+        "load_model": {
+          "neutralize_initial_bias": true,
+          "neutralize_initial_bias_source": "ASSUMED_ENGINEERING_INITIALIZATION_DEVICE",
+          "neutralize_initial_bias_note": "L1-Fast 的健康工作点把 external_load 设为 A_a*p - A_b*p，使预建压状态机械残差为 0。J0 全程保持同一常量偏置，使 t=0 成为真正的平衡点，避免把预充液瞬态误判为 J0 响应。这是初始化装置，不是实测道路载荷。",
+          "road_load_ramp_s": 0.1,
+          "road_load_ramp_note": "在该时段内把道路负载从纯 L1-Fast 工作点载荷平滑过渡进来，不注入净力阶跃。"
+        }
+      },
+      "control": {
+        "dt_control_s": 0.01,
+        "reference_signal": "等效作动组的代表行程 x_ref（不是轮角，也不是把目标角复制四份）",
+        "reference_ramp_s": 0.2,
+        "reference_rate_deg_per_s": 12.0,
+        "reference_minimum_time_s": 0.4,
+        "reference_note": "PHASE J1-R2：指令斜坡时间 = max(最短时间, |目标角|/额定速率)，S 曲线（两端速度为零）。速率 12 °/s 是重型车辆低速转向的工程量级，也是流量/泵选型的输入；不是为了让跟踪指标好看而放慢的。",
+        "feedforward_note": "PHASE J1-R2：控制器 = 速度前馈 + PI。前馈增益取 1/Kv（Kv 为阀在设计压差下的速度增益，来自 engineering_hydraulics.json），PID 只补偿扰动与模型误差。",
+        "channels": [
+          {
+            "index": 0,
+            "channel": "channel_front",
+            "valve_alias": "dirvalve_6",
+            "actuator_alias": "actuator002",
+            "dof": "q_front",
+            "cylinder_group": "front_group_1",
+            "kp": 150.0,
+            "ki": 60.0,
+            "kd": 0.0,
+            "command_limit": 1.0,
+            "command_min": -1.0,
+            "command_max": 1.0,
+            "neutral_command": 0.0,
+            "command_polarity": 1.0,
+            "mapping_status": "ASSUMED",
+            "authority_status": "TWO_QUADRANT_MEASURED_AFTER_J0R1_F2_FIX",
+            "notes": "x_front = 0.25*q_front 是 ASSUMED_ENGINEERING_PARAMETER_INTERFACE_PLACEHOLDER（缺甲方前缸硬点）。J0-R1 修复后前阀为普通对称四通：中立命令 0.0，窗口 [-1, +1]，实测静态力窗口 ±6208 N，双向可达。原「中立 +1.0、窗口 [0,1]」已被实测否定，不再使用。"
+          },
+          {
+            "index": 1,
+            "channel": "channel_rear_1",
+            "valve_alias": "dirvalve_1",
+            "actuator_alias": "actuator001",
+            "dof": "q4",
+            "cylinder_group": "axle4_A+axle4_B",
+            "kp": 150.0,
+            "ki": 60.0,
+            "kd": 0.0,
+            "command_limit": 1.0,
+            "command_min": -1.0,
+            "command_max": 1.0,
+            "neutral_command": 0.0,
+            "command_polarity": -1.0,
+            "mapping_status": "ASSUMED",
+            "authority_status": "TWO_QUADRANT_MEASURED",
+            "notes": "channel_rear_1 -> q4 为 ASSUMED 跨模块映射。x 取 A 缸相对长度 L_A(q4)-L_A(0)，A 缸作代表坐标为 ASSUMED。J0-R1 力方向修正后命令极性变为 -1（实测 d(velocity)/d(command) < 0）。"
+          },
+          {
+            "index": 2,
+            "channel": "channel_rear_2",
+            "valve_alias": "dirvalve_8",
+            "actuator_alias": "actuator001_1",
+            "dof": "q5",
+            "cylinder_group": "axle5_A+axle5_B",
+            "kp": 150.0,
+            "ki": 60.0,
+            "kd": 0.0,
+            "command_limit": 1.0,
+            "command_min": -1.0,
+            "command_max": 1.0,
+            "neutral_command": 0.0,
+            "command_polarity": -1.0,
+            "mapping_status": "ASSUMED",
+            "authority_status": "TWO_QUADRANT_MEASURED",
+            "notes": "channel_rear_2 -> q5 为 ASSUMED 跨模块映射。x 取 L_A(q5)-L_A(0)。J0-R1 后命令极性 -1。"
+          },
+          {
+            "index": 3,
+            "channel": "channel_rear_3",
+            "valve_alias": "dirvalve_11",
+            "actuator_alias": "actuator001_2",
+            "dof": "q6",
+            "cylinder_group": "axle6_A+axle6_B",
+            "kp": 150.0,
+            "ki": 60.0,
+            "kd": 0.0,
+            "command_limit": 1.0,
+            "command_min": -1.0,
+            "command_max": 1.0,
+            "neutral_command": 0.0,
+            "command_polarity": -1.0,
+            "mapping_status": "ASSUMED",
+            "authority_status": "TWO_QUADRANT_MEASURED",
+            "notes": "channel_rear_3 -> q6 为 ASSUMED 跨模块映射。x 取 L_A(q6)-L_A(0)。J0-R1 后命令极性 -1。"
+          }
+        ],
+        "pid_note": "J0-R1：按任务书第 8 节从最小 P/PI 起步并只做必要调整。kd 保持 0（未滤波微分项在 10 ms 采样下不提供有效阻尼相位）；kp/ki 取能把行程误差压到毫米级的量级，未做最优整定。"
+      },
+      "mapping": {
+        "channel_order": [
+          "channel_front",
+          "channel_rear_1",
+          "channel_rear_2",
+          "channel_rear_3"
+        ],
+        "front_stroke_per_q_m_per_rad": 0.25,
+        "front_stroke_source": "ASSUMED_ENGINEERING_PARAMETER_INTERFACE_PLACEHOLDER (mechanics_ackermann_v2/config.json front_cylinder_interface)",
+        "rear_representative_cylinder": "A",
+        "rear_representative_source": "ASSUMED；甲方硬点与 A/B 长度为 CUSTOMER_GEOMETRY，选 A 缸作单一等效通道坐标属于工程假设",
+        "table_step_rad": 0.001,
+        "singular_jacobian_threshold_m_per_rad": 0.0001,
+        "monotonic_tolerance_m_per_rad": 0.0,
+        "q_envelope_source": "NUMERICALLY_VERIFIED_CONTINUATION_ENVELOPE_NOT_CUSTOMER_MECHANICAL_LIMIT（数值连续解范围，不是甲方机械限位）"
+      },
+      "load": {
+        "friction_coefficient": 0.75,
+        "friction_coefficient_source": "ASSUMED_ENGINEERING_PARAMETER (M1 default scan value)",
+        "axle_mass_t": [
+          11.5,
+          11.5,
+          11.5,
+          11.5,
+          11.5,
+          11.5
+        ],
+        "axle_mass_source": "ASSUMED_ENGINEERING_PARAMETER (M1 default scan value)",
+        "curvature_source": "取指令工况的理想阿克曼 ICR；即认为整车跟随指令路径，轮角偏差体现为轮胎侧偏",
+        "moment_model": "在液压实际产生的 q 上重新求值 M1 solve_loaded_case 的道路力矩公式；刻意不施加 M1 的静态柔度修正 loaded_q = q - Q/K"
+      },
+      "cases": [
+        {
+          "id": "J0-01",
+          "target_outer_angle_deg": 0.0,
+          "speed_kmh": 0.0,
+          "duration_s": 5.0
+        },
+        {
+          "id": "J0-02",
+          "target_outer_angle_deg": 2.0,
+          "speed_kmh": 5.0,
+          "duration_s": 5.0
+        },
+        {
+          "id": "J0-03",
+          "target_outer_angle_deg": -2.0,
+          "speed_kmh": 5.0,
+          "duration_s": 5.0
+        },
+        {
+          "id": "J0-04",
+          "target_outer_angle_deg": 5.0,
+          "speed_kmh": 10.0,
+          "duration_s": 5.0
+        }
+      ],
+      "output": {
+        "sample_stride_hydraulic_steps": 4,
+        "csv_float_format": "%.12g"
+      },
+      "acceptance": {
+        "steady_wheel_angle_error_deg_pass": 0.25,
+        "steady_wheel_angle_error_deg_conditional": 1.0,
+        "link_residual_limit_m": 1e-09,
+        "third_axle_abs_limit_deg": 1e-09,
+        "mapping_jacobian_abs_min_m_per_rad": 0.0001,
+        "mechanism_ackermann_error_note_deg": 0.5,
+        "note": "steady_wheel_angle_error 的参照是 M1 在 q_ref 上真实可达的刚性闭链角（theoretical_angle_deg），不是理想阿克曼角；后者与可达角之差作为 mechanism_ackermann_error_deg 单独报告。"
+      },
+      "mechanical": {
+        "mode": "ENGINEERING_STEERING_MODEL",
+        "mode_source": "PHASE J1：只保留一个面向工程演示的正式模型；历史机构仅供回归测试",
+        "engineering_model": "src/steering_sim/engineering",
+        "engineering_config": "configs/j1/engineering_config.json",
+        "engineering_design": "configs/j1/engineering_mechanism.json",
+        "hydraulic_design": "configs/j1/hydraulic_design.json",
+        "legacy_models": [
+          "mechanics_ackermann_v2",
+          "mechanics_ackermann_redesigned"
+        ],
+        "tag": "ENGINEERING_STEERING_MODEL",
+        "customer_hardpoints_unchanged": true
+      }
+    },
+    "mechanical_engineering": {
+      "schema_version": "J1.0",
+      "tag": "ENGINEERING_STEERING_MODEL",
+      "coordinate_system": {
+        "source_length_unit": "mm",
+        "solver_length_unit": "m",
+        "origin": "midpoint of axle-1 wheel centers",
+        "x_positive": "vehicle forward",
+        "y_positive": "vehicle left",
+        "z_positive": "up",
+        "revolute_axis": "+Z"
+      },
+      "geometry": {
+        "source_file": "mechanical_model_input_spec_v1.0.yaml",
+        "source": "CUSTOMER_COORDINATES_TRANSCRIBED_AND_CROSSCHECKED_UNCHANGED",
+        "customer_hardpoints_changed": false,
+        "icr_reference_axle": 3,
+        "third_axle_locked": true,
+        "third_axle_point20_mm": [
+          -7290.0,
+          -996.0
+        ],
+        "mechanism_design": "configs/j1/engineering_mechanism.json",
+        "fit_residual_limit_deg": 0.25,
+        "q_envelopes_rad": {
+          "q_front": [
+            -0.78723,
+            0.78723
+          ],
+          "q4": [
+            -0.36399,
+            0.36399
+          ],
+          "q5": [
+            -0.30473,
+            0.30473
+          ],
+          "q6": [
+            -0.52482,
+            0.52482
+          ]
+        },
+        "q_envelope_source": "J1 连续延拓实测：从零位外扩到机构不可解，再收缩到覆盖该桥轮角 ±35° 所需的区间并留 2% 余量。不是甲方机械限位。",
+        "q_envelope_j1_evidence": {
+          "q_front": {
+            "reachable_plus_deg": 46.5,
+            "reachable_minus_deg": -54.5,
+            "stop_reason_plus": "MechanismError: 连杆长度不可达（cos=1.000620）；该构型超出机构可达范围",
+            "stop_reason_minus": "MechanismError: 连杆长度不可达（cos=1.001142）；该构型超出机构可达范围",
+            "envelope_plus_deg": 45.105,
+            "envelope_minus_deg": -45.105,
+            "monotone_stroke_note": "代表行程在包络内严格单调"
+          },
+          "q4": {
+            "reachable_plus_deg": 21.5,
+            "reachable_minus_deg": -23.5,
+            "stop_reason_plus": "MechanismError: 连杆长度不可达（cos=1.010163）；该构型超出机构可达范围",
+            "stop_reason_minus": "MechanismError: 连杆长度不可达（cos=1.005815）；该构型超出机构可达范围",
+            "envelope_plus_deg": 20.855,
+            "envelope_minus_deg": -20.855,
+            "monotone_stroke_note": "代表行程在包络内严格单调"
+          },
+          "q5": {
+            "reachable_plus_deg": 25.5,
+            "reachable_minus_deg": -18.0,
+            "stop_reason_plus": "MechanismError: 连杆长度不可达（cos=1.005500）；该构型超出机构可达范围",
+            "stop_reason_minus": "MechanismError: 连杆长度不可达（cos=1.008965）；该构型超出机构可达范围",
+            "envelope_plus_deg": 17.46,
+            "envelope_minus_deg": -17.46,
+            "monotone_stroke_note": "代表行程在包络内严格单调"
+          },
+          "q6": {
+            "reachable_plus_deg": 31.0,
+            "reachable_minus_deg": -36.0,
+            "stop_reason_plus": "MechanismError: 连杆长度不可达（cos=1.003510）；该构型超出机构可达范围",
+            "stop_reason_minus": "MechanismError: 连杆长度不可达（cos=1.001939）；该构型超出机构可达范围",
+            "envelope_plus_deg": 30.07,
+            "envelope_minus_deg": -30.07,
+            "monotone_stroke_note": "代表行程在包络内严格单调"
+          }
+        }
+      },
+      "ground_load": {
+        "gravity_mps2": 9.81,
+        "cornering_stiffness_per_wheel_N_per_rad": 300000.0,
+        "cornering_stiffness_source": "ASSUMED_ENGINEERING_PARAMETER",
+        "linear_slip_limit_deg": 5.0,
+        "effective_trail_m": 0.06,
+        "effective_trail_source": "ASSUMED_ENGINEERING_PARAMETER",
+        "pivot_effective_radius_m": 0.035,
+        "pivot_effective_radius_source": "ASSUMED_ENGINEERING_PARAMETER",
+        "pivot_transition_speed_kmh": 5.0,
+        "pivot_transition_source": "ASSUMED_ENGINEERING_PARAMETER_INSPIRED_BY_LOW_SPEED_LITERATURE",
+        "pivot_engagement_angle_deg": 1.0,
+        "pivot_engagement_source": "ASSUMED_ENGINEERING_PARAMETER",
+        "stiffness_scenarios_Nm_per_rad": {
+          "low_flexibility": {
+            "q_front": 400000.0,
+            "q4": 300000.0,
+            "q5": 300000.0,
+            "q6": 300000.0
+          },
+          "medium_flexibility": {
+            "q_front": 200000.0,
+            "q4": 150000.0,
+            "q5": 150000.0,
+            "q6": 150000.0
+          },
+          "high_flexibility": {
+            "q_front": 100000.0,
+            "q4": 75000.0,
+            "q5": 75000.0,
+            "q6": 75000.0
+          }
+        },
+        "stiffness_source": "ASSUMED_ENGINEERING_PARAMETER_NOT_CUSTOMER_MEASURED"
+      },
+      "front_cylinder_interface": {
+        "cylinder_id": "front_group_1",
+        "frame_mount": "PENDING_CUSTOMER_COORDINATE",
+        "moving_mount": "PENDING_CUSTOMER_COORDINATE",
+        "stroke_per_q_mm_per_rad": 250.0,
+        "stroke_mapping_source": "ASSUMED_ENGINEERING_PARAMETER_INTERFACE_PLACEHOLDER"
+      }
+    },
+    "mechanical_design": {
+      "schema_version": "J1.0",
+      "tag": "ENGINEERING_STEERING_MODEL",
+      "assumptions": [
+        "ENGINEERING_DESIGN_ASSUMPTION: 转向臂长度 / 齿条后移量 / 边拉杆长度 / 摆臂拾取半径 逐组取值见各组 notes（甲方未提供这些尺寸）",
+        "CUSTOMER_GEOMETRY: 转向节主销（车轮中心）、摆臂枢轴、液压缸机架点与活塞杆安装点全部沿用甲方原值，未做任何修改。",
+        "机械传动原理：液压缸 → 甲方摆臂 → 驱动连杆 → 齿条（沿 y 平动）→ 两根边拉杆 → 左右转向节；左右转向臂指向共同瞬时转向中心，阿克曼差动由转向梯形本身产生，不是显示层做差。",
+        "前组：一桥齿条由摆臂驱动，二桥齿条由中间拉杆与一桥齿条 1:1 耦合（一桥主动、二桥随动）。"
+      ],
+      "provenance": {
+        "source": "mechanical_model_input_spec_v1.0.yaml",
+        "icr_reference_axle": "3",
+        "third_axle_locked": "true",
+        "front_follower_retune": "scripts/j1r2/retune_front_follower.py --scale 1.39；标定判据 = axles 1–2 对理想阿克曼角的最大偏差最小"
+      },
+      "groups": {
+        "front": {
+          "key": "front",
+          "axles": [
+            1,
+            2
+          ],
+          "driven_axle": 1,
+          "rack_drive_point": [
+            -0.2379844536547911,
+            0.32599193202102705
+          ],
+          "racks": {
+            "1": -0.2379844536547911,
+            "2": -2.8352205167883313
+          },
+          "sides": {
+            "axle1_left": {
+              "arm_tip": [
+                -0.2079844536547911,
+                0.9652884203580114
+              ],
+              "swing_pickup": [
+                0.0,
+                0.0
+              ],
+              "rack_end": [
+                -0.2379844536547911,
+                0.32599193202102705
+              ]
+            },
+            "axle1_right": {
+              "arm_tip": [
+                -0.2079844536547911,
+                -0.9652884203580114
+              ],
+              "swing_pickup": [
+                -0.9125671108990365,
+                -0.4671539824501537
+              ],
+              "rack_end": [
+                -0.2379844536547911,
+                -0.32599193202102705
+              ]
+            },
+            "axle2_left": {
+              "arm_tip": [
+                -2.889157,
+                0.932604
+              ],
+              "swing_pickup": [
+                0.0,
+                0.0
+              ],
+              "rack_end": [
+                -2.8352205167883313,
+                0.31109507874361597
+              ]
+            },
+            "axle2_right": {
+              "arm_tip": [
+                -2.889157,
+                -0.932604
+              ],
+              "swing_pickup": [
+                0.0,
+                0.0
+              ],
+              "rack_end": [
+                -2.8352205167883313,
+                -0.31109507874361597
+              ]
+            }
+          },
+          "relay": [
+            [
+              -0.2379844536547911,
+              0.32599193202102705
+            ],
+            [
+              -2.8352205167883313,
+              0.31109507874361597
+            ]
+          ],
+          "notes": [
+            "驱动连杆长 1.0412 m，摆臂拾取点传动角 89.6°",
+            "尺寸 arm=0.22 offset=0.03 link=0.64 radius=0.16",
+            "ENGINEERING_DESIGN_ASSUMPTION：二桥转向臂有效半径按实测标定放大 1.39×（axle2_left 0.2200→3.0359 m，axle2_right 0.2200→3.0359 m），把前组随动传动比降到与理想阿克伦曼匹配；甲方坐标未改。"
+          ]
+        },
+        "axle4": {
+          "key": "axle4",
+          "axles": [
+            4
+          ],
+          "driven_axle": 4,
+          "rack_drive_point": [
+            -9.000179574888215,
+            0.5854549717572981
+          ],
+          "racks": {
+            "4": -9.000179574888215
+          },
+          "sides": {
+            "axle4_left": {
+              "arm_tip": [
+                -8.800179574888215,
+                0.8847875626992133
+              ],
+              "swing_pickup": [
+                0.0,
+                0.0
+              ],
+              "rack_end": [
+                -9.000179574888215,
+                0.5854549717572981
+              ]
+            },
+            "axle4_right": {
+              "arm_tip": [
+                -8.800179574888215,
+                -0.8847875626992133
+              ],
+              "swing_pickup": [
+                -9.91518873610837,
+                -0.34370932145312094
+              ],
+              "rack_end": [
+                -9.000179574888215,
+                -0.5854549717572981
+              ]
+            }
+          },
+          "relay": null,
+          "notes": [
+            "驱动连杆长 1.3041 m，摆臂拾取点传动角 89.4°",
+            "尺寸 arm=0.22 offset=0.2 link=0.36 radius=0.32"
+          ]
+        },
+        "axle5": {
+          "key": "axle5",
+          "axles": [
+            5
+          ],
+          "driven_axle": 5,
+          "rack_drive_point": [
+            -13.474043944740655,
+            0.4789588373553746
+          ],
+          "racks": {
+            "5": -13.474043944740655
+          },
+          "sides": {
+            "axle5_left": {
+              "arm_tip": [
+                -13.354043944740656,
+                0.9437168389002646
+              ],
+              "swing_pickup": [
+                0.0,
+                0.0
+              ],
+              "rack_end": [
+                -13.474043944740655,
+                0.4789588373553746
+              ]
+            },
+            "axle5_right": {
+              "arm_tip": [
+                -13.354043944740656,
+                -0.9437168389002646
+              ],
+              "swing_pickup": [
+                -11.844844274215744,
+                -0.2776654535543678
+              ],
+              "rack_end": [
+                -13.474043944740655,
+                -0.4789588373553746
+              ]
+            }
+          },
+          "relay": null,
+          "notes": [
+            "驱动连杆长 1.7963 m，摆臂拾取点传动角 89.1°",
+            "尺寸 arm=0.34 offset=0.12 link=0.48 radius=0.32"
+          ]
+        },
+        "axle6": {
+          "key": "axle6",
+          "axles": [
+            6
+          ],
+          "driven_axle": 6,
+          "rack_drive_point": [
+            -16.022063078052046,
+            0.605472775644235
+          ],
+          "racks": {
+            "6": -16.022063078052046
+          },
+          "sides": {
+            "axle6_left": {
+              "arm_tip": [
+                -15.952063078052046,
+                0.9586016473044264
+              ],
+              "swing_pickup": [
+                0.0,
+                0.0
+              ],
+              "rack_end": [
+                -16.022063078052046,
+                0.605472775644235
+              ]
+            },
+            "axle6_right": {
+              "arm_tip": [
+                -15.952063078052046,
+                -0.9586016473044264
+              ],
+              "swing_pickup": [
+                -13.832180623415969,
+                -0.7735315430775423
+              ],
+              "rack_end": [
+                -16.022063078052046,
+                -0.605472775644235
+              ]
+            }
+          },
+          "relay": null,
+          "notes": [
+            "驱动连杆长 2.5879 m，摆臂拾取点传动角 89.8°",
+            "尺寸 arm=0.34 offset=0.07 link=0.36 radius=0.24"
+          ]
+        }
+      }
+    },
+    "hydraulic_engineering": {
+      "schema_version": "J1R2.0",
+      "tag": "ENGINEERING_HYDRAULIC_V1",
+      "fluid_bulk_modulus_pa": 1000000000.0,
+      "fluid_density_kg_m3": 850.0,
+      "tank_pressure_pa": 500000.0,
+      "precharge_pressure_pa": 2000000.0,
+      "orifice_pressure_regularisation_pa": 100000.0,
+      "supplies": {
+        "front": {
+          "displacement_m3_per_rad": 2.2652148305145185e-06,
+          "nominal_speed_rad_s": 157.08,
+          "relief_pressure_pa": 21000000.0,
+          "plenum_volume_m3": 0.002,
+          "bulk_modulus_pa": 1000000000.0,
+          "relief_area_m2": 1.2e-05
+        },
+        "rear": {
+          "displacement_m3_per_rad": 3.6707659120574145e-06,
+          "nominal_speed_rad_s": 157.08,
+          "relief_pressure_pa": 21000000.0,
+          "plenum_volume_m3": 0.002,
+          "bulk_modulus_pa": 1000000000.0,
+          "relief_area_m2": 1.2e-05
+        }
+      },
+      "channels": [
+        {
+          "name": "channel_front",
+          "dof": "q_front",
+          "supply": "front",
+          "polarity": 1.0,
+          "kp": 176.6278,
+          "ki": 2207.8473,
+          "kd": 0.0,
+          "kff": 7.065111,
+          "command_limit": 1.0,
+          "reference_peak_velocity_m_s": 0.091317,
+          "cylinder": {
+            "area_a_m2": 0.0031172453105244723,
+            "area_b_m2": 0.0031172453105244723,
+            "bore_mm": 63.0,
+            "stroke_m": 0.393615,
+            "stroke_offset_m": 0.0,
+            "dead_volume_m3": 0.00019631912206433442,
+            "mass_kg": 440.46,
+            "viscous_damping_n_s_per_m": 4361.96,
+            "coulomb_friction_n": 622.91,
+            "end_stop_stiffness_n_per_m": 179989289.9,
+            "end_stop_damping_n_s_per_m": 218098.2,
+            "mass_source": "ENGINEERING_DESIGN_ASSUMPTION：J_轴=40 kg·m²（2 根转向轴）经 (dδ/dx)² 折算，dδ/dx=3.3184 rad/m"
+          },
+          "valve": {
+            "maximum_area_m2": 8.26607749897381e-06,
+            "discharge_coefficient": 0.62,
+            "lag_time_s": 0.002,
+            "deadband": 0.0,
+            "velocity_per_unit_command_m_s": 0.141541
+          },
+          "notes": "ENGINEERING_DESIGN_ASSUMPTION：对称双出杆缸（双腔有效面积相等），保证左右转向力与速度对称。需求缸力 21562 N 来自最不利工况（目标角 +30°, 车速 0 km/h, μ=0.8）；安全系数 1.3、机械效率 0.9；设计负载压力 14.7 MPa。"
+        },
+        {
+          "name": "channel_rear_1",
+          "dof": "q4",
+          "supply": "rear",
+          "polarity": 1.0,
+          "kp": 1354.0738,
+          "ki": 16925.923,
+          "kd": 0.0,
+          "kff": 54.162954,
+          "command_limit": 1.0,
+          "reference_peak_velocity_m_s": 0.011911,
+          "cylinder": {
+            "area_a_m2": 0.0031172453105244723,
+            "area_b_m2": 0.0031172453105244723,
+            "bore_mm": 63.0,
+            "stroke_m": 0.163367,
+            "stroke_offset_m": -0.002154,
+            "dead_volume_m3": 8.148083048918414e-05,
+            "mass_kg": 1106.24,
+            "viscous_damping_n_s_per_m": 10730.18,
+            "coulomb_friction_n": 714.5,
+            "end_stop_stiffness_n_per_m": 433664447.9,
+            "end_stop_damping_n_s_per_m": 536509.2,
+            "mass_source": "ENGINEERING_DESIGN_ASSUMPTION：J_轴=20 kg·m²（1 根转向轴）经 (dδ/dx)² 折算，dδ/dx=7.4372 rad/m"
+          },
+          "valve": {
+            "maximum_area_m2": 1.0782417373267067e-06,
+            "discharge_coefficient": 0.62,
+            "lag_time_s": 0.002,
+            "deadband": 0.0,
+            "velocity_per_unit_command_m_s": 0.018463
+          },
+          "notes": "ENGINEERING_DESIGN_ASSUMPTION：对称双出杆缸（双腔有效面积相等），保证左右转向力与速度对称。需求缸力 24733 N 来自最不利工况（目标角 +30°, 车速 0 km/h, μ=0.8）；安全系数 1.3、机械效率 0.9；设计负载压力 14.7 MPa。"
+        },
+        {
+          "name": "channel_rear_2",
+          "dof": "q5",
+          "supply": "rear",
+          "polarity": 1.0,
+          "kp": 442.9117,
+          "ki": 5536.3964,
+          "kd": 0.0,
+          "kff": 17.716468,
+          "command_limit": 1.0,
+          "reference_peak_velocity_m_s": 0.036416,
+          "cylinder": {
+            "area_a_m2": 0.005026548245743669,
+            "area_b_m2": 0.005026548245743669,
+            "bore_mm": 80.0,
+            "stroke_m": 0.139303,
+            "stroke_offset_m": -0.00703,
+            "dead_volume_m3": 0.00011203430632120254,
+            "mass_kg": 1789.84,
+            "viscous_damping_n_s_per_m": 18768.96,
+            "coulomb_friction_n": 1404.7,
+            "end_stop_stiffness_n_per_m": 820079559.8,
+            "end_stop_damping_n_s_per_m": 938447.8,
+            "mass_source": "ENGINEERING_DESIGN_ASSUMPTION：J_轴=20 kg·m²（1 根转向轴）经 (dδ/dx)² 折算，dδ/dx=9.4600 rad/m"
+          },
+          "valve": {
+            "maximum_area_m2": 5.315451998849212e-06,
+            "discharge_coefficient": 0.62,
+            "lag_time_s": 0.002,
+            "deadband": 0.0,
+            "velocity_per_unit_command_m_s": 0.056445
+          },
+          "notes": "ENGINEERING_DESIGN_ASSUMPTION：对称双出杆缸（双腔有效面积相等），保证左右转向力与速度对称。需求缸力 48624 N 来自最不利工况（目标角 +30°, 车速 0 km/h, μ=0.8）；安全系数 1.3、机械效率 0.9；设计负载压力 14.7 MPa。"
+        },
+        {
+          "name": "channel_rear_3",
+          "dof": "q6",
+          "supply": "rear",
+          "polarity": 1.0,
+          "kp": 208.5315,
+          "ki": 2606.6437,
+          "kd": 0.0,
+          "kff": 8.34126,
+          "command_limit": 1.0,
+          "reference_peak_velocity_m_s": 0.077346,
+          "cylinder": {
+            "area_a_m2": 0.0031172453105244723,
+            "area_b_m2": 0.0031172453105244723,
+            "bore_mm": 63.0,
+            "stroke_m": 0.267919,
+            "stroke_offset_m": -0.020567,
+            "dead_volume_m3": 0.00013362718743048957,
+            "mass_kg": 501.18,
+            "viscous_damping_n_s_per_m": 5639.73,
+            "coulomb_friction_n": 796.11,
+            "end_stop_stiffness_n_per_m": 264432261.5,
+            "end_stop_damping_n_s_per_m": 281986.6,
+            "mass_source": "ENGINEERING_DESIGN_ASSUMPTION：J_轴=20 kg·m²（1 根转向轴）经 (dδ/dx)² 折算，dδ/dx=5.0059 rad/m"
+          },
+          "valve": {
+            "maximum_area_m2": 7.001431132738098e-06,
+            "discharge_coefficient": 0.62,
+            "lag_time_s": 0.002,
+            "deadband": 0.0,
+            "velocity_per_unit_command_m_s": 0.119886
+          },
+          "notes": "ENGINEERING_DESIGN_ASSUMPTION：对称双出杆缸（双腔有效面积相等），保证左右转向力与速度对称。需求缸力 27557 N 来自最不利工况（目标角 +30°, 车速 0 km/h, μ=0.8）；安全系数 1.3、机械效率 0.9；设计负载压力 14.7 MPa。"
+        }
+      ],
+      "degradation": {
+        "pump_volumetric_efficiency": 1.0,
+        "pump_internal_leakage_m3_s_per_pa": 0.0,
+        "valve_flow_coefficient_scale": 1.0,
+        "valve_lag_scale": 1.0,
+        "cylinder_internal_leakage_m3_s_per_pa": 0.0,
+        "cylinder_friction_scale": 1.0,
+        "supply_pressure_scale": 1.0
+      },
+      "reference": {
+        "rate_deg_per_s": 12.0,
+        "minimum_time_s": 0.4,
+        "note": "一桥外侧轮目标角的指令斜坡速率与最短斜坡时间。"
+      },
+      "assumptions": [
+        "ENGINEERING_DESIGN_ASSUMPTION：本文件所有液压参数（缸径、面积、行程、容积、阻尼、摩擦、阀口面积、泵排量、供压、控制器增益）都是 J1-R2 的工程选型值，不是甲方设备实测参数，也不继承旧 Amesim/L1-Fast 数值。",
+        "ENGINEERING_DESIGN_ASSUMPTION：每个等效作动通道用一只**对称双出杆缸**代表，保证左右转向的力与速度对称；这等价于甲方对置单杆缸对的工程等效。",
+        "ENGINEERING_DESIGN_ASSUMPTION：折算质量由转向轴绕主销转动惯量 20 kg·m²/轴经 (dδ/dx)² 得到。"
+      ],
+      "provenance": {
+        "method": "虚功 F = M/(ds/dδ) + 流量法 + 折算惯量",
+        "design_case": "(0.0, 5.0, 10.0, 20.0) km/h × ±30° × μ=0.8 × 11.5 t/轴，取双向峰值",
+        "safety_factor": "1.3",
+        "gear_efficiency": "0.9",
+        "flow_margin": "1.25",
+        "velocity_margin": "1.55"
+      },
+      "notes": "PHASE J1-R2 唯一正式液压模型 ``ENGINEERING_HYDRAULIC_V1`` 的参数。旧 L1-Fast 参数作为历史证据保留在 configs/j1/hydraulic_design.json。"
+    }
+  },
+  "paths": {
+    "j0_control": "configs/j0/j0_config.json",
+    "mechanical_engineering": "configs/j1/engineering_config.json",
+    "mechanical_design": "configs/j1/engineering_mechanism.json",
+    "hydraulic_engineering": "configs/j1r2/engineering_hydraulics.json"
+  }
+}
