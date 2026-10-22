@@ -25,6 +25,7 @@ rather than by any tuned scale factor.
 from __future__ import annotations
 
 from dataclasses import dataclass
+from functools import lru_cache
 import math
 from typing import Mapping
 
@@ -83,11 +84,24 @@ def _allocate_lateral_force(adapter: J0GeometryAdapter, total_force: float,
     total_mass = float(np.sum(masses_kg))
     if total_mass <= 0.0 or abs(total_force) <= 1.0e-15:
         return np.zeros(6)
-    axle_x, x_cg = _axle_x_and_cg(adapter, masses_kg)
+    # Only geometry and axle masses are cached.  The current actual-wheel
+    # curvature still determines total_force separately at EVERY RK4 stage.
+    centers = adapter.model.centers
+    axle_x = tuple(0.5*(centers[f"axle{a}_left"][0]+centers[f"axle{a}_right"][0])
+                   for a in range(1,7))
+    operator = _lateral_operator(axle_x, tuple(masses_kg))
+    rhs = np.array([total_force, 0.0])
+    return operator @ rhs
+
+
+@lru_cache(maxsize=32)
+def _lateral_operator(axle_positions, masses):
+    masses_kg = np.asarray(masses, dtype=float)
+    axle_x = np.asarray(axle_positions, dtype=float)
+    x_cg = float(np.dot(masses_kg, axle_x) / float(np.sum(masses_kg)))
     matrix = np.vstack([np.ones(6), axle_x - x_cg])
     weights = np.diag(np.maximum(masses_kg, 1.0e-12))
-    rhs = np.array([total_force, 0.0])
-    return weights @ matrix.T @ np.linalg.pinv(matrix @ weights @ matrix.T) @ rhs
+    return weights @ matrix.T @ np.linalg.pinv(matrix @ weights @ matrix.T)
 
 
 def actual_curvature_1pm(angles_deg: Mapping[str, float],
@@ -111,17 +125,21 @@ def actual_curvature_1pm(angles_deg: Mapping[str, float],
     """
     import numpy as np
 
-    matrix = np.zeros((2, 2))
-    rhs = np.zeros(2)
+    aa = ab = bb = rx = ry = 0.0
+    directions = []
     for wheel, angle in angles_deg.items():
         if wheel not in centers:
             continue
         delta = math.radians(float(angle))
         # 法线 = 纯滚动方向；ICR 在轮轴延长线上。
-        normal = np.array([math.cos(delta), math.sin(delta)])
-        point = np.asarray(centers[wheel], dtype=float)
-        matrix += np.outer(normal, normal)
-        rhs += normal * float(normal @ point)
+        c, s = math.cos(delta), math.sin(delta)
+        px, py = centers[wheel]
+        dot = c*px + s*py
+        aa += c*c; ab += c*s; bb += s*s
+        rx += c*dot; ry += s*dot
+        directions.append((c,s,px,py))
+    matrix = np.array(((aa, ab),(ab, bb)))
+    rhs = np.array((rx,ry))
     # 车轮角都很小（接近直行）时，12 条方向线几乎平行，法方程接近奇异，
     # 最小二乘交点会飞到无穷远 —— 那不是"转得很急"，而是"基本没转"。
     # 用矩阵的条件数做判据，病态时按直行处理（曲率 0），绝不返回虚假的大曲率。
@@ -137,13 +155,9 @@ def actual_curvature_1pm(angles_deg: Mapping[str, float],
     except np.linalg.LinAlgError:
         return 0.0, None, None, 0.0
     residual = 0.0
-    for wheel, angle in angles_deg.items():
-        if wheel not in centers:
-            continue
-        delta = math.radians(float(angle))
-        normal = np.array([math.cos(delta), math.sin(delta)])
-        point = np.asarray(centers[wheel], dtype=float)
-        residual = max(residual, abs(float(normal @ (icr - point))))
+    ix, iy = float(icr[0]), float(icr[1])
+    for c,s,px,py in directions:
+        residual = max(residual, abs(c*(ix-px) + s*(iy-py)))
     radius = float(math.hypot(icr[0], icr[1]))
     if radius <= 1.0e-9:
         return 0.0, float(icr[0]), float(icr[1]), residual
@@ -202,7 +216,8 @@ def road_load(adapter: J0GeometryAdapter, q_values: Mapping[str, float], *,
             normal_load[wheel] = masses[index] * gravity / 2.0
             demand[wheel] = float(axle_demand[index] / 2.0)
             limit = float(friction_coefficient) * normal_load[wheel]
-            available[wheel] = float(np.clip(demand[wheel], -limit, limit))
+            value = demand[wheel]
+            available[wheel] = -limit if value < -limit else limit if value > limit else value
             slip[wheel] = math.degrees(-demand[wheel] / c_alpha)
             delta = math.radians(angles_deg[wheel])
             engagement = math.tanh(abs(delta) / max(engagement_angle, 1.0e-12))

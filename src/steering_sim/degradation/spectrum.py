@@ -4,6 +4,7 @@ from __future__ import annotations
 from dataclasses import dataclass
 from pathlib import Path
 import math
+import warnings
 
 import pandas as pd
 
@@ -14,8 +15,17 @@ REQUIRED_COLUMNS = (
     "axle_mass_3_t", "axle_mass_4_t", "axle_mass_5_t", "axle_mass_6_t",
     "pump_running",
 )
-OPTIONAL_COLUMNS = ("repeats", "contamination_severity", "oil_temperature_c")
+OPTIONAL_COLUMNS = ("repeats", "contamination_severity", "oil_temperature_c", "seconds_per_degree")
 SECONDS_PER_DAY = 86400.0
+COLUMN_LABELS = dict(zip(REQUIRED_COLUMNS, (
+    '工况段编号','车速（km/h）','一桥外轮最终转角（°）','整段时间（s）','附着系数',
+    *[f'第{i}桥轴荷（t）' for i in range(1,7)],'泵运行')))
+COLUMN_LABELS.update(repeats='重复次数', contamination_severity='污染严重度',
+                     oil_temperature_c='油温（℃）', seconds_per_degree='每度转向时间（秒/度）')
+
+
+def normalize_columns(frame):
+    return frame.rename(columns={value:key for key,value in COLUMN_LABELS.items()})
 
 
 class SpectrumError(ValueError):
@@ -28,9 +38,9 @@ def _boolean(value: object, row: int) -> bool:
     if isinstance(value, (int, float)) and float(value) in (0.0, 1.0):
         return bool(value)
     text = str(value).strip().lower()
-    if text in {"true", "yes", "y", "1", "运行", "开"}:
+    if text in {"true", "yes", "y", "1", "运行", "开", "是"}:
         return True
-    if text in {"false", "no", "n", "0", "停机", "关"}:
+    if text in {"false", "no", "n", "0", "停机", "关", "否"}:
         return False
     raise SpectrumError(f"第 {row} 行 pump_running={value!r} 不是布尔值")
 
@@ -47,6 +57,7 @@ class TaskSegment:
     repeats: int = 1
     contamination_severity: float = 1.0
     oil_temperature_c: float = 40.0
+    seconds_per_degree: float | None = None  # None is the documented D1/D3 legacy API.
 
     def __post_init__(self) -> None:
         values = (self.speed_kmh, self.target_outer_angle_deg,
@@ -65,6 +76,9 @@ class TaskSegment:
             raise SpectrumError(f"{self.segment_id}: repeats 必须为正整数")
         if self.contamination_severity < 0.0:
             raise SpectrumError(f"{self.segment_id}: 污染严重度不得为负")
+        if self.seconds_per_degree is not None and (
+                not math.isfinite(self.seconds_per_degree) or self.seconds_per_degree <= 0):
+            raise SpectrumError(f"{self.segment_id}: 每度转向时间须为有限正数")
 
 
 @dataclass(frozen=True, slots=True)
@@ -85,6 +99,19 @@ class TaskSpectrum:
             for repeat_index in range(segment.repeats):
                 yield segment, repeat_index + 1
 
+    def validate_transitions(self, initial_angle: float = 0.0) -> None:
+        previous = initial_angle
+        for segment, _ in self.expanded():
+            change = abs(segment.target_outer_angle_deg-previous)
+            if change > 1e-12 and not segment.pump_running:
+                raise SpectrumError(f"{segment.segment_id}: 泵停机时不能完成新的转向动作")
+            if segment.seconds_per_degree is not None:
+                required = change*segment.seconds_per_degree
+                if required > segment.segment_duration_s+1e-9:
+                    raise SpectrumError(f"{segment.segment_id}: 转向需 {required:g} 秒，任务段仅 {segment.segment_duration_s:g} 秒（严格模式）")
+            if segment.pump_running:
+                previous = segment.target_outer_angle_deg
+
 
 def load_task_spectrum(path: str | Path, *, expected_days: float | None = 30.0,
                        duration_tolerance_s: float = 1.0) -> TaskSpectrum:
@@ -98,11 +125,14 @@ def load_task_spectrum(path: str | Path, *, expected_days: float | None = 30.0,
         frame = pd.read_excel(source)
     else:
         raise SpectrumError(f"仅支持 CSV/XLSX，收到 {suffix or '无扩展名'}")
+    frame = normalize_columns(frame)
     missing = [name for name in REQUIRED_COLUMNS if name not in frame.columns]
     if missing:
         raise SpectrumError("任务谱缺少必需列：" + ", ".join(missing))
     if frame.empty:
         raise SpectrumError("任务谱没有工况行")
+    if "seconds_per_degree" not in frame or frame['seconds_per_degree'].isna().any():
+        warnings.warn("旧任务谱缺少每度转向时间：沿用历史12°/s及最短0.4s兼容口径；新任务应显式填写6秒/度。", UserWarning)
 
     segments: list[TaskSegment] = []
     for position, row in frame.iterrows():
@@ -110,7 +140,7 @@ def load_task_spectrum(path: str | Path, *, expected_days: float | None = 30.0,
         try:
             repeats_value = row.get("repeats", 1)
             repeats = 1 if pd.isna(repeats_value) else int(repeats_value)
-            if float(repeats_value) != repeats:
+            if not pd.isna(repeats_value) and float(repeats_value) != repeats:
                 raise SpectrumError(f"第 {excel_row} 行 repeats 必须为整数")
             contamination = row.get("contamination_severity", 1.0)
             temperature = row.get("oil_temperature_c", 40.0)
@@ -127,13 +157,19 @@ def load_task_spectrum(path: str | Path, *, expected_days: float | None = 30.0,
                 contamination_severity=(1.0 if pd.isna(contamination)
                                         else float(contamination)),
                 oil_temperature_c=(40.0 if pd.isna(temperature)
-                                   else float(temperature))))
+                                   else float(temperature)),
+                seconds_per_degree=(None if pd.isna(row.get("seconds_per_degree"))
+                                    else float(row["seconds_per_degree"]))))
         except SpectrumError:
             raise
         except Exception as exc:
             raise SpectrumError(f"第 {excel_row} 行解析失败：{exc}") from exc
 
     spectrum = TaskSpectrum(tuple(segments), source.resolve())
+    # Legacy spectra retain their original pump-off handling; explicit-rate
+    # inputs opt into strict transition validation.
+    if any(s.seconds_per_degree is not None for s in spectrum.segments):
+        spectrum.validate_transitions()
     if expected_days is not None:
         expected_s = float(expected_days) * SECONDS_PER_DAY
         delta = spectrum.total_duration_s - expected_s

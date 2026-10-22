@@ -6,6 +6,7 @@ Set-Location -LiteralPath $Root
   --name SteeringQualityPredictor `
   --paths "$Root\src" --paths $Root `
   --collect-all pyqtgraph `
+  --add-data "src\steering_sim\desktop\assets;steering_sim\desktop\assets" `
   --add-data "configs;configs" --add-data "data\degradation;data\degradation" `
   --add-data "mechanics_ackermann_v2;mechanics_ackermann_v2" `
   --add-data "mechanics_ackermann_redesigned;mechanics_ackermann_redesigned" `

@@ -18,6 +18,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, field, replace
 import math
+from time import perf_counter
 from typing import Any, Callable, Mapping
 
 import numpy as np
@@ -33,6 +34,7 @@ from steering_sim.hydraulics_lumped import (HydraulicInput, LumpedHydraulicSyste
 from steering_sim.hydraulics_lumped.interface import evaluate_hydraulic as _l1_evaluate
 
 from .authority import authority_as_dict, probe_channel_authority, working_point
+from .angle_reference import AngleStrokeReference
 from .config import CHANNEL_ORDER, DOF_BY_CHANNEL, J0CaseConfig, J0Config
 from .geometry import DOF_ORDER, J0GeometryAdapter, J0MappingError
 from .road_load import RoadLoad, road_load, virtual_work_residual
@@ -257,7 +259,7 @@ class J0Runner:
     # ------------------------------------------------------------------- stage
     def _stage(self, t: float, state: np.ndarray, commands: list[float],
                curvature_1pm: float, speed_kmh: float, damping: float,
-               road_load_scale: float = 1.0):
+               road_load_scale: float = 1.0, *, include_output: bool = True):
         x_by_channel = {item.channel: float(state[self.state_stride * index + 2])
                         for index, item in enumerate(self.config.channels)}
         q_values, status = self.geometry.q_from_strokes(x_by_channel)
@@ -296,7 +298,10 @@ class J0Runner:
             loads.append(value)
         inputs = HydraulicInput(tuple(commands), self.speeds, tuple(loads),
                                 redundant_valve_commands=self.redundant)
-        dx, outputs = self._evaluate(self.hydraulic, t, state, inputs)
+        if self.engineering_parameters is not None and not include_output:
+            dx, outputs = self.hydraulic.evaluate(t, state, inputs, include_output=False)
+        else:
+            dx, outputs = self._evaluate(self.hydraulic, t, state, inputs)
         if not np.all(np.isfinite(dx)):
             raise J0StopCondition("non-finite hydraulic derivative")
         return dx, outputs, q_values, road, tuple(loads)
@@ -333,6 +338,8 @@ class J0Runner:
             row[f"{tag}_pA_mpa_g"] = float(state[self.state_stride * position]) / 1.0e6
             row[f"{tag}_pB_mpa_g"] = float(state[self.state_stride * position + 1]) / 1.0e6
             row[f"{tag}_valve_command"] = float(commands[position])
+            if self.state_stride == 5:
+                row[f"{tag}_valve_spool_state"] = float(state[self.state_stride * position + 4])
             row[f"{tag}_pid_raw_output"] = float(raw_pid[position])
             controller = self._controllers[position] if self._controllers else None
             diagnostics = getattr(controller, "diagnostics", None)
@@ -421,6 +428,7 @@ class J0Runner:
                  reference_start_outer_angle_deg: float = 0.0,
                  initial_state: np.ndarray | None = None,
                  should_stop: "Callable[[], bool] | None" = None,
+                 reference_space: str = "stroke",
                  ) -> J0CaseResult:
         """运行一个 J0 工况。
 
@@ -435,6 +443,8 @@ class J0Runner:
         ``(归一化位置, 归一化速率)``。用于"连续两个转向指令 / 反向回零"这类
         多段工况；缺省是单段 S 曲线。**被控对象与控制律都不因此改变。**
         """
+        if reference_space not in {"stroke", "outer_angle"}:
+            raise ValueError(f"Unknown reference_space: {reference_space}")
         target = self.target(case)
         q_ref, x_ref = target["q_ref"], target["x_ref"]
         start_case = replace(case, target_outer_angle_deg=float(
@@ -475,6 +485,14 @@ class J0Runner:
         completed = True
         step = 0
         progress_every = max(1, steps // 100)
+        ref_eff = np.array([x_start[item.channel] for item in self.config.channels])
+        reference_velocity_m_s = np.zeros(len(self.config.channels))
+        angle_delta = case.target_outer_angle_deg - reference_start_outer_angle_deg
+        angle_reference = (AngleStrokeReference(self, case, reference_start_outer_angle_deg)
+                           if reference_space == "outer_angle" else None)
+
+        rk4_wall_s = recording_wall_s = control_wall_s = 0.0
+        loop_started = perf_counter()
 
         try:
             for step in range(steps + 1):
@@ -494,14 +512,24 @@ class J0Runner:
                     fraction, rate = profile(t)
                     if not self.use_feedforward:
                         rate = 0.0
-                ref_eff = np.array([x_start[item.channel] + fraction * x_delta[item.channel]
-                                    for item in self.config.channels])
+                if reference_space == "stroke":
+                    ref_eff = np.array([x_start[item.channel] + fraction * x_delta[item.channel]
+                                        for item in self.config.channels])
+                    reference_velocity_m_s = np.array([
+                        rate * x_delta[item.channel] for item in self.config.channels])
                 if step % self.substeps == 0:
+                    control_started = perf_counter()
+                    if reference_space == "outer_angle":
+                        # Inverse kinematics only at the 10 ms control boundary.
+                        # The hydraulic RK4 stages continue to integrate actual x.
+                        angle_now = reference_start_outer_angle_deg + fraction * angle_delta
+                        ref_eff, reference_velocity_m_s = angle_reference.at(
+                            angle_now, angle_delta*rate if self.use_feedforward else 0.0)
                     raw_pid = np.empty(4)
                     for position, controller in enumerate(controllers):
                         item = self.config.channels[position]
-                        feedforward = (self.feedforward_gain[item.channel] * rate
-                                       * x_delta[item.channel])
+                        feedforward = (self.feedforward_gain[item.channel]
+                                       * reference_velocity_m_s[position])
                         command = controller.step(
                             Measurement(np.array(
                                 [state[self.state_stride * position + 2]])),
@@ -524,39 +552,59 @@ class J0Runner:
                         last_request[position] = float(
                             diagnostics.unclipped_request[0])
                     control_updates += 1
+                    control_wall_s += perf_counter()-control_started
 
+                rk_started = perf_counter()
                 dx0, outputs, q_values, road, loads = self._stage(
                     t, state, commands, curvature, case.speed_kmh,
-                    diagnostic_damping_n_s_per_m, road_load_scale)
+                    diagnostic_damping_n_s_per_m, road_load_scale,
+                    include_output=step % self.stride == 0)
+                record_elapsed = 0.0
                 if step % self.stride == 0:
-                    recorder.add(self._row(step // self.stride, t, state, commands,
+                    record_started = perf_counter()
+                    recorded = self._row(step // self.stride, t, state, commands,
                                            raw_pid, outputs, q_values, road, loads,
-                                           q_ref, x_ref, ref_eff, target, case))
+                                           q_ref, x_ref, ref_eff, target, case)
+                    if reference_space == "outer_angle":
+                        recorded["outer_angle_reference_deg"] = (
+                            reference_start_outer_angle_deg + fraction * angle_delta)
+                        for position, item in enumerate(self.config.channels):
+                            recorded[f"{item.channel}_reference_velocity_m_s"] = reference_velocity_m_s[position]
+                    recorder.add(recorded)
+                    record_elapsed = perf_counter()-record_started
+                    recording_wall_s += record_elapsed
                 if step == steps:
                     break
                 k1 = dx0
                 k2 = self._stage(t + self.dt_h / 2, state + self.dt_h * k1 / 2, commands,
                                  curvature, case.speed_kmh,
-                                 diagnostic_damping_n_s_per_m, road_load_scale)[0]
+                                 diagnostic_damping_n_s_per_m, road_load_scale, include_output=False)[0]
                 k3 = self._stage(t + self.dt_h / 2, state + self.dt_h * k2 / 2, commands,
                                  curvature, case.speed_kmh,
-                                 diagnostic_damping_n_s_per_m, road_load_scale)[0]
+                                 diagnostic_damping_n_s_per_m, road_load_scale, include_output=False)[0]
                 k4 = self._stage(t + self.dt_h, state + self.dt_h * k3, commands,
                                  curvature, case.speed_kmh,
-                                 diagnostic_damping_n_s_per_m, road_load_scale)[0]
+                                 diagnostic_damping_n_s_per_m, road_load_scale, include_output=False)[0]
                 state = state + self.dt_h * (k1 + 2.0 * k2 + 2.0 * k3 + k4) / 6.0
                 if not np.all(np.isfinite(state)):
                     raise J0StopCondition("non-finite hydraulic state")
+                rk4_wall_s += perf_counter()-rk_started-record_elapsed
         except (J0StopCondition, J0MappingError, ValueError, RuntimeError) as exc:
             completed = False
             failure_time = float(step) * self.dt_h
             failure_reason = f"{type(exc).__name__}: {exc}"
 
+        integration_loop_wall_s = perf_counter()-loop_started
         samples = recorder.arrays()
         summary = self._summarise(case, samples, target, x_ref, saturated, anti_windup,
                                   control_updates, completed, failure_time, failure_reason,
                                   diagnostic_damping_n_s_per_m)
         summary["road_load_scale"] = road_load_scale
+        summary['performance_timing'] = dict(rk4_wall_s=rk4_wall_s,
+            control_wall_s=control_wall_s, recording_wall_s=recording_wall_s,
+            integration_loop_wall_s=integration_loop_wall_s,
+            rk4_scope='all four state-dependent RHS stages plus RK4 state update; excludes PID and recorded-row work',
+            completed_steps=step)
         summary["controller_gains"] = {
             item.channel: list(self.channel_gains(item.channel,
                                                   (gains or {}).get(item.channel)))
@@ -566,6 +614,13 @@ class J0Runner:
         summary["use_feedforward"] = bool(self.use_feedforward)
         summary["reference_time_s"] = ramp_s
         summary["reference_start_outer_angle_deg"] = float(reference_start_outer_angle_deg)
+        summary["reference_space"] = reference_space
+        summary["actual_hydraulic_step_s"] = self.dt_h
+        summary["actual_control_step_s"] = self.dt_c
+        summary["recording_period_s"] = self.stride*self.dt_h
+        if angle_reference is not None:
+            summary["angle_reference_knots"] = len(angle_reference.angles)
+            summary["angle_reference_maximum_checked_midpoint_error_m"] = angle_reference.maximum_midpoint_error_m
         return J0CaseResult(case=case, samples=samples, summary=summary,
                             completed=completed, failure_time_s=failure_time,
                             failure_reason=failure_reason,

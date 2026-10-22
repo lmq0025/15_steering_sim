@@ -28,6 +28,14 @@ from typing import Mapping
 
 import numpy as np
 
+# The tables contain only real float64 vectors.  NumPy's public interp adds
+# complex/period dispatch on every scalar query; use its identical C kernel
+# when available, retaining the public implementation as a portable fallback.
+try:
+    from numpy._core.multiarray import interp as _real_interp
+except ImportError:  # NumPy versions without this optional internal entry
+    _real_interp = np.interp
+
 from .config import J0Config, CHANNEL_ORDER
 
 DOF_ORDER = ("q_front", "q4", "q5", "q6")
@@ -104,16 +112,16 @@ class _DofTable:
         return float(self.q[-1])
 
     def angle(self, wheel: str, q_value: float) -> float:
-        return float(np.interp(q_value, self.q, self.angles[wheel]))
+        return float(_real_interp(q_value, self.q, self.angles[wheel]))
 
     def angle_jacobian(self, wheel: str, q_value: float) -> float:
-        return float(np.interp(q_value, self.q, self.angle_derivative[wheel]))
+        return float(_real_interp(q_value, self.q, self.angle_derivative[wheel]))
 
     def stroke(self, q_value: float) -> float:
-        return float(np.interp(q_value, self.q, self.stroke_repr))
+        return float(_real_interp(q_value, self.q, self.stroke_repr))
 
     def stroke_jacobian(self, q_value: float) -> float:
-        return float(np.interp(q_value, self.q, self.stroke_derivative))
+        return float(_real_interp(q_value, self.q, self.stroke_derivative))
 
     def q_from_stroke(self, x: float) -> float:
         if not self.monotone:
@@ -122,8 +130,8 @@ class _DofTable:
         # dx/dq is genuinely negative for the q5 and q6 groups, so the
         # decreasing branch is interpolated on the reversed arrays.
         if self.monotone_increasing:
-            return float(np.interp(x, self.stroke_repr, self.q))
-        return float(np.interp(x, self.stroke_repr[::-1], self.q[::-1]))
+            return float(_real_interp(x, self.stroke_repr, self.q))
+        return float(_real_interp(x, self.stroke_repr[::-1], self.q[::-1]))
 
 
 class J0GeometryAdapter:
@@ -253,7 +261,7 @@ class J0GeometryAdapter:
             return table.q_from_stroke(float(np.clip(
                 x, min(table.stroke_repr), max(table.stroke_repr)))), \
                 MappingStatus(False, ("MAPPING_NON_MONOTONIC",))
-        low, high = sorted((table.stroke(table.q_min), table.stroke(table.q_max)))
+        low, high = sorted((float(table.stroke_repr[0]), float(table.stroke_repr[-1])))
         if x < low - self._envelope_tolerance_m or \
                 x > high + self._envelope_tolerance_m:
             bounded = float(np.clip(x, low, high))

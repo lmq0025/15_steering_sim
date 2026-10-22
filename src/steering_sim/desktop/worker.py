@@ -4,7 +4,7 @@ from __future__ import annotations
 import traceback
 from typing import Any, Callable
 
-from PySide6.QtCore import QObject, QThread, Signal, Slot
+from PySide6.QtCore import QObject, QThread, Signal, Slot, QCoreApplication, QEvent
 
 
 class TaskWorker(QObject):
@@ -39,7 +39,10 @@ class TaskWorker(QObject):
             else:
                 self.finished.emit(result)
         except Exception as exc:
-            self.failed.emit(f"{type(exc).__name__}: {exc}", traceback.format_exc())
+            if self._cancel_requested:
+                self.cancelled.emit('任务已在安全检查点取消')
+            else:
+                self.failed.emit(f"{type(exc).__name__}: {exc}", traceback.format_exc())
 
 
 class TaskController(QObject):
@@ -63,6 +66,10 @@ class TaskController(QObject):
     def start(self, task_id: str, task: Callable[..., Any], **kwargs) -> bool:
         if self.busy:
             return False
+        # Dispose closed windows/workers before accepting a new task. This is
+        # also needed by embedded/manual Qt event loops which processEvents()
+        # does not automatically flush DeferredDelete events for.
+        QCoreApplication.sendPostedEvents(None,QEvent.DeferredDelete)
         self.task_id = task_id
         self.thread = QThread(self)
         self.worker = TaskWorker(task, kwargs)
@@ -73,6 +80,7 @@ class TaskController(QObject):
         self.worker.failed.connect(lambda message, detail: self._fail(message, detail))
         self.worker.cancelled.connect(lambda message: self._cancelled(message))
         self.thread.finished.connect(self.thread.deleteLater)
+        self.thread.finished.connect(self.worker.deleteLater)
         self.started.emit(task_id)
         self.busy_changed.emit(True)
         self.thread.start()

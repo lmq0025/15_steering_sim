@@ -84,7 +84,8 @@ def test_zero_target_wheels_are_handled_by_absolute_tolerance():
         samples[f"wheel_{wheel}_actual_deg"][:] = 0.0
     result = analyze_response(samples, 4.0, ResponseCriteria())
     third = result["wheel_table"].query("wheel in ['axle3_left', 'axle3_right']")
-    assert (third["settled_status"] == "SETTLED").all()
+    assert (third["settled_status"] == "FIXED_ZERO_NO_STEERING_REQUIRED").all()
+    assert third["first_arrival_s"].isna().all()
     assert (third["final_target_deg"] == 0.0).all()
 
 

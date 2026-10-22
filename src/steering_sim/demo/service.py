@@ -196,7 +196,8 @@ class DemoService:
             reference_time_s: float | None = None,
             output_suffix: str = "",
             generate_figures: bool = True,
-            allow_extended_duration: bool = False) -> DemoResult:
+            allow_extended_duration: bool = False,
+            reference_space: str = "stroke") -> DemoResult:
         """真实积分一个工况；这是唯一的计算入口。
 
         ``on_fraction`` 接收 0~1 的积分完成比例，供界面进度条使用；
@@ -221,7 +222,8 @@ class DemoService:
         raw: J0CaseResult = self.runner.run_case(
             case, on_progress=on_fraction, profile=profile,
             reference_start_outer_angle_deg=reference_start_outer_angle_deg,
-            initial_state=initial_state, should_stop=should_stop)
+            initial_state=initial_state, should_stop=should_stop,
+            reference_space=reference_space)
         wall = time.perf_counter() - started
 
         report("正在导出时间序列…")

@@ -222,8 +222,9 @@ class EngineeringHydraulicSystem:
         return tuple(speeds)  # type: ignore[return-value]
 
     # ---------------------------------------------------------------- 评价
-    def evaluate(self, t: float, state: np.ndarray, inputs: Any
-                 ) -> tuple[np.ndarray, EngineeringOutput]:
+    def evaluate(self, t: float, state: np.ndarray, inputs: Any, *,
+                 include_output: bool = True
+                 ) -> tuple[np.ndarray, EngineeringOutput | None]:
         """计算状态导数与输出。``inputs`` 只需鸭子类型地提供
         ``valve_commands`` 与 ``external_load_forces_n``（长度 = 通道数）。
         """
@@ -262,36 +263,31 @@ class EngineeringHydraulicSystem:
                 degradation.supply_pressure_scale
 
             # --- 阀芯一阶响应（含死区）
-            raw = float(np.clip(commands[index], -channel.command_limit,
-                                channel.command_limit))
+            raw = commands[index]
+            limit = channel.command_limit
+            raw = -limit if raw < -limit else limit if raw > limit else raw
             deadband = float(valve.deadband)
             if deadband > 0.0:
                 magnitude = max(0.0, abs(raw) - deadband) / max(1.0e-9, 1.0 - deadband)
                 raw = math.copysign(magnitude, raw) if raw != 0.0 else 0.0
             tau = max(1.0e-4, valve.lag_time_s * valve_wear.lag_scale)
             derivative[base + 4] = (raw - u_f) / tau
-            u = float(np.clip(u_f, -1.0, 1.0))
+            u = -1.0 if u_f < -1.0 else 1.0 if u_f > 1.0 else u_f
             u_pos = max(u, 0.0)
             u_neg = max(-u, 0.0)
 
             area = valve.maximum_area_m2 * valve_wear.flow_coefficient_scale
             coefficient = valve.discharge_coefficient
             # --- 四通阀：u > 0 时 P→A、B→T；u < 0 时 P→B、A→T
-            flow_a_in = (
-                _soft_orifice(supply_pressure - p_a, area * u_pos, density,
-                              coefficient, regularisation)
-                - _soft_orifice(p_a - tank, area * u_neg, density,
-                                coefficient, regularisation))
-            flow_b_in = (
-                _soft_orifice(supply_pressure - p_b, area * u_neg, density,
-                              coefficient, regularisation)
-                - _soft_orifice(p_b - tank, area * u_pos, density,
-                                coefficient, regularisation))
-            supply_flow = (
-                _soft_orifice(supply_pressure - p_a, area * u_pos, density,
-                              coefficient, regularisation)
-                + _soft_orifice(supply_pressure - p_b, area * u_neg, density,
-                                coefficient, regularisation))
+            p_to_a = _soft_orifice(supply_pressure-p_a, area*u_pos, density,
+                                   coefficient, regularisation)
+            p_to_b = _soft_orifice(supply_pressure-p_b, area*u_neg, density,
+                                   coefficient, regularisation)
+            flow_a_in = p_to_a - _soft_orifice(p_a-tank, area*u_neg, density,
+                                               coefficient, regularisation)
+            flow_b_in = p_to_b - _soft_orifice(p_b-tank, area*u_pos, density,
+                                               coefficient, regularisation)
+            supply_flow = p_to_a + p_to_b
             # 阀芯/阀套污染磨损的最小守恒支路：高压 P 口直接泄到 T 口。
             # 该流量从供油轨扣除，进入油箱（油箱为定压边界，无动态状态）。
             valve_leak = max(
@@ -334,7 +330,8 @@ class EngineeringHydraulicSystem:
             derivative[base + 2] = v
 
             demand[channel.supply] += supply_flow + valve_leak
-            outputs.append(ChannelOutput(
+            if include_output:
+                outputs.append(ChannelOutput(
                 name=channel.name, position_m=x, velocity_m_s=v,
                 hydraulic_force_n=hydraulic_force,
                 pressure_a_pa_g=p_a, pressure_b_pa_g=p_b,
@@ -368,17 +365,21 @@ class EngineeringHydraulicSystem:
                 pump_flow - relief_flow - demand[name])
             pressures.append(pressure)
             pump_flows.append(pump_flow)
-            wear = degradation.pump(name)
-            hydraulic_power = max(0.0, pressure) * pump_flow
-            input_power = hydraulic_power / wear.mechanical_efficiency
-            pump_input_powers.append(input_power)
-            pump_mechanical_losses.append(max(0.0, input_power - hydraulic_power))
+            if include_output:
+                wear = degradation.pump(name)
+                hydraulic_power = max(0.0, pressure) * pump_flow
+                input_power = hydraulic_power / wear.mechanical_efficiency
+                pump_input_powers.append(input_power)
+                pump_mechanical_losses.append(max(0.0, input_power - hydraulic_power))
             demands.append(demand[name])
             margins.append(pump_flow - demand[name])
             insufficient.append(demand[name] > pump_flow)
 
         if not np.all(np.isfinite(derivative)):
             raise EngineeringHydraulicError("状态导数出现非有限值")
+
+        if not include_output:
+            return derivative, None
 
         return derivative, EngineeringOutput(
             channels=tuple(outputs),

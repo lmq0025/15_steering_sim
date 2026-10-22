@@ -19,12 +19,30 @@ def gamma_damage_increment(mean_increment: float, scale_damage: float,
     A shared scale per mode makes independent increments additive under an
     equivalent exposure split (same Gamma process law).
     """
-    if mean_increment < 0.0 or scale_damage <= 0.0:
+    mean = np.asarray(mean_increment, dtype=float)
+    if np.any(mean < 0.0) or scale_damage <= 0.0:
         raise ValueError("Gamma mean must be nonnegative and scale positive")
-    if mean_increment == 0.0:
+    if mean.ndim == 0 and mean == 0.0:
         return 0.0
-    return float(rng.gamma(shape=mean_increment / scale_damage,
-                           scale=scale_damage))
+    value = rng.gamma(shape=mean / scale_damage, scale=scale_damage)
+    return float(value) if mean.ndim == 0 else value
+
+
+def gamma_advance(damage, exposure, mode_config, rng):
+    """Shared scalar/vector conditional-mean transition for D3 and desktop.
+
+    The unbounded Gamma mean is the capped deterministic increment at the
+    current state. Capping the sampled new state reduces its mean near the
+    upper boundary; no post-hoc mean matching is performed.
+    """
+    old = np.asarray(damage, dtype=float)
+    maximum = float(mode_config['maximum_damage'])
+    alpha = float(mode_config['state_factor_alpha'])
+    dose = float(mode_config['rate'])*exposure
+    increment = (dose if alpha == 0 else (old+1/alpha)*np.expm1(alpha*dose))
+    mean = np.maximum(0, np.minimum(maximum-old, increment))
+    return np.minimum(maximum, old+gamma_damage_increment(
+        mean, float(mode_config['gamma_scale_damage']), rng))
 
 
 @dataclass(frozen=True, slots=True)
@@ -38,6 +56,10 @@ class MonteCarloRULResult:
     sample_count: int
     random_seed: int
     runtime_s: float
+    checkpoint_damage: Any = None
+    mode_keys: tuple[str,...] = ()
+    terminal_cycles: Any = None
+    first_mode_crossings: Any = None
 
 
 SystemFailure = Callable[[MultiModeDegradationState], tuple[bool, str]]
@@ -49,7 +71,8 @@ def monte_carlo_rul(initial_state: MultiModeDegradationState,
                     random_seed: int | None = None,
                     maximum_cycles: int | None = None,
                     system_failure: SystemFailure | None = None,
-                    stored_paths: int = 12) -> MonteCarloRULResult:
+                    stored_paths: int = 12, should_stop=lambda:False,
+                    on_progress=lambda *_:None,record_all_states: bool=False) -> MonteCarloRULResult:
     started = time.perf_counter()
     stochastic = config.raw["stochastic"]
     mission = config.raw["mission"]
@@ -70,29 +93,36 @@ def monte_carlo_rul(initial_state: MultiModeDegradationState,
     lifetimes: list[int] = []
     censored = 0
     keys = tuple(initial_state.modes)
+    checkpoints=None;terminals=None;crossings=None
+    if record_all_states:
+        required=(horizon+1)*n*len(keys)*8
+        if required>512*1024*1024:
+            raise ValueError('循环检查点记录预计超过512 MiB，请减少路径数或预测循环上限；未省略任何路径')
+        checkpoints=np.full((horizon+1,n,len(keys)),np.nan)
+        checkpoints[0]=[initial_state.modes[k].damage for k in keys]
+        terminals=np.zeros(n,dtype=np.int32);crossings=np.full((n,len(keys)),-1,dtype=np.int32)
     for sample in range(n):
+        if should_stop():
+            raise InterruptedError('随机寿命分析已在路径安全检查点取消')
+        if sample%8==0:
+            on_progress(.8+.1*sample/n,f'随机寿命路径 {sample+1}/{n}')
         state = initial_state
         failure_cycle: int | None = None
         limiters: tuple[str, ...] = ()
         reason = ""
         for cycle in range(1, horizon + 1):
+            if should_stop():
+                raise InterruptedError('随机寿命分析已在循环安全检查点取消')
             updated = dict(state.modes)
             for key in keys:
                 kind, _, mode = key.split(":")
                 mode_cfg = config.mode(kind, mode)
-                deterministic, _ = updated[key].advanced(
-                    rate=float(mode_cfg["rate"]),
-                    equivalent_exposure=aggregate[key],
-                    state_factor_alpha=float(mode_cfg["state_factor_alpha"]),
-                    maximum_damage=float(mode_cfg["maximum_damage"]))
-                mean = deterministic.damage - updated[key].damage
-                increment = gamma_damage_increment(
-                    mean, float(mode_cfg["gamma_scale_damage"]), rng)
                 updated[key] = ComponentDamageState(
-                    damage=min(float(mode_cfg["maximum_damage"]),
-                               updated[key].damage + increment),
+                    damage=float(gamma_advance(updated[key].damage, aggregate[key], mode_cfg, rng)),
                     exposure=updated[key].exposure + aggregate[key])
             state = MultiModeDegradationState(updated)
+            if checkpoints is not None:
+                checkpoints[cycle,sample]=[state.modes[k].damage for k in keys]
             if sample < stored_paths:
                 paths.append({"sample_id": sample, "mission_cycle": cycle,
                               "maximum_damage": state.max_damage,
@@ -127,6 +157,17 @@ def monte_carlo_rul(initial_state: MultiModeDegradationState,
                    "failure_reason": reason, "horizon_cycles": horizon,
                    "random_seed": seed}
         rows.append(row)
+        if checkpoints is not None:
+            terminals[sample]=cycle
+            modes=[]
+            if failure_cycle is not None:
+                for j,key in enumerate(keys):
+                    kind,_,mode=key.split(':')
+                    if state.modes[key].damage+1e-15>=float(config.mode(kind,mode)['failure_damage']):
+                        crossings[sample,j]=failure_cycle;modes.append(key)
+            row.update(last_safe_checkpoint=(failure_cycle-1 if failure_cycle is not None else horizon),
+                       first_exceedance_checkpoint=failure_cycle,
+                       failure_mode_keys='|'.join(modes),detection_resolution='CYCLE_END_CHECKPOINT')
 
     quantiles: dict[str, float | None] = {}
     # These are quantiles of observed stochastic-path lifetimes, not confidence
@@ -140,4 +181,6 @@ def monte_carlo_rul(initial_state: MultiModeDegradationState,
         sample_rows=tuple(rows), path_rows=tuple(paths), quantiles=quantiles,
         limiting_factor_counts=limiter_counts, censored_count=censored,
         censored_fraction=censored / n, sample_count=n, random_seed=seed,
-        runtime_s=time.perf_counter() - started)
+        runtime_s=time.perf_counter() - started,
+        checkpoint_damage=(checkpoints[:int(terminals.max())+1].copy() if checkpoints is not None else None),
+        mode_keys=keys if record_all_states else (),terminal_cycles=terminals,first_mode_crossings=crossings)

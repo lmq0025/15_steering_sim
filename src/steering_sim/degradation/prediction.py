@@ -119,6 +119,11 @@ class D1Predictor:
                round(segment.speed_kmh, 6), round(segment.friction_coefficient, 6),
                tuple(round(value, 6) for value in segment.axle_mass_t),
                segment.pump_running, round(segment.contamination_severity, 6),
+               segment.seconds_per_degree, segment.segment_duration_s,
+               segment.oil_temperature_c, self.config.model_version,
+               tuple(int(value.damage / float(self.config.raw["refresh_damage_interval"]))
+                     for group in (state.pumps,state.valves,state.cylinders)
+                     for value in group.values()),
                # 明显退化后刷新；当前等效特征不依赖磨损，但键保留该约束。
                int(state.max_damage / float(self.config.raw["refresh_damage_interval"])))
         if key in self._cache:
@@ -151,6 +156,10 @@ class D1Predictor:
                                      abs(segment.target_outer_angle_deg - previous_angle)
                                      / max(self.runner.reference_rate_deg_per_s, 1.0e-9)))
                              if movement_allowed and any(cycles.values()) else 0.0)
+        if segment.seconds_per_degree is not None and movement_allowed:
+            transition_time_s = abs(segment.target_outer_angle_deg-previous_angle)*segment.seconds_per_degree
+            if transition_time_s > segment.segment_duration_s+1e-9:
+                raise ValueError(f"{segment.segment_id}: 任务段不足以完成规定斜坡动作")
         pressures: dict[str, float] = {}
         signed_forces: dict[str, float] = {}
         load_levels: dict[str, float] = {}
@@ -240,6 +249,8 @@ class D1Predictor:
         risks: list[dict[str, Any]] = []
         elapsed = 0.0
         previous_angle = float(initial_outer_angle_deg)
+        if any(s.seconds_per_degree is not None for s in spectrum.segments):
+            spectrum.validate_transitions(previous_angle)
         curve = [self._curve_row(0.0, state)]
         pump_cfg = self.config.component("pump")
         valve_cfg = self.config.component("valve")
@@ -360,6 +371,10 @@ class D1Predictor:
                 "target_outer_angle_deg": segment.target_outer_angle_deg,
                 "previous_outer_angle_deg": previous_angle,
                 "segment_duration_s": segment.segment_duration_s,
+                "seconds_per_degree": segment.seconds_per_degree,
+                "steering_rate_semantics": "LEGACY_12_DEG_S" if segment.seconds_per_degree is None else "OUTER_ANGLE_LINEAR_RAMP",
+                "transition_time_s": features["transition_time_s"],
+                "holding_time_s": segment.segment_duration_s-features["transition_time_s"],
                 "pump_running": segment.pump_running,
                 "contamination_severity": contamination,
                 "adhesion_utilization": features["adhesion_utilization"],

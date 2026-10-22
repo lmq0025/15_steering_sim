@@ -193,6 +193,8 @@ def quality_callback_factory(healthy, d3_config, geometry):
             "grade_causes": "|".join(str(row["grade_causes"])
                                       for row in local if row["grade_causes"]),
             "stress_diagnostic_excluded": True,
+            "maximum_mode_damage": state.max_damage,
+            "degradation_state_json": json.dumps(state.flat_damage(), ensure_ascii=False),
         }
     return evaluate, detailed_rows, traces
 
@@ -264,7 +266,8 @@ def write_plots(history: pd.DataFrame, quality: pd.DataFrame,
         axes[1].set_ylabel("tracking error (deg)")
         grade_value = quality["rated_quality_grade"].map(
             {"HEALTHY": 0, "SUBHEALTHY": 1, "DEGRADED": 2, "DANGEROUS": 3})
-        axes[2].step(quality["mission_cycle"], grade_value, where="post")
+        axes[2].scatter(quality["mission_cycle"], grade_value,
+                        label="actual 22-state assessment checkpoints")
         axes[2].set_yticks((0, 1, 2, 3),
                            ("HEALTHY", "SUBHEALTHY", "DEGRADED", "DANGEROUS"))
     axes[2].set_ylabel("D2 rated grade")
@@ -342,7 +345,27 @@ def package_delivery() -> Path:
 
 
 def run(spectrum_path: Path, initial_source: str, *, sample_count: int | None,
-        maximum_cycles: int | None, package: bool) -> dict[str, Any]:
+        maximum_cycles: int | None, package: bool, output_dir=None,
+        random_seed=None, stochastic=True, detailed=False,
+        should_stop=lambda:False, on_progress=lambda *_:None,record_all_states=False,
+        quality_checkpoints: int | None = None) -> dict[str, Any]:
+    global OUT
+    original=OUT
+    if output_dir is not None: OUT=Path(output_dir)
+    try:
+        return _run(spectrum_path,initial_source,sample_count=sample_count,
+                    maximum_cycles=maximum_cycles,package=package,
+                    random_seed=random_seed,stochastic=stochastic,detailed=detailed,
+                    should_stop=should_stop,on_progress=on_progress,record_all_states=record_all_states,
+                    quality_checkpoints=quality_checkpoints)
+    finally:
+        OUT=original
+
+
+def _run(spectrum_path: Path, initial_source: str, *, sample_count: int | None,
+        maximum_cycles: int | None, package: bool, random_seed=None,
+        stochastic=True,detailed=False,should_stop=lambda:False,
+        on_progress=lambda *_:None,record_all_states=False,quality_checkpoints: int | None = None) -> dict[str, Any]:
     OUT.mkdir(parents=True, exist_ok=True)
     started = time.perf_counter()
     hashes_before = {str(path.relative_to(ROOT)): sha256(path)
@@ -350,6 +373,18 @@ def run(spectrum_path: Path, initial_source: str, *, sample_count: int | None,
     spectrum = load_task_spectrum(spectrum_path, expected_days=30.0)
     d1_config = load_degradation_config(D1_CONFIG)
     d3_config = load_d3_config(D3_CONFIG)
+    if quality_checkpoints is not None:
+        if isinstance(quality_checkpoints, bool) or int(quality_checkpoints) != quality_checkpoints or not 2 <= int(quality_checkpoints) <= 100:
+            raise ValueError('动态质量检查点数量必须是2～100的整数')
+        raw=dict(d3_config.raw)
+        raw['mission']=dict(raw['mission'],maximum_dynamic_checkpoints=int(quality_checkpoints))
+        d3_config=replace(d3_config,raw=raw)
+    if random_seed is not None:
+        raw=dict(d3_config.raw); raw['stochastic']=dict(raw['stochastic'],random_seed=int(random_seed))
+        d3_config=replace(d3_config,raw=raw)
+    if detailed:
+        raw=dict(d3_config.raw); raw['mission']=dict(raw['mission'],quality_case_ids=['STD_L10','STD_L30','STD_MID_SPEED'])
+        d3_config=replace(d3_config,raw=raw)
     healthy = load_parameters(HEALTHY)
     geometry = model()
     base_runner = runner(healthy, geometry, accelerated=False)
@@ -364,15 +399,33 @@ def run(spectrum_path: Path, initial_source: str, *, sample_count: int | None,
     deterministic_started = time.perf_counter()
     prediction = RepeatedMissionRULPredictor(d3_config, profile_factory).predict(
         initial_state, quality_evaluator=quality_evaluator,
-        maximum_cycles=maximum_cycles)
+        maximum_cycles=maximum_cycles,quality_checkpoint_count=quality_checkpoints,
+        should_stop=should_stop,on_progress=on_progress)
     deterministic_runtime = time.perf_counter() - deterministic_started
+    if should_stop():
+        return {}
     profile = profile_factory(initial_state, 0.0)
 
     stochastic_started = time.perf_counter()
     monte_carlo = monte_carlo_rul(
         initial_state, profile, d3_config, sample_count=sample_count,
-        maximum_cycles=maximum_cycles)
+        maximum_cycles=maximum_cycles,should_stop=should_stop,on_progress=on_progress,
+        record_all_states=record_all_states) if stochastic else None
+    if monte_carlo is None:
+        from steering_sim.degradation.stochastic import MonteCarloRULResult
+        monte_carlo=MonteCarloRULResult((),(),{}, {},0,0.0,0,
+            int(d3_config.raw['stochastic']['random_seed']),0.0)
     stochastic_runtime = time.perf_counter() - stochastic_started
+
+    checked_cycles=[int(row['mission_cycle']) for row in prediction.quality_history]
+    unchecked_ranges=[]
+    previous=-1
+    for cycle in checked_cycles+[len(prediction.state_history)]:
+        if cycle-previous>1:unchecked_ranges.append([previous+1,cycle-1])
+        previous=cycle
+    quality_failure_cycle=next((int(row['mission_cycle']) for row in prediction.quality_history
+        if row['rated_quality_grade']==d3_config.raw['mission']['system_failure_grade']),None)
+    prior_quality_check=max((cycle for cycle in checked_cycles if quality_failure_cycle is not None and cycle<quality_failure_cycle),default=0)
 
     summary = {
         "prediction_status": prediction.status,
@@ -406,6 +459,14 @@ def run(spectrum_path: Path, initial_source: str, *, sample_count: int | None,
         "deterministic_runtime_s": deterministic_runtime,
         "monte_carlo_runtime_s": stochastic_runtime,
         "total_runtime_s": time.perf_counter() - started,
+        "requested_quality_checkpoint_count": quality_checkpoints or min(5,int(d3_config.raw['mission']['maximum_dynamic_checkpoints'])),
+        "executed_quality_checkpoint_count": len(prediction.quality_history),
+        "executed_quality_case_count": len(detailed_quality),
+        "quality_checkpoint_cycles": checked_cycles,
+        "unassessed_quality_cycle_ranges": unchecked_ranges,
+        "system_quality_failure_cycle_interval": ([prior_quality_check,quality_failure_cycle]
+            if quality_failure_cycle is not None else None),
+        "quality_sampling_note": "Only listed cycles received actual 22-state D2 assessment; intervening cycles are unverified.",
     }
     (OUT / "rul_prediction_summary.json").write_text(
         json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -470,8 +531,13 @@ def run(spectrum_path: Path, initial_source: str, *, sample_count: int | None,
         OUT / "equivalent_cycle_loads.csv", index=False, encoding="utf-8-sig")
 
     samples = pd.DataFrame(monte_carlo.sample_rows)
+    if samples.empty: samples=pd.DataFrame(columns=['sample_id','failure_cycle','status'])
     samples.to_csv(OUT / "monte_carlo_rul_samples.csv", index=False,
                    encoding="utf-8-sig")
+    if monte_carlo.checkpoint_damage is not None:
+        np.savez_compressed(OUT/'monte_carlo_checkpoints.npz',damage=monte_carlo.checkpoint_damage,
+            mode_keys=np.array(monte_carlo.mode_keys),sample_ids=np.arange(monte_carlo.sample_count),
+            terminal_cycles=monte_carlo.terminal_cycles,first_mode_crossings=monte_carlo.first_mode_crossings)
     mc_summary_rows = ([{"metric": key, "value": value,
                          "interpretation": "stochastic path lifetime quantile"}
                         for key, value in monte_carlo.quantiles.items()]
@@ -484,6 +550,7 @@ def run(spectrum_path: Path, initial_source: str, *, sample_count: int | None,
     pd.DataFrame(mc_summary_rows).to_csv(
         OUT / "monte_carlo_rul_summary.csv", index=False, encoding="utf-8-sig")
     paths = pd.DataFrame(monte_carlo.path_rows)
+    if paths.empty: paths=pd.DataFrame(columns=['sample_id','mission_cycle','maximum_damage'])
     paths.to_csv(OUT / "stochastic_degradation_paths.csv", index=False,
                  encoding="utf-8-sig")
     pd.DataFrame(six_mode_physical_evidence(healthy, d3_config)).to_csv(
@@ -506,9 +573,13 @@ def run(spectrum_path: Path, initial_source: str, *, sample_count: int | None,
         "monte_carlo_runtime_s": stochastic_runtime,
         "total_runtime_s": time.perf_counter() - started,
         "dynamic_case_count": len(detailed_quality),
+        "quality_checkpoint_count": len(prediction.quality_history),
+        "requested_quality_checkpoint_count": summary['requested_quality_checkpoint_count'],
+        "quality_checkpoint_cycles": checked_cycles,
         "random_seed": monte_carlo.random_seed,
         "command": (f"{sys.executable} scripts/d3/run_phase_d3.py "
-                    f"--spectrum {spectrum_path} --initial-state {initial_source}"),
+                    f"--spectrum {spectrum_path} --initial-state {initial_source}"
+                    +(f" --quality-checkpoints {quality_checkpoints}" if quality_checkpoints is not None else "")),
     }
     (OUT / "reproducibility_and_performance.json").write_text(
         json.dumps(reproducibility, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -524,11 +595,13 @@ def main() -> None:
                         help="healthy, d1_day30, or a D3 mode-state JSON path")
     parser.add_argument("--samples", type=int)
     parser.add_argument("--maximum-cycles", type=int)
+    parser.add_argument("--quality-checkpoints", type=int, default=None,
+                        help="Actual D2 checkpoint count, 2..100; omitted retains original schedule")
     parser.add_argument("--package", action="store_true")
     args = parser.parse_args()
     result = run(args.spectrum.resolve(), args.initial_state,
                  sample_count=args.samples, maximum_cycles=args.maximum_cycles,
-                 package=args.package)
+                 package=args.package,quality_checkpoints=args.quality_checkpoints)
     print(json.dumps(result, ensure_ascii=False, indent=2))
 
 

@@ -168,7 +168,9 @@ class RepeatedMissionRULPredictor:
     def predict(self, initial_state: MultiModeDegradationState | None = None,
                 *, quality_evaluator: QualityEvaluator | None = None,
                 mission_days: float = 30.0,
-                maximum_cycles: int | None = None) -> RULPrediction:
+                maximum_cycles: int | None = None,
+                quality_checkpoint_count: int | None = None,
+                should_stop=lambda:False, on_progress=lambda *_:None) -> RULPrediction:
         started = time.perf_counter()
         state = initial_state or MultiModeDegradationState.healthy()
         mission_cfg = self.config.raw["mission"]
@@ -185,6 +187,8 @@ class RepeatedMissionRULPredictor:
         component_event: FailureEvent | None = None
 
         for cycle in range(1, cycle_limit + 1):
+            if should_stop(): raise InterruptedError('用户在任务循环边界取消')
+            on_progress(.10+.6*cycle/cycle_limit,f'正在推进第{cycle}个30天任务循环')
             bucket = int(state.max_damage / refresh_interval)
             if profile is None or bucket != refresh_bucket:
                 profile = self.profile_factory(state, initial_angle)
@@ -192,6 +196,7 @@ class RepeatedMissionRULPredictor:
             cycle_start = state
             total_increments = {key: 0.0 for key in state.modes}
             for segment in profile.segments:
+                if should_stop(): raise InterruptedError('用户在工况段边界取消')
                 state, increments = advance_segment(state, segment, self.config)
                 for key, value in increments.items():
                     total_increments[key] += value
@@ -231,15 +236,25 @@ class RepeatedMissionRULPredictor:
         system_lower = 0
         quality_error: str | None = None
         if quality_evaluator is not None:
+            on_progress(.75,'正在进行寿命检查点真实22状态质量校核')
             last_cycle = len(states) - 1
             maximum_checks = max(2, int(mission_cfg["maximum_dynamic_checkpoints"]))
             if last_cycle > 0:
-                candidates = sorted(set(
-                    [0, last_cycle]
-                    + [int(round(last_cycle * fraction))
-                       for fraction in (0.25, 0.5, 0.75)]))
-                candidates = candidates[:maximum_checks]
+                # Every selected checkpoint invokes the authoritative evaluator.
+                # Five points retain the original 0/25/50/75/100% schedule;
+                # denser requests preserve both endpoints without interpolation.
+                if quality_checkpoint_count is None:
+                    candidates = sorted({0, last_cycle, *[int(round(last_cycle * f))
+                                         for f in (.25, .5, .75)]})[:maximum_checks]
+                else:
+                    count = int(quality_checkpoint_count)
+                    if count != quality_checkpoint_count or not 2 <= count <= maximum_checks:
+                        raise ValueError('动态质量检查点数量必须在2与配置上限之间')
+                    candidates = sorted({int(round(last_cycle * index / (count - 1)))
+                                         for index in range(count)})
                 for cycle in candidates:
+                    if should_stop():
+                        break
                     try:
                         row = dict(quality_evaluator(states[cycle], cycle))
                     except Exception as exc:  # preserve a reportable terminal state

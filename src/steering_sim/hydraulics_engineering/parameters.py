@@ -20,6 +20,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass, field, replace
+from functools import lru_cache
 import json
 import math
 from pathlib import Path
@@ -226,6 +227,30 @@ class CylinderDegradationParameters:
                 "friction_scale": self.friction_scale}
 
 
+_HEALTHY_PUMP = PumpDegradationParameters()
+_HEALTHY_VALVE = ValveDegradationParameters()
+_HEALTHY_CYLINDER = CylinderDegradationParameters()
+
+
+@lru_cache(maxsize=256)
+def _combined_pump(efficiency, leakage, local):
+    return PumpDegradationParameters(efficiency*local.volumetric_efficiency,
+        leakage+local.internal_leakage_m3_s_per_pa, local.mechanical_efficiency,
+        local.rated_drive_power_w)
+
+
+@lru_cache(maxsize=256)
+def _combined_valve(flow_scale, lag_scale, local):
+    return ValveDegradationParameters(local.internal_leakage_m3_s_per_pa,
+        flow_scale*local.flow_coefficient_scale, lag_scale*local.lag_scale)
+
+
+@lru_cache(maxsize=256)
+def _combined_cylinder(leakage, friction, local):
+    return CylinderDegradationParameters(leakage+local.internal_leakage_m3_s_per_pa,
+        friction*local.friction_scale)
+
+
 @dataclass(frozen=True, slots=True)
 class DegradationParameters:
     """退化接口（统一入口，本轮全部为新件取值）。
@@ -274,31 +299,18 @@ class DegradationParameters:
             raise ParameterError("旧 demo 乘性占位字段只允许健康值 1.0；请使用正式工程退化参数")
 
     def pump(self, name: str) -> PumpDegradationParameters:
-        local = self.pumps.get(name, PumpDegradationParameters())
-        return PumpDegradationParameters(
-            volumetric_efficiency=(self.pump_volumetric_efficiency
-                                   * local.volumetric_efficiency),
-            internal_leakage_m3_s_per_pa=(
-                self.pump_internal_leakage_m3_s_per_pa
-                + local.internal_leakage_m3_s_per_pa),
-            mechanical_efficiency=local.mechanical_efficiency,
-            rated_drive_power_w=local.rated_drive_power_w)
+        # Key includes every global factor and the current immutable local
+        # value. Even replacing an entry in a caller-owned mapping is observed.
+        return _combined_pump(self.pump_volumetric_efficiency,
+            self.pump_internal_leakage_m3_s_per_pa, self.pumps.get(name, _HEALTHY_PUMP))
 
     def valve(self, name: str) -> ValveDegradationParameters:
-        local = self.valves.get(name, ValveDegradationParameters())
-        return ValveDegradationParameters(
-            internal_leakage_m3_s_per_pa=local.internal_leakage_m3_s_per_pa,
-            flow_coefficient_scale=(self.valve_flow_coefficient_scale
-                                    * local.flow_coefficient_scale),
-            lag_scale=self.valve_lag_scale * local.lag_scale)
+        return _combined_valve(self.valve_flow_coefficient_scale,
+            self.valve_lag_scale, self.valves.get(name, _HEALTHY_VALVE))
 
     def cylinder(self, name: str) -> CylinderDegradationParameters:
-        local = self.cylinders.get(name, CylinderDegradationParameters())
-        return CylinderDegradationParameters(
-            internal_leakage_m3_s_per_pa=(
-                self.cylinder_internal_leakage_m3_s_per_pa
-                + local.internal_leakage_m3_s_per_pa),
-            friction_scale=self.cylinder_friction_scale * local.friction_scale)
+        return _combined_cylinder(self.cylinder_internal_leakage_m3_s_per_pa,
+            self.cylinder_friction_scale, self.cylinders.get(name, _HEALTHY_CYLINDER))
 
     @property
     def is_new_unit(self) -> bool:

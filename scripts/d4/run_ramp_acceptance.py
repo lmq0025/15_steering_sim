@@ -61,6 +61,7 @@ def run(selected: set[str] | None = None) -> Path:
             "initial_outer_angle_deg": initial,
             "final_outer_angle_deg": final,
             "seconds_per_degree": 6.0,
+            "hydraulic_step_s": response["criteria"].slow_ramp_hydraulic_step_s,
             "command_completion_s": response["command_completion_s"],
             "all_wheels_settled_s": response["all_wheels_settled_s"],
             "all_cylinders_settled_s": response["all_cylinders_settled_s"],

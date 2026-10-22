@@ -23,7 +23,7 @@ class ResponseCriteria:
     piston_speed_threshold_m_s: float = 0.0010
     settled_observation_s: float = 2.0
     maximum_hold_observation_s: float = 10.0
-    slow_ramp_hydraulic_step_s: float = 0.002
+    slow_ramp_hydraulic_step_s: float = 0.0005
 
     def __post_init__(self) -> None:
         for name in ("wheel_angle_tolerance_deg", "cylinder_position_tolerance_m",
@@ -100,13 +100,19 @@ def analyze_response(samples: Mapping[str, np.ndarray], command_completion_s: fl
         settled = _settled_time(time, stable, command_completion_s,
                                 criteria.settled_observation_s)
         wheel_stable_masks.append(stable)
+        locked = wheel.startswith("axle3_") and np.all(np.abs(target) < 1e-12)
+        settled_index = None if settled is None else int(np.searchsorted(time, settled))
         wheel_rows.append({
             "wheel": wheel, "final_target_deg": final_target,
             "final_actual_deg": float(actual[-1]),
             "maximum_tracking_error_deg": float(np.max(np.abs(actual - target))),
-            "first_arrival_s": arrival,
-            "settled_time_s": settled,
-            "settled_status": "SETTLED" if settled is not None else NOT_SETTLED,
+            "first_arrival_s": None if locked else arrival,
+            "whole_run_first_arrival_s": None if locked else _first_time(time, position_ok, 0.0),
+            "settled_time_s": None if locked else settled,
+            "additional_convergence_s": None if locked or settled is None else max(0.0, settled-command_completion_s),
+            "speed_at_settling_deg_s": None if settled_index is None else float(speed[settled_index]),
+            "settled_status": ("FIXED_ZERO_NO_STEERING_REQUIRED" if locked and np.all(stable)
+                               else "SETTLED" if settled is not None else NOT_SETTLED),
             "final_speed_deg_s": float(np.gradient(actual, time)[-1]),
         })
     for channel in CHANNEL_ORDER:
@@ -127,6 +133,8 @@ def analyze_response(samples: Mapping[str, np.ndarray], command_completion_s: fl
             "final_error_m": float(actual[-1] - final_target),
             "first_arrival_s": arrival,
             "settled_time_s": settled,
+            "additional_convergence_s": None if settled is None else max(0.0, settled-command_completion_s),
+            "speed_at_settling_m_s": None if settled is None else float(velocity[np.searchsorted(time, settled)]),
             "settled_status": "SETTLED" if settled is not None else NOT_SETTLED,
             "final_velocity_m_s": float(velocity[-1]),
         })
@@ -146,6 +154,7 @@ def analyze_response(samples: Mapping[str, np.ndarray], command_completion_s: fl
         "all_wheels_settled_s": wheels_common,
         "all_cylinders_settled_s": cylinders_common,
         "system_settled_s": system_common,
+        "additional_convergence_s": None if system_common is None else max(0.0, system_common-command_completion_s),
         "system_status": "SETTLED" if system_common is not None else NOT_SETTLED,
         "criteria": criteria,
     }
